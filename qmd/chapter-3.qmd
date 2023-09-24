@@ -1,0 +1,31 @@
+# Chapter 3
+
+```{r}
+#| label: setup
+#| echo: false
+#| output: false
+
+library(here)
+source(here::here("R/quarto-setup.R"))
+```
+
+```{r}
+#| echo: false
+#| output: asis
+
+quarto_status("drafting")
+```
+
+See <https://quarto.org/docs/authoring/markdown-basics.html> to learn about the basics of Markdown's syntax.
+
+Placeholder text: [Lorem ipsum](https://en.wikipedia.org/wiki/Lorem_ipsum).
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque accumsan rutrum lacus, vitae iaculis nisi bibendum in. Nulla et pellentesque nisl. Proin mollis dui sit amet egestas fermentum. Maecenas eu odio odio. Aenean porta ipsum in mauris pharetra dapibus. Nunc dapibus libero nec dui lacinia, id ultricies lectus maximus. Mauris quis mauris in velit pulvinar rutrum. Cras congue ante in orci luctus placerat. Nullam sit amet nisi augue. Maecenas non ligula eros. Etiam nec dolor a mi bibendum auctor.
+
+## A secondary section
+
+Nullam vulputate urna sed venenatis sodales. Donec at nisl augue. Nulla quis bibendum massa. Ut sit amet enim porta, semper mauris sit amet, varius felis. Nullam aliquet risus vel nulla dictum, a suscipit turpis vestibulum. Nulla pellentesque mattis vehicula. Cras efficitur nulla felis, bibendum facilisis lectus rhoncus sit amet. Etiam a dapibus felis, id fermentum neque. Sed vel efficitur nunc. Nunc commodo, nisi id pretium euismod, tortor arcu fringilla ex, sit amet porta nunc augue eu massa. Etiam eget metus gravida, pulvinar ipsum vel, luctus enim. Vestibulum eget quam porttitor, sodales nulla a, suscipit libero.
+
+### A tertiary section
+
+Fusce eu tincidunt ante, vitae sagittis quam. Aenean ut eros non dui maximus sodales nec at elit. Aliquam consectetur eget mauris in hendrerit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi porta lorem ante, non commodo arcu tristique quis. In consectetur nisl dolor, nec rutrum nulla rhoncus in. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla sed laoreet felis, eget ultrices justo. Vivamus aliquam velit vitae lobortis posuere. Vivamus et vulputate urna, sed finibus nisl. Cras ligula elit, iaculis vel vulputate sed, sollicitudin sed nisl.

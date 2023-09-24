@@ -1,0 +1,6 @@
+# References [^1] {.unnumbered}
+
+[^1]: According to the APA style - American Psychological Association.
+
+::: {#refs}
+:::

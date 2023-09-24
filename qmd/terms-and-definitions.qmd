@@ -1,0 +1,26 @@
+# Terms and definitions {.unnumbered}
+
+```{r}
+#| label: setup
+#| echo: false
+#| output: false
+
+library(here)
+source(here::here("R/quarto-setup.R"))
+```
+
+```{r}
+#| echo: false
+#| output: asis
+
+quarto_status("polishing")
+```
+
+* __Complex system__: There are several definitions. Here are some that I found to be of use:
+	* "Systems that don't yield to compact forms of representation or description." [David Krakauer apud @mitchell2013]
+	* "A system of many interacting parts where the system is more than just the sum of its parts" [Mark Newman apud @mitchell2013]
+	* Systems with many connected agents that interact and exhibit self-organization and emergence behavior, all without the need for a central controller (adapted from Camilo Rodrigues Neto's definition, supervisor of this thesis).
+	* Dialectics at its finest (my working definition).
+* System theory: Two definitions can be of use:
+	* Science or discipline that investigates models, principles, and laws that are valid to systems in general [@bertalanffy1968].
+	* "The attempt of a reductionist scientific tradition to come to terms with complexity, nonlinearity, and change through sophisticated mathematical and computational techniques, _a groping toward a more dialectical understanding_ that is held back by its philosophical biases and the institutional and economic contexts of its development." [@levins1998]

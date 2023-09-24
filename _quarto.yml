@@ -1,0 +1,59 @@
+editor: source
+
+execute:
+  freeze: auto
+
+project:
+  type: book
+  output-dir: docs
+  pre-render: "R/quarto-pre-render.R"
+  resources: "robots.txt"
+
+book:
+  title: "tesesusp: a quarto format for USP's thesis or dissertations"
+  author: "Daniel Vartanian"
+  date: today
+  reader-mode: false
+  # cover-image: cover.png
+  # favicon: cover.png
+  site-url: https://danielvartan.github.io/tesesusp/
+  repo-url: https://github.com/danielvartan/tesesusp/
+  repo-branch: main
+  chapters:
+    - index.qmd
+    - part: "Preliminary Pages"
+      chapters:
+        - qmd/corrigendum.qmd
+        - qmd/inscription.qmd
+        - qmd/acknowledgments.qmd
+        - qmd/epigraph.qmd
+        - qmd/abstract.qmd
+        - qmd/resumo.qmd
+        - qmd/thesis-outline.qmd
+        - qmd/abbreviations.qmd
+        - qmd/terms-and-definitions.qmd
+    - part: "Chapters"
+      chapters:
+        - qmd/chapter-1.qmd
+        - qmd/chapter-2.qmd
+        - qmd/chapter-3.qmd
+    - qmd/references.qmd
+  appendices:
+    - qmd/appendice-1.qmd
+
+# See <https://quarto.org/docs/authoring/footnotes-and-citations.html>.
+bibliography: references.json
+# See <https://www.zotero.org/styles>.
+cls: csl/apa-numeric-superscript-brackets.csl
+
+# See <https://quarto.org/docs/authoring/create-citeable-articles.html>.
+citation:
+  type: thesis
+  url: https://danielvartan.github.io/mastersthesis/
+google-scholar: false
+
+format:
+  tesesusp-html:
+    author-meta: "Daniel Vartanian"
+  tesesusp-pdf:
+    keep-tex: true

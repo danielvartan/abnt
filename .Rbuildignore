@@ -1,0 +1,7 @@
+^\.ignore$
+^\.obsidian$
+^.*\.Rproj$
+^\.Rproj\.user$
+^CITATION\.cff$
+^renv$
+^renv\.lock$

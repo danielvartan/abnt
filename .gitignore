@@ -1,0 +1,9 @@
+/.ignore/
+/.quarto/
+# /docs/
+.Rapp.history
+.RData
+.Renviron
+.Rhistory
+.Rproj.user
+.Ruserdata

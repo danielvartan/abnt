@@ -1,0 +1,54 @@
+# Welcome {.unnumbered}
+
+```{r}
+#| label: setup
+#| echo: false
+#| output: false
+
+library(here)
+
+source(here::here("R/quarto-setup.R"))
+```
+
+::: {.content-visible when-format="pdf"}
+\instituicao{
+	UNIVERSIDADE DE SÃO PAULO
+	\par
+	ESCOLA DE ARTES, CIÊNCIAS E HUMANIDADES
+	\par
+	PROGRAMA DE PÓS-GRADUAÇÃO EM SISTEMAS DE INFORMAÇÃO}
+
+::: {.callout-important}
+You are seeing the printed preliminary version of this thesis.
+:::
+\vspace{15pt}
+:::
+
+::: {.content-visible when-format="html"}
+::: {.callout-important }
+You are seeing the web preliminary version of this thesis.
+:::
+:::
+
+The analyses contained in this document are 100% reproducible. They were performed using the [R programming language](https://www.r-project.org/) and the [Quarto](https://quarto.org/) publishing system (an evolution of [R Markdown](https://rmarkdown.rstudio.com/)). Click on the GitHub icon in the menu to access the thesis code repository.
+
+## Citation
+
+For attribution, please cite this work as:
+
+[Surname], [Initials]. ([Year]). _[Title]_ [(Master's/PhD) thesis]. [Department/School], [University], [City]. [URL]
+
+BibTeX citation:
+
+```
+@[mastersthesis/phdthesis]{[author][year],
+  title = {Title},
+  author = {Author},
+  year = {Year},
+  address = {City},
+  school  = {University},
+  langid = {Language},
+  url = {URL}
+  note = {Preliminary version}
+}
+```

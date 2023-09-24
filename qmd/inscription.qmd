@@ -1,0 +1,12 @@
+# Inscription {.unnumbered}
+
+```{r}
+#| label: setup
+#| echo: false
+#| output: false
+
+library(here)
+source(here::here("R/quarto-setup.R"))
+```
+
+I dedicate this work to Daniel Vartanian's awesome [Quarto format template](https://github.com/danielvartan/tesesusp)! :)
