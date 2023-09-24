@@ -1,3 +1,7 @@
+<!-- ::: {.content-visible when-format="pdf"} -->
+<!-- \begin{apendicesenv} -->
+<!-- ::: -->
+
 # Appendice 1
 
 ```{r}

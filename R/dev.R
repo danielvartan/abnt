@@ -29,6 +29,15 @@
 # quarto render
 # quarto render index.qmd
 # quarto render qmd/chapter-6.qmd
-# quarto render --to html
-# quarto render --to pdf
+# quarto render --to tesesusp-html
+# quarto render --to tesesusp-pdf
 # quarto publish gh-pages
+
+# TODO
+#
+# 1. Find a way to preserve pdf bookmarks.
+# 2. Find a way to exclude pre-textual pages from pdf render.
+# 3. Uppercase titles.
+# 4. Fix title of the 'resumo (pt-br)' section.
+# 5. Fix header.tex
+# 6. Floating tables.

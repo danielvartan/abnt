@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: /
-
-Sitemap: https://danielvartan.github.io/mastersthesis/sitemap.xml

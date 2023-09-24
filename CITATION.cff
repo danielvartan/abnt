@@ -2,7 +2,7 @@
 
 cff-version: 1.2.0
 message: "To cite this Quarto format in publications use:"
-title: "tesesusp: a quarto format for USP's thesis or dissertations"
+title: "tesesusp: a Quarto format for USP theses and dissertations"
 keywords:
   - quarto-format
   - thesis
@@ -22,18 +22,18 @@ contact:
   email: danvartan@gmail.com
   orcid: https://orcid.org/0000-0001-7782-759X
 type: software
-version: 0.0.0.9000
+version: 0.0.1
 license: MIT
 identifiers:
 - type: url
   value: https://github.com/danielvartan/tesesusp/
 preferred-citation:
   type: unpublished
-  title: "tesesusp: a quarto format for USP's thesis or dissertations"
+  title: "tesesusp: a Quarto format for USP theses and dissertation"
   authors:
   - family-names: Vartanian
     given-names: Daniel
     email: danvartan@gmail.com
     orcid: https://orcid.org/0000-0001-7782-759X
   year: "2023"
-  url: https://danielvartan.github.io/mastersthesis/
+  url: https://github.com/danielvartan/tesesusp/

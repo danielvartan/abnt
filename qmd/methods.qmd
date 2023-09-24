@@ -1,4 +1,8 @@
-# Chapter 3
+::: {.content-visible when-format="pdf"}
+\textual
+:::
+
+# Methods
 
 ```{r}
 #| label: setup

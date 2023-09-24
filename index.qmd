@@ -1,4 +1,4 @@
-# Welcome {.unnumbered}
+# Introduction
 
 ```{r}
 #| label: setup
@@ -11,44 +11,68 @@ source(here::here("R/quarto-setup.R"))
 ```
 
 ::: {.content-visible when-format="pdf"}
-\instituicao{
-	UNIVERSIDADE DE SÃO PAULO
-	\par
-	ESCOLA DE ARTES, CIÊNCIAS E HUMANIDADES
-	\par
-	PROGRAMA DE PÓS-GRADUAÇÃO EM SISTEMAS DE INFORMAÇÃO}
+::: {.callout-note}
+The text below is for demonstrative purposes only.
 
-::: {.callout-important}
-You are seeing the printed preliminary version of this thesis.
+\vspace{5pt}
+
+See <https://quarto.org/docs/authoring/markdown-basics.html> to learn about the basics of Markdown's syntax.
 :::
+:::
+
+"The activity can be represented by a _general schema of problem- solving by the method of imaginative conjectures and criticism_, or, as I have often called it, by _the method of conjecture and refutation_. The schema (in its simplest form) is this
+
+$$
+\text{P}_{1} \to \text{TT} \to \text{EE} \to \text{P}_{2} 
+$$
+
+Here $\text{P}_{1}$, is the _problem_ from which we start, $\text{TT}$ (the ‘tentative theory’) is the imaginative conjectural solution which we first reach, for example our first _tentative interpretation_. $\text{EE}$ (_‘error- elimination’_) consists of a severe critical examination of our conjecture, our tentative interpretation: it consists, for example, of the critical use of documentary evidence and, if we have at this early stage more than one conjecture at our disposal, it will also consist of a critical discussion and comparative evaluation of the competing conjectures. $\text{P}_{2}$, is the problem situation as it emerges from our first critical attempt to solve our problems.
+It leads up to our second attempt (_and so on_). A satisfactory understanding will be reached if the interpretation, the conjectural theory, finds support in the fact that it can throw new light on new problems—on more problems than we expected; or if it finds support in the fact that it explains many sub-problems, some of which were not seen to start with. Thus we may say that we can gauge the progress we have made by comparing $\text{P}_{1}$; with some of our later problems ($\text{P}_{n}$, say)."
+
 \vspace{15pt}
+
+[@popper1979, p. 164]
+
+::: {#fig-karl-popper}
+
+![](images/karl-popper.png){width=50%}
+
+Karl Popper (28 July 1902 – 17 September 1994)\
+_One of the 20th century's most influential philosophers of science, \
+Popper is known for his rejection of the classical inductivist views \
+on the scientific method in favour of empirical falsification._
+
 :::
 
-::: {.content-visible when-format="html"}
-::: {.callout-important }
-You are seeing the web preliminary version of this thesis.
-:::
-:::
+## A secondary section
 
-The analyses contained in this document are 100% reproducible. They were performed using the [R programming language](https://www.r-project.org/) and the [Quarto](https://quarto.org/) publishing system (an evolution of [R Markdown](https://rmarkdown.rstudio.com/)). Click on the GitHub icon in the menu to access the thesis code repository.
+1. List
+1. List
+1. List
 
-## Citation
+### A tertiary section
 
-For attribution, please cite this work as:
+```{r}
+#| layout-ncol: 2
+#| fig-cap: 
+#|   - "Speed and stopping distances of cars"
+#|   - "Vapor pressure of mercury as a function of temperature"
 
-[Surname], [Initials]. ([Year]). _[Title]_ [(Master's/PhD) thesis]. [Department/School], [University], [City]. [URL]
-
-BibTeX citation:
-
+plot(cars)
+plot(pressure)
 ```
-@[mastersthesis/phdthesis]{[author][year],
-  title = {Title},
-  author = {Author},
-  year = {Year},
-  address = {City},
-  school  = {University},
-  langid = {Language},
-  url = {URL}
-  note = {Preliminary version}
-}
+
+#### A quaternary section
+
+* Bullet
+  * Bullet
+    * Bullet
+      * Bullet
+
+##### A quinary section
+
+```{r}
+datasets::iris |>
+  dplyr::as_tibble() |>
+  dplyr::slice_sample(n = 5)
 ```

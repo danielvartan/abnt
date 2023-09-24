@@ -1,4 +1,4 @@
-# Thesis outline {.unnumbered}
+# Discussion
 
 ```{r}
 #| label: setup
