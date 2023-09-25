@@ -1,4 +1,8 @@
-# Introduction
+::: {.content-visible when-format="pdf"}
+\textual
+:::
+
+# INTRODUCTION
 
 ```{r}
 #| label: setup
@@ -34,45 +38,34 @@ It leads up to our second attempt (_and so on_). A satisfactory understanding wi
 [@popper1979, p. 164]
 
 ::: {#fig-karl-popper}
-
 ![](images/karl-popper.png){width=50%}
 
-Karl Popper (28 July 1902 – 17 September 1994)\
-_One of the 20th century's most influential philosophers of science, \
-Popper is known for his rejection of the classical inductivist views \
-on the scientific method in favour of empirical falsification._
-
+Karl Popper (28 July 1902 – 17 September 1994).\
+One of the 20th century's most influential philosophers of science.
 :::
 
-## A secondary section
-
-1. List
-1. List
-1. List
-
-### A tertiary section
+## SECONDARY SECTION
 
 ```{r}
-#| layout-ncol: 2
-#| fig-cap: 
-#|   - "Speed and stopping distances of cars"
-#|   - "Vapor pressure of mercury as a function of temperature"
+#| tbl-cap: "A sample of the famous (Fisher's or Anderson's) iris data set."
 
-plot(cars)
-plot(pressure)
+datasets::iris |>
+  dplyr::as_tibble() |>
+  dplyr::slice_sample(n = 5)
 ```
 
-#### A quaternary section
+### TERTIARY SECTION
+
+```{r}
+#| fig-cap: "Speed and stopping distances of cars"
+#| fig-height: 4
+
+plot(cars)
+```
+
+#### QUATERNARY SECTION
 
 * Bullet
   * Bullet
     * Bullet
       * Bullet
-
-##### A quinary section
-
-```{r}
-datasets::iris |>
-  dplyr::as_tibble() |>
-  dplyr::slice_sample(n = 5)
-```

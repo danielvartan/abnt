@@ -5,9 +5,11 @@
 
 <!-- badges: start -->
 
-[![Project Status: WIP – Initial development is in progress, but there
-has not yet been a stable, usable release suitable for the
-public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![License:
 MIT](https://img.shields.io/badge/license-MIT-green)](https://choosealicense.com/licenses/mit/)
 <!-- badges: end -->
@@ -18,8 +20,7 @@ MIT](https://img.shields.io/badge/license-MIT-green)](https://choosealicense.com
 and dissertations of the University of São Paulo (USP). It is based on
 the [`abntex2`](https://www.abntex.net.br/) suite, the
 [`abntex2ppgsi`](https://www.overleaf.com/project/64f7bdf1641ad4a3a8482800)
-template, and on the [USP guidelines for creating thesis and
-dissertation
+template, and on [USP guidelines for creating thesis and dissertation
 documents](https://teses.usp.br/index.php?option=com_content&view=article&id=52&Itemid=67&lang=en).
 
 This format extension also includes a [Quarto
@@ -68,8 +69,7 @@ You can also set the template in your document `yaml`:
 
 ``` yaml
 format:
-  tesesusp-pdf:
-    babel-lang: english
+  tesesusp-pdf
 ```
 
 Since USP guidelines are plentiful, some formatting had to be made by
@@ -78,7 +78,48 @@ is cloning this repository and building on top of its [Quarto
 book](https://quarto.org/docs/books/). You can also use this book to
 publish a `html` version of your thesis.
 
-<!-- ## Format Options -->
+At the moment, the pre-textual pages must be set using the
+`yaml`configuration and two [LaTeX](https://www.latex-project.org/)
+files that can be found in the `tex` folder. For citation managing, this
+template works with [Zotero](https://www.zotero.org/) a pre-render
+script (see `R/quarto-pree-render.R`), along with the
+[`rbbt`](https://github.com/paleolimbot/rbbt) R package.
+
+## Format options
+
 <!-- See <https://github.com/quarto-journals/elsevier>. -->
 <!-- See <https://quarto.org/docs/extensions/formats.html>. -->
-<!-- *TODO*: If your format has options that can be set via document metadata, describe them. -->
+
+Most customizing options available in the Quarto system works with this
+format. Here are some of them.
+
+### Typography
+
+You can set the document typography using the `mainfont` key. Example:”
+
+``` yaml
+format:
+  tesesusp-pdf:
+    mainfont: Arial
+```
+
+[USP guidelines for creating thesis and dissertation
+documents](https://teses.usp.br/index.php?option=com_content&view=article&id=52&Itemid=67&lang=en)
+recommends a `12pt` for the body text, but don’t specify a font type.
+`Arial` (default) and `Times New Roman` are two common options. Any font
+available in the [`fontspec`](https://ctan.org/pkg/fontspec) LaTeX
+package should work.
+
+### Language and hyphenation
+
+At the moment, this Quarto format supports only the English language.
+
+If you know your way thought LaTeX, you can change the order of
+languages in the `\RequirePackage[spanish, brazil, english]{babel}`
+command present in `_extensions/tesesusp/tesesusp.cls`. This way, the
+last one will become the main language of the document.
+
+<!-- ## Sections -->
+<!-- How to add or remove sections. -->
+<!-- ## Bibliographical style -->
+<!-- Main bib style == APA. How to change it. -->

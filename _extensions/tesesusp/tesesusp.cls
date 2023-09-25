@@ -6,8 +6,10 @@
 
 \usepackage{anyfontsize}
 
-
-% Declaration of the abntex2 class as an extension of the memoir class
+% ----------------------------------------------------------------------
+% Declaration of the 'abntex2' class as an extension of the 'memoir'
+% class
+% ----------------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{tesesusp}[2014/01/26 v1.9.2 abnTeX2]
@@ -66,8 +68,9 @@
   \setboolean{ABNTEXsumario-abnt-6027-2012}{true}
 \fi
 
-
+% ----------------------------------------------------------------------
 % Commands for handling custom options.
+% ----------------------------------------------------------------------
 
 \RequirePackage{textcase}
 
@@ -77,8 +80,9 @@
 \newcommand{\ABNTEXsubsubsectionupperifneeded}{\ifthenelse{\boolean{ABNTEXuppersubsubsection}}{\MakeTextUppercase}{}}
 \newcommand{\ABNTEXsubsubsubsectionupperifneeded}{\ifthenelse{\boolean{ABNTEXuppersubsubsubsection}}{\MakeTextUppercase}{}}
 
-
+% ----------------------------------------------------------------------
 % Additional packages and general customizations of the memoir
+% ----------------------------------------------------------------------
 
 \newcommand{\abntex@ifnotempty}[2]{\ifthenelse{\not\equal{#1}{}}{#2}{}}
 
@@ -86,65 +90,124 @@
 \pdfstringdefDisableCommands{\def\\{, }\def\and{; }}
 
 \RequirePackage{bookmark}
-\RequirePackage[english]{babel}
+\RequirePackage[spanish, brazil, english]{babel}
 
-\newcommand{\folhaderostoname}{Folha de rosto}
-\newcommand{\epigraphname}{Ep\'igrafe}
-\newcommand{\dedicatorianame}{Dedicat\'oria}
-\newcommand{\errataname}{Errata}
-\newcommand{\agradecimentosname}{Agradecimentos}
-\newcommand{\anexoname}{Anexo}
-\newcommand{\anexosname}{Anexos}
-\newcommand{\apendicename}{Ap\^endice}
-\newcommand{\apendicesname}{Ap\^endices}
-\newcommand{\orientadorname}{Orientador:}
-\newcommand{\coorientadorname}{Coorientador:}
-\newcommand{\folhadeaprovacaoname}{Folha de aprova\c{c}\~ao}
-\newcommand{\resumoname}{Resumo}
-\newcommand{\listadesiglasname}{Lista de abreviaturas e siglas}
-\newcommand{\listadesimbolosname}{Lista de s\'imbolos}
-\newcommand{\sourcename}{Fonte}
-\newcommand{\notaname}{Nota}
+\newcommand{\folhaderostoname}{\uppercase{TITLE PAGE}}
+\newcommand{\epigraphname}{EPIGRAPH}
+\newcommand{\dedicatorianame}{INSCRIPTION}
+\newcommand{\errataname}{ERRATA SHEET}
+\newcommand{\agradecimentosname}{ACKNOWLEDGEMENTS}
+\newcommand{\anexoname}{ANNEX}
+\newcommand{\anexosname}{ANNEX}
+\newcommand{\apendicename}{APPENDIX}
+\newcommand{\apendicesname}{APPENDIXES}
+\newcommand{\orientadorname}{Supervisor:}
+\newcommand{\coorientadorname}{Co-supervisor:}
+\newcommand{\folhadeaprovacaoname}{APPROVAL SHEET}
+\newcommand{\resumoname}{ABSTRACT}
+\newcommand{\listadesiglasname}{LIST OF ABBREVIATIONS AND ACRONYMS}
+\newcommand{\listadesimbolosname}{LIST OF SYMBOLS}
+\newcommand{\sourcename}{Source}
+\newcommand{\notaname}{Note}
 
-\addto\captionsbrazil{% Brazilian Portuguese
-  %% Adjusts default babel names
-%   \renewcommand{\bibname}{Refer\^encias}
-  \renewcommand{\bibname}{Refer\^encias\protect\footnote{De acordo com a Associa\c{c}\~ao Brasileira de Normas T\'ecnicas. NBR 6023.}}
-  \renewcommand{\indexname}{\'Indice}
-  \renewcommand{\listfigurename}{Lista de figuras}
-  \renewcommand{\listtablename}{Lista de tabelas}
-  %% ajusta nomes usados com a macro \autoref
-  \renewcommand{\pageautorefname}{p\'agina}
-  \renewcommand{\sectionautorefname}{se{\c c}\~ao}
-  \renewcommand{\subsectionautorefname}{subse{\c c}\~ao}
-  \renewcommand{\subsubsectionautorefname}{subse{\c c}\~ao}
-  \renewcommand{\paragraphautorefname}{subse{\c c}\~ao}
-}
-\addto\captionsenglish{% English
+\renewcommand{\listfigurename}{LIST OF FIGURES}
+\renewcommand{\listtablename}{LIST OF TABLES}
+\renewcommand{\contentsname}{TABLE OF CONTENTS}
+
+% Captions: English
+\addto\captionsenglish{
   %% Adjusts names from abnTeX2
-  \renewcommand{\folhaderostoname}{Title page}
-  \renewcommand{\epigraphname}{Epigraph}
-  \renewcommand{\dedicatorianame}{Dedication}
-  \renewcommand{\errataname}{Errata sheet}
-  \renewcommand{\agradecimentosname}{Acknowledgements}
+  \renewcommand{\folhaderostoname}{TITLE PAGE}
+  \renewcommand{\epigraphname}{EPIGRAPH}
+  \renewcommand{\dedicatorianame}{INSCRIPTION}
+  \renewcommand{\errataname}{ERRATA SHEET}
+  \renewcommand{\agradecimentosname}{ACKNOWLEDGEMENTS}
   \renewcommand{\anexoname}{ANNEX}
-  \renewcommand{\anexosname}{Annex}
+  \renewcommand{\anexosname}{ANNEX}
   \renewcommand{\apendicename}{APPENDIX}
-  \renewcommand{\apendicesname}{Appendix}
+  \renewcommand{\apendicesname}{APPENDIXES}
   \renewcommand{\orientadorname}{Supervisor:}
   \renewcommand{\coorientadorname}{Co-supervisor:}
-  \renewcommand{\folhadeaprovacaoname}{Approval}
-  \renewcommand{\resumoname}{Abstract}
-  \renewcommand{\listadesiglasname}{List of abbreviations and acronyms}
-  \renewcommand{\listadesimbolosname}{List of symbols}
+  \renewcommand{\folhadeaprovacaoname}{APPROVAL SHEET}
+  \renewcommand{\resumoname}{ABSTRACT}
+  \renewcommand{\listfigurename}{LIST OF FIGURES}
+  \renewcommand{\listtablename}{LIST OF TABLES}
+  \renewcommand{\listadesiglasname}{LIST OF ABBREVIATIONS AND ACRONYMS}
+  \renewcommand{\listadesimbolosname}{LIST OF SYMBOLS}
+  \renewcommand{\contentsname}{TABLE OF CONTENTS}
+  \renewcommand{\bibname}{REFERENCES}
+  \renewcommand{\indexname}{INDEX}
   \renewcommand{\sourcename}{Source}
   \renewcommand{\notaname}{Note}
-   %% Adjusts names used by \autoref
   \renewcommand{\pageautorefname}{page}
   \renewcommand{\sectionautorefname}{section}
   \renewcommand{\subsectionautorefname}{subsection}
   \renewcommand{\subsubsectionautorefname}{subsubsection}
   \renewcommand{\paragraphautorefname}{subsubsubsection}
+}
+
+% Captions: Brazillian Portuguese
+\addto\captionsbrazil{
+  %% Adjusts names from abnTeX2
+  \renewcommand{\folhaderostoname}{FOLHA DE ROSTO}
+  \renewcommand{\epigraphname}{EP\'IGRAFE}
+  \renewcommand{\dedicatorianame}{DEDICAT\'ORIA}
+  \renewcommand{\errataname}{ERRATA}
+  \renewcommand{\agradecimentosname}{AGRADECIMENTOS}
+  \renewcommand{\anexoname}{ANEXO}
+  \renewcommand{\anexosname}{ANEXOS}
+  \renewcommand{\apendicename}{AP\^ENDICE}
+  \renewcommand{\apendicesname}{AP\^ENDICES}
+  \renewcommand{\orientadorname}{Orientador:}
+  \renewcommand{\coorientadorname}{Coorientador:}
+  \renewcommand{\folhadeaprovacaoname}{FOLHA DE APROVA\c{C}\~AO}
+  \renewcommand{\resumoname}{RESUMO}
+  \renewcommand{\listfigurename}{LISTA DE FIGURAS}
+  \renewcommand{\listtablename}{LISTA DE TABELAS}
+  \renewcommand{\listadesiglasname}{LISTA DE ABREVIATURAS E SIGLAS}
+  \renewcommand{\listadesimbolosname}{LISTA DE S\'IMBOLOS}
+  \renewcommand{\contentsname}{SUMÁRIO}
+  \renewcommand{\bibname}{REFER\^ENCIAS}
+  \renewcommand{\indexname}{\'INDICE}
+  \renewcommand{\sourcename}{Fonte}
+  \renewcommand{\notaname}{Nota}
+  \renewcommand{\pageautorefname}{p\'agina}
+  \renewcommand{\sectionautorefname}{se{\c c}\~ao}
+  \renewcommand{\subsectionautorefname}{subse{\c c}\~ao}
+  \renewcommand{\subsubsectionautorefname}{subsubse{\c c}\~ao}
+  \renewcommand{\paragraphautorefname}{subsubsubse{\c c}\~ao}
+}
+
+% Captions: Spanish
+\addto\captionsspanish{
+  %% Adjusts names from abnTeX2
+  \renewcommand{\folhaderostoname}{PORTADA}
+  \renewcommand{\epigraphname}{EP\'IGRAFE}
+  \renewcommand{\dedicatorianame}{DEDICATORIA}
+  \renewcommand{\errataname}{ERRATA}
+  \renewcommand{\agradecimentosname}{AGRADECIMIENTOS}
+  \renewcommand{\anexoname}{ANEXO}
+  \renewcommand{\anexosname}{ANEXOS}
+  \renewcommand{\apendicename}{AP\'ENDICE}
+  \renewcommand{\apendicesname}{AP\'ENDICES}
+  \renewcommand{\orientadorname}{Asesor:}
+  \renewcommand{\coorientadorname}{Coasesor:}
+  \renewcommand{\folhadeaprovacaoname}{HOJA DE APROBACI\'ON}
+  \renewcommand{\resumoname}{RESUMEN}
+  \renewcommand{\listfigurename}{LISTA DE FIGURAS}
+  \renewcommand{\listtablename}{LIST DE TABLAS}
+  \renewcommand{\listadesiglasname}{LISTA DE ABREVIATURAS Y SIGLAS}
+  \renewcommand{\listadesimbolosname}{LISTA DE S\'IMBOLOS}
+  \renewcommand{\contentsname}{SUMARIO}
+  \renewcommand{\bibname}{REFERENCIAS}
+  \renewcommand{\indexname}{\'INDICE}
+  \renewcommand{\sourcename}{Fuente}
+  \renewcommand{\notaname}{Nota}
+  \renewcommand{\pageautorefname}{p\'agina}
+  \renewcommand{\sectionautorefname}{secci\'on}
+  \renewcommand{\subsectionautorefname}{subsecci\'on}
+  \renewcommand{\subsubsectionautorefname}{subsubsecci\'on}
+  \renewcommand{\paragraphautorefname}{subsubsubsecci\'on}
 }
 
 \RequirePackage{enumitem}
@@ -162,7 +225,7 @@
 \newcommand{\ABNTEXchapterfontsize}{\fontsize{12}{0}\selectfont}
 
 %% Section 1.1 style
-\newcommand{\ABNTEXsectionfont}{\normalfont\itshape}
+\newcommand{\ABNTEXsectionfont}{\normalfont}
 \newcommand{\ABNTEXsectionfontsize}{\fontsize{12}{0}\selectfont}
 
 %% Subsection 1.1.1 style
@@ -200,7 +263,9 @@
   }
 }
 
+% ----------------------------------------------------------------------
 % Layout configurations
+% ----------------------------------------------------------------------
 
 %% Footnotes - NBR 14724/2011 - 5.2.1
 \makeatletter
@@ -296,12 +361,15 @@
   }
 }
 
+% ----------------------------------------------------------------------
 %% Table of Contents settings
+% ----------------------------------------------------------------------
 
 \setsecnumdepth{subsection}
+\setcounter{secnumdepth}{3}
+
 \settocdepth{subsection}
 \setcounter{tocdepth}{3}
-\setcounter{secnumdepth}{3}
 \maxsecnumdepth{subsection}
 
 \newcommand{\subsubsubsection}{\paragraph}
@@ -356,9 +424,9 @@
 
   \cftsetindents{part}{0em}{\cftlastnumwidth}
   \cftsetindents{chapter}{0em}{\cftlastnumwidth}
-  \cftsetindents{section}{1em}{\cftlastnumwidth}
-  \cftsetindents{subsection}{2em}{\cftlastnumwidth}
-  \cftsetindents{subsubsection}{3em}{\cftlastnumwidth}
+  \cftsetindents{section}{0em}{\cftlastnumwidth}
+  \cftsetindents{subsection}{0em}{\cftlastnumwidth}
+  \cftsetindents{subsubsection}{0em}{\cftlastnumwidth}
   %\cftsetindents{paragraph}{4em}{\cftlastnumwidth}
   %\cftsetindents{subparagraph}{5em}{\cftlastnumwidth}
   %
@@ -410,7 +478,9 @@
     \addtocontents{toc}{\vspace{\cftbeforepartskip}}}%
 }
 
+% ----------------------------------------------------------------------
 % Chapter titles configuration
+% ----------------------------------------------------------------------
 
 %% ABNT NBR 14724-2011 - 5.2.2-5.2.4; ABNT NBR 6024-2003 - 3.1-3.8
 \provideboolean{abntex@innonumchapter}
@@ -556,8 +626,9 @@
 \providecommand{\imprimirtipotrabalho}{}
 \newcommand{\tipotrabalho}[1]{\renewcommand{\imprimirtipotrabalho}{#1}}
 
-
+% ----------------------------------------------------------------------
 % Pre-textual typesetting commands and environments
+% ----------------------------------------------------------------------
 
 %% Environment for defining the cover
 \newenvironment{capa}{\begin{titlingpage}}{\end{titlingpage}\cleardoublepage}
@@ -651,8 +722,9 @@
   \cleardoublepage
 }
 
-
+% ----------------------------------------------------------------------
 % Typesetting commands and environments for appendices and attachments
+% ----------------------------------------------------------------------
 
 %% Shared definitions between appendices and attachments
 \makeatletter
@@ -723,8 +795,10 @@
 \@ifstar{\appendixpage*}{\partpage}}
 \makeatother
 
-
-% Typesetting commands and environments for citation, paragraph, subsection, and signature
+% ----------------------------------------------------------------------
+% Typesetting commands and environments for citation, paragraph,
+% subsection, and signature
+% ----------------------------------------------------------------------
 
 %% Direct quotation exceeding 3 lines - ABNT NBR 10520/2002 - 5.3
 \newlength{\ABNTEXcitacaorecuo}% recuo de 4 cm da margem esquerda
@@ -790,8 +864,9 @@
 \newcommand{\ABNTEXcsign}[1]%
   {\begingroup\par\centering\ABNTEXsign{#1}\par\endgroup}
 
-
+% ----------------------------------------------------------------------
 % Standard prints of cover and title page
+% ----------------------------------------------------------------------
 
 %% Cover
 \newcommand{\imprimircapa}{%
@@ -878,23 +953,4 @@
      \imprimirfolhaderostostar
      \imprimirfolhaderostonostar
 }
-\makeatother
-
-
-% Hack for the algorithm package
-
-\usepackage{algorithm}
-
-\makeatletter
-\def\ALG@name{Algoritmo}
-  \renewcommand{\listalgorithmname}{Lista de algoritmos}
-  \def\algorithmautorefname{Algoritmo}
-  \let\OLDlistofalgorithms\listofalgorithms
-  \newcommand{\NEWnumberline}[1]{\hspace*{-48pt}Algoritmo #1~--~}
-  \renewcommand{\listofalgorithms}{
-    \let\OLDnumberline\numberline
-    \let\numberline\NEWnumberline
-    \OLDlistofalgorithms
-    \let\numberline\OLDnumberline
-  }
 \makeatother

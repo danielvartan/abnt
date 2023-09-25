@@ -11,24 +11,17 @@ source(here::here("R/quarto_status.R"))
 
 knitr::opts_chunk$set(
   comment = "#>",
-  collapse = TRUE,
-  fig.show = "hold"
+  collapse = TRUE
+  # fig.show = "hold"
 )
 
 # From <https://stackoverflow.com/questions/74193542/
 #       quarto-dataframe-printing-and-styling>
 
 knit_print.data.frame = function(x, ...) {
-  res <- paste(
-    c(
-      "",
-      "",
-      knitr::kable(x, digits = 3) |> kableExtra::kable_styling()
-    ),
-    collapse = "\n"
-    )
-
-  knitr::asis_output(res)
+  knitr::kable(x, digits = 3) |>
+    kableExtra::kable_styling() |>
+    knitr::asis_output()
 }
 
 registerS3method(

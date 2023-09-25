@@ -16,7 +16,8 @@ knitr::opts_chunk$set(
 # tesesusp
 
 <!-- badges: start -->
-[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](https://choosealicense.com/licenses/mit/)
 <!-- badges: end -->
 
@@ -65,7 +66,7 @@ Since USP guidelines are plentiful, some formatting had to be made by inventive/
 
 At the moment, the pre-textual pages must be set using the `yaml`configuration and two [LaTeX](https://www.latex-project.org/) files that can be found in the `tex` folder. For citation managing, this template works with [Zotero](https://www.zotero.org/) a pre-render script (see `R/quarto-pree-render.R`), along with the [`rbbt`](https://github.com/paleolimbot/rbbt) R package.
 
-## Format Options
+## Format options
 
 <!-- See <https://github.com/quarto-journals/elsevier>. -->
 <!-- See <https://quarto.org/docs/extensions/formats.html>. -->
@@ -81,29 +82,18 @@ format:
   tesesusp-pdf:
     mainfont: Arial
 ```
-[USP guidelines for creating thesis and dissertation documents](https://teses.usp.br/index.php?option=com_content&view=article&id=52&Itemid=67&lang=en) recommends a `12pt` for the body text, but don't specify a font type. `Arial` (default) and `Times new roman` are two common options. Any font available in the [`fontspec`](https://ctan.org/pkg/fontspec) LaTeX package should work.
+[USP guidelines for creating thesis and dissertation documents](https://teses.usp.br/index.php?option=com_content&view=article&id=52&Itemid=67&lang=en) recommends a `12pt` for the body text, but don't specify a font type. `Arial` (default) and `Times New Roman` are two common options. Any font available in the [`fontspec`](https://ctan.org/pkg/fontspec) LaTeX package should work.
 
 ### Language and hyphenation
 
-This Quarto format supports the 3 possible languages for USP theses and dissertations: Portuguese, English and Spanish. Use the `babel-lang` key to set them using the following options:
+At the moment, this Quarto format supports only the English language.
 
-* `brazil` (Brazilian Portuguese)
-* `english` (default)
-* `spanish`
+If you know your way thought LaTeX, you can change the order of languages in the `\RequirePackage[spanish, brazil, english]{babel}` command present in `_extensions/tesesusp/tesesusp.cls`. This way, the last one will become the main language of the document.
 
-Example:
+<!-- ## Sections -->
 
-``` yaml
-format:
-  tesesusp-pdf:
-    babel-lang: english
-```
+<!-- How to add or remove sections. -->
 
-You can use other languages supported by the [`babel`](https://ctan.org/pkg/babel) LaTeX package, but the title of some sections will not change. Future versions may allow other languages.
+<!-- ## Bibliographical style -->
 
-## Sections
-
-
-
-## Bibliographical style
-
+<!-- Main bib style == APA. How to change it. -->

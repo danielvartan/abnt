@@ -2,7 +2,7 @@
 \postextual
 :::
 
-# References [^1] {.unnumbered}
+# REFERENCES [^1] {.unnumbered}
 
 [^1]: According to the APA style - American Psychological Association.
 

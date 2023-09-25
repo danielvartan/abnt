@@ -32,8 +32,10 @@ bibliography: references.json
 format:
   tesesusp-pdf:
     # classoption: [twoside]
+    nocite: |
+      @*
+    latex-auto-install: true
+    keep-tex: false
     include-in-header: tex/include-in-header.tex
     include-before-body: tex/include-before-body.tex
     # include-after-body: tex/include-after-body.tex
-    babel-lang: brazil
-    latex-auto-install: true
