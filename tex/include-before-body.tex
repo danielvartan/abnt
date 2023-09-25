@@ -1,6 +1,6 @@
 % tesesusp.cls, v-0.0.1
 
-% Based on 'bntex2ppgsi.cls', 'abntex2.csl' and the USP guidelines to create
+% Based on 'bntex2ppgsi.cls', 'abntex2.csl' and on USP guidelines to create
 % thesis and dissertation documents.
 % See <https://www.overleaf.com/project/64f7bdf1641ad4a3a8482800>
 % and <https://teses.usp.br/index.php?option=com_content&
@@ -10,19 +10,19 @@
 \clearpage
 
 % ----------------------------------------------------------------------
-% Cover
+% Cover (mandatory)
 % ----------------------------------------------------------------------
 
 \imprimircapa
 
 % ----------------------------------------------------------------------
-% Title page
+% Title page (mandatory)
 % ----------------------------------------------------------------------
 
 \imprimirfolhaderosto*
 
 % ----------------------------------------------------------------------
-% Cataloging record
+% Cataloging record (mandatory)
 % ----------------------------------------------------------------------
 
 %% Do not use for qualification exams.
@@ -31,7 +31,7 @@
 \end{fichacatalografica}
 
 % ----------------------------------------------------------------------
-% Errata
+% Errata (optional)
 % ----------------------------------------------------------------------
 
 \begin{errata}
@@ -39,7 +39,7 @@
 \end{errata}
 
 % ----------------------------------------------------------------------
-% Approval sheet
+% Approval sheet (mandatory)
 % ----------------------------------------------------------------------
 
 \begin{folhadeaprovacao}
@@ -88,7 +88,7 @@ Instituição: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\
 \end{folhadeaprovacao}
 
 % ----------------------------------------------------------------------
-% Inscription
+% Inscription (optional)
 % ----------------------------------------------------------------------
 
 \begin{dedicatoria}
@@ -96,13 +96,13 @@ Instituição: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\
   \centering
   \noindent
   \textit{
-    Write your dedication here, if desired, or remove this page.
+    Write your inscription here, if desired, or remove this page.
   }
 	\vspace*{\fill}
 \end{dedicatoria}
 
 % ----------------------------------------------------------------------
-% Acknowledgments
+% Acknowledgments (optional)
 % ----------------------------------------------------------------------
 
 \begin{agradecimentos}
@@ -110,7 +110,7 @@ Instituição: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\
 \end{agradecimentos}
 
 % ----------------------------------------------------------------------
-% Epigraph
+% Epigraph (optional)
 % ----------------------------------------------------------------------
 
 \begin{epigrafe}
@@ -124,7 +124,7 @@ Instituição: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\
 \end{epigrafe}
 
 % ----------------------------------------------------------------------
-% Resumo (PT-BR abstract)
+% Abstract in the vernacular language (mandatory)
 % ----------------------------------------------------------------------
 
 \setlength{\absparsep}{18pt}
@@ -140,7 +140,7 @@ Palavras-chaves: Palavra-chave 1. Palavra-chave 2. Palavra-chave 3.
 \end{resumo}
 
 % ----------------------------------------------------------------------
-% % Abstract
+% % Abstract in the foreign language (mandatory)
 % ----------------------------------------------------------------------
 
 \begin{resumo}[Abstract]
@@ -157,23 +157,23 @@ Keywords: Keyword 1. Keyword 2. Keyword 3.
 \end{resumo}
 
 % ----------------------------------------------------------------------
-% List of figures
+% List of figures (optional)
 % ----------------------------------------------------------------------
 
 \pdfbookmark[0]{\listfigurename}{lof}
 \listoffigures*
 \cleardoublepage
 
-% ----------------------------------------------------------------------
-% List of algorithms
-% ----------------------------------------------------------------------
+% % ----------------------------------------------------------------------
+% % List of algorithms (optional)
+% % ----------------------------------------------------------------------
+%
+% \pdfbookmark[0]{\listalgorithmname}{loa}
+% \listofalgorithms
+% \cleardoublepage
 
-\pdfbookmark[0]{\listalgorithmname}{loa}
-\listofalgorithms
-\cleardoublepage
-
 % ----------------------------------------------------------------------
-% List of tables
+% List of tables (optional)
 % ----------------------------------------------------------------------
 
 \pdfbookmark[0]{\listtablename}{lot}
@@ -181,7 +181,7 @@ Keywords: Keyword 1. Keyword 2. Keyword 3.
 \cleardoublepage
 
 % ----------------------------------------------------------------------
-% List of abbreviations
+% List of abbreviations and acronyms (optional)
 % ----------------------------------------------------------------------
 
 \begin{siglas}
@@ -198,7 +198,7 @@ Keywords: Keyword 1. Keyword 2. Keyword 3.
 \end{siglas}
 
 % ----------------------------------------------------------------------
-% List of symbols
+% List of symbols (optional)
 % ----------------------------------------------------------------------
 
 \begin{simbolos}
@@ -209,7 +209,7 @@ Keywords: Keyword 1. Keyword 2. Keyword 3.
 \end{simbolos}
 
 % ----------------------------------------------------------------------
-% Table of contents
+% Table of contents (mandatory)
 % ----------------------------------------------------------------------
 
 \pdfbookmark[0]{\contentsname}{toc}

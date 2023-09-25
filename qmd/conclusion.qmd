@@ -1,8 +1,4 @@
-::: {.content-visible when-format="pdf"}
-\textual
-:::
-
-# Methods
+# Conclusion
 
 ```{r}
 #| label: setup

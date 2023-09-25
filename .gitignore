@@ -1,6 +1,6 @@
 /_freeze/
-/.ignore/
 /.quarto/
+/.temp/
 # /docs/
 .Rapp.history
 .RData

@@ -18,7 +18,7 @@ MIT](https://img.shields.io/badge/license-MIT-green)](https://choosealicense.com
 and dissertations of the University of São Paulo (USP). It is based on
 the [`abntex2`](https://www.abntex.net.br/) suite, the
 [`abntex2ppgsi`](https://www.overleaf.com/project/64f7bdf1641ad4a3a8482800)
-template, and adheres to the [USP guidelines for creating thesis and
+template, and on the [USP guidelines for creating thesis and
 dissertation
 documents](https://teses.usp.br/index.php?option=com_content&view=article&id=52&Itemid=67&lang=en).
 
@@ -30,9 +30,11 @@ languages](https://quarto.org/docs/computations/python.html) with this
 format, some adaptations may be necessary.
 
 For more detailed information about USP guidelines, please visit
-<https://teses.usp.br>.
+<https://teses.usp.br>
 
-You can view a preview of the rendered template in the `preview` folder.
+You can see a preview of the template output in the `docs` folder or by
+accessing the repository website:
+<https://danielvartan.github.io/tesesusp>.
 
 <!-- To see a practical example of this Quarto format, you can refer to <https://github.com/danielvartan/mastersthesis>. -->
 
@@ -57,12 +59,12 @@ quarto add danielvartan/tesesusp
 
 ## Usage
 
-To apply the format, you can use the format name `tesesusp-pdf`. For
-example:
+To apply the format, you can use the format name followed by the output
+type: `tesesusp-pdf`. For example:
 
 `quarto render --to tesesusp-pdf`
 
-or in your document `yaml`
+You can also set the template in your document `yaml`:
 
 ``` yaml
 format:
@@ -70,10 +72,11 @@ format:
     babel-lang: english
 ```
 
-Since USP guidelines are plentiful, some formatting had to be made using
-alternative ways. The easy way to start using `tesesusp` is cloning this
-repository and building on top of its [Quarto
-book](https://quarto.org/docs/books/).
+Since USP guidelines are plentiful, some formatting had to be made by
+inventive/non-conventional ways. The easy way to start using `tesesusp`
+is cloning this repository and building on top of its [Quarto
+book](https://quarto.org/docs/books/). You can also use this book to
+publish a `html` version of your thesis.
 
 <!-- ## Format Options -->
 <!-- See <https://github.com/quarto-journals/elsevier>. -->

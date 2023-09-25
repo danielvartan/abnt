@@ -1,4 +1,8 @@
-# Results
+::: {.content-visible when-format="pdf"}
+\textual
+:::
+
+# Development
 
 ```{r}
 #| label: setup

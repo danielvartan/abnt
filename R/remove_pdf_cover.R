@@ -3,27 +3,27 @@ require(here, quietly = TRUE)
 require(stringr, quietly = TRUE)
 require(qpdf, quietly = TRUE)
 
-remove_pdf_cover <- function(output_dir = here::here("docs")) {
-  checkmate::assert_directory_exists(output_dir)
+remove_pdf_cover <- function(input_file, output_file = input_file) {
+  checkmate::assert_string(input_file, pattern = ".pdf$")
+  checkmate::assert_file_exists(input_file, access = "r")
+  checkmate::assert_string(output_file, pattern = ".pdf$")
+  checkmate::assert_directory_exists(dirname(file), access = "w")
 
-  file <-
-    list.files(output_dir) |>
-    stringr::str_subset("_trimmed\\.pdf$", negate = TRUE)
+  if (input_file == output_file) {
+    temp_file <- tempfile()
+    file.copy(input_file, temp_file)
+    input_file <- temp_file
+  }
 
-  new_file <-
-    file |>
-    stringr::str_remove(".pdf$") |>
-    paste0("_trimmed.pdf")
-
-  len <- qpdf::pdf_length(file.path(output_dir, file))
+  len <- qpdf::pdf_length(input_file)
 
   qpdf::pdf_subset(
-    input = file.path(output_dir, file),
+    input = input_file,
     pages = seq(2, len),
-    output = file.path(output_dir, new_file)
+    output = output_file
   )
 
-  suppressWarnings(file.remove(file.path(output_dir, file)))
+  if (exists("temp_file")) suppressWarnings(file.remove(temp_file))
 
   invisible(NULL)
 }

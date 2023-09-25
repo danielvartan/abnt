@@ -29,15 +29,16 @@
 # quarto render
 # quarto render index.qmd
 # quarto render qmd/chapter-6.qmd
-# quarto render --to tesesusp-html
 # quarto render --to tesesusp-pdf
 # quarto publish gh-pages
 
 # TODO
 #
 # 1. Find a way to preserve pdf bookmarks.
-# 2. Find a way to exclude pre-textual pages from pdf render.
+# 2. Find a way to have pre-textual as `.qmd` files.
 # 3. Uppercase titles.
 # 4. Fix title of the 'resumo (pt-br)' section.
 # 5. Fix header.tex
 # 6. Floating tables.
+# 7. Create a hex logo and review badges.
+# 8. Rename LaTeX variables

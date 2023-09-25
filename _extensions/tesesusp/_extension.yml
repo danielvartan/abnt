@@ -64,8 +64,18 @@ contributes:
       mainfont: Arial
       # monofont: Noto Sans Mono
       fontsize: 12pt
-      format-resources: tesesusp.cls
-      include-in-header: preamble.tex
-      include-before-body: body.tex
+      babel-lang: english
+      linkcolor: blue
+      citecolor: quarto-medium-gray
+      filecolor: blue
+      urlcolor: blue
+      toccolor: black
+      colorlinks: true
       code-line-numbers: true
+      code-annotations: true
+      code-block-border-left: "#545555"
+      code-block-bg: "#F1F3F5"
       prefer-html: false
+      format-resources: tesesusp.cls
+      include-in-header: include-in-header.tex
+      include-before-body: include-before-body.tex

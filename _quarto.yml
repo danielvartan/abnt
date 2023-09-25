@@ -5,7 +5,7 @@ execute:
 
 project:
   type: book
-  output-dir: preview
+  output-dir: .temp
   # Remove the pre-render if you don't use Zotero.
   pre-render: "R/quarto-pre-render.R"
   post-render: "R/quarto-post-render.R"
@@ -20,10 +20,8 @@ book:
   repo-branch: main
   chapters:
     - index.qmd
-    - qmd/methods.qmd
-    - qmd/results.qmd
-    - qmd/discussion.qmd
-    - qmd/final-remarks.qmd
+    - qmd/development.qmd
+    - qmd/conclusion.qmd
     - qmd/references.qmd
   appendices:
     - qmd/appendice-1.qmd
@@ -34,7 +32,8 @@ bibliography: references.json
 format:
   tesesusp-pdf:
     # classoption: [twoside]
-    include-in-header: tex/header.tex
-    include-before-body: tex/body.tex
-    babel-lang: english
+    include-in-header: tex/include-in-header.tex
+    include-before-body: tex/include-before-body.tex
+    # include-after-body: tex/include-after-body.tex
+    babel-lang: brazil
     latex-auto-install: true

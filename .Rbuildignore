@@ -1,6 +1,6 @@
 ^_freeze$
-^\.ignore$
 ^\.obsidian$
+^\.temp$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^CITATION\.cff$
