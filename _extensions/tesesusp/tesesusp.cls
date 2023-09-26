@@ -917,8 +917,8 @@
     \vspace*{\fill}
 
     \abntex@ifnotempty{\normalfont\normalsize\imprimirpreambulo}{
-      \hspace{.45\textwidth}
-      \begin{minipage}{.5\textwidth} % page width
+      \hspace{0.35\textwidth}
+      \begin{minipage}{.6\textwidth} % page width
         \SingleSpacing
         \normalfont\normalsize\imprimirpreambulo
 %         \vspace{2\baselineskip}

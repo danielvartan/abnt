@@ -100,9 +100,7 @@ format:
 documents](https://teses.usp.br/index.php?option=com_content&view=article&id=52&Itemid=67&lang=en)
 recommends a `12pt` font size for the body text without specifying a
 font type. Common options include `Arial` (default) and
-`Times New Roman`, but any font available in the
-[`fontspec`](https://ctan.org/pkg/fontspec) LaTeX package should
-suffice.
+`Times New Roman`. Any font available in your system should work.
 
 ### Language and hyphenation
 
@@ -130,7 +128,7 @@ therefore, Zotero must be open. A pre-render script (see
 `R/quarto-pree-render.R`), created using the
 [`rbbt`](https://github.com/paleolimbot/rbbt) R package, will scan all
 `qmd` and `tex` files searching for BibTeX citations (e.g.,
-@watson1953). If they match with your Zotero database, the citations
+`@watson1953`). If they match with your Zotero database, the citations
 will then be written to the `references.json` file.
 
 <!-- How to add or remove sections. -->

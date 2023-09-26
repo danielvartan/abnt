@@ -63,7 +63,9 @@ contributes:
       classoption: [oneside]
       mainfont: Arial
       sansfont: Arial
-      # monofont: Noto Sans Mono
+      # monofont: "Roboto Mono"
+      # monofontoptions:
+      #   - Scale = 0.75
       fontsize: 12pt
       # lang: en  # Set in tesesusp.cls
       # number-depth: 5 # Set in tesesusp.cls

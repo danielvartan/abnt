@@ -36,6 +36,9 @@ format:
       @*
     latex-auto-install: true
     keep-tex: true
+    # monofont: "Roboto Mono" # See <https://fonts.google.com>.
+      # monofontoptions:
+      #   - Scale = 0.75
     include-in-header: tex/include-in-header.tex
     include-before-body: tex/include-before-body.tex
     # include-after-body: tex/include-after-body.tex

@@ -143,7 +143,7 @@
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
-% tesesusp.cls, v-0.0.1
+% tesesusp.cls, v-0.1.0
 
 % Based on 'bntex2ppgsi.cls' and 'abntex2.csl'.
 % See <https://www.overleaf.com/project/64f7bdf1641ad4a3a8482800>.
@@ -202,7 +202,7 @@
 \definecolor{quarto-ligther-gray}{HTML}{F1F3F5}
 
 \definecolor{bs-link-color}{HTML}{39729E}
-% tesesusp.cls, v-0.0.1
+% tesesusp.cls, v-0.1.0
 
 % Based on 'bntex2ppgsi.cls', 'abntex2.csl' and on USP guidelines to create
 % thesis and dissertation documents.
@@ -263,6 +263,7 @@
 
 \usepackage{array}
 \usepackage{float}
+\usepackage{lipsum}
 
 \floatplacement{table}{H}
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
@@ -383,7 +384,7 @@
 
 \begin{document}
 \maketitle
-% tesesusp.cls, v-0.0.1
+% tesesusp.cls, v-0.1.0
 
 % Based on 'bntex2ppgsi.cls' and 'abntex2.csl'.
 % See <https://www.overleaf.com/project/64f7bdf1641ad4a3a8482800>.
@@ -548,7 +549,7 @@ Approved on \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ , \_\_\_\_\_\_\_\_\_\_ .
 [SURNAME], [INITIALS]. ([YEAR]). \textit{[TITLE]} [[TYPE OF THESIS]]. [SCHOOL/DEPARTMENT], University of São Paulo, São Paulo. [THESIS'S URL]
 \end{flushleft}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque accumsan rutrum lacus, vitae iaculis nisi bibendum in. Nulla et pellentesque nisl. Proin mollis dui sit amet egestas fermentum. Maecenas eu odio odio. Aenean porta ipsum in mauris pharetra dapibus. Nunc dapibus libero nec dui lacinia, id ultricies lectus maximus. Mauris quis mauris in velit pulvinar rutrum. Cras congue ante in orci luctus placerat. Nullam sit amet nisi augue. Maecenas non ligula eros. Etiam nec dolor a mi bibendum auctor.
+\lipsum[1]
 
 Keywords: Keyword 1. Keyword 2. Keyword 3.
 \end{resumo}
@@ -564,7 +565,7 @@ Keywords: Keyword 1. Keyword 2. Keyword 3.
 [SOBRENOME], [INICIAIS]. ([ANO]). \textit{[TÍTULO]} [[TIPO DE TESE/DISSERTAÇÃO]]. [ESCOLA/DEPARTAMENTO], Universidade de São Paulo, São Paulo. [URL DA DISSERTAÇÃO/TESE]
 \end{flushleft}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque accumsan rutrum lacus, vitae iaculis nisi bibendum in. Nulla et pellentesque nisl. Proin mollis dui sit amet egestas fermentum. Maecenas eu odio odio. Aenean porta ipsum in mauris pharetra dapibus. Nunc dapibus libero nec dui lacinia, id ultricies lectus maximus. Mauris quis mauris in velit pulvinar rutrum. Cras congue ante in orci luctus placerat. Nullam sit amet nisi augue. Maecenas non ligula eros. Etiam nec dolor a mi bibendum auctor.
+\lipsum[1]
 
 Palavras-chaves: Palavra-chave 1. Palavra-chave 2. Palavra-chave 3.
 \end{otherlanguage*}
@@ -617,7 +618,7 @@ Palavras-chaves: Palavra-chave 1. Palavra-chave 2. Palavra-chave 3.
 % \tableofcontents*
 \cleardoublepage
 
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, breakable, colback={codebgcolor}, borderline west={3pt}{0pt}{shadecolor}, enhanced, boxrule=0pt, frame hidden]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, colback={codebgcolor}, enhanced, sharp corners, breakable]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -632,7 +633,7 @@ Palavras-chaves: Palavra-chave 1. Palavra-chave 2. Palavra-chave 3.
 
 \textual
 
-\begin{tcolorbox}[enhanced jigsaw, bottomrule=.15mm, colback=white, left=2mm, bottomtitle=1mm, breakable, toprule=.15mm, leftrule=.75mm, rightrule=.15mm, colframe=quarto-callout-note-color-frame, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, toptitle=1mm, arc=.35mm, opacitybacktitle=0.6]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, left=2mm, rightrule=.15mm, breakable, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomrule=.15mm, coltitle=black, leftrule=.75mm, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, bottomtitle=1mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, opacityback=0, colback=white]
 
 The text below is for demonstrative purposes only.
 
@@ -786,7 +787,7 @@ Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
 \hypertarget{development}{%
 \chapter{DEVELOPMENT}\label{development}}
 
-\begin{tcolorbox}[enhanced jigsaw, bottomrule=.15mm, colback=white, left=2mm, bottomtitle=1mm, breakable, toprule=.15mm, leftrule=.75mm, rightrule=.15mm, colframe=quarto-callout-warning-color-frame, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, titlerule=0mm, coltitle=black, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Warning}, toptitle=1mm, arc=.35mm, opacitybacktitle=0.6]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, left=2mm, rightrule=.15mm, breakable, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Warning}, bottomrule=.15mm, coltitle=black, leftrule=.75mm, colframe=quarto-callout-warning-color-frame, opacitybacktitle=0.6, bottomtitle=1mm, toptitle=1mm, colbacktitle=quarto-callout-warning-color!10!white, arc=.35mm, opacityback=0, colback=white]
 
 The text below is for demonstrative purposes only.
 
@@ -836,7 +837,7 @@ platea dictumst.
 \hypertarget{conclusion}{%
 \chapter{CONCLUSION}\label{conclusion}}
 
-\begin{tcolorbox}[enhanced jigsaw, bottomrule=.15mm, colback=white, left=2mm, bottomtitle=1mm, breakable, toprule=.15mm, leftrule=.75mm, rightrule=.15mm, colframe=quarto-callout-important-color-frame, opacityback=0, colbacktitle=quarto-callout-important-color!10!white, titlerule=0mm, coltitle=black, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, toptitle=1mm, arc=.35mm, opacitybacktitle=0.6]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, left=2mm, rightrule=.15mm, breakable, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, bottomrule=.15mm, coltitle=black, leftrule=.75mm, colframe=quarto-callout-important-color-frame, opacitybacktitle=0.6, bottomtitle=1mm, toptitle=1mm, colbacktitle=quarto-callout-important-color!10!white, arc=.35mm, opacityback=0, colback=white]
 
 The text below is for demonstrative purposes only.
 
@@ -909,7 +910,7 @@ Approach}. Rev. ed. Oxford University Press.
 \hypertarget{appendix-1}{%
 \chapter{APPENDIX 1}\label{appendix-1}}
 
-\begin{tcolorbox}[enhanced jigsaw, bottomrule=.15mm, colback=white, left=2mm, bottomtitle=1mm, breakable, toprule=.15mm, leftrule=.75mm, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, titlerule=0mm, coltitle=black, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, toptitle=1mm, arc=.35mm, opacitybacktitle=0.6]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, left=2mm, rightrule=.15mm, breakable, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, bottomrule=.15mm, coltitle=black, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, opacitybacktitle=0.6, bottomtitle=1mm, toptitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, arc=.35mm, opacityback=0, colback=white]
 
 The text below is for demonstrative purposes only.
 

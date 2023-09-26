@@ -9,3 +9,5 @@ _freeze/
 .Rhistory
 .Rproj.user
 .Ruserdata
+
+/.quarto/
