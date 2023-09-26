@@ -34,17 +34,14 @@
 
 # TODO
 #
-# 1. Find a way to preserve pdf bookmarks.
-# 2. Find a way to have pre-textual as `.qmd` files.
-# 3. Find a way to auto uppercase titles.
-# 4. Fix title of the 'resumo (pt-br)' section.
-# 5. Fix header.tex
-# 6. Floating tables.
-# 7. Create a hex logo and review badges.
-# 8. Rename LaTeX variables
-# 9. Add https://fair-software.eu/
-# 10. Add https://www.bestpractices.dev/en/projects/6244 badge
-# 11. Fix number-depth
-# 12. Fix TOC title
-# 13. Fix link colors on pre-textual pages
-# 14. Find a way to create double captions (top and bottom)
+# * Find a way to preserve pdf bookmarks.
+# * Find a way to have pre-textual as `.qmd` files.
+# * Find a way to auto uppercase titles.
+# * Create a hex logo and review badges.
+# * Rename LaTeX variables.
+# * Add <https://fair-software.eu/>.
+# * Add <https://www.bestpractices.dev/en/projects/6244 badge>.
+# * Fix number-depth.
+# * Fix TOC title.
+# * Fix link colors on pre-textual pages.
+# * Find a way to create double captions (top and bottom).

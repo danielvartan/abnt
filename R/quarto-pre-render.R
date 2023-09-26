@@ -1,10 +1,7 @@
-# See <https://github.com/paleolimbot/rbbt>.
+# library(here, quietly = TRUE)
+# library(rutils, quietly = TRUE)
 
-suppressMessages(suppressWarnings(library(here)))
-
-source(here::here("R/bbt_write_quarto_bib.R"))
-
-bbt_write_quarto_bib(
+rutils:::bbt_write_quarto_bib(
   bib_file = here::here("references.json"),
   dir = here::here(c("", "qmd", "tex")),
   pattern = c("\\.qmd$|\\.tex$")

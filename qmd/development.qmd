@@ -10,21 +10,20 @@ source(here::here("R/quarto-setup.R"))
 ```
 
 ::: {.content-visible when-format="pdf"}
-::: {.callout-note}
+::: {.callout-warning}
 The text below is for demonstrative purposes only.
 
 \vspace{5pt}
 
 See <https://quarto.org/docs/authoring/markdown-basics.html> to learn about the basics of Markdown's syntax.
 :::
+\vspace{10pt}
 :::
 
-See <https://quarto.org/docs/authoring/markdown-basics.html> to learn about the basics of Markdown's syntax.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu mi massa. Etiam non ipsum ac purus viverra imperdiet a nec quam. Aliquam tempor ut felis a lacinia. Etiam ut eleifend nisi, non semper est. Nam lectus lectus, fringilla id blandit a, pellentesque a libero. Curabitur malesuada mollis porttitor. Mauris lobortis nisi sed semper molestie. Pellentesque euismod enim nec libero efficitur congue. Nam porta sem sed dignissim fringilla. Morbi dignissim mi tellus, non egestas velit vulputate vel. Vivamus ullamcorper rhoncus tellus, in tincidunt leo fermentum at. Mauris non magna nulla. Donec pulvinar tellus eu nulla varius placerat. Praesent ut nisi scelerisque, lobortis metus ac, ornare risus.
 
-Placeholder text: [Lorem ipsum](https://en.wikipedia.org/wiki/Lorem_ipsum).
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque accumsan rutrum lacus, vitae iaculis nisi bibendum in. Nulla et pellentesque nisl. Proin mollis dui sit amet egestas fermentum. Maecenas eu odio odio. Aenean porta ipsum in mauris pharetra dapibus. Nunc dapibus libero nec dui lacinia, id ultricies lectus maximus. Mauris quis mauris in velit pulvinar rutrum. Cras congue ante in orci luctus placerat. Nullam sit amet nisi augue. Maecenas non ligula eros. Etiam nec dolor a mi bibendum auctor.
+Duis erat mi, vulputate eget nibh tempor, pharetra dapibus dolor. Ut porta, ligula sed mattis interdum, augue felis efficitur dui, vel imperdiet est ligula ac tellus. Fusce blandit erat id nisl luctus, sit amet dignissim justo tempor. In rhoncus eleifend velit, sed hendrerit turpis elementum blandit. In ut rutrum orci. Sed eleifend in tellus vitae aliquam. Aliquam non velit eleifend diam semper condimentum sit amet et mi. Morbi ante dui, varius eget leo vel, sodales eleifend mauris. Curabitur et blandit urna.
 
 ## SECONDARY SECTION
 
-Nullam vulputate urna sed venenatis sodales. Donec at nisl augue. Nulla quis bibendum massa. Ut sit amet enim porta, semper mauris sit amet, varius felis. Nullam aliquet risus vel nulla dictum, a suscipit turpis vestibulum. Nulla pellentesque mattis vehicula. Cras efficitur nulla felis, bibendum facilisis lectus rhoncus sit amet. Etiam a dapibus felis, id fermentum neque. Sed vel efficitur nunc. Nunc commodo, nisi id pretium euismod, tortor arcu fringilla ex, sit amet porta nunc augue eu massa. Etiam eget metus gravida, pulvinar ipsum vel, luctus enim. Vestibulum eget quam porttitor, sodales nulla a, suscipit libero.
+Sed placerat elementum sapien et volutpat. Nulla sit amet lacinia leo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec tempor lacus nec finibus sagittis. Mauris vitae rutrum nisl. In vestibulum eu risus ac eleifend. In id cursus tellus, ac vestibulum justo. Praesent convallis a felis semper ultrices. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hac habitasse platea dictumst.

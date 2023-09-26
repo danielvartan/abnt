@@ -1,7 +1,8 @@
-/_freeze/
-/.quarto/
-/.temp/
-# /docs/
+# See <https://git-scm.com/docs/gitignore>.
+
+_freeze/
+.quarto/
+.temp/
 .Rapp.history
 .RData
 .Renviron

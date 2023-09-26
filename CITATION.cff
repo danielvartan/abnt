@@ -2,7 +2,7 @@
 
 cff-version: 1.2.0
 message: "To cite this Quarto format in publications use:"
-title: "tesesusp: a Quarto format for USP theses and dissertations"
+title: "{tesesusp}: a Quarto format for USP theses and dissertations"
 keywords:
   - quarto-format
   - thesis
@@ -29,7 +29,7 @@ identifiers:
   value: https://github.com/danielvartan/tesesusp/
 preferred-citation:
   type: unpublished
-  title: "tesesusp: a Quarto format for USP theses and dissertation"
+  title: "{tesesusp}: a Quarto format for USP theses and dissertation"
   authors:
   - family-names: Vartanian
     given-names: Daniel

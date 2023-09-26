@@ -12,7 +12,7 @@
 % ----------------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{tesesusp}[2014/01/26 v1.9.2 abnTeX2]
+\ProvidesClass{tesesusp}
 
 \RequirePackage{ifthen}
 
@@ -95,7 +95,7 @@
 \newcommand{\folhaderostoname}{\uppercase{TITLE PAGE}}
 \newcommand{\epigraphname}{EPIGRAPH}
 \newcommand{\dedicatorianame}{INSCRIPTION}
-\newcommand{\errataname}{ERRATA SHEET}
+\newcommand{\errataname}{ERRATA}
 \newcommand{\agradecimentosname}{ACKNOWLEDGEMENTS}
 \newcommand{\anexoname}{ANNEX}
 \newcommand{\anexosname}{ANNEX}
@@ -120,7 +120,7 @@
   \renewcommand{\folhaderostoname}{TITLE PAGE}
   \renewcommand{\epigraphname}{EPIGRAPH}
   \renewcommand{\dedicatorianame}{INSCRIPTION}
-  \renewcommand{\errataname}{ERRATA SHEET}
+  \renewcommand{\errataname}{ERRATA}
   \renewcommand{\agradecimentosname}{ACKNOWLEDGEMENTS}
   \renewcommand{\anexoname}{ANNEX}
   \renewcommand{\anexosname}{ANNEX}
@@ -588,8 +588,9 @@
 \newcommand{\postextual}{\phantompart}
 \renewcommand{\backmatter}{\postextual}
 
-
+% ----------------------------------------------------------------------
 % Data commands for cover and title page
+% ----------------------------------------------------------------------
 
 \newcommand{\titulo}[1]{\title{#1}}
 \newcommand{\imprimirtitulo}{\thetitle}
@@ -868,28 +869,32 @@
 % Standard prints of cover and title page
 % ----------------------------------------------------------------------
 
+\RequirePackage{changepage}
+
 %% Cover
 \newcommand{\imprimircapa}{%
   \begin{capa}%
-    \center
+    \begin{adjustwidth}{-1cm}{0cm}
+      \center
 
-    \normalfont\normalsize\imprimirinstituicao
+      \normalfont\normalsize\imprimirinstituicao
 
-    \vspace*{4cm}
+      \vspace*{4cm}
 
-    \normalfont\normalsize\imprimirautor
+      \normalfont\normalsize\imprimirautor
 
-    \vspace*{5cm}
+      \vspace*{5cm}
 
-    \bfseries\normalsize\imprimirtitulo
+      \bfseries\normalsize\imprimirtitulo
 
-    \vfill
+      \vfill
 
-    \normalfont\normalsize\imprimirlocal
+      \normalfont\normalsize\imprimirlocal
 
-    \normalfont\normalsize\imprimirdata
+      \normalfont\normalsize\imprimirdata
 
-    \vspace*{1cm}
+      \vspace*{1cm}
+    \end{adjustwidth}
   \end{capa}
 }
 
@@ -911,22 +916,22 @@
     \end{center}
     \vspace*{\fill}
 
-    \abntex@ifnotempty{\normalfont\normalsize\imprimirpreambulo}{%
+    \abntex@ifnotempty{\normalfont\normalsize\imprimirpreambulo}{
       \hspace{.45\textwidth}
-      \begin{minipage}{.5\textwidth}
-      	\SingleSpacing
-         \normalfont\normalsize\imprimirpreambulo
-         \vspace{2\baselineskip}
-         {\normalfont\normalsize\imprimirorientadorRotulo~\imprimirorientador\par}
-         \vspace{0.5\baselineskip}
-
-		 \abntex@ifnotempty{\normalfont\normalsize\imprimircoorientador}{%
-         {\normalfont\normalsize\imprimircoorientadorRotulo~\imprimircoorientador}%
-    }%
-    \vspace*{\fill}
-       \end{minipage}%
-       \vspace*{\fill}
-    }%
+      \begin{minipage}{.5\textwidth} % page width
+        \SingleSpacing
+        \normalfont\normalsize\imprimirpreambulo
+%         \vspace{2\baselineskip}
+%         {\normalfont\normalsize\imprimirorientadorRotulo~\imprimirorientador\par}
+%         \vspace{0.5\baselineskip}
+%
+% 		    \abntex@ifnotempty{\normalfont\normalsize\imprimircoorientador}{
+%           {\normalfont\normalsize\imprimircoorientadorRotulo~\imprimircoorientador}
+%     }
+        \vspace*{\fill}
+        \end{minipage}
+        \vspace*{\fill}
+    }
 
     {\normalfont\normalsize\imprimirlocal}
     \par

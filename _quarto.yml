@@ -11,7 +11,7 @@ project:
   post-render: "R/quarto-post-render.R"
 
 book:
-  title: "tesesusp: a Quarto format for USP theses and dissertations"
+  title: "{tesesusp}: a Quarto format for USP theses and dissertations"
   author: "Daniel Vartanian"
   date: today
   date-format: "YYYY"
@@ -35,7 +35,7 @@ format:
     nocite: |
       @*
     latex-auto-install: true
-    keep-tex: false
+    keep-tex: true
     include-in-header: tex/include-in-header.tex
     include-before-body: tex/include-before-body.tex
     # include-after-body: tex/include-after-body.tex

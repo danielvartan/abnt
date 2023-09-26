@@ -1,7 +1,7 @@
 # See <https://quarto.org/docs/extensions/formats.html>.
 # See <https://github.com/quarto-journals/elsevier>.
 
-title: "tesesusp: a Quarto format for USP theses and dissertations"
+title: "{tesesusp}: a Quarto format for USP theses and dissertations"
 author: "Daniel Vartanian"
   # name: "Daniel Vartanian"
   # orcid: 0000-0001-7782-759X
@@ -13,9 +13,9 @@ author: "Daniel Vartanian"
   #   - Country: Brazil
   #   - url: https://www.usp.br
 abstract: >
-  'tesesusp' is a Quarto format designed for theses and dissertations of the
-  University of São Paulo (USP). It is based on the 'abntex2' suite, the
-  'abntex2ppgsi' template, and on USP guidelines for creating thesis and
+  {tesesusp} is a Quarto format designed for theses and dissertations of the
+  University of São Paulo (USP). It is based on the {abntex2} suite, the
+  {abntex2ppgsi} template, and on USP guidelines for creating thesis and
   dissertation documents.
 keywords:
   - quarto
@@ -59,7 +59,7 @@ contributes:
       cls: csl/apa-numeric-superscript-brackets.csl
     pdf:
       documentclass: tesesusp
-      papersize: a4paper
+      papersize: a4
       classoption: [oneside]
       mainfont: Arial
       sansfont: Arial

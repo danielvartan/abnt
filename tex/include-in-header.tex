@@ -1,4 +1,4 @@
-% tesesusp.cls, v-0.0.1
+% tesesusp.cls, v-0.1.0
 
 % Based on 'bntex2ppgsi.cls', 'abntex2.csl' and on USP guidelines to create
 % thesis and dissertation documents.
@@ -14,35 +14,43 @@
 \instituicao{
 	UNIVERSITY OF SÃO PAULO
 	\par
-	SCHOOL OF ARTS, SCIENCES AND HUMANITIES
+	[DEPARTAMENT/SCHOOL]
 	\par
-	GRADUATE PROGRAM IN COMPLEX SYSTEMS MODELING
+	[GRADUATE PROGRAM]
 }
 
 \local{São Paulo}
-\orientador{Prof. Dr. Camilo Rodrigues Neto}
-\coorientador{Prof. Dr. Someone}
-\tipotrabalho{Master's thesis}
+\orientador{Prof. Dr. [SUPERVISOR'S FULL NAME}
+\coorientador{Prof. Dr. [CO-SUPERVISOR'S FULL NAME]}
+\tipotrabalho{Type of thesis}
 
 % ----------------------------------------------------------------------
 % Title page
 % ----------------------------------------------------------------------
 
-%% Don't use this page for qualification exams.
+%% Avoid using this page for qualification exams.
 \preambulo{
   Original version
 
-  \vspace{0.5cm}
+  \vspace{1cm}
 
-  Dissertation presented to the School of Arts, Sciences, and Humanities at the University of São Paulo, as part of the requirements for the degree of Master's of Science by the Graduate Program in Modeling Complex Systems (PPG-SCX).
-
-  \vspace{0.5cm}
-
-  Area of Concentration: Fundamentals of Complex Systems.
+  [DISSERTATION/THESIS] presented to the [SCHOOL/DEPARTMENT] at the University of São Paulo, as part of the requirements for the degree of [TYPE OF DEGREE] by the [GRADUATE PROGRAM].
 
   \vspace{0.5cm}
 
-  Revised Version incorporating the changes requested by the examining committee on \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ , \_\_\_\_\_\_\_\_\_\_. The original version is held in the reserved collection at the EACH-USP Library and in the Digital Library of Theses and Dissertations of the University of São Paulo (BDTD-USP), in accordance with Resolution CoPGr 6018, dated October 13, 2011.
+  Area of Concentration: [AREA OF CONCENTRATION].
+
+  \vspace{1cm}
+
+  Revised version incorporating the changes requested by the examining committee on [DATE]. The original version is held in the reserved collection at the [SCHOOL/DEPARTAMENT] Library and in the Digital Library of Theses and Dissertations of the University of São Paulo (BDTD-USP), in accordance with \href{https://leginf.usp.br/?resolucao=resolucao-copgr-no-6018-de-13-de-outubro-de-2011}{Resolution CoPGr 6018, dated October 13, 2011}.
+
+  \vspace{1cm}
+
+  Supervisor: Prof. Dr. [SUPERVISOR'S FULL NAME]
+
+  \vspace{0.25cm}
+
+  Co-Supervisor: Prof. Dr. [CO-SUPERVISOR'S FULL NAME]
 }
 
 % ----------------------------------------------------------------------
@@ -59,7 +67,7 @@
 \setlength{\parskip}{0cm}
 \renewcommand{\baselinestretch}{1.5}
 
-\makeindex
+% \makeindex
 
 \clubpenalty10000
 \widowpenalty10000

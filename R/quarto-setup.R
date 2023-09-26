@@ -1,23 +1,20 @@
-## Based on https://github.com/hadley/r4ds/blob/main/_common.R
+## Based on <https://github.com/hadley/r4ds/blob/main/_common.R>.
 
 set.seed(2023)
 
-require(checkmate, quietly = TRUE)
-require(here)
-require(knitr, quietly = TRUE)
-require(ggplot2, quietly = TRUE)
-
-source(here::here("R/quarto_status.R"))
+# library(checkmate, quietly = TRUE)
+# library(here, quietly = TRUE)
+# library(kableExtra, quietly = TRUE)
+# library(knitr, quietly = TRUE)
+# library(ggplot2, quietly = TRUE)
 
 knitr::opts_chunk$set(
   comment = "#>",
   collapse = TRUE
-  # fig.show = "hold"
 )
 
 # From <https://stackoverflow.com/questions/74193542/
-#       quarto-dataframe-printing-and-styling>
-
+#       quarto-dataframe-printing-and-styling>.
 knit_print.data.frame = function(x, ...) {
   knitr::kable(x, digits = 3) |>
     kableExtra::kable_styling() |>
