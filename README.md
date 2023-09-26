@@ -111,13 +111,13 @@ the `\RequirePackage[spanish, brazil, english]{babel}` command found in
 `_extensions/tesesusp/tesesusp.cls`. By doing so, the last one in the
 list will become the main language of the document.
 
-## Pre-textual pages
+### Pre-textual pages
 
 At the moment, the pre-textual pages can only be configured using the
 `yml` configuration and two [LaTeX](https://www.latex-project.org/)
 files located in the `tex` folder.
 
-## Citation management
+### Citation management
 
 This template works with [Zotero](https://www.zotero.org/) and the
 [Better BiBTeX](https://github.com/retorquere/zotero-better-bibtex)
