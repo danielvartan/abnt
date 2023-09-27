@@ -1,6 +1,6 @@
-<!-- %#%$ title begin %#%$ -->
+<!-- &&& title begin &&& -->
 # Thesis outline {.unnumbered}
-<!-- %#%$ title end %#%$ -->
+<!-- &&& title end &&& -->
 
 ```{r}
 #| label: setup

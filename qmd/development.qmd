@@ -1,6 +1,6 @@
-<!-- %#%$ title begin %#%$ -->
+<!-- &&& title begin &&& -->
 # DEVELOPMENT
-<!-- %#%$ title end %#%$ -->
+<!-- &&& title end &&& -->
 
 ```{r}
 #| label: setup

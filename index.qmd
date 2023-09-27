@@ -2,9 +2,9 @@
 \textual
 :::
 
-<!-- %#%$ title begin %#%$ -->
-# Welcome {.unnumbered .hidden}
-<!-- %#%$ title end %#%$ -->
+<!-- &&& title begin &&& -->
+# Welcome {.unnumbered}
+<!-- &&& title end &&& -->
 
 ```{r}
 #| label: setup

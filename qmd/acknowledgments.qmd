@@ -1,6 +1,6 @@
-<!-- %#%$ title begin %#%$ -->
+<!-- &&& title begin &&& -->
 # Acknowledgments {.unnumbered}
-<!-- %#%$ title end %#%$ -->
+<!-- &&& title end &&& -->
 
 ```{r}
 #| label: setup

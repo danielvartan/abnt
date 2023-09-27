@@ -1,6 +1,6 @@
-<!-- %#%$ title begin %#%$ -->
+<!-- &&& title begin &&& -->
 # Resumo (PT-BR abstract) {.unnumbered}
-<!-- %#%$ title end %#%$ -->
+<!-- &&& title end &&& -->
 
 ```{r}
 #| label: setup

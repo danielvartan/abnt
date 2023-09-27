@@ -13,88 +13,59 @@ rutils:::bbt_write_quarto_bib(
 )
 
 # Transform titles ----------
+stringr::str_to_upper
+rutils:::find_and_apply(
+  wd = here::here(),
+  dir = c("", "qmd"),
+  pattern = "\\.qmd$",
+  ignore = NULL,
+  begin_tag = "&&& title begin &&&",
+  end_tag = "&&& title end &&&",
+  fun = function(x) {
+    pattern <- "(?<=# )(.*?)(?= \\{)|(?<=# ).+"
+    old_string <- stringr::str_extract_all(x, pattern)
+    new_string <- stringr::str_to_upper(old_string)
 
-find_and_apply <- function(wd = here::here(),
-                           dir = c("", "qmd"),
-                           pattern = "\\.qmd$",
-                           ignore = NULL,
-                           begin_tag = "%#%$ title begin %#%$",
-                           end_tag = "%#%$ title end %#%$",
-                           fun = stringr::str_to_upper) {
-  checkmate::assert_string(wd)
-  checkmate::assert_directory_exists(wd, access = "rw")
-  checkmate::assert_character(dir)
-  for (i in dir) checkmate::assert_directory_exists(file.path(wd, i))
-  checkmate::assert_string(pattern)
-  checkmate::assert_string(ignore, null.ok = TRUE)
-  checkmate::assert_string(begin_tag)
-  checkmate::assert_string(end_tag)
-  checkmate::assert_function(fun)
-
-  dir |>
-    lapply(function(x) {
-      setdiff(
-        list.files(file.path(wd, x), full.names = TRUE),
-        list.dirs(file.path(wd, x), recursive = FALSE, full.names = TRUE)
-      ) |>
-        stringr::str_subset(pattern)
-    }) |>
-    unlist() |>
-    lapply(function(x) {
-      content <- readLines(here::here(x))
-      begin_index <- grep(begin_tag, x = content)
-      end_index <- grep(end_tag, x = content)
-
-      content[inbetween_integers(begin_index, end_index)] |>
-        fun() |>
-        writeLines(x)
-    })
-}
+    stringr::str_replace_all(x, pattern, new_string)
+  }
+)
 
 # Includes chapter 1 content in `_index-pdf.qmd` ----------
 
-writeLines("", here::here("qmd", "_index-pdf.qmd"))
-
 content <- readLines(here::here("qmd", "introduction.qmd"))
-begin_section_index <- grep("%#%$ clip 1 begin  %#%$", x = content)
-chapter_end_index <- length(content)
-clipped_content <- content[seq(begin_section_index, chapter_end_index)]
+begin_clip_index <- grep("&&& clip 1 begin &&&", x = content)
+end_clip_index <- grep("&&& clip 1 end &&&", x = content)
 
-clipped_content |> writeLines(here::here("qmd", "_index-pdf.qmd"))
+content[seq(begin_clip_index, end_clip_index)] |>
+  writeLines(here::here("qmd", "_index-pdf.qmd"))
 
 # Change index chapter title ----------
 
 chapter_path <- here::here("index.qmd")
-content <- readLines(here::here("index.qmd"))
-title_begin_index <- grep("%#%$ title begin %#%$", x = content)
-title_end_index <- grep("%#%$ title end %#%$", x = content)
-chapter_end_index <- grep("%#%$ chapter end %#%$", x = content)
 
-new_content <-
-  content[seq(1, title_begin_index)] |>
-  c("# INTRODUCTION") |>
-  append(content[seq(title_end_index, chapter_end_index)])
-
-new_content |> writeLines(chapter_path)
+rutils:::transform_value_between_tags(
+  x = readLines(chapter_path),
+  fun = "# INTRODUCTION",
+  begin_tag = "&&& title begin &&&",
+  end_tag = "&&& title end &&&"
+)|>
+  writeLines(chapter_path)
 
 # Change reference chapter title ----------
 
 chapter_path <- here::here("qmd", "references.qmd")
-content <- readLines(chapter_path)
-title_begin_index <- grep("%#%$ title begin %#%$", x = content)
-title_end_index <- grep("%#%$ title end %#%$", x = content)
-chapter_end_index <- length(content)
 
-new_content <-
-  content[seq(1, title_begin_index)] |>
-  c(
+rutils:::transform_value_between_tags(
+  x = readLines(chapter_path),
+  fun = c(
     "# REFERENCES [^1] {.unnumbered}",
     "",
     "[^1]: According to the APA style - American Psychological Association."
-  ) |>
-  append(content[seq(title_end_index, chapter_end_index)])
-
-new_content |> writeLines(chapter_path)
+  ),
+  begin_tag = "&&& title begin &&& ",
+  end_tag = "&&& title end &&& "
+)|>
+  writeLines(chapter_path)
 
 # Create environment variables ----------
 

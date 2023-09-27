@@ -217,6 +217,13 @@
       ],
       "Hash": "f20c47fd52fae58b4e377c37bb8c335b"
     },
+    "commonmark": {
+      "Package": "commonmark",
+      "Version": "1.9.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "d691c61bff84bd63c383874d2d0c3307"
+    },
     "cpp11": {
       "Package": "cpp11",
       "Version": "0.4.6",
@@ -483,6 +490,18 @@
       ],
       "Hash": "ac107251d9d9fd72f0ca8049988f1d7f"
     },
+    "hunspell": {
+      "Package": "hunspell",
+      "Version": "3.0.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "Rcpp",
+        "digest"
+      ],
+      "Hash": "656219b6f3f605499d7cdbe208656639"
+    },
     "isoband": {
       "Package": "isoband",
       "Version": "0.2.7",
@@ -599,7 +618,7 @@
     },
     "lubridate": {
       "Package": "lubridate",
-      "Version": "1.9.2",
+      "Version": "1.9.3",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -608,7 +627,7 @@
         "methods",
         "timechange"
       ],
-      "Hash": "e25f18436e3efd42c7c590a1c4c15390"
+      "Hash": "680ad542fbcf801442c83a6ac5a2126c"
     },
     "magrittr": {
       "Package": "magrittr",
@@ -905,7 +924,7 @@
       "RemoteUsername": "danielvartan",
       "RemoteRepo": "rutils",
       "RemoteRef": "main",
-      "RemoteSha": "01ac18c4ca787b344bdecb978bac2d11a999f8cb",
+      "RemoteSha": "78181023f31897448fe5380f3c886e98902de780",
       "RemoteHost": "api.github.com",
       "Remotes": "github::paleolimbot/rbbt",
       "Requirements": [
@@ -923,10 +942,13 @@
         "magrittr",
         "qpdf",
         "rbbt",
+        "rlang",
+        "rstudioapi",
+        "spelling",
         "stringr",
         "yaml"
       ],
-      "Hash": "570bd387c97e6e692e42700e5ac79ca3"
+      "Hash": "98f880db9d046c4326495809443f11c6"
     },
     "rvest": {
       "Package": "rvest",
@@ -992,6 +1014,19 @@
         "stringr"
       ],
       "Hash": "3838071b66e0c566d55cc26bd6e27bf4"
+    },
+    "spelling": {
+      "Package": "spelling",
+      "Version": "2.2.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "commonmark",
+        "hunspell",
+        "knitr",
+        "xml2"
+      ],
+      "Hash": "8ed9f010f7caeb8586523088b7f23dcd"
     },
     "stringi": {
       "Package": "stringi",

@@ -2,9 +2,9 @@
 \textual
 :::
 
-<!-- %#%$ title begin %#%$ -->
+<!-- &&& title begin &&& -->
 # Introduction
-<!-- %#%$ title end %#%$ -->
+<!-- &&& title end &&& -->
 
 ```{r}
 #| label: setup
@@ -16,7 +16,7 @@
 source(here::here("R/quarto-setup.R"))
 ```
 
-<!-- %#%$ clip 1 begin  %#%$ -->
+<!-- &&& clip 1 begin &&& -->
 
 ::: {.content-visible when-format="html"}
 ::: {.callout-note}
@@ -103,3 +103,5 @@ plot(cars)
   * Bullet point
     * Bullet point
       * Bullet point
+
+<!-- &&& clip 1 end &&& -->

@@ -14,37 +14,39 @@ rutils:::bbt_write_quarto_bib(
 
 # Transform titles ----------
 
-stringr::str_to_sentence()
+rutils:::find_and_apply(
+  wd = here::here(),
+  dir = c("", "qmd"),
+  pattern = "\\.qmd$",
+  ignore = NULL,
+  begin_tag = "&&& title begin &&&",
+  end_tag = "&&& title end &&&",
+  fun = stringr::str_to_sentence
+)
 
 # Change index chapter title ----------
 
 chapter_path <- here::here("index.qmd")
-content <- readLines(path)
-title_begin_index <- grep("%#%$ title begin %#%$", x = content)
-title_end_index <- grep("%#%$ title end %#%$", x = content)
-chapter_end_index <- length()
 
-new_content <-
-  content[seq(1, title_begin_index)] |>
-  c("# Welcome") |>
-  append(content[seq(title_end_index, chapter_end_index)])
-
-new_content |> writeLines(chapter_path)
+rutils:::transform_value_between_tags(
+  x = readLines(chapter_path),
+  fun = "# Welcome {.unnumbered}",
+  begin_tag = "&&& title begin &&&",
+  end_tag = "&&& title end &&&"
+)|>
+  writeLines(chapter_path)
 
 # Change reference chapter title ----------
 
 chapter_path <- here::here("qmd", "references.qmd")
-content <- readLines(chapter_path)
-title_begin_index <- grep("%#%$ title begin %#%$", x = content)
-title_end_index <- grep("%#%$ title end %#%$", x = content)
-chapter_end_index <- length(content)
 
-new_content <-
-  content[seq(1, title_begin_index)] |>
-  c("# References {.unnumbered}") |>
-  append(content[seq(title_end_index, chapter_end_index)])
-
-new_content |> writeLines(chapter_path)
+rutils:::transform_value_between_tags(
+  x = readLines(chapter_path),
+  fun = "# References {.unnumbered}",
+  begin_tag = "&&& title begin &&&",
+  end_tag = "&&& title end &&&"
+)|>
+  writeLines(chapter_path)
 
 # Create environment variables ----------
 
