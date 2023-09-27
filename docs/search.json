@@ -51,7 +51,7 @@
   {
     "objectID": "qmd/resumo.html",
     "href": "qmd/resumo.html",
-    "title": "Resumo (PT-BR abstract)",
+    "title": "Resumo",
     "section": "",
     "text": "[SOBRENOME], [INICIAIS]. ([ANO]). [TÍTULO] [[TIPO DE TESE/DISSERTAÇÃO]]. [ESCOLA/DEPARTAMENTO], Universidade de São Paulo, São Paulo. [URL DA DISSERTAÇÃO/TESE]\nCillum qui eu non ipsum pariatur ad exercitation pariatur dolore veniam amet cillum. Aliqua do nostrud aliquip in amet. Commodo sit tempor nulla ipsum officia voluptate laborum elit minim proident Lorem. Id pariatur reprehenderit non officia fugiat incididunt anim aliquip anim anim. Ipsum irure magna quis est aute. Nostrud nulla mollit non labore. In laboris mollit ea in. Excepteur eu do elit proident. Commodo tempor nisi enim ex velit voluptate dolor mollit eiusmod in ullamco aliqua nostrud id. Eiusmod dolore sint proident consectetur reprehenderit exercitation sunt. Nisi qui sit commodo anim consectetur in laborum dolore in labore veniam labore commodo tempor. Sunt sit officia commodo quis magna. Aliqua esse est adipisicing ea est ex esse esse officia sit culpa minim amet dolore. Culpa dolore laborum sunt do commodo duis in velit. Mollit duis voluptate aliquip magna labore aute sit dolore amet culpa labore. Id tempor consectetur est anim ullamco ex nostrud voluptate excepteur. Aliqua laboris aute laborum amet eu. Minim quis veniam et dolor quis fugiat. Adipisicing amet est do aliqua nostrud amet excepteur ut.\nPalavras-chaves: Palavra-chave 1. Palavra-chave 2. Palavra-chave 3."
   },
@@ -60,7 +60,7 @@
     "href": "qmd/abbreviations.html",
     "title": "Abbreviations",
     "section": "",
-    "text": "Abbreviation 1\n\nAbbreviation expanded definition\n\nAbbreviation\n\nAbbreviation expanded definition\n\nAbbreviation 3\n\nAbbreviation expanded definition"
+    "text": "Abbreviation 1\n\nAbbreviation expanded definition\n\nAbbreviation 2\n\nAbbreviation expanded definition\n\nAbbreviation 3\n\nAbbreviation expanded definition"
   },
   {
     "objectID": "qmd/symbols.html",
@@ -95,14 +95,14 @@
     "href": "qmd/development.html#secondary-section",
     "title": "\n2  Development\n",
     "section": "\n2.1 Secondary section",
-    "text": "2.1 Secondary section\nMinim consectetur eu aliqua in elit incididunt labore amet consequat cillum minim. Id sit duis duis ex velit proident mollit minim consequat nulla. Aliqua elit do excepteur nulla nostrud exercitation nisi tempor incididunt. Veniam dolore in non nisi veniam aliquip. Minim labore excepteur ea est dolore laboris cillum. Laboris sit pariatur pariatur veniam mollit nisi cupidatat qui qui quis laborum veniam dolor. Proident aliquip do adipisicing dolor elit aute elit. Officia anim quis id voluptate eu. Quis labore consectetur est magna. Laborum nulla ea non Lorem officia aute.\nOfficia adipisicing nisi ex mollit aliquip voluptate irure. Ex aute esse ad Lorem sunt veniam eu qui fugiat. Nulla magna exercitation ut voluptate id nisi mollit aute excepteur aliqua amet. Exercitation laborum consectetur ullamco nulla dolore consectetur. Velit anim aute mollit labore nisi velit ad esse fugiat sit."
+    "text": "2.1 Secondary section\nMinim consectetur eu aliqua in elit incididunt labore amet consequat cillum minim. Id sit duis duis ex velit proident mollit minim consequat nulla. Aliqua elit do excepteur nulla nostrud exercitation nisi tempor incididunt. Veniam dolore in non nisi veniam aliquip. Minim labore excepteur ea est dolore laboris cillum. Laboris sit pariatur pariatur veniam mollit nisi cupidatat qui qui quis laborum veniam dolor. Proident aliquip do adipisicing dolor elit aute elit. Officia anim quis id voluptate eu. Quis labore consectetur est magna. Laborum nulla ea non Lorem officia aute."
   },
   {
     "objectID": "qmd/conclusion.html#secondary-section",
     "href": "qmd/conclusion.html#secondary-section",
     "title": "\n3  Conclusion\n",
     "section": "\n3.1 Secondary section",
-    "text": "3.1 Secondary section\nMinim consectetur eu aliqua in elit incididunt labore amet consequat cillum minim. Id sit duis duis ex velit proident mollit minim consequat nulla. Aliqua elit do excepteur nulla nostrud exercitation nisi tempor incididunt. Veniam dolore in non nisi veniam aliquip. Minim labore excepteur ea est dolore laboris cillum. Laboris sit pariatur pariatur veniam mollit nisi cupidatat qui qui quis laborum veniam dolor. Proident aliquip do adipisicing dolor elit aute elit. Officia anim quis id voluptate eu. Quis labore consectetur est magna. Laborum nulla ea non Lorem officia aute.\nOfficia adipisicing nisi ex mollit aliquip voluptate irure. Ex aute esse ad Lorem sunt veniam eu qui fugiat. Nulla magna exercitation ut voluptate id nisi mollit aute excepteur aliqua amet. Exercitation laborum consectetur ullamco nulla dolore consectetur. Velit anim aute mollit labore nisi velit ad esse fugiat sit."
+    "text": "3.1 Secondary section\nMinim consectetur eu aliqua in elit incididunt labore amet consequat cillum minim. Id sit duis duis ex velit proident mollit minim consequat nulla. Aliqua elit do excepteur nulla nostrud exercitation nisi tempor incididunt. Veniam dolore in non nisi veniam aliquip. Minim labore excepteur ea est dolore laboris cillum. Laboris sit pariatur pariatur veniam mollit nisi cupidatat qui qui quis laborum veniam dolor. Proident aliquip do adipisicing dolor elit aute elit. Officia anim quis id voluptate eu. Quis labore consectetur est magna. Laborum nulla ea non Lorem officia aute."
   },
   {
     "objectID": "qmd/references.html",
@@ -116,6 +116,6 @@
     "href": "qmd/appendice-1.html#secondary-section",
     "title": "Appendix A — Appendix 1",
     "section": "\nA.1 Secondary section",
-    "text": "A.1 Secondary section\nMinim consectetur eu aliqua in elit incididunt labore amet consequat cillum minim. Id sit duis duis ex velit proident mollit minim consequat nulla. Aliqua elit do excepteur nulla nostrud exercitation nisi tempor incididunt. Veniam dolore in non nisi veniam aliquip. Minim labore excepteur ea est dolore laboris cillum. Laboris sit pariatur pariatur veniam mollit nisi cupidatat qui qui quis laborum veniam dolor. Proident aliquip do adipisicing dolor elit aute elit. Officia anim quis id voluptate eu. Quis labore consectetur est magna. Laborum nulla ea non Lorem officia aute.\nOfficia adipisicing nisi ex mollit aliquip voluptate irure. Ex aute esse ad Lorem sunt veniam eu qui fugiat. Nulla magna exercitation ut voluptate id nisi mollit aute excepteur aliqua amet. Exercitation laborum consectetur ullamco nulla dolore consectetur. Velit anim aute mollit labore nisi velit ad esse fugiat sit."
+    "text": "A.1 Secondary section\nMinim consectetur eu aliqua in elit incididunt labore amet consequat cillum minim. Id sit duis duis ex velit proident mollit minim consequat nulla. Aliqua elit do excepteur nulla nostrud exercitation nisi tempor incididunt. Veniam dolore in non nisi veniam aliquip. Minim labore excepteur ea est dolore laboris cillum. Laboris sit pariatur pariatur veniam mollit nisi cupidatat qui qui quis laborum veniam dolor. Proident aliquip do adipisicing dolor elit aute elit. Officia anim quis id voluptate eu. Quis labore consectetur est magna. Laborum nulla ea non Lorem officia aute."
   }
 ]

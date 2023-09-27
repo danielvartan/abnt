@@ -56,3 +56,4 @@
 # * Align dedication/inscription to the right.
 # * Fix APA refence rendering.
 # * Fix code background on dark theme.
+# * Fix relative path for images.

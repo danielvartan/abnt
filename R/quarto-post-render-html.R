@@ -60,7 +60,7 @@ writeLines(
 rutils:::clean_quarto_mess(
   wd = here::here(),
   file = NULL,
-  dir = c(".temp", "index_files"),
+  dir = c(".temp", "index_files", "qmd/images"),
   ext = NULL,
   keep = NULL,
   quarto_yaml = NULL

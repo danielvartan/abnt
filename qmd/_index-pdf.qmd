@@ -1,4 +1,4 @@
-<!-- %#%$ Introduction | Begin  -->
+<!-- &&& clip 1 begin &&& -->
 
 ::: {.content-visible when-format="html"}
 ::: {.callout-note}
@@ -42,11 +42,19 @@ It leads up to our second attempt (_and so on_). A satisfactory understanding wi
 ::: {.align-to-right}
 [@popper1979, p. 164]
 :::
+:::
 
 ::: {.content-visible when-format="pdf"}
 \vspace{15pt}
 \noindent
 \hspace*{\fill} [@popper1979, p. 164]
+:::
+
+::: {#fig-karl-popper}
+![](images/karl-popper.png){width=50%}
+
+Karl Popper (July 25, 1902 – September 17, 1994).\
+One of the 20th century's most influential philosophers of science.
 :::
 
 ## `r ifelse(env_vars$format == "html", "Secondary section", "SECONDARY SECTION")`
@@ -78,4 +86,4 @@ plot(cars)
     * Bullet point
       * Bullet point
 
-<!-- %#%$ Introduction | End  -->
+<!-- &&& clip 1 end &&& -->

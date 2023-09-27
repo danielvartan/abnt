@@ -13,12 +13,12 @@ rutils:::bbt_write_quarto_bib(
 )
 
 # Transform titles ----------
-stringr::str_to_upper
-rutils:::find_and_apply(
+
+rutils:::find_between_tags_and_apply(
   wd = here::here(),
   dir = c("", "qmd"),
   pattern = "\\.qmd$",
-  ignore = NULL,
+  ignore = "^_",
   begin_tag = "&&& title begin &&&",
   end_tag = "&&& title end &&&",
   fun = function(x) {
@@ -28,7 +28,8 @@ rutils:::find_and_apply(
 
     stringr::str_replace_all(x, pattern, new_string)
   }
-)
+) |>
+  rutils:::shush()
 
 # Includes chapter 1 content in `_index-pdf.qmd` ----------
 

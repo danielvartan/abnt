@@ -14,15 +14,22 @@ rutils:::bbt_write_quarto_bib(
 
 # Transform titles ----------
 
-rutils:::find_and_apply(
+rutils:::find_between_tags_and_apply(
   wd = here::here(),
   dir = c("", "qmd"),
   pattern = "\\.qmd$",
-  ignore = NULL,
+  ignore = "^_",
   begin_tag = "&&& title begin &&&",
   end_tag = "&&& title end &&&",
-  fun = stringr::str_to_sentence
-)
+  fun = function(x) {
+    pattern <- "(?<=# )(.*?)(?= \\{)|(?<=# ).+"
+    old_string <- stringr::str_extract_all(x, pattern)
+    new_string <- stringr::str_to_sentence(old_string)
+
+    stringr::str_replace_all(x, pattern, new_string)
+  }
+) |>
+  rutils:::shush()
 
 # Change index chapter title ----------
 
@@ -47,6 +54,23 @@ rutils:::transform_value_between_tags(
   end_tag = "&&& title end &&&"
 )|>
   writeLines(chapter_path)
+
+# Copy images folder to `./qmd` ----------
+
+# To solve issues related to relative paths.
+
+dir_path <- here::here("qmd", "images")
+
+if (!checkmate::test_directory_exists(dir_path)) {
+  dir.create(dir_path) |> invisible()
+}
+
+for (i in rutils:::list_files(here::here("images"), full.names = TRUE)) {
+  rutils:::copy_file(
+    from = i,
+    to = file.path(dir_path, basename(i))
+    )
+}
 
 # Create environment variables ----------
 

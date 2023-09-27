@@ -1,5 +1,5 @@
 project:
-  output-dir: pdf
+  output-dir: .temp
     # Remove the pre-render if you don't use Zotero.
   pre-render: "R/quarto-pre-render-pdf.R"
   post-render: "R/quarto-post-render-pdf.R"

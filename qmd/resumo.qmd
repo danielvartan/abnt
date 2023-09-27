@@ -1,5 +1,5 @@
 <!-- &&& title begin &&& -->
-# Resumo (PT-BR abstract) {.unnumbered}
+# Resumo {.unnumbered}
 <!-- &&& title end &&& -->
 
 ```{r}

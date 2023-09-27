@@ -1,7 +1,7 @@
 editor: source
 
 execute:
-  freeze: auto
+  freeze: false # auto
 
 project:
   type: book

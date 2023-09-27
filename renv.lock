@@ -924,7 +924,7 @@
       "RemoteUsername": "danielvartan",
       "RemoteRepo": "rutils",
       "RemoteRef": "main",
-      "RemoteSha": "78181023f31897448fe5380f3c886e98902de780",
+      "RemoteSha": "9b9f7272e49287ab869053363ab58b52f24d2068",
       "RemoteHost": "api.github.com",
       "Remotes": "github::paleolimbot/rbbt",
       "Requirements": [
@@ -948,7 +948,7 @@
         "stringr",
         "yaml"
       ],
-      "Hash": "98f880db9d046c4326495809443f11c6"
+      "Hash": "0e4bcfdbf777b0fa80ce47952a771393"
     },
     "rvest": {
       "Package": "rvest",

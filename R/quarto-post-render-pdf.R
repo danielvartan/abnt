@@ -31,15 +31,12 @@ pdf_file <- list.files(output_dir_pdf, full.names = TRUE, pattern = ".pdf$")
 
 if (length(pdf_file) == 1) {
   rutils:::remove_pdf_cover(pdf_file)
+
+  rutils:::copy_file(pdf_file, file.path("pdf", "index.pdf"))
   rutils:::copy_file(pdf_file, file.path(output_dir_html, "index.pdf"))
 
-  rutils:::rename_file(
-    from = pdf_file,
-    to = paste0(dirname(pdf_file), "index.pdf")
-  )
-
   list.files(here::here(), full.names = TRUE, pattern = ".tex$") |>
-    rutils:::copy_file(file.path(output_dir_pdf, paste0(project_name, ".tex")))
+    rutils:::copy_file(file.path("pdf", "index.tex"))
 }
 
 # Delete unnecessary files and folders ----------
@@ -47,7 +44,7 @@ if (length(pdf_file) == 1) {
 rutils:::clean_quarto_mess(
   wd = here::here(),
   file = NULL,
-  dir = c(".temp"),
+  dir = c(".temp", "index_files"),
   ext = c("aux", "cls", "loa", "log", "pdf", "tex"),
   keep = NULL,
   quarto_yaml = NULL
