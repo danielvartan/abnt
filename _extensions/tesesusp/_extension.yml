@@ -17,7 +17,12 @@ abstract: >
   University of São Paulo (USP). It is based on the {abntex2} suite, the
   {abntex2ppgsi} template, and on USP guidelines for creating thesis and
   dissertation documents.
-keywords:
+description: >
+  {tesesusp} is a Quarto format designed for theses and dissertations of the
+  University of São Paulo (USP). It is based on the {abntex2} suite, the
+  {abntex2ppgsi} template, and on USP guidelines for creating thesis and
+  dissertation documents.
+keyword:
   - quarto
   - quarto-extension
   - quarto-template

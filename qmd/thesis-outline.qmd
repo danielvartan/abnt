@@ -1,0 +1,22 @@
+<!-- %#%$ title begin %#%$ -->
+# Thesis outline {.unnumbered}
+<!-- %#%$ title end %#%$ -->
+
+```{r}
+#| label: setup
+#| echo: false
+#| output: false
+
+# library(here)
+
+source(here::here("R/quarto-setup.R"))
+```
+
+```{r}
+#| echo: false
+#| output: asis
+
+# library(cli)
+
+cat(cli:::lorem_ipsum(2), sep = "\n\n")
+```

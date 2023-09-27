@@ -5,40 +5,40 @@ execute:
 
 project:
   type: book
-  output-dir: .temp
-  # Remove the pre-render if you don't use Zotero.
-  pre-render: "R/quarto-pre-render.R"
-  post-render: "R/quarto-post-render.R"
 
+# See <https://quarto.org/docs/projects/profiles.html>.
+profile:
+  group:
+    - [html, pdf]
+  default: html
+
+# See  <https://quarto.org/docs/books/>.
+# See <https://quarto.org/docs/reference/projects/books.html>.
 book:
   title: "{tesesusp}: a Quarto format for USP theses and dissertations"
   author: "Daniel Vartanian"
-  date: today
-  date-format: "YYYY"
+  # abstract: >
+  #   {tesesusp} is a Quarto format designed for theses and dissertations of the
+  #     University of São Paulo (USP). It is based on the {abntex2} suite, the
+  #   {abntex2ppgsi} template, and on USP guidelines for creating thesis and
+  #   dissertation documents.
+  # description: >
+  #   {tesesusp} is a Quarto format designed for theses and dissertations of the
+  #   University of São Paulo (USP). It is based on the {abntex2} suite, the
+  #   {abntex2ppgsi} template, and on USP guidelines for creating thesis and
+  #   dissertation documents.
+  keyword: >
+    "quarto-format, thesis, dissertation, university-of-sao-paulo, usp"
+  language: en-us
+  license: "Creative Commons Attribution 4.0 International (CC BY 4.0)"
+  publisher: "University of São Paulo"
+  publisher-place: "São Paulo, SP, Brazil"
+  submitted: 2023
+  url: https://danielvartan.github.io/tesesusp/
   site-url: https://danielvartan.github.io/tesesusp/
   repo-url: https://github.com/danielvartan/tesesusp/
+  issue-url: https://github.com/danielvartan/tesesusp/issues
   repo-branch: main
-  chapters:
-    - index.qmd
-    - qmd/development.qmd
-    - qmd/conclusion.qmd
-    - qmd/references.qmd
-  appendices:
-    - qmd/appendice-1.qmd
+  version: "0.1.0"
 
-# See <https://quarto.org/docs/authoring/footnotes-and-citations.html>.
 bibliography: references.json
-
-format:
-  tesesusp-pdf:
-    # classoption: [twoside]
-    nocite: |
-      @*
-    latex-auto-install: true
-    keep-tex: true
-    # monofont: "Roboto Mono" # See <https://fonts.google.com>.
-      # monofontoptions:
-      #   - Scale = 0.75
-    include-in-header: tex/include-in-header.tex
-    include-before-body: tex/include-before-body.tex
-    # include-after-body: tex/include-after-body.tex

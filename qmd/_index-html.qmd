@@ -1,0 +1,30 @@
+::: {.callout-important}
+The text below is for demonstrative purposes only.
+
+See <https://github.com/danielvartan/tesesusp> to learn more about this template.
+:::
+
+You are seeing the web version of this thesis.
+
+The analyses contained in this document are 100% reproducible. They were performed using the [R programming language](https://www.r-project.org/) and the [Quarto](https://quarto.org/) publishing system (an evolution of [R Markdown](https://rmarkdown.rstudio.com/)). Click on the GitHub icon in the menu to access the thesis code repository.
+
+## Citation
+
+For attribution, please cite this work as:
+
+[SURNAME], [INITIALS]. ([YEAR]). _[TITLE]_ [[TYPE OF THESIS]]. [SCHOOL/DEPARTMENT], University of São Paulo, São Paulo. [THESIS'S URL]
+
+BibTeX citation:
+
+```
+@mastersthesis{[surname][year],
+  title = {[TITLE]},
+  author = {[AUTHOR'S FULL NAME]},
+  year = {[YEAR]},
+  address = {São Paulo},
+  school  = {University of Sao Paulo},
+  langid = {english},
+  url = {https://danielvartan.github.io/mastersthesis/}
+  note = {Original version}
+}
+```

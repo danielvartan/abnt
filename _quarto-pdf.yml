@@ -1,0 +1,31 @@
+project:
+  output-dir: pdf
+    # Remove the pre-render if you don't use Zotero.
+  pre-render: "R/quarto-pre-render-pdf.R"
+  post-render: "R/quarto-post-render-pdf.R"
+
+# See  <https://quarto.org/docs/books/>.
+# See <https://quarto.org/docs/reference/projects/books.html>.
+book:
+  date: today
+  date-format: "YYYY"
+  chapters:
+    - index.qmd
+    - qmd/development.qmd
+    - qmd/conclusion.qmd
+    - qmd/references.qmd
+  appendices:
+    - qmd/appendice-1.qmd
+
+format:
+  tesesusp-pdf:
+    # classoption: [twoside]
+    nocite: |
+      @*
+    latex-auto-install: true
+    keep-tex: true
+    mainfont: "Arial"
+    sansfont: "Arial"
+    include-in-header: tex/include-in-header.tex
+    include-before-body: tex/include-before-body.tex
+    # include-after-body: tex/include-after-body.tex

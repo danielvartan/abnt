@@ -76,7 +76,9 @@ format:
 Since USP guidelines are plentiful, some formatting had to be made by
 inventive/non-conventional ways (to put it mildly). The easy way to
 start using `tesesusp` is cloning this repository and building on top of
-its [Quarto book](https://quarto.org/docs/books/).
+its [Quarto book](https://quarto.org/docs/books/). If you do this, don’t
+forget to install [`renv`](https://rstudio.github.io/renv/index.html)
+and run `renv::restore()` after.
 
 ## Format options
 

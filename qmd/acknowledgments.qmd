@@ -1,0 +1,15 @@
+<!-- %#%$ title begin %#%$ -->
+# Acknowledgments {.unnumbered}
+<!-- %#%$ title end %#%$ -->
+
+```{r}
+#| label: setup
+#| echo: false
+#| output: false
+
+# library(here)
+
+source(here::here("R/quarto-setup.R"))
+```
+
+I would like to acknowledge this awesome [Quarto format](https://github.com/danielvartan/tesesusp)! :)

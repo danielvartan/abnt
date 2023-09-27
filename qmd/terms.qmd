@@ -1,0 +1,52 @@
+<!-- %#%$ title begin %#%$ -->
+# Terms and definitions {.unnumbered}
+<!-- %#%$ title end %#%$ -->
+
+```{r}
+#| label: setup
+#| echo: false
+#| output: false
+
+# library(here)
+
+source(here::here("R/quarto-setup.R"))
+```
+
+::: {.callout-warning}
+The text below is for demonstrative purposes only.
+
+See <https://github.com/danielvartan/tesesusp> to learn about this template.
+:::
+
+Chronotype
+: Any kind of temporal phenotype [@ehret1974; @pittendrigh1993]. Usually, it refers to circadian phenotypes in a spectrum that goes from morningness to eveningness [@horne1976; @roenneberg2003]. It can also be seen as an organism's phase of entrainment [@roenneberg2012a].
+
+Circadian rhythm
+: A rhythm with a period close to a day/24h, an approximation to the period of the earth's rotation [@pittendrigh1960]. From the Latin _circā_, around, and _dĭes_, day [@latinitium]. Example: the sleep-wake cycle.
+
+Complex system
+: There are several definitions. Here are some that I found to be of use:
+	* "Systems that don't yield to compact forms of representation or description." [David Krakauer apud @mitchell2013]
+	* "A system of many interacting parts where the system is more than just the sum of its parts" [Mark Newman apud @mitchell2013]
+	* Systems with many connected agents that interact and exhibit self-organization and emergence behavior, all without the need for a central controller (adapted from Camilo Rodrigues Neto's definition, supervisor of this thesis).
+	* Dialectics at its finest (my working definition).
+
+Entrainment
+: A shift and alignment of biological rhythms induced by a zeitgeber input [@kuhlman2018]. For example: a shift/alignment of an organism's circadian rhythm when exposed to light.
+
+Infradian rhythm
+: A rhythm with a period greater than a day/24h. From the Latin _infrā_, below, and _dĭes_, day [@latinitium]. Example: the menstrual cycle.
+
+Period
+: Cycle duration of an oscillation or, in a more technical way, the duration between two identical and consecutive phases in an oscillation [@kuhlman2018].
+
+System theory
+: Two definitions can be of use:
+	* Science or discipline that investigates models, principles, and laws that are valid to systems in general [@bertalanffy1968].
+	* "The attempt of a reductionist scientific tradition to come to terms with complexity, nonlinearity, and change through sophisticated mathematical and computational techniques, _a groping toward a more dialectical understanding_ that is held back by its philosophical biases and the institutional and economic contexts of its development." [@levins1998]
+
+Ultradian rhythm
+: A rhythm with a period below a day/24h. From the Latin _ultrā_, beyond, and _dĭes_, day [@latinitium]. Example: the cardiac cycle.
+
+Zeitgeber
+: Any periodic environmental signal/cue that can influence or regulate biological rhythms. From the German _zeit_, time, and _geber_, donor [@cambridgeuniversitypress]. Two main well known zeitgebers are light exposure and environment temperature [@pittendrigh1960].

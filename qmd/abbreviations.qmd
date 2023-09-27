@@ -1,0 +1,22 @@
+<!-- %#%$ title begin %#%$ -->
+# Abbreviations {.unnumbered}
+<!-- %#%$ title end %#%$ -->
+
+```{r}
+#| label: setup
+#| echo: false
+#| output: false
+
+# library(here)
+
+source(here::here("R/quarto-setup.R"))
+```
+
+Abbreviation 1
+: Abbreviation expanded definition
+
+Abbreviation
+: Abbreviation expanded definition
+
+Abbreviation 3
+: Abbreviation expanded definition

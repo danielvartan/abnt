@@ -20,16 +20,23 @@
 # renv::update()
 # renv::restore()
 # renv::snapshot()
-# spelling::spell_check_package()
-# spelling::update_wordlist()
+# rutils:::bbt_scan_citation_keys()
+# rutils:::bbt_write_quarto_bib()
+# rutils:::set_quarto_speel_check()
+# rutils:::gather_words_from_spell_check(pattern = "\\.qmd$|\\.Rmd$")
+# rutils:::spell_check_quarto()
+# rutils:::update_quarto_wordlist()
+# rutils:::clean_quarto_mess()
+# rutils:::quarto_status("drafting")
+# spelling::spell_check_files("index.qmd")
 # urlchecker::url_check()
+# urlchecker::url_update()
 
 # # Quarto (see <https://quarto.org/docs/projects/quarto-projects.html>)
 #
 # quarto render
-# quarto render index.qmd
-# quarto render qmd/chapter-6.qmd
-# quarto render --to tesesusp-pdf
+# quarto render --profile pdf
+# quarto render --profile html
 # quarto publish gh-pages
 
 # TODO
@@ -45,3 +52,7 @@
 # * Fix TOC title.
 # * Fix link colors on pre-textual pages.
 # * Find a way to create double captions (top and bottom).
+# * Align Cover and Title page date and city.
+# * Align dedication/inscription to the right.
+# * Fix APA refence rendering.
+# * Fix code background on dark theme.

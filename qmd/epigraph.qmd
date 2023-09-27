@@ -1,0 +1,17 @@
+<!-- %#%$ title begin %#%$ -->
+# Epigraph {.unnumbered}
+<!-- %#%$ title end %#%$ -->
+
+```{r}
+#| label: setup
+#| echo: false
+#| output: false
+
+# library(here)
+
+source(here::here("R/quarto-setup.R"))
+```
+
+> _Nullius in verba_
+> 
+> [@theroyalsociety]

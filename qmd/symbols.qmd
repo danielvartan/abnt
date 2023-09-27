@@ -1,0 +1,19 @@
+<!-- %#%$ title begin %#%$ -->
+# Symbols {.unnumbered}
+<!-- %#%$ title end %#%$ -->
+
+```{r}
+#| label: setup
+#| echo: false
+#| output: false
+
+# library(here)
+
+source(here::here("R/quarto-setup.R"))
+```
+
+$\Gamma$ : Gamma
+
+$\Lambda$ : Lambda
+
+$\beta$ : beta

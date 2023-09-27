@@ -2,7 +2,9 @@
 \textual
 :::
 
-# INTRODUCTION
+<!-- %#%$ title begin %#%$ -->
+# Welcome {.unnumbered .hidden}
+<!-- %#%$ title end %#%$ -->
 
 ```{r}
 #| label: setup
@@ -14,72 +16,10 @@ library(here)
 source(here::here("R/quarto-setup.R"))
 ```
 
-::: {.content-visible when-format="pdf"}
-::: {.callout-note}
-The text below is for demonstrative purposes only.
-
-\vspace{5pt}
-
-See <https://quarto.org/docs/authoring/markdown-basics.html> to learn about the basics of Markdown's syntax.
-:::
-\vspace{10pt}
-:::
-
-"The activity can be represented by a _general schema of problem-solving by the method of imaginative conjectures and criticism_, or, as I have often called it, by _the method of conjecture and refutation_. The schema (in its simplest form) is this
-
-$$
-\text{P}_{1} \to \text{TT} \to \text{EE} \to \text{P}_{2} 
-$$
-
-::: {.content-visible when-format="pdf"}
-\vspace{15pt}
-:::
-
-Here $\text{P}_{1}$ is the _problem_ from which we start, $\text{TT}$ (the ‘tentative theory’) is the imaginative conjectural solution which we first reach, for example our first _tentative interpretation_. $\text{EE}$ (_‘error- elimination’_) consists of a severe critical examination of our conjecture, our tentative interpretation: it consists, for example, of the critical use of documentary evidence and, if we have at this early stage more than one conjecture at our disposal, it will also consist of a critical discussion and comparative evaluation of the competing conjectures. $\text{P}_{2}$ is the problem situation as it emerges from our first critical attempt to solve our problems.
-It leads up to our second attempt (_and so on_). A satisfactory understanding will be reached if the interpretation, the conjectural theory, finds support in the fact that it can throw new light on new problems — on more problems than we expected; or if it finds support in the fact that it explains many sub-problems, some of which were not seen to start with. Thus we may say that we can gauge the progress we have made by comparing $\text{P}_{1}$ with some of our later problems ($\text{P}_{n}$, say)."
-
 ::: {.content-visible when-format="html"}
-[@popper1979, p. 164]
+{{< include qmd/_index-html.qmd >}}
 :::
 
 ::: {.content-visible when-format="pdf"}
-\vspace{15pt}
-\noindent
-\hspace*{\fill} [@popper1979, p. 164]
+{{< include qmd/_index-pdf.qmd >}}
 :::
-
-::: {#fig-karl-popper}
-![](images/karl-popper.png){width=50%}
-
-Karl Popper (July 25, 1902 – September 17, 1994).\
-One of the 20th century's most influential philosophers of science.
-:::
-
-## SECONDARY SECTION
-
-```{r}
-#| tbl-cap: "A sample of the famous (Fisher's or Anderson's) iris data set"
-
-# library(datasets)
-# library(dplyr)
-
-datasets::iris |>
-  dplyr::as_tibble() |>
-  dplyr::slice_sample(n = 5)
-```
-
-### TERTIARY SECTION
-
-```{r}
-#| fig-cap: "Speed and stopping distances of cars"
-#| fig-height: 3.5
-
-plot(cars)
-```
-
-#### QUATERNARY SECTION
-
-* Bullet point
-  * Bullet point
-    * Bullet point
-      * Bullet point

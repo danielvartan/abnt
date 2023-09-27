@@ -902,11 +902,11 @@
       "Version": "0.0.0.9000",
       "Source": "GitHub",
       "RemoteType": "github",
-      "RemoteHost": "api.github.com",
       "RemoteUsername": "danielvartan",
       "RemoteRepo": "rutils",
       "RemoteRef": "main",
-      "RemoteSha": "9e80e927707adf95f015a65ef4e1c7f5693c4f60",
+      "RemoteSha": "01ac18c4ca787b344bdecb978bac2d11a999f8cb",
+      "RemoteHost": "api.github.com",
       "Remotes": "github::paleolimbot/rbbt",
       "Requirements": [
         "R",
@@ -920,12 +920,13 @@
         "jsonlite",
         "lifecycle",
         "lubridate",
+        "magrittr",
         "qpdf",
         "rbbt",
         "stringr",
         "yaml"
       ],
-      "Hash": "1ec58974ab204cdbf39d2c6d12e808ab"
+      "Hash": "570bd387c97e6e692e42700e5ac79ca3"
     },
     "rvest": {
       "Package": "rvest",
@@ -1194,7 +1195,7 @@
     },
     "withr": {
       "Package": "withr",
-      "Version": "2.5.0",
+      "Version": "2.5.1",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -1203,7 +1204,7 @@
         "graphics",
         "stats"
       ],
-      "Hash": "c0e49a9760983e81e55cdd9be92e7182"
+      "Hash": "d77c6f74be05c33164e33fbc85540cae"
     },
     "xfun": {
       "Package": "xfun",

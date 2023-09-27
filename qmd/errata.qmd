@@ -1,0 +1,15 @@
+<!-- %#%$ title begin %#%$ -->
+# Errata {.unnumbered}
+<!-- %#%$ title end %#%$ -->
+
+```{r}
+#| label: setup
+#| echo: false
+#| output: false
+
+# library(here)
+
+source(here::here("R/quarto-setup.R"))
+```
+
+This is the development version of the thesis (version <1.0.0). Any necessary corrections will be listed here after its approval.

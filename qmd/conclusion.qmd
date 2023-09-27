@@ -1,13 +1,24 @@
-# CONCLUSION
+<!-- %#%$ title begin %#%$ -->
+# Conclusion
+<!-- %#%$ title end %#%$ -->
 
 ```{r}
 #| label: setup
 #| echo: false
 #| output: false
 
-library(here)
+# library(here)
+
 source(here::here("R/quarto-setup.R"))
 ```
+
+::: {.content-visible when-format="html"}
+::: {.callout-important}
+The text below is for demonstrative purposes only.
+
+See <https://github.com/danielvartan/tesesusp> to learn more about this template.
+:::
+:::
 
 ::: {.content-visible when-format="pdf"}
 ::: {.callout-important}
@@ -20,10 +31,22 @@ See <https://quarto.org/docs/authoring/markdown-basics.html> to learn about the 
 \vspace{10pt}
 :::
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu mi massa. Etiam non ipsum ac purus viverra imperdiet a nec quam. Aliquam tempor ut felis a lacinia. Etiam ut eleifend nisi, non semper est. Nam lectus lectus, fringilla id blandit a, pellentesque a libero. Curabitur malesuada mollis porttitor. Mauris lobortis nisi sed semper molestie. Pellentesque euismod enim nec libero efficitur congue. Nam porta sem sed dignissim fringilla. Morbi dignissim mi tellus, non egestas velit vulputate vel. Vivamus ullamcorper rhoncus tellus, in tincidunt leo fermentum at. Mauris non magna nulla. Donec pulvinar tellus eu nulla varius placerat. Praesent ut nisi scelerisque, lobortis metus ac, ornare risus.
+```{r}
+#| echo: false
+#| output: asis
 
-Duis erat mi, vulputate eget nibh tempor, pharetra dapibus dolor. Ut porta, ligula sed mattis interdum, augue felis efficitur dui, vel imperdiet est ligula ac tellus. Fusce blandit erat id nisl luctus, sit amet dignissim justo tempor. In rhoncus eleifend velit, sed hendrerit turpis elementum blandit. In ut rutrum orci. Sed eleifend in tellus vitae aliquam. Aliquam non velit eleifend diam semper condimentum sit amet et mi. Morbi ante dui, varius eget leo vel, sodales eleifend mauris. Curabitur et blandit urna.
+# library(cli)
 
-## SECONDARY SECTION
+cat(cli:::lorem_ipsum(2), sep = "\n\n")
+```
 
-Sed placerat elementum sapien et volutpat. Nulla sit amet lacinia leo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec tempor lacus nec finibus sagittis. Mauris vitae rutrum nisl. In vestibulum eu risus ac eleifend. In id cursus tellus, ac vestibulum justo. Praesent convallis a felis semper ultrices. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hac habitasse platea dictumst.
+## `r ifelse(env_vars$format == "html", "Secondary section", "SECONDARY SECTION")`
+
+```{r}
+#| echo: false
+#| output: asis
+
+# library(cli)
+
+cat(cli:::lorem_ipsum(1), sep = "\n\n")
+```
