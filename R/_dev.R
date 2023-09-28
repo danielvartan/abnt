@@ -3,6 +3,7 @@
 # .rs.restartR()
 # .libPaths()
 # cffr::cff_validate()
+# knitr::clean_cache()
 # knitr:::webshot_available()
 # lintr::use_lintr()
 # lintr::lint_dir("R")
@@ -32,11 +33,23 @@
 # urlchecker::url_check()
 # urlchecker::url_update()
 
+# # Pandoc
+#
+# rutils:::object_pandoc_convert(
+#   x =  rutils:::get_value_between_tags(
+#     x = here::here("qmd/errata.qmd"),
+#     begin_tag = "%:::% errata body begin %:::%",
+#     end_tag = "%:::% errata body end %:::%"
+#   )
+# )
+
 # # Quarto (see <https://quarto.org/docs/projects/quarto-projects.html>)
 #
 # quarto render
 # quarto render --profile pdf
+# quarto render --profile pdf --cache-refresh
 # quarto render --profile html
+# quarto render --profile html --cache-refresh
 # quarto publish gh-pages
 
 # TODO
@@ -57,3 +70,5 @@
 # * Fix APA refence rendering.
 # * Fix code background on dark theme.
 # * Fix relative path for images.
+# * Transform BiBTeX keys in LaTeX citations, when rendered with pandoc
+# * Add a update function for tags in the latex files (e.g., cover page)

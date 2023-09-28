@@ -924,7 +924,7 @@
       "RemoteUsername": "danielvartan",
       "RemoteRepo": "rutils",
       "RemoteRef": "main",
-      "RemoteSha": "9b9f7272e49287ab869053363ab58b52f24d2068",
+      "RemoteSha": "dc840fddc7c82dffd77f9747173256dc9c799c3e",
       "RemoteHost": "api.github.com",
       "Remotes": "github::paleolimbot/rbbt",
       "Requirements": [
@@ -943,12 +943,13 @@
         "qpdf",
         "rbbt",
         "rlang",
+        "rmarkdown",
         "rstudioapi",
         "spelling",
         "stringr",
         "yaml"
       ],
-      "Hash": "0e4bcfdbf777b0fa80ce47952a771393"
+      "Hash": "721e1c1c4ec4097afb0598be6ae2425e"
     },
     "rvest": {
       "Package": "rvest",

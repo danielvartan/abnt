@@ -1,0 +1,21 @@
+<!-- %:::% .common h1 begin %:::% -->
+# RESUMO {.unnumbered}
+<!-- %:::% .common h1 end %:::% -->
+
+```{r}
+#| label: setup
+#| echo: false
+#| output: false
+
+# library(here)
+
+source(here::here("R/quarto-setup.R"))
+```
+
+<!-- %:::% foreign-abstract body begin %:::% -->
+[SOBRENOME], [INICIAIS]. ([ANO]). _[TÍTULO]_ [[TIPO DE TESE/DISSERTAÇÃO]]. [ESCOLA/DEPARTAMENTO], Universidade de São Paulo, São Paulo. [URL DA DISSERTAÇÃO/TESE]
+
+Cillum qui eu non ipsum pariatur ad exercitation pariatur dolore veniam amet cillum. Aliqua do nostrud aliquip in amet. Commodo sit tempor nulla ipsum officia voluptate laborum elit minim proident Lorem. Id pariatur reprehenderit non officia fugiat incididunt anim aliquip anim anim. Ipsum irure magna quis est aute. Nostrud nulla mollit non labore. In laboris mollit ea in. Excepteur eu do elit proident. Commodo tempor nisi enim ex velit voluptate dolor mollit eiusmod in ullamco aliqua nostrud id. Eiusmod dolore sint proident consectetur reprehenderit exercitation sunt. Nisi qui sit commodo anim consectetur in laborum dolore in labore veniam labore commodo tempor. Sunt sit officia commodo quis magna. Aliqua esse est adipisicing ea est ex esse esse officia sit culpa minim amet dolore. Culpa dolore laborum sunt do commodo duis in velit. Mollit duis voluptate aliquip magna labore aute sit dolore amet culpa labore. Id tempor consectetur est anim ullamco ex nostrud voluptate excepteur. Aliqua laboris aute laborum amet eu. Minim quis veniam et dolor quis fugiat. Adipisicing amet est do aliqua nostrud amet excepteur ut.
+
+Palavras-chaves: palavra-chave 1. palavra-chave 2. palavra-chave 3.
+<!-- %:::% foreign-abstract body end %:::% -->

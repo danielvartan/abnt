@@ -22,6 +22,8 @@ the [`abntex2`](https://www.abntex.net.br/) suite, the
 [`abntex2ppgsi`](https://www.overleaf.com/project/64f7bdf1641ad4a3a8482800)
 template and on [USP guidelines for creating thesis and dissertation
 documents](https://teses.usp.br/index.php?option=com_content&view=article&id=52&Itemid=67&lang=en).
+This last one is based on the Brazilian Association of Technical
+Standards ([ABNT](https://www.abnt.org.br/)).
 
 This format extension also includes a [Quarto
 book](https://quarto.org/docs/books/) template designed for use with the
@@ -39,7 +41,7 @@ the repository website: <https://danielvartan.github.io/tesesusp>.
 To see a practical example of this Quarto format in action, you can
 refer to <https://github.com/danielvartan/mastersthesis>.
 
-## Instalation
+## Installation
 
 To create a new thesis from scratch, use the following command:
 
@@ -66,6 +68,10 @@ To apply this format, use the format name followed by the output type:
 
 `quarto render --to tesesusp-pdf`
 
+At the moment, `tesesusp` have two outputs formats available: `pdf` (the
+official one) and a `html` template to publish web thesis along with the
+print version.
+
 You can also set the format in your document `yml`:
 
 ``` yaml
@@ -73,12 +79,13 @@ format:
   tesesusp-pdf
 ```
 
-Since USP guidelines are plentiful, some formatting had to be made by
-inventive/non-conventional ways (to put it mildly). The easy way to
-start using `tesesusp` is cloning this repository and building on top of
-its [Quarto book](https://quarto.org/docs/books/). If you do this, don’t
-forget to install [`renv`](https://rstudio.github.io/renv/index.html)
-and run `renv::restore()` after.
+Since USP and ABNT guidelines are plentiful, some formatting had to be
+made by inventive/non-conventional ways (to put it mildly). The easy way
+to start using `tesesusp` is cloning this repository and building on top
+of its [Quarto book](https://quarto.org/docs/books/). If you do this,
+don’t forget to install
+[`renv`](https://rstudio.github.io/renv/index.html) and run
+`renv::restore()` after.
 
 ## Format options
 

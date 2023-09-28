@@ -19,8 +19,8 @@ rutils:::find_between_tags_and_apply(
   dir = c("", "qmd"),
   pattern = "\\.qmd$",
   ignore = "^_",
-  begin_tag = "&&& title begin &&&",
-  end_tag = "&&& title end &&&",
+  begin_tag = "%:::% .common h1 begin %:::%",
+  end_tag = "%:::% .common h1 end %:::%",
   fun = function(x) {
     pattern <- "(?<=# )(.*?)(?= \\{)|(?<=# ).+"
     old_string <- stringr::str_extract_all(x, pattern)
@@ -31,33 +31,38 @@ rutils:::find_between_tags_and_apply(
 ) |>
   rutils:::shush()
 
-# Change index chapter title ----------
+# Update Quarto files ----------
 
-chapter_path <- here::here("index.qmd")
+update_par_pre_render_pdf <- list(
+  index_title = list(
+    from = here::here("index.qmd"),
+    to = here::here("index.qmd"),
+    begin_tag = "%:::% .common h1 begin %:::%",
+    end_tag = "%:::% .common h1 end %:::%",
+    value = "# Welcome {.unnumbered}"
+  ),
+  reference_title = list(
+    from = here::here("qmd", "references.qmd"),
+    to =here::here("qmd", "references.qmd"),
+    begin_tag = "%:::% .common h1 begin %:::%",
+    end_tag = "%:::% .common h1 end %:::%",
+    value = "# References {.unnumbered}"
+  )
+)
 
-rutils:::transform_value_between_tags(
-  x = readLines(chapter_path),
-  fun = "# Welcome {.unnumbered}",
-  begin_tag = "&&& title begin &&&",
-  end_tag = "&&& title end &&&"
-)|>
-  writeLines(chapter_path)
+for (i in update_par_pre_render_pdf) {
+  rutils:::update_quarto_file(
+    from = i$from,
+    to = i$to,
+    begin_tag = i$begin_tag,
+    end_tag = i$end_tag,
+    value = i$value,
+    wd = here::here()
+  )
+}
 
-# Change reference chapter title ----------
-
-chapter_path <- here::here("qmd", "references.qmd")
-
-rutils:::transform_value_between_tags(
-  x = readLines(chapter_path),
-  fun = "# References {.unnumbered}",
-  begin_tag = "&&& title begin &&&",
-  end_tag = "&&& title end &&&"
-)|>
-  writeLines(chapter_path)
-
-# Copy images folder to `./qmd` ----------
-
-# To solve issues related to relative paths.
+# Copy images folder to `./qmd` (solve issues related to relative paths)
+# ----------
 
 dir_path <- here::here("qmd", "images")
 

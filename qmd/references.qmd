@@ -2,9 +2,11 @@
 \postextual
 :::
 
-<!-- &&& title begin &&& -->
-# References {.unnumbered}
-<!-- &&& title end &&& -->
+<!-- %:::% .common h1 begin %:::% -->
+# REFERENCES [^1] {.unnumbered}
+
+[^1]: According to the APA style - American Psychological Association.
+<!-- %:::% .common h1 end %:::% -->
 
 ```{r}
 #| label: setup

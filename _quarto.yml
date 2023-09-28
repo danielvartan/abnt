@@ -1,6 +1,7 @@
 editor: source
 
 execute:
+  cache: false
   freeze: false # auto
 
 project:
@@ -28,7 +29,7 @@ book:
   #   {abntex2ppgsi} template, and on USP guidelines for creating thesis and
   #   dissertation documents.
   keyword: >
-    "quarto-format, thesis, dissertation, university-of-sao-paulo, usp"
+    quarto-format, thesis, dissertation, university-of-sao-paulo, usp
   language: en-us
   license: "Creative Commons Attribution 4.0 International (CC BY 4.0)"
   publisher: "University of São Paulo"
@@ -37,7 +38,7 @@ book:
   url: https://danielvartan.github.io/tesesusp/
   site-url: https://danielvartan.github.io/tesesusp/
   repo-url: https://github.com/danielvartan/tesesusp/
-  issue-url: https://github.com/danielvartan/tesesusp/issues
+  issue-url: https://github.com/danielvartan/tesesusp/issues/
   repo-branch: main
   version: "0.1.0"
 

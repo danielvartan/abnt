@@ -23,11 +23,11 @@ book:
         - qmd/inscription.qmd
         - qmd/acknowledgments.qmd
         - qmd/epigraph.qmd
-        - qmd/abstract.qmd
-        - qmd/resumo.qmd
-        - qmd/abbreviations.qmd
-        - qmd/symbols.qmd
-        - qmd/terms.qmd
+        - qmd/vernacular-abstract.qmd
+        - qmd/foreign-abstract.qmd
+        - qmd/list-of-abbreviations.qmd
+        - qmd/list-of-symbols.qmd
+        - qmd/list-of-terms.qmd
         - qmd/thesis-outline.qmd
     - part: "Chapters"
       chapters:
@@ -50,6 +50,8 @@ theme:
 
 format:
   html:
+    nocite: |
+      @*
     site-name: tesesusp
     open-graph: true
     locale: en-us

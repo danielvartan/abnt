@@ -1,0 +1,40 @@
+# {tesesusp} congif file
+
+Use this quarto document to change your thesis pre-textual sections on the PDF format.
+__Do not remove the text tags__! (a tag: <!-- %:::% tag %:::% --> )
+
+Some general instructions:
+
+* If you won't use a section of this document, remove it! Empty sections will produce an error. At the moment, this must be made on the `include-before-body.tex` file.
+
+## Title page
+
+<!-- %:::% title-page body begin %:::% -->
+Original version
+
+\vspace{1cm}
+
+[DISSERTATION/THESIS] presented to the [SCHOOL/DEPARTMENT] at the University of São Paulo, as part of the requirements for the degree of [TYPE OF DEGREE] by the [GRADUATE PROGRAM].
+
+\vspace{0.5cm}
+
+Area of Con.: [AREA OF CONCENTRATION].
+
+\vspace{1cm}
+
+Revised version incorporating the changes requested by the examining committee on [DATE]. The original version is held in the reserved collection at the [SCHOOL/DEPARTAMENT] Library and in the Digital Library of Theses and Dissertations of the University of São Paulo (BDTD-USP), in accordance with [Resolution CoPGr 6018, dated October 13, 2011](https://leginf.usp.br/?resolucao=resolucao-copgr-no-6018-de-13-de-outubro-de-2011).
+
+\vspace{1cm}
+
+Supervisor: Prof. Dr. [SUPERVISOR'S FULL NAME]
+
+\vspace{0.25cm}
+
+Co-Supervisor: Prof. Dr. [CO-SUPERVISOR'S FULL NAME]
+<!-- %:::% title-page body end %:::% -->
+
+## Approval sheet header
+
+<!-- %:::% approval-sheet header begin %:::% -->
+[TYPE OF WORK] by [AUTHOR'S FULL NAME], under the title __{tesesusp}: a Quarto format for USP theses and dissertations__, presented to the [SCHOOL/DEPARTMENT] at the University of São Paulo, as part of the requirements for the degree of [TYPE OF DEGREE] by the [GRADUATE PRGRAM]), in the concentration area of [CONCENTRATION AREA].
+<!-- %:::% approval-sheet header end %:::% -->

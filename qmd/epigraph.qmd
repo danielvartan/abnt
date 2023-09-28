@@ -1,6 +1,6 @@
-<!-- &&& title begin &&& -->
-# Epigraph {.unnumbered}
-<!-- &&& title end &&& -->
+<!-- %:::% .common h1 begin %:::% -->
+# EPIGRAPH {.unnumbered}
+<!-- %:::% .common h1 end %:::% -->
 
 ```{r}
 #| label: setup
@@ -12,6 +12,18 @@
 source(here::here("R/quarto-setup.R"))
 ```
 
+::: {.content-visible when-format="html"}
 > _Nullius in verba_
-> 
-> [@theroyalsociety]
+
+[@theroyalsociety]
+:::
+
+<!-- @theroyalsociety -->
+
+::: {.content-visible when-format="pdf"}
+<!-- %:::% epigraph body begin %:::% -->
+_Nullius in verba_
+
+(The Royal Society, n.d.)
+<!-- %:::% epigraph body end %:::% -->
+:::

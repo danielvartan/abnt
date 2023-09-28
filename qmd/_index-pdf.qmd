@@ -1,5 +1,4 @@
-<!-- &&& clip 1 begin &&& -->
-
+<!-- %:::% chapter-1 clip begin %:::% -->
 ::: {.content-visible when-format="html"}
 ::: {.callout-note}
 The text below is for demonstrative purposes only.
@@ -72,11 +71,38 @@ datasets::iris |>
 
 ### `r ifelse(env_vars$format == "html", "Tertiary section", "TERTIARY SECTION")`
 
+<!-- See also  -->
+<!-- <https://r-graph-gallery.com/277-marginal-histogram-for-ggplot2.html>. -->
+
 ```{r}
-#| fig-cap: "Speed and stopping distances of cars"
+#| fig-cap: "Relations betwwen __waiting time to next eruption__ (in minutes) and __eruption time__ (in minutes) for the Old Faithful geyser in Yellowstone National Park, Wyoming, USA."
 #| fig-height: 3.5
 
-plot(cars)
+# Example extracted from:
+# <https://ggplot2.tidyverse.org/reference/geom_density_2d.html>.
+
+# library(datasets)
+library(ggplot2)
+
+ggplot2::ggplot(faithful, aes(x = eruptions, y = waiting)) +
+  ggplot2::geom_point() +
+  ggplot2::xlim(0.5, 6) +
+  ggplot2::ylim(40, 110) +
+  geom_density_2d_filled(alpha = 0.5) +
+  geom_density_2d(linewidth = 0.25, colour = "black")
+```
+
+```{r}
+#| eval: false
+#| echo: false
+#| output: false
+#| fig-cap: "Relations betwwen __price__ and __carat__ (weight) of diamonds."
+#| fig-height: 3.5
+
+library(ggplot2)
+
+ggplot2::ggplot(ggplot2::diamonds, ggplot2::aes(carat, price)) +
+  ggplot2::geom_boxplot(ggplot2::aes(group = ggplot2::cut_width(carat, 0.25)))
 ```
 
 #### `r ifelse(env_vars$format == "html", "Quaternary section", "QUATERNARY SECTION")`
@@ -84,6 +110,11 @@ plot(cars)
 * Bullet point
   * Bullet point
     * Bullet point
-      * Bullet point
 
-<!-- &&& clip 1 end &&& -->
+##### `r ifelse(env_vars$format == "html", "Quaternary section", "QUINARY SECTION")`
+
+1. List
+1. List
+1. List
+
+<!-- %:::% chapter-1 clip end %:::% -->

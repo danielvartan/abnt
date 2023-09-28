@@ -44,7 +44,7 @@ if (length(pdf_file) == 1) {
 rutils:::clean_quarto_mess(
   wd = here::here(),
   file = NULL,
-  dir = c(".temp", "index_files"),
+  dir = c(".temp", "index_cache", "index_files"),
   ext = c("aux", "cls", "loa", "log", "pdf", "tex"),
   keep = NULL,
   quarto_yaml = NULL

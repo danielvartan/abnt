@@ -1,6 +1,6 @@
-<!-- &&& title begin &&& -->
-# Thesis outline {.unnumbered}
-<!-- &&& title end &&& -->
+<!-- %:::% .common h1 begin %:::% -->
+# THESIS OUTLINE {.unnumbered}
+<!-- %:::% .common h1 end %:::% -->
 
 ```{r}
 #| label: setup

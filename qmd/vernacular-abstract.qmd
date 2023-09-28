@@ -1,0 +1,21 @@
+<!-- %:::% .common h1 begin %:::% -->
+# ABSTRACT {.unnumbered}
+<!-- %:::% .common h1 end %:::% -->
+
+```{r}
+#| label: setup
+#| echo: false
+#| output: false
+
+# library(here)
+
+source(here::here("R/quarto-setup.R"))
+```
+
+<!-- %:::% vernacular-abstract body begin %:::% -->
+[SURNAME], [INITIALS]. ([YEAR]). _[TITLE]_ [[TYPE OF THESIS]]. [SCHOOL/DEPARTMENT], University of São Paulo, São Paulo. [THESIS'S URL]
+
+Cupidatat ad culpa non veniam quis mollit dolor ut irure eiusmod sint aute duis. Mollit eu ipsum deserunt nisi est culpa exercitation dolor. Velit veniam ad elit aliqua excepteur consectetur duis cillum id do mollit dolor pariatur aute. Excepteur velit ea aliqua amet fugiat qui aliquip tempor. Labore occaecat mollit minim in velit est nisi. Ut voluptate laboris ad amet culpa excepteur voluptate eiusmod est. Adipisicing eu fugiat irure sunt id tempor consectetur sint ipsum cillum. Ex sunt enim anim quis cupidatat reprehenderit reprehenderit nisi ea amet. Ullamco minim voluptate tempor nostrud id voluptate exercitation. Elit sint ea occaecat ipsum dolore incididunt velit cupidatat id. Consectetur aliquip dolore elit aute elit et ex ex fugiat ex laboris non magna. Duis voluptate mollit laborum aliquip elit mollit ad nisi sunt id ipsum esse incididunt eiusmod. Qui incididunt consectetur cillum est ex proident ad eiusmod excepteur pariatur velit enim ut cillum. Fugiat exercitation veniam eiusmod irure ut ad sint sunt consequat consectetur. Dolor sint voluptate mollit anim dolor ea ad ex veniam.
+
+Keywords: keyword 1. keyword 2. keyword 3.
+<!-- %:::% vernacular-abstract body end %:::% -->

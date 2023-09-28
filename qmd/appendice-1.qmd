@@ -1,6 +1,6 @@
-<!-- &&& title begin &&& -->
-# Appendix 1
-<!-- &&& title end &&& -->
+<!-- %:::% .common h1 begin %:::% -->
+# APPENDIX 1
+<!-- %:::% .common h1 end %:::% -->
 
 ```{r}
 #| label: setup

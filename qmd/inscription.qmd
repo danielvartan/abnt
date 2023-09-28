@@ -1,6 +1,6 @@
-<!-- &&& title begin &&& -->
-# Inscription {.unnumbered}
-<!-- &&& title end &&& -->
+<!-- %:::% .common h1 begin %:::% -->
+# INSCRIPTION {.unnumbered}
+<!-- %:::% .common h1 end %:::% -->
 
 ```{r}
 #| label: setup
@@ -12,4 +12,26 @@
 source(here::here("R/quarto-setup.R"))
 ```
 
-I dedicate this work to the skeptics, the radicals, the ignorant, the uncivilized, the subversives, the wild dogs, the irreducibles, the irreconcilables. To the true engines of change. To the destabilizers, who possess equal or greater importance than the stabilizers. To those who act on principle, even knowing that there is no ultimate reward or any meaning in life.
+::: {.content-visible when-format="html"}
+
+To the worm that first gnawed on the cold flesh of my corpse, I dedicate, as a fond remembrance, these posthumous memories.
+
+> Inscription found in the book _The Posthumous Memoirs of Brás Cubas_ by @assis2014 .
+
+:::
+
+<!-- @assis2014 -->
+
+::: {.content-visible when-format="pdf"}
+<!-- %:::% inscription body begin %:::% -->
+_To the worm that first gnawed on the cold flesh of my corpse,_ 
+
+_I dedicate, as a fond remembrance, these posthumous memories._
+
+\vspace{1cm}
+
+Inscription found in the book 
+
+_The Posthumous Memoirs of Brás Cubas_ by Machado de Assis (2014).
+<!-- %:::% inscription body end %:::% -->
+:::

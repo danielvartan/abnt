@@ -1,6 +1,6 @@
-<!-- &&& title begin &&& -->
-# Errata {.unnumbered}
-<!-- &&& title end &&& -->
+<!-- %:::% .common h1 begin %:::% -->
+# ERRATA {.unnumbered}
+<!-- %:::% .common h1 end %:::% -->
 
 ```{r}
 #| label: setup
@@ -12,4 +12,6 @@
 source(here::here("R/quarto-setup.R"))
 ```
 
+<!-- %:::% errata body begin %:::% -->
 This is the development version of the thesis (version <1.0.0). Any necessary corrections will be listed here after its approval.
+<!-- %:::% errata body end %:::% -->

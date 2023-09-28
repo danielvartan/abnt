@@ -9,6 +9,8 @@ set.seed(2023)
 # library(ggplot2, quietly = TRUE)
 # lybrary(yaml)
 
+knitr::clean_cache()
+
 knitr::opts_chunk$set(
   comment = "#>",
   collapse = TRUE,

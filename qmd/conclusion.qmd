@@ -1,6 +1,6 @@
-<!-- &&& title begin &&& -->
-# Conclusion
-<!-- &&& title end &&& -->
+<!-- %:::% .common h1 begin %:::% -->
+# CONCLUSION
+<!-- %:::% .common h1 end %:::% -->
 
 ```{r}
 #| label: setup

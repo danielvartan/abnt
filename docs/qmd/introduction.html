@@ -192,32 +192,32 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../qmd/abstract.html" class="sidebar-item-text sidebar-link">
+  <a href="../qmd/vernacular-abstract.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Abstract</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../qmd/resumo.html" class="sidebar-item-text sidebar-link">
+  <a href="../qmd/foreign-abstract.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Resumo</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../qmd/abbreviations.html" class="sidebar-item-text sidebar-link">
+  <a href="../qmd/list-of-abbreviations.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Abbreviations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../qmd/symbols.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Symbols</span></a>
+  <a href="../qmd/list-of-symbols.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">List of symbols</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../qmd/terms.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Terms and definitions</span></a>
+  <a href="../qmd/list-of-terms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">List of terms and definitions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -313,7 +313,7 @@ div.csl-indent {
   </div>
   
 
-</header><!-- &&& title begin &&& --><!-- &&& title end &&& --><!-- &&& clip 1 begin &&& --><div class="callout callout-style-simple callout-note">
+</header><!-- %:::% .common h1 begin %:::% --><!-- %:::% .common h1 end %:::% --><!-- %:::% chapter-1 clip begin %:::% --><div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -405,19 +405,30 @@ One of the 20th century’s most influential philosophers of science.</figcaptio
 </div>
 <section id="tertiary-section" class="level3" data-number="1.1.1"><h3 data-number="1.1.1" class="anchored" data-anchor-id="tertiary-section">
 <span class="header-section-number">1.1.1</span> Tertiary section</h3>
+<!-- See also  -->
+<!-- <https://r-graph-gallery.com/277-marginal-histogram-for-ggplot2.html>. -->
 <div class="cell">
-<details><summary>Code</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details><summary>Code</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Example extracted from:</span></span>
+<span><span class="co"># &lt;https://ggplot2.tidyverse.org/reference/geom_density_2d.html&gt;.</span></span>
+<span></span>
+<span><span class="co"># library(datasets)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">faithful</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">eruptions</span>, y <span class="op">=</span> <span class="va">waiting</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">6</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">ylim</a></span><span class="op">(</span><span class="fl">40</span>, <span class="fl">110</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_density_2d.html">geom_density_2d_filled</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_density_2d.html">geom_density_2d</a></span><span class="op">(</span>linewidth <span class="op">=</span> <span class="fl">0.25</span>, colour <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="introduction_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Speed and stopping distances of cars</figcaption></figure>
+<figcaption class="figure-caption">Relations betwwen <strong>waiting time to next eruption</strong> (in minutes) and <strong>eruption time</strong> (in minutes) for the Old Faithful geyser in Yellowstone National Park, Wyoming, USA.</figcaption></figure>
 </div>
 </div>
 </div>
 <section id="quaternary-section" class="level4" data-number="1.1.1.1"><h4 data-number="1.1.1.1" class="anchored" data-anchor-id="quaternary-section">
 <span class="header-section-number">1.1.1.1</span> Quaternary section</h4>
-<ul>
-<li>Bullet point
 <ul>
 <li>Bullet point
 <ul>
@@ -429,16 +440,69 @@ One of the 20th century’s most influential philosophers of science.</figcaptio
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-<!-- &&& clip 1 end &&& -->
+<section id="quaternary-section-1" class="level5" data-number="1.1.1.1.1"><h5 data-number="1.1.1.1.1" class="anchored" data-anchor-id="quaternary-section-1">
+<span class="header-section-number">1.1.1.1.1</span> Quaternary section</h5>
+<ol type="1">
+<li>List</li>
+<li>List</li>
+<li>List</li>
+</ol>
+<!-- %:::% chapter-1 clip end %:::% -->
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-aschoff1965" class="csl-entry" role="listitem">
+Aschoff, Jürgen, K. Klotter, and R. Wever. 1965. <span>“Circadian Vocabulary: A Recommended Terminology with Definitions.”</span> In <em>Circadian Clocks</em>. North-Holland.
+</div>
+<div id="ref-assis2014" class="csl-entry" role="listitem">
+Assis, Machado de. 2014. <em>Memórias póstumas de Brás Cubas</em>. São Paulo: Companhia das Letras.
+</div>
+<div id="ref-bertalanffy1968" class="csl-entry" role="listitem">
+Bertalanffy, Ludwig von. 1968. <em>General System Theory: Foundations, Development, Applications</em>. New York, NY: George Braziller.
+</div>
+<div id="ref-cambridgeuniversitypress" class="csl-entry" role="listitem">
+Cambridge University Press. n.d. <span>“Cambridge Dictionary.”</span> Accessed September 21, 2023. <a href="https://dictionary.cambridge.org/">https://dictionary.cambridge.org/</a>.
+</div>
+<div id="ref-ehret1974" class="csl-entry" role="listitem">
+Ehret, Charles F. 1974. <span>“The Sense of Time: Evidence for Its Molecular Basis in the Eukaryotic Gene-Action System.”</span> In <em>Advances in Biological and Medical Physics</em>, 15:47–77. Elsevier. <a href="https://doi.org/10.1016/B978-0-12-005215-8.50009-7">https://doi.org/10.1016/B978-0-12-005215-8.50009-7</a>.
+</div>
+<div id="ref-horne1976" class="csl-entry" role="listitem">
+Horne, J. A., and O. Ostberg. 1976. <span>“<a href="https://www.ncbi.nlm.nih.gov/pubmed/1027738">A self-assessment questionnaire to determine morningness-eveningness in human circadian rhythms</a>.”</span> <em>International Journal of Chronobiology</em> 4 (2): 97–110.
+</div>
+<div id="ref-kuhlman2018" class="csl-entry" role="listitem">
+Kuhlman, Sandra J., L. Michon Craig, and Jeanne F. Duffy. 2018. <span>“Introduction to Chronobiology.”</span> <em>Cold Spring Harbor Perspectives in Biology</em> 10 (9): a033613. <a href="https://doi.org/10.1101/cshperspect.a033613">https://doi.org/10.1101/cshperspect.a033613</a>.
+</div>
+<div id="ref-latinitium" class="csl-entry" role="listitem">
+Latinitium. n.d. <span>“Latin Dictionaries.”</span> Latinitium. Accessed September 21, 2023. <a href="https://latinitium.com/latin-dictionaries/">https://latinitium.com/latin-dictionaries/</a>.
+</div>
+<div id="ref-levins1998" class="csl-entry" role="listitem">
+Levins, Richard. 1998. <span>“Dialectics and Systems Theory.”</span> <em>Science &amp; Society</em> 62 (3): 375–99. <a href="https://www.jstor.org/stable/40403729">https://www.jstor.org/stable/40403729</a>.
+</div>
+<div id="ref-marques2012" class="csl-entry" role="listitem">
+Marques, Mirian David, and Gisele Oda. 2012. <span>“Glossário.”</span> <em>Revista da Biologia</em> 9 (3). <a href="https://www.revistas.usp.br/revbiologia/article/view/114816">https://www.revistas.usp.br/revbiologia/article/view/114816</a>.
+</div>
+<div id="ref-mitchell2013" class="csl-entry" role="listitem">
+Mitchell, Melanie. 2013. <span>“Introduction to Complexity.”</span> Online course. 2013. <a href="https://www.complexityexplorer.org/courses/1-https://www.complexityexplorer.org/courses/1">https://www.complexityexplorer.org/courses/1-https://www.complexityexplorer.org/courses/1</a>.
+</div>
+<div id="ref-pittendrigh1960" class="csl-entry" role="listitem">
+Pittendrigh, C. S. 1960. <span>“Circadian Rhythms and the Circadian Organization of Living Systems.”</span> <em>Cold Spring Harbor Symposia on Quantitative Biology</em> 25: 159–84. <a href="https://doi.org/10.1101/SQB.1960.025.01.015">https://doi.org/10.1101/SQB.1960.025.01.015</a>.
+</div>
+<div id="ref-pittendrigh1993" class="csl-entry" role="listitem">
+———. 1993. <span>“Temporal Organization: Reflections of a Darwinian Clock-Watcher.”</span> <em>Annual Review of Physiology</em> 55 (1): 17–54. <a href="https://doi.org/10.1146/annurev.ph.55.030193.000313">https://doi.org/10.1146/annurev.ph.55.030193.000313</a>.
+</div>
 <div id="ref-popper1979" class="csl-entry" role="listitem">
 Popper, Karl R. 1979. <em>Objective Knowledge: An Evolutionary Approach</em>. Rev. ed. Oxford University Press.
 </div>
+<div id="ref-roenneberg2012a" class="csl-entry" role="listitem">
+Roenneberg, Till, Karla&nbsp;V. Allebrandt, Martha Merrow, and Céline Vetter. 2012. <span>“Social Jetlag and Obesity.”</span> <em>Current Biology</em> 22 (10): 939–43. <a href="https://doi.org/10.1016/j.cub.2012.03.038">https://doi.org/10.1016/j.cub.2012.03.038</a>.
 </div>
-</section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+<div id="ref-roenneberg2003" class="csl-entry" role="listitem">
+Roenneberg, Till, Anna Wirz-Justice, and Martha Merrow. 2003. <span>“Life Between Clocks: Daily Temporal Patterns of Human Chronotypes.”</span> <em>Journal of Biological Rhythms</em> 18 (1): 80–90. <a href="https://doi.org/10.1177/0748730402239679">https://doi.org/10.1177/0748730402239679</a>.
+</div>
+<div id="ref-theroyalsociety" class="csl-entry" role="listitem">
+The Royal Society. n.d. <span>“History of the Royal Society.”</span> Accessed September 9, 2023. <a href="https://royalsociety.org/about-us/history/">https://royalsociety.org/about-us/history/</a>.
+</div>
+</div>
+</section></section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");

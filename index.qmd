@@ -2,9 +2,9 @@
 \textual
 :::
 
-<!-- &&& title begin &&& -->
-# Welcome {.unnumbered}
-<!-- &&& title end &&& -->
+<!-- %:::% .common h1 begin %:::% -->
+# INTRODUCTION
+<!-- %:::% .common h1 end %:::% -->
 
 ```{r}
 #| label: setup

@@ -107,6 +107,7 @@
 \newcommand{\resumoname}{ABSTRACT}
 \newcommand{\listadesiglasname}{LIST OF ABBREVIATIONS AND ACRONYMS}
 \newcommand{\listadesimbolosname}{LIST OF SYMBOLS}
+\newcommand{\listadetermosname}{LIST OF TERMS AND DEFINITIONS}
 \newcommand{\sourcename}{Source}
 \newcommand{\notaname}{Note}
 
@@ -134,6 +135,7 @@
   \renewcommand{\listtablename}{LIST OF TABLES}
   \renewcommand{\listadesiglasname}{LIST OF ABBREVIATIONS AND ACRONYMS}
   \renewcommand{\listadesimbolosname}{LIST OF SYMBOLS}
+  \renewcommand{\listadetermosname}{LIST OF TERMS AND DEFINITIONS}
   \renewcommand{\contentsname}{TABLE OF CONTENTS}
   \renewcommand{\bibname}{REFERENCES}
   \renewcommand{\indexname}{INDEX}
@@ -166,6 +168,7 @@
   \renewcommand{\listtablename}{LISTA DE TABELAS}
   \renewcommand{\listadesiglasname}{LISTA DE ABREVIATURAS E SIGLAS}
   \renewcommand{\listadesimbolosname}{LISTA DE S\'IMBOLOS}
+  \renewcommand{\listadetermosname}{LISTA DE TERMOS E DEFINI\c{C}\~OES}
   \renewcommand{\contentsname}{SUMÁRIO}
   \renewcommand{\bibname}{REFER\^ENCIAS}
   \renewcommand{\indexname}{\'INDICE}
@@ -198,6 +201,7 @@
   \renewcommand{\listtablename}{LIST DE TABLAS}
   \renewcommand{\listadesiglasname}{LISTA DE ABREVIATURAS Y SIGLAS}
   \renewcommand{\listadesimbolosname}{LISTA DE S\'IMBOLOS}
+  \renewcommand{\listadetermosname}{LISTA DE T\'ERMINOS Y DEFINICIONES}
   \renewcommand{\contentsname}{SUMARIO}
   \renewcommand{\bibname}{REFERENCIAS}
   \renewcommand{\indexname}{\'INDICE}
@@ -657,9 +661,10 @@
 
 %% Inscription
 \newenvironment{dedicatoria}[1][]{%
-   \ifthenelse{\equal{#1}{}}{%
-    \PRIVATEbookmarkthis{\dedicatorianame}
-    }{\pretextualchapter{#1}}
+  \setlength{\parindent}{0pt}
+  \ifthenelse{\equal{#1}{}}{%
+  \PRIVATEbookmarkthis{\dedicatorianame}
+  }{\pretextualchapter{#1}}
   }{\PRIVATEclearpageifneeded}
 
 %% Acknowledgments
@@ -705,22 +710,25 @@
    \begin{onecolabstract}
 }{\end{onecolabstract}\PRIVATEclearpageifneeded}
 
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
 %% List of abbreviations and acronyms
 \newenvironment{siglas}{%
   \pretextualchapter{\listadesiglasname}
-  \begin{symbols}
-}{%
-  \end{symbols}
-  \cleardoublepage
+  % \setlength{\parindent}{0pt}
 }
 
 %% List of symbols
 \newenvironment{simbolos}{%
   \pretextualchapter{\listadesimbolosname}
-  \begin{symbols}
-}{%
-  \end{symbols}
-  \cleardoublepage
+  % \setlength{\parindent}{0pt}
+}
+
+%% List of terms and definitions
+\newenvironment{termos}{%
+  \pretextualchapter{\listadetermosname}
+  % \setlength{\parindent}{0pt}
 }
 
 % ----------------------------------------------------------------------

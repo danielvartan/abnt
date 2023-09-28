@@ -27,7 +27,7 @@ for (i in c(output_dir_html, output_dir_pdf)) {
 
 # Copy PDF (if exists) to `docs` folder ----------
 
-pdf_file <- list.files(output_dir_pdf, full.names = TRUE, pattern = ".pdf$")
+pdf_file <- list.files(pdf, full.names = TRUE, pattern = ".pdf$")
 
 if (length(pdf_file) == 1) {
   rutils:::copy_file(pdf_file, file.path(output_dir_html, "index.pdf"))
@@ -60,7 +60,7 @@ writeLines(
 rutils:::clean_quarto_mess(
   wd = here::here(),
   file = NULL,
-  dir = c(".temp", "index_files", "qmd/images"),
+  dir = c(".temp", "index_cache", "index_files", "qmd/images"),
   ext = NULL,
   keep = NULL,
   quarto_yaml = NULL
