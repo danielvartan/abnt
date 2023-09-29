@@ -1,5 +1,5 @@
 <!-- %:::% .common h1 begin %:::% -->
-# EPIGRAPH {.unnumbered}
+# Epigraph {.unnumbered}
 <!-- %:::% .common h1 end %:::% -->
 
 ```{r}

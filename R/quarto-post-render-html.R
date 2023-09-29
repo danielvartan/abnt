@@ -20,14 +20,15 @@ project_name <- here::here() |> basename() # rstudioapi::getActiveProject()
 
 output_dir_html <- here::here(quarto_yml_html_vars$project$`output-dir`)
 output_dir_pdf <- here::here(quarto_yml_pdf_vars$project$`output-dir`)
+pdf_dir <- here::here("pdf")
 
-for (i in c(output_dir_html, output_dir_pdf)) {
+for (i in c(output_dir_html, output_dir_pdf, pdf_dir)) {
   if (!checkmate::test_directory_exists(i)) dir.create(i) |> invisible()
 }
 
 # Copy PDF (if exists) to `docs` folder ----------
 
-pdf_file <- list.files(pdf, full.names = TRUE, pattern = ".pdf$")
+pdf_file <- list.files(pdf_dir, full.names = TRUE, pattern = ".pdf$")
 
 if (length(pdf_file) == 1) {
   rutils:::copy_file(pdf_file, file.path(output_dir_html, "index.pdf"))

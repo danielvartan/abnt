@@ -72,3 +72,5 @@
 # * Fix relative path for images.
 # * Transform BiBTeX keys in LaTeX citations, when rendered with pandoc
 # * Add a update function for tags in the latex files (e.g., cover page)
+# * Find why the document have to be rendered twice
+# * Add stop list em transforming titles in setence case

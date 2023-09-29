@@ -1,5 +1,5 @@
 <!-- %:::% .common h1 begin %:::% -->
-# LIST OF TERMS AND DEFINITIONS {.unnumbered}
+# List of terms and definitions {.unnumbered}
 <!-- %:::% .common h1 end %:::% -->
 
 ```{r}
@@ -23,7 +23,7 @@ See <https://github.com/danielvartan/tesesusp> to learn more about this template
 
 <!-- %:::% list-of-terms body begin %:::% -->
 <!-- @aschoff1965; @marques2012 -->
-For an extensive list of chronobiology terms and definitions, please refer to Aschoff et al. (1965) and Marques & Oda (2012).
+For an extensive list of chronobiology related terms and definitions, please refer to Aschoff et al. (1965) and Marques & Oda (2012).
 
 <!-- @ehret1974; @pittendrigh1993; @horne1976; @roenneberg2003; @roenneberg2012a -->
 Chronotype
@@ -37,7 +37,7 @@ Circadian rhythm
 Complex system
 : \hspace{20cm} There are several definitions. Here are some that I found to be of use:
 
-* "Systems that don't yield to compact forms of representation or description." (David Krakauer apud Mitchell, 2013)
+* "Systems that don't yield to compact forms of representation or description" (David Krakauer apud Mitchell, 2013)
 * "A system of many interacting parts where the system is more than just the sum of its parts" (Mark Newman apud Mitchell, 2013)
 * Systems with many connected agents that interact and exhibit self-organization and emergence behavior, all without the need for a central controller (adapted from Camilo Rodrigues Neto's definition, supervisor of this thesis).
 * Dialectics at its finest (my working definition).
@@ -45,31 +45,4 @@ Complex system
 <!-- @kuhlman2018 -->
 Entrainment
 : \hspace{20cm} A shift and alignment of biological rhythms induced by a zeitgeber input (Kuhlman et al., 2018). For example: a shift/alignment of an organism's circadian rhythm when exposed to light.
-
-<!-- Genotype -->
-
-<!-- @latinitium -->
-Infradian rhythm
-: \hspace{20cm} A rhythm with a period greater than a day/24h. From the Latin _infrā_, below (think in terms of period repetition), and _dĭes_, day (Latinitium, n.d.). Example: the menstrual cycle.
-
-<!-- @kuhlman2018 -->
-Period
-: \hspace{20cm} Cycle duration of an oscillation or, in a more technical way, the duration between two identical and consecutive phases in an oscillation (Kuhlman et al., 2018).
-
-<!-- Phenotype -->
-
-<!-- @bertalanffy1968; @levins1998 -->
-System theory
-: \hspace{20cm} Two definitions can be of use:
-
-* Science or discipline that investigates models, principles, and laws that are valid to systems in general (Bertalanffy, 1968).
-* "The attempt of a reductionist scientific tradition to come to terms with complexity, nonlinearity, and change through sophisticated mathematical and computational techniques, _a groping toward a more dialectical understanding_ that is held back by its philosophical biases and the institutional and economic contexts of its development." (Levins, 1998)
-
-<!-- @latinitium -->
-Ultradian rhythm
-: \hspace{20cm} A rhythm with a period below a day/24h. From the Latin _ultrā_, beyond (think in terms of period repetition), and _dĭes_, day (Latinitium, n.d.). Example: the cardiac cycle.
-
-<!-- @cambridgeuniversitypress; @pittendrigh1960 -->
-Zeitgeber
-: \hspace{20cm} Any periodic environmental signal/cue that can influence or regulate biological rhythms. From the German _zeit_, time, and _geber_, donor (Cambridge University Press, n.d.). Two main well known zeitgebers are light exposure and environment temperature (Pittendrigh, 1960).
 <!-- %:::% list-of-terms body end %:::% -->

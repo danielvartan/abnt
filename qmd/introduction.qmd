@@ -3,7 +3,7 @@
 :::
 
 <!-- %:::% .common h1 begin %:::% -->
-# INTRODUCTION
+# Introduction
 <!-- %:::% .common h1 end %:::% -->
 
 ```{r}

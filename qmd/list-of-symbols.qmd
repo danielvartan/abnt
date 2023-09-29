@@ -1,5 +1,5 @@
 <!-- %:::% .common h1 begin %:::% -->
-# LIST OF SYMBOLS {.unnumbered}
+# List of symbols {.unnumbered}
 <!-- %:::% .common h1 end %:::% -->
 
 ```{r}
@@ -21,7 +21,7 @@ See <https://github.com/danielvartan/tesesusp> to learn more about this template
 <!-- @aschoff1965; @marques2012 -->
 
 <!-- %:::% list-of-symbols body begin %:::% -->
-For an extensive list of chronobiology terms and definitions, please refer to Aschoff et al. (1965) and Marques & Oda (2012).
+For an extensive list of chronobiology related symbols, please refer to Aschoff et al. (1965) and Marques & Oda (2012).
 
 $\tau$
 : \hspace{20cm} Period of a rhythm in free flow; only revealed under constant environmental conditions.

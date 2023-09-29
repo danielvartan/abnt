@@ -1,5 +1,5 @@
 <!-- %:::% .common h1 begin %:::% -->
-# APPENDIX 1
+# Appendix 1
 <!-- %:::% .common h1 end %:::% -->
 
 ```{r}

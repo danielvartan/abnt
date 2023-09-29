@@ -6,7 +6,7 @@ See <https://github.com/danielvartan/tesesusp> to learn more about this template
 
 You are seeing the web version of this thesis.
 
-The analyses contained in this document are 100% reproducible. They were performed using the [R programming language](https://www.r-project.org/) and the [Quarto](https://quarto.org/) publishing system (an evolution of [R Markdown](https://rmarkdown.rstudio.com/)). Click on the GitHub icon in the menu to access the thesis code repository.
+The analyses contained in this document are 100% reproducible. They were performed using the [R programming language](https://www.r-project.org/) and the [Quarto](https://quarto.org/) publishing system (an evolution of [R Markdown](https://rmarkdown.rstudio.com/)). Click on the GitHub icon in the menu to access the thesis research compendium.
 
 ## Citation
 

@@ -1,5 +1,5 @@
 <!-- %:::% .common h1 begin %:::% -->
-# THESIS OUTLINE {.unnumbered}
+# Thesis outline {.unnumbered}
 <!-- %:::% .common h1 end %:::% -->
 
 ```{r}

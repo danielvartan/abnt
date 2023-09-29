@@ -1,5 +1,5 @@
 <!-- %:::% .common h1 begin %:::% -->
-# CONCLUSION
+# Conclusion
 <!-- %:::% .common h1 end %:::% -->
 
 ```{r}
