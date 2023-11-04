@@ -1,0 +1,50 @@
+\renewcommand{\aftertoctitle}{\center\vspace{3em}}
+
+\cftinsertcode{appendixhook}{
+    \setlength{\cftchapterindent}{6em} %
+    \renewcommand{\cftchaptername}{\appendixname\space}
+    \setlength{\cftchapternumwidth}{2.3em} % check
+    \renewcommand{\cftchapteraftersnumb}{
+        \hspace{-1.5em} -- \space % check \hspace{-1.5em}
+    }
+}
+
+\newcommand{\settoclengths}{
+  \setlength{\cftpartindent}{6em}
+  \setlength{\cftsectionnumwidth}{6em}
+  \setlength{\cftsubsectionnumwidth}{6em}
+  \setlength{\cftsubsubsectionnumwidth}{6em}
+  \setlength{\cftparagraphnumwidth}{6em}
+
+  \setlength{\cftbeforebookskip}{0pt}
+  \setlength{\cftbeforepartskip}{2em}
+  \setlength{\cftbeforechapterskip}{0.5em}
+  \setlength{\cftbeforesectionskip}{0pt}
+  \setlength{\cftbeforesubsectionskip}{0pt}
+  \setlength{\cftbeforesubsubsectionskip}{0pt}
+  \setlength{\cftbeforeparagraphskip}{0pt}
+}
+
+\settoclengths
+
+\renewcommand{\cftchapterpresnum}{\normalfont}
+\renewcommand{\cftchapteraftersnum}{\normalfont}
+\renewcommand{\cftchapteraftersnumb}{\normalfont\normalsize\bfseries\hspace{0.87em}}
+\renewcommand{\cftsubsectionpresnum}{\normalfont}
+\renewcommand{\cftparagraphpresnum}{\normalfont}
+
+\renewcommand{\cftpartfont}{\normalfont\normalsize\bfseries\MakeUppercase}
+\renewcommand{\cftchapterfont}{\normalfont\normalsize\bfseries\MakeUppercase}
+\renewcommand{\cftsectionfont}{\normalfont\normalsize\MakeUppercase}
+\renewcommand{\cftsubsectionfont}{\normalfont\normalsize\bfseries}
+\renewcommand{\cftsubsubsectionfont}{\normalfont\normalsize}
+\renewcommand{\cftparagraphfont}{\normalfont\normalsize\itshape}
+
+\renewcommand{\cftpartpagefont}{\normalfont\normalsize}
+\renewcommand{\cftchapterpagefont}{\normalfont\normalsize}
+\renewcommand{\cftsectionpagefont}{\normalfont\normalsize}
+\renewcommand{\cftsubsectionpagefont}{\normalfont\normalsize}
+\renewcommand{\cftsubsubsectionpagefont}{\normalfont\normalsize}
+\renewcommand{\cftparagraphpagefont}{\normalfont\normalsize}
+\renewcommand{\cftfigurepagefont}{\normalfont\normalsize}
+\renewcommand{\cfttablepagefont}{\normalfont\normalsize}

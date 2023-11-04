@@ -1,7 +1,7 @@
 ::: {.callout-important}
 The text below is for demonstrative purposes only.
 
-See <https://github.com/danielvartan/tesesusp> to learn more about this template.
+See the next chapters to learn more about this template.
 :::
 
 You are seeing the web version of this thesis.
@@ -12,19 +12,34 @@ The analyses contained in this document are 100% reproducible. They were perform
 
 For attribution, please cite this work as:
 
-[SURNAME], [INITIALS]. ([YEAR]). _[TITLE]_ [[TYPE OF THESIS]]. [SCHOOL/DEPARTMENT], University of São Paulo, São Paulo. [THESIS'S URL]
+{{< var author-surname >}}, {{< var author-initials >}}. __{{< var title >}}__. {{< var year >}}. {{< var type-of-work >}} ({{< var academic-degree >}}) -- {{< var school >}}, {{< var university >}}, {{< var location >}}, {{< var year >}}. Available from: <{{< var url >}}>.
 
 BibTeX citation:
 
+```{r}
+#| echo: false
+#| output: false
+
+# library(here)
+
+env_vars <- yaml::read_yaml(here::here("_variables.yml"))
+
+bib_tag <- ifelse(
+  grepl(env_vars$`academic-title`, "Master", ignore.case = TRUE), 
+  "@mastersthesis", 
+  "@phdthesis"
+  )
 ```
-@mastersthesis{[surname][year],
-  title = {[TITLE]},
-  author = {[AUTHOR'S FULL NAME]},
-  year = {[YEAR]},
-  address = {São Paulo},
-  school  = {University of Sao Paulo},
-  langid = {english},
-  url = {https://danielvartan.github.io/mastersthesis/}
-  note = {Original version}
+
+```
+`r bib_tag`{[author's surname][year],
+  title = {{{< var title >}}},
+  author = {{{< var author >}}},
+  year = {{{< var date >}}},
+  address = {{{< var location >}}},
+  school  = {{{< var university >}}},
+  langid = {{{< var language >}}},
+  url = {{{< var url >}}}
+  note = {{{< var version-note >}}}
 }
 ```

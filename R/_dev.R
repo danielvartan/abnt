@@ -45,11 +45,12 @@
 
 # # Quarto (see <https://quarto.org/docs/projects/quarto-projects.html>)
 #
+# source(here::here("R", "quarto-pre-render-pdf.R"))
+# source(here::here("R", "quarto-pre-render-html.R"))
+#
 # quarto render
 # quarto render --profile pdf
-# quarto render --profile pdf --cache-refresh
 # quarto render --profile html
-# quarto render --profile html --cache-refresh
 # quarto publish gh-pages
 
 # TODO
@@ -70,7 +71,8 @@
 # * Fix APA refence rendering.
 # * Fix code background on dark theme.
 # * Fix relative path for images.
-# * Transform BiBTeX keys in LaTeX citations, when rendered with pandoc
-# * Add a update function for tags in the latex files (e.g., cover page)
-# * Find why the document have to be rendered twice
-# * Add stop list em transforming titles in setence case
+# * Transform BiBTeX keys in LaTeX citations, when rendered with pandoc.
+# * Add a update function for tags in the latex files (e.g., cover page).
+# * Find why the document have to be rendered twice.
+# * Add stop list em transforming titles in setence case.
+# * Fix spacing between pre-textual and post-textual titles.

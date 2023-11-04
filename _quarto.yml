@@ -2,44 +2,37 @@ editor: source
 
 execute:
   cache: false
-  freeze: false # auto
+  freeze: auto
 
 project:
   type: book
 
-# See <https://quarto.org/docs/projects/profiles.html>.
 profile:
   group:
     - [html, pdf]
-  default: html
+  default: pdf
 
-# See  <https://quarto.org/docs/books/>.
-# See <https://quarto.org/docs/reference/projects/books.html>.
 book:
-  title: "{tesesusp}: a Quarto format for USP theses and dissertations"
+  title: "{abnt}: Quarto format for ABNT theses and dissertations"
   author: "Daniel Vartanian"
   # abstract: >
-  #   {tesesusp} is a Quarto format designed for theses and dissertations of the
-  #     University of São Paulo (USP). It is based on the {abntex2} suite, the
-  #   {abntex2ppgsi} template, and on USP guidelines for creating thesis and
-  #   dissertation documents.
+  #   Quarto format designed for theses and dissertations that adhere to the
+  #   standards of the Brazilian Association of Technical Standards (ABNT).
   # description: >
-  #   {tesesusp} is a Quarto format designed for theses and dissertations of the
-  #   University of São Paulo (USP). It is based on the {abntex2} suite, the
-  #   {abntex2ppgsi} template, and on USP guidelines for creating thesis and
-  #   dissertation documents.
-  keyword: >
-    quarto-format, thesis, dissertation, university-of-sao-paulo, usp
-  language: en-us
+  #   Quarto format designed for theses and dissertations that adhere to the
+  #   standards of the Brazilian Association of Technical Standards (ABNT).
+  keyword: >-
+    ABNT. Quarto. Quarto format. Thesis template. Reproducibility.
+    Open science
+  language: en
   license: "Creative Commons Attribution 4.0 International (CC BY 4.0)"
-  publisher: "University of São Paulo"
-  publisher-place: "São Paulo, SP, Brazil"
+  publisher: "[University]"
+  publisher-place: "[City of university]"
   submitted: 2023
-  url: https://danielvartan.github.io/tesesusp/
-  site-url: https://danielvartan.github.io/tesesusp/
-  repo-url: https://github.com/danielvartan/tesesusp/
-  issue-url: https://github.com/danielvartan/tesesusp/issues/
+  url: https://danielvartan.github.io/abnt/
+  site-url: https://danielvartan.github.io/abnt/
+  repo-url: https://github.com/danielvartan/abnt/
+  issue-url: https://github.com/danielvartan/abnt/issues/
   repo-branch: main
-  version: "0.1.0"
 
-bibliography: references.json
+bibliography: references.bib

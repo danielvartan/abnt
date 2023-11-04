@@ -1,68 +1,36 @@
 # library(here, quietly = TRUE)
 # library(rutils, quietly = TRUE)
-# library(stringr)
 # lybrary(yaml)
 
-# Scan Quarto files for citations and add them to references.json ----------
+source(here::here("R", "quarto-pre-render-common.R"))
 
-rutils:::bbt_write_quarto_bib(
-  wd = here::here(),
-  bib_file = "references.json",
-  dir = c("", "qmd"),
-  pattern = c("\\.qmd$")
-)
+# Update Quarto files -----
 
-# Transform titles ----------
-
-rutils:::find_between_tags_and_apply(
-  wd = here::here(),
-  dir = c("", "qmd"),
-  pattern = "\\.qmd$",
-  ignore = "^_",
-  begin_tag = "%:::% .common h1 begin %:::%",
-  end_tag = "%:::% .common h1 end %:::%",
-  fun = function(x) {
-    pattern <- "(?<=# )(.*?)(?= \\{)|(?<=# ).+"
-    old_string <- stringr::str_extract_all(x, pattern)
-    new_string <- stringr::str_to_sentence(old_string)
-
-    stringr::str_replace_all(x, pattern, new_string)
-  }
-) |>
-  rutils:::shush()
-
-# Update Quarto files ----------
-
-update_par_pre_render_pdf <- list(
+swap_list <- list(
   index_title = list(
     from = here::here("index.qmd"),
     to = here::here("index.qmd"),
     begin_tag = "%:::% .common h1 begin %:::%",
     end_tag = "%:::% .common h1 end %:::%",
-    value = "# Welcome {.unnumbered}"
-  ),
-  reference_title = list(
-    from = here::here("qmd", "references.qmd"),
-    to =here::here("qmd", "references.qmd"),
-    begin_tag = "%:::% .common h1 begin %:::%",
-    end_tag = "%:::% .common h1 end %:::%",
-    value = "# References {.unnumbered}"
+    value = "# Welcome {.unnumbered}",
+    quarto_render = FALSE
   )
 )
 
-for (i in update_par_pre_render_pdf) {
-  rutils:::update_quarto_file(
+for (i in swap_list) {
+  rutils:::swap_value_between_files(
     from = i$from,
     to = i$to,
     begin_tag = i$begin_tag,
     end_tag = i$end_tag,
     value = i$value,
-    wd = here::here()
+    quarto_render = i$quarto_render,
+    cite_method = "biblatex"
   )
 }
 
 # Copy images folder to `./qmd` (solve issues related to relative paths)
-# ----------
+# -----
 
 dir_path <- here::here("qmd", "images")
 
@@ -77,17 +45,31 @@ for (i in rutils:::list_files(here::here("images"), full.names = TRUE)) {
     )
 }
 
-# Create environment variables ----------
+# Add/change environment variables -----
 
-env_vars_file <- here::here("_variables.yml")
+quarto_yml_pdf_path <- here::here("_quarto-pdf.yml")
+quarto_yml_pdf_vars <- yaml::read_yaml(quarto_yml_pdf_path)
+env_vars_file_path <- here::here("_variables.yml")
 
-if (!checkmate::test_file_exists(env_vars_file)) {
-  rutils:::create_file(env_vars_file)
+if (!checkmate::test_file_exists(env_vars_file_path)) {
+  rutils:::create_file(env_vars_file_path)
 }
 
-env_vars <- list(
+env_vars_file_vars <- yaml::read_yaml(env_vars_file_path)
+
+new_vars <- list(
   # variable = value
   format = "html"
 )
 
-env_vars |> yaml::write_yaml(env_vars_file)
+for (i in names(new_vars)) {
+  if (!i %in% names(env_vars_file_vars)) {
+    x <- list(x = new_vars[[i]])
+    names(x) <- i
+    env_vars_file_vars <- append(env_vars_file_vars, x)
+  } else {
+    env_vars_file_vars[[i]] <- new_vars[[i]]
+  }
+}
+
+env_vars_file_vars |> yaml::write_yaml(env_vars_file_path)

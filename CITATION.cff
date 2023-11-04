@@ -1,21 +1,23 @@
 # See https://citation-file-format.github.io/ to learn more.
 
-cff-version: 1.2.0
+cff-version: 0.3.0
 message: "To cite this Quarto format in publications use:"
-title: "{tesesusp}: a Quarto format for USP theses and dissertations"
+title: "{abnt}: a Quarto format designed for theses and dissertations that adhere to the standards of the Brazilian Association of Technical Standards (ABNT)"
 keywords:
-  - quarto-format
+  - quarto
+  - quarto format
+  - quarto-extension
+  - quarto-template
+  - abnt
   - thesis
   - dissertation
-  - university-of-sao-paulo
-  - usp
 authors:
 - family-names: Vartanian
   given-names: Daniel
   email: danvartan@gmail.com
   orcid: https://orcid.org/0000-0001-7782-759X
-repository-code: https://github.com/danielvartan/tesesusp/
-url: https://github.com/danielvartan/tesesusp/
+repository-code: https://github.com/danielvartan/abnt/
+url: https://github.com/danielvartan/abnt/
 contact:
 - family-names: Vartanian
   given-names: Daniel
@@ -26,14 +28,14 @@ version: 0.1.0
 license: MIT
 identifiers:
 - type: url
-  value: https://github.com/danielvartan/tesesusp/
+  value: https://github.com/danielvartan/abnt/
 preferred-citation:
   type: unpublished
-  title: "{tesesusp}: a Quarto format for USP theses and dissertation"
+  title: "{abnt}: a Quarto format designed for theses and dissertations that adhere to the standards of the Brazilian Association of Technical Standards (ABNT)"
   authors:
   - family-names: Vartanian
     given-names: Daniel
     email: danvartan@gmail.com
     orcid: https://orcid.org/0000-0001-7782-759X
   year: "2023"
-  url: https://github.com/danielvartan/tesesusp/
+  url: https://github.com/danielvartan/abnt/

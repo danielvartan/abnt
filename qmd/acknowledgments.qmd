@@ -13,5 +13,5 @@ source(here::here("R/quarto-setup.R"))
 ```
 
 <!-- %:::% acknowledgments body begin %:::% -->
-I would like to acknowledge this awesome [Quarto format](https://github.com/danielvartan/tesesusp)! :)
+I would like to acknowledge this awesome [Quarto format](https://github.com/danielvartan/abnt)! :)
 <!-- %:::% acknowledgments body end %:::% -->

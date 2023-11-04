@@ -12,10 +12,27 @@
 source(here::here("R/quarto-setup.R"))
 ```
 
+{{< var author-surname >}}, {{< var author-initials >}}. __{{< var title >}}__. {{< var year >}}. {{< var type-of-work >}} ({{< var academic-degree >}}) -- {{< var school >}}, {{< var university >}}, {{< var location >}}, {{< var year >}}.
+
+::: {.content-visible when-format="pdf"}
+<!-- %:::% vernacular-abstract reference begin %:::% -->
+[Author's surname], [Author's forename(s) initial(s)]. \textbf{\imprimirtitulo}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  (\imprimirtituloacademico) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
+<!-- %:::% vernacular-abstract reference end %:::% -->
+:::
+
 <!-- %:::% vernacular-abstract body begin %:::% -->
-[SURNAME], [INITIALS]. ([YEAR]). _[TITLE]_ [[TYPE OF THESIS]]. [SCHOOL/DEPARTMENT], University of São Paulo, São Paulo. [THESIS'S URL]
-
-Cupidatat ad culpa non veniam quis mollit dolor ut irure eiusmod sint aute duis. Mollit eu ipsum deserunt nisi est culpa exercitation dolor. Velit veniam ad elit aliqua excepteur consectetur duis cillum id do mollit dolor pariatur aute. Excepteur velit ea aliqua amet fugiat qui aliquip tempor. Labore occaecat mollit minim in velit est nisi. Ut voluptate laboris ad amet culpa excepteur voluptate eiusmod est. Adipisicing eu fugiat irure sunt id tempor consectetur sint ipsum cillum. Ex sunt enim anim quis cupidatat reprehenderit reprehenderit nisi ea amet. Ullamco minim voluptate tempor nostrud id voluptate exercitation. Elit sint ea occaecat ipsum dolore incididunt velit cupidatat id. Consectetur aliquip dolore elit aute elit et ex ex fugiat ex laboris non magna. Duis voluptate mollit laborum aliquip elit mollit ad nisi sunt id ipsum esse incididunt eiusmod. Qui incididunt consectetur cillum est ex proident ad eiusmod excepteur pariatur velit enim ut cillum. Fugiat exercitation veniam eiusmod irure ut ad sint sunt consequat consectetur. Dolor sint voluptate mollit anim dolor ea ad ex veniam.
-
-Keywords: keyword 1. keyword 2. keyword 3.
+{abnt} is a [Quarto](https://quarto.org) format designed for theses
+and dissertations that adhere to the standards of the Brazilian Association of Technical Standards (ABNT). It is based on
+the [`abntex2`](https://www.abntex.net.br/) LaTeX class and on [USP guidelines for creating thesis and dissertation
+documents](https://teses.usp.br/index.php?option=com_content&view=article&id=52&Itemid=67&lang=en).
 <!-- %:::% vernacular-abstract body end %:::% -->
+
+Keywords: {{< var keyword >}}
+
+::: {.content-visible when-format="pdf"}
+<!-- %:::% vernacular-abstract keywords begin %:::% -->
+\begin{tabular}{p{2.3cm} p{13.7cm}}
+  \textbf{Keywords}: &  [Keyword 1]. [Keyword 2]. [Keyword 3].
+\end{tabular}
+<!-- %:::% vernacular-abstract keywords end %:::% -->
+:::

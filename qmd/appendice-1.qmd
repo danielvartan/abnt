@@ -1,5 +1,5 @@
 <!-- %:::% .common h1 begin %:::% -->
-# Appendix 1
+# Example
 <!-- %:::% .common h1 end %:::% -->
 
 ```{r}
@@ -16,7 +16,7 @@ source(here::here("R/quarto-setup.R"))
 ::: {.callout-tip}
 The text below is for demonstrative purposes only.
 
-See <https://github.com/danielvartan/tesesusp> to learn more about this template.
+See <https://github.com/danielvartan/abnt> to learn more about this template.
 :::
 :::
 
@@ -40,7 +40,7 @@ See <https://quarto.org/docs/authoring/markdown-basics.html> to learn about the 
 cat(cli:::lorem_ipsum(2), sep = "\n\n")
 ```
 
-## `r ifelse(env_vars$format == "html", "Secondary section", "SECONDARY SECTION")`
+## Secondary section
 
 ```{r}
 #| echo: false
@@ -49,4 +49,8 @@ cat(cli:::lorem_ipsum(2), sep = "\n\n")
 # library(cli)
 
 cat(cli:::lorem_ipsum(1), sep = "\n\n")
+```
+
+```{=latex}
+\end{apendicesenv}
 ```

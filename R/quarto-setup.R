@@ -47,5 +47,4 @@ options(
 
 ggplot2::theme_set(ggplot2::theme_gray(12))
 
-# See <./R/quarto-pre-render.R>
 env_vars <- yaml::read_yaml(here::here("_variables.yml"))

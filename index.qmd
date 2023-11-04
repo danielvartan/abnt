@@ -1,9 +1,5 @@
-::: {.content-visible when-format="pdf"}
-\textual
-:::
-
 <!-- %:::% .common h1 begin %:::% -->
-# Welcome {.unnumbered}
+# Introduction
 <!-- %:::% .common h1 end %:::% -->
 
 ```{r}

@@ -1,90 +1,28 @@
-% tesesusp.cls, v-0.1.0
-
-% Based on 'bntex2ppgsi.cls', 'abntex2.csl' and on USP guidelines to create
-% thesis and dissertation documents.
-% See <https://www.overleaf.com/project/64f7bdf1641ad4a3a8482800>
-% and <https://teses.usp.br/index.php?option=com_content&
-%      view=article&id=52&Itemid=67&lang=en>
-% to learn more.
-
 %:::% class attribute begin/end %:::%
 
-% ----------------------------------------------------------------------
-% Cover
-% ----------------------------------------------------------------------
-
-%:::% cover begin %:::%
-\instituicao{
-	UNIVERSITY OF SÃO PAULO
-	\par
-	[SCHOOL/DEPARTAMENT]
-	\par
-	[GRADUATE PROGRAM]
-}
-
-\local{São Paulo}
-\orientador{Prof. Dr. [SUPERVISOR'S FULL NAME}
-\coorientador{Prof. Dr. [CO-SUPERVISOR'S FULL NAME]}
-\tipotrabalho{Type of thesis}
-%:::% cover end %:::%
-
-% ----------------------------------------------------------------------
+% -----
 % Title page
-% ----------------------------------------------------------------------
+% -----
 
 %:::% title-page begin %:::%
 \preambulo{
   %:::% title-page body begin %:::%
-Original version
+{\imprimirnotadeversao}
+\vspace{1.5em}
 
-\vspace{1cm}
+{\imprimirtipotrabalho} presented to the {\imprimirescola} at {\imprimiruniversidade}, as part of the requirements for the degree of {\imprimirtituloacademico} by the {\imprimirprograma}.
+\vspace{1.5em}
 
-{[}DISSERTATION/THESIS{]} presented to the {[}SCHOOL/DEPARTMENT{]} at
-the University of São Paulo, as part of the requirements for the degree
-of {[}TYPE OF DEGREE{]} by the {[}GRADUATE PROGRAM{]}.
+Area of concentration: {\imprimirareadeconcentracao}.
+\vspace{1.5em}
 
-\vspace{0.5cm}
+Revised version incorporating the changes requested by the examining committee on [Date]. The original version is held in the reserved collection at the {\imprimirescola} Library and in the Digital Library of Theses and Dissertations of the {\imprimiruniversidade}.
+\vspace{1.5em}
 
-Area of Con.: {[}AREA OF CONCENTRATION{]}.
+Supervisor: Prof. Dr. \imprimirorientador
+\vspace{0.5em}
 
-\vspace{1cm}
-
-Revised version incorporating the changes requested by the examining
-committee on {[}DATE{]}. The original version is held in the reserved
-collection at the {[}SCHOOL/DEPARTAMENT{]} Library and in the Digital
-Library of Theses and Dissertations of the University of São Paulo
-(BDTD-USP), in accordance with
-\href{https://leginf.usp.br/?resolucao=resolucao-copgr-no-6018-de-13-de-outubro-de-2011}{Resolution
-CoPGr 6018, dated October 13, 2011}.
-
-\vspace{1cm}
-
-Supervisor: Prof.~Dr.~{[}SUPERVISOR'S FULL NAME{]}
-
-\vspace{0.25cm}
-
-Co-Supervisor: Prof.~Dr.~{[}CO-SUPERVISOR'S FULL NAME{]}
+Co-Supervisor: Prof. Dr. \imprimircoorientador
   %:::% title-page body end %:::%
 }
 %:::% title-page end %:::%
-
-% ----------------------------------------------------------------------
-% Final PDF appearance settings (change only if necessary)
-% ----------------------------------------------------------------------
-
-\usepackage{array}
-\usepackage{float}
-\usepackage{lipsum}
-
-\floatplacement{table}{H}
-\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
-
-\setlength{\parindent}{1.25cm}
-\setlength{\parskip}{0cm}
-\renewcommand{\baselinestretch}{1.5}
-
-% \makeindex
-
-\clubpenalty10000
-\widowpenalty10000
-\displaywidowpenalty10000

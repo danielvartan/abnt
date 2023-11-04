@@ -1,49 +1,134 @@
-% Options for packages loaded elsewhere
+% Author: Daniel Vartanian.
+% Licence: MIT. See <https://opensource.org/license/mit/> to learn more.
+% Based on: template.tex, developed by the Quarto team and
+%   abtex2-modelo-trabalho-academico.tex, v-1.9.7, developed by
+%   Lauro César Araujo and the team behind abnt2tex, with additional guidance
+%   from the theses and dissertations regulations of the University of São Paulo
+%   (USP). For more information, please visit <http://www.abntex.net.br/>.
+
+% For help, see:
+% * <https://quarto.org/docs/reference/formats/pdf.html>
+% * <https://github.com/abntex/abntex2/wiki/ComoCustomizar>
+% * <https://www.ctan.org/pkg/abntex2>
+% * <https://www.ctan.org/pkg/memoir>
+% * <https://www.ctan.org/pkg/hyperref>
+
+% TODO:
+% * Slightly move the toc to the left, in a way that the spacing between titles
+%   and numbers become the same as the textual chapters.
+% * Remove the hyperlink in the section numbering within TOC.
+% * Remove hiperlink spans by page breaks. See: <https://tex.stackexchange.com/questions/54136/hyperref-link-spans-a-pagebreak-looks-ugly>.
+
+% -----
+% Preamble
+% -----
+
+% Set options for packages loaded elsewhere -----
+
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
-%
-\documentclass[
-  12pt,
-  a4paper,
-  oneside]{tesesusp}
 
-\usepackage{amsmath,amssymb}
+
+% Set \documentclass -----
+
+\documentclass[
+12pt,
+openright,
+oneside,
+a4paper,
+chapter=TITLE,
+section=TITLE,
+french,
+spanish,
+brazil,
+english
+]{abntex2}
+% Load packages -----
+
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{calc}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{amssymb}
+% \usepackage[french, spanish, brazil, english]{babel}
+\usepackage[font=footnotesize, justification=centering]{caption}
+\usepackage{enumitem}
+\usepackage{etoolbox}
+\usepackage{float}
+\usepackage[T1]{fontenc}
+\usepackage[hang]{footmisc}
+\usepackage{graphicx}
 \usepackage{iftex}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{lastpage}
+\usepackage{lipsum}
+\usepackage{longtable}
+\usepackage{microtype}
+\usepackage{multirow}
+\usepackage{parskip}
+\usepackage{pdfpages}
+\usepackage[table]{xcolor}
+
+\usepackage{hyperref}
+
 \ifPDFTeX
-  \usepackage[T1]{fontenc}
-  \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
   \usepackage{unicode-math}
-  \defaultfontfeatures{Scale=MatchLowercase}
-  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-\usepackage{lmodern}
-\ifPDFTeX\else  
+
+% Set general formatting -----
+
+\makeatletter
+\setlength{\@fptop}{0.5em} % Set distance from top of page to first float
+\makeatother
+
+\setlength{\headsep}{1cm}
+\setlength{\footskip}{1cm}
+\checkandfixthelayout
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\renewcommand{\baselinestretch}{1.5}
+
+\setlength{\parindent}{1cm}
+
+\setlength{\parskip}{0em}
+
+\setlength{\footnotemargin}{0.25cm}
+\let\svfootnoterule\footnoterule
+\renewcommand\footnoterule{\svfootnoterule\vspace{5pt}}
+
+
+\ifPDFTeX\else
     % xetex/luatex font selection
   \setmainfont[]{Arial}
   \setsansfont[]{Arial}
+
+
+
+
 \fi
+
+
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
   \usepackage[]{microtype}
   \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\makeatletter
-\@ifundefined{KOMAClassName}{% if non-KOMA class
-  \IfFileExists{parskip.sty}{%
-    \usepackage{parskip}
-  }{% else
-    \setlength{\parindent}{0pt}
-    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
-}{% if KOMA class
-  \KOMAoptions{parskip=half}}
-\makeatother
-\usepackage{xcolor}
-\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+
+
+
+
+\setlength{\emergencystretch}{3em} % Prevent overfull lines
+
 \setcounter{secnumdepth}{5}
+
 % Make \paragraph and \subparagraph free-standing
 \ifx\paragraph\undefined\else
   \let\oldparagraph\paragraph
@@ -53,6 +138,8 @@
   \let\oldsubparagraph\subparagraph
   \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
+
+% Set pandoc -----
 
 \usepackage{color}
 \usepackage{fancyvrb}
@@ -95,203 +182,59 @@
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
 
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
-\usepackage{calc} % for calculating minipage widths
-% Correct order of tables after \paragraph or \subparagraph
+\providecommand{\tightlist}{
+\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}% Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
 \makeatletter
 \patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
 \makeatother
+
 % Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
-\makesavenoteenv{longtable}
-\usepackage{graphicx}
+\makesavenoteenv{longtable}% \usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
 \makeatother
+
 % Scale images if necessary, so that they will not overflow the page
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
 % Set default figure placement to htbp
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
-\newlength{\cslhangindent}
-\setlength{\cslhangindent}{1.5em}
-\newlength{\csllabelwidth}
-\setlength{\csllabelwidth}{3em}
-\newlength{\cslentryspacingunit} % times entry-spacing
-\setlength{\cslentryspacingunit}{\parskip}
-\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
- {% don't indent paragraphs
-  \setlength{\parindent}{0pt}
-  % turn on hanging indent if param 1 is 1
-  \ifodd #1
-  \let\oldpar\par
-  \def\par{\hangindent=\cslhangindent\oldpar}
-  \fi
-  % set entry spacing
-  \setlength{\parskip}{#2\cslentryspacingunit}
- }%
- {}
-\usepackage{calc}
-\newcommand{\CSLBlock}[1]{#1\hfill\break}
-\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
-\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
-
-% tesesusp.cls, v-0.1.0
-
-% Based on 'bntex2ppgsi.cls' and 'abntex2.csl'.
-% See <https://www.overleaf.com/project/64f7bdf1641ad4a3a8482800>.
-% to learn more.
-
-% Language (options: "brazil", "english")
-% \usepackage[english]{babel}
-
-% Document settings
-
-% \documentclass[
-% 	12pt,
-% 	% openright, % Chapters begin on odd pages.
-% 	oneside,
-% 	a4paper,
-% 	%% Options of the ABNTeX2 class
-% 	%% 'TITLE' = titles converted to uppercase letters.
-% 	chapter=TITLE,
-% 	section=TITLE,
-% 	subsection=TITLE,
-% 	subsubsection=TITLE,
-% 	%% Options of the Babel Package
-% 	brazil, % Additional Language for Hyphenation.
-% 	% spanish, % Additional Language for Hyphenation.
-% 	english % The last language is the main one in the document.
-% 	]{tesesusp}
-
-% Load packages
-
-\usepackage{abstract}
-\usepackage{algorithm}
-\usepackage[noend]{algpseudocode}
-\usepackage{babel}
-\usepackage{color}
-\usepackage{graphicx}
-\usepackage{indentfirst}
-\usepackage[utf8]{inputenc}
-\usepackage{lastpage}
-\usepackage{mdwlist}
-\usepackage{microtype}
-\usepackage{pdfpages}
-\usepackage[dvipsnames]{xcolor}
-
-% See <https://getbootstrap.com/docs/4.0/utilities/colors/>.
-\definecolor{quarto-blue}{HTML}{2780E3}
-\definecolor{quarto-lighter-blue}{HTML}{ECF4FC}
-\definecolor{quarto-orange}{HTML}{FF7518}
-\definecolor{quarto-ligther-orange}{HTML}{FFF3EB}
-\definecolor{quarto-red}{HTML}{D9534F}
-\definecolor{quarto-ligther-red}{HTML}{FCF1F1}
-\definecolor{quarto-green}{HTML}{3FB618}
-\definecolor{quarto-ligther-green}{HTML}{EFF9EB}
-\definecolor{quarto-purple}{HTML}{7D12BA}
-\definecolor{quarto-gray}{HTML}{A3A3A3}
-\definecolor{quarto-medium-gray}{HTML}{CFD0D1}
-\definecolor{quarto-ligther-gray}{HTML}{F1F3F5}
-
-\definecolor{bs-link-color}{HTML}{39729E}
-% tesesusp.cls, v-0.1.0
-
-% Based on 'bntex2ppgsi.cls', 'abntex2.csl' and on USP guidelines to create
-% thesis and dissertation documents.
-% See <https://www.overleaf.com/project/64f7bdf1641ad4a3a8482800>
-% and <https://teses.usp.br/index.php?option=com_content&
-%      view=article&id=52&Itemid=67&lang=en>
-% to learn more.
 
 %:::% class attribute begin/end %:::%
 
-% ----------------------------------------------------------------------
-% Cover
-% ----------------------------------------------------------------------
-
-%:::% cover begin %:::%
-\instituicao{
-	UNIVERSITY OF SÃO PAULO
-	\par
-	[SCHOOL/DEPARTAMENT]
-	\par
-	[GRADUATE PROGRAM]
-}
-
-\local{São Paulo}
-\orientador{Prof. Dr. [SUPERVISOR'S FULL NAME}
-\coorientador{Prof. Dr. [CO-SUPERVISOR'S FULL NAME]}
-\tipotrabalho{Type of thesis}
-%:::% cover end %:::%
-
-% ----------------------------------------------------------------------
+% -----
 % Title page
-% ----------------------------------------------------------------------
+% -----
 
 %:::% title-page begin %:::%
 \preambulo{
   %:::% title-page body begin %:::%
-Original version
+{\imprimirnotadeversao}
+\vspace{1.5em}
 
-\vspace{1cm}
+{\imprimirtipotrabalho} presented to the {\imprimirescola} at {\imprimiruniversidade}, as part of the requirements for the degree of {\imprimirtituloacademico} by the {\imprimirprograma}.
+\vspace{1.5em}
 
-{[}DISSERTATION/THESIS{]} presented to the {[}SCHOOL/DEPARTMENT{]} at
-the University of São Paulo, as part of the requirements for the degree
-of {[}TYPE OF DEGREE{]} by the {[}GRADUATE PROGRAM{]}.
+Area of concentration: {\imprimirareadeconcentracao}.
+\vspace{1.5em}
 
-\vspace{0.5cm}
+Revised version incorporating the changes requested by the examining committee on [Date]. The original version is held in the reserved collection at the {\imprimirescola} Library and in the Digital Library of Theses and Dissertations of the {\imprimiruniversidade}.
+\vspace{1.5em}
 
-Area of Con.: {[}AREA OF CONCENTRATION{]}.
+Supervisor: Prof. Dr. \imprimirorientador
+\vspace{0.5em}
 
-\vspace{1cm}
-
-Revised version incorporating the changes requested by the examining
-committee on {[}DATE{]}. The original version is held in the reserved
-collection at the {[}SCHOOL/DEPARTAMENT{]} Library and in the Digital
-Library of Theses and Dissertations of the University of São Paulo
-(BDTD-USP), in accordance with
-\href{https://leginf.usp.br/?resolucao=resolucao-copgr-no-6018-de-13-de-outubro-de-2011}{Resolution
-CoPGr 6018, dated October 13, 2011}.
-
-\vspace{1cm}
-
-Supervisor: Prof.~Dr.~{[}SUPERVISOR'S FULL NAME{]}
-
-\vspace{0.25cm}
-
-Co-Supervisor: Prof.~Dr.~{[}CO-SUPERVISOR'S FULL NAME{]}
+Co-Supervisor: Prof. Dr. \imprimircoorientador
   %:::% title-page body end %:::%
 }
 %:::% title-page end %:::%
-
-% ----------------------------------------------------------------------
-% Final PDF appearance settings (change only if necessary)
-% ----------------------------------------------------------------------
-
-\usepackage{array}
-\usepackage{float}
-\usepackage{lipsum}
-
-\floatplacement{table}{H}
-\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
-
-\setlength{\parindent}{1.25cm}
-\setlength{\parskip}{0cm}
-\renewcommand{\baselinestretch}{1.5}
-
-% \makeindex
-
-\clubpenalty10000
-\widowpenalty10000
-\displaywidowpenalty10000
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{array}
@@ -377,108 +320,673 @@ Co-Supervisor: Prof.~Dr.~{[}CO-SUPERVISOR'S FULL NAME{]}
 \makeatother
 \makeatletter
 \makeatother
+
+% Set new commands -----
+
+\providecommand{\imprimiruniversidade}{}
+\newcommand{\universidade}[1]{\renewcommand{\imprimiruniversidade}{#1}}
+
+\providecommand{\imprimirescola}{}
+\newcommand{\escola}[1]{\renewcommand{\imprimirescola}{#1}}
+
+\providecommand{\imprimirprograma}{}
+\newcommand{\programa}[1]{\renewcommand{\imprimirprograma}{#1}}
+
+\newcommand{\imprimirtipodetrabalho}{\imprimirtipotrabalho}
+
+\providecommand{\imprimirtipodetituloacademico}{}
+\newcommand{\tipodetituloacademico}[1]{\renewcommand{\imprimirtipodetituloacademico}{#1}}
+
+\providecommand{\imprimirtituloacademico}{}
+\newcommand{\tituloacademico}[1]{\renewcommand{\imprimirtituloacademico}{#1}}
+
+\providecommand{\imprimirareadeconcentracao}{}
+\newcommand{\areadeconcentracao}[1]{\renewcommand{\imprimirareadeconcentracao}{#1}}
+
+\providecommand{\imprimirnotadeversao}{}
+\newcommand{\notadeversao}[1]{\renewcommand{\imprimirnotadeversao}{#1}}
+
+\makeatletter
+\newcommand*{\getlength}[1]{\strip@pt#1}
+\makeatother
+
+% Set title variables -----
+
+\title{\{abnt\}: Quarto format for ABNT theses and dissertations}
+\titulo{\{abnt\}: Quarto format for ABNT theses and dissertations}
+
+
+\author{Daniel Vartanian}
+\autor{Daniel Vartanian}
+
+\local{{[}City{]}}
+
+\date{2023}
+\data{2023}
+
+\orientador{{[}Supervisor's full name{]}}
+
+\coorientador{{[}Co-supervisor's full name{]}}
+
+\tipodetituloacademico{{[}Master/PhD{]}}
+
+\tituloacademico{{[}Master of Science/Doctor of Science{]}}
+
+\tipotrabalho{{[}Dissertation/Thesis{]}}
+
+\areadeconcentracao{{[}Area of concentration{]}}
+
+\instituicao{\MakeUppercase{{[}University{]}}}
+\universidade{{[}University{]}}
+
+\instituicao{
+  \MakeUppercase{{[}University{]}}
+  \par
+  \MakeUppercase{{[}School/Department{]}}
+}
+
+\escola{{[}School/Department{]}}
+
+\instituicao{
+  \MakeUppercase{{[}University{]}}
+  \par
+  \MakeUppercase{{[}School/Department{]}}
+  \par
+  \MakeUppercase{{[}Graduate program{]}}
+}
+
+\programa{{[}Graduate program{]}}
+
+\notadeversao{{[}Original/Revised version{]}}
+
+% Set hipersetup -----
+
+\hypersetup{
+pdftitle={\{abnt\}: Quarto format for ABNT theses and dissertations},
+pdfauthor={Daniel Vartanian},
+pdflang={en},
+pdfsubject={{[}Dissertation/Thesis{]}},
+linktoc={section},
+colorlinks=true,
+linkcolor={blue},
+filecolor={blue},
+citecolor={blue},
+urlcolor={blue},
+pdfcreator={LaTeX via pandoc},
+bookmarksdepth=5
+}
+
+% Set chapter/section formating -----
+
+\setsecnumformat{\normalfont\csname the#1\endcsname\quad}
+
+\renewcommand{\ABNTEXchapterfont}{\normalfont\bfseries}
+\renewcommand{\ABNTEXchapterfontsize}{\normalsize}
+\renewcommand{\ABNTEXsectionfont}{\normalfont}
+\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsectionfont}{\normalfont\bfseries}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsubsectionfont}{\normalfont}
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsubsubsectionfont}{\normalfont}
+\renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalsize\itshape}
+\renewcommand{\ABNTEXfontereduzida}{\footnotesize}
+\renewcommand{\captiontitlefont}{\small}
+
+\renewcommand{\printchapternum}{
+  \tocprintchapter
+  \setboolean{abntex@innonumchapter}{false}
+  \chapnumfont
+  \vspace{30pt} \normalfont \thechapter \quad
+  \ifthenelse{\boolean{abntex@apendiceousecao}}{
+      \tocinnonumchapter
+      \ABNTEXcaptiondelim
+  }{} % else
+}
+
+\setlength{\beforechapskip}{2.5em}
+\setlength{\afterchapskip}{1em}
+\setbeforesecskip{1.5em}
+\setaftersecskip{1em}
+\setbeforesubsecskip{1.5em}
+\setaftersubsecskip{1em}
+\setbeforesubsubsecskip{1.5em}
+\setaftersubsubsecskip{1em}
+\setbeforeparaskip{1.5em}
+\setafterparaskip{1em}
+
+% Set page numbering -----
+
+\makepagestyle{abntheadings}
+
+\makeevenhead{abntheadings}{
+  \ABNTEXfontereduzida \thepage
+}{}{}
+
+\makeoddhead{abntheadings}{}{}{
+  \ABNTEXfontereduzida \thepage
+}
+
+% Set tabular environment -----
+
+\AtBeginEnvironment{table}{\small}
+\AtBeginEnvironment{tabular}{\small}
+\renewcommand{\arraystretch}{1.5}
+\setlength{\aboverulesep}{0pt}
+\setlength{\belowrulesep}{0pt}
+
+% Set language patterns -----
+
+\newcommand{\capaname}{Capa}
+\newcommand{\listadetermosname}{Lista de termos e definições}
+
+\addto\captionsenglish{
+  \renewcommand{\capaname}{Cover}
+  \renewcommand{\folhadeaprovacaoname}{Approval sheet}
+  \renewcommand{\dedicatorianame}{Inscription}
+  \renewcommand{\contentsname}{Contents}
+  \renewcommand{\listfigurename}{List of figures}
+  \renewcommand{\listtablename}{List of tables}
+  \renewcommand{\listadetermosname}{List of terms and definitions}
+}
+
+\addto\captionsbrazil{
+  \renewcommand{\contentsname}{Sumário}
+  \renewcommand{\listfigurename}{Lista de figuras}
+}
+
+\addto\captionsspanish{
+  \renewcommand{\capaname}{Portada}
+  \renewcommand{\folhaderostoname}{Página de título}
+  \renewcommand{\epigraphname}{Epígrafe}
+  \renewcommand{\dedicatorianame}{Dedicatoria}
+  \renewcommand{\errataname}{Errata}
+  \renewcommand{\agradecimentosname}{Agradecimientos}
+  \renewcommand{\anexoname}{Anexo}
+  \renewcommand{\anexosname}{Anexos}
+  \renewcommand{\apendicename}{Apéndice}
+  \renewcommand{\apendicesname}{Apéndices}
+  \renewcommand{\orientadorname}{Asesor:}
+  \renewcommand{\coorientadorname}{Coasesor:}
+  \renewcommand{\folhadeaprovacaoname}{Hoja de aprobación}
+  \renewcommand{\resumoname}{Resumen}
+  \renewcommand{\contentsname}{Sumario}
+  \renewcommand{\listfigurename}{Lista de figuras}
+  \renewcommand{\listtablename}{Lista de tablas}
+  \renewcommand{\listadesiglasname}{Lista de abreviaturas y siglas}
+  \renewcommand{\listadesimbolosname}{Lista de símbolos}
+  \renewcommand{\listadetermosname}{Lista de términos y definiciones}
+  \renewcommand{\contentsname}{Sumario}
+  \renewcommand{\bibname}{Referencias}
+  \renewcommand{\indexname}{Índice}
+  \renewcommand{\sourcename}{Fuente}
+  \renewcommand{\notaname}{Nota}
+  \renewcommand{\pageautorefname}{página}
+  \renewcommand{\sectionautorefname}{sección}
+  \renewcommand{\subsectionautorefname}{subsección}
+  \renewcommand{\subsubsectionautorefname}{subsubsección}
+  \renewcommand{\paragraphautorefname}{subsubsubsección}
+}
+
+\addto\captionsfrench{
+  \renewcommand{\capaname}{Page de titre}
+  \renewcommand{\folhaderostoname}{Page de titre}
+  \renewcommand{\epigraphname}{Épigraphe}
+  \renewcommand{\dedicatorianame}{Dédiace}
+  \renewcommand{\errataname}{Errata}
+  \renewcommand{\agradecimentosname}{Remerciements}
+  \renewcommand{\anexoname}{Annexe}
+  \renewcommand{\anexosname}{Annexes}
+  \renewcommand{\apendicename}{Appendice}
+  \renewcommand{\apendicesname}{Appendices}
+  \renewcommand{\orientadorname}{Conseiller :}
+  \renewcommand{\coorientadorname}{Co-conseiller :}
+  \renewcommand{\folhadeaprovacaoname}{Feuille d'approbation}
+  \renewcommand{\resumoname}{Résumé}
+  \renewcommand{\contentsname}{Sommaire}
+  \renewcommand{\listfigurename}{Liste des figures}
+  \renewcommand{\listtablename}{Liste des tableaux}
+  \renewcommand{\listadesiglasname}{Liste des abréviations et sigles}
+  \renewcommand{\listadesimbolosname}{Liste des symboles}
+  \renewcommand{\listadetermosname}{Liste des termes et définitions}
+  \renewcommand{\contentsname}{Sommaire}
+  \renewcommand{\bibname}{Références}
+  \renewcommand{\indexname}{Index}
+  \renewcommand{\sourcename}{Source}
+  \renewcommand{\notaname}{Note}
+  \renewcommand{\pageautorefname}{page}
+  \renewcommand{\sectionautorefname}{section}
+  \renewcommand{\subsectionautorefname}{sous-section}
+  \renewcommand{\subsubsectionautorefname}{sous-sous-section}
+  \renewcommand{\paragraphautorefname}{sous-sous-sous-section}
+}
+
+% Change abntex2 commands and enviroments -----
+
+
+% Similar to \printloftitle
+\renewcommand{\pretextualchapter}[1]{
+  \setlength{\afterchapskip}{4.5em}
+  \addtocounter{abntex@bookmarkcounter}{1}
+  \PRIVATEbookmarkthis{#1}
+  \chapter*[#1]{#1}
+}
+
+\renewcommand{\textual}{
+  \pagestyle{abntheadings}
+  \aliaspagestyle{chapter}{abntheadings}
+}
+
+\renewcommand{\imprimircapa}{
+  \phantomsection\pdfbookmark[0]{\capaname}{}
+  \begin{capa}%
+  \begin{adjustwidth}{-1cm}{0cm}
+  \center\normalfont\normalsize\imprimirinstituicao
+  \vfill
+
+  \normalfont\normalsize\imprimirautor
+  \vfill
+
+  \bfseries\normalsize\imprimirtitulo
+  \vspace{10cm}
+
+  \normalfont\normalsize\imprimirlocal
+
+  \normalfont\normalsize\imprimirdata
+  \vspace*{1.5cm}
+  \end{adjustwidth}
+  \end{capa}
+}
+
+\makeatletter
+\renewcommand{\folhaderostocontent}{
+  \begin{center}
+  \normalfont\normalsize\imprimirautor
+  \vfill
+
+  \bfseries\normalsize\imprimirtitulo
+  \vfill
+
+  \abntex@ifnotempty{
+    \normalfont\normalsize\imprimirpreambulo
+  }{
+    \hspace{0.35\textwidth}
+    \begin{minipage}{.6\textwidth} % page width
+    \SingleSpacing
+    \normalfont\normalsize\imprimirpreambulo
+    \vfill
+    \end{minipage}
+    \vfill
+  }
+
+  \normalfont\normalsize\imprimirlocal
+
+  \normalfont\normalsize\imprimirdata
+  \vspace*{1cm}
+  \end{center}
+}
+\makeatother
+
+\renewenvironment{fichacatalografica}{
+  \ABNTEXfontereduzida
+  \setlength{\parindent}{0cm}
+  \begin{SingleSpacing}
+}{
+  \end{SingleSpacing}%
+}
+
+\renewenvironment{siglas}{
+  \pretextualchapter{\listadesiglasname}
+}{
+  \cleardoublepage
+}
+
+\renewenvironment{simbolos}{
+  \pretextualchapter{\listadesimbolosname}
+}{
+  \cleardoublepage
+}
+
+\newenvironment{termos}{%
+  \pretextualchapter{\listadetermosname}
+}{
+  \cleardoublepage
+}
+
+\newenvironment{resumoenv}[1][\resumoname]{
+  \pretextualchapter{#1}
+  \setlength{\parindent}{0cm}
+  \setlength{\parskip}{1em}
+  \AtBeginEnvironment{tabular}{\normalsize}
+  \renewcommand{\arraystretch}{1}
+  \setlength{\aboverulesep}{0em}
+  \setlength{\belowrulesep}{0em}
+  \setlength{\arrayrulewidth}{0em}
+  \setlength{\tabcolsep}{0em}
+  \begin{SingleSpace}
+}{
+  \end{SingleSpace}
+  \clearpage
+}
+
+\makechapterstyle{apendice}{
+  \setlength{\beforechapskip}{0em}
+  \setlength{\midchapskip}{0em}
+  \setlength{\afterchapskip}{1em}
+  \renewcommand{\chapnamefont}{\normalfont}
+  \renewcommand{\printchaptername}{\ABNTEXchapterupperifneeded{\appendixname}}
+  \renewcommand{\chapternamenum}{\space}
+  \renewcommand{\chapnumfont}{\normalfont}
+  \renewcommand{\printchapternum}{\thechapter}
+  \renewcommand{\afterchapternum}{\space -- \space}
+  \renewcommand{\chaptitlefont}{\normalfont}
+  \renewcommand{\printchaptertitle}[1]{\ABNTEXchapterupperifneeded{##1}}
+  \renewcommand{\afterchaptertitle}{\vspace{1em}}
+}
+
+\renewcommand{\PRIVATEapendiceconfig}[1]{
+  \setboolean{abntex@apendiceousecao}{true}
+  \renewcommand{\appendixname}{#1}
+  \renewcommand{\apendicesname}{#1}
+  \switchchapname{#1}
+}
+
+\newcommand{\PRIVATEannexconfig}[2]{
+  \setboolean{abntex@apendiceousecao}{true}
+  \renewcommand{\appendixname}{#1}
+  \renewcommand{\apendicesname}{#1}
+  \renewcommand{\appendixtocname}{#2}
+  \phantomsection
+  \addcontentsline{toc}{part}{\appendixtocname}
+  \switchchapname{#1}
+}
+
+\renewcommand{\apendices}{
+  \cftinserthook{toc}{appendixhook}
+  \PRIVATEapendiceconfig{\apendicename}
+  \appendix
+  \chapterstyle{apendice}
+}
+
+\renewenvironment{apendicesenv}{
+  \cftinserthook{toc}{appendixhook}
+  \PRIVATEapendiceconfig{\apendicename}
+  \begin{appendix}
+  \chapterstyle{apendice}
+}{
+  \end{appendix}
+  \setboolean{abntex@apendiceousecao}{false}
+  \bookmarksetup{startatroot}
+}
+
+\renewcommand{\anexos}{
+  \cftinserthook{toc}{appendixhook}
+  \PRIVATEannexconfig{\anexoname}{\anexosname}
+  \appendix
+  \renewcommand\theHchapter{anexochapback.\arabic{chapter}}
+  \chapterstyle{apendice}
+}
+
+\renewenvironment{anexosenv}{
+  \cftinserthook{toc}{appendixhook}
+  \PRIVATEannexconfig{\anexoname}{\anexosname}
+  \begin{appendix}
+  \renewcommand\theHchapter{anexochapback.\arabic{chapter}}
+  \chapterstyle{apendice}
+}{
+  \end{appendix}
+  \setboolean{abntex@apendiceousecao}{false}
+  \bookmarksetup{startatroot}
+}
+
+% Set bibliography -----
+\renewcommand{\bibname}{REFERENCES}
+\newcommand{\newbibname}{REFERENCES}
+
+\newcommand{\bibnamewithfootnote}{
+  REFERENCES\protect\footnote{According to the ABNT style -- Brazilian
+Association of Technical Standards.}
+}
+
+\usepackage[
+style=abnt,backend=biber,,url=true,,useprefix=false,,giveninits=true]{biblatex}
+\usepackage{csquotes}
+\addbibresource{references.bib}
+
+\cftinsertcode{bibhook}{
+  \setlength{\cftchapterindent}{5.675em}
+  \setlength{\cftchapternumwidth}{0em}
+  \renewcommand{\cftchapteraftersnumb}{\hspace{0em}}
+  \renewcommand{\cftchapterpresnum}{\normalfont\bfseries}
+}
+
+\cftinsertcode{removebibhook}{
+  \setlength{\cftchapterindent}{6em}
+  \setlength{\cftchapternumwidth}{0em}
+  \renewcommand{\cftchapteraftersnumb}{\hspace{0em}}
+  \renewcommand{\cftchapterpresnum}{\normalfont\bfseries}
+}
+
+\defbibheading{bay}[\bibnamewithfootnote]{
+  \ifthenelse{\boolean{ABNTEXupperchapter}}{
+    \setboolean{ABNTEXupperchapter}{false}
+    \chapter*{#1}
+    \markboth{#1}{#1}
+    \setboolean{ABNTEXupperchapter}{true}
+  }{
+    \chapter*{#1}
+    \markboth{#1}{#1}
+  }
+}
+
+\AtBeginBibliography{\vspace{4em}}
+\AtEveryBibitem{\clearfield{annotation}}
+\renewcommand{\bibfont}{\ABNTEXfontereduzida}
+
+\setlength{\bibhang}{0cm}
+
+\setlength{\bibparsep}{0em}
+
+\nocite{*}
+
+% Set ToC format -----
+
+\renewcommand{\aftertoctitle}{\center\vspace{3em}}
+
+\cftinsertcode{appendixhook}{
+    \setlength{\cftchapterindent}{6em} %
+    \renewcommand{\cftchaptername}{\appendixname\space}
+    \setlength{\cftchapternumwidth}{2.3em} % check
+    \renewcommand{\cftchapteraftersnumb}{
+        \hspace{-1.5em} -- \space % check \hspace{-1.5em}
+    }
+}
+
+\newcommand{\settoclengths}{
+  \setlength{\cftpartindent}{6em}
+  \setlength{\cftsectionnumwidth}{6em}
+  \setlength{\cftsubsectionnumwidth}{6em}
+  \setlength{\cftsubsubsectionnumwidth}{6em}
+  \setlength{\cftparagraphnumwidth}{6em}
+
+  \setlength{\cftbeforebookskip}{0pt}
+  \setlength{\cftbeforepartskip}{2em}
+  \setlength{\cftbeforechapterskip}{0.5em}
+  \setlength{\cftbeforesectionskip}{0pt}
+  \setlength{\cftbeforesubsectionskip}{0pt}
+  \setlength{\cftbeforesubsubsectionskip}{0pt}
+  \setlength{\cftbeforeparagraphskip}{0pt}
+}
+
+\settoclengths
+
+\renewcommand{\cftchapterpresnum}{\normalfont}
+\renewcommand{\cftchapteraftersnum}{\normalfont}
+\renewcommand{\cftchapteraftersnumb}{\normalfont\normalsize\bfseries\hspace{0.87em}}
+\renewcommand{\cftsubsectionpresnum}{\normalfont}
+\renewcommand{\cftparagraphpresnum}{\normalfont}
+
+\renewcommand{\cftpartfont}{\normalfont\normalsize\bfseries\MakeUppercase}
+\renewcommand{\cftchapterfont}{\normalfont\normalsize\bfseries\MakeUppercase}
+\renewcommand{\cftsectionfont}{\normalfont\normalsize\MakeUppercase}
+\renewcommand{\cftsubsectionfont}{\normalfont\normalsize\bfseries}
+\renewcommand{\cftsubsubsectionfont}{\normalfont\normalsize}
+\renewcommand{\cftparagraphfont}{\normalfont\normalsize\itshape}
+
+\renewcommand{\cftpartpagefont}{\normalfont\normalsize}
+\renewcommand{\cftchapterpagefont}{\normalfont\normalsize}
+\renewcommand{\cftsectionpagefont}{\normalfont\normalsize}
+\renewcommand{\cftsubsectionpagefont}{\normalfont\normalsize}
+\renewcommand{\cftsubsubsectionpagefont}{\normalfont\normalsize}
+\renewcommand{\cftparagraphpagefont}{\normalfont\normalsize}
+\renewcommand{\cftfigurepagefont}{\normalfont\normalsize}
+\renewcommand{\cfttablepagefont}{\normalfont\normalsize}
+% Set LoF & LoT format -----
+
+\renewcommand{\printloftitle}[1]{
+  \setlength{\afterchapskip}{2.3em}
+  \chapter*[#1]{#1}
+}
+
+\renewcommand{\printlottitle}[1]{
+  \setlength{\afterchapskip}{2.3em}
+  \chapter*[#1]{#1}
+}
+
+% Set colors -----
+
+\definecolor{blue}{HTML}{2905C3}
+
+% See <https://getbootstrap.com/docs/4.0/utilities/colors/>.
+\definecolor{quarto-blue}{HTML}{2780E3}
+\definecolor{quarto-lighter-blue}{HTML}{ECF4FC}
+\definecolor{quarto-orange}{HTML}{FF7518}
+\definecolor{quarto-ligther-orange}{HTML}{FFF3EB}
+\definecolor{quarto-red}{HTML}{D9534F}
+\definecolor{quarto-ligther-red}{HTML}{FCF1F1}
+\definecolor{quarto-green}{HTML}{3FB618}
+\definecolor{quarto-ligther-green}{HTML}{EFF9EB}
+\definecolor{quarto-purple}{HTML}{7D12BA}
+\definecolor{quarto-gray}{HTML}{A3A3A3}
+\definecolor{quarto-medium-gray}{HTML}{CFD0D1}
+\definecolor{quarto-ligther-gray}{HTML}{F1F3F5}
+
+\definecolor{bs-link-color}{HTML}{39729E}
+% Other settings -----
+
+\floatplacement{table}{H}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+\clubpenalty10000
+\widowpenalty10000
+\displaywidowpenalty10000
+
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+
+
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
-\hypersetup{
-  pdftitle={\{tesesusp\}: a Quarto format for USP theses and dissertations},
-  pdfauthor={Daniel Vartanian},
-  colorlinks=true,
-  linkcolor={blue},
-  filecolor={blue},
-  citecolor={quarto-medium-gray},
-  urlcolor={blue},
-  pdfcreator={LaTeX via pandoc}}
 
-\title{\{tesesusp\}: a Quarto format for USP theses and dissertations}
-\author{Daniel Vartanian}
-\date{2023}
+
+
+% -----
+% Body
+% -----
 
 \begin{document}
-\maketitle
-% tesesusp.cls, v-0.1.0
 
-% Based on 'bntex2ppgsi.cls' and 'abntex2.csl'.
-% See <https://www.overleaf.com/project/64f7bdf1641ad4a3a8482800>.
-% to learn more.
+% Top matter -----
+
+\pretextual
 
 \frenchspacing
 
-% tesesusp.cls, v-0.0.1
-
-% Based on 'bntex2ppgsi.cls', 'abntex2.csl' and on USP guidelines to create
-% thesis and dissertation documents.
-% See <https://www.overleaf.com/project/64f7bdf1641ad4a3a8482800>
-% and <https://teses.usp.br/index.php?option=com_content&
-%      view=article&id=52&Itemid=67&lang=en>
-% to learn more.
-
-\clearpage
+\selectlanguage{english}
 
 %:::% class attribute begin/end %:::%
 
-% ----------------------------------------------------------------------
+% -----
 % Cover (mandatory)
-% ----------------------------------------------------------------------
+% -----
 
 %:::% cover body-tag begin %:::%
 \imprimircapa
 %:::% cover body-tag end %:::%
 
-% ----------------------------------------------------------------------
+% -----
 % Title page (mandatory)
-% ----------------------------------------------------------------------
+% -----
 
 %:::% approval-sheet body-tag begin %:::%
 \imprimirfolhaderosto*
 %:::% approval-sheet body-tag end %:::%
 
-% ----------------------------------------------------------------------
+% -----
 % Cataloging record (mandatory)
-% ----------------------------------------------------------------------
+% -----
 
 %:::% cataloging-record begin %:::%
 \begin{fichacatalografica}
- \includepdf{images/fig_ficha_catalografica.pdf}
+%:::% cataloging-record body begin %:::%
+\begingroup
+\normalsize I authorize the full or partial reproduction of this work by any conventional or electronic means for the purposes of study and research, provided that the source is cited.
+\endgroup
+
+\vfill
+
+\begin{center}
+Cataloging record prepared by the [Library name] with the data \\ 
+inserted by [Full name of the librarian] ([Librarian register number]).
+\vspace{1em}
+
+\setlength{\fboxsep}{1cm}
+\fbox{\begin{minipage}[c][7.5cm]{12.5cm}
+[Author's surname], [Author's forename(s)]
+
+\hspace{0.5cm} {\imprimirtitulo}  / {\imprimirautor}; supervisor, {\imprimirorientador}; co-supervisor {\imprimircoorientador}. -- {\imprimirlocal}, {\imprimirdata}
+
+\hspace{0.5cm} {\thelastpage}p. : il
+\vspace{1em}
+
+\hspace{0.5cm} {\imprimirtipotrabalho} (\imprimirtituloacademico) -- {\imprimirprograma}, {\imprimirescola}, {\imprimiruniversidade}, {\imprimirdata}.
+
+\hspace{0.5cm} {\imprimirnotadeversao}
+\vspace{1em}
+
+\hspace{0.5cm} 1. [Subject A]. 2. [Subject B]. 3. [Subject C]. I. [Supervisor's surname], [Supervisor's forename(s)], super. II. [Co-supervisor's surname], [Co-supervisor's forename(s)] co-super. III. Title.
+\end{minipage}}
+\end{center}
+%:::% cataloging-record body end %:::%
 \end{fichacatalografica}
 %:::% cataloging-record end %:::%
 
-% ----------------------------------------------------------------------
+% -----
 % Errata (optional)
-% ----------------------------------------------------------------------
+% -----
 
 %:::% errata begin %:::%
 \begin{errata}
-  %:::% errata body begin %:::%
+%:::% errata body begin %:::%
 This is the development version of the thesis (version \textless1.0.0).
 Any necessary corrections will be listed here after its approval.
-  %:::% errata body end %:::%
+%:::% errata body end %:::%
 \end{errata}
 %:::% errata end %:::%
 
-% ----------------------------------------------------------------------
+% -----
 % Approval sheet (mandatory)
-% ----------------------------------------------------------------------
+% -----
 
 %:::% approval-sheet begin %:::%
 \begin{folhadeaprovacao}
   \noindent
-  %:::% approval-sheet header begin %:::%
-{[}TYPE OF WORK{]} by {[}AUTHOR'S FULL NAME{]}, under the title
-\textbf{\{tesesusp\}: a Quarto format for USP theses and dissertations},
-presented to the {[}SCHOOL/DEPARTMENT{]} at the University of São Paulo,
-as part of the requirements for the degree of {[}TYPE OF DEGREE{]} by
-the {[}GRADUATE PRGRAM{]}), in the concentration area of
-{[}CONCENTRATION AREA{]}.
-  %:::% approval-sheet header end %:::%
-
-  \vspace*{1.5cm}
-
-  \noindent
-  Approved on \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ , \_\_\_\_\_\_\_\_\_\_ .
+%:::% approval-sheet header begin %:::%
+{\imprimirtipotrabalho} by {\imprimirautor}, under the title \textbf{\imprimirtitulo}, presented to the {\imprimirescola} at the {\imprimiruniversidade}, as part of the requirements for the degree of {\imprimirtituloacademico} by the {\imprimirprograma}, in the concentration area of {\imprimirareadeconcentracao}.
+%:::% approval-sheet header end %:::%
+  \par\vspace*{1.5cm}
+  \noindent Approved on \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ , \_\_\_\_\_\_\_\_\_\_ .
 
   \vspace*{1.5cm}
 
@@ -534,158 +1042,139 @@ the {[}GRADUATE PRGRAM{]}), in the concentration area of
 \end{folhadeaprovacao}
 %:::% approval-sheet end %:::%
 
-% ----------------------------------------------------------------------
+% -----
 % Inscription (optional)
-% ----------------------------------------------------------------------
+% -----
 
 %:::% inscription begin %:::%
 \begin{dedicatoria}
   \vspace*{\fill}
   \centering
-  %:::% inscription body begin %:::%
-\emph{To the worm that first gnawed on the cold flesh of my corpse,}
+%:::% inscription body begin %:::%
+\textit{To the worm that first gnawed on the cold flesh of my corpse,}
 
-\emph{I dedicate, as a fond remembrance, these posthumous memories.}
+\textit{I dedicate, as a fond remembrance, these posthumous memories.}\footnotemark{}
 
-\vspace{1cm}
-
-Inscription found in the book
-
-\emph{The Posthumous Memoirs of Brás Cubas} by Machado de Assis (2014).
-  %:::% inscription body end %:::%
+\footnotetext{ASSIS, M. \textbf{Memórias póstumas de Brás Cubas} [The Posthumous Memoirs of Brás Cubas]. São Paulo: Companhia das Letras, 2014. ISBN 978-85-438-0163-6.}
+%:::% inscription body end %:::%
 	\vspace*{\fill}
 \end{dedicatoria}
 %:::% inscription end %:::%
 
-% ----------------------------------------------------------------------
+% -----
 % Acknowledgments (optional)
-% ----------------------------------------------------------------------
+% -----
 
 %:::% acknowledgments begin %:::%
 \begin{agradecimentos}
   %:::% acknowledgments body begin %:::%
 I would like to acknowledge this awesome
-\href{https://github.com/danielvartan/tesesusp}{Quarto format}! :)
+\href{https://github.com/danielvartan/abnt}{Quarto format}! :)
   %:::% acknowledgments body end %:::%
 \end{agradecimentos}
 %:::% acknowledgments end %:::%
 
-% ----------------------------------------------------------------------
+% -----
 % Epigraph (optional)
-% ----------------------------------------------------------------------
+% -----
 
 %:::% epigraph begin %:::%
 \begin{epigrafe}
   \vspace*{\fill}
 	\begin{flushright}
 	  %:::% epigraph body begin %:::%
-\emph{Nullius in verba}
+\textit{Nullius in verba}\footnotemark{}
 
-(The Royal Society, n.d.)
+\footnotetext{THE ROYAL SOCIETY. \textbf{History of the Royal Society}. Available from:
+<\href{https://royalsociety.org/about-us/history/}{https://royalsociety.org/about-us/history/}>. Visited on: 9 Sept. 2023.}
 		%:::% epigraph body end %:::%
 	\end{flushright}
 \end{epigrafe}
 %:::% epigraph end %:::%
 
-% ----------------------------------------------------------------------
+% -----
 % Abstract in the vernacular language (mandatory)
-% ----------------------------------------------------------------------
+% -----
 
 %:::% vernacular-abstract begin %:::%
-\setlength{\absparsep}{18pt}
-\begin{resumo}
-  %:::% vernacular-abstract body begin %:::%
-{[}SURNAME{]}, {[}INITIALS{]}. ({[}YEAR{]}). \emph{{[}TITLE{]}}
-{[}{[}TYPE OF THESIS{]}{]}. {[}SCHOOL/DEPARTMENT{]}, University of São
-Paulo, São Paulo. {[}THESIS'S URL{]}
+\begin{resumoenv}[Abstract]
+ %:::% vernacular-abstract reference begin %:::%
+[Author's surname], [Author's forename(s) initial(s)]. \textbf{\imprimirtitulo}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  (\imprimirtituloacademico) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
+%:::% vernacular-abstract reference end %:::%
 
-Cupidatat ad culpa non veniam quis mollit dolor ut irure eiusmod sint
-aute duis. Mollit eu ipsum deserunt nisi est culpa exercitation dolor.
-Velit veniam ad elit aliqua excepteur consectetur duis cillum id do
-mollit dolor pariatur aute. Excepteur velit ea aliqua amet fugiat qui
-aliquip tempor. Labore occaecat mollit minim in velit est nisi. Ut
-voluptate laboris ad amet culpa excepteur voluptate eiusmod est.
-Adipisicing eu fugiat irure sunt id tempor consectetur sint ipsum
-cillum. Ex sunt enim anim quis cupidatat reprehenderit reprehenderit
-nisi ea amet. Ullamco minim voluptate tempor nostrud id voluptate
-exercitation. Elit sint ea occaecat ipsum dolore incididunt velit
-cupidatat id. Consectetur aliquip dolore elit aute elit et ex ex fugiat
-ex laboris non magna. Duis voluptate mollit laborum aliquip elit mollit
-ad nisi sunt id ipsum esse incididunt eiusmod. Qui incididunt
-consectetur cillum est ex proident ad eiusmod excepteur pariatur velit
-enim ut cillum. Fugiat exercitation veniam eiusmod irure ut ad sint sunt
-consequat consectetur. Dolor sint voluptate mollit anim dolor ea ad ex
-veniam.
+%:::% vernacular-abstract body begin %:::%
+\{abnt\} is a \href{https://quarto.org}{Quarto} format designed for
+theses and dissertations that adhere to the standards of the Brazilian
+Association of Technical Standards (ABNT). It is based on the
+\href{https://www.abntex.net.br/}{\texttt{abntex2}} LaTeX class and on
+\href{https://teses.usp.br/index.php?option=com_content\&view=article\&id=52\&Itemid=67\&lang=en}{USP
+guidelines for creating thesis and dissertation documents}.
+%:::% vernacular-abstract body end %:::%
 
-Keywords: keyword 1. keyword 2. keyword 3.
-  %:::% vernacular-abstract body end %:::%
-\end{resumo}
+%:::% vernacular-abstract keywords begin %:::%
+\begin{tabular}{p{2.3cm} p{13.7cm}}
+  \textbf{Keywords}: &  [Keyword 1]. [Keyword 2]. [Keyword 3].
+\end{tabular}
+%:::% vernacular-abstract keywords end %:::%
+\end{resumoenv}
 %:::% vernacular-abstract end %:::%
 
-% ----------------------------------------------------------------------
+% -----
 % Abstract in the foreign language (mandatory)
-% ----------------------------------------------------------------------
+% -----
 
 %:::% foreign-abstract begin %:::%
-\begin{resumo}[RESUMO]
-  \begin{otherlanguage*}{brazil}
-    %:::% foreign-abstract body begin %:::%
-{[}SOBRENOME{]}, {[}INICIAIS{]}. ({[}ANO{]}). \emph{{[}TÍTULO{]}}
-{[}{[}TIPO DE TESE/DISSERTAÇÃO{]}{]}. {[}ESCOLA/DEPARTAMENTO{]},
-Universidade de São Paulo, São Paulo. {[}URL DA DISSERTAÇÃO/TESE{]}
+\begin{resumoenv}[Resumo]
+\begin{otherlanguage*}{brazil}
+%:::% foreign-abstract reference begin %:::%
+[Sobrenome do autor], [Inicial(is) do(s) prenome(s) do autor].  \textbf{[Título]}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  (\imprimirtituloacademico) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
+%:::% foreign-abstract reference end %:::%
 
-Cillum qui eu non ipsum pariatur ad exercitation pariatur dolore veniam
-amet cillum. Aliqua do nostrud aliquip in amet. Commodo sit tempor nulla
-ipsum officia voluptate laborum elit minim proident Lorem. Id pariatur
-reprehenderit non officia fugiat incididunt anim aliquip anim anim.
-Ipsum irure magna quis est aute. Nostrud nulla mollit non labore. In
-laboris mollit ea in. Excepteur eu do elit proident. Commodo tempor nisi
-enim ex velit voluptate dolor mollit eiusmod in ullamco aliqua nostrud
-id. Eiusmod dolore sint proident consectetur reprehenderit exercitation
-sunt. Nisi qui sit commodo anim consectetur in laborum dolore in labore
-veniam labore commodo tempor. Sunt sit officia commodo quis magna.
-Aliqua esse est adipisicing ea est ex esse esse officia sit culpa minim
-amet dolore. Culpa dolore laborum sunt do commodo duis in velit. Mollit
-duis voluptate aliquip magna labore aute sit dolore amet culpa labore.
-Id tempor consectetur est anim ullamco ex nostrud voluptate excepteur.
-Aliqua laboris aute laborum amet eu. Minim quis veniam et dolor quis
-fugiat. Adipisicing amet est do aliqua nostrud amet excepteur ut.
+%:::% foreign-abstract body begin %:::%
+\{abnt\} is a \href{https://quarto.org}{Quarto} format designed for
+theses and dissertations that adhere to the standards of the Brazilian
+Association of Technical Standards (ABNT). It is based on the
+\href{https://www.abntex.net.br/}{\texttt{abntex2}} LaTeX class and on
+\href{https://teses.usp.br/index.php?option=com_content\&view=article\&id=52\&Itemid=67\&lang=en}{USP
+guidelines for creating thesis and dissertation documents}.
+%:::% foreign-abstract body end %:::%
 
-Palavras-chaves: palavra-chave 1. palavra-chave 2. palavra-chave 3.
-    %:::% foreign-abstract body end %:::%
-  \end{otherlanguage*}
-\end{resumo}
+%:::% foreign-abstract keywords begin %:::%
+\begin{tabular}{p{3.6cm} p{12.4cm}}
+  \textbf{Palavras-chaves}: &  [Palavra-chave 1]. [Palavra-chave 2]. [Palavra-chave 3].
+\end{tabular}
+%:::% foreign-abstract keywords end %:::%
+\end{otherlanguage*}
+\end{resumoenv}
 %:::% foreign-abstract end %:::%
 
-% ----------------------------------------------------------------------
+% -----
 % List of figures (optional)
-% ----------------------------------------------------------------------
+% -----
 
 %:::% list-of-figures begin %:::%
-\renewcommand{\listfigurename}{LIST OF FIGURES}
 \pdfbookmark[0]{\listfigurename}{lof}
 \listoffigures*
 \cleardoublepage
 %:::% list-of-figures end %:::%
 
-% ----------------------------------------------------------------------
+% -----
 % List of tables (optional)
-% ----------------------------------------------------------------------
+% -----
 
 %:::% list-of-tables begin %:::%
-\renewcommand{\listtablename}{LIST OF TABLES}
 \pdfbookmark[0]{\listtablename}{lot}
 \listoftables*
 \cleardoublepage
 %:::% list-of-tables end %:::%
 
-% ----------------------------------------------------------------------
+% -----
 % List of abbreviations and acronyms (optional)
-% ----------------------------------------------------------------------
+% -----
 
 %:::% list-of-abbreviations begin %:::%
 \begin{siglas}
-  %:::% list-of-abbreviations body begin %:::%
+%:::% list-of-abbreviations body begin %:::%
 \begin{description}
 \item[\textsubscript{F}]
 \hspace{20cm}
@@ -723,17 +1212,17 @@ identified.
 
 Local time of mid-sleep on workdays
 \end{description}
-  %:::% list-of-abbreviations body end %:::%
+%:::% list-of-abbreviations body end %:::%
 \end{siglas}
 %:::% list-of-abbreviations end %:::%
 
-% ----------------------------------------------------------------------
+% -----
 % List of symbols (optional)
-% ----------------------------------------------------------------------
+% -----
 
 %:::% list-of-symbols begin %:::%
 \begin{simbolos}
-  %:::% list-of-symbols body begin %:::%
+%:::% list-of-symbols body begin %:::%
 For an extensive list of chronobiology related symbols, please refer to
 Aschoff et al.~(1965) and Marques \& Oda (2012).
 
@@ -768,17 +1257,17 @@ Phase delay
 
 Phase relation
 \end{description}
-  %:::% list-of-symbols body end %:::%
+%:::% list-of-symbols body end %:::%
 \end{simbolos}
 %:::% list-of-symbols end %:::%
 
-% ----------------------------------------------------------------------
+% -----
 % List of terms and definitions (optional)
-% ----------------------------------------------------------------------
+% -----
 
 %:::% list-of-terms begin %:::%
 \begin{termos}
-  %:::% list-of-terms body begin %:::%
+%:::% list-of-terms body begin %:::%
 For an extensive list of chronobiology related terms and definitions,
 please refer to Aschoff et al.~(1965) and Marques \& Oda (2012).
 
@@ -835,106 +1324,41 @@ A shift and alignment of biological rhythms induced by a zeitgeber input
 (Kuhlman et al., 2018). For example: a shift/alignment of an organism's
 circadian rhythm when exposed to light.
 \end{description}
-
-\begin{description}
-\item[Infradian rhythm]
-\hspace{20cm}
-
-A rhythm with a period greater than a day/24h. From the Latin
-\emph{infrā}, below (think in terms of period repetition), and
-\emph{dĭes}, day (Latinitium, n.d.). Example: the menstrual cycle.
-\end{description}
-
-\begin{description}
-\item[Period]
-\hspace{20cm}
-
-Cycle duration of an oscillation. In a more technical way, the duration
-between two identical and consecutive phases in an oscillation (Kuhlman
-et al., 2018).
-\end{description}
-
-\begin{description}
-\item[System theory]
-\hspace{20cm}
-
-Two definitions can be of use:
-\end{description}
-
-\begin{itemize}
-\tightlist
-\item
-  Science or discipline that investigates models, principles, and laws
-  that are valid to systems in general (Bertalanffy, 1968)
-\item
-  ``The attempt of a reductionist scientific tradition to come to terms
-  with complexity, nonlinearity, and change through sophisticated
-  mathematical and computational techniques, \emph{a groping toward a
-  more dialectical understanding} that is held back by its philosophical
-  biases and the institutional and economic contexts of its
-  development'' (Levins, 1998)
-\end{itemize}
-
-\begin{description}
-\item[Ultradian rhythm]
-\hspace{20cm}
-
-A rhythm with a period below a day/24h. From the Latin \emph{ultrā},
-beyond (think in terms of period repetition), and \emph{dĭes}, day
-(Latinitium, n.d.). Example: the cardiac cycle.
-\end{description}
-
-\begin{description}
-\item[Zeitgeber]
-\hspace{20cm}
-
-Any periodic environmental signal/cue that can influence or regulate
-biological rhythms. From the German \emph{zeit}, time, and \emph{geber},
-donor (Cambridge University Press, n.d.). Two main well known zeitgebers
-are light exposure and environment temperature (Pittendrigh, 1960).
-\end{description}
-  %:::% list-of-terms body end %:::%
+%:::% list-of-terms body end %:::%
 \end{termos}
 %:::% list-of-terms end %:::%
 
-% ----------------------------------------------------------------------
+% -----
 % Table of contents (mandatory)
-% ----------------------------------------------------------------------
+% -----
 
 %:::% table-of-contents begin %:::%
-\renewcommand{\contentsname}{TABLE OF CONTENTS}
 \pdfbookmark[0]{\contentsname}{toc}
-% \tableofcontents*
+\tableofcontents*
 \cleardoublepage
 %:::% table-of-contents end %:::%
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, breakable, frame hidden, colback={codebgcolor}, enhanced, sharp corners, boxrule=0pt]}{\end{tcolorbox}}\fi
 
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, colback={codebgcolor}, frame hidden, enhanced, borderline west={3pt}{0pt}{shadecolor}, sharp corners, boxrule=0pt]}{\end{tcolorbox}}\fi
+% Main and back matter -----
 
-\renewcommand*\contentsname{Table of contents}
-{
-\hypersetup{linkcolor=}
-\setcounter{tocdepth}{2}
-\tableofcontents
-}
+\textual
 \bookmarksetup{startatroot}
 
 \hypertarget{introduction}{%
-\chapter{INTRODUCTION}\label{introduction}}
+\chapter{Introduction}\label{introduction}}
 
-\textual
-
-\begin{tcolorbox}[enhanced jigsaw, colback=white, colbacktitle=quarto-callout-note-color!10!white, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, titlerule=0mm, bottomtitle=1mm, bottomrule=.15mm, opacityback=0, left=2mm, coltitle=black, breakable, toptitle=1mm, arc=.35mm, colframe=quarto-callout-note-color-frame, rightrule=.15mm, leftrule=.75mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, colback=white, toprule=.15mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, colframe=quarto-callout-note-color-frame, titlerule=0mm, leftrule=.75mm, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, breakable, bottomrule=.15mm, arc=.35mm, rightrule=.15mm, opacityback=0, bottomtitle=1mm, left=2mm]
 
 The text below is for demonstrative purposes only.
 
-\vspace{5pt}
+\texttt{=latex\ \textbackslash{}vspace\{0.5em\}}
 
-See \url{https://quarto.org/docs/authoring/markdown-basics.html} to
-learn about the basics of Markdown's syntax.
+See \url{https://github.com/danielvartan/abnt} to learn more about this
+template.
+
+\texttt{=latex\ \textbackslash{}vspace\{1em\}}
 
 \end{tcolorbox}
-
-\vspace{10pt}
 
 ``The activity can be represented by a \emph{general schema of
 problem-solving by the method of imaginative conjectures and criticism},
@@ -945,7 +1369,7 @@ refutation}. The schema (in its simplest form) is this
 \text{P}_{1} \to \text{TT} \to \text{EE} \to \text{P}_{2} 
 \]
 
-\vspace{15pt}
+\vspace{1em}
 
 Here \(\text{P}_{1}\) is the \emph{problem} from which we start,
 \(\text{TT}\) (the `tentative theory') is the imaginative conjectural
@@ -967,32 +1391,14 @@ that we can gauge the progress we have made by comparing
 \(\text{P}_{1}\) with some of our later problems (\(\text{P}_{n}\),
 say).''
 
-\vspace{15pt}
-
-\noindent \hspace*{\fill} (Popper 1979, 164)
+\autocite[p.~164]{popper1979}
 
 \begin{figure}
-
-\caption{\label{fig-karl-popper}Karl Popper (July 25, 1902 -- September
-17, 1994).\\
-One of the 20th century's most influential philosophers of science.}
-
-{\centering 
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=0.5\textwidth,height=\textheight]{images/karl-popper.png}
-
-}
-
-\end{figure}
-
-}
-
+\legend{Fonte: \href{https://www.npg.org.uk/collections/search/portrait/mw08238/Sir-Karl-Raimund-Popper?}{Steve Pyke}.}
 \end{figure}
 
 \hypertarget{secondary-section}{%
-\section{SECONDARY SECTION}\label{secondary-section}}
+\section{Secondary section}\label{secondary-section}}
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -1027,7 +1433,7 @@ Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
 \end{table}
 
 \hypertarget{tertiary-section}{%
-\subsection{TERTIARY SECTION}\label{tertiary-section}}
+\subsection{Tertiary section}\label{tertiary-section}}
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -1059,7 +1465,9 @@ geyser in Yellowstone National Park, Wyoming, USA.}
 \end{figure}
 
 \hypertarget{quaternary-section}{%
-\subsubsection{QUATERNARY SECTION}\label{quaternary-section}}
+\subsubsection{Quaternary section}\label{quaternary-section}}
+
+Example text.
 
 \begin{itemize}
 \tightlist
@@ -1080,7 +1488,9 @@ geyser in Yellowstone National Park, Wyoming, USA.}
 \end{itemize}
 
 \hypertarget{quinary-section}{%
-\paragraph{QUINARY SECTION}\label{quinary-section}}
+\paragraph{Quinary section}\label{quinary-section}}
+
+Example text.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1096,9 +1506,9 @@ geyser in Yellowstone National Park, Wyoming, USA.}
 \bookmarksetup{startatroot}
 
 \hypertarget{development}{%
-\chapter{DEVELOPMENT}\label{development}}
+\chapter{Development}\label{development}}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, colbacktitle=quarto-callout-warning-color!10!white, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Warning}, titlerule=0mm, bottomtitle=1mm, bottomrule=.15mm, opacityback=0, left=2mm, coltitle=black, breakable, toptitle=1mm, arc=.35mm, colframe=quarto-callout-warning-color-frame, rightrule=.15mm, leftrule=.75mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, colback=white, toprule=.15mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Warning}, colframe=quarto-callout-warning-color-frame, titlerule=0mm, leftrule=.75mm, coltitle=black, colbacktitle=quarto-callout-warning-color!10!white, breakable, bottomrule=.15mm, arc=.35mm, rightrule=.15mm, opacityback=0, bottomtitle=1mm, left=2mm]
 
 The text below is for demonstrative purposes only.
 
@@ -1131,7 +1541,7 @@ Aliqua laboris aute laborum amet eu. Minim quis veniam et dolor quis
 fugiat. Adipisicing amet est do aliqua nostrud amet excepteur ut.
 
 \hypertarget{secondary-section-1}{%
-\section{SECONDARY SECTION}\label{secondary-section-1}}
+\section{Secondary section}\label{secondary-section-1}}
 
 Minim consectetur eu aliqua in elit incididunt labore amet consequat
 cillum minim. Id sit duis duis ex velit proident mollit minim consequat
@@ -1146,9 +1556,9 @@ Lorem officia aute.
 \bookmarksetup{startatroot}
 
 \hypertarget{conclusion}{%
-\chapter{CONCLUSION}\label{conclusion}}
+\chapter{Conclusion}\label{conclusion}}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, colbacktitle=quarto-callout-important-color!10!white, opacitybacktitle=0.6, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, titlerule=0mm, bottomtitle=1mm, bottomrule=.15mm, opacityback=0, left=2mm, coltitle=black, breakable, toptitle=1mm, arc=.35mm, colframe=quarto-callout-important-color-frame, rightrule=.15mm, leftrule=.75mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, colback=white, toprule=.15mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, colframe=quarto-callout-important-color-frame, titlerule=0mm, leftrule=.75mm, coltitle=black, colbacktitle=quarto-callout-important-color!10!white, breakable, bottomrule=.15mm, arc=.35mm, rightrule=.15mm, opacityback=0, bottomtitle=1mm, left=2mm]
 
 The text below is for demonstrative purposes only.
 
@@ -1181,7 +1591,7 @@ Aliqua laboris aute laborum amet eu. Minim quis veniam et dolor quis
 fugiat. Adipisicing amet est do aliqua nostrud amet excepteur ut.
 
 \hypertarget{secondary-section-2}{%
-\section{SECONDARY SECTION}\label{secondary-section-2}}
+\section{Secondary section}\label{secondary-section-2}}
 
 Minim consectetur eu aliqua in elit incididunt labore amet consequat
 cillum minim. Id sit duis duis ex velit proident mollit minim consequat
@@ -1193,116 +1603,37 @@ aliquip do adipisicing dolor elit aute elit. Officia anim quis id
 voluptate eu. Quis labore consectetur est magna. Laborum nulla ea non
 Lorem officia aute.
 
-\bookmarksetup{startatroot}
-
-\hypertarget{references-1}{%
-\chapter*{\texorpdfstring{REFERENCES
-\footnote{According to the APA style - American Psychological
-  Association.}}{REFERENCES }}\label{references-1}}
-\addcontentsline{toc}{chapter}{REFERENCES }
-
-\markboth{REFERENCES }{REFERENCES }
+% Back matter -----
 
 \postextual
 
-\hypertarget{refs}{}
-\begin{CSLReferences}{1}{0}
-\leavevmode\vadjust pre{\hypertarget{ref-aschoff1965}{}}%
-Aschoff, Jürgen, K. Klotter, and R. Wever. 1965. {``Circadian
-Vocabulary: A Recommended Terminology with Definitions.''} In
-\emph{Circadian Clocks}. North-Holland.
+\addtocontents{toc}{\protect\vspace{1em}}
+\begingroup
+\renewcommand{\baselinestretch}{1}
+\setcounter{footnote}{0}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\printbibliography[heading=bay]
+\endgroup
 
-\leavevmode\vadjust pre{\hypertarget{ref-assis2014}{}}%
-Assis, Machado de. 2014. \emph{Memórias póstumas de Brás Cubas}. São
-Paulo: Companhia das Letras.
+\cftinserthook{toc}{bibhook}
+\addcontentsline{toc}{chapter}{
+  \protect\numberline{}
+  \newbibname
+  \hspace{-0.25em}
+}
 
-\leavevmode\vadjust pre{\hypertarget{ref-bertalanffy1968}{}}%
-Bertalanffy, Ludwig von. 1968. \emph{General System Theory: Foundations,
-Development, Applications}. New York, NY: George Braziller.
-
-\leavevmode\vadjust pre{\hypertarget{ref-cambridgeuniversitypress}{}}%
-Cambridge University Press. n.d. {``Cambridge Dictionary.''} Accessed
-September 21, 2023. \url{https://dictionary.cambridge.org/}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-ehret1974}{}}%
-Ehret, Charles F. 1974. {``The Sense of Time: Evidence for Its Molecular
-Basis in the Eukaryotic Gene-Action System.''} In \emph{Advances in
-Biological and Medical Physics}, 15:47--77. Elsevier.
-\url{https://doi.org/10.1016/B978-0-12-005215-8.50009-7}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-horne1976}{}}%
-Horne, J. A., and O. Ostberg. 1976.
-{``\href{https://www.ncbi.nlm.nih.gov/pubmed/1027738}{A self-assessment
-questionnaire to determine morningness-eveningness in human circadian
-rhythms}.''} \emph{International Journal of Chronobiology} 4 (2):
-97--110.
-
-\leavevmode\vadjust pre{\hypertarget{ref-kuhlman2018}{}}%
-Kuhlman, Sandra J., L. Michon Craig, and Jeanne F. Duffy. 2018.
-{``Introduction to Chronobiology.''} \emph{Cold Spring Harbor
-Perspectives in Biology} 10 (9): a033613.
-\url{https://doi.org/10.1101/cshperspect.a033613}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-latinitium}{}}%
-Latinitium. n.d. {``Latin Dictionaries.''} Latinitium. Accessed
-September 21, 2023. \url{https://latinitium.com/latin-dictionaries/}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-levins1998}{}}%
-Levins, Richard. 1998. {``Dialectics and Systems Theory.''}
-\emph{Science \& Society} 62 (3): 375--99.
-\url{https://www.jstor.org/stable/40403729}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-marques2012}{}}%
-Marques, Mirian David, and Gisele Oda. 2012. {``Glossário.''}
-\emph{Revista da Biologia} 9 (3).
-\url{https://www.revistas.usp.br/revbiologia/article/view/114816}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-mitchell2013}{}}%
-Mitchell, Melanie. 2013. {``Introduction to Complexity.''} Online
-course. 2013.
-\url{https://www.complexityexplorer.org/courses/1-https://www.complexityexplorer.org/courses/1}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-pittendrigh1960}{}}%
-Pittendrigh, C. S. 1960. {``Circadian Rhythms and the Circadian
-Organization of Living Systems.''} \emph{Cold Spring Harbor Symposia on
-Quantitative Biology} 25: 159--84.
-\url{https://doi.org/10.1101/SQB.1960.025.01.015}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-pittendrigh1993}{}}%
----------. 1993. {``Temporal Organization: Reflections of a Darwinian
-Clock-Watcher.''} \emph{Annual Review of Physiology} 55 (1): 17--54.
-\url{https://doi.org/10.1146/annurev.ph.55.030193.000313}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-popper1979}{}}%
-Popper, Karl R. 1979. \emph{Objective Knowledge: An Evolutionary
-Approach}. Rev. ed. Oxford University Press.
-
-\leavevmode\vadjust pre{\hypertarget{ref-roenneberg2012a}{}}%
-Roenneberg, Till, Karla~V. Allebrandt, Martha Merrow, and Céline Vetter.
-2012. {``Social Jetlag and Obesity.''} \emph{Current Biology} 22 (10):
-939--43. \url{https://doi.org/10.1016/j.cub.2012.03.038}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-roenneberg2003}{}}%
-Roenneberg, Till, Anna Wirz-Justice, and Martha Merrow. 2003. {``Life
-Between Clocks: Daily Temporal Patterns of Human Chronotypes.''}
-\emph{Journal of Biological Rhythms} 18 (1): 80--90.
-\url{https://doi.org/10.1177/0748730402239679}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-theroyalsociety}{}}%
-The Royal Society. n.d. {``History of the Royal Society.''} Accessed
-September 9, 2023. \url{https://royalsociety.org/about-us/history/}.
-
-\end{CSLReferences}
+\settoclengths
+\begin{apendicesenv}
 
 \cleardoublepage
 \phantomsection
 \addcontentsline{toc}{part}{Appendices}
 \appendix
 
-\hypertarget{appendix-1}{%
-\chapter{APPENDIX 1}\label{appendix-1}}
+\hypertarget{example}{%
+\chapter{Example}\label{example}}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, titlerule=0mm, bottomtitle=1mm, bottomrule=.15mm, opacityback=0, left=2mm, coltitle=black, breakable, toptitle=1mm, arc=.35mm, colframe=quarto-callout-tip-color-frame, rightrule=.15mm, leftrule=.75mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, colback=white, toprule=.15mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, colframe=quarto-callout-tip-color-frame, titlerule=0mm, leftrule=.75mm, coltitle=black, colbacktitle=quarto-callout-tip-color!10!white, breakable, bottomrule=.15mm, arc=.35mm, rightrule=.15mm, opacityback=0, bottomtitle=1mm, left=2mm]
 
 The text below is for demonstrative purposes only.
 
@@ -1335,7 +1666,7 @@ Aliqua laboris aute laborum amet eu. Minim quis veniam et dolor quis
 fugiat. Adipisicing amet est do aliqua nostrud amet excepteur ut.
 
 \hypertarget{secondary-section-3}{%
-\section{SECONDARY SECTION}\label{secondary-section-3}}
+\section{Secondary section}\label{secondary-section-3}}
 
 Minim consectetur eu aliqua in elit incididunt labore amet consequat
 cillum minim. Id sit duis duis ex velit proident mollit minim consequat
@@ -1347,6 +1678,30 @@ aliquip do adipisicing dolor elit aute elit. Officia anim quis id
 voluptate eu. Quis labore consectetur est magna. Laborum nulla ea non
 Lorem officia aute.
 
+\end{apendicesenv}
 
+% -----
+% Attachments (optional)
+% -----
+
+\begin{anexosenv}
+\chapter{Example}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque accumsan rutrum lacus, vitae iaculis nisi bibendum in. Nulla et pellentesque nisl. Proin mollis dui sit amet egestas fermentum. Maecenas eu odio odio. Aenean porta ipsum in mauris pharetra dapibus. Nunc dapibus libero nec dui lacinia, id ultricies lectus maximus. Mauris quis mauris in velit pulvinar rutrum. Cras congue ante in orci luctus placerat. Nullam sit amet nisi augue. Maecenas non ligula eros. Etiam nec dolor a mi bibendum auctor.
+
+\clearpage
+\includepdf{images/anx_1.pdf}
+\end{anexosenv}
+
+% % -----
+% % Index (optional)
+% % -----
+%
+% % Use `index: true` below the `format: pdf:` to activated this section.
+% % See <https://quarto.org/docs/books/book-structure.html#creating-an-index>
+% %   to learn more.
+%
+% \phantompart
+% \printindex
 
 \end{document}

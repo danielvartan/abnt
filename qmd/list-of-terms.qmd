@@ -15,7 +15,7 @@ source(here::here("R/quarto-setup.R"))
 ::: {.callout-warning}
 The text below is for demonstrative purposes only.
 
-See <https://github.com/danielvartan/tesesusp> to learn more about this template.
+See <https://github.com/danielvartan/abnt> to learn more about this template.
 :::
 
 <!-- TODO -->

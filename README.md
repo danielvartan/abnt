@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# tesesusp
+# abnt
 
 <!-- badges: start -->
 
@@ -16,14 +16,14 @@ MIT](https://img.shields.io/badge/license-MIT-green)](https://choosealicense.com
 
 ## Overview
 
-`tesesusp` is a [Quarto](https://quarto.org) format designed for theses
-and dissertations of the University of São Paulo (USP). It is based on
-the [`abntex2`](https://www.abntex.net.br/) suite, the
+`abnt` is a [Quarto](https://quarto.org) format designed for technical
+and scientific documents that adhere to the standards of the Brazilian
+Association of Technical Standards ([ABNT](https://www.abnt.org.br/)).
+Currently, it is exclusively tailored for theses and dissertations. The
+format is built upon the [`abntex2`](https://www.abntex.net.br/) suite
+and the
 [`abntex2ppgsi`](https://www.overleaf.com/project/64f7bdf1641ad4a3a8482800)
-template and on [USP guidelines for creating thesis and dissertation
-documents](https://teses.usp.br/index.php?option=com_content&view=article&id=52&Itemid=67&lang=en).
-This last one is based on the Brazilian Association of Technical
-Standards ([ABNT](https://www.abnt.org.br/)).
+template.
 
 This format extension also includes a [Quarto
 book](https://quarto.org/docs/books/) template designed for use with the
@@ -32,11 +32,17 @@ utilize [other Quarto supported
 languages](https://quarto.org/docs/computations/python.html) with this
 format, some adaptations may be necessary.
 
-For more detailed information about USP guidelines, please visit
-<https://teses.usp.br>.
+It’s important to notice that the ABNT standards are not publicly
+available. They can be purchased
+[here](https://www.abntcatalogo.com.br). If you are a member of a
+Brazil’s federal or state university, you may have access to [Target
+GEDWeb](https://www.gedweb.com.br), a system for managing standards and
+other regulatory documents. For example, members of the University of
+São Paulo can access ABNT standards on GEDWeb
+[here](https://uspdigital.usp.br/wsusuario/gedweb.jsp).
 
 You can preview the template output in the `pdf` folder or by accessing
-the repository website: <https://danielvartan.github.io/tesesusp>.
+the repository website: <https://danielvartan.github.io/abnt>.
 
 To see a practical example of this Quarto format in action, you can
 refer to <https://github.com/danielvartan/mastersthesis>.
@@ -46,7 +52,7 @@ refer to <https://github.com/danielvartan/mastersthesis>.
 To create a new thesis from scratch, use the following command:
 
 ``` bash
-quarto use template danielvartan/tesesusp
+quarto use template danielvartan/abnt
 ```
 
 <!-- Needs testing -->
@@ -59,16 +65,16 @@ document. To do so, navigate to the Quarto project or document directory
 and run the following command:
 
 ``` bash
-quarto add danielvartan/tesesusp
+quarto add danielvartan/abnt
 ```
 
 ## Usage
 
 To apply this format, use the format name followed by the output type:
 
-`quarto render --to tesesusp-pdf`
+`quarto render --to abnt-pdf`
 
-At the moment, `tesesusp` have two outputs formats available: `pdf` (the
+At the moment, `abnt` have two outputs formats available: `pdf` (the
 official one) and a `html` template to publish web thesis along with the
 print version.
 
@@ -76,16 +82,15 @@ You can also set the format in your document `yml`:
 
 ``` yaml
 format:
-  tesesusp-pdf
+  abnt-pdf
 ```
 
 Since USP and ABNT guidelines are plentiful, some formatting had to be
 made by inventive/non-conventional ways (to put it mildly). The easy way
-to start using `tesesusp` is cloning this repository and building on top
-of its [Quarto book](https://quarto.org/docs/books/). If you do this,
-don’t forget to install
-[`renv`](https://rstudio.github.io/renv/index.html) and run
-`renv::restore()` after.
+to start using `abnt` is cloning this repository and building on top of
+its [Quarto book](https://quarto.org/docs/books/). If you do this, don’t
+forget to install [`renv`](https://rstudio.github.io/renv/index.html)
+and run `renv::restore()` after.
 
 ## Format options
 
@@ -101,7 +106,7 @@ You can set the document typography using the `mainfont` key. Example:”
 
 ``` yaml
 format:
-  tesesusp-pdf:
+  abnt-pdf:
     mainfont: Arial
 ```
 
@@ -117,8 +122,8 @@ At the moment, this Quarto format only supports the English language.
 
 If you’re familiar with LaTeX, you can change the order of languages in
 the `\RequirePackage[spanish, brazil, english]{babel}` command found in
-`_extensions/tesesusp/tesesusp.cls`. By doing so, the last one in the
-list will become the main language of the document.
+`_extensions/abnt/abnt.cls`. By doing so, the last one in the list will
+become the main language of the document.
 
 ### Pre-textual pages
 
@@ -142,6 +147,7 @@ will then be written to the `references.json` file.
 
 <!-- How to add or remove sections. -->
 <!-- ## Citation style -->
+<!-- Cache issues. Use cache refresh -->
 
 ## Acknowledgments
 
@@ -152,7 +158,15 @@ Systems](http://ppgsi.each.usp.br/templates/) and the [Graduate Program
 in Modeling Complex Systems](https://sites.usp.br/scx/apresentacao/) at
 the [University of Sao Paulo (USP)](http://usp.br/).
 
-The development of `tesesusp` was supported by a scholarship provided by
-the [Coordination for the Improvement of Higher Education Personnel
-(CAPES)](https://www.gov.br/capes/) and by the [University of Sao Paulo
-(USP)](http://usp.br/) (Grant number: 88887.703720/2022-00) (❤️).
+The initial development of `abnt` was supported by a scholarship
+provided by the [Coordination for the Improvement of Higher Education
+Personnel (CAPES)](https://www.gov.br/capes/) and by the [University of
+Sao Paulo (USP)](http://usp.br/) (Grant number: 88887.703720/2022-00)
+(❤️).
+
+<br>
+
+Become an `abnt` supporter!
+
+Click [here](https://github.com/sponsors/danielvartan) to make a
+donation. Please indicate the `abnt` format in your donation message.

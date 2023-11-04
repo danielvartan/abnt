@@ -1,0 +1,77 @@
+$if(title)$
+\title{$title$$if(thanks)$\thanks{$thanks$}$endif$}
+\titulo{$title$}
+$endif$
+
+$if(subtitle)$
+\subtitle{$subtitle$}
+$endif$
+
+$if(author)$
+\author{$for(authors)$$it.name.literal$$sep$ \and $endfor$}
+\autor{$for(authors)$$it.name.literal$$sep$ \and $endfor$}
+$endif$
+
+$if(location)$
+\local{$location$}
+$endif$
+
+$if(date)$
+\date{$date$}
+\data{$date$}
+$endif$
+
+$if(supervisor)$
+\orientador{$supervisor$}
+$endif$
+
+$if(cosupervisor)$
+\coorientador{$cosupervisor$}
+$endif$
+
+$if(academic-title)$
+\tipodetituloacademico{$academic-title$}
+$endif$
+
+$if(academic-degree)$
+\tituloacademico{$academic-degree$}
+$endif$
+
+$if(type-of-work)$
+\tipotrabalho{$type-of-work$}
+$endif$
+
+$if(area-of-concentration)$
+\areadeconcentracao{$area-of-concentration$}
+$endif$
+
+$if(university)$
+\instituicao{\MakeUppercase{$university$}}
+\universidade{$university$}
+
+$if(school)$
+\instituicao{
+  \MakeUppercase{$university$}
+  \par
+  \MakeUppercase{$school$}
+}
+
+\escola{$school$}
+$endif$
+
+$if(program)$
+\instituicao{
+  \MakeUppercase{$university$}
+  \par
+  \MakeUppercase{$school$}
+  \par
+  \MakeUppercase{$program$}
+}
+
+\programa{$program$}
+$endif$
+$endif$
+
+$if(version-note)$
+\notadeversao{$version-note$}
+$endif$

@@ -14,24 +14,17 @@ source(here::here("R/quarto-setup.R"))
 
 ::: {.content-visible when-format="html"}
 
-To the worm that first gnawed on the cold flesh of my corpse, I dedicate, as a fond remembrance, these posthumous memories.
+To the worm that first gnawed on the cold flesh of my corpse, I dedicate, as a fond remembrance, these posthumous memories.[^1]
 
-> Inscription found in the book _The Posthumous Memoirs of Brás Cubas_ by @assis2014 .
-
+[^1]: ASSIS, M. __Memórias póstumas de Brás Cubas__ [The Posthumous Memoirs of Brás Cubas]. São Paulo: Companhia das Letras, 2014. ISBN 978-85-438-0163-6.
 :::
-
-<!-- @assis2014 -->
 
 ::: {.content-visible when-format="pdf"}
 <!-- %:::% inscription body begin %:::% -->
-_To the worm that first gnawed on the cold flesh of my corpse,_ 
+\textit{To the worm that first gnawed on the cold flesh of my corpse,}
 
-_I dedicate, as a fond remembrance, these posthumous memories._
+\textit{I dedicate, as a fond remembrance, these posthumous memories.}\footnotemark{}
 
-\vspace{1cm}
-
-Inscription found in the book 
-
-_The Posthumous Memoirs of Brás Cubas_ by Machado de Assis (2014).
+\footnotetext{ASSIS, M. \textbf{Memórias póstumas de Brás Cubas} [The Posthumous Memoirs of Brás Cubas]. São Paulo: Companhia das Letras, 2014. ISBN 978-85-438-0163-6.}
 <!-- %:::% inscription body end %:::% -->
 :::

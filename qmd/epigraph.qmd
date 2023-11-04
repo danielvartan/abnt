@@ -13,17 +13,17 @@ source(here::here("R/quarto-setup.R"))
 ```
 
 ::: {.content-visible when-format="html"}
-> _Nullius in verba_
+_Nullius in verba_[^1]
 
-[@theroyalsociety]
+[^1]: THE ROYAL SOCIETY. __History of the Royal Society__. Available from:
+\<https://royalsociety.org/about-us/history/\>. Visited on: 9 Sept. 2023.
 :::
-
-<!-- @theroyalsociety -->
 
 ::: {.content-visible when-format="pdf"}
 <!-- %:::% epigraph body begin %:::% -->
-_Nullius in verba_
+\textit{Nullius in verba}\footnotemark{}
 
-(The Royal Society, n.d.)
+\footnotetext{THE ROYAL SOCIETY. \textbf{History of the Royal Society}. Available from:
+<\href{https://royalsociety.org/about-us/history/}{https://royalsociety.org/about-us/history/}>. Visited on: 9 Sept. 2023.}
 <!-- %:::% epigraph body end %:::% -->
 :::
