@@ -5,7 +5,7 @@
 # lybrary(stringr)
 # lybrary(yaml)
 
-# Unfreeze documents
+# Unfreeze documents -----
 
 quarto_yml_path <- here::here("_quarto.yml")
 quarto_yml_vars <- yaml::read_yaml(quarto_yml_path)
@@ -25,10 +25,12 @@ if (!is.null(quarto_yml_vars$execute$freeze)) {
 quarto_yml_path <- here::here("_quarto.yml")
 quarto_yml_html_path <- here::here("_quarto-html.yml")
 quarto_yml_pdf_path <- here::here("_quarto-pdf.yml")
+quarto_yml_extension_path <- here::here("_extensions", "abnt", "_extension.yml")
 
 quarto_yml_vars <- yaml::read_yaml(quarto_yml_path)
 quarto_yml_html_vars <- yaml::read_yaml(quarto_yml_html_path)
 quarto_yml_pdf_vars <- yaml::read_yaml(quarto_yml_pdf_path)
+quarto_yml_extension_vars <- yaml::read_yaml(quarto_yml_extension_path)
 
 env_vars_file_path <- here::here("_variables.yml")
 
@@ -36,27 +38,21 @@ if (!checkmate::test_file_exists(env_vars_file_path)) {
   rutils:::create_file(env_vars_file_path)
 }
 
-extract_initials <- function(x, sep = ". ") {
-  checkmate::assert_string(x)
-
-  if (!grepl(" ", x)) {
-    substr(x, 1, 1)
-  } else {
-    x <- gsub("(?<=[A-Z])[^A-Z]+", sep, x, perl = TRUE)
-    trimws(x)
-  }
-}
-
 env_vars <- list()
+
+var_files <- c(
+  "quarto_yml_vars", "quarto_yml_html_vars", "quarto_yml_pdf_vars",
+  "quarto_yml_extension_vars"
+)
 
 var_patterns <- c(
   "academic-title", "academic-degree", "area-of-concentration", "author",
   "^book.url$", "cosupervisor", "date", "keyword", "language", "location",
-  "program", "school", "supervisor", "title", "type-of-work", "university",
-  "version-note"
+  "mainfont", "monofont", "program", "sansfont", "school", "supervisor",
+  "title","type-of-work", "university", "version-note"
 )
 
-for (i in c("quarto_yml_vars", "quarto_yml_html_vars", "quarto_yml_pdf_vars")){
+for (i in var_files){
   values <- unlist(get(i))
 
   for (j in var_patterns) {
@@ -103,7 +99,8 @@ for (i in c("quarto_yml_vars", "quarto_yml_html_vars", "quarto_yml_pdf_vars")){
             stringr::str_extract(values[test][1], "^.+(?= )")
         }
 
-        env_vars[["author-initials"]] <- extract_initials(values[test][1])
+        env_vars[["author-initials"]] <-
+          rutils:::extract_initials(values[test][1])
       }
 
       env_vars[[j]] <- values[test][1] |> unname()
@@ -113,16 +110,16 @@ for (i in c("quarto_yml_vars", "quarto_yml_html_vars", "quarto_yml_pdf_vars")){
 
 env_vars |> yaml::write_yaml(env_vars_file_path)
 
-# Scan Quarto files for citations and add them to references.json -----
+# Scan Quarto files for citations and add them to references.bib -----
 
 quarto_yml_pdf_path <- here::here("_quarto-pdf.yml")
 quarto_yml_pdf_vars <- yaml::read_yaml(quarto_yml_pdf_path)
 
 if (isTRUE(quarto_yml_pdf_vars$format$`abnt-pdf`$zotero)) {
   rutils:::bbt_write_quarto_bib(
-    wd = here::here(),
     bib_file = "references.bib",
     dir = c("", "qmd", "tex"),
-    pattern = c("\\.qmd$|\\.tex$")
+    pattern = c("\\.qmd$|\\.tex$"),
+    wd = here::here()
   )
 }

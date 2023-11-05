@@ -45,31 +45,14 @@ for (i in rutils:::list_files(here::here("images"), full.names = TRUE)) {
     )
 }
 
-# Add/change environment variables -----
+# Add/update environment variables -----
 
-quarto_yml_pdf_path <- here::here("_quarto-pdf.yml")
-quarto_yml_pdf_vars <- yaml::read_yaml(quarto_yml_pdf_path)
-env_vars_file_path <- here::here("_variables.yml")
-
-if (!checkmate::test_file_exists(env_vars_file_path)) {
-  rutils:::create_file(env_vars_file_path)
-}
-
-env_vars_file_vars <- yaml::read_yaml(env_vars_file_path)
-
-new_vars <- list(
+var_list <- list(
   # variable = value
   format = "html"
 )
 
-for (i in names(new_vars)) {
-  if (!i %in% names(env_vars_file_vars)) {
-    x <- list(x = new_vars[[i]])
-    names(x) <- i
-    env_vars_file_vars <- append(env_vars_file_vars, x)
-  } else {
-    env_vars_file_vars[[i]] <- new_vars[[i]]
-  }
-}
-
-env_vars_file_vars |> yaml::write_yaml(env_vars_file_path)
+rutils:::add_or_update_env_var(
+  var = var_list,
+  yml_file = here::here("_variables.yml")
+)

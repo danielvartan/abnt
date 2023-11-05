@@ -18,10 +18,8 @@ The text below is for demonstrative purposes only.
 See <https://github.com/danielvartan/abnt> to learn more about this template.
 :::
 
-<!-- @aschoff1965; @marques2012 -->
-
 <!-- %:::% list-of-symbols body begin %:::% -->
-For an extensive list of chronobiology related symbols, please refer to Aschoff et al. (1965) and Marques & Oda (2012).
+For an extensive list of chronobiology related symbols, please refer to  @aschoff1965 and @marques2012.
 
 $\tau$
 : \hspace{20cm} Period of a rhythm in free flow; only revealed under constant environmental conditions.

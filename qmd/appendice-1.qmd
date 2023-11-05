@@ -12,23 +12,12 @@
 source(here::here("R/quarto-setup.R"))
 ```
 
-::: {.content-visible when-format="html"}
 ::: {.callout-tip}
 The text below is for demonstrative purposes only.
 
-See <https://github.com/danielvartan/abnt> to learn more about this template.
-:::
-:::
-
-::: {.content-visible when-format="pdf"}
-::: {.callout-tip}
-The text below is for demonstrative purposes only.
-
-\vspace{5pt}
+\vspace{0.25\baselineskip}
 
 See <https://quarto.org/docs/authoring/markdown-basics.html> to learn about the basics of Markdown's syntax.
-:::
-\vspace{10pt}
 :::
 
 ```{r}

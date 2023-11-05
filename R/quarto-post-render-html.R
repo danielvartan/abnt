@@ -5,9 +5,9 @@
 
 source(here::here("R", "quarto-post-render-common.R"))
 
-# Copy PDF (if exists) to `docs` folder ----------
+# Copy PDF (if exists) to `output_dir_html` folder ----------
 
-pdf_file <- list.files(pdf_dir, full.names = TRUE, pattern = ".pdf$")
+pdf_file <- list.files(output_dir_pdf, full.names = TRUE, pattern = ".pdf$")
 
 if (length(pdf_file) == 1) {
   rutils:::copy_file(pdf_file, file.path(output_dir_html, "index.pdf"))
@@ -38,11 +38,10 @@ writeLines(
 # Delete unnecessary files and folders -----
 
 rutils:::clean_quarto_mess(
-  wd = here::here(),
   file = NULL,
   dir = c(".temp", "index_cache", "index_files"),
   ext = c("aux", "bbx", "cbx", "cls", "dbx", "fdb_latexmk", "lbx", "loa",
           "log", "pdf", "scss", "tex", "xdv"),
-  keep = NULL,
-  quarto_yaml = NULL
+  ignore = NULL,
+  wd = here::here()
 )

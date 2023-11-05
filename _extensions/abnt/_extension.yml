@@ -68,36 +68,45 @@ contributes:
       documentclass: abntex2
       mainfont: Arial
       sansfont: Arial
+      # See <https://github.com/weiweihuanghuang/fragment-mono>.
+      monofont: FragmentMono-Regular.otf
+      monofontoptions:
+        - ItalicFont=FragmentMono-Italic.otf
+        - Scale=0.75
       fontsize: 12pt
       linestretch: 1.5
       parindent: 1cm
-      parskip: 0em
+      parskip: 0ex
+      frenchspacing: true
       sides: oneside # options: [oneside, twoside]
       papersize: a4 # options: [a4, a5]
       section-options:
         - chapter=TITLE
         - section=TITLE
-      date-format: "YYYY"
+      date-format: YYYY
       lang: en # options: [en, pt-br, es, fr]
       language: ../_extensions/abnt/_language.yml
-      babel-lang: english
+      babel-lang: english # options: [english, brazil, spanish, french]
       other-babel-lang: # Don not repeat 'babel-lang' here.
         - french
         - spanish
         - brazil
       cite-method: biblatex # Do not remove it.
-      biblio-style: abnt
+      biblio-style: abnt # options: [abnt, abnt-ibid, abnt-numeric, apa]
       biblio-title: REFERENCES
       biblio-footnote: >
-        According to the ABNT style -- Brazilian Association of Technical
+        In accordance with ABNT style -- Brazilian Association of Technical
         Standards.
       biblatexoptions:
         - backend=biber,
+        - language=english, # [options: english, brazil, spanish, french]
         - url=true,
         - useprefix=false,
-        - giveninits=true
-      bibhang: 0cm
-      bibparsep: 0em
+        - giveninits=true,
+        - extrayear=true
+        # - isbn=false
+      bibhang: 0cm # Use 0.5cm if `biblio-style: apa`.
+      bibparsep: 0ex
       zotero: false
       index-page: false
       linktoc: section
@@ -110,10 +119,11 @@ contributes:
       code-annotations: true
       code-block-border-left: "#CFD0D1"
       code-block-bg: "#F1F3F5"
-      cap-location: top
       fig-format: png
-      fig-pos: H
-      tbl-pos: H
+      fig-dpi: 150
+      fig-pos: H # `abntex2` default: htb (doesn't work)
+      tbl-pos: H # `abntex2` default: htb (doesn't work)
+      cap-location: top
       prefer-html: false
       location: "[City]"
       supervisor: "[Supervisor's full name]"
@@ -140,6 +150,8 @@ contributes:
         - tex/title.tex
         - tex/toc.tex
       format-resources:
+        - otf/FragmentMono-Regular.otf
+        - otf/FragmentMono-Italic.otf
         - bbx/abnt.bbx
         - bbx/abnt-ibid.bbx
         - bbx/abnt-numeric.bbx
@@ -156,3 +168,4 @@ contributes:
         - lbx/brazil-apa.lbx
         - lbx/spanish-apa.lbx
         - lbx/french-apa.lbx
+      keep-tex: true

@@ -1,13 +1,36 @@
 ## Based on <https://github.com/hadley/r4ds/blob/main/_common.R>.
 
-set.seed(2023)
-
 # library(checkmate, quietly = TRUE)
+# library(extrafont)
 # library(here, quietly = TRUE)
 # library(kableExtra, quietly = TRUE)
 # library(knitr, quietly = TRUE)
 # library(ggplot2, quietly = TRUE)
 # lybrary(yaml)
+
+# Set variables -----
+
+set.seed(2023)
+env_vars <- yaml::read_yaml(here::here("_variables.yml"))
+base_size <- 10
+
+env_vars$base_size <- base_size
+
+# Load fonts -----
+
+extrafont::font_import(
+  paths = NULL,
+  recursive = TRUE,
+  prompt = FALSE,
+  pattern = paste0(
+    "^(?i)", stringr::str_extract(env_vars$sansfont, "(?i)^.[a-zÀ-ÿ]+"), "*"
+  )
+  ) |>
+  rutils:::shush()
+
+extrafont::loadfonts(quiet = TRUE)
+
+# Set knitr -----
 
 knitr::clean_cache()
 
@@ -17,20 +40,7 @@ knitr::opts_chunk$set(
   root.dir = here::here()
 )
 
-# From <https://stackoverflow.com/questions/74193542/
-#       quarto-dataframe-printing-and-styling>.
-knit_print.data.frame = function(x, ...) {
-  knitr::kable(x, digits = 3) |>
-    kableExtra::kable_styling() |>
-    knitr::asis_output()
-}
-
-registerS3method(
-  "knit_print",
-  "data.frame",
-  knit_print.data.frame,
-  envir = asNamespace("knitr")
-)
+# Set general options -----
 
 options(
   dplyr.print_min = 6,
@@ -39,12 +49,32 @@ options(
   pillar.min_chars = 15,
   stringr.view_n = 6,
   # Temporarily deactivate cli output for quarto
-  cli.num_colors = 0,
-  cli.hyperlink = FALSE,
+  # cli.num_colors = 0,
+  # cli.hyperlink = FALSE,
   pillar.bold = TRUE,
   width = 77 # 80 - 3 for #> comment
 )
 
-ggplot2::theme_set(ggplot2::theme_gray(12))
+# Set `ggplot2` -----
 
-env_vars <- yaml::read_yaml(here::here("_variables.yml"))
+if (env_vars$format == "pdf") {
+  ggplot2::theme_set(
+    ggplot2::theme_gray(
+      base_size = base_size,
+      base_family = env_vars$sansfont,
+      base_line_size = base_size / 22, # `ggplot2::theme_gray` default
+      base_rect_size = base_size / 22 # `ggplot2::theme_gray` default
+    )
+  )
+}
+
+if (env_vars$format == "html") {
+  ggplot2::theme_set(
+    ggplot2::theme_gray(
+      base_size = "",
+      base_family = env_vars$sansfont,
+      base_line_size = base_size/22, # `ggplot2::theme_gray` default
+      base_rect_size = base_size/22 # `ggplot2::theme_gray` default
+    )
+  )
+}

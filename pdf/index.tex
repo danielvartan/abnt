@@ -50,10 +50,10 @@ english
 \usepackage{booktabs}
 \usepackage{calc}
 \usepackage{color}
+\usepackage{colortbl}
 \usepackage{amsmath}
 \usepackage{amssymb}
-% \usepackage[french, spanish, brazil, english]{babel}
-\usepackage[font=footnotesize, justification=centering]{caption}
+\usepackage{booktabs}
 \usepackage{enumitem}
 \usepackage{etoolbox}
 \usepackage{float}
@@ -72,6 +72,12 @@ english
 \usepackage{pdfpages}
 \usepackage[table]{xcolor}
 
+\usepackage[
+  font=footnotesize,
+  justification=centering,
+  skip = 1\baselineskip
+  ]{caption}
+
 \usepackage{hyperref}
 
 \ifPDFTeX
@@ -80,15 +86,13 @@ english
   \usepackage{unicode-math}
 \fi
 
-% Set general formatting -----
-
-\makeatletter
-\setlength{\@fptop}{0.5em} % Set distance from top of page to first float
-\makeatother
+% Set page layout -----
 
 \setlength{\headsep}{1cm}
 \setlength{\footskip}{1cm}
 \checkandfixthelayout
+
+% Set text -----
 
 \renewcommand{\familydefault}{\sfdefault}
 
@@ -96,23 +100,142 @@ english
 
 \setlength{\parindent}{1cm}
 
-\setlength{\parskip}{0em}
-
-\setlength{\footnotemargin}{0.25cm}
-\let\svfootnoterule\footnoterule
-\renewcommand\footnoterule{\svfootnoterule\vspace{5pt}}
+\setlength{\parskip}{0ex}
 
 
 \ifPDFTeX\else
     % xetex/luatex font selection
   \setmainfont[]{Arial}
   \setsansfont[]{Arial}
+  \setmonofont[ItalicFont=FragmentMono-Italic.otf,Scale=0.75]{FragmentMono-Regular.otf}
 
 
 
 
 \fi
 
+
+% Set `abntex2` text variables -----
+
+\renewcommand{\ABNTEXchapterfont}{\normalfont\bfseries}
+\renewcommand{\ABNTEXchapterfontsize}{\normalsize}
+\renewcommand{\ABNTEXsectionfont}{\normalfont}
+\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsectionfont}{\normalfont\bfseries}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsubsectionfont}{\normalfont}
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsubsubsectionfont}{\normalfont}
+\renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalsize\itshape}
+\renewcommand{\ABNTEXfontereduzida}{\footnotesize}
+
+\renewcommand{\chapnumfont}{\normalfont}
+\renewcommand{\captiontitlefont}{\ABNTEXfontereduzida}
+
+\renewcommand{\ABNTEXcaptiondelim}{~\textendash~}
+\renewcommand{\ABNTEXcaptionfontedelim}{:~}
+
+% Set page numbering -----
+
+\makepagestyle{abntheadings}
+\makeevenhead{abntheadings}{\ABNTEXfontereduzida\thepage}{}{}
+\makeoddhead{abntheadings}{}{}{\ABNTEXfontereduzida\thepage}
+
+% Set footnote -----
+
+\setlength{\footnotemargin}{0.5em} % Equal to `\footmarkwidth`
+\let\svfootnoterule\footnoterule % Equal to `\footmarksep`
+\renewcommand\footnoterule{\svfootnoterule\vspace{1ex}}
+
+% Set language patterns -----
+
+\newcommand{\capaname}{Capa}
+\newcommand{\listadetermosname}{Lista de termos e definições}
+
+\addto\captionsenglish{
+  \renewcommand{\capaname}{Cover}
+  \renewcommand{\folhadeaprovacaoname}{Approval sheet}
+  \renewcommand{\dedicatorianame}{Inscription}
+  \renewcommand{\contentsname}{Contents}
+  \renewcommand{\listfigurename}{List of figures}
+  \renewcommand{\listtablename}{List of tables}
+  \renewcommand{\listadetermosname}{List of terms and definitions}
+}
+
+\addto\captionsbrazil{
+  \renewcommand{\capaname}{Capa}
+  \renewcommand{\contentsname}{Sumário}
+  \renewcommand{\listfigurename}{Lista de figuras}
+  \renewcommand{\listadetermosname}{Lista de termos e definições}
+}
+
+\addto\captionsspanish{
+  \renewcommand{\capaname}{Portada}
+  \renewcommand{\folhaderostoname}{Página de título}
+  \renewcommand{\epigraphname}{Epígrafe}
+  \renewcommand{\dedicatorianame}{Dedicatoria}
+  \renewcommand{\errataname}{Errata}
+  \renewcommand{\agradecimentosname}{Agradecimientos}
+  \renewcommand{\anexoname}{Anexo}
+  \renewcommand{\anexosname}{Anexos}
+  \renewcommand{\apendicename}{Apéndice}
+  \renewcommand{\apendicesname}{Apéndices}
+  \renewcommand{\orientadorname}{Asesor:}
+  \renewcommand{\coorientadorname}{Coasesor:}
+  \renewcommand{\folhadeaprovacaoname}{Hoja de aprobación}
+  \renewcommand{\resumoname}{Resumen}
+  \renewcommand{\contentsname}{Sumario}
+  \renewcommand{\listfigurename}{Lista de figuras}
+  \renewcommand{\listtablename}{Lista de tablas}
+  \renewcommand{\listadesiglasname}{Lista de abreviaturas y siglas}
+  \renewcommand{\listadesimbolosname}{Lista de símbolos}
+  \renewcommand{\listadetermosname}{Lista de términos y definiciones}
+  \renewcommand{\contentsname}{Sumario}
+  \renewcommand{\bibname}{Referencias}
+  \renewcommand{\indexname}{Índice}
+  \renewcommand{\sourcename}{Fuente}
+  \renewcommand{\notaname}{Nota}
+  \renewcommand{\pageautorefname}{página}
+  \renewcommand{\sectionautorefname}{sección}
+  \renewcommand{\subsectionautorefname}{subsección}
+  \renewcommand{\subsubsectionautorefname}{subsubsección}
+  \renewcommand{\paragraphautorefname}{subsubsubsección}
+}
+
+\addto\captionsfrench{
+  \renewcommand{\capaname}{Page de titre}
+  \renewcommand{\folhaderostoname}{Page de titre}
+  \renewcommand{\epigraphname}{Épigraphe}
+  \renewcommand{\dedicatorianame}{Dédiace}
+  \renewcommand{\errataname}{Errata}
+  \renewcommand{\agradecimentosname}{Remerciements}
+  \renewcommand{\anexoname}{Annexe}
+  \renewcommand{\anexosname}{Annexes}
+  \renewcommand{\apendicename}{Appendice}
+  \renewcommand{\apendicesname}{Appendices}
+  \renewcommand{\orientadorname}{Conseiller :}
+  \renewcommand{\coorientadorname}{Co-conseiller :}
+  \renewcommand{\folhadeaprovacaoname}{Feuille d'approbation}
+  \renewcommand{\resumoname}{Résumé}
+  \renewcommand{\contentsname}{Sommaire}
+  \renewcommand{\listfigurename}{Liste des figures}
+  \renewcommand{\listtablename}{Liste des tableaux}
+  \renewcommand{\listadesiglasname}{Liste des abréviations et sigles}
+  \renewcommand{\listadesimbolosname}{Liste des symboles}
+  \renewcommand{\listadetermosname}{Liste des termes et définitions}
+  \renewcommand{\contentsname}{Sommaire}
+  \renewcommand{\bibname}{Références}
+  \renewcommand{\indexname}{Index}
+  \renewcommand{\sourcename}{Source}
+  \renewcommand{\notaname}{Note}
+  \renewcommand{\pageautorefname}{page}
+  \renewcommand{\sectionautorefname}{section}
+  \renewcommand{\subsectionautorefname}{sous-section}
+  \renewcommand{\subsubsectionautorefname}{sous-sous-section}
+  \renewcommand{\paragraphautorefname}{sous-sous-sous-section}
+}
+
+% Set other general formatting -----
 
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -215,40 +338,31 @@ english
 
 %:::% title-page begin %:::%
 \preambulo{
-  %:::% title-page body begin %:::%
-{\imprimirnotadeversao}
+%:::% title-page body begin %:::%
+\imprimirnotadeversao
 \vspace{1.5em}
 
 {\imprimirtipotrabalho} presented to the {\imprimirescola} at {\imprimiruniversidade}, as part of the requirements for the degree of {\imprimirtituloacademico} by the {\imprimirprograma}.
-\vspace{1.5em}
+\vspace{1em}
 
 Area of concentration: {\imprimirareadeconcentracao}.
-\vspace{1.5em}
+\vspace{1em}
 
 Revised version incorporating the changes requested by the examining committee on [Date]. The original version is held in the reserved collection at the {\imprimirescola} Library and in the Digital Library of Theses and Dissertations of the {\imprimiruniversidade}.
-\vspace{1.5em}
+\vspace{1em}
 
-Supervisor: Prof. Dr. \imprimirorientador
+Supervisor: Prof. Dr. {\imprimirorientador}
 \vspace{0.5em}
 
-Co-Supervisor: Prof. Dr. \imprimircoorientador
-  %:::% title-page body end %:::%
+Co-Supervisor: Prof. Dr. {\imprimircoorientador}
+%:::% title-page body end %:::%
 }
 %:::% title-page end %:::%
 \usepackage{booktabs}
+\usepackage{caption}
 \usepackage{longtable}
-\usepackage{array}
-\usepackage{multirow}
-\usepackage{wrapfig}
-\usepackage{float}
 \usepackage{colortbl}
-\usepackage{pdflscape}
-\usepackage{tabu}
-\usepackage{threeparttable}
-\usepackage{threeparttablex}
-\usepackage[normalem]{ulem}
-\usepackage{makecell}
-\usepackage{xcolor}
+\usepackage{array}
 \makeatletter
 \@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
 \@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
@@ -420,28 +534,15 @@ bookmarksdepth=5
 
 \setsecnumformat{\normalfont\csname the#1\endcsname\quad}
 
-\renewcommand{\ABNTEXchapterfont}{\normalfont\bfseries}
-\renewcommand{\ABNTEXchapterfontsize}{\normalsize}
-\renewcommand{\ABNTEXsectionfont}{\normalfont}
-\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
-\renewcommand{\ABNTEXsubsectionfont}{\normalfont\bfseries}
-\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
-\renewcommand{\ABNTEXsubsubsectionfont}{\normalfont}
-\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize}
-\renewcommand{\ABNTEXsubsubsubsectionfont}{\normalfont}
-\renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalsize\itshape}
-\renewcommand{\ABNTEXfontereduzida}{\footnotesize}
-\renewcommand{\captiontitlefont}{\small}
-
 \renewcommand{\printchapternum}{
   \tocprintchapter
   \setboolean{abntex@innonumchapter}{false}
   \chapnumfont
-  \vspace{30pt} \normalfont \thechapter \quad
+  \thechapter \quad
   \ifthenelse{\boolean{abntex@apendiceousecao}}{
       \tocinnonumchapter
       \ABNTEXcaptiondelim
-  }{} % else
+  }{}
 }
 
 \setlength{\beforechapskip}{2.5em}
@@ -453,115 +554,51 @@ bookmarksdepth=5
 \setbeforesubsubsecskip{1.5em}
 \setaftersubsubsecskip{1em}
 \setbeforeparaskip{1.5em}
-\setafterparaskip{1em}
-
-% Set page numbering -----
-
-\makepagestyle{abntheadings}
-
-\makeevenhead{abntheadings}{
-  \ABNTEXfontereduzida \thepage
-}{}{}
-
-\makeoddhead{abntheadings}{}{}{
-  \ABNTEXfontereduzida \thepage
-}
+\setafterparaskip{0em} % check
+\setparahook{\vspace{1.5em}}
 
 % Set tabular environment -----
 
-\AtBeginEnvironment{table}{\small}
-\AtBeginEnvironment{tabular}{\small}
+% \providecommand{\addquartolegend}{}
+% \newcommand{\quartolegend}[1]{\renewcommand{\addquartolegend}{#1}}
+% \renewcommand{\quartolegend}{Don't forget to set \verb|\quartolegend|!}
+
+\AtBeginEnvironment{table}{\ABNTEXfontereduzida}
+\AtBeginEnvironment{tabular}{\ABNTEXfontereduzida}
 \renewcommand{\arraystretch}{1.5}
-\setlength{\aboverulesep}{0pt}
-\setlength{\belowrulesep}{0pt}
+\setlength{\aboverulesep}{0ex}
+\setlength{\belowrulesep}{0ex}
 
-% Set language patterns -----
+\AddToHook{env/longtable/before}{}
+\AddToHook{env/longtable/after}{}
+\AddToHook{env/longtable/begin}{
+  \ABNTEXfontereduzida
+  \renewcommand{\arraystretch}{1.5}
+  \legend{test}
+}
+\AddToHook{env/longtable/end}{}
 
-\newcommand{\capaname}{Capa}
-\newcommand{\listadetermosname}{Lista de termos e definições}
+% Set figure environment -----
 
-\addto\captionsenglish{
-  \renewcommand{\capaname}{Cover}
-  \renewcommand{\folhadeaprovacaoname}{Approval sheet}
-  \renewcommand{\dedicatorianame}{Inscription}
-  \renewcommand{\contentsname}{Contents}
-  \renewcommand{\listfigurename}{List of figures}
-  \renewcommand{\listtablename}{List of tables}
-  \renewcommand{\listadetermosname}{List of terms and definitions}
+\makeatletter
+\setlength{\@fptop}{5pt} % Set distance from top of page to first float
+\makeatother
+
+\renewcommand{\legend}[1]{
+  \vspace*{1\baselineskip}
+  \ABNTEXfontereduzida \raggedright #1
+  \vspace{1.5\baselineskip}
 }
 
-\addto\captionsbrazil{
-  \renewcommand{\contentsname}{Sumário}
-  \renewcommand{\listfigurename}{Lista de figuras}
-}
+% % Credits: <https://stackoverflow.com/a/1566053/8258804>.
+% \makeatletter
+% \let\oldfigure\figure
+% \def\figure{\@ifnextchar[\figure@i \figure@ii}
+% \def\figure@i[#1]{\oldfigure[#1]\centering}
+% \def\figure@ii{\oldfigure\centering}
+% \makeatother
 
-\addto\captionsspanish{
-  \renewcommand{\capaname}{Portada}
-  \renewcommand{\folhaderostoname}{Página de título}
-  \renewcommand{\epigraphname}{Epígrafe}
-  \renewcommand{\dedicatorianame}{Dedicatoria}
-  \renewcommand{\errataname}{Errata}
-  \renewcommand{\agradecimentosname}{Agradecimientos}
-  \renewcommand{\anexoname}{Anexo}
-  \renewcommand{\anexosname}{Anexos}
-  \renewcommand{\apendicename}{Apéndice}
-  \renewcommand{\apendicesname}{Apéndices}
-  \renewcommand{\orientadorname}{Asesor:}
-  \renewcommand{\coorientadorname}{Coasesor:}
-  \renewcommand{\folhadeaprovacaoname}{Hoja de aprobación}
-  \renewcommand{\resumoname}{Resumen}
-  \renewcommand{\contentsname}{Sumario}
-  \renewcommand{\listfigurename}{Lista de figuras}
-  \renewcommand{\listtablename}{Lista de tablas}
-  \renewcommand{\listadesiglasname}{Lista de abreviaturas y siglas}
-  \renewcommand{\listadesimbolosname}{Lista de símbolos}
-  \renewcommand{\listadetermosname}{Lista de términos y definiciones}
-  \renewcommand{\contentsname}{Sumario}
-  \renewcommand{\bibname}{Referencias}
-  \renewcommand{\indexname}{Índice}
-  \renewcommand{\sourcename}{Fuente}
-  \renewcommand{\notaname}{Nota}
-  \renewcommand{\pageautorefname}{página}
-  \renewcommand{\sectionautorefname}{sección}
-  \renewcommand{\subsectionautorefname}{subsección}
-  \renewcommand{\subsubsectionautorefname}{subsubsección}
-  \renewcommand{\paragraphautorefname}{subsubsubsección}
-}
-
-\addto\captionsfrench{
-  \renewcommand{\capaname}{Page de titre}
-  \renewcommand{\folhaderostoname}{Page de titre}
-  \renewcommand{\epigraphname}{Épigraphe}
-  \renewcommand{\dedicatorianame}{Dédiace}
-  \renewcommand{\errataname}{Errata}
-  \renewcommand{\agradecimentosname}{Remerciements}
-  \renewcommand{\anexoname}{Annexe}
-  \renewcommand{\anexosname}{Annexes}
-  \renewcommand{\apendicename}{Appendice}
-  \renewcommand{\apendicesname}{Appendices}
-  \renewcommand{\orientadorname}{Conseiller :}
-  \renewcommand{\coorientadorname}{Co-conseiller :}
-  \renewcommand{\folhadeaprovacaoname}{Feuille d'approbation}
-  \renewcommand{\resumoname}{Résumé}
-  \renewcommand{\contentsname}{Sommaire}
-  \renewcommand{\listfigurename}{Liste des figures}
-  \renewcommand{\listtablename}{Liste des tableaux}
-  \renewcommand{\listadesiglasname}{Liste des abréviations et sigles}
-  \renewcommand{\listadesimbolosname}{Liste des symboles}
-  \renewcommand{\listadetermosname}{Liste des termes et définitions}
-  \renewcommand{\contentsname}{Sommaire}
-  \renewcommand{\bibname}{Références}
-  \renewcommand{\indexname}{Index}
-  \renewcommand{\sourcename}{Source}
-  \renewcommand{\notaname}{Note}
-  \renewcommand{\pageautorefname}{page}
-  \renewcommand{\sectionautorefname}{section}
-  \renewcommand{\subsectionautorefname}{sous-section}
-  \renewcommand{\subsubsectionautorefname}{sous-sous-section}
-  \renewcommand{\paragraphautorefname}{sous-sous-sous-section}
-}
-
-% Change abntex2 commands and enviroments -----
+% Change `abntex2` commands and enviroments -----
 
 
 % Similar to \printloftitle
@@ -581,18 +618,19 @@ bookmarksdepth=5
   \phantomsection\pdfbookmark[0]{\capaname}{}
   \begin{capa}%
   \begin{adjustwidth}{-1cm}{0cm}
-  \center\normalfont\normalsize\imprimirinstituicao
+  \center
+  \imprimirinstituicao
   \vfill
 
-  \normalfont\normalsize\imprimirautor
+  \imprimirautor
   \vfill
 
-  \bfseries\normalsize\imprimirtitulo
+  \textbf{\imprimirtitulo}
   \vspace{10cm}
 
-  \normalfont\normalsize\imprimirlocal
+  \imprimirlocal
 
-  \normalfont\normalsize\imprimirdata
+  \imprimirdata
   \vspace*{1.5cm}
   \end{adjustwidth}
   \end{capa}
@@ -601,27 +639,26 @@ bookmarksdepth=5
 \makeatletter
 \renewcommand{\folhaderostocontent}{
   \begin{center}
-  \normalfont\normalsize\imprimirautor
+  \imprimirautor
   \vfill
 
-  \bfseries\normalsize\imprimirtitulo
+  \textbf{\imprimirtitulo}
   \vfill
 
   \abntex@ifnotempty{
-    \normalfont\normalsize\imprimirpreambulo
+    \imprimirpreambulo
   }{
     \hspace{0.35\textwidth}
     \begin{minipage}{.6\textwidth} % page width
     \SingleSpacing
-    \normalfont\normalsize\imprimirpreambulo
-    \vfill
+    \imprimirpreambulo
     \end{minipage}
     \vfill
   }
 
-  \normalfont\normalsize\imprimirlocal
+  \imprimirlocal
 
-  \normalfont\normalsize\imprimirdata
+  \imprimirdata
   \vspace*{1cm}
   \end{center}
 }
@@ -670,7 +707,7 @@ bookmarksdepth=5
 }
 
 \makechapterstyle{apendice}{
-  \setlength{\beforechapskip}{0em}
+  \setlength{\beforechapskip}{-\baselineskip}
   \setlength{\midchapskip}{0em}
   \setlength{\afterchapskip}{1em}
   \renewcommand{\chapnamefont}{\normalfont}
@@ -689,6 +726,15 @@ bookmarksdepth=5
   \renewcommand{\appendixname}{#1}
   \renewcommand{\apendicesname}{#1}
   \switchchapname{#1}
+
+  % Note:
+  %
+  % \cleardoublepage
+  % \phantomsection
+  % \addcontentsline{toc}{part}{Appendices}
+  % \appendix
+  %
+  % is automatically add by the Quarto render.
 }
 
 \newcommand{\PRIVATEannexconfig}[2]{
@@ -739,86 +785,35 @@ bookmarksdepth=5
   \bookmarksetup{startatroot}
 }
 
-% Set bibliography -----
-\renewcommand{\bibname}{REFERENCES}
-\newcommand{\newbibname}{REFERENCES}
+% Set LoF & LoT -----
 
-\newcommand{\bibnamewithfootnote}{
-  REFERENCES\protect\footnote{According to the ABNT style -- Brazilian
-Association of Technical Standards.}
+\renewcommand{\printloftitle}[1]{
+  \setlength{\afterchapskip}{2.3em}
+  \chapter*[#1]{#1}
 }
 
-\usepackage[
-style=abnt,backend=biber,,url=true,,useprefix=false,,giveninits=true]{biblatex}
-\usepackage{csquotes}
-\addbibresource{references.bib}
-
-\cftinsertcode{bibhook}{
-  \setlength{\cftchapterindent}{5.675em}
-  \setlength{\cftchapternumwidth}{0em}
-  \renewcommand{\cftchapteraftersnumb}{\hspace{0em}}
-  \renewcommand{\cftchapterpresnum}{\normalfont\bfseries}
+\renewcommand{\printlottitle}[1]{
+  \setlength{\afterchapskip}{2.3em}
+  \chapter*[#1]{#1}
 }
 
-\cftinsertcode{removebibhook}{
-  \setlength{\cftchapterindent}{6em}
-  \setlength{\cftchapternumwidth}{0em}
-  \renewcommand{\cftchapteraftersnumb}{\hspace{0em}}
-  \renewcommand{\cftchapterpresnum}{\normalfont\bfseries}
-}
-
-\defbibheading{bay}[\bibnamewithfootnote]{
-  \ifthenelse{\boolean{ABNTEXupperchapter}}{
-    \setboolean{ABNTEXupperchapter}{false}
-    \chapter*{#1}
-    \markboth{#1}{#1}
-    \setboolean{ABNTEXupperchapter}{true}
-  }{
-    \chapter*{#1}
-    \markboth{#1}{#1}
-  }
-}
-
-\AtBeginBibliography{\vspace{4em}}
-\AtEveryBibitem{\clearfield{annotation}}
-\renewcommand{\bibfont}{\ABNTEXfontereduzida}
-
-\setlength{\bibhang}{0cm}
-
-\setlength{\bibparsep}{0em}
-
-\nocite{*}
-
-% Set ToC format -----
+% Set ToC -----
 
 \renewcommand{\aftertoctitle}{\center\vspace{3em}}
 
-\cftinsertcode{appendixhook}{
-    \setlength{\cftchapterindent}{6em} %
-    \renewcommand{\cftchaptername}{\appendixname\space}
-    \setlength{\cftchapternumwidth}{2.3em} % check
-    \renewcommand{\cftchapteraftersnumb}{
-        \hspace{-1.5em} -- \space % check \hspace{-1.5em}
-    }
-}
+\setlength{\cftpartindent}{6em}
+\setlength{\cftsectionnumwidth}{6em}
+\setlength{\cftsubsectionnumwidth}{6em}
+\setlength{\cftsubsubsectionnumwidth}{6em}
+\setlength{\cftparagraphnumwidth}{6em}
 
-\newcommand{\settoclengths}{
-  \setlength{\cftpartindent}{6em}
-  \setlength{\cftsectionnumwidth}{6em}
-  \setlength{\cftsubsectionnumwidth}{6em}
-  \setlength{\cftsubsubsectionnumwidth}{6em}
-  \setlength{\cftparagraphnumwidth}{6em}
-
-  \setlength{\cftbeforebookskip}{0pt}
-  \setlength{\cftbeforepartskip}{2em}
-  \setlength{\cftbeforechapterskip}{0.5em}
-  \setlength{\cftbeforesectionskip}{0pt}
-  \setlength{\cftbeforesubsectionskip}{0pt}
-  \setlength{\cftbeforesubsubsectionskip}{0pt}
-  \setlength{\cftbeforeparagraphskip}{0pt}
-}
-
-\settoclengths
+\setlength{\cftbeforebookskip}{0pt}
+\setlength{\cftbeforepartskip}{2em}
+\setlength{\cftbeforechapterskip}{0.5em}
+\setlength{\cftbeforesectionskip}{0pt}
+\setlength{\cftbeforesubsectionskip}{0pt}
+\setlength{\cftbeforesubsubsectionskip}{0pt}
+\setlength{\cftbeforeparagraphskip}{0pt}
 
 \renewcommand{\cftchapterpresnum}{\normalfont}
 \renewcommand{\cftchapteraftersnum}{\normalfont}
@@ -841,17 +836,57 @@ style=abnt,backend=biber,,url=true,,useprefix=false,,giveninits=true]{biblatex}
 \renewcommand{\cftparagraphpagefont}{\normalfont\normalsize}
 \renewcommand{\cftfigurepagefont}{\normalfont\normalsize}
 \renewcommand{\cfttablepagefont}{\normalfont\normalsize}
-% Set LoF & LoT format -----
 
-\renewcommand{\printloftitle}[1]{
-  \setlength{\afterchapskip}{2.3em}
-  \chapter*[#1]{#1}
+\cftinsertcode{bibhook}{
+  \setlength{\cftchapterindent}{5.675em}
+  \setlength{\cftchapternumwidth}{0em}
+  \renewcommand{\cftchapteraftersnumb}{\hspace{0em}}
+  \renewcommand{\cftchapterpresnum}{\normalfont\bfseries}
 }
 
-\renewcommand{\printlottitle}[1]{
-  \setlength{\afterchapskip}{2.3em}
-  \chapter*[#1]{#1}
+\cftinsertcode{appendixhook}{
+    \setlength{\cftchapterindent}{6em} %
+    \renewcommand{\cftchaptername}{\appendixname\space}
+    \setlength{\cftchapternumwidth}{2.3em} % check
+    \renewcommand{\cftchapteraftersnumb}{
+        \hspace{-1.5em} -- \space % check \hspace{-1.5em}
+    }
 }
+% Set bibliography -----
+
+\renewcommand{\bibname}{REFERENCES}
+\newcommand{\newbibname}{REFERENCES}
+
+\newcommand{\bibnamewithfootnote}{
+  REFERENCES\protect\footnote{In accordance with ABNT style -- Brazilian
+Association of Technical Standards.}
+}
+
+\usepackage[
+style=abnt,backend=biber,,language=english,,url=true,,useprefix=false,,giveninits=true,,extrayear=true]{biblatex}
+\usepackage{csquotes}
+\addbibresource{references.bib}
+
+\defbibheading{bay}[\bibnamewithfootnote]{
+  \ifthenelse{\boolean{ABNTEXupperchapter}}{
+    \setboolean{ABNTEXupperchapter}{false}
+    \chapter*{#1}
+    \markboth{#1}{#1}
+    \setboolean{ABNTEXupperchapter}{true}
+  }{
+    \chapter*{#1}
+    \markboth{#1}{#1}
+  }
+}
+
+\AtBeginBibliography{\vspace{4em}}
+\AtEveryBibitem{\clearfield{annotation}}
+\renewcommand{\bibfont}{\ABNTEXfontereduzida}
+
+\setlength{\bibhang}{0cm}
+
+\setlength{\bibparsep}{0ex}
+
 
 % Set colors -----
 
@@ -911,17 +946,19 @@ style=abnt,backend=biber,,url=true,,useprefix=false,,giveninits=true]{biblatex}
 % Cover (mandatory)
 % -----
 
-%:::% cover body-tag begin %:::%
+%:::% cover begin %:::%
 \imprimircapa
-%:::% cover body-tag end %:::%
+%:::% cover end %:::%
 
 % -----
 % Title page (mandatory)
 % -----
 
-%:::% approval-sheet body-tag begin %:::%
-\imprimirfolhaderosto*
-%:::% approval-sheet body-tag end %:::%
+% Use `\imprimirfolhaderosto*` when applying the option `two-side`.
+
+%:::% approval-sheet begin %:::%
+\imprimirfolhaderosto
+%:::% approval-sheet end %:::%
 
 % -----
 % Cataloging record (mandatory)
@@ -969,8 +1006,10 @@ inserted by [Full name of the librarian] ([Librarian register number]).
 %:::% errata begin %:::%
 \begin{errata}
 %:::% errata body begin %:::%
+
 This is the development version of the thesis (version \textless1.0.0).
 Any necessary corrections will be listed here after its approval.
+
 %:::% errata body end %:::%
 \end{errata}
 %:::% errata end %:::%
@@ -1068,8 +1107,10 @@ Any necessary corrections will be listed here after its approval.
 %:::% acknowledgments begin %:::%
 \begin{agradecimentos}
   %:::% acknowledgments body begin %:::%
+
 I would like to acknowledge this awesome
 \href{https://github.com/danielvartan/abnt}{Quarto format}! :)
+
   %:::% acknowledgments body end %:::%
 \end{agradecimentos}
 %:::% acknowledgments end %:::%
@@ -1103,12 +1144,14 @@ I would like to acknowledge this awesome
 %:::% vernacular-abstract reference end %:::%
 
 %:::% vernacular-abstract body begin %:::%
+
 \{abnt\} is a \href{https://quarto.org}{Quarto} format designed for
 theses and dissertations that adhere to the standards of the Brazilian
 Association of Technical Standards (ABNT). It is based on the
 \href{https://www.abntex.net.br/}{\texttt{abntex2}} LaTeX class and on
 \href{https://teses.usp.br/index.php?option=com_content\&view=article\&id=52\&Itemid=67\&lang=en}{USP
 guidelines for creating thesis and dissertation documents}.
+
 %:::% vernacular-abstract body end %:::%
 
 %:::% vernacular-abstract keywords begin %:::%
@@ -1131,12 +1174,14 @@ guidelines for creating thesis and dissertation documents}.
 %:::% foreign-abstract reference end %:::%
 
 %:::% foreign-abstract body begin %:::%
+
 \{abnt\} is a \href{https://quarto.org}{Quarto} format designed for
 theses and dissertations that adhere to the standards of the Brazilian
 Association of Technical Standards (ABNT). It is based on the
 \href{https://www.abntex.net.br/}{\texttt{abntex2}} LaTeX class and on
 \href{https://teses.usp.br/index.php?option=com_content\&view=article\&id=52\&Itemid=67\&lang=en}{USP
 guidelines for creating thesis and dissertation documents}.
+
 %:::% foreign-abstract body end %:::%
 
 %:::% foreign-abstract keywords begin %:::%
@@ -1175,6 +1220,7 @@ guidelines for creating thesis and dissertation documents}.
 %:::% list-of-abbreviations begin %:::%
 \begin{siglas}
 %:::% list-of-abbreviations body begin %:::%
+
 \begin{description}
 \item[\textsubscript{F}]
 \hspace{20cm}
@@ -1212,6 +1258,7 @@ identified.
 
 Local time of mid-sleep on workdays
 \end{description}
+
 %:::% list-of-abbreviations body end %:::%
 \end{siglas}
 %:::% list-of-abbreviations end %:::%
@@ -1223,8 +1270,9 @@ Local time of mid-sleep on workdays
 %:::% list-of-symbols begin %:::%
 \begin{simbolos}
 %:::% list-of-symbols body begin %:::%
+
 For an extensive list of chronobiology related symbols, please refer to
-Aschoff et al.~(1965) and Marques \& Oda (2012).
+\textcite{aschoff1965} and \textcite{marques2012}.
 
 \begin{description}
 \item[\(\tau\)]
@@ -1257,6 +1305,7 @@ Phase delay
 
 Phase relation
 \end{description}
+
 %:::% list-of-symbols body end %:::%
 \end{simbolos}
 %:::% list-of-symbols end %:::%
@@ -1268,31 +1317,26 @@ Phase relation
 %:::% list-of-terms begin %:::%
 \begin{termos}
 %:::% list-of-terms body begin %:::%
+
 For an extensive list of chronobiology related terms and definitions,
-please refer to Aschoff et al.~(1965) and Marques \& Oda (2012).
+please refer to \textcite{aschoff1965} and \textcite{marques2012}.
 
 \begin{description}
 \item[Chronotype]
 \hspace{20cm}
 
-Any kind of temporal phenotype (Ehret, 1974; Pittendrigh, 1993).
+Any kind of temporal phenotype \autocite{ehret1974,pittendrigh1993}.
 Usually, it refers to circadian phenotypes in a spectrum that goes from
-morningness to eveningness (Horne \& Ostberg, 1976; Roenneberg et al.,
-2003). It can also be seen as an organism's phase of entrainment
-(Roenneberg et al., 2012).
-\end{description}
-
-\begin{description}
+morningness to eveningness \autocite{horne1976,roenneberg2003}. It can
+also be seen as an organism's phase of entrainment
+\autocite{roenneberg2012a}.
 \item[Circadian rhythm]
 \hspace{20cm}
 
 A rhythm with a period close to a day/24h, an approximation to the
-period of the earth's rotation (Pittendrigh, 1960). From the Latin
-\emph{circā}, around, and \emph{dĭes}, day (Latinitium, n.d.). Example:
-the sleep-wake cycle.
-\end{description}
-
-\begin{description}
+period of the earth's rotation \autocite{pittendrigh1960}. From the
+Latin \emph{circā}, around, and \emph{dĭes}, day \autocite{latinitium}.
+Example: the sleep-wake cycle.
 \item[Complex system]
 \hspace{20cm}
 
@@ -1303,10 +1347,10 @@ There are several definitions. Here are some that I found to be of use:
 \tightlist
 \item
   ``Systems that don't yield to compact forms of representation or
-  description'' (David Krakauer apud Mitchell, 2013)
+  description'' (David Krakauer apud \textcite{mitchell2013})
 \item
   ``A system of many interacting parts where the system is more than
-  just the sum of its parts'' (Mark Newman apud Mitchell, 2013)
+  just the sum of its parts'' (Mark Newman apud \textcite{mitchell2013})
 \item
   Systems with many connected agents that interact and exhibit
   self-organization and emergence behavior, all without the need for a
@@ -1321,9 +1365,10 @@ There are several definitions. Here are some that I found to be of use:
 \hspace{20cm}
 
 A shift and alignment of biological rhythms induced by a zeitgeber input
-(Kuhlman et al., 2018). For example: a shift/alignment of an organism's
+\autocite{kuhlman2018}. For example: a shift/alignment of an organism's
 circadian rhythm when exposed to light.
 \end{description}
+
 %:::% list-of-terms body end %:::%
 \end{termos}
 %:::% list-of-terms end %:::%
@@ -1337,7 +1382,7 @@ circadian rhythm when exposed to light.
 \tableofcontents*
 \cleardoublepage
 %:::% table-of-contents end %:::%
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, breakable, frame hidden, colback={codebgcolor}, enhanced, sharp corners, boxrule=0pt]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, boxrule=0pt, enhanced, colback={codebgcolor}, sharp corners, breakable, borderline west={3pt}{0pt}{shadecolor}]}{\end{tcolorbox}}\fi
 
 % Main and back matter -----
 
@@ -1347,16 +1392,14 @@ circadian rhythm when exposed to light.
 \hypertarget{introduction}{%
 \chapter{Introduction}\label{introduction}}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, colback=white, toprule=.15mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, colframe=quarto-callout-note-color-frame, titlerule=0mm, leftrule=.75mm, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, breakable, bottomrule=.15mm, arc=.35mm, rightrule=.15mm, opacityback=0, bottomtitle=1mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, colback=white, bottomrule=.15mm, breakable, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, colframe=quarto-callout-note-color-frame, left=2mm, opacityback=0, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomtitle=1mm, toptitle=1mm, arc=.35mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white]
 
 The text below is for demonstrative purposes only.
 
-\texttt{=latex\ \textbackslash{}vspace\{0.5em\}}
+\vspace{0.25\baselineskip}
 
 See \url{https://github.com/danielvartan/abnt} to learn more about this
 template.
-
-\texttt{=latex\ \textbackslash{}vspace\{1em\}}
 
 \end{tcolorbox}
 
@@ -1391,10 +1434,21 @@ that we can gauge the progress we have made by comparing
 \(\text{P}_{1}\) with some of our later problems (\(\text{P}_{n}\),
 say).''
 
-\autocite[p.~164]{popper1979}
+\vspace{15pt}
 
-\begin{figure}
-\legend{Fonte: \href{https://www.npg.org.uk/collections/search/portrait/mw08238/Sir-Karl-Raimund-Popper?}{Steve Pyke}.}
+\noindent \hspace*{\fill} \autocite[p.~164]{popper1979}
+
+\begin{figure}[H]
+  \caption{
+    \label{fig-karl-popper}
+    Karl Popper (July 25, 1902 – September 17, 1994).\linebreak
+    One of the 20th century's most influential philosophers of science.
+  }
+
+  \centering
+  \includegraphics[width=0.5\textwidth]{images/karl-popper.png}
+
+  \legend{Fonte: \href{https://www.npg.org.uk/collections/search/portrait/mw08238/Sir-Karl-Raimund-Popper?}{Steve Pyke}.}
 \end{figure}
 
 \hypertarget{secondary-section}{%
@@ -1407,58 +1461,51 @@ say).''
 
 \NormalTok{datasets}\SpecialCharTok{::}\NormalTok{iris }\SpecialCharTok{|\textgreater{}}
 \NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{as\_tibble}\NormalTok{() }\SpecialCharTok{|\textgreater{}}
-\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{slice\_sample}\NormalTok{(}\AttributeTok{n =} \DecValTok{5}\NormalTok{)}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{slice\_sample}\NormalTok{(}\AttributeTok{n =} \DecValTok{5}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
+\NormalTok{  gt}\SpecialCharTok{::}\FunctionTok{gt}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{table}
-\caption{A sample of the famous (Fisher's or Anderson's) iris data set}\tabularnewline
+\hypertarget{tbl-iris}{}
+\begin{longtable}{rrrrc}
+\caption{\label{tbl-iris}A sample of the famous (Fisher's or Anderson's) iris data set }\tabularnewline
 
-\centering
-\begin{tabular}{r|r|r|r|l}
-\hline
-Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
-\hline
-6.5 & 3.0 & 5.5 & 1.8 & virginica\\
-\hline
-6.5 & 3.0 & 5.8 & 2.2 & virginica\\
-\hline
-5.0 & 3.0 & 1.6 & 0.2 & setosa\\
-\hline
-5.0 & 3.5 & 1.6 & 0.6 & setosa\\
-\hline
-6.2 & 2.9 & 4.3 & 1.3 & versicolor\\
-\hline
-\end{tabular}
-\end{table}
+\toprule
+Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species \\ 
+\midrule\addlinespace[2.5pt]
+6.5 & 3.0 & 5.5 & 1.8 & virginica \\ 
+6.5 & 3.0 & 5.8 & 2.2 & virginica \\ 
+5.0 & 3.0 & 1.6 & 0.2 & setosa \\ 
+5.0 & 3.5 & 1.6 & 0.6 & setosa \\ 
+6.2 & 2.9 & 4.3 & 1.3 & versicolor \\ 
+\bottomrule
+\end{longtable}
 
 \hypertarget{tertiary-section}{%
 \subsection{Tertiary section}\label{tertiary-section}}
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\CommentTok{\# Example extracted from:}
-\CommentTok{\# \textless{}https://ggplot2.tidyverse.org/reference/geom\_density\_2d.html\textgreater{}.}
-
 \CommentTok{\# library(datasets)}
-\FunctionTok{library}\NormalTok{(ggplot2)}
+\CommentTok{\# library(ggplot2)}
 
-\NormalTok{ggplot2}\SpecialCharTok{::}\FunctionTok{ggplot}\NormalTok{(faithful, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ eruptions, }\AttributeTok{y =}\NormalTok{ waiting)) }\SpecialCharTok{+}
+\NormalTok{ggplot2}\SpecialCharTok{::}\FunctionTok{ggplot}\NormalTok{(faithful, ggplot2}\SpecialCharTok{::}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ eruptions, }\AttributeTok{y =}\NormalTok{ waiting)) }\SpecialCharTok{+}
 \NormalTok{  ggplot2}\SpecialCharTok{::}\FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
 \NormalTok{  ggplot2}\SpecialCharTok{::}\FunctionTok{xlim}\NormalTok{(}\FloatTok{0.5}\NormalTok{, }\DecValTok{6}\NormalTok{) }\SpecialCharTok{+}
 \NormalTok{  ggplot2}\SpecialCharTok{::}\FunctionTok{ylim}\NormalTok{(}\DecValTok{40}\NormalTok{, }\DecValTok{110}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{geom\_density\_2d\_filled}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{geom\_density\_2d}\NormalTok{(}\AttributeTok{linewidth =} \FloatTok{0.25}\NormalTok{, }\AttributeTok{colour =} \StringTok{"black"}\NormalTok{)}
+\NormalTok{  ggplot2}\SpecialCharTok{::}\FunctionTok{geom\_density\_2d\_filled}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{  ggplot2}\SpecialCharTok{::}\FunctionTok{geom\_density\_2d}\NormalTok{(}\AttributeTok{linewidth =} \FloatTok{0.25}\NormalTok{, }\AttributeTok{colour =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{  ggplot2}\SpecialCharTok{::}\FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"none"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{figure}[H]
 
-\caption{Relations betwwen \textbf{waiting time to next eruption} (in
-minutes) and \textbf{eruption time} (in minutes) for the Old Faithful
-geyser in Yellowstone National Park, Wyoming, USA.}
+\caption{\label{fig-eruption}Relationship between \emph{waiting time to
+next eruption} (minutes) and \emph{eruption time} (minutes) at Old
+Faithful Geyser, Yellowstone National Park, Wyoming, USA.}
 
-{\centering \includegraphics{index_files/figure-pdf/unnamed-chunk-4-1.png}
+{\centering \includegraphics{index_files/figure-pdf/fig-eruption-1.png}
 
 }
 
@@ -1466,8 +1513,6 @@ geyser in Yellowstone National Park, Wyoming, USA.}
 
 \hypertarget{quaternary-section}{%
 \subsubsection{Quaternary section}\label{quaternary-section}}
-
-Example text.
 
 \begin{itemize}
 \tightlist
@@ -1490,8 +1535,6 @@ Example text.
 \hypertarget{quinary-section}{%
 \paragraph{Quinary section}\label{quinary-section}}
 
-Example text.
-
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
@@ -1508,18 +1551,16 @@ Example text.
 \hypertarget{development}{%
 \chapter{Development}\label{development}}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, colback=white, toprule=.15mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Warning}, colframe=quarto-callout-warning-color-frame, titlerule=0mm, leftrule=.75mm, coltitle=black, colbacktitle=quarto-callout-warning-color!10!white, breakable, bottomrule=.15mm, arc=.35mm, rightrule=.15mm, opacityback=0, bottomtitle=1mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, colback=white, bottomrule=.15mm, breakable, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, colframe=quarto-callout-warning-color-frame, left=2mm, opacityback=0, toprule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Warning}, bottomtitle=1mm, toptitle=1mm, arc=.35mm, rightrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white]
 
 The text below is for demonstrative purposes only.
 
-\vspace{5pt}
+\vspace{0.25\baselineskip}
 
-See \url{https://quarto.org/docs/authoring/markdown-basics.html} to
-learn about the basics of Markdown's syntax.
+See \url{https://github.com/danielvartan/abnt} to learn more about this
+template.
 
 \end{tcolorbox}
-
-\vspace{10pt}
 
 Cillum qui eu non ipsum pariatur ad exercitation pariatur dolore veniam
 amet cillum. Aliqua do nostrud aliquip in amet. Commodo sit tempor nulla
@@ -1558,18 +1599,16 @@ Lorem officia aute.
 \hypertarget{conclusion}{%
 \chapter{Conclusion}\label{conclusion}}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, colback=white, toprule=.15mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, colframe=quarto-callout-important-color-frame, titlerule=0mm, leftrule=.75mm, coltitle=black, colbacktitle=quarto-callout-important-color!10!white, breakable, bottomrule=.15mm, arc=.35mm, rightrule=.15mm, opacityback=0, bottomtitle=1mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, colback=white, bottomrule=.15mm, breakable, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, colframe=quarto-callout-important-color-frame, left=2mm, opacityback=0, toprule=.15mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, bottomtitle=1mm, toptitle=1mm, arc=.35mm, rightrule=.15mm, colbacktitle=quarto-callout-important-color!10!white]
 
 The text below is for demonstrative purposes only.
 
-\vspace{5pt}
+\vspace{0.25\baselineskip}
 
-See \url{https://quarto.org/docs/authoring/markdown-basics.html} to
-learn about the basics of Markdown's syntax.
+See \url{https://github.com/danielvartan/abnt} to learn more about this
+template.
 
 \end{tcolorbox}
-
-\vspace{10pt}
 
 Cillum qui eu non ipsum pariatur ad exercitation pariatur dolore veniam
 amet cillum. Aliqua do nostrud aliquip in amet. Commodo sit tempor nulla
@@ -1622,7 +1661,6 @@ Lorem officia aute.
   \hspace{-0.25em}
 }
 
-\settoclengths
 \begin{apendicesenv}
 
 \cleardoublepage
@@ -1633,18 +1671,16 @@ Lorem officia aute.
 \hypertarget{example}{%
 \chapter{Example}\label{example}}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, colback=white, toprule=.15mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, colframe=quarto-callout-tip-color-frame, titlerule=0mm, leftrule=.75mm, coltitle=black, colbacktitle=quarto-callout-tip-color!10!white, breakable, bottomrule=.15mm, arc=.35mm, rightrule=.15mm, opacityback=0, bottomtitle=1mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, colback=white, bottomrule=.15mm, breakable, titlerule=0mm, leftrule=.75mm, opacitybacktitle=0.6, colframe=quarto-callout-tip-color-frame, left=2mm, opacityback=0, toprule=.15mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, bottomtitle=1mm, toptitle=1mm, arc=.35mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white]
 
 The text below is for demonstrative purposes only.
 
-\vspace{5pt}
+\vspace{0.25\baselineskip}
 
 See \url{https://quarto.org/docs/authoring/markdown-basics.html} to
 learn about the basics of Markdown's syntax.
 
 \end{tcolorbox}
-
-\vspace{10pt}
 
 Cillum qui eu non ipsum pariatur ad exercitation pariatur dolore veniam
 amet cillum. Aliqua do nostrud aliquip in amet. Commodo sit tempor nulla

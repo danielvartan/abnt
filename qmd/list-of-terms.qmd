@@ -22,27 +22,22 @@ See <https://github.com/danielvartan/abnt> to learn more about this template.
 <!-- * Insert definition from other areas of science. -->
 
 <!-- %:::% list-of-terms body begin %:::% -->
-<!-- @aschoff1965; @marques2012 -->
-For an extensive list of chronobiology related terms and definitions, please refer to Aschoff et al. (1965) and Marques & Oda (2012).
+For an extensive list of chronobiology related terms and definitions, please refer to @aschoff1965 and @marques2012.
 
-<!-- @ehret1974; @pittendrigh1993; @horne1976; @roenneberg2003; @roenneberg2012a -->
 Chronotype
-: \hspace{20cm} Any kind of temporal phenotype (Ehret, 1974; Pittendrigh, 1993). Usually, it refers to circadian phenotypes in a spectrum that goes from morningness to eveningness (Horne & Ostberg, 1976; Roenneberg et al., 2003). It can also be seen as an organism's phase of entrainment (Roenneberg et al., 2012).
+: \hspace{20cm} Any kind of temporal phenotype [@ehret1974; @pittendrigh1993]. Usually, it refers to circadian phenotypes in a spectrum that goes from morningness to eveningness [@horne1976; @roenneberg2003]. It can also be seen as an organism's phase of entrainment [@roenneberg2012a].
 
-<!-- @pittendrigh1960; @latinitium -->
 Circadian rhythm
-: \hspace{20cm} A rhythm with a period close to a day/24h, an approximation to the period of the earth's rotation (Pittendrigh, 1960). From the Latin _circā_, around, and _dĭes_, day (Latinitium, n.d.). Example: the sleep-wake cycle.
+: \hspace{20cm} A rhythm with a period close to a day/24h, an approximation to the period of the earth's rotation [@pittendrigh1960]. From the Latin _circā_, around, and _dĭes_, day [@latinitium]. Example: the sleep-wake cycle.
 
-<!-- @mitchell2013 -->
 Complex system
 : \hspace{20cm} There are several definitions. Here are some that I found to be of use:
 
-* "Systems that don't yield to compact forms of representation or description" (David Krakauer apud Mitchell, 2013)
-* "A system of many interacting parts where the system is more than just the sum of its parts" (Mark Newman apud Mitchell, 2013)
+* "Systems that don't yield to compact forms of representation or description" (David Krakauer apud @mitchell2013)
+* "A system of many interacting parts where the system is more than just the sum of its parts" (Mark Newman apud @mitchell2013)
 * Systems with many connected agents that interact and exhibit self-organization and emergence behavior, all without the need for a central controller (adapted from Camilo Rodrigues Neto's definition, supervisor of this thesis).
 * Dialectics at its finest (my working definition).
 
-<!-- @kuhlman2018 -->
 Entrainment
-: \hspace{20cm} A shift and alignment of biological rhythms induced by a zeitgeber input (Kuhlman et al., 2018). For example: a shift/alignment of an organism's circadian rhythm when exposed to light.
+: \hspace{20cm} A shift and alignment of biological rhythms induced by a zeitgeber input [@kuhlman2018]. For example: a shift/alignment of an organism's circadian rhythm when exposed to light.
 <!-- %:::% list-of-terms body end %:::% -->

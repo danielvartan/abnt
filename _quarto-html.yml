@@ -24,7 +24,6 @@ book:
         - qmd/list-of-abbreviations.qmd
         - qmd/list-of-symbols.qmd
         - qmd/list-of-terms.qmd
-        - qmd/thesis-outline.qmd
     - part: "Chapters"
       chapters:
         - qmd/introduction.qmd

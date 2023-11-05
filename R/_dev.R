@@ -25,8 +25,8 @@
 # rutils:::bbt_write_quarto_bib()
 # rutils:::set_quarto_speel_check()
 # rutils:::gather_words_from_spell_check(pattern = "\\.qmd$|\\.Rmd$")
-# rutils:::spell_check_quarto()
-# rutils:::update_quarto_wordlist()
+# rutils:::spell_check_quarto(pattern = "\\.qmd$|\\.Rmd$")
+# rutils:::update_quarto_wordlist(pattern = "\\.qmd$|\\.Rmd$")
 # rutils:::clean_quarto_mess()
 # rutils:::quarto_status("drafting")
 # spelling::spell_check_files("index.qmd")
@@ -55,24 +55,32 @@
 
 # TODO
 #
-# * Find a way to preserve pdf bookmarks.
-# * Find a way to have pre-textual as `.qmd` files.
-# * Find a way to auto uppercase titles.
+# * Fix spacings (\baselineskip).
+# * Fix SCSS. Mobile menu is appearing with white or transparent color.
+# * Fix spacing between after titles (use Photoshop).
+# * Fix quinary section.
+# * Fix case changing in references titles.
+# * Fix title page spacing.
+# * Add figure using the ABNT format.
+# * Add table using the ABNT format.
+# * Add command tag sub function.
+# * Fix references bookmarks.
+# * Fix '\tightlist' settings.
+# * Organize template code into tex files by section.
+# * Fix title and table captions making the caption name (e.g., "Figure -")
+#   become tabular.
+# * Change table font sizes to be accordingly with figure font sizes.
+# * Add code post-chapters and pre-appendices automatically.
+# * Add numbers and letters before chapter's and appendices bookmarks.
+# * Refactor code for creating ambient variables in
+#   'quarto-pre-render-common.R' . Transform code into function and then add
+#   it in the {rutils} package.
+# * Add function to auto generate the visit date in the thesis reference
+#   located in '_index-html.qmd'.
+# * Create and separate settings for a "pure" abntex2's template and a USP's
+#   template. Do it by creating a setting variable in the yml file.
 # * Create a hex logo and review badges.
-# * Rename LaTeX variables.
 # * Add <https://fair-software.eu/>.
 # * Add <https://www.bestpractices.dev/en/projects/6244 badge>.
-# * Fix number-depth.
-# * Fix TOC title.
-# * Fix link colors on pre-textual pages.
 # * Find a way to create double captions (top and bottom).
-# * Align Cover and Title page date and city.
-# * Align dedication/inscription to the right.
-# * Fix APA refence rendering.
 # * Fix code background on dark theme.
-# * Fix relative path for images.
-# * Transform BiBTeX keys in LaTeX citations, when rendered with pandoc.
-# * Add a update function for tags in the latex files (e.g., cover page).
-# * Find why the document have to be rendered twice.
-# * Add stop list em transforming titles in setence case.
-# * Fix spacing between pre-textual and post-textual titles.

@@ -1,6 +1,6 @@
 project:
-  output-dir: .temp
-  pre-render: "R/quarto-pre-render-pdf.R" # Zotero needs to be open
+  output-dir: pdf
+  pre-render: "R/quarto-pre-render-pdf.R"
   post-render: "R/quarto-post-render-pdf.R"
 
 # See  <https://quarto.org/docs/books/>.
@@ -17,12 +17,7 @@ book:
 
 format:
   abnt-pdf:
-    latex-auto-install: true
-    keep-tex: true
-    lang: en # options: [en, pt-br, es, fr]
     zotero: true
-    nocite: |
-      @*
     location: "[City]"
     supervisor: "[Supervisor's full name]"
     cosupervisor: "[Co-supervisor's full name]"

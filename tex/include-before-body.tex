@@ -4,17 +4,19 @@
 % Cover (mandatory)
 % -----
 
-%:::% cover body-tag begin %:::%
+%:::% cover begin %:::%
 \imprimircapa
-%:::% cover body-tag end %:::%
+%:::% cover end %:::%
 
 % -----
 % Title page (mandatory)
 % -----
 
-%:::% approval-sheet body-tag begin %:::%
-\imprimirfolhaderosto*
-%:::% approval-sheet body-tag end %:::%
+% Use `\imprimirfolhaderosto*` when applying the option `two-side`.
+
+%:::% approval-sheet begin %:::%
+\imprimirfolhaderosto
+%:::% approval-sheet end %:::%
 
 % -----
 % Cataloging record (mandatory)
@@ -62,8 +64,10 @@ inserted by [Full name of the librarian] ([Librarian register number]).
 %:::% errata begin %:::%
 \begin{errata}
 %:::% errata body begin %:::%
+
 This is the development version of the thesis (version \textless1.0.0).
 Any necessary corrections will be listed here after its approval.
+
 %:::% errata body end %:::%
 \end{errata}
 %:::% errata end %:::%
@@ -161,8 +165,10 @@ Any necessary corrections will be listed here after its approval.
 %:::% acknowledgments begin %:::%
 \begin{agradecimentos}
   %:::% acknowledgments body begin %:::%
+
 I would like to acknowledge this awesome
 \href{https://github.com/danielvartan/abnt}{Quarto format}! :)
+
   %:::% acknowledgments body end %:::%
 \end{agradecimentos}
 %:::% acknowledgments end %:::%
@@ -196,12 +202,14 @@ I would like to acknowledge this awesome
 %:::% vernacular-abstract reference end %:::%
 
 %:::% vernacular-abstract body begin %:::%
+
 \{abnt\} is a \href{https://quarto.org}{Quarto} format designed for
 theses and dissertations that adhere to the standards of the Brazilian
 Association of Technical Standards (ABNT). It is based on the
 \href{https://www.abntex.net.br/}{\texttt{abntex2}} LaTeX class and on
 \href{https://teses.usp.br/index.php?option=com_content\&view=article\&id=52\&Itemid=67\&lang=en}{USP
 guidelines for creating thesis and dissertation documents}.
+
 %:::% vernacular-abstract body end %:::%
 
 %:::% vernacular-abstract keywords begin %:::%
@@ -224,12 +232,14 @@ guidelines for creating thesis and dissertation documents}.
 %:::% foreign-abstract reference end %:::%
 
 %:::% foreign-abstract body begin %:::%
+
 \{abnt\} is a \href{https://quarto.org}{Quarto} format designed for
 theses and dissertations that adhere to the standards of the Brazilian
 Association of Technical Standards (ABNT). It is based on the
 \href{https://www.abntex.net.br/}{\texttt{abntex2}} LaTeX class and on
 \href{https://teses.usp.br/index.php?option=com_content\&view=article\&id=52\&Itemid=67\&lang=en}{USP
 guidelines for creating thesis and dissertation documents}.
+
 %:::% foreign-abstract body end %:::%
 
 %:::% foreign-abstract keywords begin %:::%
@@ -268,6 +278,7 @@ guidelines for creating thesis and dissertation documents}.
 %:::% list-of-abbreviations begin %:::%
 \begin{siglas}
 %:::% list-of-abbreviations body begin %:::%
+
 \begin{description}
 \item[\textsubscript{F}]
 \hspace{20cm}
@@ -305,6 +316,7 @@ identified.
 
 Local time of mid-sleep on workdays
 \end{description}
+
 %:::% list-of-abbreviations body end %:::%
 \end{siglas}
 %:::% list-of-abbreviations end %:::%
@@ -316,8 +328,9 @@ Local time of mid-sleep on workdays
 %:::% list-of-symbols begin %:::%
 \begin{simbolos}
 %:::% list-of-symbols body begin %:::%
+
 For an extensive list of chronobiology related symbols, please refer to
-Aschoff et al.~(1965) and Marques \& Oda (2012).
+\textcite{aschoff1965} and \textcite{marques2012}.
 
 \begin{description}
 \item[\(\tau\)]
@@ -350,6 +363,7 @@ Phase delay
 
 Phase relation
 \end{description}
+
 %:::% list-of-symbols body end %:::%
 \end{simbolos}
 %:::% list-of-symbols end %:::%
@@ -361,31 +375,26 @@ Phase relation
 %:::% list-of-terms begin %:::%
 \begin{termos}
 %:::% list-of-terms body begin %:::%
+
 For an extensive list of chronobiology related terms and definitions,
-please refer to Aschoff et al.~(1965) and Marques \& Oda (2012).
+please refer to \textcite{aschoff1965} and \textcite{marques2012}.
 
 \begin{description}
 \item[Chronotype]
 \hspace{20cm}
 
-Any kind of temporal phenotype (Ehret, 1974; Pittendrigh, 1993).
+Any kind of temporal phenotype \autocite{ehret1974,pittendrigh1993}.
 Usually, it refers to circadian phenotypes in a spectrum that goes from
-morningness to eveningness (Horne \& Ostberg, 1976; Roenneberg et al.,
-2003). It can also be seen as an organism's phase of entrainment
-(Roenneberg et al., 2012).
-\end{description}
-
-\begin{description}
+morningness to eveningness \autocite{horne1976,roenneberg2003}. It can
+also be seen as an organism's phase of entrainment
+\autocite{roenneberg2012a}.
 \item[Circadian rhythm]
 \hspace{20cm}
 
 A rhythm with a period close to a day/24h, an approximation to the
-period of the earth's rotation (Pittendrigh, 1960). From the Latin
-\emph{circā}, around, and \emph{dĭes}, day (Latinitium, n.d.). Example:
-the sleep-wake cycle.
-\end{description}
-
-\begin{description}
+period of the earth's rotation \autocite{pittendrigh1960}. From the
+Latin \emph{circā}, around, and \emph{dĭes}, day \autocite{latinitium}.
+Example: the sleep-wake cycle.
 \item[Complex system]
 \hspace{20cm}
 
@@ -396,10 +405,10 @@ There are several definitions. Here are some that I found to be of use:
 \tightlist
 \item
   ``Systems that don't yield to compact forms of representation or
-  description'' (David Krakauer apud Mitchell, 2013)
+  description'' (David Krakauer apud \textcite{mitchell2013})
 \item
   ``A system of many interacting parts where the system is more than
-  just the sum of its parts'' (Mark Newman apud Mitchell, 2013)
+  just the sum of its parts'' (Mark Newman apud \textcite{mitchell2013})
 \item
   Systems with many connected agents that interact and exhibit
   self-organization and emergence behavior, all without the need for a
@@ -414,9 +423,10 @@ There are several definitions. Here are some that I found to be of use:
 \hspace{20cm}
 
 A shift and alignment of biological rhythms induced by a zeitgeber input
-(Kuhlman et al., 2018). For example: a shift/alignment of an organism's
+\autocite{kuhlman2018}. For example: a shift/alignment of an organism's
 circadian rhythm when exposed to light.
 \end{description}
+
 %:::% list-of-terms body end %:::%
 \end{termos}
 %:::% list-of-terms end %:::%

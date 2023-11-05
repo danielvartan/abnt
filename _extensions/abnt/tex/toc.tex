@@ -1,31 +1,18 @@
 \renewcommand{\aftertoctitle}{\center\vspace{3em}}
 
-\cftinsertcode{appendixhook}{
-    \setlength{\cftchapterindent}{6em} %
-    \renewcommand{\cftchaptername}{\appendixname\space}
-    \setlength{\cftchapternumwidth}{2.3em} % check
-    \renewcommand{\cftchapteraftersnumb}{
-        \hspace{-1.5em} -- \space % check \hspace{-1.5em}
-    }
-}
+\setlength{\cftpartindent}{6em}
+\setlength{\cftsectionnumwidth}{6em}
+\setlength{\cftsubsectionnumwidth}{6em}
+\setlength{\cftsubsubsectionnumwidth}{6em}
+\setlength{\cftparagraphnumwidth}{6em}
 
-\newcommand{\settoclengths}{
-  \setlength{\cftpartindent}{6em}
-  \setlength{\cftsectionnumwidth}{6em}
-  \setlength{\cftsubsectionnumwidth}{6em}
-  \setlength{\cftsubsubsectionnumwidth}{6em}
-  \setlength{\cftparagraphnumwidth}{6em}
-
-  \setlength{\cftbeforebookskip}{0pt}
-  \setlength{\cftbeforepartskip}{2em}
-  \setlength{\cftbeforechapterskip}{0.5em}
-  \setlength{\cftbeforesectionskip}{0pt}
-  \setlength{\cftbeforesubsectionskip}{0pt}
-  \setlength{\cftbeforesubsubsectionskip}{0pt}
-  \setlength{\cftbeforeparagraphskip}{0pt}
-}
-
-\settoclengths
+\setlength{\cftbeforebookskip}{0pt}
+\setlength{\cftbeforepartskip}{2em}
+\setlength{\cftbeforechapterskip}{0.5em}
+\setlength{\cftbeforesectionskip}{0pt}
+\setlength{\cftbeforesubsectionskip}{0pt}
+\setlength{\cftbeforesubsubsectionskip}{0pt}
+\setlength{\cftbeforeparagraphskip}{0pt}
 
 \renewcommand{\cftchapterpresnum}{\normalfont}
 \renewcommand{\cftchapteraftersnum}{\normalfont}
@@ -48,3 +35,19 @@
 \renewcommand{\cftparagraphpagefont}{\normalfont\normalsize}
 \renewcommand{\cftfigurepagefont}{\normalfont\normalsize}
 \renewcommand{\cfttablepagefont}{\normalfont\normalsize}
+
+\cftinsertcode{bibhook}{
+  \setlength{\cftchapterindent}{5.675em}
+  \setlength{\cftchapternumwidth}{0em}
+  \renewcommand{\cftchapteraftersnumb}{\hspace{0em}}
+  \renewcommand{\cftchapterpresnum}{\normalfont\bfseries}
+}
+
+\cftinsertcode{appendixhook}{
+    \setlength{\cftchapterindent}{6em} %
+    \renewcommand{\cftchaptername}{\appendixname\space}
+    \setlength{\cftchapternumwidth}{2.3em} % check
+    \renewcommand{\cftchapteraftersnumb}{
+        \hspace{-1.5em} -- \space % check \hspace{-1.5em}
+    }
+}

@@ -45,10 +45,10 @@ $doc-class.tex()$
 \usepackage{booktabs}
 \usepackage{calc}
 \usepackage{color}
+\usepackage{colortbl}
 \usepackage{amsmath}
 \usepackage{amssymb}
-% \usepackage[french, spanish, brazil, english]{babel}
-\usepackage[font=footnotesize, justification=centering]{caption}
+\usepackage{booktabs}
 \usepackage{enumitem}
 \usepackage{etoolbox}
 \usepackage{float}
@@ -67,6 +67,12 @@ $doc-class.tex()$
 \usepackage{pdfpages}
 \usepackage[table]{xcolor}
 
+\usepackage[
+  font=footnotesize,
+  justification=centering,
+  skip = 1\baselineskip
+  ]{caption}
+
 \usepackage{hyperref}
 
 \ifPDFTeX
@@ -83,15 +89,13 @@ $else$
 $endif$
 \fi
 
-% Set general formatting -----
-
-\makeatletter
-\setlength{\@fptop}{0.5em} % Set distance from top of page to first float
-\makeatother
+% Set page layout -----
 
 \setlength{\headsep}{1cm}
 \setlength{\footskip}{1cm}
 \checkandfixthelayout
+
+% Set text -----
 
 \renewcommand{\familydefault}{\sfdefault}
 
@@ -106,10 +110,6 @@ $endif$
 $if(parskip)$
 \setlength{\parskip}{$parskip$}
 $endif$
-
-\setlength{\footnotemargin}{0.25cm}
-\let\svfootnoterule\footnoterule
-\renewcommand\footnoterule{\svfootnoterule\vspace{5pt}}
 
 $if(fontfamily)$
 \usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}
@@ -189,6 +189,128 @@ $if(zero-width-non-joiner)$
 \fi
 %% End of ZWNJ support
 $endif$
+
+% Set `abntex2` text variables -----
+
+\renewcommand{\ABNTEXchapterfont}{\normalfont\bfseries}
+\renewcommand{\ABNTEXchapterfontsize}{\normalsize}
+\renewcommand{\ABNTEXsectionfont}{\normalfont}
+\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsectionfont}{\normalfont\bfseries}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsubsectionfont}{\normalfont}
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsubsubsectionfont}{\normalfont}
+\renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalsize\itshape}
+\renewcommand{\ABNTEXfontereduzida}{\footnotesize}
+
+\renewcommand{\chapnumfont}{\normalfont}
+\renewcommand{\captiontitlefont}{\ABNTEXfontereduzida}
+
+\renewcommand{\ABNTEXcaptiondelim}{~\textendash~}
+\renewcommand{\ABNTEXcaptionfontedelim}{:~}
+
+% Set page numbering -----
+
+\makepagestyle{abntheadings}
+\makeevenhead{abntheadings}{\ABNTEXfontereduzida\thepage}{}{}
+\makeoddhead{abntheadings}{}{}{\ABNTEXfontereduzida\thepage}
+
+% Set footnote -----
+
+\setlength{\footnotemargin}{0.5em} % Equal to `\footmarkwidth`
+\let\svfootnoterule\footnoterule % Equal to `\footmarksep`
+\renewcommand\footnoterule{\svfootnoterule\vspace{1ex}}
+
+% Set language patterns -----
+
+\newcommand{\capaname}{Capa}
+\newcommand{\listadetermosname}{Lista de termos e definições}
+
+\addto\captionsenglish{
+  \renewcommand{\capaname}{Cover}
+  \renewcommand{\folhadeaprovacaoname}{Approval sheet}
+  \renewcommand{\dedicatorianame}{Inscription}
+  \renewcommand{\contentsname}{Contents}
+  \renewcommand{\listfigurename}{List of figures}
+  \renewcommand{\listtablename}{List of tables}
+  \renewcommand{\listadetermosname}{List of terms and definitions}
+}
+
+\addto\captionsbrazil{
+  \renewcommand{\capaname}{Capa}
+  \renewcommand{\contentsname}{Sumário}
+  \renewcommand{\listfigurename}{Lista de figuras}
+  \renewcommand{\listadetermosname}{Lista de termos e definições}
+}
+
+\addto\captionsspanish{
+  \renewcommand{\capaname}{Portada}
+  \renewcommand{\folhaderostoname}{Página de título}
+  \renewcommand{\epigraphname}{Epígrafe}
+  \renewcommand{\dedicatorianame}{Dedicatoria}
+  \renewcommand{\errataname}{Errata}
+  \renewcommand{\agradecimentosname}{Agradecimientos}
+  \renewcommand{\anexoname}{Anexo}
+  \renewcommand{\anexosname}{Anexos}
+  \renewcommand{\apendicename}{Apéndice}
+  \renewcommand{\apendicesname}{Apéndices}
+  \renewcommand{\orientadorname}{Asesor:}
+  \renewcommand{\coorientadorname}{Coasesor:}
+  \renewcommand{\folhadeaprovacaoname}{Hoja de aprobación}
+  \renewcommand{\resumoname}{Resumen}
+  \renewcommand{\contentsname}{Sumario}
+  \renewcommand{\listfigurename}{Lista de figuras}
+  \renewcommand{\listtablename}{Lista de tablas}
+  \renewcommand{\listadesiglasname}{Lista de abreviaturas y siglas}
+  \renewcommand{\listadesimbolosname}{Lista de símbolos}
+  \renewcommand{\listadetermosname}{Lista de términos y definiciones}
+  \renewcommand{\contentsname}{Sumario}
+  \renewcommand{\bibname}{Referencias}
+  \renewcommand{\indexname}{Índice}
+  \renewcommand{\sourcename}{Fuente}
+  \renewcommand{\notaname}{Nota}
+  \renewcommand{\pageautorefname}{página}
+  \renewcommand{\sectionautorefname}{sección}
+  \renewcommand{\subsectionautorefname}{subsección}
+  \renewcommand{\subsubsectionautorefname}{subsubsección}
+  \renewcommand{\paragraphautorefname}{subsubsubsección}
+}
+
+\addto\captionsfrench{
+  \renewcommand{\capaname}{Page de titre}
+  \renewcommand{\folhaderostoname}{Page de titre}
+  \renewcommand{\epigraphname}{Épigraphe}
+  \renewcommand{\dedicatorianame}{Dédiace}
+  \renewcommand{\errataname}{Errata}
+  \renewcommand{\agradecimentosname}{Remerciements}
+  \renewcommand{\anexoname}{Annexe}
+  \renewcommand{\anexosname}{Annexes}
+  \renewcommand{\apendicename}{Appendice}
+  \renewcommand{\apendicesname}{Appendices}
+  \renewcommand{\orientadorname}{Conseiller :}
+  \renewcommand{\coorientadorname}{Co-conseiller :}
+  \renewcommand{\folhadeaprovacaoname}{Feuille d'approbation}
+  \renewcommand{\resumoname}{Résumé}
+  \renewcommand{\contentsname}{Sommaire}
+  \renewcommand{\listfigurename}{Liste des figures}
+  \renewcommand{\listtablename}{Liste des tableaux}
+  \renewcommand{\listadesiglasname}{Liste des abréviations et sigles}
+  \renewcommand{\listadesimbolosname}{Liste des symboles}
+  \renewcommand{\listadetermosname}{Liste des termes et définitions}
+  \renewcommand{\contentsname}{Sommaire}
+  \renewcommand{\bibname}{Références}
+  \renewcommand{\indexname}{Index}
+  \renewcommand{\sourcename}{Source}
+  \renewcommand{\notaname}{Note}
+  \renewcommand{\pageautorefname}{page}
+  \renewcommand{\sectionautorefname}{section}
+  \renewcommand{\subsectionautorefname}{sous-section}
+  \renewcommand{\subsubsectionautorefname}{sous-sous-section}
+  \renewcommand{\paragraphautorefname}{sous-sous-sous-section}
+}
+
+% Set other general formatting -----
 
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -323,28 +445,15 @@ bookmarksdepth=5
 
 \setsecnumformat{\normalfont\csname the#1\endcsname\quad}
 
-\renewcommand{\ABNTEXchapterfont}{\normalfont\bfseries}
-\renewcommand{\ABNTEXchapterfontsize}{\normalsize}
-\renewcommand{\ABNTEXsectionfont}{\normalfont}
-\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
-\renewcommand{\ABNTEXsubsectionfont}{\normalfont\bfseries}
-\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
-\renewcommand{\ABNTEXsubsubsectionfont}{\normalfont}
-\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize}
-\renewcommand{\ABNTEXsubsubsubsectionfont}{\normalfont}
-\renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalsize\itshape}
-\renewcommand{\ABNTEXfontereduzida}{\footnotesize}
-\renewcommand{\captiontitlefont}{\small}
-
 \renewcommand{\printchapternum}{
   \tocprintchapter
   \setboolean{abntex@innonumchapter}{false}
   \chapnumfont
-  \vspace{30pt} \normalfont \thechapter \quad
+  \thechapter \quad
   \ifthenelse{\boolean{abntex@apendiceousecao}}{
       \tocinnonumchapter
       \ABNTEXcaptiondelim
-  }{} % else
+  }{}
 }
 
 \setlength{\beforechapskip}{2.5em}
@@ -356,115 +465,50 @@ bookmarksdepth=5
 \setbeforesubsubsecskip{1.5em}
 \setaftersubsubsecskip{1em}
 \setbeforeparaskip{1.5em}
-\setafterparaskip{1em}
-
-% Set page numbering -----
-
-\makepagestyle{abntheadings}
-
-\makeevenhead{abntheadings}{
-  \ABNTEXfontereduzida \thepage
-}{}{}
-
-\makeoddhead{abntheadings}{}{}{
-  \ABNTEXfontereduzida \thepage
-}
+\setafterparaskip{0em} % check
+\setparahook{\vspace{1.5em}}
 
 % Set tabular environment -----
 
-\AtBeginEnvironment{table}{\small}
-\AtBeginEnvironment{tabular}{\small}
+% \providecommand{\addquartolegend}{}
+% \newcommand{\quartolegend}[1]{\renewcommand{\addquartolegend}{#1}}
+% \renewcommand{\quartolegend}{Don't forget to set \verb|\quartolegend|!}
+
+\AtBeginEnvironment{table}{\ABNTEXfontereduzida}
+\AtBeginEnvironment{tabular}{\ABNTEXfontereduzida}
 \renewcommand{\arraystretch}{1.5}
-\setlength{\aboverulesep}{0pt}
-\setlength{\belowrulesep}{0pt}
+\setlength{\aboverulesep}{0ex}
+\setlength{\belowrulesep}{0ex}
 
-% Set language patterns -----
+\AddToHook{env/longtable/before}{}
+\AddToHook{env/longtable/after}{}
+\AddToHook{env/longtable/begin}{
+  \ABNTEXfontereduzida
+  \renewcommand{\arraystretch}{1.5}
+}
+\AddToHook{env/longtable/end}{}
 
-\newcommand{\capaname}{Capa}
-\newcommand{\listadetermosname}{Lista de termos e definições}
+% Set figure environment -----
 
-\addto\captionsenglish{
-  \renewcommand{\capaname}{Cover}
-  \renewcommand{\folhadeaprovacaoname}{Approval sheet}
-  \renewcommand{\dedicatorianame}{Inscription}
-  \renewcommand{\contentsname}{Contents}
-  \renewcommand{\listfigurename}{List of figures}
-  \renewcommand{\listtablename}{List of tables}
-  \renewcommand{\listadetermosname}{List of terms and definitions}
+\makeatletter
+\setlength{\@fptop}{5pt} % Set distance from top of page to first float
+\makeatother
+
+\renewcommand{\legend}[1]{
+  \vspace*{1\baselineskip}
+  \ABNTEXfontereduzida \raggedright #1
+  \vspace{1.5\baselineskip}
 }
 
-\addto\captionsbrazil{
-  \renewcommand{\contentsname}{Sumário}
-  \renewcommand{\listfigurename}{Lista de figuras}
-}
+% % Credits: <https://stackoverflow.com/a/1566053/8258804>.
+% \makeatletter
+% \let\oldfigure\figure
+% \def\figure{\@ifnextchar[\figure@i \figure@ii}
+% \def\figure@i[#1]{\oldfigure[#1]\centering}
+% \def\figure@ii{\oldfigure\centering}
+% \makeatother
 
-\addto\captionsspanish{
-  \renewcommand{\capaname}{Portada}
-  \renewcommand{\folhaderostoname}{Página de título}
-  \renewcommand{\epigraphname}{Epígrafe}
-  \renewcommand{\dedicatorianame}{Dedicatoria}
-  \renewcommand{\errataname}{Errata}
-  \renewcommand{\agradecimentosname}{Agradecimientos}
-  \renewcommand{\anexoname}{Anexo}
-  \renewcommand{\anexosname}{Anexos}
-  \renewcommand{\apendicename}{Apéndice}
-  \renewcommand{\apendicesname}{Apéndices}
-  \renewcommand{\orientadorname}{Asesor:}
-  \renewcommand{\coorientadorname}{Coasesor:}
-  \renewcommand{\folhadeaprovacaoname}{Hoja de aprobación}
-  \renewcommand{\resumoname}{Resumen}
-  \renewcommand{\contentsname}{Sumario}
-  \renewcommand{\listfigurename}{Lista de figuras}
-  \renewcommand{\listtablename}{Lista de tablas}
-  \renewcommand{\listadesiglasname}{Lista de abreviaturas y siglas}
-  \renewcommand{\listadesimbolosname}{Lista de símbolos}
-  \renewcommand{\listadetermosname}{Lista de términos y definiciones}
-  \renewcommand{\contentsname}{Sumario}
-  \renewcommand{\bibname}{Referencias}
-  \renewcommand{\indexname}{Índice}
-  \renewcommand{\sourcename}{Fuente}
-  \renewcommand{\notaname}{Nota}
-  \renewcommand{\pageautorefname}{página}
-  \renewcommand{\sectionautorefname}{sección}
-  \renewcommand{\subsectionautorefname}{subsección}
-  \renewcommand{\subsubsectionautorefname}{subsubsección}
-  \renewcommand{\paragraphautorefname}{subsubsubsección}
-}
-
-\addto\captionsfrench{
-  \renewcommand{\capaname}{Page de titre}
-  \renewcommand{\folhaderostoname}{Page de titre}
-  \renewcommand{\epigraphname}{Épigraphe}
-  \renewcommand{\dedicatorianame}{Dédiace}
-  \renewcommand{\errataname}{Errata}
-  \renewcommand{\agradecimentosname}{Remerciements}
-  \renewcommand{\anexoname}{Annexe}
-  \renewcommand{\anexosname}{Annexes}
-  \renewcommand{\apendicename}{Appendice}
-  \renewcommand{\apendicesname}{Appendices}
-  \renewcommand{\orientadorname}{Conseiller :}
-  \renewcommand{\coorientadorname}{Co-conseiller :}
-  \renewcommand{\folhadeaprovacaoname}{Feuille d'approbation}
-  \renewcommand{\resumoname}{Résumé}
-  \renewcommand{\contentsname}{Sommaire}
-  \renewcommand{\listfigurename}{Liste des figures}
-  \renewcommand{\listtablename}{Liste des tableaux}
-  \renewcommand{\listadesiglasname}{Liste des abréviations et sigles}
-  \renewcommand{\listadesimbolosname}{Liste des symboles}
-  \renewcommand{\listadetermosname}{Liste des termes et définitions}
-  \renewcommand{\contentsname}{Sommaire}
-  \renewcommand{\bibname}{Références}
-  \renewcommand{\indexname}{Index}
-  \renewcommand{\sourcename}{Source}
-  \renewcommand{\notaname}{Note}
-  \renewcommand{\pageautorefname}{page}
-  \renewcommand{\sectionautorefname}{section}
-  \renewcommand{\subsectionautorefname}{sous-section}
-  \renewcommand{\subsubsectionautorefname}{sous-sous-section}
-  \renewcommand{\paragraphautorefname}{sous-sous-sous-section}
-}
-
-% Change abntex2 commands and enviroments -----
+% Change `abntex2` commands and enviroments -----
 
 $if(index-page)$
 \usepackage{makeidx}
@@ -488,18 +532,19 @@ $endif$
   \phantomsection\pdfbookmark[0]{\capaname}{}
   \begin{capa}%
   \begin{adjustwidth}{-1cm}{0cm}
-  \center\normalfont\normalsize\imprimirinstituicao
+  \center
+  \imprimirinstituicao
   \vfill
 
-  \normalfont\normalsize\imprimirautor
+  \imprimirautor
   \vfill
 
-  \bfseries\normalsize\imprimirtitulo
+  \textbf{\imprimirtitulo}
   \vspace{10cm}
 
-  \normalfont\normalsize\imprimirlocal
+  \imprimirlocal
 
-  \normalfont\normalsize\imprimirdata
+  \imprimirdata
   \vspace*{1.5cm}
   \end{adjustwidth}
   \end{capa}
@@ -508,27 +553,26 @@ $endif$
 \makeatletter
 \renewcommand{\folhaderostocontent}{
   \begin{center}
-  \normalfont\normalsize\imprimirautor
+  \imprimirautor
   \vfill
 
-  \bfseries\normalsize\imprimirtitulo
+  \textbf{\imprimirtitulo}
   \vfill
 
   \abntex@ifnotempty{
-    \normalfont\normalsize\imprimirpreambulo
+    \imprimirpreambulo
   }{
     \hspace{0.35\textwidth}
     \begin{minipage}{.6\textwidth} % page width
     \SingleSpacing
-    \normalfont\normalsize\imprimirpreambulo
-    \vfill
+    \imprimirpreambulo
     \end{minipage}
     \vfill
   }
 
-  \normalfont\normalsize\imprimirlocal
+  \imprimirlocal
 
-  \normalfont\normalsize\imprimirdata
+  \imprimirdata
   \vspace*{1cm}
   \end{center}
 }
@@ -577,7 +621,7 @@ $endif$
 }
 
 \makechapterstyle{apendice}{
-  \setlength{\beforechapskip}{0em}
+  \setlength{\beforechapskip}{-\baselineskip}
   \setlength{\midchapskip}{0em}
   \setlength{\afterchapskip}{1em}
   \renewcommand{\chapnamefont}{\normalfont}
@@ -596,6 +640,15 @@ $endif$
   \renewcommand{\appendixname}{#1}
   \renewcommand{\apendicesname}{#1}
   \switchchapname{#1}
+
+  % Note:
+  %
+  % \cleardoublepage
+  % \phantomsection
+  % \addcontentsline{toc}{part}{Appendices}
+  % \appendix
+  %
+  % is automatically add by the Quarto render.
 }
 
 \newcommand{\PRIVATEannexconfig}[2]{
@@ -646,7 +699,24 @@ $endif$
   \bookmarksetup{startatroot}
 }
 
+% Set LoF & LoT -----
+
+\renewcommand{\printloftitle}[1]{
+  \setlength{\afterchapskip}{2.3em}
+  \chapter*[#1]{#1}
+}
+
+\renewcommand{\printlottitle}[1]{
+  \setlength{\afterchapskip}{2.3em}
+  \chapter*[#1]{#1}
+}
+
+% Set ToC -----
+
+$toc.tex()$
+
 % Set bibliography -----
+
 $if(biblio-title)$
 \renewcommand{\bibname}{$biblio-title$}
 \newcommand{\newbibname}{$biblio-title$}
@@ -664,20 +734,6 @@ $if(biblio-style)$style=$biblio-style$,$endif$$for(biblatexoptions)$$biblatexopt
 $for(bibliography)$
 \addbibresource{$bibliography$}
 $endfor$
-
-\cftinsertcode{bibhook}{
-  \setlength{\cftchapterindent}{5.675em}
-  \setlength{\cftchapternumwidth}{0em}
-  \renewcommand{\cftchapteraftersnumb}{\hspace{0em}}
-  \renewcommand{\cftchapterpresnum}{\normalfont\bfseries}
-}
-
-\cftinsertcode{removebibhook}{
-  \setlength{\cftchapterindent}{6em}
-  \setlength{\cftchapternumwidth}{0em}
-  \renewcommand{\cftchapteraftersnumb}{\hspace{0em}}
-  \renewcommand{\cftchapterpresnum}{\normalfont\bfseries}
-}
 
 \defbibheading{bay}$if(biblio-footnote)$[\bibnamewithfootnote]$else$[\newbibname]$endif${
   \ifthenelse{\boolean{ABNTEXupperchapter}}{
@@ -706,22 +762,6 @@ $endif$
 $if(nocite-ids)$
 \nocite{$for(nocite-ids)$$it$$sep$, $endfor$}
 $endif$
-
-% Set ToC format -----
-
-$toc.tex()$
-
-% Set LoF & LoT format -----
-
-\renewcommand{\printloftitle}[1]{
-  \setlength{\afterchapskip}{2.3em}
-  \chapter*[#1]{#1}
-}
-
-\renewcommand{\printlottitle}[1]{
-  \setlength{\afterchapskip}{2.3em}
-  \chapter*[#1]{#1}
-}
 
 % Set colors -----
 

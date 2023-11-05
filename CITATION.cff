@@ -2,15 +2,14 @@
 
 cff-version: 0.3.0
 message: "To cite this Quarto format in publications use:"
-title: "{abnt}: a Quarto format designed for theses and dissertations that adhere to the standards of the Brazilian Association of Technical Standards (ABNT)"
+title: "{abnt}: Quarto format for ABNT theses and dissertations"
 keywords:
-  - quarto
-  - quarto format
-  - quarto-extension
-  - quarto-template
-  - abnt
-  - thesis
-  - dissertation
+  - ABNT
+  - Quarto
+  - Quarto format
+  - Thesis template
+  - Reproducibility.
+    Open science
 authors:
 - family-names: Vartanian
   given-names: Daniel
@@ -24,14 +23,14 @@ contact:
   email: danvartan@gmail.com
   orcid: https://orcid.org/0000-0001-7782-759X
 type: software
-version: 0.1.0
+version: 0.3.0
 license: MIT
 identifiers:
 - type: url
   value: https://github.com/danielvartan/abnt/
 preferred-citation:
   type: unpublished
-  title: "{abnt}: a Quarto format designed for theses and dissertations that adhere to the standards of the Brazilian Association of Technical Standards (ABNT)"
+  title: "{abnt}: Quarto format for ABNT theses and dissertations"
   authors:
   - family-names: Vartanian
     given-names: Daniel

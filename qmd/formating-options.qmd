@@ -1,0 +1,129 @@
+<!-- %:::% .common h1 begin %:::% -->
+# Formating options
+<!-- %:::% .common h1 end %:::% -->
+
+```{r}
+#| label: setup
+#| echo: false
+#| output: false
+
+# library(here)
+
+source(here::here("R/quarto-setup.R"))
+```
+
+<!-- See <https://github.com/quarto-journals/elsevier>. -->
+<!-- See <https://quarto.org/docs/extensions/formats.html>. -->
+
+Most customization options available in the Quarto system work with this format. See the [extension YAML file](https://github.com/danielvartan/abnt/blob/main/_extensions/abnt/_extension.yml) and the section [PDF Options](https://quarto.org/docs/reference/formats/pdf.html) of the [Quarto Guide](https://quarto.org/docs/guide/) to learn more.
+
+Other formatting details can be found in `abnt` [print](https://danielvartan.github.io/abnt/index.pdf) and [web](https://danielvartan.github.io/abnt/) output.
+
+Some documentation may still be missing. We are working on it.
+
+## Typography
+
+You can set the document typography using the `mainfont` key. Example:"
+
+``` yaml
+format:
+  abnt-pdf:
+    mainfont: Arial
+```
+[USP guidelines for creating thesis and dissertation documents](https://teses.usp.br/index.php?option=com_content&view=article&id=52&Itemid=67&lang=en) recommends a `12pt` font size for the body text without specifying a font type.  Common options include `Arial` (default) and `Times New Roman`. Any font available in your system should work.
+
+## Language and hyphenation
+
+## Document sections
+
+### Adding or removing sections
+
+### Editing pre-textual sections
+
+### Pre-textual pages
+
+At the moment, the pre-textual pages can only be configured using the `yml` configuration and two [LaTeX](https://www.latex-project.org/) files located in the `tex` folder.
+
+## Citation management
+
+### Citation method
+
+### Citation style
+
+### Using Zotero
+
+This template works with [Zotero](https://www.zotero.org/) and the [Better BiBTeX](https://github.com/retorquere/zotero-better-bibtex) plugin. You must have both installed to render citations.
+
+```yml
+format:
+  pdf:
+    zotero: true
+```
+
+When rendering the document, the Zotero server must be running; therefore, Zotero must be open. A pre-render script (see `R/quarto-pre-render.R`), created using the [`rbbt`](https://github.com/paleolimbot/rbbt) R package, will scan all `qmd` and `tex` files searching for BibTeX citations (e.g., `@watson1953`). If they match with your Zotero database, the citations will then be written to the `references.json` file.
+
+## Freezing and cache
+
+## Customizing `abnt`
+
+### Spacing rules
+
+::: {.callout-warning}
+This should go without saying, but remember that this is a Brazilian standard, so __please__ use the metric system! (Yes, I'm referring to you, Americans)
+:::
+
+Set fixed dimensions (e.g., page dimensions) in `cm` or `pt`. `cm` is the prefer unit for margins.
+
+Set line spacing as a proportion of `\baselineskip` (e.g., `1.5\baselineskip`).
+
+For other kinds of relative vertical spacing, use the `ex` unit.
+
+For relative horizontal spacing, use the `em` unit.
+
+See @oetiker2023, topic 7.5;, @overleafa and @overleaf to learn more.
+
+#### Equivalences
+
+These are the equivalences for a Arial typeface with size 12pt:
+
+* 1 `\baselineskip` with `\linestretch` $==$ 1 is equal to 14.5pt. That's about 1.2x (or ($~$1.208333x) the font size (standard procedure).
+
+* 1 `\baselineskip` with `\linestretch` $==$ 1.5 (default) is equal to 21.75pt.
+* 1.5 `\baselineskip` with `\linestretch` $==$ 1.5 (default) is equal to 32.625pt.
+* 2 `\baselineskip` with `\linestretch` $==$ 1.5 (default) is equal to 43.5pt.
+* 2.5 `\baselineskip` with `\linestretch` $==$ 1.5 (default) is equal to 54,375pt.
+* 3 `\baselineskip` with `\linestretch` $==$ 1.5 (default) is equal to 65,25pt.
+
+* 1em $==$ 12pt or $~$0.423333cm.
+* 1ex $==$ $~$6.22266pt or $~$ 0,219521cm.
+
+Use `\the\baselineskip` and `\gevalue{}` to figure out the exact value.
+
+Example of using `\getvalue{}`:
+
+```{=latex}
+\begingroup
+\setlength{\parskip}{1em}
+\getlength{\parskip}
+\endgroup
+```
+
+### Must see
+
+For latex basics see @oetiker2023. To go deep in the Latex system, see @lamport1994 and @knuth1986.
+
+#### Manuals
+
+* [Quarto guide](https://quarto.org/docs/guide/).
+* [`abntex2` "como customizar"](https://github.com/abntex/abntex2/wiki/ComoCustomizar).
+* [`abntex2` manual](https://www.ctan.org/pkg/abntex2).
+* [`memoir` manual](https://www.ctan.org/pkg/memoir).
+* [`biblatex` manual](https://www.ctan.org/pkg/biblatex).
+* [`biblatex-abnt` manual](https://www.ctan.org/pkg/biblatex-abnt).
+* [`biblatex-apa` manual](https://www.ctan.org/pkg/biblatex-apa).
+* [`babel` manual](https://ctan.org/pkg/babel)
+* [`fontspec` manual](https://ctan.org/pkg/fontspec).
+
+#### R packages
+
+* [`gt`](https://gt.rstudio.com).
