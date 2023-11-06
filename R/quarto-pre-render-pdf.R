@@ -8,11 +8,11 @@ source(here::here("R", "quarto-pre-render-common.R"))
 
 swap_list <- list(
   index_h1 = list(
-    from = here::here("index.qmd"),
+    from = here::here("qmd/introduction.qmd"),
     to = here::here("index.qmd"),
     begin_tag = "%:::% .common h1 begin %:::%",
     end_tag = "%:::% .common h1 end %:::%",
-    value = "# Introduction",
+    value = NULL,
     quarto_render = FALSE
   ),
   index_pdf = list(
@@ -39,6 +39,14 @@ swap_list <- list(
     value = NULL,
     quarto_render = FALSE
   ),
+  errata_reference = list(
+    from = here::here("qmd/errata.qmd"),
+    to = here::here("tex/include-before-body.tex"),
+    begin_tag = "%:::% errata reference begin %:::%",
+    end_tag = "%:::% errata reference end %:::%",
+    value = NULL,
+    quarto_render = FALSE
+  ),
   errata_body = list(
     from = here::here("qmd/errata.qmd"),
     to = here::here("tex/include-before-body.tex"),
@@ -47,11 +55,11 @@ swap_list <- list(
     value = NULL,
     quarto_render = TRUE
   ),
-  approval_sheet_header = list(
+  approval_sheet = list(
     from = here::here("qmd/_config.qmd"),
     to = here::here("tex/include-before-body.tex"),
-    begin_tag = "%:::% approval-sheet header begin %:::%",
-    end_tag = "%:::% approval-sheet header end %:::%",
+    begin_tag = "%:::% approval-sheet body begin %:::%",
+    end_tag = "%:::% approval-sheet body end %:::%",
     value = NULL,
     quarto_render = FALSE
   ),

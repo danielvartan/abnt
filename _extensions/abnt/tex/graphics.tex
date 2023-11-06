@@ -15,3 +15,26 @@ $if(graphics)$
 \def\fps@figure{htbp}
 \makeatother
 $endif$
+
+\makeatletter
+\setlength{\@fptop}{5pt} % Set distance from top of page to first float
+\makeatother
+
+\captionsetup{
+  font=footnotesize, % Must be `\ABNTEXfontereduzida` equivalent.
+  justification=centering,
+  skip=16.3125pt % Skip between caption and figure (`0.75\baselineskip`).
+}
+
+\renewcommand{\legend}[1]{
+  \addvspace{0.75\baselineskip}
+  \ABNTEXfontereduzida \raggedright #1
+}
+
+% % Credits: <https://stackoverflow.com/a/1566053/8258804>.
+% \makeatletter
+% \let\oldfigure\figure
+% \def\figure{\@ifnextchar[\figure@i \figure@ii}
+% \def\figure@i[#1]{\oldfigure[#1]\centering}
+% \def\figure@ii{\oldfigure\centering}
+% \makeatother

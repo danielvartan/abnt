@@ -14,6 +14,7 @@ book:
     - qmd/conclusion.qmd
   appendices:
     - qmd/appendice-1.qmd
+    - qmd/settings.qmd
 
 format:
   abnt-pdf:

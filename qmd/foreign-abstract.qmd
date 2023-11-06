@@ -31,7 +31,7 @@ Palavras-chaves: [Palavra-chave 1]. [Palavra-chave 2]. [Palavra-chave 3].
 
 ::: {.content-visible when-format="pdf"}
 <!-- %:::% foreign-abstract keywords begin %:::% -->
-\begin{tabular}{p{3.6cm} p{12.4cm}}
+\begin{tabular}{p{3.6cm} p{12.3cm}}
   \textbf{Palavras-chaves}: &  [Palavra-chave 1]. [Palavra-chave 2]. [Palavra-chave 3].
 \end{tabular}
 <!-- %:::% foreign-abstract keywords end %:::% -->

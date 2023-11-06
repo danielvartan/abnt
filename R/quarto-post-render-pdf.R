@@ -13,7 +13,7 @@ if (length(pdf_file) == 1) {
   rutils:::delete_file(pdf_file)
 }
 
-# Copy TeX file (if exists) to `output_dir_pdf` folder -----
+# Copy and rename the TeX file (if exists) to `output_dir_pdf` folder -----
 
 tex_file <- list.files(here::here(), full.names = TRUE, pattern = ".tex$")
 

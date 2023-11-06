@@ -31,7 +31,7 @@ Keywords: {{< var keyword >}}
 
 ::: {.content-visible when-format="pdf"}
 <!-- %:::% vernacular-abstract keywords begin %:::% -->
-\begin{tabular}{p{2.3cm} p{13.7cm}}
+\begin{tabular}{p{2.3cm} p{13.6cm}}
   \textbf{Keywords}: &  [Keyword 1]. [Keyword 2]. [Keyword 3].
 \end{tabular}
 <!-- %:::% vernacular-abstract keywords end %:::% -->

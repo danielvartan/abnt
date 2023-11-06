@@ -92,42 +92,17 @@ Lincoln Mullen, [Packaging Data Analytical Work Reproducibly Using R
 
 ## Installation
 
-### Basic installation (Not recommended)
-
-If you want to create a new thesis from the ground up, you can use the
-following command in your terminal:
-
-``` bash
-quarto use template danielvartan/abnt
-```
-
-<!-- Needs testing -->
-
-This command will install the extension and generate an example `qmd`
-(Quarto Markdown) file and bibliography that can serve as a starting
-point.
-
-You can also incorporate this format into an existing Quarto project or
-document. To do so, navigate to the directory of your Quarto project or
-document and execute the following command:
-
-``` bash
-quarto add danielvartan/abnt
-```
-
-### Recommended Installation
-
-While Quarto provides various features for customization, they do not
-suffice to seamlessly adapt to ABNT standards. Some formatting
+While Quarto provides various features for customization, they still do
+not suffice to seamlessly adapt to ABNT standards. Some formatting
 adjustments required the use of unconventional methods and multiple
 layers of processing.
 
-A more convenient way to begin using `abnt` is by cloning this
-repository and building upon its [Quarto
-book](https://quarto.org/docs/books/). If you choose this approach, make
-sure to install the [`renv`](https://rstudio.github.io/renv/index.html)
-R package and run `renv::restore()` afterward. This will ensure that you
-have all the necessary package dependencies ready for use.
+A convenient way to begin using `abnt` is by cloning this repository and
+building upon its [Quarto book](https://quarto.org/docs/books/). By
+doing so, make sure to install the
+[`renv`](https://rstudio.github.io/renv/index.html) R package and run
+`renv::restore()` afterward. This will ensure that you have all the
+necessary package dependencies ready for use.
 
 ## Usage
 
@@ -182,10 +157,12 @@ request that you consider citing it. Building and maintaining this free
 and open-source Quarto format has required substantial effort, and your
 citation is appreciated. The citation details are provided below.
 
+[APA](https://apastyle.apa.org/) style:
+
     Vartanian, D. (2023). {abnt}: Quarto format for ABNT theses and dissertations.
     https://github.com/danielvartan/abnt/
 
-For LaTeX users, here’s a BibTeX entry:
+[BibTeX](https://www.bibtex.org/) entry:
 
     @unpublished{vartanian2023,
       author = {Daniel Vartanian},

@@ -1,5 +1,5 @@
 <!-- %:::% .common h1 begin %:::% -->
-# Example
+# [Showcase]
 <!-- %:::% .common h1 end %:::% -->
 
 ```{r}
@@ -38,8 +38,4 @@ cat(cli:::lorem_ipsum(2), sep = "\n\n")
 # library(cli)
 
 cat(cli:::lorem_ipsum(1), sep = "\n\n")
-```
-
-```{=latex}
-\end{apendicesenv}
 ```

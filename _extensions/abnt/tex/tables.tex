@@ -1,3 +1,7 @@
+\renewcommand{\arraystretch}{1}
+\setlength{\aboverulesep}{0ex}
+\setlength{\belowrulesep}{0ex}
+
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
 \makeatletter
@@ -7,3 +11,22 @@
 % Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
+
+% Set tabular environment -----
+
+% \providecommand{\addquartolegend}{}
+% \newcommand{\quartolegend}[1]{\renewcommand{\addquartolegend}{#1}}
+% \renewcommand{\quartolegend}{Don't forget to set \verb|\quartolegend|!}
+
+\AtBeginEnvironment{table}{\ABNTEXfontereduzida}
+\AtBeginEnvironment{tabular}{\ABNTEXfontereduzida}
+
+\AddToHook{env/longtable/before}{}
+\AddToHook{env/longtable/after}{}
+\AddToHook{env/longtable/begin}{
+  \ABNTEXfontereduzida
+  \renewcommand{\arraystretch}{1}
+}
+\AddToHook{env/longtable/end}{}
+
+\floatplacement{table}{H}

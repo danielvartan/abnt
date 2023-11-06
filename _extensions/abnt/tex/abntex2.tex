@@ -1,0 +1,296 @@
+% Set text variables -----
+
+\renewcommand{\ABNTEXchapterfont}{\normalfont\bfseries}
+\renewcommand{\ABNTEXchapterfontsize}{\normalsize}
+\renewcommand{\ABNTEXsectionfont}{\normalfont}
+\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsectionfont}{\normalfont\bfseries}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsubsectionfont}{\normalfont}
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsubsubsectionfont}{\normalfont}
+\renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalsize\itshape}
+\renewcommand{\ABNTEXfontereduzida}{\footnotesize}
+
+\renewcommand{\chapnumfont}{\normalfont}
+\renewcommand{\captiontitlefont}{\ABNTEXfontereduzida}
+
+\renewcommand{\ABNTEXcaptiondelim}{~\textendash~}
+\renewcommand{\ABNTEXcaptionfontedelim}{:~}
+
+% Set new commands
+
+\providecommand{\imprimiruniversidade}{}
+\newcommand{\universidade}[1]{\renewcommand{\imprimiruniversidade}{#1}}
+
+\providecommand{\imprimirescola}{}
+\newcommand{\escola}[1]{\renewcommand{\imprimirescola}{#1}}
+
+\providecommand{\imprimirprograma}{}
+\newcommand{\programa}[1]{\renewcommand{\imprimirprograma}{#1}}
+
+\newcommand{\imprimirtipodetrabalho}{\imprimirtipotrabalho}
+
+\providecommand{\imprimirtipodetituloacademico}{}
+\newcommand{\tipodetituloacademico}[1]{\renewcommand{\imprimirtipodetituloacademico}{#1}}
+
+\providecommand{\imprimirtituloacademico}{}
+\newcommand{\tituloacademico}[1]{\renewcommand{\imprimirtituloacademico}{#1}}
+
+\providecommand{\imprimirareadeconcentracao}{}
+\newcommand{\areadeconcentracao}[1]{\renewcommand{\imprimirareadeconcentracao}{#1}}
+
+\providecommand{\imprimirnotadeversao}{}
+\newcommand{\notadeversao}[1]{\renewcommand{\imprimirnotadeversao}{#1}}
+
+% Set chapter/section formating -----
+
+\setsecnumformat{\normalfont\csname the#1\endcsname\quad}
+
+\renewcommand{\printchapternum}{
+  \tocprintchapter
+  \setboolean{abntex@innonumchapter}{false}
+  \chapnumfont
+  \thechapter \quad
+  \ifthenelse{\boolean{abntex@apendiceousecao}}{
+      \tocinnonumchapter
+      \ABNTEXcaptiondelim
+  }{}
+}
+
+% Similar to `\printloftitle`
+\renewcommand{\pretextualchapter}[1]{
+  \setlength{\afterchapskip}{\hugeskipamount}
+  \addtocounter{abntex@bookmarkcounter}{1}
+  \PRIVATEbookmarkthis{#1}
+  \chapter*[#1]{#1}
+}
+
+\makechapterstyle{apendice}{
+  \setlength{\beforechapskip}{-\baselineskip}
+  \setlength{\midchapskip}{0\baselineskip}
+  \setlength{\afterchapskip}{\smallskipamount}
+  \renewcommand{\chapnamefont}{\normalfont}
+  \renewcommand{\printchaptername}{\ABNTEXchapterupperifneeded{\appendixname}}
+  \renewcommand{\chapternamenum}{\space}
+  \renewcommand{\chapnumfont}{\normalfont}
+  \renewcommand{\printchapternum}{\thechapter}
+  \renewcommand{\afterchapternum}{\space -- \space}
+  \renewcommand{\chaptitlefont}{\normalfont}
+  \renewcommand{\printchaptertitle}[1]{\ABNTEXchapterupperifneeded{##1}}
+  \renewcommand{\afterchaptertitle}{\vspace{\smallskipamount}}
+}
+
+% Set `\textual` -----
+
+\renewcommand{\textual}{
+  \pagestyle{abntheadings}
+  \aliaspagestyle{chapter}{abntheadings}
+}
+
+% Set cover -----
+
+\renewcommand{\imprimircapa}{
+  \phantomsection\pdfbookmark[0]{\capaname}{}
+  \begin{capa}%
+  \begin{adjustwidth}{-1cm}{0cm}
+  \center
+  \imprimirinstituicao
+  \vfill
+
+  \imprimirautor
+  \vfill
+
+  \textbf{\imprimirtitulo}
+  \vspace{10cm}
+
+  \imprimirlocal
+
+  \imprimirdata
+  \vspace{1.5cm}
+  \end{adjustwidth}
+  \end{capa}
+}
+
+% Set title page -----
+
+\makeatletter
+\renewcommand{\folhaderostocontent}{
+  \begin{center}
+  \imprimirautor
+  \vfill
+
+  \bfseries\imprimirtitulo
+  \vfill
+
+  \bfseries\imprimirnotadeversao\normalfont
+  \vfill
+
+  \abntex@ifnotempty{
+    \imprimirpreambulo
+  }{
+    \hspace{0.35\textwidth}
+    \begin{minipage}{.6\textwidth}
+    \SingleSpacing
+    \imprimirpreambulo
+    \end{minipage}
+  }
+  \vfill
+
+  \imprimirlocal
+
+  \imprimirdata
+  \vspace{1cm}
+  \end{center}
+}
+\makeatother
+
+% Set cataloging record -----
+
+\renewenvironment{fichacatalografica}{
+  \setlength{\parindent}{0cm}
+  \begin{SingleSpacing}
+}{
+  \end{SingleSpacing}%
+}
+
+% Set errata -----
+
+\renewenvironment{errata}[1][\errataname]{
+  \pretextualchapter{#1}
+  % \setlength{\parindent}{0cm}
+}{
+  \cleardoublepage
+}
+
+% Set approval sheet -----
+
+\renewenvironment{folhadeaprovacao}[1][\folhadeaprovacaoname]{
+  \clearpage
+  \PRIVATEbookmarkthis{#1}
+  \setlength\parindent{0cm}
+  \AtBeginEnvironment{tabular}{\normalsize}
+  \begin{SingleSpace}
+}{
+  \end{SingleSpace}
+  \cleardoublepage
+}
+
+% Set abstract -----
+
+\newenvironment{resumoenv}[1][\resumoname]{
+  % \pretextualchapter{#1}
+  \setlength{\afterchapskip}{\hugeskipamount - \smallskipamount}
+  \addtocounter{abntex@bookmarkcounter}{1}
+  \PRIVATEbookmarkthis{#1}
+  \chapter*[#1]{#1}
+
+  \setlength{\parindent}{0cm}
+  \setlength{\parskip}{\smallskipamount} % The troublemaker.
+  \AtBeginEnvironment{tabular}{\normalsize}
+  \renewcommand{\arraystretch}{1}
+  \setlength{\aboverulesep}{0ex}
+  \setlength{\belowrulesep}{0ex}
+  \setlength{\arrayrulewidth}{0pt}
+  \setlength{\tabcolsep}{0cm}
+  \begin{SingleSpace}
+}{
+  \end{SingleSpace}
+  \cleardoublepage
+}
+
+% Set list of abbreviations and acronyms -----
+
+\renewenvironment{siglas}{
+  \pretextualchapter{\listadesiglasname}
+}{
+  \cleardoublepage
+}
+
+% Set list of symbols -----
+
+\renewenvironment{simbolos}{
+  \pretextualchapter{\listadesimbolosname}
+}{
+  \cleardoublepage
+}
+% Set list of symbols -----
+
+\newenvironment{termos}{%
+  \pretextualchapter{\listadetermosname}
+}{
+  \cleardoublepage
+}
+
+% Set appendices and annexes -----
+
+\renewcommand{\PRIVATEapendiceconfig}[1]{
+  \setboolean{abntex@apendiceousecao}{true}
+  \renewcommand{\appendixname}{#1}
+  \renewcommand{\apendicesname}{#1}
+  \switchchapname{#1}
+
+  % Note:
+  %
+  % \cleardoublepage
+  % \phantomsection
+  % \addcontentsline{toc}{part}{Appendices}
+  % \appendix
+  %
+  % is automatically add by the Quarto render.
+}
+
+\newcommand{\PRIVATEannexconfig}[2]{
+  \setboolean{abntex@apendiceousecao}{true}
+  \renewcommand{\appendixname}{#1}
+  \renewcommand{\apendicesname}{#1}
+  \renewcommand{\appendixtocname}{#2}
+  \phantomsection
+  \addcontentsline{toc}{part}{\appendixtocname}
+  \switchchapname{#1}
+}
+
+\renewcommand{\apendices}{
+  \cftinserthook{toc}{appendixhook}
+  \PRIVATEapendiceconfig{\apendicename}
+  \appendix
+  \chapterstyle{apendice}
+}
+
+\renewenvironment{apendicesenv}{
+  \cftinserthook{toc}{appendixhook}
+  \PRIVATEapendiceconfig{\apendicename}
+  \begin{appendix}
+  \chapterstyle{apendice}
+}{
+  \end{appendix}
+  \setboolean{abntex@apendiceousecao}{false}
+  \bookmarksetup{startatroot}
+}
+
+\renewcommand{\anexos}{
+  \cftinserthook{toc}{appendixhook}
+  \PRIVATEannexconfig{\anexoname}{\anexosname}
+  \appendix
+  \renewcommand\theHchapter{anexochapback.\arabic{chapter}}
+  \chapterstyle{apendice}
+}
+
+\renewenvironment{anexosenv}{
+  \cftinserthook{toc}{appendixhook}
+  \PRIVATEannexconfig{\anexoname}{\anexosname}
+  \begin{appendix}
+  \renewcommand\theHchapter{anexochapback.\arabic{chapter}}
+  \chapterstyle{apendice}
+}{
+  \end{appendix}
+  \setboolean{abntex@apendiceousecao}{false}
+  \bookmarksetup{startatroot}
+}
+
+% Set index section -----
+
+$if(index-page)$
+\usepackage{makeidx}
+\makeindex
+$endif$

@@ -12,6 +12,12 @@
 source(here::here("R/quarto-setup.R"))
 ```
 
+::: {.content-visible when-format="pdf"}
+<!-- %:::% errata reference begin %:::% -->
+\noindent [Author's surname], [Author's forename(s) initial(s)]. \textbf{\imprimirtitulo}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  (\imprimirtituloacademico) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
+<!-- %:::% errata reference end %:::% -->
+:::
+
 <!-- %:::% errata body begin %:::% -->
 This is the development version of the thesis (version <1.0.0). Any necessary corrections will be listed here after its approval.
 <!-- %:::% errata body end %:::% -->

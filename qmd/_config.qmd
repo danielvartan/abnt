@@ -1,30 +1,27 @@
 # {abnt} config file
 
-Use this quarto document to change your thesis pre-textual sections on the PDF format.
+Use this quarto document to change your thesis pre-textual sections in the PDF format.
 
-__Do not remove the text tags__! (they look like this: <!-- %:::% tag %:::% --> )
+__Do not remove the text tags__! (they look like this: `<!-- %:::% tag %:::% -->`)
 
 Some general instructions:
 
-* If you won't use a section of this document, remove it! Empty sections will produce an error. At the moment, this must be made on the `tex/include-before-body.tex` file.
+* If you won't use a section of this document, remove it! Empty sections will produce an error. At the moment, you also need to remove them in the `tex/include-before-body.tex` file and `R/quarto-pre-render-pdf.R`.
 
 ## Title page
 
 <!-- %:::% title-page body begin %:::% -->
-\imprimirnotadeversao
-\vspace{1.5em}
-
 {\imprimirtipotrabalho} presented to the {\imprimirescola} at {\imprimiruniversidade}, as part of the requirements for the degree of {\imprimirtituloacademico} by the {\imprimirprograma}.
-\vspace{1em}
+\tinyskip
 
 Area of concentration: {\imprimirareadeconcentracao}.
-\vspace{1em}
+\tinyskip
 
 Revised version incorporating the changes requested by the examining committee on [Date]. The original version is held in the reserved collection at the {\imprimirescola} Library and in the Digital Library of Theses and Dissertations of the {\imprimiruniversidade}.
-\vspace{1em}
+\tinyskip
 
 Supervisor: Prof. Dr. {\imprimirorientador}
-\vspace{0.5em}
+\vspace{0.25\baselineskip}
 
 Co-Supervisor: Prof. Dr. {\imprimircoorientador}
 <!-- %:::% title-page body end %:::% -->
@@ -32,30 +29,34 @@ Co-Supervisor: Prof. Dr. {\imprimircoorientador}
 ## Cataloging record
 
 <!-- %:::% cataloging-record body begin %:::% -->
-\begingroup
-\normalsize I authorize the full or partial reproduction of this work by any conventional or electronic means for the purposes of study and research, provided that the source is cited.
-\endgroup
-
+I authorize the full or partial reproduction of this work by any conventional or electronic means for the purposes of study and research, provided that the source is cited.
+\ABNTEXfontereduzida
 \vfill
 
 \begin{center}
-Cataloging record prepared by the [Library name] with the data \\ 
-inserted by [Full name of the librarian] ([Librarian register number]).
-\vspace{1em}
+Cataloging in publication
+
+Library
+
+[Library name]
+\medskip
 
 \setlength{\fboxsep}{1cm}
 \fbox{\begin{minipage}[c][7.5cm]{12.5cm}
 [Author's surname], [Author's forename(s)]
+\smallskip
 
-\hspace{0.5cm} {\imprimirtitulo}  / {\imprimirautor}; supervisor, {\imprimirorientador}; co-supervisor {\imprimircoorientador}. -- {\imprimirlocal}, {\imprimirdata}
+\hspace{0.5cm} {\imprimirtitulo}  / {\imprimirautor}; supervisor, {\imprimirorientador}; co-supervisor {\imprimircoorientador}. {\imprimirlocal}, {\imprimirdata}
+\smallskip
 
-\hspace{0.5cm} {\thelastpage}p. : il
-\vspace{1em}
+{\thelastpage}p. : il
+\smallskip
 
 \hspace{0.5cm} {\imprimirtipotrabalho} (\imprimirtituloacademico) -- {\imprimirprograma}, {\imprimirescola}, {\imprimiruniversidade}, {\imprimirdata}.
+\smallskip
 
 \hspace{0.5cm} {\imprimirnotadeversao}
-\vspace{1em}
+\smallskip
 
 \hspace{0.5cm} 1. [Subject A]. 2. [Subject B]. 3. [Subject C]. I. [Supervisor's surname], [Supervisor's forename(s)], super. II. [Co-supervisor's surname], [Co-supervisor's forename(s)] co-super. III. Title.
 \end{minipage}}
@@ -64,6 +65,50 @@ inserted by [Full name of the librarian] ([Librarian register number]).
 
 ## Approval sheet header
 
-<!-- %:::% approval-sheet header begin %:::% -->
+<!-- %:::% approval-sheet body begin %:::% -->
 {\imprimirtipotrabalho} by {\imprimirautor}, under the title \textbf{\imprimirtitulo}, presented to the {\imprimirescola} at the {\imprimiruniversidade}, as part of the requirements for the degree of {\imprimirtituloacademico} by the {\imprimirprograma}, in the concentration area of {\imprimirareadeconcentracao}.
-<!-- %:::% approval-sheet header end %:::% -->
+\vspace{1.5cm}
+
+Approved on \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ , \_\_\_\_\_\_\_\_\_\_ .
+\vspace{1.5cm}
+
+\begin{center}
+  Examination committee
+\end{center}
+\vspace{0.5cm}
+
+Committee chair:
+\vspace{0.25cm}
+
+\renewcommand{\arraystretch}{2}
+\setlength{\arrayrulewidth}{0pt}
+\setlength{\tabcolsep}{0cm}
+\begin{tabular}{m{2cm} P{14cm}}
+  Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+  Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+\end{tabular}
+\vspace{1cm}
+
+Examiners:
+\vspace{0.25cm}
+
+\begin{tabular}{m{2cm} P{14cm}}
+  Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+  Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+  Evaluation & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+\end{tabular}
+\vspace{0.5cm}
+
+\begin{tabular}{m{2cm} P{14cm}}
+  Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+  Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+  Evaluation & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+\end{tabular}
+\vspace{0.5cm}
+
+\begin{tabular}{m{2cm} P{14cm}}
+  Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+  Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+  Evaluation & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+\end{tabular}
+<!-- %:::% approval-sheet body end %:::% -->

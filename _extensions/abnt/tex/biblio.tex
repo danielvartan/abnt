@@ -1,0 +1,55 @@
+\usepackage[
+$if(biblio-style)$style=$biblio-style$,$endif$$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$
+]{biblatex}
+
+\usepackage{csquotes}
+
+$for(bibliography)$
+\addbibresource{$bibliography$}
+$endfor$
+
+$if(biblio-title)$
+\renewcommand{\bibname}{$biblio-title$}
+\newcommand{\newbibname}{$biblio-title$}
+$else$
+\newcommand{\newbibname}{$biblio-title$}
+$endif$
+
+
+$if(biblio-footnote)$
+\newcommand{\bibnamewithfootnote}{
+  \newbibname\protect\footnote{$biblio-footnote$}
+}
+$endif$
+
+$if(bibhang)$
+\setlength{\bibhang}{$bibhang$}
+$endif$
+
+$if(bibparsep)$
+\setlength{\bibparsep}{$bibparsep$}
+$endif$
+
+$if(nocite-ids)$
+\nocite{$for(nocite-ids)$$it$$sep$, $endfor$}
+$endif$
+
+\defbibheading{bibheading}[$if(biblio-footnote)$\bibnamewithfootnote$else$\newbibname$endif$]{
+  \ifthenelse{\boolean{ABNTEXupperchapter}}{
+    \setboolean{ABNTEXupperchapter}{false}
+    \chapter*{#1}
+    \markboth{#1}{#1}
+    \setboolean{ABNTEXupperchapter}{true}
+  }{
+    \chapter*{#1}
+    \markboth{#1}{#1}
+  }
+}
+
+
+\AtBeginBibliography{
+  \vspace{\hugeskipamount - 2.9pt} % It is what it is...
+}
+
+\AtEveryBibitem{\clearfield{annotation}}
+\renewcommand{\bibfont}{\ABNTEXfontereduzida}

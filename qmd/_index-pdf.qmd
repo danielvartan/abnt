@@ -59,7 +59,7 @@ One of the 20th century's most influential philosophers of science.
   \centering
   \includegraphics[width=0.5\textwidth]{images/karl-popper.png}
 
-  \legend{Fonte: \href{https://www.npg.org.uk/collections/search/portrait/mw08238/Sir-Karl-Raimund-Popper?}{Steve Pyke}.}
+  \legend{Source: \href{https://www.npg.org.uk/collections/search/portrait/mw08238/Sir-Karl-Raimund-Popper?}{Steve Pyke}.}
 \end{figure}
 ```
 :::
@@ -90,8 +90,8 @@ datasets::iris |>
 ```{r}
 #| label: fig-eruption
 #| fig-cap: "Relationship between _waiting time to next eruption_ (minutes) and _eruption time_ (minutes) at Old Faithful Geyser, Yellowstone National Park, Wyoming, USA."
-#| fig-height: 3.5
-#| fig-width: 5.5
+#| fig-height: 4
+#| fig-width: 6
 
 # library(datasets)
 # library(ggplot2)
@@ -105,20 +105,9 @@ ggplot2::ggplot(faithful, ggplot2::aes(x = eruptions, y = waiting)) +
   ggplot2::theme(legend.position = "none")
 ```
 
-```{r}
-#| eval: false
-#| echo: false
-#| output: false
-#| label: fig-diamonds
-#| fig-cap: "Relations betwwen __price__ and __carat__ (weight) of diamonds."
-#| fig-height: 3.5
-#| fig-width: 5.5
-
-# library(ggplot2)
-
-ggplot2::ggplot(ggplot2::diamonds, ggplot2::aes(carat, price)) +
-  ggplot2::geom_boxplot(ggplot2::aes(group = ggplot2::cut_width(carat, 0.25)))
-```
+```{=latex}
+\clearpage
+```` 
 
 #### Quaternary section
 
@@ -131,4 +120,16 @@ ggplot2::ggplot(ggplot2::diamonds, ggplot2::aes(carat, price)) +
 1. List
 1. List
 1. List
+
+```{r}
+#| label: fig-diamonds
+#| fig-cap: "Relations betwwen _price_ and _carat_ (weight) of diamonds."
+#| fig-height: 4
+#| fig-width: 6
+
+# library(ggplot2)
+
+ggplot2::ggplot(ggplot2::diamonds, ggplot2::aes(carat, price)) +
+  ggplot2::geom_boxplot(ggplot2::aes(group = ggplot2::cut_width(carat, 0.25)))
+```
 <!-- %:::% index pdf end %:::% -->

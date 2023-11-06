@@ -1057,13 +1057,13 @@
     },
     "rprojroot": {
       "Package": "rprojroot",
-      "Version": "2.0.3",
+      "Version": "2.0.4",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "R"
       ],
-      "Hash": "1de7ab598047a87bba48434ba35d497d"
+      "Hash": "4c8415e0ec1e29f3f4f6fc108bef0144"
     },
     "rsconnect": {
       "Package": "rsconnect",
@@ -1102,7 +1102,7 @@
       "RemoteUsername": "danielvartan",
       "RemoteRepo": "rutils",
       "RemoteRef": "main",
-      "RemoteSha": "e2377fa757c1405274e550c89c85011ad046506e",
+      "RemoteSha": "53be80f432f56eec201ecc4f2c8f17326ea89ef3",
       "RemoteHost": "api.github.com",
       "Remotes": "github::paleolimbot/rbbt",
       "Requirements": [
@@ -1121,6 +1121,7 @@
         "qpdf",
         "quarto",
         "rbbt",
+        "readr",
         "rlang",
         "rmarkdown",
         "rstudioapi",
@@ -1128,7 +1129,7 @@
         "stringr",
         "yaml"
       ],
-      "Hash": "f58301d5ab89dbe2090ec18c5508450e"
+      "Hash": "719572b003b32fa1f49a425032c72646"
     },
     "sass": {
       "Package": "sass",

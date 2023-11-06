@@ -95,8 +95,8 @@ contributes:
       biblio-style: abnt # options: [abnt, abnt-ibid, abnt-numeric, apa]
       biblio-title: REFERENCES
       biblio-footnote: >
-        In accordance with ABNT style -- Brazilian Association of Technical
-        Standards.
+        According to the Brazilian Association of Technical Standards
+        (ABNT NBR 6023).
       biblatexoptions:
         - backend=biber,
         - language=english, # [options: english, brazil, spanish, french]
@@ -138,13 +138,20 @@ contributes:
       version-note: "[Original/Revised version]"
       template: abnt-template.tex
       template-partials:
+        - tex/abntex2.tex
         - tex/after-body.tex
+        - tex/babel.tex
         - tex/before-body.tex
         - tex/biblio.tex
         - tex/colors.tex
+        - tex/def.tex
         - tex/doc-class.tex
         - tex/graphics.tex
-        - tex/pandoc.tex
+        - tex/hypersetup.tex
+        - tex/layout.tex
+        - tex/lengths.tex
+        - tex/other.tex
+        - tex/packages.tex
         - tex/tables.tex
         - tex/tightlist.tex
         - tex/title.tex

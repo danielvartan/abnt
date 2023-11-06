@@ -12,8 +12,6 @@
 % Title page (mandatory)
 % -----
 
-% Use `\imprimirfolhaderosto*` when applying the option `two-side`.
-
 %:::% approval-sheet begin %:::%
 \imprimirfolhaderosto
 %:::% approval-sheet end %:::%
@@ -25,30 +23,34 @@
 %:::% cataloging-record begin %:::%
 \begin{fichacatalografica}
 %:::% cataloging-record body begin %:::%
-\begingroup
-\normalsize I authorize the full or partial reproduction of this work by any conventional or electronic means for the purposes of study and research, provided that the source is cited.
-\endgroup
-
+I authorize the full or partial reproduction of this work by any conventional or electronic means for the purposes of study and research, provided that the source is cited.
+\ABNTEXfontereduzida
 \vfill
 
 \begin{center}
-Cataloging record prepared by the [Library name] with the data \\ 
-inserted by [Full name of the librarian] ([Librarian register number]).
-\vspace{1em}
+Cataloging in publication
+
+Library
+
+[Library name]
+\medskip
 
 \setlength{\fboxsep}{1cm}
 \fbox{\begin{minipage}[c][7.5cm]{12.5cm}
 [Author's surname], [Author's forename(s)]
+\smallskip
 
-\hspace{0.5cm} {\imprimirtitulo}  / {\imprimirautor}; supervisor, {\imprimirorientador}; co-supervisor {\imprimircoorientador}. -- {\imprimirlocal}, {\imprimirdata}
+\hspace{0.5cm} {\imprimirtitulo}  / {\imprimirautor}; supervisor, {\imprimirorientador}; co-supervisor {\imprimircoorientador}. {\imprimirlocal}, {\imprimirdata}
+\smallskip
 
-\hspace{0.5cm} {\thelastpage}p. : il
-\vspace{1em}
+{\thelastpage}p. : il
+\smallskip
 
 \hspace{0.5cm} {\imprimirtipotrabalho} (\imprimirtituloacademico) -- {\imprimirprograma}, {\imprimirescola}, {\imprimiruniversidade}, {\imprimirdata}.
+\smallskip
 
 \hspace{0.5cm} {\imprimirnotadeversao}
-\vspace{1em}
+\smallskip
 
 \hspace{0.5cm} 1. [Subject A]. 2. [Subject B]. 3. [Subject C]. I. [Supervisor's surname], [Supervisor's forename(s)], super. II. [Co-supervisor's surname], [Co-supervisor's forename(s)] co-super. III. Title.
 \end{minipage}}
@@ -62,7 +64,11 @@ inserted by [Full name of the librarian] ([Librarian register number]).
 % -----
 
 %:::% errata begin %:::%
-\begin{errata}
+\begin{errata}[\errataname]
+%:::% errata reference begin %:::%
+\noindent [Author's surname], [Author's forename(s) initial(s)]. \textbf{\imprimirtitulo}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  (\imprimirtituloacademico) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
+%:::% errata reference end %:::%
+\smallskip
 %:::% errata body begin %:::%
 
 This is the development version of the thesis (version \textless1.0.0).
@@ -77,65 +83,54 @@ Any necessary corrections will be listed here after its approval.
 % -----
 
 %:::% approval-sheet begin %:::%
-\begin{folhadeaprovacao}
-  \noindent
-%:::% approval-sheet header begin %:::%
+\begin{folhadeaprovacao}[\folhadeaprovacaoname]
+%:::% approval-sheet body begin %:::%
 {\imprimirtipotrabalho} by {\imprimirautor}, under the title \textbf{\imprimirtitulo}, presented to the {\imprimirescola} at the {\imprimiruniversidade}, as part of the requirements for the degree of {\imprimirtituloacademico} by the {\imprimirprograma}, in the concentration area of {\imprimirareadeconcentracao}.
-%:::% approval-sheet header end %:::%
-  \par\vspace*{1.5cm}
-  \noindent Approved on \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ , \_\_\_\_\_\_\_\_\_\_ .
+\vspace{1.5cm}
 
-  \vspace*{1.5cm}
+Approved on \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ , \_\_\_\_\_\_\_\_\_\_ .
+\vspace{1.5cm}
 
-  \begin{center}
-    \noindent Examination committee
-  \end{center}
+\begin{center}
+  Examination committee
+\end{center}
+\vspace{0.5cm}
 
-  \vspace*{0.5cm}
+Committee chair:
+\vspace{0.25cm}
 
-  \noindent Committee chair:
+\renewcommand{\arraystretch}{2}
+\setlength{\arrayrulewidth}{0pt}
+\setlength{\tabcolsep}{0cm}
+\begin{tabular}{m{2cm} P{14cm}}
+  Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+  Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+\end{tabular}
+\vspace{1cm}
 
-  \vspace*{0.25cm}
+Examiners:
+\vspace{0.25cm}
 
-  \renewcommand{\arraystretch}{2}
-  \setlength{\arrayrulewidth}{0pt}
-  \setlength{\tabcolsep}{0pt}
-  \noindent
-  \begin{tabular}{m{2cm} P{14cm}}
-    Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
-    Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
-  \end{tabular}
+\begin{tabular}{m{2cm} P{14cm}}
+  Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+  Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+  Evaluation & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+\end{tabular}
+\vspace{0.5cm}
 
-  \vspace*{1cm}
+\begin{tabular}{m{2cm} P{14cm}}
+  Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+  Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+  Evaluation & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+\end{tabular}
+\vspace{0.5cm}
 
-  \noindent Examiners:
-
-  \vspace*{0.25cm}
-
-  \noindent
-  \begin{tabular}{m{2cm} P{14cm}}
-    Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
-    Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
-    Evaluation & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
-  \end{tabular}
-
-  \vspace*{0.5cm}
-
-  \noindent
-  \begin{tabular}{m{2cm} P{14cm}}
-    Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
-    Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
-    Evaluation & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
-  \end{tabular}
-
-  \vspace*{0.5cm}
-
-  \noindent
-  \begin{tabular}{m{2cm} P{14cm}}
-    Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
-    Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
-    Evaluation & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
-  \end{tabular}
+\begin{tabular}{m{2cm} P{14cm}}
+  Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+  Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+  Evaluation & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+\end{tabular}
+%:::% approval-sheet body end %:::%
 \end{folhadeaprovacao}
 %:::% approval-sheet end %:::%
 
@@ -144,7 +139,7 @@ Any necessary corrections will be listed here after its approval.
 % -----
 
 %:::% inscription begin %:::%
-\begin{dedicatoria}
+\begin{dedicatoria}[]
   \vspace*{\fill}
   \centering
 %:::% inscription body begin %:::%
@@ -163,7 +158,7 @@ Any necessary corrections will be listed here after its approval.
 % -----
 
 %:::% acknowledgments begin %:::%
-\begin{agradecimentos}
+\begin{agradecimentos}[\agradecimentosname]
   %:::% acknowledgments body begin %:::%
 
 I would like to acknowledge this awesome
@@ -178,7 +173,7 @@ I would like to acknowledge this awesome
 % -----
 
 %:::% epigraph begin %:::%
-\begin{epigrafe}
+\begin{epigrafe}[]
   \vspace*{\fill}
 	\begin{flushright}
 	  %:::% epigraph body begin %:::%
@@ -196,7 +191,7 @@ I would like to acknowledge this awesome
 % -----
 
 %:::% vernacular-abstract begin %:::%
-\begin{resumoenv}[Abstract]
+\begin{resumoenv}[\resumoname]
  %:::% vernacular-abstract reference begin %:::%
 [Author's surname], [Author's forename(s) initial(s)]. \textbf{\imprimirtitulo}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  (\imprimirtituloacademico) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
 %:::% vernacular-abstract reference end %:::%
@@ -213,7 +208,7 @@ guidelines for creating thesis and dissertation documents}.
 %:::% vernacular-abstract body end %:::%
 
 %:::% vernacular-abstract keywords begin %:::%
-\begin{tabular}{p{2.3cm} p{13.7cm}}
+\begin{tabular}{p{2.3cm} p{13.6cm}}
   \textbf{Keywords}: &  [Keyword 1]. [Keyword 2]. [Keyword 3].
 \end{tabular}
 %:::% vernacular-abstract keywords end %:::%
@@ -225,7 +220,7 @@ guidelines for creating thesis and dissertation documents}.
 % -----
 
 %:::% foreign-abstract begin %:::%
-\begin{resumoenv}[Resumo]
+\begin{resumoenv}[\resumoestrangeironame]
 \begin{otherlanguage*}{brazil}
 %:::% foreign-abstract reference begin %:::%
 [Sobrenome do autor], [Inicial(is) do(s) prenome(s) do autor].  \textbf{[Título]}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  (\imprimirtituloacademico) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
@@ -243,7 +238,7 @@ guidelines for creating thesis and dissertation documents}.
 %:::% foreign-abstract body end %:::%
 
 %:::% foreign-abstract keywords begin %:::%
-\begin{tabular}{p{3.6cm} p{12.4cm}}
+\begin{tabular}{p{3.6cm} p{12.3cm}}
   \textbf{Palavras-chaves}: &  [Palavra-chave 1]. [Palavra-chave 2]. [Palavra-chave 3].
 \end{tabular}
 %:::% foreign-abstract keywords end %:::%

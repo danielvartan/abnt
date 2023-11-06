@@ -1,0 +1,34 @@
+\hypersetup{
+$if(title-meta)$
+pdftitle={$title-meta$},
+$endif$
+$if(author-meta)$
+pdfauthor={$author-meta$},
+$endif$
+$if(lang)$
+pdflang={$lang$},
+$endif$
+$if(type-of-work)$
+pdfsubject={$type-of-work$},
+$endif$
+$if(keywords)$
+pdfkeywords={$for(keywords)$$keywords$$sep$, $endfor$},
+$endif$
+$if(linktoc)$
+linktoc={$linktoc$},
+$endif$
+$if(colorlinks)$
+colorlinks=true,
+linkcolor={$if(linkcolor)$$linkcolor$$else$blue$endif$},
+filecolor={$if(filecolor)$$filecolor$$else$magenta$endif$},
+citecolor={$if(citecolor)$$citecolor$$else$blue$endif$},
+urlcolor={$if(urlcolor)$$urlcolor$$else$blue$endif$},
+$else$
+$if(boxlinks)$
+$else$
+hidelinks,
+$endif$
+$endif$
+pdfcreator={LaTeX via pandoc},
+bookmarksdepth=5
+}

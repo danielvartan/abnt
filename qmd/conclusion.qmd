@@ -1,5 +1,5 @@
 <!-- %:::% .common h1 begin %:::% -->
-# Conclusion
+# [Showcase] Conclusion
 <!-- %:::% .common h1 end %:::% -->
 
 ```{r}
@@ -41,18 +41,16 @@ cat(cli:::lorem_ipsum(1), sep = "\n\n")
 ```
 
 ```{=latex}
-% Back matter -----
-
 \postextual
 
-\addtocontents{toc}{\protect\vspace{1em}}
 \begingroup
 \renewcommand{\baselinestretch}{1}
 \setcounter{footnote}{0}
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
-\printbibliography[heading=bay]
+\printbibliography[heading=bibheading]
 \endgroup
 
+\addtocontents{toc}{\protect\vspace{1em}}
 \cftinserthook{toc}{bibhook}
 \addcontentsline{toc}{chapter}{
   \protect\numberline{}

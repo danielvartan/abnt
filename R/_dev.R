@@ -33,16 +33,6 @@
 # urlchecker::url_check()
 # urlchecker::url_update()
 
-# # Pandoc
-#
-# rutils:::object_pandoc_convert(
-#   x =  rutils:::get_value_between_tags(
-#     x = here::here("qmd/errata.qmd"),
-#     begin_tag = "%:::% errata body begin %:::%",
-#     end_tag = "%:::% errata body end %:::%"
-#   )
-# )
-
 # # Quarto (see <https://quarto.org/docs/projects/quarto-projects.html>)
 #
 # source(here::here("R", "quarto-pre-render-pdf.R"))
@@ -55,18 +45,18 @@
 
 # TODO
 #
-# * Fix spacings (\baselineskip).
+# * Fix spacing (\baselineskip).
 # * Fix SCSS. Mobile menu is appearing with white or transparent color.
-# * Fix spacing between after titles (use Photoshop).
-# * Fix quinary section.
-# * Fix case changing in references titles.
+
+# * Fix quinary section after skip.
+# * Find why the title of LoF, LoT, ToC and Abstract do not align with others.
 # * Fix title page spacing.
-# * Add figure using the ABNT format.
-# * Add table using the ABNT format.
 # * Add command tag sub function.
-# * Fix references bookmarks.
+# * Add figure using the ABNT format (see 'formating-options.qmd').
+# * Add table using the ABNT format (see 'formating-options.qmd').
+# * Fix References section bookmark (see R package {xmpdf}).
 # * Fix '\tightlist' settings.
-# * Organize template code into tex files by section.
+# * Fix indentation of unordered and ordered lists.
 # * Fix title and table captions making the caption name (e.g., "Figure -")
 #   become tabular.
 # * Change table font sizes to be accordingly with figure font sizes.

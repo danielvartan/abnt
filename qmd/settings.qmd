@@ -1,0 +1,326 @@
+<!-- %:::% .common h1 begin %:::% -->
+# Settings
+<!-- %:::% .common h1 end %:::% -->
+
+```{r}
+#| label: setup
+#| echo: false
+#| output: false
+
+# library(here)
+
+source(here::here("R/quarto-setup.R"))
+```
+
+<!-- See <https://github.com/quarto-journals/elsevier>. -->
+<!-- See <https://quarto.org/docs/extensions/formats.html>. -->
+
+```{r}
+#| echo: false
+#| output: asis
+
+# library(rutils)
+
+rutils:::quarto_status(
+  type = "restructuring",
+  of_what = "of this manual",
+  latex_parskip = "\\vspace{0.25\\baselineskip}"
+  )
+```
+
+## Typography
+
+### Typeface
+
+To change typefaces, simply use the [Quarto options](https://quarto.org/docs/reference/formats/pdf.html), such as `mainfont`, `monofont` and `sansfont` in your `quarto-[format].yml` file.
+
+```yaml
+format:
+  abnt-pdf:
+    mainfont: Arial
+```
+
+The ABNT NBR 14724:2011 norm does not specify the use of any specific font. You have the freedom to choose any font you prefer, but it's important to note that the selected font must be installed on your computer.
+
+### Font size
+
+To adjust the font size, utilize the `fontsize` option in in the `quarto-[format].yml` file.
+
+```yaml
+format:
+  abnt-pdf:
+    fontsize: 12pt
+```
+
+It's important to note that the third paragraph of Section 5.1 of ABNT NBR 14724:2011 norm establishes that the font size should be 12pt for the entire document, including the cover, except for quotations longer than three lines, footnotes, pagination, cataloging data, captions, and sources of illustrations and tables, which should be in a smaller and uniform size.
+
+The smaller font is set to `\footnotesize`, which corresponds to a 10pt font size with the default settings. You can modify this setting by inserting the following LaTeX command into `tex/include-in-header.tex`:
+
+```latex
+\renewcommand{\ABNTEXfontereduzida}{[NEW SIZE (e.g., \small)]}
+```
+
+## Language and hyphenation
+
+## Document sections
+
+### Editing pre-textual sections
+
+`abnt` uses a system of tags to transfer and render the content of Quarto files (`.qmd`) to LaTeX. These tags look like this:
+
+```latex
+%:::% class attribute begin/end %:::%
+```
+
+```html
+<!-- %:::% class attribute begin/end %:::% -->
+```
+
+Unless you want to customize the template, you don't need to modify the `.tex` files. You can write directly in the `.qmd` files. Just ensure that you preserve all the tags.
+
+### How to include LaTeX commands in Quarto files (`.qmd`)
+
+To add LaTeX commands in your writing, without worrying that it will contaminate the `html` format, use a `{=latex}` chunk.
+
+```latex
+\```{=latex}
+% Some LaTeX code.
+\```
+```
+
+### How to add or remove sections
+
+For pre-textual sections (e.g., list of symbols, abstract), remove them from `tex/include-before-body.tex` and from `R/quarto-pre-render.R`.
+
+For textual sections (e.g., chapters), remove them from the `.quarto-[format].yml` file.
+
+For post-textual sections (e.g., appendices, annexes), if it's a appendix, remove it from `.quarto-[format].yml`; else,  remove them from `tex/include-after-body.tex`.
+
+It's important to note that, at this moment, the last chapter must have a LaTeX code chunk at the end of it. The same is true for the last appendix chapter. They should look like this:
+
+::: {.callout-warning}
+Remove the `\` from the beginning and end of the code below when applying it.
+:::
+
+```latex
+\```{=latex}
+\postextual
+
+\begingroup
+\renewcommand{\baselinestretch}{1}
+\setcounter{footnote}{0}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\printbibliography[heading=bibheading]
+\endgroup
+
+\addtocontents{toc}{\protect\vspace{1em}}
+\cftinserthook{toc}{bibhook}
+\addcontentsline{toc}{chapter}{
+  \protect\numberline{}
+  \newbibname
+  \hspace{-0.25em}
+}
+
+\begin{apendicesenv}
+\```
+``` 
+
+```latex
+\``` {=latex}
+\end{apendicesenv}
+\```
+```
+
+## Citation management
+
+### Citation method
+
+This Quarto format was specifically designed to be compatible with  [BibLaTeX](https://www.ctan.org/pkg/biblatex), which is a comprehensive reimplementation of [BiBTeX](https://www.bibtex.org/). At first glance, these two systems may appear very similar.
+
+To get started, simply insert your references into the `references.bib`file. However, this task can be somewhat tedious and demanding. To simplify the process, we recommend exploring the integration of [Zotero](https://www.zotero.org/) along with [Better BiBTeX](https://github.com/retorquere/zotero-better-bibtex), as demonstrated in a section below.
+
+For detailed guidance on handling citations in Quarto, please refer to Quarto's [Citation & Footnotes](https://quarto.org/docs/authoring/footnotes-and-citations.html) documentation.
+
+### Citation style
+
+There are two built-in citation styles:
+
+* [ABNT](https://www.abnt.org.br/) (Brazilian Association of Technical Standards);
+* [APA](https://apastyle.apa.org/) (American Psychological Association).
+
+To use one of them, simply change the `biblio-style` option in your `yml` file with the style of you preference.
+
+```yaml
+format:
+  abnt-pdf:
+    biblio-style: abnt # options: [abnt, abnt-ibid, abnt-numeric, apa]
+```
+
+There are other options related to the citation style; some are shown below. Please refer to [`biblatex`](https://www.ctan.org/pkg/biblatex), [`biblatex-abnt`](https://www.ctan.org/pkg/biblatex-abnt) and 
+[`biblatex-apa`](https://www.ctan.org/pkg/biblatex-apa) manuals to learn more about them.
+
+```yaml
+format:
+  abnt-pdf:
+    biblio-footnote: >
+      According to the Brazilian Association of Technical Standards
+      (ABNT NBR 6023).
+    biblatexoptions:
+      - backend=biber,
+      - language=english, # [options: english, brazil, spanish, french]
+      - url=true,
+      - useprefix=false,
+      - giveninits=true,
+      - extrayear=true
+    bibhang: 0cm # Use 0.5cm if `biblio-style: apa`.
+    bibparsep: 0ex
+```
+
+### Zotero integration
+
+This template can work with [Zotero](https://www.zotero.org/) and the [Better BiBTeX](https://github.com/retorquere/zotero-better-bibtex) plugin. The advantage of using this integration is that you don't need to manually input your references into `references.bib`; they are automatically imported when you render the format.
+
+For this to work, you must activate the `zotero` option in your `yml` file and have Zotero, with Better BibTeX installed, open while rendering your thesis. A pre-render script (see `R/quarto-pre-render.R`), created using the [`rbbt`](https://github.com/paleolimbot/rbbt) R package, will scan all `.qmd` and `.tex` files searching for BibTeX citations (e.g., `@watson1953`). If they match with your Zotero database, the citations will then be written into the `references.bib` file.
+
+```yaml
+format:
+  abnt-pdf:
+    zotero: true
+```
+
+#### Title case change
+
+By using [Zotero](https://www.zotero.org/), you may experience a title casing change when exporting your references. This is the default behavior of [Better BibTex](https://retorque.re/zotero-better-bibtex/) while exporting to BibLaTeX. 
+
+You can disable this by going to Zotero's configuration editor (go to Edit > Preferences > Advanced > Config Editor) and changing the variable\\ `extensions.zotero.translators.better-bibtex.exportTitleCase` to `false`. Beware that this can produce some issues. You can find more information about this behavior [here](https://retorque.re/zotero-better-bibtex/support/faq/#bbt-is-changing-the-capitalization-of-my-titles----why).
+
+## ABNT figures and tables
+
+(work in progress - consider adding a [knitr hook](https://yihui.org/knitr/hooks/))
+
+### Figures
+
+See [Code Cells](https://quarto.org/docs/reference/cells/).
+
+(@) Create a new figure environment.
+
+Name it ` abntfigure` and include an `\quartolegend` in the end.
+
+Use `\notblank` from `etoolbox` package to add a conditional layer.
+
+(@) Add the new environment to `fig-env` in `_extension.yml`.
+ 
+### Tables
+
+1. Add a hook at the end of the `longtable` environment.
+
+Include the `\quartolegend` and utilize `\notblank` from `etoolbox` package to add a conditional layer.
+
+```latex
+\AddToHook{env/longtable/before}{}
+\AddToHook{env/longtable/after}{}
+\AddToHook{env/longtable/begin}{
+  \ABNTEXfontereduzida
+  \renewcommand{\arraystretch}{1}
+}
+\AddToHook{env/longtable/end}{}
+```
+
+## Freezing and cache
+
+See [Freeze](https://quarto.org/docs/projects/code-execution.html#freeze).
+
+## How to customize this Quarto format
+
+### Quarto system
+
+See [Quarto's guide](https://quarto.org/docs/guide/).
+
+### Template and template partials
+
+See [Tempalte partials](https://quarto.org/docs/journals/templates.html#template-partials).
+
+### Spacing rules
+
+* Set fixed dimensions (e.g., page dimensions) in `cm` or `pt`. `cm` is the prefer unit for margins.
+* Set line spacing as a proportion of `\baselineskip` (e.g., `1.5\baselineskip`).
+* Use the settings `\tinyskipamount`, `\smallskipamount`, `\midskipamount`, `\bigskipamount`, `\hugeskipamount` and their counterparts `\tinyskip`, `\smallskip`, `\midskip`, `\bigskip`, `\hugeskip`. You can find them in the `lengths.tex` template partial.
+* For other kinds of relative vertical spacing, use the `ex` unit.
+* For relative horizontal spacing, use the `em` unit.
+
+See @oetiker2023 [section 7.5] to learn more about LaTeX spacing features. The articles on [Overleaf](https://www.overleaf.com) are also a great source of information. Check [Lengths in LaTeX](https://www.overleaf.com/learn/latex/Lengths_in_LaTeX) and [How to change paragraph spacing in LaTeX](https://www.overleaf.com/learn/latex/Articles/How_to_change_paragraph_spacing_in_LaTeX) to get a sense of the subject.
+
+#### Unit equivalences
+
+* 1`em` $==$ 12`pt` or $\approx$ 0.423333$`cm`.
+* 1`ex` $==$ $\approx$ 6.22266`pt` or $\approx$ 0.219521`cm`.
+
+##### `\baselineskip`
+
+These are the equivalences for a Arial typeface with size 12`pt`:
+
+Use `\the\baselineskip` and `\gevalue{}` to figure out the exact value. Note that `\gevalue{}` will return the value in `pt`.
+
+Example of using `\getvalue{}`:
+
+```latex
+\begingroup
+\setlength{\parskip}{1em}
+\getlength{\parskip}
+\endgroup
+```
+
+###### `\linestretch=1`
+
+* `1\baselineskip` $==$ 14.5`pt`. That's about 1.2x (or ($\approx$1.208333x) the font size (standard procedure).
+
+###### `\linestretch=1.5`
+
+* `0.25\baselineskip` $==$ 5.4375`pt` or $\approx$ 0.191822917`cm`;
+* `0.5\baselineskip` $==$ 10.875`pt` or $\approx$ 0.383645833`cm`;
+* `0.75\baselineskip` $==$ 16.3125`pt` or $\approx$ 0.57546875`cm`;
+* `1\baselineskip`  $==$ 21.75`pt` or $\approx$ 0.76729167`cm`;
+* `1.5\baselineskip` $==$ 32.625`pt` or $\approx$ 1.1509375`cm`;
+* `2\baselineskip` $==$ 43.5`pt` or $\approx$ 1.534583`cm`;
+* `2.5\baselineskip` $==$ 54.375`pt` or $\approx$ 1.91822917`cm`;
+* `3\baselineskip` $==$ 65.25`pt` or $\approx$ 2.301875`cm`.
+
+### How to add new citation styles
+
+### Must see references
+
+To learn the basics about LaTeX, see @oetiker2023. To delve deeper into the LaTeX system, see @lamport1994 and @knuth1986.
+
+#### Manuals
+
+:::: {.columns}
+::: {.column width="40%"}
+* [Quarto](https://quarto.org/docs/guide/);
+* [`abntex2`](https://www.ctan.org/pkg/abntex2);
+* [`memoir`](https://www.ctan.org/pkg/memoir);
+* [`biblatex`](https://www.ctan.org/pkg/biblatex);
+:::
+
+::: {.column width="40%"}
+* [`biblatex-abnt`](https://www.ctan.org/pkg/biblatex-abnt);
+* [`biblatex-apa`](https://www.ctan.org/pkg/biblatex-apa);
+* [`babel`](https://ctan.org/pkg/babel);
+* [`fontspec`](https://ctan.org/pkg/fontspec).
+:::
+::::
+
+#### R packages
+
+:::: {.columns}
+::: {.column width="40%"}
+* [`gt`](https://gt.rstudio.com);
+:::
+
+::: {.column width="40%"}
+* [`rutils`](https://github.com/danielvartan/rutils/blob/main/R/quarto.R).
+:::
+::::
+
+```{=latex}
+\end{apendicesenv}
+```

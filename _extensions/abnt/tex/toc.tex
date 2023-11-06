@@ -1,4 +1,31 @@
-\renewcommand{\aftertoctitle}{\center\vspace{3em}}
+% Set LoF -----
+
+\renewcommand{\printloftitle}[1]{
+  % Do not use `\pretextualchapter` here. It'll make a duplicated bookmark.
+  \setlength{\afterchapskip}{
+    \hugeskipamount - 18pt % It is what it is...
+  }
+
+  \chapter*[#1]{#1}
+}
+
+% Set LoT -----
+
+\renewcommand{\printlottitle}[1]{
+  % Do not use `\pretextualchapter` here. It'll make a duplicated bookmark.
+  \setlength{\afterchapskip}{
+    \hugeskipamount - 18pt % It is what it is...
+  }
+
+  \chapter*[#1]{#1}
+}
+
+% Set ToC -----
+
+\renewcommand{\aftertoctitle}{
+  \center
+  \vspace{\hugeskipamount - 16pt} % It is what it is...
+}
 
 \setlength{\cftpartindent}{6em}
 \setlength{\cftsectionnumwidth}{6em}
