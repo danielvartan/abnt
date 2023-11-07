@@ -13,12 +13,14 @@ book:
     - qmd/development.qmd
     - qmd/conclusion.qmd
   appendices:
-    - qmd/appendice-1.qmd
+    - qmd/appendix-1.qmd
     - qmd/settings.qmd
+    - qmd/annex-1.qmd
 
 format:
   abnt-pdf:
     zotero: true
+    index-page: true
     location: "[City]"
     supervisor: "[Supervisor's full name]"
     cosupervisor: "[Co-supervisor's full name]"

@@ -25,7 +25,7 @@ See <https://github.com/danielvartan/abnt> to learn more about this template.
 For an extensive list of chronobiology related terms and definitions, please refer to @aschoff1965 and @marques2012.
 
 Chronotype
-: \hspace{20cm} Any kind of temporal phenotype [@ehret1974; @pittendrigh1993]. Usually, it refers to circadian phenotypes in a spectrum that goes from morningness to eveningness [@horne1976; @roenneberg2003]. It can also be seen as an organism's phase of entrainment [@roenneberg2012a].
+: \hspace{20cm} Any kind of temporal phenotype [@ehret1974; @pittendrigh1993]. Usually, it refers to circadian phenotypes in a spectrum that goes from morningness to eveningness [@roenneberg2003]. It can also be seen as an organism's phase of entrainment [@roenneberg2012a].
 
 Circadian rhythm
 : \hspace{20cm} A rhythm with a period close to a day/24h, an approximation to the period of the earth's rotation [@pittendrigh1960]. From the Latin _circā_, around, and _dĭes_, day [@latinitium]. Example: the sleep-wake cycle.

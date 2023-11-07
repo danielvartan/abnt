@@ -26,9 +26,10 @@ $endif$
   skip=16.3125pt % Skip between caption and figure (`0.75\baselineskip`).
 }
 
-\renewcommand{\legend}[1]{
-  \addvspace{0.75\baselineskip}
-  \ABNTEXfontereduzida \raggedright #1
+\AtBeginEnvironment{figure}{
+  \ABNTEXfontereduzida
+  \addvspace{\smallskipamount}
+  \setlength{\parskip}{\smallskipamount}
 }
 
 % % Credits: <https://stackoverflow.com/a/1566053/8258804>.

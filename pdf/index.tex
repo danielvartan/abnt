@@ -561,11 +561,7 @@ english
   \end{appendix}
   \setboolean{abntex@apendiceousecao}{false}
   \bookmarksetup{startatroot}
-}
-
-% Set index section -----
-
-\definecolor{blue}{HTML}{2905C3}
+}\definecolor{blue}{HTML}{2905C3}
 
 % See <https://getbootstrap.com/docs/4.0/utilities/colors/>.
 \definecolor{quarto-blue}{HTML}{2780E3}
@@ -607,9 +603,10 @@ english
   skip=16.3125pt % Skip between caption and figure (`0.75\baselineskip`).
 }
 
-\renewcommand{\legend}[1]{
-  \addvspace{0.75\baselineskip}
-  \ABNTEXfontereduzida \raggedright #1
+\AtBeginEnvironment{figure}{
+  \ABNTEXfontereduzida
+  \addvspace{\smallskipamount}
+  \setlength{\parskip}{\smallskipamount}
 }
 
 % % Credits: <https://stackoverflow.com/a/1566053/8258804>.
@@ -648,6 +645,12 @@ english
   \renewcommand{\arraystretch}{1}
 }
 \AddToHook{env/longtable/end}{}
+
+\AddToHook{env/longtable*/begin}{
+  \ABNTEXfontereduzida
+  \renewcommand{\arraystretch}{1}
+}
+\AddToHook{env/longtable*/end}{}
 
 \floatplacement{table}{H}\providecommand{\tightlist}{
 \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\makeatletter
@@ -785,12 +788,19 @@ bookmarksdepth=5
 }
 
 \cftinsertcode{appendixhook}{
-    \setlength{\cftchapterindent}{6em} %
+    \setlength{\cftchapterindent}{6em}
     \renewcommand{\cftchaptername}{\appendixname\space}
     \setlength{\cftchapternumwidth}{2.3em} % check
     \renewcommand{\cftchapteraftersnumb}{
         \hspace{-1.5em} -- \space % check \hspace{-1.5em}
     }
+}
+
+\cftinsertcode{indexhook}{
+  \setlength{\cftchapterindent}{6em}
+  \setlength{\cftchapternumwidth}{0em}
+  \renewcommand{\cftchapteraftersnumb}{\hspace{0em}}
+  \renewcommand{\cftchapterpresnum}{\normalfont\bfseries}
 }\usepackage[
 style=abnt,backend=biber,,language=english,,url=true,,useprefix=false,,giveninits=true,,extrayear=true
 ]{biblatex}
@@ -825,13 +835,14 @@ Technical Standards (ABNT NBR 6023).}
   }
 }
 
-
 \AtBeginBibliography{
   \vspace{\hugeskipamount - 2.9pt} % It is what it is...
 }
 
 \AtEveryBibitem{\clearfield{annotation}}
-\renewcommand{\bibfont}{\ABNTEXfontereduzida}% Use upquote if available, for straight quotes in verbatim environments
+\renewcommand{\bibfont}{\ABNTEXfontereduzida}\usepackage{makeidx}
+\makeindex
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
   \usepackage[]{microtype}
@@ -937,11 +948,6 @@ Co-Supervisor: Prof. Dr. {\imprimircoorientador}
 %:::% title-page body end %:::%
 }
 %:::% title-page end %:::%
-\usepackage{booktabs}
-\usepackage{caption}
-\usepackage{longtable}
-\usepackage{colortbl}
-\usepackage{array}
 \makeatletter
 \@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
 \@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
@@ -957,8 +963,6 @@ Co-Supervisor: Prof. Dr. {\imprimircoorientador}
 \definecolor{quarto-callout-warning-color-frame}{HTML}{f0ad4e}
 \definecolor{quarto-callout-tip-color-frame}{HTML}{02b875}
 \definecolor{quarto-callout-caution-color-frame}{HTML}{fd7e14}
-\makeatother
-\makeatletter
 \makeatother
 \makeatletter
 \@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
@@ -997,6 +1001,15 @@ Co-Supervisor: Prof. Dr. {\imprimircoorientador}
 \@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
 \floatname{codelisting}{Listing}
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\usepackage{amsthm}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\theoremstyle{remark}
+\AtBeginDocument{\renewcommand*{\proofname}{Proof}}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
+\makeatother
+\makeatletter
 \makeatother
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
@@ -1006,12 +1019,13 @@ Co-Supervisor: Prof. Dr. {\imprimircoorientador}
 \@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
 \makeatother
 \makeatletter
-\@ifundefined{shadecolor}{\definecolor{shadecolor}{HTML}{CFD0D1}}
+\@ifundefined{shadecolor}{\definecolor{shadecolor}{HTML}{CFD0D1}}{}
 \makeatother
 \makeatletter
-\@ifundefined{codebgcolor}{\definecolor{codebgcolor}{HTML}{F1F3F5}}
+\@ifundefined{codebgcolor}{\definecolor{codebgcolor}{HTML}{F1F3F5}}{}
 \makeatother
 \makeatletter
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, borderline west={3pt}{0pt}{shadecolor}, breakable, colback={codebgcolor}, enhanced, boxrule=0pt, sharp corners]}{\end{tcolorbox}}\fi
 \makeatother
 
 % -----
@@ -1232,7 +1246,7 @@ I would like to acknowledge this awesome
 theses and dissertations that adhere to the standards of the Brazilian
 Association of Technical Standards (ABNT). It is based on the
 \href{https://www.abntex.net.br/}{\texttt{abntex2}} LaTeX class and on
-\href{https://teses.usp.br/index.php?option=com_content\&view=article\&id=52\&Itemid=67\&lang=en}{USP
+\href{https://teses.usp.br/index.php?option=com_content&view=article&id=52&Itemid=67&lang=en}{USP
 guidelines for creating thesis and dissertation documents}.
 
 %:::% vernacular-abstract body end %:::%
@@ -1262,7 +1276,7 @@ guidelines for creating thesis and dissertation documents}.
 theses and dissertations that adhere to the standards of the Brazilian
 Association of Technical Standards (ABNT). It is based on the
 \href{https://www.abntex.net.br/}{\texttt{abntex2}} LaTeX class and on
-\href{https://teses.usp.br/index.php?option=com_content\&view=article\&id=52\&Itemid=67\&lang=en}{USP
+\href{https://teses.usp.br/index.php?option=com_content&view=article&id=52&Itemid=67&lang=en}{USP
 guidelines for creating thesis and dissertation documents}.
 
 %:::% foreign-abstract body end %:::%
@@ -1410,9 +1424,8 @@ please refer to \textcite{aschoff1965} and \textcite{marques2012}.
 
 Any kind of temporal phenotype \autocite{ehret1974,pittendrigh1993}.
 Usually, it refers to circadian phenotypes in a spectrum that goes from
-morningness to eveningness \autocite{horne1976,roenneberg2003}. It can
-also be seen as an organism's phase of entrainment
-\autocite{roenneberg2012a}.
+morningness to eveningness \autocite{roenneberg2003}. It can also be
+seen as an organism's phase of entrainment \autocite{roenneberg2012a}.
 \item[Circadian rhythm]
 \hspace{20cm}
 
@@ -1465,17 +1478,15 @@ circadian rhythm when exposed to light.
 \tableofcontents*
 \cleardoublepage
 %:::% table-of-contents end %:::%
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, colback={codebgcolor}, breakable, boxrule=0pt, frame hidden, enhanced, borderline west={3pt}{0pt}{shadecolor}]}{\end{tcolorbox}}\fi
 
 % Main and back matter -----
 
 \textual
 \bookmarksetup{startatroot}
 
-\hypertarget{showcase-introduction}{%
-\chapter{{[}Showcase{]} Introduction}\label{showcase-introduction}}
+\chapter{{[}Showcase{]} Introduction}\label{sec-introduction}
 
-\begin{tcolorbox}[enhanced jigsaw, left=2mm, coltitle=black, breakable, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, opacitybacktitle=0.6, arc=.35mm, leftrule=.75mm, titlerule=0mm, rightrule=.15mm, colframe=quarto-callout-note-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, opacityback=0, toptitle=1mm, colback=white, bottomtitle=1mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomtitle=1mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, colframe=quarto-callout-note-color-frame, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, colback=white, toptitle=1mm, titlerule=0mm, rightrule=.15mm]
 
 The text below is for demonstrative purposes only.
 
@@ -1485,6 +1496,8 @@ See \url{https://github.com/danielvartan/abnt} to learn more about this
 template.
 
 \end{tcolorbox}
+
+See Figure~\ref{fig-karl-popper}.
 
 ``The activity can be represented by a \emph{general schema of
 problem-solving by the method of imaginative conjectures and criticism},
@@ -1496,6 +1509,7 @@ refutation}. The schema (in its simplest form) is this
 \]
 
 \vspace{1em}
+\index{KarlPopper}
 
 Here \(\text{P}_{1}\) is the \emph{problem} from which we start,
 \(\text{TT}\) (the `tentative theory') is the imaginative conjectural
@@ -1507,35 +1521,45 @@ documentary evidence and, if we have at this early stage more than one
 conjecture at our disposal, it will also consist of a critical
 discussion and comparative evaluation of the competing conjectures.
 \(\text{P}_{2}\) is the problem situation as it emerges from our first
-critical attempt to solve our problems. It leads up to our second
-attempt (\emph{and so on}). A satisfactory understanding will be reached
-if the interpretation, the conjectural theory, finds support in the fact
-that it can throw new light on new problems --- on more problems than we
-expected; or if it finds support in the fact that it explains many
-sub-problems, some of which were not seen to start with. Thus we may say
-that we can gauge the progress we have made by comparing
-\(\text{P}_{1}\) with some of our later problems (\(\text{P}_{n}\),
-say).''
+critical attempt to solve our problems.
+
+It leads up to our second attempt (\emph{and so on}). A satisfactory
+understanding will be reached if the interpretation, the conjectural
+theory, finds support in the fact that it can throw new light on new
+problems --- on more problems than we expected; or if it finds support
+in the fact that it explains many sub-problems, some of which were not
+seen to start with. Thus we may say that we can gauge the progress we
+have made by comparing \(\text{P}_{1}\) with some of our later problems
+(\(\text{P}_{n}\), say).''
 
 \vspace{15pt}
 
 \noindent \hspace*{\fill} \autocite[p.~164]{popper1979}
 
+\index{figures}
+
 \begin{figure}[H]
-  \caption{
-    \label{fig-karl-popper}
-    Karl Popper (July 25, 1902 – September 17, 1994).\linebreak
-    One of the 20th century's most influential philosophers of science.
-  }
 
-  \centering
-  \includegraphics[width=0.5\textwidth]{images/karl-popper.png}
+\caption{\label{fig-karl-popper}Karl Popper (July 25, 1902 -- September
+17, 1994).\\
+One of the 20th century's most influential philosophers of science.}
 
-  \legend{Source: \href{https://www.npg.org.uk/collections/search/portrait/mw08238/Sir-Karl-Raimund-Popper?}{Steve Pyke}.}
-\end{figure}
+\centering{
 
-\hypertarget{secondary-section}{%
-\section{Secondary section}\label{secondary-section}}
+\includegraphics[width=0.5\textwidth,height=\textheight]{images/karl-popper.png}
+
+Source:
+\href{https://www.npg.org.uk/collections/search/portrait/mw08238/Sir-Karl-Raimund-Popper?}{Steve Pyke}.\}
+
+}
+
+\end{figure}%
+
+\section{Secondary section}\label{secondary-section}
+
+See Table~\ref{tbl-iris}.
+
+\index{tables}
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -1549,10 +1573,14 @@ say).''
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{tbl-iris}{}
-\begin{longtable}{rrrrc}
-\caption{\label{tbl-iris}A sample of the famous (Fisher's or Anderson's) iris data set }\tabularnewline
+\begin{table}
 
+\caption{\label{tbl-iris}A sample of the famous (Fisher's or Anderson's)
+iris data set}
+
+\centering{
+
+\begin{longtable*}{rrrrc}
 \toprule
 Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species \\ 
 \midrule\addlinespace[2.5pt]
@@ -1562,10 +1590,19 @@ Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species \\
 5.0 & 3.5 & 1.6 & 0.6 & setosa \\ 
 6.2 & 2.9 & 4.3 & 1.3 & versicolor \\ 
 \bottomrule
-\end{longtable}
+\end{longtable*}
 
-\hypertarget{tertiary-section}{%
-\subsection{Tertiary section}\label{tertiary-section}}
+Source: Based on \textcite{fisher1936}.
+
+}
+
+\end{table}%
+
+\subsection{Tertiary section}\label{tertiary-section}
+
+See Figure~\ref{fig-eruption}.
+
+\index{figures!chart}
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -1586,18 +1623,29 @@ Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species \\
 
 \caption{\label{fig-eruption}Relationship between \emph{waiting time to
 next eruption} (minutes) and \emph{eruption time} (minutes) at Old
-Faithful Geyser, Yellowstone National Park, Wyoming, USA.}
+Faithful Geyser, Yellowstone National Park, Wyoming, USA}
 
-{\centering \includegraphics{index_files/figure-pdf/fig-eruption-1.png}
+\centering{
+
+\subcaption{\label{fig-eruption}}
+
+\centering{
+
+\captionsetup{labelsep=none}\includegraphics{index_files/figure-pdf/fig-eruption-1.png}
 
 }
 
-\end{figure}
+Source: Retrieved from the
+\href{https://ggplot2.tidyverse.org/reference/geom_density_2d.html}{\texttt{ggplot2}
+R package documentation} \autocite{wickham2016a}.
+
+}
+
+\end{figure}%
 
 \clearpage
 
-\hypertarget{quaternary-section}{%
-\subsubsection{Quaternary section}\label{quaternary-section}}
+\subsubsection{Quaternary section}\label{quaternary-section}
 
 \begin{itemize}
 \tightlist
@@ -1617,8 +1665,7 @@ Faithful Geyser, Yellowstone National Park, Wyoming, USA.}
   \end{itemize}
 \end{itemize}
 
-\hypertarget{quinary-section}{%
-\paragraph{Quinary section}\label{quinary-section}}
+\paragraph{Quinary section}\label{quinary-section}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1631,32 +1678,63 @@ Faithful Geyser, Yellowstone National Park, Wyoming, USA.}
   List
 \end{enumerate}
 
+\section{Another secondary section}\label{another-secondary-section}
+
+See Figure~\ref{fig-diamonds}.
+
+\index{figures!chart}
+
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
+\CommentTok{\# library(datasets)}
+\CommentTok{\# library(ggExtra)}
 \CommentTok{\# library(ggplot2)}
 
-\NormalTok{ggplot2}\SpecialCharTok{::}\FunctionTok{ggplot}\NormalTok{(ggplot2}\SpecialCharTok{::}\NormalTok{diamonds, ggplot2}\SpecialCharTok{::}\FunctionTok{aes}\NormalTok{(carat, price)) }\SpecialCharTok{+}
-\NormalTok{  ggplot2}\SpecialCharTok{::}\FunctionTok{geom\_boxplot}\NormalTok{(ggplot2}\SpecialCharTok{::}\FunctionTok{aes}\NormalTok{(}\AttributeTok{group =}\NormalTok{ ggplot2}\SpecialCharTok{::}\FunctionTok{cut\_width}\NormalTok{(carat, }\FloatTok{0.25}\NormalTok{)))}
+\NormalTok{p }\OtherTok{\textless{}{-}}\NormalTok{ ggplot2}\SpecialCharTok{::}\FunctionTok{ggplot}\NormalTok{(}
+\NormalTok{  datasets}\SpecialCharTok{::}\NormalTok{mtcars, ggplot2}\SpecialCharTok{::}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{wt, }\AttributeTok{y=}\NormalTok{mpg, }\AttributeTok{color=}\NormalTok{cyl, }\AttributeTok{size=}\NormalTok{cyl)}
+\NormalTok{  ) }\SpecialCharTok{+}
+\NormalTok{  ggplot2}\SpecialCharTok{::}\FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+\NormalTok{  ggplot2}\SpecialCharTok{::}\FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position=}\StringTok{"none"}\NormalTok{)}
+
+\NormalTok{ggExtra}\SpecialCharTok{::}\FunctionTok{ggMarginal}\NormalTok{(}
+\NormalTok{  p, }\AttributeTok{type=}\StringTok{"histogram"}\NormalTok{, }
+  \AttributeTok{fill =} \StringTok{"slateblue"}\NormalTok{, }
+  \AttributeTok{xparams =} \FunctionTok{list}\NormalTok{(}\AttributeTok{bins=}\DecValTok{10}\NormalTok{)}
+\NormalTok{  )}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{figure}[H]
 
-\caption{\label{fig-diamonds}Relations betwwen \emph{price} and
-\emph{carat} (weight) of diamonds.}
+\caption{\label{fig-diamonds}Relation between \emph{weight (1000lbs)}
+(\(\text{wt}\)) and \emph{miles per galon} (\(\text{mpg}\)) for
+combustion engine vehicles}
 
-{\centering \includegraphics{index_files/figure-pdf/fig-diamonds-1.png}
+\centering{
+
+\subcaption{\label{fig-diamonds}}
+
+\centering{
+
+\captionsetup{labelsep=none}\includegraphics{index_files/figure-pdf/fig-diamonds-1.png}
 
 }
 
-\end{figure}
+Source: Data extracted from the 1974 Motor Trend magazine and published
+by \textcite{henderson1981}. Visualization by \textcite{holtz},
+available at
+\href{https://r-graph-gallery.com/277-marginal-histogram-for-ggplot2.html}{The
+R Graph Gallery}.
+
+}
+
+\end{figure}%
 
 \bookmarksetup{startatroot}
 
-\hypertarget{showcase-development}{%
-\chapter{{[}Showcase{]} Development}\label{showcase-development}}
+\chapter{{[}Showcase{]} Development}\label{sec-development}
 
-\begin{tcolorbox}[enhanced jigsaw, left=2mm, coltitle=black, breakable, bottomrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, opacitybacktitle=0.6, arc=.35mm, leftrule=.75mm, titlerule=0mm, rightrule=.15mm, colframe=quarto-callout-warning-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Warning}, opacityback=0, toptitle=1mm, colback=white, bottomtitle=1mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, left=2mm, colbacktitle=quarto-callout-warning-color!10!white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Warning}, bottomtitle=1mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, colframe=quarto-callout-warning-color-frame, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, colback=white, toptitle=1mm, titlerule=0mm, rightrule=.15mm]
 
 The text below is for demonstrative purposes only.
 
@@ -1686,8 +1764,7 @@ Id tempor consectetur est anim ullamco ex nostrud voluptate excepteur.
 Aliqua laboris aute laborum amet eu. Minim quis veniam et dolor quis
 fugiat. Adipisicing amet est do aliqua nostrud amet excepteur ut.
 
-\hypertarget{secondary-section-1}{%
-\section{Secondary section}\label{secondary-section-1}}
+\section{Secondary section}\label{secondary-section-1}
 
 Minim consectetur eu aliqua in elit incididunt labore amet consequat
 cillum minim. Id sit duis duis ex velit proident mollit minim consequat
@@ -1701,10 +1778,9 @@ Lorem officia aute.
 
 \bookmarksetup{startatroot}
 
-\hypertarget{showcase-conclusion}{%
-\chapter{{[}Showcase{]} Conclusion}\label{showcase-conclusion}}
+\chapter{{[}Showcase{]} Conclusion}\label{sec-conclusion}
 
-\begin{tcolorbox}[enhanced jigsaw, left=2mm, coltitle=black, breakable, bottomrule=.15mm, colbacktitle=quarto-callout-important-color!10!white, opacitybacktitle=0.6, arc=.35mm, leftrule=.75mm, titlerule=0mm, rightrule=.15mm, colframe=quarto-callout-important-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, opacityback=0, toptitle=1mm, colback=white, bottomtitle=1mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, left=2mm, colbacktitle=quarto-callout-important-color!10!white, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, bottomtitle=1mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, colframe=quarto-callout-important-color-frame, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, colback=white, toptitle=1mm, titlerule=0mm, rightrule=.15mm]
 
 The text below is for demonstrative purposes only.
 
@@ -1734,8 +1810,7 @@ Id tempor consectetur est anim ullamco ex nostrud voluptate excepteur.
 Aliqua laboris aute laborum amet eu. Minim quis veniam et dolor quis
 fugiat. Adipisicing amet est do aliqua nostrud amet excepteur ut.
 
-\hypertarget{secondary-section-2}{%
-\section{Secondary section}\label{secondary-section-2}}
+\section{Secondary section}\label{secondary-section-2}
 
 Minim consectetur eu aliqua in elit incididunt labore amet consequat
 cillum minim. Id sit duis duis ex velit proident mollit minim consequat
@@ -1758,6 +1833,7 @@ Lorem officia aute.
 
 \addtocontents{toc}{\protect\vspace{1em}}
 \cftinserthook{toc}{bibhook}
+
 \addcontentsline{toc}{chapter}{
   \protect\numberline{}
   \newbibname
@@ -1771,10 +1847,9 @@ Lorem officia aute.
 \addcontentsline{toc}{part}{Appendices}
 \appendix
 
-\hypertarget{showcase}{%
-\chapter{{[}Showcase{]}}\label{showcase}}
+\chapter{{[}Showcase{]}}\label{sec-appendix-a}
 
-\begin{tcolorbox}[enhanced jigsaw, left=2mm, coltitle=black, breakable, bottomrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, arc=.35mm, leftrule=.75mm, titlerule=0mm, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, opacityback=0, toptitle=1mm, colback=white, bottomtitle=1mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, left=2mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, bottomtitle=1mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, colframe=quarto-callout-tip-color-frame, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, colback=white, toptitle=1mm, titlerule=0mm, rightrule=.15mm]
 
 The text below is for demonstrative purposes only.
 
@@ -1804,8 +1879,7 @@ Id tempor consectetur est anim ullamco ex nostrud voluptate excepteur.
 Aliqua laboris aute laborum amet eu. Minim quis veniam et dolor quis
 fugiat. Adipisicing amet est do aliqua nostrud amet excepteur ut.
 
-\hypertarget{secondary-section-3}{%
-\section{Secondary section}\label{secondary-section-3}}
+\section{Secondary section}\label{secondary-section-3}
 
 Minim consectetur eu aliqua in elit incididunt labore amet consequat
 cillum minim. Id sit duis duis ex velit proident mollit minim consequat
@@ -1817,10 +1891,9 @@ aliquip do adipisicing dolor elit aute elit. Officia anim quis id
 voluptate eu. Quis labore consectetur est magna. Laborum nulla ea non
 Lorem officia aute.
 
-\hypertarget{settings}{%
-\chapter{Settings}\label{settings}}
+\chapter{Settings}\label{sec-settings}
 
-\begin{tcolorbox}[enhanced jigsaw, left=2mm, coltitle=black, breakable, bottomrule=.15mm, colbacktitle=quarto-callout-important-color!10!white, opacitybacktitle=0.6, arc=.35mm, leftrule=.75mm, titlerule=0mm, rightrule=.15mm, colframe=quarto-callout-important-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, opacityback=0, toptitle=1mm, colback=white, bottomtitle=1mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, left=2mm, colbacktitle=quarto-callout-important-color!10!white, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, bottomtitle=1mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, colframe=quarto-callout-important-color-frame, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, colback=white, toptitle=1mm, titlerule=0mm, rightrule=.15mm]
 
 You are reading the work-in-progress of this manual.
 
@@ -1831,11 +1904,11 @@ incomplete.
 
 \end{tcolorbox}
 
-\hypertarget{typography}{%
-\section{Typography}\label{typography}}
+\section{Typography}\label{typography}
 
-\hypertarget{typeface}{%
-\subsection{Typeface}\label{typeface}}
+\index{tipography}
+
+\subsection{Typeface}\label{typeface}
 
 To change typefaces, simply use the
 \href{https://quarto.org/docs/reference/formats/pdf.html}{Quarto
@@ -1855,8 +1928,7 @@ font. You have the freedom to choose any font you prefer, but it's
 important to note that the selected font must be installed on your
 computer.
 
-\hypertarget{font-size}{%
-\subsection{Font size}\label{font-size}}
+\subsection{Font size}\label{font-size}
 
 To adjust the font size, utilize the \texttt{fontsize} option in in the
 \texttt{quarto-{[}format{]}.yml} file.
@@ -1887,15 +1959,12 @@ modify this setting by inserting the following LaTeX command into
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{language-and-hyphenation}{%
-\section{Language and hyphenation}\label{language-and-hyphenation}}
+\section{Language and hyphenation}\label{language-and-hyphenation}
 
-\hypertarget{document-sections}{%
-\section{Document sections}\label{document-sections}}
+\section{Document sections}\label{document-sections}
 
-\hypertarget{editing-pre-textual-sections}{%
 \subsection{Editing pre-textual
-sections}\label{editing-pre-textual-sections}}
+sections}\label{editing-pre-textual-sections}
 
 \texttt{abnt} uses a system of tags to transfer and render the content
 of Quarto files (\texttt{.qmd}) to LaTeX. These tags look like this:
@@ -1916,10 +1985,12 @@ Unless you want to customize the template, you don't need to modify the
 \texttt{.tex} files. You can write directly in the \texttt{.qmd} files.
 Just ensure that you preserve all the tags.
 
-\hypertarget{how-to-include-latex-commands-in-quarto-files-.qmd}{%
+Please note that some settings regarding the pre-textual sections must
+be changed in the \texttt{qmd/\_congfig.qmd} file.
+
 \subsection{\texorpdfstring{How to include LaTeX commands in Quarto
 files
-(\texttt{.qmd})}{How to include LaTeX commands in Quarto files (.qmd)}}\label{how-to-include-latex-commands-in-quarto-files-.qmd}}
+(\texttt{.qmd})}{How to include LaTeX commands in Quarto files (.qmd)}}\label{how-to-include-latex-commands-in-quarto-files-.qmd}
 
 To add LaTeX commands in your writing, without worrying that it will
 contaminate the \texttt{html} format, use a \texttt{\{=latex\}} chunk.
@@ -1932,9 +2003,8 @@ contaminate the \texttt{html} format, use a \texttt{\{=latex\}} chunk.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{how-to-add-or-remove-sections}{%
 \subsection{How to add or remove
-sections}\label{how-to-add-or-remove-sections}}
+sections}\label{how-to-add-or-remove-sections}
 
 For pre-textual sections (e.g., list of symbols, abstract), remove them
 from \texttt{tex/include-before-body.tex} and from
@@ -1951,7 +2021,7 @@ It's important to note that, at this moment, the last chapter must have
 a LaTeX code chunk at the end of it. The same is true for the last
 appendix chapter. They should look like this:
 
-\begin{tcolorbox}[enhanced jigsaw, left=2mm, coltitle=black, breakable, bottomrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, opacitybacktitle=0.6, arc=.35mm, leftrule=.75mm, titlerule=0mm, rightrule=.15mm, colframe=quarto-callout-warning-color-frame, toprule=.15mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Warning}, opacityback=0, toptitle=1mm, colback=white, bottomtitle=1mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, left=2mm, colbacktitle=quarto-callout-warning-color!10!white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Warning}, bottomtitle=1mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, colframe=quarto-callout-warning-color-frame, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, colback=white, toptitle=1mm, titlerule=0mm, rightrule=.15mm]
 
 Remove the \texttt{\textbackslash{}} from the beginning and end of the
 code below when applying it.
@@ -1991,11 +2061,11 @@ code below when applying it.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{citation-management}{%
-\section{Citation management}\label{citation-management}}
+\section{Citation management}\label{citation-management}
 
-\hypertarget{citation-method}{%
-\subsection{Citation method}\label{citation-method}}
+\subsection{Citation method}\label{citation-method}
+
+\index{BibLaTeX}
 
 This Quarto format was specifically designed to be compatible with
 \href{https://www.ctan.org/pkg/biblatex}{BibLaTeX}, which is a
@@ -2015,8 +2085,10 @@ Quarto's
 \href{https://quarto.org/docs/authoring/footnotes-and-citations.html}{Citation
 \& Footnotes} documentation.
 
-\hypertarget{citation-style}{%
-\subsection{Citation style}\label{citation-style}}
+\subsection{Citation style}\label{citation-style}
+
+\index{ABNT}
+\index{APA}
 
 There are two built-in citation styles:
 
@@ -2067,8 +2139,10 @@ manuals to learn more about them.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{zotero-integration}{%
-\subsection{Zotero integration}\label{zotero-integration}}
+\subsection{Zotero integration}\label{zotero-integration}
+
+\index{Zotero}
+\index{Better BiBTeX}
 
 This template can work with \href{https://www.zotero.org/}{Zotero} and
 the \href{https://github.com/retorquere/zotero-better-bibtex}{Better
@@ -2079,8 +2153,8 @@ the format.
 
 For this to work, you must activate the \texttt{zotero} option in your
 \texttt{yml} file and have Zotero, with Better BibTeX installed, open
-while rendering your thesis. A pre-render script (see
-\texttt{R/quarto-pre-render.R}), created using the
+while rendering your thesis (activated by default). A pre-render script
+(see \texttt{R/quarto-pre-render.R}), created using the
 \href{https://github.com/paleolimbot/rbbt}{\texttt{rbbt}} R package,
 will scan all \texttt{.qmd} and \texttt{.tex} files searching for BibTeX
 citations (e.g., \texttt{@watson1953}). If they match with your Zotero
@@ -2095,8 +2169,9 @@ database, the citations will then be written into the
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{title-case-change}{%
-\subsubsection{Title case change}\label{title-case-change}}
+\subsubsection{Title case change}\label{title-case-change}
+
+\index{BibLaTeX}
 
 By using \href{https://www.zotero.org/}{Zotero}, you may experience a
 title casing change when exporting your references. This is the default
@@ -2111,90 +2186,150 @@ Config Editor) and changing the variable\textbackslash{}
 more information about this behavior
 \href{https://retorque.re/zotero-better-bibtex/support/faq/\#bbt-is-changing-the-capitalization-of-my-titles----why}{here}.
 
-\hypertarget{abnt-figures-and-tables}{%
-\section{ABNT figures and tables}\label{abnt-figures-and-tables}}
+\section{ABNT figures and tables}\label{abnt-figures-and-tables}
 
-(work in progress - consider adding a
-\href{https://yihui.org/knitr/hooks/}{knitr hook})
+Thanks for the incredible work of
+\href{https://github.com/cscheid}{Carlos Scheidegger} we now have a
+built-in solution for figures and tables that require two captions (one
+at the top and the other at the bottom), as demanded by the ABNT norms.
+Please note that this feature is only available for Quarto versions
+\textgreater=v1.4.
 
-\hypertarget{figures}{%
-\subsection{Figures}\label{figures}}
-
-See \href{https://quarto.org/docs/reference/cells/}{Code Cells}.
-
-\begin{enumerate}
-\def\labelenumi{(\arabic{enumi})}
-\tightlist
-\item
-  Create a new figure environment.
-\end{enumerate}
-
-Name it \texttt{abntfigure} and include an
-\texttt{\textbackslash{}quartolegend} in the end.
-
-Use \texttt{\textbackslash{}notblank} from \texttt{etoolbox} package to
-add a conditional layer.
-
-\begin{enumerate}
-\def\labelenumi{(\arabic{enumi})}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  Add the new environment to \texttt{fig-env} in
-  \texttt{\_extension.yml}.
-\end{enumerate}
-
-\hypertarget{tables}{%
-\subsection{Tables}\label{tables}}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Add a hook at the end of the \texttt{longtable} environment.
-\end{enumerate}
-
-Include the \texttt{\textbackslash{}quartolegend} and utilize
-\texttt{\textbackslash{}notblank} from \texttt{etoolbox} package to add
-a conditional layer.
+The procedure for adding these captions is the same for figures and
+tables. Enclose your figure/table/code in figure \texttt{divs}, as shown
+in the example below. The first paragraph after the figure content will
+be rendered as the source (bottom caption), and the last one will be the
+top caption.
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\FunctionTok{\textbackslash{}AddToHook}\NormalTok{\{env/longtable/before\}\{\}}
-\FunctionTok{\textbackslash{}AddToHook}\NormalTok{\{env/longtable/after\}\{\}}
-\FunctionTok{\textbackslash{}AddToHook}\NormalTok{\{env/longtable/begin\}\{}
-  \FunctionTok{\textbackslash{}ABNTEXfontereduzida}
-  \FunctionTok{\textbackslash{}renewcommand}\NormalTok{\{}\ExtensionTok{\textbackslash{}arraystretch}\NormalTok{\}\{1\}}
-\NormalTok{\}}
-\FunctionTok{\textbackslash{}AddToHook}\NormalTok{\{env/longtable/end\}\{\}}
+\NormalTok{::: \{\#fig{-}1\}}
+
+\NormalTok{::: \{.figure{-}content\}}
+\NormalTok{This is the figure content.}
+\NormalTok{:::}
+
+\NormalTok{Source: My source.}
+
+\NormalTok{This is a caption.}
+
+\NormalTok{:::}
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{freezing-and-cache}{%
-\section{Freezing and cache}\label{freezing-and-cache}}
+Please note that, like all cross-reference elements, these \texttt{divs}
+must follow a naming pattern. Always use the prefixes \texttt{\#fig-}
+for figures and \texttt{\#tbl-} for tables.
+
+Visit the showcase chapter ``Introduction''
+(\texttt{qmd/introduction.qmd}) of this Quarto format to see this
+feature in action. For more detailed information, please refer to
+Quarto's
+\href{https://quarto.org/docs/prerelease/1.4/crossref.html}{Crossreferenceable
+elements} article.
+
+\section{Crossreferenceable elements}\label{crossreferenceable-elements}
+
+Quarto allow you to create and reference almost anything by using div
+enclosures.
+
+Example: See Theorem~\ref{thm-line}.
+
+\begin{theorem}[Line]\protect\hypertarget{thm-line}{}\label{thm-line}
+
+The equation of any straight line, called a linear equation, can be
+written as:
+
+\[
+y = mx + b
+\]
+
+\end{theorem}
+
+Although, it's important to note that for this to work, each type of
+\texttt{div} must use pre-defined prefixes. If you don't follow these
+rules your document will not be rendered.
+
+Here are most of the the label prefixes.
+
+\vspace{-1\baselineskip}
+
+\begin{figure}
+
+\begin{minipage}[t]{0.50\linewidth}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{cnj-}: Conjecture
+\item
+  \texttt{cor-}: Corollary
+\item
+  \texttt{def-}: Definition
+\item
+  \texttt{eq-}: Equation
+\item
+  \texttt{exm-}: Example
+\item
+  \texttt{exr-}: Exercise
+\item
+  \texttt{fig-}: Figure
+\end{itemize}
+
+\end{minipage}%
+%
+\begin{minipage}[t]{0.50\linewidth}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{lem-}: Lemma
+\item
+  \texttt{lst-}: Listings
+\item
+  \texttt{prp-}: Proposition
+\item
+  \texttt{sec-}: Section
+\item
+  \texttt{tbl-}: Table
+\item
+  \texttt{thm-}: Theorem
+\end{itemize}
+
+\end{minipage}%
+
+\end{figure}%
+
+\vspace{1\baselineskip}
+
+For more information about cross-reference elements, see Quarto's
+guide\href{https://quarto.org/docs/books/book-crossrefs.html}{Book
+Crossrefs},
+\href{https://quarto.org/docs/authoring/cross-references.html}{Cross
+References} and
+\href{https://quarto.org/docs/prerelease/1.4/crossref.html}{Crossreferenceable
+elements} articles.
+
+\section{Freezing and cache}\label{freezing-and-cache}
 
 See
 \href{https://quarto.org/docs/projects/code-execution.html\#freeze}{Freeze}.
 
-\hypertarget{how-to-customize-this-quarto-format}{%
 \section{How to customize this Quarto
-format}\label{how-to-customize-this-quarto-format}}
+format}\label{how-to-customize-this-quarto-format}
 
-\hypertarget{quarto-system}{%
-\subsection{Quarto system}\label{quarto-system}}
+\subsection{Quarto system}\label{quarto-system}
 
 See \href{https://quarto.org/docs/guide/}{Quarto's guide}.
 
-\hypertarget{template-and-template-partials}{%
 \subsection{Template and template
-partials}\label{template-and-template-partials}}
+partials}\label{template-and-template-partials}
 
 See
 \href{https://quarto.org/docs/journals/templates.html\#template-partials}{Tempalte
 partials}.
 
-\hypertarget{spacing-rules}{%
-\subsection{Spacing rules}\label{spacing-rules}}
+\subsection{Spacing rules}\label{spacing-rules}
 
 \begin{itemize}
 \tightlist
@@ -2231,8 +2366,7 @@ LaTeX} and
 \href{https://www.overleaf.com/learn/latex/Articles/How_to_change_paragraph_spacing_in_LaTeX}{How
 to change paragraph spacing in LaTeX} to get a sense of the subject.
 
-\hypertarget{unit-equivalences}{%
-\subsubsection{Unit equivalences}\label{unit-equivalences}}
+\subsubsection{Unit equivalences}\label{unit-equivalences}
 
 \begin{itemize}
 \tightlist
@@ -2244,8 +2378,7 @@ to change paragraph spacing in LaTeX} to get a sense of the subject.
   0.219521\texttt{cm}.
 \end{itemize}
 
-\hypertarget{baselineskip}{%
-\paragraph{\texorpdfstring{\texttt{\textbackslash{}baselineskip}}{\textbackslash baselineskip}}\label{baselineskip}}
+\paragraph{\texorpdfstring{\texttt{\textbackslash{}baselineskip}}{\textbackslash baselineskip}}\label{baselineskip}
 
 These are the equivalences for a Arial typeface with size 12\texttt{pt}:
 
@@ -2265,125 +2398,170 @@ Example of using \texttt{\textbackslash{}getvalue\{\}}:
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{linestretch1}{%
-\subparagraph{\texorpdfstring{\texttt{\textbackslash{}linestretch=1}}{\textbackslash linestretch=1}}\label{linestretch1}}
-
 \begin{itemize}
 \tightlist
 \item
-  \texttt{1\textbackslash{}baselineskip} \(==\) 14.5\texttt{pt}. That's
-  about 1.2x (or (\$\approx\$1.208333x) the font size (standard
-  procedure).
+  \texttt{\textbackslash{}linestretch=1}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{1\textbackslash{}baselineskip} \(==\) 14.5\texttt{pt}.
+    That's about 1.2x (or (\$\approx\$1.208333x) the font size (standard
+    procedure).
+  \end{itemize}
+\item
+  \texttt{\textbackslash{}linestretch=1.5}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{0.25\textbackslash{}baselineskip} \(==\) 5.4375\texttt{pt}
+    or \(\approx\) 0.191822917\texttt{cm};
+  \item
+    \texttt{0.5\textbackslash{}baselineskip} \(==\) 10.875\texttt{pt} or
+    \(\approx\) 0.383645833\texttt{cm};
+  \item
+    \texttt{0.75\textbackslash{}baselineskip} \(==\) 16.3125\texttt{pt}
+    or \(\approx\) 0.57546875\texttt{cm};
+  \item
+    \texttt{1\textbackslash{}baselineskip} \(==\) 21.75\texttt{pt} or
+    \(\approx\) 0.76729167\texttt{cm};
+  \item
+    \texttt{1.5\textbackslash{}baselineskip} \(==\) 32.625\texttt{pt} or
+    \(\approx\) 1.1509375\texttt{cm};
+  \item
+    \texttt{2\textbackslash{}baselineskip} \(==\) 43.5\texttt{pt} or
+    \(\approx\) 1.534583\texttt{cm};
+  \item
+    \texttt{2.5\textbackslash{}baselineskip} \(==\) 54.375\texttt{pt} or
+    \(\approx\) 1.91822917\texttt{cm};
+  \item
+    \texttt{3\textbackslash{}baselineskip} \(==\) 65.25\texttt{pt} or
+    \(\approx\) 2.301875\texttt{cm}.
+  \end{itemize}
 \end{itemize}
 
-\hypertarget{linestretch1.5}{%
-\subparagraph{\texorpdfstring{\texttt{\textbackslash{}linestretch=1.5}}{\textbackslash linestretch=1.5}}\label{linestretch1.5}}
-
-\begin{itemize}
-\tightlist
-\item
-  \texttt{0.25\textbackslash{}baselineskip} \(==\) 5.4375\texttt{pt} or
-  \(\approx\) 0.191822917\texttt{cm};
-\item
-  \texttt{0.5\textbackslash{}baselineskip} \(==\) 10.875\texttt{pt} or
-  \(\approx\) 0.383645833\texttt{cm};
-\item
-  \texttt{0.75\textbackslash{}baselineskip} \(==\) 16.3125\texttt{pt} or
-  \(\approx\) 0.57546875\texttt{cm};
-\item
-  \texttt{1\textbackslash{}baselineskip} \(==\) 21.75\texttt{pt} or
-  \(\approx\) 0.76729167\texttt{cm};
-\item
-  \texttt{1.5\textbackslash{}baselineskip} \(==\) 32.625\texttt{pt} or
-  \(\approx\) 1.1509375\texttt{cm};
-\item
-  \texttt{2\textbackslash{}baselineskip} \(==\) 43.5\texttt{pt} or
-  \(\approx\) 1.534583\texttt{cm};
-\item
-  \texttt{2.5\textbackslash{}baselineskip} \(==\) 54.375\texttt{pt} or
-  \(\approx\) 1.91822917\texttt{cm};
-\item
-  \texttt{3\textbackslash{}baselineskip} \(==\) 65.25\texttt{pt} or
-  \(\approx\) 2.301875\texttt{cm}.
-\end{itemize}
-
-\hypertarget{how-to-add-new-citation-styles}{%
 \subsection{How to add new citation
-styles}\label{how-to-add-new-citation-styles}}
+styles}\label{how-to-add-new-citation-styles}
 
-\hypertarget{must-see-references}{%
-\subsection{Must see references}\label{must-see-references}}
+\subsection{Must see references}\label{must-see-references}
 
 To learn the basics about LaTeX, see \textcite{oetiker2023}. To delve
 deeper into the LaTeX system, see \textcite{lamport1994} and
 \textcite{knuth1986}.
 
-\hypertarget{manuals}{%
-\subsubsection{Manuals}\label{manuals}}
+\subsubsection{Manuals}\label{manuals}
+
+\begin{figure}
+
+\begin{minipage}[t]{0.50\linewidth}
 
 \begin{itemize}
 \tightlist
 \item
-  \href{https://quarto.org/docs/guide/}{Quarto};
+  \href{https://quarto.org/docs/guide/}{Quarto}
 \item
-  \href{https://www.ctan.org/pkg/abntex2}{\texttt{abntex2}};
+  \href{https://www.ctan.org/pkg/abntex2}{\texttt{abntex2}}
 \item
-  \href{https://www.ctan.org/pkg/memoir}{\texttt{memoir}};
+  \href{https://www.ctan.org/pkg/memoir}{\texttt{memoir}}
 \item
-  \href{https://www.ctan.org/pkg/biblatex}{\texttt{biblatex}};
+  \href{https://www.ctan.org/pkg/biblatex}{\texttt{biblatex}}
+\item
+  \href{https://www.ctan.org/pkg/biblatex-abnt}{\texttt{biblatex-abnt}}
 \end{itemize}
+
+\end{minipage}%
+%
+\begin{minipage}[t]{0.50\linewidth}
 
 \begin{itemize}
 \tightlist
 \item
-  \href{https://www.ctan.org/pkg/biblatex-abnt}{\texttt{biblatex-abnt}};
+  \href{https://www.ctan.org/pkg/biblatex-apa}{\texttt{biblatex-apa}}
 \item
-  \href{https://www.ctan.org/pkg/biblatex-apa}{\texttt{biblatex-apa}};
+  \href{https://ctan.org/pkg/babel}{\texttt{babel}}
 \item
-  \href{https://ctan.org/pkg/babel}{\texttt{babel}};
+  \href{https://ctan.org/pkg/fontspec}{\texttt{fontspec}}
 \item
-  \href{https://ctan.org/pkg/fontspec}{\texttt{fontspec}}.
+  \href{https://www.ctan.org/pkg/makeidx}{\texttt{makeidx}}
 \end{itemize}
 
-\hypertarget{r-packages}{%
-\subsubsection{R packages}\label{r-packages}}
+\end{minipage}%
+
+\end{figure}%
+
+\subsubsection{R packages}\label{r-packages}
+
+\index{R packages}
+
+\begin{figure}
+
+\begin{minipage}[t]{0.50\linewidth}
 
 \begin{itemize}
 \tightlist
 \item
-  \href{https://gt.rstudio.com}{\texttt{gt}};
+  \href{https://gt.rstudio.com}{\texttt{gt}}
 \end{itemize}
+
+\end{minipage}%
+%
+\begin{minipage}[t]{0.50\linewidth}
 
 \begin{itemize}
 \tightlist
 \item
-  \href{https://github.com/danielvartan/rutils/blob/main/R/quarto.R}{\texttt{rutils}}.
+  \href{https://github.com/danielvartan/rutils/blob/main/R/quarto.R}{\texttt{rutils}}
 \end{itemize}
+
+\end{minipage}%
+
+\end{figure}%
 
 \end{apendicesenv}
 
-% -----
-% Attachments (optional)
-% -----
-
 \begin{anexosenv}
-\chapter{(Showcase)}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque accumsan rutrum lacus, vitae iaculis nisi bibendum in. Nulla et pellentesque nisl. Proin mollis dui sit amet egestas fermentum. Maecenas eu odio odio. Aenean porta ipsum in mauris pharetra dapibus. Nunc dapibus libero nec dui lacinia, id ultricies lectus maximus. Mauris quis mauris in velit pulvinar rutrum. Cras congue ante in orci luctus placerat. Nullam sit amet nisi augue. Maecenas non ligula eros. Etiam nec dolor a mi bibendum auctor.
+\chapter{{[}Showcase{]}}\label{sec-annex-a}
+
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomtitle=1mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, colframe=quarto-callout-note-color-frame, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, colback=white, toptitle=1mm, titlerule=0mm, rightrule=.15mm]
+
+The text below is for demonstrative purposes only.
+
+\vspace{0.25\baselineskip}
+
+See \url{https://quarto.org/docs/authoring/markdown-basics.html} to
+learn about the basics of Markdown's syntax.
+
+\end{tcolorbox}
+
+Cillum qui eu non ipsum pariatur ad exercitation pariatur dolore veniam
+amet cillum. Aliqua do nostrud aliquip in amet. Commodo sit tempor nulla
+ipsum officia voluptate laborum elit minim proident Lorem. Id pariatur
+reprehenderit non officia fugiat incididunt anim aliquip anim anim.
+Ipsum irure magna quis est aute. Nostrud nulla mollit non labore. In
+laboris mollit ea in. Excepteur eu do elit proident. Commodo tempor nisi
+enim ex velit voluptate dolor mollit eiusmod in ullamco aliqua nostrud
+id.
 
 \clearpage
 \includepdf{images/anx_1.pdf}
+
 \end{anexosenv}
 
-% % -----
-% % Index (optional)
-% % -----
-%
-% % Use `index: true` below the `format: pdf:` to activated this section.
-% % See <https://quarto.org/docs/books/book-structure.html#creating-an-index>
-% %   to learn more.
-%
-% \phantompart
-% \printindex
 
+
+\addtocontents{toc}{\protect\vspace{1em}}
+\cftinserthook{toc}{indexhook}
+
+\begingroup
+\ABNTEXfontereduzida
+\renewcommand{\baselinestretch}{1}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\tinyskipamount}
+\setlength{\afterchapskip}{\hugeskipamount}
+\phantompart
+\printindex
+\endgroup
 \end{document}

@@ -1,4 +1,14 @@
 $if(index-page)$
+\addtocontents{toc}{\protect\vspace{1em}}
+\cftinserthook{toc}{indexhook}
+
+\begingroup
+\ABNTEXfontereduzida
+\renewcommand{\baselinestretch}{1}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\tinyskipamount}
+\setlength{\afterchapskip}{\hugeskipamount}
 \phantompart
 \printindex
+\endgroup
 $endif$

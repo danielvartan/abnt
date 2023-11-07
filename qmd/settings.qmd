@@ -1,5 +1,5 @@
 <!-- %:::% .common h1 begin %:::% -->
-# Settings
+# Settings {#sec-settings}
 <!-- %:::% .common h1 end %:::% -->
 
 ```{r}
@@ -29,6 +29,10 @@ rutils:::quarto_status(
 ```
 
 ## Typography
+
+```{=latex}
+\index{tipography}
+```
 
 ### Typeface
 
@@ -77,6 +81,8 @@ The smaller font is set to `\footnotesize`, which corresponds to a 10pt font siz
 ```
 
 Unless you want to customize the template, you don't need to modify the `.tex` files. You can write directly in the `.qmd` files. Just ensure that you preserve all the tags.
+
+Please note that some settings regarding the pre-textual sections must be changed in the `qmd/_congfig.qmd` file.
 
 ### How to include LaTeX commands in Quarto files (`.qmd`)
 
@@ -135,6 +141,10 @@ Remove the `\` from the beginning and end of the code below when applying it.
 
 ### Citation method
 
+```{=latex}
+\index{BibLaTeX}
+```
+
 This Quarto format was specifically designed to be compatible with  [BibLaTeX](https://www.ctan.org/pkg/biblatex), which is a comprehensive reimplementation of [BiBTeX](https://www.bibtex.org/). At first glance, these two systems may appear very similar.
 
 To get started, simply insert your references into the `references.bib`file. However, this task can be somewhat tedious and demanding. To simplify the process, we recommend exploring the integration of [Zotero](https://www.zotero.org/) along with [Better BiBTeX](https://github.com/retorquere/zotero-better-bibtex), as demonstrated in a section below.
@@ -142,6 +152,11 @@ To get started, simply insert your references into the `references.bib`file. How
 For detailed guidance on handling citations in Quarto, please refer to Quarto's [Citation & Footnotes](https://quarto.org/docs/authoring/footnotes-and-citations.html) documentation.
 
 ### Citation style
+
+```{=latex}
+\index{ABNT}
+\index{APA}
+```
 
 There are two built-in citation styles:
 
@@ -178,9 +193,14 @@ format:
 
 ### Zotero integration
 
+```{=latex}
+\index{Zotero}
+\index{Better BiBTeX}
+```
+
 This template can work with [Zotero](https://www.zotero.org/) and the [Better BiBTeX](https://github.com/retorquere/zotero-better-bibtex) plugin. The advantage of using this integration is that you don't need to manually input your references into `references.bib`; they are automatically imported when you render the format.
 
-For this to work, you must activate the `zotero` option in your `yml` file and have Zotero, with Better BibTeX installed, open while rendering your thesis. A pre-render script (see `R/quarto-pre-render.R`), created using the [`rbbt`](https://github.com/paleolimbot/rbbt) R package, will scan all `.qmd` and `.tex` files searching for BibTeX citations (e.g., `@watson1953`). If they match with your Zotero database, the citations will then be written into the `references.bib` file.
+For this to work, you must activate the `zotero` option in your `yml` file and have Zotero, with Better BibTeX installed, open while rendering your thesis (activated by default). A pre-render script (see `R/quarto-pre-render.R`), created using the [`rbbt`](https://github.com/paleolimbot/rbbt) R package, will scan all `.qmd` and `.tex` files searching for BibTeX citations (e.g., `@watson1953`). If they match with your Zotero database, the citations will then be written into the `references.bib` file.
 
 ```yaml
 format:
@@ -190,41 +210,89 @@ format:
 
 #### Title case change
 
+```{=latex}
+\index{BibLaTeX}
+```
+
 By using [Zotero](https://www.zotero.org/), you may experience a title casing change when exporting your references. This is the default behavior of [Better BibTex](https://retorque.re/zotero-better-bibtex/) while exporting to BibLaTeX. 
 
 You can disable this by going to Zotero's configuration editor (go to Edit > Preferences > Advanced > Config Editor) and changing the variable\\ `extensions.zotero.translators.better-bibtex.exportTitleCase` to `false`. Beware that this can produce some issues. You can find more information about this behavior [here](https://retorque.re/zotero-better-bibtex/support/faq/#bbt-is-changing-the-capitalization-of-my-titles----why).
 
 ## ABNT figures and tables
 
-(work in progress - consider adding a [knitr hook](https://yihui.org/knitr/hooks/))
+Thanks for the incredible work of [Carlos Scheidegger](https://github.com/cscheid) we now have a built-in solution for figures and tables that require two captions (one at the top and the other at the bottom), as demanded by the ABNT norms. Please note that this feature is only available for Quarto versions >=v1.4.
 
-### Figures
+The procedure for adding these captions is the same for figures and tables. Enclose your figure/table/code in figure `divs`, as shown in the example below. The first paragraph after the figure content will be rendered as the source (bottom caption), and the last one will be the top caption.
 
-See [Code Cells](https://quarto.org/docs/reference/cells/).
+```md
+::: {#fig-1}
 
-(@) Create a new figure environment.
+::: {.figure-content}
+This is the figure content.
+:::
 
-Name it ` abntfigure` and include an `\quartolegend` in the end.
+Source: My source.
 
-Use `\notblank` from `etoolbox` package to add a conditional layer.
+This is a caption.
 
-(@) Add the new environment to `fig-env` in `_extension.yml`.
- 
-### Tables
-
-1. Add a hook at the end of the `longtable` environment.
-
-Include the `\quartolegend` and utilize `\notblank` from `etoolbox` package to add a conditional layer.
-
-```latex
-\AddToHook{env/longtable/before}{}
-\AddToHook{env/longtable/after}{}
-\AddToHook{env/longtable/begin}{
-  \ABNTEXfontereduzida
-  \renewcommand{\arraystretch}{1}
-}
-\AddToHook{env/longtable/end}{}
+:::
 ```
+
+Please note that, like all cross-reference elements, these `divs` must follow a naming pattern. Always use the prefixes `#fig-` for figures and `#tbl-` for tables.
+
+Visit the showcase chapter "Introduction" (`qmd/introduction.qmd`) of this Quarto format to see this feature in action. For more detailed information, please refer to Quarto's [Crossreferenceable elements](https://quarto.org/docs/prerelease/1.4/crossref.html) article.
+
+## Crossreferenceable elements
+
+Quarto allow you to create and reference almost anything by using div enclosures.
+
+Example: See @thm-line.
+
+::: {#thm-line}
+
+## Line
+
+The equation of any straight line, called a linear equation, can be written as:
+
+$$
+y = mx + b
+$$
+:::
+
+Although, it's important to note that for this to work, each type of `div` must use pre-defined prefixes. If you don't follow these rules your document will not be rendered.
+
+Here are most of the the label prefixes.
+
+```{=latex}
+\vspace{-1\baselineskip}
+```
+
+:::: {layout-ncol="2"}
+::: {}
+* `cnj-`: Conjecture
+* `cor-`: Corollary
+* `def-`: Definition
+* `eq-`: Equation
+* `exm-`: Example
+* `exr-`: Exercise
+* `fig-`: Figure
+:::
+
+::: {}
+* `lem-`: Lemma
+* `lst-`: Listings
+* `prp-`: Proposition
+* `sec-`: Section
+* `tbl-`: Table
+* `thm-`: Theorem
+:::
+::::
+
+```{=latex}
+\vspace{1\baselineskip}
+```
+
+For more information about cross-reference elements, see Quarto's guide[Book Crossrefs](https://quarto.org/docs/books/book-crossrefs.html), [Cross References](https://quarto.org/docs/authoring/cross-references.html) and [Crossreferenceable elements](https://quarto.org/docs/prerelease/1.4/crossref.html) articles.
 
 ## Freezing and cache
 
@@ -270,20 +338,18 @@ Example of using `\getvalue{}`:
 \endgroup
 ```
 
-###### `\linestretch=1`
+* `\linestretch=1`
+  * `1\baselineskip` $==$ 14.5`pt`. That's about 1.2x (or ($\approx$1.208333x) the font size (standard procedure).
 
-* `1\baselineskip` $==$ 14.5`pt`. That's about 1.2x (or ($\approx$1.208333x) the font size (standard procedure).
-
-###### `\linestretch=1.5`
-
-* `0.25\baselineskip` $==$ 5.4375`pt` or $\approx$ 0.191822917`cm`;
-* `0.5\baselineskip` $==$ 10.875`pt` or $\approx$ 0.383645833`cm`;
-* `0.75\baselineskip` $==$ 16.3125`pt` or $\approx$ 0.57546875`cm`;
-* `1\baselineskip`  $==$ 21.75`pt` or $\approx$ 0.76729167`cm`;
-* `1.5\baselineskip` $==$ 32.625`pt` or $\approx$ 1.1509375`cm`;
-* `2\baselineskip` $==$ 43.5`pt` or $\approx$ 1.534583`cm`;
-* `2.5\baselineskip` $==$ 54.375`pt` or $\approx$ 1.91822917`cm`;
-* `3\baselineskip` $==$ 65.25`pt` or $\approx$ 2.301875`cm`.
+* `\linestretch=1.5`
+  * `0.25\baselineskip` $==$ 5.4375`pt` or $\approx$ 0.191822917`cm`;
+  * `0.5\baselineskip` $==$ 10.875`pt` or $\approx$ 0.383645833`cm`;
+  * `0.75\baselineskip` $==$ 16.3125`pt` or $\approx$ 0.57546875`cm`;
+  * `1\baselineskip`  $==$ 21.75`pt` or $\approx$ 0.76729167`cm`;
+  * `1.5\baselineskip` $==$ 32.625`pt` or $\approx$ 1.1509375`cm`;
+  * `2\baselineskip` $==$ 43.5`pt` or $\approx$ 1.534583`cm`;
+  * `2.5\baselineskip` $==$ 54.375`pt` or $\approx$ 1.91822917`cm`;
+  * `3\baselineskip` $==$ 65.25`pt` or $\approx$ 2.301875`cm`.
 
 ### How to add new citation styles
 
@@ -293,34 +359,41 @@ To learn the basics about LaTeX, see @oetiker2023. To delve deeper into the LaTe
 
 #### Manuals
 
-:::: {.columns}
-::: {.column width="40%"}
-* [Quarto](https://quarto.org/docs/guide/);
-* [`abntex2`](https://www.ctan.org/pkg/abntex2);
-* [`memoir`](https://www.ctan.org/pkg/memoir);
-* [`biblatex`](https://www.ctan.org/pkg/biblatex);
+:::: {layout-ncol="2"}
+::: {}
+* [Quarto](https://quarto.org/docs/guide/)
+* [`abntex2`](https://www.ctan.org/pkg/abntex2)
+* [`memoir`](https://www.ctan.org/pkg/memoir)
+* [`biblatex`](https://www.ctan.org/pkg/biblatex)
+* [`biblatex-abnt`](https://www.ctan.org/pkg/biblatex-abnt)
 :::
 
-::: {.column width="40%"}
-* [`biblatex-abnt`](https://www.ctan.org/pkg/biblatex-abnt);
-* [`biblatex-apa`](https://www.ctan.org/pkg/biblatex-apa);
-* [`babel`](https://ctan.org/pkg/babel);
-* [`fontspec`](https://ctan.org/pkg/fontspec).
+::: {}
+* [`biblatex-apa`](https://www.ctan.org/pkg/biblatex-apa)
+* [`babel`](https://ctan.org/pkg/babel)
+* [`fontspec`](https://ctan.org/pkg/fontspec)
+* [`makeidx`](https://www.ctan.org/pkg/makeidx)
 :::
 ::::
 
 #### R packages
 
-:::: {.columns}
-::: {.column width="40%"}
-* [`gt`](https://gt.rstudio.com);
+```{=latex}
+\index{R packages}
+```
+
+:::: {layout-ncol="2"}
+::: {}
+* [`gt`](https://gt.rstudio.com)
 :::
 
-::: {.column width="40%"}
-* [`rutils`](https://github.com/danielvartan/rutils/blob/main/R/quarto.R).
+::: {}
+* [`rutils`](https://github.com/danielvartan/rutils/blob/main/R/quarto.R)
 :::
 ::::
 
 ```{=latex}
 \end{apendicesenv}
+
+\begin{anexosenv}
 ```

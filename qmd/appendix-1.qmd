@@ -1,5 +1,5 @@
 <!-- %:::% .common h1 begin %:::% -->
-# [Showcase] Development {#sec-development}
+# [Showcase] {#sec-appendix-a}
 <!-- %:::% .common h1 end %:::% -->
 
 ```{r}
@@ -12,12 +12,12 @@
 source(here::here("R/quarto-setup.R"))
 ```
 
-::: {.callout-warning}
+::: {.callout-tip}
 The text below is for demonstrative purposes only.
 
 \vspace{0.25\baselineskip}
 
-See <https://github.com/danielvartan/abnt> to learn more about this template.
+See <https://quarto.org/docs/authoring/markdown-basics.html> to learn about the basics of Markdown's syntax.
 :::
 
 ```{r}

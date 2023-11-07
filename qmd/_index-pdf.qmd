@@ -7,6 +7,8 @@ The text below is for demonstrative purposes only.
 See <https://github.com/danielvartan/abnt> to learn more about this template.
 :::
 
+See @fig-karl-popper.
+
 "The activity can be represented by a _general schema of problem-solving by the method of imaginative conjectures and criticism_, or, as I have often called it, by _the method of conjecture and refutation_. The schema (in its simplest form) is this
 
 $$
@@ -14,9 +16,11 @@ $$
 $$
 ```{=latex}
 \vspace{1em}
+\index{KarlPopper}
 ```
 
 Here $\text{P}_{1}$ is the _problem_ from which we start, $\text{TT}$ (the ‘tentative theory’) is the imaginative conjectural solution which we first reach, for example our first _tentative interpretation_. $\text{EE}$ (_‘error- elimination’_) consists of a severe critical examination of our conjecture, our tentative interpretation: it consists, for example, of the critical use of documentary evidence and, if we have at this early stage more than one conjecture at our disposal, it will also consist of a critical discussion and comparative evaluation of the competing conjectures. $\text{P}_{2}$ is the problem situation as it emerges from our first critical attempt to solve our problems.
+
 It leads up to our second attempt (_and so on_). A satisfactory understanding will be reached if the interpretation, the conjectural theory, finds support in the fact that it can throw new light on new problems --- on more problems than we expected; or if it finds support in the fact that it explains many sub-problems, some of which were not seen to start with. Thus we may say that we can gauge the progress we have made by comparing $\text{P}_{1}$ with some of our later problems ($\text{P}_{n}$, say)."
 
 ::: {.content-visible when-format="html"}
@@ -38,38 +42,30 @@ It leads up to our second attempt (_and so on_). A satisfactory understanding wi
 \noindent \hspace*{\fill} [@popper1979, p. 164]
 :::
 
-::: {.content-visible when-format="html"}
+```{=latex}
+\index{figures}
+```
+
 ::: {#fig-karl-popper}
 ![](images/karl-popper.png){width=50%}
+
+Source: \href{https://www.npg.org.uk/collections/search/portrait/mw08238/Sir-Karl-Raimund-Popper?}{Steve Pyke}.}
 
 Karl Popper (July 25, 1902 – September 17, 1994).\
 One of the 20th century's most influential philosophers of science.
 :::
-:::
-
-::: {.content-visible when-format="pdf"}
-```{=latex}
-\begin{figure}[H]
-  \caption{
-    \label{fig-karl-popper}
-    Karl Popper (July 25, 1902 – September 17, 1994).\linebreak
-    One of the 20th century's most influential philosophers of science.
-  }
-
-  \centering
-  \includegraphics[width=0.5\textwidth]{images/karl-popper.png}
-
-  \legend{Source: \href{https://www.npg.org.uk/collections/search/portrait/mw08238/Sir-Karl-Raimund-Popper?}{Steve Pyke}.}
-\end{figure}
-```
-:::
 
 ## Secondary section
 
-```{r}
-#| label: tbl-iris
-#| tbl-cap: "A sample of the famous (Fisher's or Anderson's) iris data set"
+See @tbl-iris.
 
+```{=latex}
+\index{tables}
+```
+
+::: {#tbl-iris}
+::: {.figure-content}
+```{r}
 # library(datasets)
 # library(dplyr)
 
@@ -78,18 +74,28 @@ datasets::iris |>
   dplyr::slice_sample(n = 5) |>
   gt::gt()
 ```
+:::
+
+Source: Based on @fisher1936.
+
+A sample of the famous (Fisher's or Anderson's) iris data set
+:::
 
 ### Tertiary section
 
 <!-- See also  -->
 <!-- <https://r-graph-gallery.com/277-marginal-histogram-for-ggplot2.html>. -->
 
-<!-- Example extracted from: -->
-<!-- <https://ggplot2.tidyverse.org/reference/geom_density_2d.html>. -->
+See @fig-eruption.
 
+```{=latex}
+\index{figures!chart}
+```
+
+::: {#fig-eruption}
+::: {.figure-content}
 ```{r}
 #| label: fig-eruption
-#| fig-cap: "Relationship between _waiting time to next eruption_ (minutes) and _eruption time_ (minutes) at Old Faithful Geyser, Yellowstone National Park, Wyoming, USA."
 #| fig-height: 4
 #| fig-width: 6
 
@@ -104,6 +110,12 @@ ggplot2::ggplot(faithful, ggplot2::aes(x = eruptions, y = waiting)) +
   ggplot2::geom_density_2d(linewidth = 0.25, colour = "black") +
   ggplot2::theme(legend.position = "none")
 ```
+:::
+
+Source: Retrieved from the [`ggplot2` R package documentation](https://ggplot2.tidyverse.org/reference/geom_density_2d.html) [@wickham2016a].
+
+Relationship between _waiting time to next eruption_ (minutes) and _eruption time_ (minutes) at Old Faithful Geyser, Yellowstone National Park, Wyoming, USA
+:::
 
 ```{=latex}
 \clearpage
@@ -121,15 +133,41 @@ ggplot2::ggplot(faithful, ggplot2::aes(x = eruptions, y = waiting)) +
 1. List
 1. List
 
+## Another secondary section
+
+See @fig-diamonds.
+
+```{=latex}
+\index{figures!chart}
+```
+
+::: {#fig-diamonds}
+::: {.figure-content}
 ```{r}
 #| label: fig-diamonds
-#| fig-cap: "Relations betwwen _price_ and _carat_ (weight) of diamonds."
 #| fig-height: 4
 #| fig-width: 6
 
+# library(datasets)
+# library(ggExtra)
 # library(ggplot2)
 
-ggplot2::ggplot(ggplot2::diamonds, ggplot2::aes(carat, price)) +
-  ggplot2::geom_boxplot(ggplot2::aes(group = ggplot2::cut_width(carat, 0.25)))
+p <- ggplot2::ggplot(
+  datasets::mtcars, ggplot2::aes(x=wt, y=mpg, color=cyl, size=cyl)
+  ) +
+  ggplot2::geom_point() +
+  ggplot2::theme(legend.position="none")
+
+ggExtra::ggMarginal(
+  p, type="histogram", 
+  fill = "slateblue", 
+  xparams = list(bins=10)
+  )
 ```
+:::
+
+Source: Data extracted from the 1974 Motor Trend magazine and published by @henderson1981. Visualization by @holtz, available at [The R Graph Gallery](https://r-graph-gallery.com/277-marginal-histogram-for-ggplot2.html).
+
+Relation between _weight (1000lbs)_ ($\text{wt}$) and _miles per galon_ ($\text{mpg}$) for combustion engine vehicles
+:::
 <!-- %:::% index pdf end %:::% -->

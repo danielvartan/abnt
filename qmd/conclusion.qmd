@@ -1,5 +1,5 @@
 <!-- %:::% .common h1 begin %:::% -->
-# [Showcase] Conclusion
+# [Showcase] Conclusion {#sec-conclusion}
 <!-- %:::% .common h1 end %:::% -->
 
 ```{r}
@@ -52,6 +52,7 @@ cat(cli:::lorem_ipsum(1), sep = "\n\n")
 
 \addtocontents{toc}{\protect\vspace{1em}}
 \cftinserthook{toc}{bibhook}
+
 \addcontentsline{toc}{chapter}{
   \protect\numberline{}
   \newbibname

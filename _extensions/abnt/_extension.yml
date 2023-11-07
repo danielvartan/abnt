@@ -109,6 +109,7 @@ contributes:
       bibparsep: 0ex
       zotero: false
       index-page: false
+      number-sections: true
       linktoc: section
       colorlinks: true
       linkcolor: blue
@@ -148,6 +149,7 @@ contributes:
         - tex/doc-class.tex
         - tex/graphics.tex
         - tex/hypersetup.tex
+        - tex/index.tex
         - tex/layout.tex
         - tex/lengths.tex
         - tex/other.tex

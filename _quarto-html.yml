@@ -31,7 +31,8 @@ book:
         - qmd/conclusion.qmd
         - qmd/references.qmd
   appendices:
-    - qmd/appendice-1.qmd
+    - qmd/appendix-1.qmd
+    - qmd/annex-1.qmd
 
 citation:
   type: thesis

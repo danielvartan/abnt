@@ -1,5 +1,5 @@
 <!-- %:::% .common h1 begin %:::% -->
-# [Showcase]
+# [Showcase] {#sec-annex-a}
 <!-- %:::% .common h1 end %:::% -->
 
 ```{r}
@@ -12,7 +12,7 @@
 source(here::here("R/quarto-setup.R"))
 ```
 
-::: {.callout-tip}
+::: {.callout-note}
 The text below is for demonstrative purposes only.
 
 \vspace{0.25\baselineskip}
@@ -26,16 +26,14 @@ See <https://quarto.org/docs/authoring/markdown-basics.html> to learn about the 
 
 # library(cli)
 
-cat(cli:::lorem_ipsum(2), sep = "\n\n")
+cat(cli:::lorem_ipsum(1), sep = "\n\n")
 ```
 
-## Secondary section
+```{=latex}
+\clearpage
+\includepdf{images/anx_1.pdf}
+```
 
-```{r}
-#| echo: false
-#| output: asis
-
-# library(cli)
-
-cat(cli:::lorem_ipsum(1), sep = "\n\n")
+```{=latex}
+\end{anexosenv}
 ```

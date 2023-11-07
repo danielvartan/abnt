@@ -1,6 +1,5 @@
-<!-- %:::% unfreeze-tag %:::% -->
 <!-- %:::% .common h1 begin %:::% -->
-# [Showcase] Introduction
+# [Showcase] Introduction {#sec-introduction}
 <!-- %:::% .common h1 end %:::% -->
 
 ```{r}

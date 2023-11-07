@@ -29,4 +29,10 @@
 }
 \AddToHook{env/longtable/end}{}
 
+\AddToHook{env/longtable*/begin}{
+  \ABNTEXfontereduzida
+  \renewcommand{\arraystretch}{1}
+}
+\AddToHook{env/longtable*/end}{}
+
 \floatplacement{table}{H}
