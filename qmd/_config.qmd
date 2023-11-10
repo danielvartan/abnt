@@ -12,17 +12,17 @@ Some general instructions:
 
 <!-- %:::% title-page body begin %:::% -->
 {\imprimirtipotrabalho} presented to the {\imprimirescola} at {\imprimiruniversidade}, as part of the requirements for the degree of {\imprimirtituloacademico} by the {\imprimirprograma}.
-\tinyskip
 
+\smallskip
 Area of concentration: {\imprimirareadeconcentracao}.
-\tinyskip
 
+\smallskip
 Revised version incorporating the changes requested by the examining committee on [Date]. The original version is held in the reserved collection at the {\imprimirescola} Library and in the Digital Library of Theses and Dissertations of the {\imprimiruniversidade}.
-\tinyskip
 
+\smallskip
 Supervisor: Prof. Dr. {\imprimirorientador}
-\vspace{0.25\baselineskip}
 
+\vspace{\tinyskipamount}
 Co-Supervisor: Prof. Dr. {\imprimircoorientador}
 <!-- %:::% title-page body end %:::% -->
 
@@ -31,33 +31,33 @@ Co-Supervisor: Prof. Dr. {\imprimircoorientador}
 <!-- %:::% cataloging-record body begin %:::% -->
 I authorize the full or partial reproduction of this work by any conventional or electronic means for the purposes of study and research, provided that the source is cited.
 \ABNTEXfontereduzida
-\vfill
 
+\vfill
 \begin{center}
 Cataloging in publication
 
 Library
 
 [Library name]
-\medskip
 
+\medskip
 \setlength{\fboxsep}{1cm}
 \fbox{\begin{minipage}[c][7.5cm]{12.5cm}
 [Author's surname], [Author's forename(s)]
-\smallskip
 
+\smallskip
 \hspace{0.5cm} {\imprimirtitulo}  / {\imprimirautor}; supervisor, {\imprimirorientador}; co-supervisor {\imprimircoorientador}. {\imprimirlocal}, {\imprimirdata}
-\smallskip
 
+\smallskip
 {\thelastpage}p. : il
-\smallskip
 
+\smallskip
 \hspace{0.5cm} {\imprimirtipotrabalho} (\imprimirtituloacademico) -- {\imprimirprograma}, {\imprimirescola}, {\imprimiruniversidade}, {\imprimirdata}.
-\smallskip
 
+\smallskip
 \hspace{0.5cm} {\imprimirnotadeversao}
-\smallskip
 
+\smallskip
 \hspace{0.5cm} 1. [Subject A]. 2. [Subject B]. 3. [Subject C]. I. [Supervisor's surname], [Supervisor's forename(s)], super. II. [Co-supervisor's surname], [Co-supervisor's forename(s)] co-super. III. Title.
 \end{minipage}}
 \end{center}
@@ -67,48 +67,55 @@ Library
 
 <!-- %:::% approval-sheet body begin %:::% -->
 {\imprimirtipotrabalho} by {\imprimirautor}, under the title \textbf{\imprimirtitulo}, presented to the {\imprimirescola} at the {\imprimiruniversidade}, as part of the requirements for the degree of {\imprimirtituloacademico} by the {\imprimirprograma}, in the concentration area of {\imprimirareadeconcentracao}.
-\vspace{1.5cm}
 
+\vspace{\hugeskipamount}
 Approved on \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ , \_\_\_\_\_\_\_\_\_\_ .
-\vspace{1.5cm}
 
+\vspace{\hugeskipamount}
 \begin{center}
   Examination committee
 \end{center}
-\vspace{0.5cm}
 
+\vspace{\smallskipamount}
 Committee chair:
-\vspace{0.25cm}
 
-\renewcommand{\arraystretch}{2}
+\vspace{\tinyskipamount}
+\begingroup
+
+\AtBeginEnvironment{tabular}{
+  \normalsize
+  \renewcommand{\arraystretch}{2}
+}
+
 \setlength{\arrayrulewidth}{0pt}
 \setlength{\tabcolsep}{0cm}
 \begin{tabular}{m{2cm} P{14cm}}
   Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
   Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
 \end{tabular}
-\vspace{1cm}
 
+\vspace{\bigskipamount}
 Examiners:
-\vspace{0.25cm}
 
+\vspace{\tinyskipamount}
 \begin{tabular}{m{2cm} P{14cm}}
   Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
   Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
   Evaluation & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
 \end{tabular}
-\vspace{0.5cm}
 
+\vspace{\smallskipamount}
 \begin{tabular}{m{2cm} P{14cm}}
   Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
   Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
   Evaluation & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
 \end{tabular}
-\vspace{0.5cm}
 
+\vspace{\smallskipamount}
 \begin{tabular}{m{2cm} P{14cm}}
   Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
   Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
   Evaluation & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
 \end{tabular}
+\endgroup
 <!-- %:::% approval-sheet body end %:::% -->

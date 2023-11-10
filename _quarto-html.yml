@@ -23,7 +23,6 @@ book:
         - qmd/foreign-abstract.qmd
         - qmd/list-of-abbreviations.qmd
         - qmd/list-of-symbols.qmd
-        - qmd/list-of-terms.qmd
     - part: "Chapters"
       chapters:
         - qmd/introduction.qmd
@@ -31,6 +30,7 @@ book:
         - qmd/conclusion.qmd
         - qmd/references.qmd
   appendices:
+    - qmd/glossary.qmd
     - qmd/appendix-1.qmd
     - qmd/annex-1.qmd
 

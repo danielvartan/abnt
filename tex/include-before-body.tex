@@ -25,33 +25,33 @@
 %:::% cataloging-record body begin %:::%
 I authorize the full or partial reproduction of this work by any conventional or electronic means for the purposes of study and research, provided that the source is cited.
 \ABNTEXfontereduzida
-\vfill
 
+\vfill
 \begin{center}
 Cataloging in publication
 
 Library
 
 [Library name]
-\medskip
 
+\medskip
 \setlength{\fboxsep}{1cm}
 \fbox{\begin{minipage}[c][7.5cm]{12.5cm}
 [Author's surname], [Author's forename(s)]
-\smallskip
 
+\smallskip
 \hspace{0.5cm} {\imprimirtitulo}  / {\imprimirautor}; supervisor, {\imprimirorientador}; co-supervisor {\imprimircoorientador}. {\imprimirlocal}, {\imprimirdata}
-\smallskip
 
+\smallskip
 {\thelastpage}p. : il
-\smallskip
 
+\smallskip
 \hspace{0.5cm} {\imprimirtipotrabalho} (\imprimirtituloacademico) -- {\imprimirprograma}, {\imprimirescola}, {\imprimiruniversidade}, {\imprimirdata}.
-\smallskip
 
+\smallskip
 \hspace{0.5cm} {\imprimirnotadeversao}
-\smallskip
 
+\smallskip
 \hspace{0.5cm} 1. [Subject A]. 2. [Subject B]. 3. [Subject C]. I. [Supervisor's surname], [Supervisor's forename(s)], super. II. [Co-supervisor's surname], [Co-supervisor's forename(s)] co-super. III. Title.
 \end{minipage}}
 \end{center}
@@ -86,50 +86,57 @@ Any necessary corrections will be listed here after its approval.
 \begin{folhadeaprovacao}[\folhadeaprovacaoname]
 %:::% approval-sheet body begin %:::%
 {\imprimirtipotrabalho} by {\imprimirautor}, under the title \textbf{\imprimirtitulo}, presented to the {\imprimirescola} at the {\imprimiruniversidade}, as part of the requirements for the degree of {\imprimirtituloacademico} by the {\imprimirprograma}, in the concentration area of {\imprimirareadeconcentracao}.
-\vspace{1.5cm}
 
+\vspace{\hugeskipamount}
 Approved on \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ , \_\_\_\_\_\_\_\_\_\_ .
-\vspace{1.5cm}
 
+\vspace{\hugeskipamount}
 \begin{center}
   Examination committee
 \end{center}
-\vspace{0.5cm}
 
+\vspace{\smallskipamount}
 Committee chair:
-\vspace{0.25cm}
 
-\renewcommand{\arraystretch}{2}
+\vspace{\tinyskipamount}
+\begingroup
+
+\AtBeginEnvironment{tabular}{
+  \normalsize
+  \renewcommand{\arraystretch}{2}
+}
+
 \setlength{\arrayrulewidth}{0pt}
 \setlength{\tabcolsep}{0cm}
 \begin{tabular}{m{2cm} P{14cm}}
   Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
   Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
 \end{tabular}
-\vspace{1cm}
 
+\vspace{\bigskipamount}
 Examiners:
-\vspace{0.25cm}
 
+\vspace{\tinyskipamount}
 \begin{tabular}{m{2cm} P{14cm}}
   Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
   Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
   Evaluation & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
 \end{tabular}
-\vspace{0.5cm}
 
+\vspace{\smallskipamount}
 \begin{tabular}{m{2cm} P{14cm}}
   Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
   Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
   Evaluation & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
 \end{tabular}
-\vspace{0.5cm}
 
+\vspace{\smallskipamount}
 \begin{tabular}{m{2cm} P{14cm}}
   Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
   Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
   Evaluation & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
 \end{tabular}
+\endgroup
 %:::% approval-sheet body end %:::%
 \end{folhadeaprovacao}
 %:::% approval-sheet end %:::%
@@ -139,9 +146,9 @@ Examiners:
 % -----
 
 %:::% inscription begin %:::%
-\begin{dedicatoria}[]
-  \vspace*{\fill}
-  \centering
+\begin{dedicatoria}[] % \dedicatorianame | Keep #1 empty.
+\vspace*{\fill} % Don't change it.
+\centering
 %:::% inscription body begin %:::%
 \textit{To the worm that first gnawed on the cold flesh of my corpse,}
 
@@ -149,7 +156,9 @@ Examiners:
 
 \footnotetext{ASSIS, M. \textbf{Memórias póstumas de Brás Cubas} [The Posthumous Memoirs of Brás Cubas]. São Paulo: Companhia das Letras, 2014. ISBN 978-85-438-0163-6.}
 %:::% inscription body end %:::%
-	\vspace*{\fill}
+\vspace*{\fill} % Don't change it.
+\vspace{4.5cm}
+% \vspace{13cm}
 \end{dedicatoria}
 %:::% inscription end %:::%
 
@@ -173,16 +182,16 @@ I would like to acknowledge this awesome
 % -----
 
 %:::% epigraph begin %:::%
-\begin{epigrafe}[]
-  \vspace*{\fill}
-	\begin{flushright}
-	  %:::% epigraph body begin %:::%
+\begin{epigrafe}[] % \epigraphname | Keep #1 empty.
+\vspace*{\fill} % Don't change it.
+\begin{flushright}
+%:::% epigraph body begin %:::%
 \textit{Nullius in verba}\footnotemark{}
 
 \footnotetext{THE ROYAL SOCIETY. \textbf{History of the Royal Society}. Available from:
 <\href{https://royalsociety.org/about-us/history/}{https://royalsociety.org/about-us/history/}>. Visited on: 9 Sept. 2023.}
-		%:::% epigraph body end %:::%
-	\end{flushright}
+%:::% epigraph body end %:::%
+\end{flushright}
 \end{epigrafe}
 %:::% epigraph end %:::%
 
@@ -362,68 +371,6 @@ Phase relation
 %:::% list-of-symbols body end %:::%
 \end{simbolos}
 %:::% list-of-symbols end %:::%
-
-% -----
-% List of terms and definitions (optional)
-% -----
-
-%:::% list-of-terms begin %:::%
-\begin{termos}
-%:::% list-of-terms body begin %:::%
-
-For an extensive list of chronobiology related terms and definitions,
-please refer to \textcite{aschoff1965} and \textcite{marques2012}.
-
-\begin{description}
-\item[Chronotype]
-\hspace{20cm}
-
-Any kind of temporal phenotype \autocite{ehret1974,pittendrigh1993}.
-Usually, it refers to circadian phenotypes in a spectrum that goes from
-morningness to eveningness \autocite{roenneberg2003}. It can also be
-seen as an organism's phase of entrainment \autocite{roenneberg2012a}.
-\item[Circadian rhythm]
-\hspace{20cm}
-
-A rhythm with a period close to a day/24h, an approximation to the
-period of the earth's rotation \autocite{pittendrigh1960}. From the
-Latin \emph{circā}, around, and \emph{dĭes}, day \autocite{latinitium}.
-Example: the sleep-wake cycle.
-\item[Complex system]
-\hspace{20cm}
-
-There are several definitions. Here are some that I found to be of use:
-\end{description}
-
-\begin{itemize}
-\tightlist
-\item
-  ``Systems that don't yield to compact forms of representation or
-  description'' (David Krakauer apud \textcite{mitchell2013})
-\item
-  ``A system of many interacting parts where the system is more than
-  just the sum of its parts'' (Mark Newman apud \textcite{mitchell2013})
-\item
-  Systems with many connected agents that interact and exhibit
-  self-organization and emergence behavior, all without the need for a
-  central controller (adapted from Camilo Rodrigues Neto's definition,
-  supervisor of this thesis).
-\item
-  Dialectics at its finest (my working definition).
-\end{itemize}
-
-\begin{description}
-\item[Entrainment]
-\hspace{20cm}
-
-A shift and alignment of biological rhythms induced by a zeitgeber input
-\autocite{kuhlman2018}. For example: a shift/alignment of an organism's
-circadian rhythm when exposed to light.
-\end{description}
-
-%:::% list-of-terms body end %:::%
-\end{termos}
-%:::% list-of-terms end %:::%
 
 % -----
 % Table of contents (mandatory)

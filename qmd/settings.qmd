@@ -98,44 +98,21 @@ To add LaTeX commands in your writing, without worrying that it will contaminate
 
 For pre-textual sections (e.g., list of symbols, abstract), remove them from `tex/include-before-body.tex` and from `R/quarto-pre-render.R`.
 
-For textual sections (e.g., chapters), remove them from the `.quarto-[format].yml` file.
+For textual sections (e.g., chapters), remove them from `.quarto-[format].yml` file.
 
-For post-textual sections (e.g., appendices, annexes), if it's a appendix, remove it from `.quarto-[format].yml`; else,  remove them from `tex/include-after-body.tex`.
+For post-textual sections (e.g., appendices, annexes):
 
-It's important to note that, at this moment, the last chapter must have a LaTeX code chunk at the end of it. The same is true for the last appendix chapter. They should look like this:
+* If it's the Glossary, remove it from `.quarto-[format].yml` and copy the the LaTeX code after `<!-- glossary end -->` in `glossary.qmd` to the bottom of the last chapter;
+* If it's not the last appendix chapter, simply remove it from `.quarto-[format].yml`; else remove it from `.quarto-[format].yml`, remove `\begin{apendicesenv}` from the bottom of `glossary.qmd` and add the code the code after `<!-- appendices end -->` of the appendice file to the bottom of `glossary.qmd`;
+* [Annexes];
+* [Index].
 
-::: {.callout-warning}
-Remove the `\` from the beginning and end of the code below when applying it.
-:::
+It's important to note that, at this moment, the transition between sections of the document are made inserting LaTeX code at the end of specific sections. These are:
 
-```latex
-\```{=latex}
-\postextual
-
-\begingroup
-\renewcommand{\baselinestretch}{1}
-\setcounter{footnote}{0}
-\renewcommand{\thefootnote}{\fnsymbol{footnote}}
-\printbibliography[heading=bibheading]
-\endgroup
-
-\addtocontents{toc}{\protect\vspace{1em}}
-\cftinserthook{toc}{bibhook}
-\addcontentsline{toc}{chapter}{
-  \protect\numberline{}
-  \newbibname
-  \hspace{-0.25em}
-}
-
-\begin{apendicesenv}
-\```
-``` 
-
-```latex
-\``` {=latex}
-\end{apendicesenv}
-\```
-```
+* Between the last chapter and the Glossary section.
+* Between the Glossary section and the Appendices section.
+* Between the Appendices and Annexes section.
+* After the Annexes section.
 
 ## Citation management
 
@@ -220,9 +197,11 @@ You can disable this by going to Zotero's configuration editor (go to Edit > Pre
 
 ## ABNT figures and tables
 
-Thanks for the incredible work of [Carlos Scheidegger](https://github.com/cscheid) we now have a built-in solution for figures and tables that require two captions (one at the top and the other at the bottom), as demanded by the ABNT norms. Please note that this feature is only available for Quarto versions >=v1.4.
+Thanks for the incredible work of [Carlos Scheidegger](https://github.com/cscheid) and other Quarto developers we now have a built-in solution for figures and tables that require two captions (one at the top and the other at the bottom, or a caption and a legend), as required by the ABNT norms. Please note that this feature is only available for Quarto versions >=v1.4.
 
 The procedure for adding these captions is the same for figures and tables. Enclose your figure/table/code in figure `divs`, as shown in the example below. The first paragraph after the figure content will be rendered as the source (bottom caption), and the last one will be the top caption.
+
+The formatting options for this bottom caption/legend is still matter of debate (see [here](https://github.com/quarto-dev/quarto-cli/discussions/6103#discussioncomment-7494661)). That's why is important to add Quarto's [LaTeX Environment](https://github.com/quarto-ext/latex-environment) filter in your `_quarto-pdf.yml" with the command `legend` and use `[SOURCE TEXT GOES HERE].legend}` when defining legends for figures/tables, like the example below.
 
 ```md
 ::: {#fig-1}
@@ -231,7 +210,7 @@ The procedure for adding these captions is the same for figures and tables. Encl
 This is the figure content.
 :::
 
-Source: My source.
+[Source: My source.]{.legend}
 
 This is a caption.
 
@@ -263,34 +242,29 @@ Although, it's important to note that for this to work, each type of `div` must 
 
 Here are most of the the label prefixes.
 
-```{=latex}
-\vspace{-1\baselineskip}
-```
-
-:::: {layout-ncol="2"}
+:::: {layout-ncol="3"}
 ::: {}
 * `cnj-`: Conjecture
 * `cor-`: Corollary
 * `def-`: Definition
 * `eq-`: Equation
 * `exm-`: Example
-* `exr-`: Exercise
-* `fig-`: Figure
 :::
 
 ::: {}
+* `exr-`: Exercise
+* `fig-`: Figure
 * `lem-`: Lemma
 * `lst-`: Listings
+:::
+
+::: {}
 * `prp-`: Proposition
 * `sec-`: Section
 * `tbl-`: Table
 * `thm-`: Theorem
 :::
 ::::
-
-```{=latex}
-\vspace{1\baselineskip}
-```
 
 For more information about cross-reference elements, see Quarto's guide[Book Crossrefs](https://quarto.org/docs/books/book-crossrefs.html), [Cross References](https://quarto.org/docs/authoring/cross-references.html) and [Crossreferenceable elements](https://quarto.org/docs/prerelease/1.4/crossref.html) articles.
 
@@ -320,7 +294,7 @@ See @oetiker2023 [section 7.5] to learn more about LaTeX spacing features. The a
 
 #### Unit equivalences
 
-* 1`em` $==$ 12`pt` or $\approx$ 0.423333$`cm`.
+* 1`em` $==$ 12`pt` or $\approx$ 0.423333`cm`.
 * 1`ex` $==$ $\approx$ 6.22266`pt` or $\approx$ 0.219521`cm`.
 
 ##### `\baselineskip`
@@ -359,6 +333,10 @@ To learn the basics about LaTeX, see @oetiker2023. To delve deeper into the LaTe
 
 #### Manuals
 
+```{=latex}
+\vspace{-1\baselineskip}
+```
+
 :::: {layout-ncol="2"}
 ::: {}
 * [Quarto](https://quarto.org/docs/guide/)
@@ -376,7 +354,15 @@ To learn the basics about LaTeX, see @oetiker2023. To delve deeper into the LaTe
 :::
 ::::
 
+```{=latex}
+\vspace{-1\baselineskip}
+```
+
 #### R packages
+
+```{=latex}
+\vspace{-1\baselineskip}
+```
 
 ```{=latex}
 \index{R packages}
@@ -394,6 +380,10 @@ To learn the basics about LaTeX, see @oetiker2023. To delve deeper into the LaTe
 
 ```{=latex}
 \end{apendicesenv}
+```
 
+<!-- appendices end -->
+
+```{=latex}
 \begin{anexosenv}
 ```

@@ -150,14 +150,6 @@ swap_list <- list(
     end_tag = "%:::% list-of-symbols body end %:::%",
     value = NULL,
     quarto_render = TRUE
-  ),
-  list_of_terms = list(
-    from = here::here("qmd/list-of-terms.qmd"),
-    to = here::here("tex/include-before-body.tex"),
-    begin_tag = "%:::% list-of-terms body begin %:::%",
-    end_tag = "%:::% list-of-terms body end %:::%",
-    value = NULL,
-    quarto_render = TRUE
   )
 )
 

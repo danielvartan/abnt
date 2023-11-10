@@ -8,6 +8,11 @@
 # library(ggplot2, quietly = TRUE)
 # lybrary(yaml)
 
+# Load libraries
+
+library(dplyr, quietly = FALSE, verbose = FALSE)
+library(ggplot2, quietly = FALSE, verbose = FALSE)
+
 # Set variables -----
 
 set.seed(2023)
@@ -71,7 +76,7 @@ if (env_vars$format == "pdf") {
 if (env_vars$format == "html") {
   ggplot2::theme_set(
     ggplot2::theme_gray(
-      base_size = "",
+      base_size = base_size,
       base_family = env_vars$sansfont,
       base_line_size = base_size/22, # `ggplot2::theme_gray` default
       base_rect_size = base_size/22 # `ggplot2::theme_gray` default

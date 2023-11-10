@@ -37,3 +37,5 @@ cat(cli:::lorem_ipsum(1), sep = "\n\n")
 ```{=latex}
 \end{anexosenv}
 ```
+
+<!-- annexes end -->

@@ -40,6 +40,8 @@ cat(cli:::lorem_ipsum(2), sep = "\n\n")
 cat(cli:::lorem_ipsum(1), sep = "\n\n")
 ```
 
+<!-- textual end -->
+
 ```{=latex}
 \postextual
 
@@ -50,14 +52,11 @@ cat(cli:::lorem_ipsum(1), sep = "\n\n")
 \printbibliography[heading=bibheading]
 \endgroup
 
-\addtocontents{toc}{\protect\vspace{1em}}
-\cftinserthook{toc}{bibhook}
+\tocskipone
+\tocprintchapternonum
+\addcontentsline{toc}{chapter}{\newbibname}
+```
 
-\addcontentsline{toc}{chapter}{
-  \protect\numberline{}
-  \newbibname
-  \hspace{-0.25em}
-}
-
-\begin{apendicesenv}
+```{=latex}
+\begin{glossario}
 ```

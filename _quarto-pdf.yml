@@ -12,10 +12,15 @@ book:
     - index.qmd
     - qmd/development.qmd
     - qmd/conclusion.qmd
+    - qmd/glossary.qmd # The glossary goes with the chapters.
   appendices:
     - qmd/appendix-1.qmd
     - qmd/settings.qmd
     - qmd/annex-1.qmd
+
+filters:
+  - latex-environment
+commands: legend
 
 format:
   abnt-pdf:

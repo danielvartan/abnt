@@ -76,15 +76,18 @@ english
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
   \usepackage{unicode-math}
-\fi\newlength{\tinyskipamount}
+\fi\newlength{\microskipamount}
+\newlength{\tinyskipamount}
 \newlength{\hugeskipamount}
 
+\setlength{\microskipamount}{0.25\baselineskip} % Arial/12pt/1.5 == 5.4375pt
 \setlength{\tinyskipamount}{0.5\baselineskip} % Arial/12pt/1.5 == 10.875pt
 \setlength{\smallskipamount}{0.75\baselineskip} % Arial/12pt/1.5 == 16.3125pt
 \setlength{\medskipamount}{1\baselineskip} % Arial/12pt/1.5 == 21.75pt
 \setlength{\bigskipamount}{1.5\baselineskip} % Arial/12pt/1.5 == 32.625pt
 \setlength{\hugeskipamount}{2\baselineskip }% Arial/12pt/1.5 == 43.5pt
 
+\newcommand{\microskip}{\vspace{\microskipamount}}
 \newcommand{\tinyskip}{\vspace{\tinyskipamount}}
 \newcommand{\hugeskip}{\vspace{\hugeskipamount}}
 
@@ -129,25 +132,21 @@ english
 \fi
 
 
-% Set page numbering -----
-
-\makepagestyle{abntheadings}
-\makeevenhead{abntheadings}{\ABNTEXfontereduzida\thepage}{}{}
-\makeoddhead{abntheadings}{}{}{\ABNTEXfontereduzida\thepage}
-
 % Set footnote -----
 
 \setlength{\footnotemargin}{0.5em} % Equal to `\footmarkwidth`
 \let\svfootnoterule\footnoterule % Equal to `\footmarksep`
 \renewcommand\footnoterule{\svfootnoterule\vspace{1ex}}\newcommand{\capaname}{Capa}
+\newcommand{\fichacatalograficaname}{Ficha catalográfica}
 \newcommand{\resumoestrangeironame}{Resumo}
-\newcommand{\listadetermosname}{Lista de termos e definições}
+\newcommand{\glossarioname}{Glossário}
 
 \addto\captionsenglish{
   \renewcommand{\capaname}{Cover}
   \renewcommand{\folhaderostoname}{Title page}
-  \renewcommand{\folhadeaprovacaoname}{Approval sheet}
+  \renewcommand{\fichacatalograficaname}{Cataloging record}
   \renewcommand{\errataname}{Errata}
+  \renewcommand{\folhadeaprovacaoname}{Approval sheet}
   \renewcommand{\dedicatorianame}{Inscription}
   \renewcommand{\agradecimentosname}{Acknowledgements}
   \renewcommand{\epigraphname}{Epigraph}
@@ -157,9 +156,9 @@ english
   \renewcommand{\listtablename}{List of tables}
   \renewcommand{\listadesiglasname}{List of abbreviations and acronyms}
   \renewcommand{\listadesimbolosname}{List of symbols}
-  \renewcommand{\listadetermosname}{List of terms and definitions}
   \renewcommand{\contentsname}{Contents}
   \renewcommand{\bibname}{References}
+  \renewcommand{\glossarioname}{Glossary}
   \renewcommand{\apendicename}{APPENDIX}
   \renewcommand{\apendicesname}{Appendices}
   \renewcommand{\anexoname}{ANNEX}
@@ -178,9 +177,10 @@ english
 
 \addto\captionsbrazil{
   \renewcommand{\capaname}{Capa}
-  \renewcommand{\folhaderostoname}{Página de título}
-  \renewcommand{\folhadeaprovacaoname}{Folha de aprovação}
+  \renewcommand{\folhaderostoname}{Folha de rosto}
+  \renewcommand{\fichacatalograficaname}{Ficha catalográfica}
   \renewcommand{\errataname}{Errata}
+  \renewcommand{\folhadeaprovacaoname}{Folha de aprovação}
   \renewcommand{\dedicatorianame}{Dedicatória}
   \renewcommand{\agradecimentosname}{Agradecimentos}
   \renewcommand{\epigraphname}{Epígrafe}
@@ -190,9 +190,9 @@ english
   \renewcommand{\listtablename}{Lista de tabelas}
   \renewcommand{\listadesiglasname}{Lista de abreviaturas e siglas}
   \renewcommand{\listadesimbolosname}{Lista de símbolos}
-  \renewcommand{\listadetermosname}{Lista de termos e definições}
   \renewcommand{\contentsname}{Sumário}
   \renewcommand{\bibname}{Referências}
+  \renewcommand{\glossarioname}{Glossário}
   \renewcommand{\apendicename}{APÊNDICE}
   \renewcommand{\apendicesname}{Apêndices}
   \renewcommand{\anexoname}{ANEXO}
@@ -212,8 +212,9 @@ english
 \addto\captionsspanish{
   \renewcommand{\capaname}{Portada}
   \renewcommand{\folhaderostoname}{Página de título}
-  \renewcommand{\folhadeaprovacaoname}{Hoja de aprobación}
+  \renewcommand{\fichacatalograficaname}{Ficha catalográfica}
   \renewcommand{\errataname}{Errata}
+  \renewcommand{\folhadeaprovacaoname}{Hoja de aprobación}
   \renewcommand{\dedicatorianame}{Dedicatoria}
   \renewcommand{\agradecimentosname}{Agradecimientos}
   \renewcommand{\epigraphname}{Epígrafe}
@@ -223,9 +224,9 @@ english
   \renewcommand{\listtablename}{Lista de tablas}
   \renewcommand{\listadesiglasname}{Lista de abreviaturas y siglas}
   \renewcommand{\listadesimbolosname}{Lista de símbolos}
-  \renewcommand{\listadetermosname}{Lista de términos y definiciones}
   \renewcommand{\contentsname}{Sumario}
   \renewcommand{\bibname}{Referencias}
+  \renewcommand{\glossarioname}{Glosario}
   \renewcommand{\apendicename}{APÉNDICE}
   \renewcommand{\apendicesname}{Apéndices}
   \renewcommand{\anexoname}{ANEXO}
@@ -245,8 +246,9 @@ english
 \addto\captionsfrench{
   \renewcommand{\capaname}{Couverture}
   \renewcommand{\folhaderostoname}{Page de titre}
-  \renewcommand{\folhadeaprovacaoname}{Feuille d'approbation}
+  \renewcommand{\fichacatalograficaname}{Fiche cataloguée}
   \renewcommand{\errataname}{Errata}
+  \renewcommand{\folhadeaprovacaoname}{Feuille d'approbation}
   \renewcommand{\dedicatorianame}{Dédiace
   \renewcommand{\agradecimentosname}{Remerciements}}
   \renewcommand{\epigraphname}{Épigraphe}
@@ -256,9 +258,9 @@ english
   \renewcommand{\listtablename}{Liste des tableaux}
   \renewcommand{\listadesiglasname}{Liste des abréviations et sigles}
   \renewcommand{\listadesimbolosname}{Liste des symboles}
-  \renewcommand{\listadetermosname}{Liste des termes et définitions}
   \renewcommand{\contentsname}{Sommaire}
   \renewcommand{\bibname}{Références}
+  \renewcommand{\glossarioname}{Glossaire}
   \renewcommand{\apendicename}{APPENDICE}
   \renewcommand{\apendicesname}{Appendices}
   \renewcommand{\anexoname}{ANNEXE}
@@ -273,8 +275,19 @@ english
   \renewcommand{\subsectionautorefname}{sous-section}
   \renewcommand{\subsubsectionautorefname}{sous-sous-section}
   \renewcommand{\paragraphautorefname}{sous-sous-sous-section}
-}% Set text variables -----
+}% See `babel.tex` for changes related to language.
+% See `toc.text` for changes related to the ToC.
 
+% Set page numbering -----
+
+\makepagestyle{abntheadings}
+\makeevenhead{abntheadings}{\ABNTEXfontereduzida\thepage}{}{}
+\makeoddhead{abntheadings}{}{}{\ABNTEXfontereduzida\thepage}
+
+% Set text variables -----
+
+\renewcommand{\ABNTEXpartfont}{\normalfont\bfseries}
+\renewcommand{\ABNTEXpartfontsize}{\normalsize}
 \renewcommand{\ABNTEXchapterfont}{\normalfont\bfseries}
 \renewcommand{\ABNTEXchapterfontsize}{\normalsize}
 \renewcommand{\ABNTEXsectionfont}{\normalfont}
@@ -287,7 +300,7 @@ english
 \renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalsize\itshape}
 \renewcommand{\ABNTEXfontereduzida}{\footnotesize}
 
-\renewcommand{\chapnumfont}{\normalfont}
+\renewcommand{\chapnumfont}{\normalfont\normalsize}
 \renewcommand{\captiontitlefont}{\ABNTEXfontereduzida}
 
 \renewcommand{\ABNTEXcaptiondelim}{~\textendash~}
@@ -318,43 +331,108 @@ english
 \providecommand{\imprimirnotadeversao}{}
 \newcommand{\notadeversao}[1]{\renewcommand{\imprimirnotadeversao}{#1}}
 
-% Set chapter/section formating -----
+% Set `pretextultitle` macro -----
 
-\setsecnumformat{\normalfont\csname the#1\endcsname\quad}
-
-\renewcommand{\printchapternum}{
-  \tocprintchapter
-  \setboolean{abntex@innonumchapter}{false}
-  \chapnumfont
-  \thechapter \quad
-  \ifthenelse{\boolean{abntex@apendiceousecao}}{
-      \tocinnonumchapter
-      \ABNTEXcaptiondelim
-  }{}
-}
-
-% Similar to `\printloftitle`
 \renewcommand{\pretextualchapter}[1]{
-  \setlength{\afterchapskip}{\hugeskipamount}
   \addtocounter{abntex@bookmarkcounter}{1}
   \PRIVATEbookmarkthis{#1}
   \chapter*[#1]{#1}
 }
 
-\makechapterstyle{apendice}{
-  \setlength{\beforechapskip}{-\baselineskip}
-  \setlength{\midchapskip}{0\baselineskip}
-  \setlength{\afterchapskip}{\smallskipamount}
-  \renewcommand{\chapnamefont}{\normalfont}
-  \renewcommand{\printchaptername}{\ABNTEXchapterupperifneeded{\appendixname}}
-  \renewcommand{\chapternamenum}{\space}
-  \renewcommand{\chapnumfont}{\normalfont}
-  \renewcommand{\printchapternum}{\thechapter}
-  \renewcommand{\afterchapternum}{\space -- \space}
-  \renewcommand{\chaptitlefont}{\normalfont}
-  \renewcommand{\printchaptertitle}[1]{\ABNTEXchapterupperifneeded{##1}}
-  \renewcommand{\afterchaptertitle}{\vspace{\smallskipamount}}
+% Set chapter style -----
+
+\setsecnumformat{\chapnumfont\csname the#1\endcsname\quad}
+
+\makechapterstyle{quartoabnt}{
+  \renewcommand{\chapterheadstart}{\vspace{\beforechapskip}}
+
+  \ifthenelse{\equal{\ABNTEXisarticle}{true}}{
+    \setlength\beforechapskip{\baselineskip}
+    \renewcommand{\chaptitlefont}{\ABNTEXsectionfont\ABNTEXsectionfontsize}
+  }{
+    \setlength{\beforechapskip}{0\baselineskip}
+    \renewcommand{\chaptitlefont}{\ABNTEXchapterfont\ABNTEXchapterfontsize}
+  }
+
+  \renewcommand{\partnamefont}{\ABNTEXpartfont\ABNTEXpartfontsize}
+  \renewcommand{\partnumfont}{\ABNTEXpartfont\ABNTEXpartfontsize}
+  \renewcommand{\parttitlefont}{\ABNTEXpartfont\ABNTEXpartfontsize}
+
+  \renewcommand{\chapnamefont}{\normalfont\normalsize}
+  \renewcommand{\chapnumfont}{\normalfont\normalsize}
+  % \renewcommand{\chapnumfont}{\chaptitlefont}
+  \renewcommand{\chaptitlefont}{\ABNTEXchapterfont\ABNTEXchapterfontsize}
+
+  \setsecheadstyle{
+    \ABNTEXsectionfont\ABNTEXsectionfontsize\ABNTEXsectionupperifneeded
+  }
+
+  \setsubsecheadstyle{
+    \ABNTEXsubsectionfont\ABNTEXsubsectionfontsize
+    \ABNTEXsubsectionupperifneeded
+  }
+
+  \setsubsubsecheadstyle{
+    \ABNTEXsubsubsectionfont\ABNTEXsubsubsectionfontsize
+    \ABNTEXsubsubsectionupperifneeded
+  }
+
+  \setsubsubsubsecheadstyle{
+    \ABNTEXsubsubsubsectionfont\ABNTEXsubsubsubsectionfontsize
+    \ABNTEXsubsubsubsectionupperifneeded
+  }
+
+  \renewcommand{\printchaptername}{
+    \ifthenelse{\boolean{abntex@apendiceousecao}}{
+      \chapnamefont \ABNTEXchapterupperifneeded{\appendixname}
+    }{}
+  }
+
+  \renewcommand{\chapternamenum}{
+    \ifthenelse{\boolean{abntex@apendiceousecao}}{
+      \space
+    }{}
+  }
+
+  \renewcommand{\printchapternum}{
+    \tocprintchapter
+    \setboolean{abntex@innonumchapter}{false}
+    \chapnumfont
+    \ifthenelse{\boolean{abntex@apendiceousecao}}{
+      \thechapter
+    }{
+      \thechapter\space
+    }
+  }
+
+  \renewcommand{\afterchapternum}{
+    \ifthenelse{\boolean{abntex@apendiceousecao}}{
+      \normalfont \space\ABNTEXcaptiondelim\space
+    }{}
+  }
+
+  \renewcommand{\printchapternonum}{
+    \tocprintchapternonum
+    \setlength{\afterchapskip}{\hugeskipamount}
+    \setboolean{abntex@innonumchapter}{true}
+  }
+
+  \renewcommand{\printchaptertitle}[1]{
+    \chaptitlefont
+    \ifthenelse{\boolean{abntex@innonumchapter}}{
+      \centering \ABNTEXchapterupperifneeded{##1}
+    }{
+      \setlength{\afterchapskip}{\smallskipamount}
+      \ifthenelse{\boolean{abntex@apendiceousecao}}{
+        \normalfont\ABNTEXchapterupperifneeded{##1}
+      }{
+        \ABNTEXchapterupperifneeded{##1}
+      }
+    }
+  }
 }
+
+\chapterstyle{quartoabnt}
 
 % Set `\textual` -----
 
@@ -371,14 +449,15 @@ english
   \begin{adjustwidth}{-1cm}{0cm}
   \center
   \imprimirinstituicao
-  \vfill
 
+  \vfill
   \imprimirautor
+
   \vfill
-
   \textbf{\imprimirtitulo}
-  \vspace{10cm}
 
+  \vfill
+  \vspace{6.5cm}
   \imprimirlocal
 
   \imprimirdata
@@ -393,14 +472,14 @@ english
 \renewcommand{\folhaderostocontent}{
   \begin{center}
   \imprimirautor
-  \vfill
 
+  \vfill
   \bfseries\imprimirtitulo
-  \vfill
 
+  \vfill
   \bfseries\imprimirnotadeversao\normalfont
-  \vfill
 
+  \vfill
   \abntex@ifnotempty{
     \imprimirpreambulo
   }{
@@ -410,8 +489,8 @@ english
     \imprimirpreambulo
     \end{minipage}
   }
-  \vfill
 
+  \vfill
   \imprimirlocal
 
   \imprimirdata
@@ -423,17 +502,19 @@ english
 % Set cataloging record -----
 
 \renewenvironment{fichacatalografica}{
+  \PRIVATEbookmarkthis{\fichacatalograficaname}
   \setlength{\parindent}{0cm}
   \begin{SingleSpacing}
 }{
-  \end{SingleSpacing}%
+  \end{SingleSpacing}
 }
 
 % Set errata -----
 
 \renewenvironment{errata}[1][\errataname]{
+  \newpage
+  \phantomsection
   \pretextualchapter{#1}
-  % \setlength{\parindent}{0cm}
 }{
   \cleardoublepage
 }
@@ -454,12 +535,8 @@ english
 % Set abstract -----
 
 \newenvironment{resumoenv}[1][\resumoname]{
-  % \pretextualchapter{#1}
-  \setlength{\afterchapskip}{\hugeskipamount - \smallskipamount}
-  \addtocounter{abntex@bookmarkcounter}{1}
-  \PRIVATEbookmarkthis{#1}
-  \chapter*[#1]{#1}
-
+  \pretextualchapter{#1}
+  \begingroup
   \setlength{\parindent}{0cm}
   \setlength{\parskip}{\smallskipamount} % The troublemaker.
   \AtBeginEnvironment{tabular}{\normalsize}
@@ -468,10 +545,12 @@ english
   \setlength{\belowrulesep}{0ex}
   \setlength{\arrayrulewidth}{0pt}
   \setlength{\tabcolsep}{0cm}
+  \vspace{-\smallskipamount} % !
   \begin{SingleSpace}
 }{
   \end{SingleSpace}
   \cleardoublepage
+  \endgroup
 }
 
 % Set list of abbreviations and acronyms -----
@@ -489,21 +568,33 @@ english
 }{
   \cleardoublepage
 }
-% Set list of symbols -----
 
-\newenvironment{termos}{%
-  \pretextualchapter{\listadetermosname}
+% Set glossary -----
+
+\newenvironment{glossario}{
+  \tocprintchapternonum
 }{
   \cleardoublepage
 }
 
 % Set appendices and annexes -----
 
-\renewcommand{\PRIVATEapendiceconfig}[1]{
+\renewcommand{\PRIVATEapendiceconfig}[2]{
   \setboolean{abntex@apendiceousecao}{true}
   \renewcommand{\appendixname}{#1}
   \renewcommand{\apendicesname}{#1}
-  \switchchapname{#1}
+
+  \ifthenelse{\boolean{ABNTEXsumario-abnt-6027-2012}}{
+    \renewcommand{\appendixtocname}{\uppercase{#2}}
+  }{
+    \renewcommand{\appendixtocname}{#2}
+  }
+
+  \renewcommand{\appendixpagename}{#2}
+  \renewcommand{\appendixtocname}{#2}
+  % \switchchapname{#1} % [Altered]
+  \renewcommand{\cftappendixname}{} % [Altered]
+  \tocpartapendices % [Added]
 
   % Note:
   %
@@ -515,28 +606,14 @@ english
   % is automatically add by the Quarto render.
 }
 
-\newcommand{\PRIVATEannexconfig}[2]{
-  \setboolean{abntex@apendiceousecao}{true}
-  \renewcommand{\appendixname}{#1}
-  \renewcommand{\apendicesname}{#1}
-  \renewcommand{\appendixtocname}{#2}
-  \phantomsection
-  \addcontentsline{toc}{part}{\appendixtocname}
-  \switchchapname{#1}
-}
-
 \renewcommand{\apendices}{
-  \cftinserthook{toc}{appendixhook}
-  \PRIVATEapendiceconfig{\apendicename}
+  \PRIVATEapendiceconfig{\apendicename}{\apendicesname}
   \appendix
-  \chapterstyle{apendice}
 }
 
 \renewenvironment{apendicesenv}{
-  \cftinserthook{toc}{appendixhook}
-  \PRIVATEapendiceconfig{\apendicename}
+  \PRIVATEapendiceconfig{\apendicename}{\apendicesname}
   \begin{appendix}
-  \chapterstyle{apendice}
 }{
   \end{appendix}
   \setboolean{abntex@apendiceousecao}{false}
@@ -544,19 +621,26 @@ english
 }
 
 \renewcommand{\anexos}{
-  \cftinserthook{toc}{appendixhook}
-  \PRIVATEannexconfig{\anexoname}{\anexosname}
+  % \cftinserthook{toc}{AAA} [Removed]
+  \PRIVATEapendiceconfig{\anexoname}{\anexosname}
+
+  \newpage % [Added]
+  \phantomsection % [Added]
+  \addcontentsline{toc}{part}{\appendixtocname} % [Added]
+
   \appendix
   \renewcommand\theHchapter{anexochapback.\arabic{chapter}}
-  \chapterstyle{apendice}
 }
 
 \renewenvironment{anexosenv}{
-  \cftinserthook{toc}{appendixhook}
-  \PRIVATEannexconfig{\anexoname}{\anexosname}
+  \PRIVATEapendiceconfig{\anexoname}{\anexosname}
+
+  \newpage % [Added]
+  \phantomsection % [Added]
+  \addcontentsline{toc}{part}{\appendixtocname} % [Added]
+
   \begin{appendix}
   \renewcommand\theHchapter{anexochapback.\arabic{chapter}}
-  \chapterstyle{apendice}
 }{
   \end{appendix}
   \setboolean{abntex@apendiceousecao}{false}
@@ -597,33 +681,42 @@ english
 \setlength{\@fptop}{5pt} % Set distance from top of page to first float
 \makeatother
 
+% Set captions and legends -----
+
+\DeclareCaptionFont{ABNTEXfontereduzida}{\ABNTEXfontereduzida}
+
 \captionsetup{
-  font=footnotesize, % Must be `\ABNTEXfontereduzida` equivalent.
-  justification=centering,
-  skip=16.3125pt % Skip between caption and figure (`0.75\baselineskip`).
+  font=ABNTEXfontereduzida,
+  justification=centering
 }
+
+\renewcommand{\abovecaptionskip}{\tinyskipamount}
+\renewcommand{\belowcaptionskip}{\tinyskipamount}
+
+\renewcommand{\legend}[1]{
+  \ABNTEXfontereduzida
+  \addvspace{\tinyskipamount}
+  #1
+}
+
+% Set figure environment -----
 
 \AtBeginEnvironment{figure}{
   \ABNTEXfontereduzida
-  \addvspace{\smallskipamount}
-  \setlength{\parskip}{\smallskipamount}
+  \addvspace{\tinyskipamount}
 }
 
-% % Credits: <https://stackoverflow.com/a/1566053/8258804>.
-% \makeatletter
-% \let\oldfigure\figure
-% \def\figure{\@ifnextchar[\figure@i \figure@ii}
-% \def\figure@i[#1]{\oldfigure[#1]\centering}
-% \def\figure@ii{\oldfigure\centering}
-% \makeatother\renewcommand{\arraystretch}{1}
+\AtEndEnvironment{figure}{
+  \addvspace{\smallskipamount}
+}\renewcommand{\arraystretch}{1.5}
 \setlength{\aboverulesep}{0ex}
 \setlength{\belowrulesep}{0ex}
 
 % Correct order of tables after \paragraph or \subparagraph
-\usepackage{etoolbox}
-\makeatletter
-\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
-\makeatother
+% \usepackage{etoolbox}
+% \makeatletter
+% \patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+% \makeatother
 
 % Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
@@ -631,29 +724,21 @@ english
 
 % Set tabular environment -----
 
-% \providecommand{\addquartolegend}{}
-% \newcommand{\quartolegend}[1]{\renewcommand{\addquartolegend}{#1}}
-% \renewcommand{\quartolegend}{Don't forget to set \verb|\quartolegend|!}
-
 \AtBeginEnvironment{table}{\ABNTEXfontereduzida}
 \AtBeginEnvironment{tabular}{\ABNTEXfontereduzida}
 
-\AddToHook{env/longtable/before}{}
-\AddToHook{env/longtable/after}{}
-\AddToHook{env/longtable/begin}{
-  \ABNTEXfontereduzida
-  \renewcommand{\arraystretch}{1}
-}
-\AddToHook{env/longtable/end}{}
+\AtBeginEnvironment{longtable}{\ABNTEXfontereduzida \addvspace{\tinyskipamount}}
+\AtBeginEnvironment{longtable*}{\ABNTEXfontereduzida \addvspace{\tinyskipamount}}
 
-\AddToHook{env/longtable*/begin}{
-  \ABNTEXfontereduzida
-  \renewcommand{\arraystretch}{1}
-}
-\AddToHook{env/longtable*/end}{}
+\floatplacement{table}{H}
 
-\floatplacement{table}{H}\providecommand{\tightlist}{
-\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\makeatletter
+% Set theorem environment -----
+
+\AtEndEnvironment{theorem}{\vspace{\bigskipamount}}\providecommand{\tightlist}{
+\setlength{\itemsep}{0ex}\setlength{\parskip}{0\baselineskip}}
+
+% \setlist[enumerate]{leftmargin=1cm)}
+% \setlist[itemize]{leftmargin=2cm}\makeatletter
 \newcommand*{\getlength}[1]{\strip@pt#1}
 \makeatother\title{\{abnt\}: Quarto format for ABNT theses and
 dissertations}
@@ -715,92 +800,85 @@ citecolor={blue},
 urlcolor={blue},
 pdfcreator={LaTeX via pandoc},
 bookmarksdepth=5
-}% Set LoF -----
+}% Set sections skips (`\cftchapterpresnum`)
 
-\renewcommand{\printloftitle}[1]{
-  % Do not use `\pretextualchapter` here. It'll make a duplicated bookmark.
-  \setlength{\afterchapskip}{
-    \hugeskipamount - 18pt % It is what it is...
-  }
+\setlength{\cftbeforebookskip}{0\baselineskip}
+\setlength{\cftbeforepartskip}{\bigskipamount}
+\setlength{\cftbeforechapterskip}{\microskipamount}
+\setlength{\cftbeforesectionskip}{0\baselineskip}
+\setlength{\cftbeforesubsectionskip}{0\baselineskip}
+\setlength{\cftbeforesubsubsectionskip}{0\baselineskip}
+\setlength{\cftbeforeparagraphskip}{0\baselineskip}
 
-  \chapter*[#1]{#1}
-}
-
-% Set LoT -----
-
-\renewcommand{\printlottitle}[1]{
-  % Do not use `\pretextualchapter` here. It'll make a duplicated bookmark.
-  \setlength{\afterchapskip}{
-    \hugeskipamount - 18pt % It is what it is...
-  }
-
-  \chapter*[#1]{#1}
-}
-
-% Set ToC -----
-
-\renewcommand{\aftertoctitle}{
-  \center
-  \vspace{\hugeskipamount - 16pt} % It is what it is...
-}
-
-\setlength{\cftpartindent}{6em}
-\setlength{\cftsectionnumwidth}{6em}
-\setlength{\cftsubsectionnumwidth}{6em}
-\setlength{\cftsubsubsectionnumwidth}{6em}
-\setlength{\cftparagraphnumwidth}{6em}
-
-\setlength{\cftbeforebookskip}{0pt}
-\setlength{\cftbeforepartskip}{2em}
-\setlength{\cftbeforechapterskip}{0.5em}
-\setlength{\cftbeforesectionskip}{0pt}
-\setlength{\cftbeforesubsectionskip}{0pt}
-\setlength{\cftbeforesubsubsectionskip}{0pt}
-\setlength{\cftbeforeparagraphskip}{0pt}
+% Set section numbers fonts (`\cftchapterpresnum`)
 
 \renewcommand{\cftchapterpresnum}{\normalfont}
-\renewcommand{\cftchapteraftersnum}{\normalfont}
-\renewcommand{\cftchapteraftersnumb}{\normalfont\normalsize\bfseries\hspace{0.87em}}
+\renewcommand{\cftsectionpresnum}{\normalfont}
 \renewcommand{\cftsubsectionpresnum}{\normalfont}
+\renewcommand{\cftsubsubsectionpresnum}{\normalfont}
 \renewcommand{\cftparagraphpresnum}{\normalfont}
 
-\renewcommand{\cftpartfont}{\normalfont\normalsize\bfseries\MakeUppercase}
-\renewcommand{\cftchapterfont}{\normalfont\normalsize\bfseries\MakeUppercase}
-\renewcommand{\cftsectionfont}{\normalfont\normalsize\MakeUppercase}
-\renewcommand{\cftsubsectionfont}{\normalfont\normalsize\bfseries}
-\renewcommand{\cftsubsubsectionfont}{\normalfont\normalsize}
-\renewcommand{\cftparagraphfont}{\normalfont\normalsize\itshape}
+% Set section names fonts (`\cftpartfont`)
 
-\renewcommand{\cftpartpagefont}{\normalfont\normalsize}
-\renewcommand{\cftchapterpagefont}{\normalfont\normalsize}
-\renewcommand{\cftsectionpagefont}{\normalfont\normalsize}
-\renewcommand{\cftsubsectionpagefont}{\normalfont\normalsize}
-\renewcommand{\cftsubsubsectionpagefont}{\normalfont\normalsize}
-\renewcommand{\cftparagraphpagefont}{\normalfont\normalsize}
-\renewcommand{\cftfigurepagefont}{\normalfont\normalsize}
-\renewcommand{\cfttablepagefont}{\normalfont\normalsize}
-
-\cftinsertcode{bibhook}{
-  \setlength{\cftchapterindent}{5.675em}
-  \setlength{\cftchapternumwidth}{0em}
-  \renewcommand{\cftchapteraftersnumb}{\hspace{0em}}
-  \renewcommand{\cftchapterpresnum}{\normalfont\bfseries}
+\renewcommand{\cftpartfont}[1]{
+  \ABNTEXchapterupperifneeded{\normalfont\bfseries #1}
 }
 
-\cftinsertcode{appendixhook}{
-    \setlength{\cftchapterindent}{6em}
-    \renewcommand{\cftchaptername}{\appendixname\space}
-    \setlength{\cftchapternumwidth}{2.3em} % check
-    \renewcommand{\cftchapteraftersnumb}{
-        \hspace{-1.5em} -- \space % check \hspace{-1.5em}
-    }
+\renewcommand{\cftchapterfont}[1]{
+  \ABNTEXchapterupperifneeded{\normalfont\bfseries #1}
 }
 
-\cftinsertcode{indexhook}{
-  \setlength{\cftchapterindent}{6em}
-  \setlength{\cftchapternumwidth}{0em}
-  \renewcommand{\cftchapteraftersnumb}{\hspace{0em}}
-  \renewcommand{\cftchapterpresnum}{\normalfont\bfseries}
+\renewcommand{\cftsectionfont}[1]{
+  \ABNTEXsectionupperifneeded{\normalfont #1}
+}
+
+\renewcommand{\cftsubsectionfont}[1]{
+  \ABNTEXsubsectionupperifneeded{\normalfont\bfseries #1}
+}
+
+\renewcommand{\cftsubsubsectionfont}[1]{
+  \ABNTEXsubsubsectionupperifneeded{\normalfont #1}
+}
+
+\renewcommand{\cftparagraphfont}[1]{
+  \ABNTEXsubsubsubsectionupperifneeded{\normalfont\itshape #1}
+}
+
+% Set section page numbers fonts (`\cftpartpagefont`)
+
+\renewcommand{\cftpartpagefont}{\normalfont}
+\renewcommand{\cftchapterpagefont}{\normalfont}
+\renewcommand{\cftsectionpagefont}{\normalfont}
+\renewcommand{\cftsubsectionpagefont}{\normalfont}
+\renewcommand{\cftsubsubsectionpagefont}{\normalfont}
+\renewcommand{\cftparagraphpagefont}{\normalfont}
+\renewcommand{\cftfigurepagefont}{\normalfont}
+\renewcommand{\cfttablepagefont}{\normalfont}
+
+% Renew abntex2 ToC commands -----
+
+\cftinsertcode{A}{} % [Changed]
+
+% This is not right. Create an issue about it.
+\renewcommand{\tocprintchapternonum}{
+  \addtocontents{toc}{\setlength{\cftchapterindent}{5.65em}}
+  \addtocontents{toc}{\setlength{\cftchapternumwidth}{0em}}
+}
+
+\renewcommand{\tocpartapendices}{
+  \addtocontents{toc}{\setlength{\cftpartindent}{5.65em}}
+  \addtocontents{toc}{\setlength{\cftpartnumwidth}{0em}}
+}
+
+% Set ToC skip
+
+\newcommand{\tocskipone}{
+  \addtocontents{toc}{\protect\vspace{\smallskipamount}}
+}
+
+% \setlength{\cftbeforepartskip}{\bigskipamount}
+\newcommand{\tocskiptwo}{
+  % \addtocontents{toc}{\protect\vspace{\tinyskipamount}}
 }\usepackage[
 style=abnt,backend=biber,,language=english,,url=true,,useprefix=false,,giveninits=true,,extrayear=true
 ]{biblatex}
@@ -835,10 +913,7 @@ Technical Standards (ABNT NBR 6023).}
   }
 }
 
-\AtBeginBibliography{
-  \vspace{\hugeskipamount - 2.9pt} % It is what it is...
-}
-
+\AtBeginBibliography{\vspace{0.5\baselineskip}}
 \AtEveryBibitem{\clearfield{annotation}}
 \renewcommand{\bibfont}{\ABNTEXfontereduzida}\usepackage{makeidx}
 \makeindex
@@ -933,17 +1008,17 @@ Technical Standards (ABNT NBR 6023).}
 \preambulo{
 %:::% title-page body begin %:::%
 {\imprimirtipotrabalho} presented to the {\imprimirescola} at {\imprimiruniversidade}, as part of the requirements for the degree of {\imprimirtituloacademico} by the {\imprimirprograma}.
-\tinyskip
 
+\smallskip
 Area of concentration: {\imprimirareadeconcentracao}.
-\tinyskip
 
+\smallskip
 Revised version incorporating the changes requested by the examining committee on [Date]. The original version is held in the reserved collection at the {\imprimirescola} Library and in the Digital Library of Theses and Dissertations of the {\imprimiruniversidade}.
-\tinyskip
 
+\smallskip
 Supervisor: Prof. Dr. {\imprimirorientador}
-\vspace{0.25\baselineskip}
 
+\vspace{\tinyskipamount}
 Co-Supervisor: Prof. Dr. {\imprimircoorientador}
 %:::% title-page body end %:::%
 }
@@ -1025,7 +1100,7 @@ Co-Supervisor: Prof. Dr. {\imprimircoorientador}
 \@ifundefined{codebgcolor}{\definecolor{codebgcolor}{HTML}{F1F3F5}}{}
 \makeatother
 \makeatletter
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, borderline west={3pt}{0pt}{shadecolor}, breakable, colback={codebgcolor}, enhanced, boxrule=0pt, sharp corners]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, sharp corners, borderline west={3pt}{0pt}{shadecolor}, colback={codebgcolor}, enhanced, breakable, boxrule=0pt]}{\end{tcolorbox}}\fi
 \makeatother
 
 % -----
@@ -1069,33 +1144,33 @@ Co-Supervisor: Prof. Dr. {\imprimircoorientador}
 %:::% cataloging-record body begin %:::%
 I authorize the full or partial reproduction of this work by any conventional or electronic means for the purposes of study and research, provided that the source is cited.
 \ABNTEXfontereduzida
-\vfill
 
+\vfill
 \begin{center}
 Cataloging in publication
 
 Library
 
 [Library name]
-\medskip
 
+\medskip
 \setlength{\fboxsep}{1cm}
 \fbox{\begin{minipage}[c][7.5cm]{12.5cm}
 [Author's surname], [Author's forename(s)]
-\smallskip
 
+\smallskip
 \hspace{0.5cm} {\imprimirtitulo}  / {\imprimirautor}; supervisor, {\imprimirorientador}; co-supervisor {\imprimircoorientador}. {\imprimirlocal}, {\imprimirdata}
-\smallskip
 
+\smallskip
 {\thelastpage}p. : il
-\smallskip
 
+\smallskip
 \hspace{0.5cm} {\imprimirtipotrabalho} (\imprimirtituloacademico) -- {\imprimirprograma}, {\imprimirescola}, {\imprimiruniversidade}, {\imprimirdata}.
-\smallskip
 
+\smallskip
 \hspace{0.5cm} {\imprimirnotadeversao}
-\smallskip
 
+\smallskip
 \hspace{0.5cm} 1. [Subject A]. 2. [Subject B]. 3. [Subject C]. I. [Supervisor's surname], [Supervisor's forename(s)], super. II. [Co-supervisor's surname], [Co-supervisor's forename(s)] co-super. III. Title.
 \end{minipage}}
 \end{center}
@@ -1130,50 +1205,57 @@ Any necessary corrections will be listed here after its approval.
 \begin{folhadeaprovacao}[\folhadeaprovacaoname]
 %:::% approval-sheet body begin %:::%
 {\imprimirtipotrabalho} by {\imprimirautor}, under the title \textbf{\imprimirtitulo}, presented to the {\imprimirescola} at the {\imprimiruniversidade}, as part of the requirements for the degree of {\imprimirtituloacademico} by the {\imprimirprograma}, in the concentration area of {\imprimirareadeconcentracao}.
-\vspace{1.5cm}
 
+\vspace{\hugeskipamount}
 Approved on \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ , \_\_\_\_\_\_\_\_\_\_ .
-\vspace{1.5cm}
 
+\vspace{\hugeskipamount}
 \begin{center}
   Examination committee
 \end{center}
-\vspace{0.5cm}
 
+\vspace{\smallskipamount}
 Committee chair:
-\vspace{0.25cm}
 
-\renewcommand{\arraystretch}{2}
+\vspace{\tinyskipamount}
+\begingroup
+
+\AtBeginEnvironment{tabular}{
+  \normalsize
+  \renewcommand{\arraystretch}{2}
+}
+
 \setlength{\arrayrulewidth}{0pt}
 \setlength{\tabcolsep}{0cm}
 \begin{tabular}{m{2cm} P{14cm}}
   Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
   Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
 \end{tabular}
-\vspace{1cm}
 
+\vspace{\bigskipamount}
 Examiners:
-\vspace{0.25cm}
 
+\vspace{\tinyskipamount}
 \begin{tabular}{m{2cm} P{14cm}}
   Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
   Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
   Evaluation & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
 \end{tabular}
-\vspace{0.5cm}
 
+\vspace{\smallskipamount}
 \begin{tabular}{m{2cm} P{14cm}}
   Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
   Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
   Evaluation & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
 \end{tabular}
-\vspace{0.5cm}
 
+\vspace{\smallskipamount}
 \begin{tabular}{m{2cm} P{14cm}}
   Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
   Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
   Evaluation & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
 \end{tabular}
+\endgroup
 %:::% approval-sheet body end %:::%
 \end{folhadeaprovacao}
 %:::% approval-sheet end %:::%
@@ -1183,9 +1265,9 @@ Examiners:
 % -----
 
 %:::% inscription begin %:::%
-\begin{dedicatoria}[]
-  \vspace*{\fill}
-  \centering
+\begin{dedicatoria}[] % \dedicatorianame | Keep #1 empty.
+\vspace*{\fill} % Don't change it.
+\centering
 %:::% inscription body begin %:::%
 \textit{To the worm that first gnawed on the cold flesh of my corpse,}
 
@@ -1193,7 +1275,9 @@ Examiners:
 
 \footnotetext{ASSIS, M. \textbf{Memórias póstumas de Brás Cubas} [The Posthumous Memoirs of Brás Cubas]. São Paulo: Companhia das Letras, 2014. ISBN 978-85-438-0163-6.}
 %:::% inscription body end %:::%
-	\vspace*{\fill}
+\vspace*{\fill} % Don't change it.
+\vspace{4.5cm}
+% \vspace{13cm}
 \end{dedicatoria}
 %:::% inscription end %:::%
 
@@ -1217,16 +1301,16 @@ I would like to acknowledge this awesome
 % -----
 
 %:::% epigraph begin %:::%
-\begin{epigrafe}[]
-  \vspace*{\fill}
-	\begin{flushright}
-	  %:::% epigraph body begin %:::%
+\begin{epigrafe}[] % \epigraphname | Keep #1 empty.
+\vspace*{\fill} % Don't change it.
+\begin{flushright}
+%:::% epigraph body begin %:::%
 \textit{Nullius in verba}\footnotemark{}
 
 \footnotetext{THE ROYAL SOCIETY. \textbf{History of the Royal Society}. Available from:
 <\href{https://royalsociety.org/about-us/history/}{https://royalsociety.org/about-us/history/}>. Visited on: 9 Sept. 2023.}
-		%:::% epigraph body end %:::%
-	\end{flushright}
+%:::% epigraph body end %:::%
+\end{flushright}
 \end{epigrafe}
 %:::% epigraph end %:::%
 
@@ -1408,68 +1492,6 @@ Phase relation
 %:::% list-of-symbols end %:::%
 
 % -----
-% List of terms and definitions (optional)
-% -----
-
-%:::% list-of-terms begin %:::%
-\begin{termos}
-%:::% list-of-terms body begin %:::%
-
-For an extensive list of chronobiology related terms and definitions,
-please refer to \textcite{aschoff1965} and \textcite{marques2012}.
-
-\begin{description}
-\item[Chronotype]
-\hspace{20cm}
-
-Any kind of temporal phenotype \autocite{ehret1974,pittendrigh1993}.
-Usually, it refers to circadian phenotypes in a spectrum that goes from
-morningness to eveningness \autocite{roenneberg2003}. It can also be
-seen as an organism's phase of entrainment \autocite{roenneberg2012a}.
-\item[Circadian rhythm]
-\hspace{20cm}
-
-A rhythm with a period close to a day/24h, an approximation to the
-period of the earth's rotation \autocite{pittendrigh1960}. From the
-Latin \emph{circā}, around, and \emph{dĭes}, day \autocite{latinitium}.
-Example: the sleep-wake cycle.
-\item[Complex system]
-\hspace{20cm}
-
-There are several definitions. Here are some that I found to be of use:
-\end{description}
-
-\begin{itemize}
-\tightlist
-\item
-  ``Systems that don't yield to compact forms of representation or
-  description'' (David Krakauer apud \textcite{mitchell2013})
-\item
-  ``A system of many interacting parts where the system is more than
-  just the sum of its parts'' (Mark Newman apud \textcite{mitchell2013})
-\item
-  Systems with many connected agents that interact and exhibit
-  self-organization and emergence behavior, all without the need for a
-  central controller (adapted from Camilo Rodrigues Neto's definition,
-  supervisor of this thesis).
-\item
-  Dialectics at its finest (my working definition).
-\end{itemize}
-
-\begin{description}
-\item[Entrainment]
-\hspace{20cm}
-
-A shift and alignment of biological rhythms induced by a zeitgeber input
-\autocite{kuhlman2018}. For example: a shift/alignment of an organism's
-circadian rhythm when exposed to light.
-\end{description}
-
-%:::% list-of-terms body end %:::%
-\end{termos}
-%:::% list-of-terms end %:::%
-
-% -----
 % Table of contents (mandatory)
 % -----
 
@@ -1486,7 +1508,7 @@ circadian rhythm when exposed to light.
 
 \chapter{{[}Showcase{]} Introduction}\label{sec-introduction}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomtitle=1mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, colframe=quarto-callout-note-color-frame, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, colback=white, toptitle=1mm, titlerule=0mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, left=2mm, rightrule=.15mm, bottomrule=.15mm, leftrule=.75mm, colframe=quarto-callout-note-color-frame, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, opacityback=0, toptitle=1mm, breakable, opacitybacktitle=0.6, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, titlerule=0mm, arc=.35mm, colback=white]
 
 The text below is for demonstrative purposes only.
 
@@ -1548,8 +1570,8 @@ One of the 20th century's most influential philosophers of science.}
 
 \includegraphics[width=0.5\textwidth,height=\textheight]{images/karl-popper.png}
 
-Source:
-\href{https://www.npg.org.uk/collections/search/portrait/mw08238/Sir-Karl-Raimund-Popper?}{Steve Pyke}.\}
+\legend{Source:
+\href{https://www.npg.org.uk/collections/search/portrait/mw08238/Sir-Karl-Raimund-Popper?}{Steve Pyke}.}
 
 }
 
@@ -1563,9 +1585,6 @@ See Table~\ref{tbl-iris}.
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\CommentTok{\# library(datasets)}
-\CommentTok{\# library(dplyr)}
-
 \NormalTok{datasets}\SpecialCharTok{::}\NormalTok{iris }\SpecialCharTok{|\textgreater{}}
 \NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{as\_tibble}\NormalTok{() }\SpecialCharTok{|\textgreater{}}
 \NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{slice\_sample}\NormalTok{(}\AttributeTok{n =} \DecValTok{5}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
@@ -1592,7 +1611,7 @@ Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species \\
 \bottomrule
 \end{longtable*}
 
-Source: Based on \textcite{fisher1936}.
+\legend{Source: Based on \textcite{fisher1936}.}
 
 }
 
@@ -1600,16 +1619,14 @@ Source: Based on \textcite{fisher1936}.
 
 \subsection{Tertiary section}\label{tertiary-section}
 
-See Figure~\ref{fig-eruption}.
-
 \index{figures!chart}
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\CommentTok{\# library(datasets)}
-\CommentTok{\# library(ggplot2)}
-
-\NormalTok{ggplot2}\SpecialCharTok{::}\FunctionTok{ggplot}\NormalTok{(faithful, ggplot2}\SpecialCharTok{::}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ eruptions, }\AttributeTok{y =}\NormalTok{ waiting)) }\SpecialCharTok{+}
+\NormalTok{ggplot2}\SpecialCharTok{::}\FunctionTok{ggplot}\NormalTok{(}
+  \AttributeTok{data =}\NormalTok{ datasets}\SpecialCharTok{::}\NormalTok{faithful, }
+  \AttributeTok{mapping =}\NormalTok{ ggplot2}\SpecialCharTok{::}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ eruptions, }\AttributeTok{y =}\NormalTok{ waiting)}
+\NormalTok{  ) }\SpecialCharTok{+}
 \NormalTok{  ggplot2}\SpecialCharTok{::}\FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
 \NormalTok{  ggplot2}\SpecialCharTok{::}\FunctionTok{xlim}\NormalTok{(}\FloatTok{0.5}\NormalTok{, }\DecValTok{6}\NormalTok{) }\SpecialCharTok{+}
 \NormalTok{  ggplot2}\SpecialCharTok{::}\FunctionTok{ylim}\NormalTok{(}\DecValTok{40}\NormalTok{, }\DecValTok{110}\NormalTok{) }\SpecialCharTok{+}
@@ -1627,17 +1644,11 @@ Faithful Geyser, Yellowstone National Park, Wyoming, USA}
 
 \centering{
 
-\subcaption{\label{fig-eruption}}
+\includegraphics{index_files/figure-pdf/unnamed-chunk-5-1.png}
 
-\centering{
-
-\captionsetup{labelsep=none}\includegraphics{index_files/figure-pdf/fig-eruption-1.png}
-
-}
-
-Source: Retrieved from the
+\legend{Source: Retrieved from the
 \href{https://ggplot2.tidyverse.org/reference/geom_density_2d.html}{\texttt{ggplot2}
-R package documentation} \autocite{wickham2016a}.
+R package documentation} \autocite{wickham2016a}.}
 
 }
 
@@ -1680,51 +1691,43 @@ R package documentation} \autocite{wickham2016a}.
 
 \section{Another secondary section}\label{another-secondary-section}
 
-See Figure~\ref{fig-diamonds}.
+See Figure~\ref{fig-mpg}.
 
 \index{figures!chart}
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\CommentTok{\# library(datasets)}
-\CommentTok{\# library(ggExtra)}
-\CommentTok{\# library(ggplot2)}
-
 \NormalTok{p }\OtherTok{\textless{}{-}}\NormalTok{ ggplot2}\SpecialCharTok{::}\FunctionTok{ggplot}\NormalTok{(}
-\NormalTok{  datasets}\SpecialCharTok{::}\NormalTok{mtcars, ggplot2}\SpecialCharTok{::}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{wt, }\AttributeTok{y=}\NormalTok{mpg, }\AttributeTok{color=}\NormalTok{cyl, }\AttributeTok{size=}\NormalTok{cyl)}
+  \AttributeTok{data =}\NormalTok{ datasets}\SpecialCharTok{::}\NormalTok{mtcars, }
+  \AttributeTok{mapping =}\NormalTok{ ggplot2}\SpecialCharTok{::}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{wt, }\AttributeTok{y=}\NormalTok{mpg, }\AttributeTok{color=}\NormalTok{cyl, }\AttributeTok{size=}\NormalTok{cyl)}
 \NormalTok{  ) }\SpecialCharTok{+}
 \NormalTok{  ggplot2}\SpecialCharTok{::}\FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
 \NormalTok{  ggplot2}\SpecialCharTok{::}\FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position=}\StringTok{"none"}\NormalTok{)}
 
 \NormalTok{ggExtra}\SpecialCharTok{::}\FunctionTok{ggMarginal}\NormalTok{(}
-\NormalTok{  p, }\AttributeTok{type=}\StringTok{"histogram"}\NormalTok{, }
+  \AttributeTok{p =}\NormalTok{ p, }
+  \AttributeTok{type =} \StringTok{"histogram"}\NormalTok{, }
   \AttributeTok{fill =} \StringTok{"slateblue"}\NormalTok{, }
   \AttributeTok{xparams =} \FunctionTok{list}\NormalTok{(}\AttributeTok{bins=}\DecValTok{10}\NormalTok{)}
-\NormalTok{  )}
+\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{figure}[H]
 
-\caption{\label{fig-diamonds}Relation between \emph{weight (1000lbs)}
+\caption{\label{fig-mpg}Relation between \emph{weight (1000lbs)}
 (\(\text{wt}\)) and \emph{miles per galon} (\(\text{mpg}\)) for
 combustion engine vehicles}
 
 \centering{
 
-\subcaption{\label{fig-diamonds}}
+\includegraphics{index_files/figure-pdf/unnamed-chunk-6-1.png}
 
-\centering{
-
-\captionsetup{labelsep=none}\includegraphics{index_files/figure-pdf/fig-diamonds-1.png}
-
-}
-
-Source: Data extracted from the 1974 Motor Trend magazine and published
-by \textcite{henderson1981}. Visualization by \textcite{holtz},
-available at
+\legend{Source: Data extracted from the 1974 Motor Trend magazine and
+published by \textcite{henderson1981}. Visualization by
+\textcite{holtz}, available at
 \href{https://r-graph-gallery.com/277-marginal-histogram-for-ggplot2.html}{The
-R Graph Gallery}.
+R Graph Gallery}.}
 
 }
 
@@ -1734,7 +1737,7 @@ R Graph Gallery}.
 
 \chapter{{[}Showcase{]} Development}\label{sec-development}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, left=2mm, colbacktitle=quarto-callout-warning-color!10!white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Warning}, bottomtitle=1mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, colframe=quarto-callout-warning-color-frame, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, colback=white, toptitle=1mm, titlerule=0mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, left=2mm, rightrule=.15mm, bottomrule=.15mm, leftrule=.75mm, colframe=quarto-callout-warning-color-frame, colbacktitle=quarto-callout-warning-color!10!white, toprule=.15mm, opacityback=0, toptitle=1mm, breakable, opacitybacktitle=0.6, bottomtitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Warning}, titlerule=0mm, arc=.35mm, colback=white]
 
 The text below is for demonstrative purposes only.
 
@@ -1780,7 +1783,7 @@ Lorem officia aute.
 
 \chapter{{[}Showcase{]} Conclusion}\label{sec-conclusion}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, left=2mm, colbacktitle=quarto-callout-important-color!10!white, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, bottomtitle=1mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, colframe=quarto-callout-important-color-frame, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, colback=white, toptitle=1mm, titlerule=0mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, left=2mm, rightrule=.15mm, bottomrule=.15mm, leftrule=.75mm, colframe=quarto-callout-important-color-frame, colbacktitle=quarto-callout-important-color!10!white, toprule=.15mm, opacityback=0, toptitle=1mm, breakable, opacitybacktitle=0.6, bottomtitle=1mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, titlerule=0mm, arc=.35mm, colback=white]
 
 The text below is for demonstrative purposes only.
 
@@ -1831,14 +1834,70 @@ Lorem officia aute.
 \printbibliography[heading=bibheading]
 \endgroup
 
-\addtocontents{toc}{\protect\vspace{1em}}
-\cftinserthook{toc}{bibhook}
+\tocskipone
+\tocprintchapternonum
+\addcontentsline{toc}{chapter}{\newbibname}
 
-\addcontentsline{toc}{chapter}{
-  \protect\numberline{}
-  \newbibname
-  \hspace{-0.25em}
-}
+\begin{glossario}
+
+\bookmarksetup{startatroot}
+
+\chapter*{Glossary}\label{glossary}
+\addcontentsline{toc}{chapter}{Glossary}
+
+\markboth{Glossary}{Glossary}
+
+For an extensive list of chronobiology related terms and definitions,
+please refer to \textcite{aschoff1965} and \textcite{marques2012}.
+
+\begin{description}
+\item[Chronotype]
+\hspace{20cm}
+
+Any kind of temporal phenotype \autocite{ehret1974,pittendrigh1993}.
+Usually, it refers to circadian phenotypes in a spectrum that goes from
+morningness to eveningness \autocite{roenneberg2003}. It can also be
+seen as an organism's phase of entrainment \autocite{roenneberg2012a}.
+\item[Circadian rhythm]
+\hspace{20cm}
+
+A rhythm with a period close to a day/24h, an approximation to the
+period of the earth's rotation \autocite{pittendrigh1960}. From the
+Latin \emph{circā}, around, and \emph{dĭes}, day \autocite{latinitium}.
+Example: the sleep-wake cycle.
+\item[Complex system]
+\hspace{20cm}
+
+There are several definitions. Here are some that I found to be of use:
+\end{description}
+
+\begin{itemize}
+\tightlist
+\item
+  ``Systems that don't yield to compact forms of representation or
+  description'' (David Krakauer apud \textcite{mitchell2013})
+\item
+  ``A system of many interacting parts where the system is more than
+  just the sum of its parts'' (Mark Newman apud \textcite{mitchell2013})
+\item
+  Systems with many connected agents that interact and exhibit
+  self-organization and emergence behavior, all without the need for a
+  central controller (adapted from Camilo Rodrigues Neto's definition,
+  supervisor of this thesis).
+\item
+  Dialectics at its finest (my working definition).
+\end{itemize}
+
+\begin{description}
+\item[Entrainment]
+\hspace{20cm}
+
+A shift and alignment of biological rhythms induced by a zeitgeber input
+\autocite{kuhlman2018}. For example: a shift/alignment of an organism's
+circadian rhythm when exposed to light.
+\end{description}
+
+\end{glossario}
 
 \begin{apendicesenv}
 
@@ -1849,7 +1908,7 @@ Lorem officia aute.
 
 \chapter{{[}Showcase{]}}\label{sec-appendix-a}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, left=2mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, bottomtitle=1mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, colframe=quarto-callout-tip-color-frame, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, colback=white, toptitle=1mm, titlerule=0mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, left=2mm, rightrule=.15mm, bottomrule=.15mm, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, colbacktitle=quarto-callout-tip-color!10!white, toprule=.15mm, opacityback=0, toptitle=1mm, breakable, opacitybacktitle=0.6, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, titlerule=0mm, arc=.35mm, colback=white]
 
 The text below is for demonstrative purposes only.
 
@@ -1893,7 +1952,7 @@ Lorem officia aute.
 
 \chapter{Settings}\label{sec-settings}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, left=2mm, colbacktitle=quarto-callout-important-color!10!white, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, bottomtitle=1mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, colframe=quarto-callout-important-color-frame, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, colback=white, toptitle=1mm, titlerule=0mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, left=2mm, rightrule=.15mm, bottomrule=.15mm, leftrule=.75mm, colframe=quarto-callout-important-color-frame, colbacktitle=quarto-callout-important-color!10!white, toprule=.15mm, opacityback=0, toptitle=1mm, breakable, opacitybacktitle=0.6, bottomtitle=1mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, titlerule=0mm, arc=.35mm, colback=white]
 
 You are reading the work-in-progress of this manual.
 
@@ -2010,56 +2069,47 @@ For pre-textual sections (e.g., list of symbols, abstract), remove them
 from \texttt{tex/include-before-body.tex} and from
 \texttt{R/quarto-pre-render.R}.
 
-For textual sections (e.g., chapters), remove them from the
+For textual sections (e.g., chapters), remove them from
 \texttt{.quarto-{[}format{]}.yml} file.
 
-For post-textual sections (e.g., appendices, annexes), if it's a
-appendix, remove it from \texttt{.quarto-{[}format{]}.yml}; else, remove
-them from \texttt{tex/include-after-body.tex}.
+For post-textual sections (e.g., appendices, annexes):
 
-It's important to note that, at this moment, the last chapter must have
-a LaTeX code chunk at the end of it. The same is true for the last
-appendix chapter. They should look like this:
+\begin{itemize}
+\tightlist
+\item
+  If it's the Glossary, remove it from \texttt{.quarto-{[}format{]}.yml}
+  and copy the the LaTeX code after
+  \texttt{\textless{}!-\/-\ glossary\ end\ -\/-\textgreater{}} in
+  \texttt{glossary.qmd} to the bottom of the last chapter;
+\item
+  If it's not the last appendix chapter, simply remove it from
+  \texttt{.quarto-{[}format{]}.yml}; else remove it from
+  \texttt{.quarto-{[}format{]}.yml}, remove
+  \texttt{\textbackslash{}begin\{apendicesenv\}} from the bottom of
+  \texttt{glossary.qmd} and add the code the code after
+  \texttt{\textless{}!-\/-\ appendices\ end\ -\/-\textgreater{}} of the
+  appendice file to the bottom of \texttt{glossary.qmd};
+\item
+  {[}Annexes{]};
+\item
+  {[}Index{]}.
+\end{itemize}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, left=2mm, colbacktitle=quarto-callout-warning-color!10!white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Warning}, bottomtitle=1mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, colframe=quarto-callout-warning-color-frame, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, colback=white, toptitle=1mm, titlerule=0mm, rightrule=.15mm]
+It's important to note that, at this moment, the transition between
+sections of the document are made inserting LaTeX code at the end of
+specific sections. These are:
 
-Remove the \texttt{\textbackslash{}} from the beginning and end of the
-code below when applying it.
-
-\end{tcolorbox}
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\FunctionTok{\textbackslash{}\textasciigrave{}}\NormalTok{\textasciigrave{}\textasciigrave{}\{=latex\}}
-\FunctionTok{\textbackslash{}postextual}
-
-\FunctionTok{\textbackslash{}begingroup}
-\FunctionTok{\textbackslash{}renewcommand}\NormalTok{\{}\ExtensionTok{\textbackslash{}baselinestretch}\NormalTok{\}\{1\}}
-\FunctionTok{\textbackslash{}setcounter}\NormalTok{\{footnote\}\{0\}}
-\FunctionTok{\textbackslash{}renewcommand}\NormalTok{\{}\ExtensionTok{\textbackslash{}thefootnote}\NormalTok{\}\{}\FunctionTok{\textbackslash{}fnsymbol}\NormalTok{\{footnote\}\}}
-\FunctionTok{\textbackslash{}printbibliography}\NormalTok{[heading=bibheading]}
-\FunctionTok{\textbackslash{}endgroup}
-
-\FunctionTok{\textbackslash{}addtocontents}\NormalTok{\{toc\}\{}\FunctionTok{\textbackslash{}protect\textbackslash{}vspace}\NormalTok{\{1em\}\}}
-\FunctionTok{\textbackslash{}cftinserthook}\NormalTok{\{toc\}\{bibhook\}}
-\FunctionTok{\textbackslash{}addcontentsline}\NormalTok{\{toc\}\{chapter\}\{}
-  \FunctionTok{\textbackslash{}protect\textbackslash{}numberline}\NormalTok{\{\}}
-  \FunctionTok{\textbackslash{}newbibname}
-  \FunctionTok{\textbackslash{}hspace}\NormalTok{\{{-}0.25em\}}
-\NormalTok{\}}
-
-\KeywordTok{\textbackslash{}begin}\NormalTok{\{}\ExtensionTok{apendicesenv}\NormalTok{\}}
-\FunctionTok{\textbackslash{}\textasciigrave{}}\NormalTok{\textasciigrave{}\textasciigrave{}}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\FunctionTok{\textbackslash{}\textasciigrave{}}\NormalTok{\textasciigrave{}\textasciigrave{} \{=latex\}}
-\KeywordTok{\textbackslash{}end}\NormalTok{\{}\ExtensionTok{apendicesenv}\NormalTok{\}}
-\FunctionTok{\textbackslash{}\textasciigrave{}}\NormalTok{\textasciigrave{}\textasciigrave{}}
-\end{Highlighting}
-\end{Shaded}
+\begin{itemize}
+\tightlist
+\item
+  Between the last chapter and the Glossary section.
+\item
+  Between the Glossary section and the Appendices section.
+\item
+  Between the Appendices and Annexes section.
+\item
+  After the Annexes section.
+\end{itemize}
 
 \section{Citation management}\label{citation-management}
 
@@ -2189,17 +2239,27 @@ more information about this behavior
 \section{ABNT figures and tables}\label{abnt-figures-and-tables}
 
 Thanks for the incredible work of
-\href{https://github.com/cscheid}{Carlos Scheidegger} we now have a
-built-in solution for figures and tables that require two captions (one
-at the top and the other at the bottom), as demanded by the ABNT norms.
-Please note that this feature is only available for Quarto versions
-\textgreater=v1.4.
+\href{https://github.com/cscheid}{Carlos Scheidegger} and other Quarto
+developers we now have a built-in solution for figures and tables that
+require two captions (one at the top and the other at the bottom, or a
+caption and a legend), as required by the ABNT norms. Please note that
+this feature is only available for Quarto versions \textgreater=v1.4.
 
 The procedure for adding these captions is the same for figures and
 tables. Enclose your figure/table/code in figure \texttt{divs}, as shown
 in the example below. The first paragraph after the figure content will
 be rendered as the source (bottom caption), and the last one will be the
 top caption.
+
+The formatting options for this bottom caption/legend is still matter of
+debate (see
+\href{https://github.com/quarto-dev/quarto-cli/discussions/6103\#discussioncomment-7494661}{here}).
+That's why is important to add Quarto's
+\href{https://github.com/quarto-ext/latex-environment}{LaTeX
+Environment} filter in your
+\texttt{\_quarto-pdf.yml"\ with\ the\ command}legend\texttt{and\ use}{[}SOURCE
+TEXT GOES HERE{]}.legend\}` when defining legends for figures/tables,
+like the example below.
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -2209,7 +2269,7 @@ top caption.
 \NormalTok{This is the figure content.}
 \NormalTok{:::}
 
-\NormalTok{Source: My source.}
+\CommentTok{[}\OtherTok{Source: My source.}\CommentTok{]}\NormalTok{\{.legend\}}
 
 \NormalTok{This is a caption.}
 
@@ -2252,11 +2312,9 @@ rules your document will not be rendered.
 
 Here are most of the the label prefixes.
 
-\vspace{-1\baselineskip}
-
 \begin{figure}
 
-\begin{minipage}[t]{0.50\linewidth}
+\begin{minipage}[t]{0.33\linewidth}
 
 \begin{itemize}
 \tightlist
@@ -2270,22 +2328,30 @@ Here are most of the the label prefixes.
   \texttt{eq-}: Equation
 \item
   \texttt{exm-}: Example
-\item
-  \texttt{exr-}: Exercise
-\item
-  \texttt{fig-}: Figure
 \end{itemize}
 
 \end{minipage}%
 %
-\begin{minipage}[t]{0.50\linewidth}
+\begin{minipage}[t]{0.33\linewidth}
 
 \begin{itemize}
 \tightlist
 \item
+  \texttt{exr-}: Exercise
+\item
+  \texttt{fig-}: Figure
+\item
   \texttt{lem-}: Lemma
 \item
   \texttt{lst-}: Listings
+\end{itemize}
+
+\end{minipage}%
+%
+\begin{minipage}[t]{0.33\linewidth}
+
+\begin{itemize}
+\tightlist
 \item
   \texttt{prp-}: Proposition
 \item
@@ -2299,8 +2365,6 @@ Here are most of the the label prefixes.
 \end{minipage}%
 
 \end{figure}%
-
-\vspace{1\baselineskip}
 
 For more information about cross-reference elements, see Quarto's
 guide\href{https://quarto.org/docs/books/book-crossrefs.html}{Book
@@ -2371,8 +2435,7 @@ to change paragraph spacing in LaTeX} to get a sense of the subject.
 \begin{itemize}
 \tightlist
 \item
-  1\texttt{em} \(==\) 12\texttt{pt} or \(\approx\)
-  0.423333\$\texttt{cm}.
+  1\texttt{em} \(==\) 12\texttt{pt} or \(\approx\) 0.423333\texttt{cm}.
 \item
   1\texttt{ex} \(==\) \(\approx\) 6.22266\texttt{pt} or \(\approx\)
   0.219521\texttt{cm}.
@@ -2453,6 +2516,8 @@ deeper into the LaTeX system, see \textcite{lamport1994} and
 
 \subsubsection{Manuals}\label{manuals}
 
+\vspace{-1\baselineskip}
+
 \begin{figure}
 
 \begin{minipage}[t]{0.50\linewidth}
@@ -2491,7 +2556,11 @@ deeper into the LaTeX system, see \textcite{lamport1994} and
 
 \end{figure}%
 
+\vspace{-1\baselineskip}
+
 \subsubsection{R packages}\label{r-packages}
+
+\vspace{-1\baselineskip}
 
 \index{R packages}
 
@@ -2525,7 +2594,7 @@ deeper into the LaTeX system, see \textcite{lamport1994} and
 
 \chapter{{[}Showcase{]}}\label{sec-annex-a}
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, left=2mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomtitle=1mm, bottomrule=.15mm, coltitle=black, opacitybacktitle=0.6, colframe=quarto-callout-note-color-frame, toprule=.15mm, leftrule=.75mm, arc=.35mm, breakable, colback=white, toptitle=1mm, titlerule=0mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, left=2mm, rightrule=.15mm, bottomrule=.15mm, leftrule=.75mm, colframe=quarto-callout-note-color-frame, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, opacityback=0, toptitle=1mm, breakable, opacitybacktitle=0.6, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, titlerule=0mm, arc=.35mm, colback=white]
 
 The text below is for demonstrative purposes only.
 
@@ -2552,8 +2621,8 @@ id.
 
 
 
-\addtocontents{toc}{\protect\vspace{1em}}
-\cftinserthook{toc}{indexhook}
+\tocskipone
+\tocprintchapternonum
 
 \begingroup
 \ABNTEXfontereduzida

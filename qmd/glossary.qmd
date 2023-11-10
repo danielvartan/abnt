@@ -1,5 +1,5 @@
 <!-- %:::% .common h1 begin %:::% -->
-# List of terms and definitions {.unnumbered}
+# Glossary {.unnumbered}
 <!-- %:::% .common h1 end %:::% -->
 
 ```{r}
@@ -12,16 +12,9 @@
 source(here::here("R/quarto-setup.R"))
 ```
 
-::: {.callout-warning}
-The text below is for demonstrative purposes only.
-
-See <https://github.com/danielvartan/abnt> to learn more about this template.
-:::
-
 <!-- TODO -->
 <!-- * Insert definition from other areas of science. -->
 
-<!-- %:::% list-of-terms body begin %:::% -->
 For an extensive list of chronobiology related terms and definitions, please refer to @aschoff1965 and @marques2012.
 
 Chronotype
@@ -40,4 +33,13 @@ Complex system
 
 Entrainment
 : \hspace{20cm} A shift and alignment of biological rhythms induced by a zeitgeber input [@kuhlman2018]. For example: a shift/alignment of an organism's circadian rhythm when exposed to light.
-<!-- %:::% list-of-terms body end %:::% -->
+
+```{=latex}
+\end{glossario}
+```
+
+<!-- glossary end -->
+
+```{=latex}
+\begin{apendicesenv}
+```

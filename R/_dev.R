@@ -50,28 +50,25 @@
 # \AtEndEnvironment{}{}
 # \AfterEndEnvironment{}{}
 
-# TODO
+# TODO:
 #
 # * Fix spacing (\baselineskip).
 # * Fix SCSS. Mobile menu is appearing with white or transparent color.
-# * Fix caption sizes and spacing.
 
 # * Fix spacing in `figure` environment.
 # * Fix quinary section after skip.
-# * Find why the title of LoF, LoT, ToC and Abstract do not align with others.
-# * Fix title page spacing.
 # * Add command tag sub function.
 # * Fix title and table captions making the caption name (e.g., "Figure -")
 #   become tabular.
+# * Create errata table (c.f. Funaro et al., 2020).
 # * Fix References section bookmark (see R package {xmpdf}).
 # * Fix spacing in `theorem` environment.
-# * Fix spacing
+# * Fix References and Glossary, and Parts spacing on TOC (underlying reasons).
 # * Include `\ABNTEXchapterupperifneeded{}` in the References section config.
 # * Fix '\tightlist' settings.
-# * Fix indentation of unordered and ordered lists.
-# * Change table font sizes to be accordingly with figure font sizes.
-# * Add code post-chapters, pre-appendices and pre-annexes automatically.
-# * Add numbers and letters before chapter's and appendices bookmarks.
+# * Fix caption spacing after tables.
+# * Set indentation of unordered and ordered list (see ABNT norms).
+# * Add post- and pre-chapters code automatically.
 # * Refactor code for creating ambient variables in
 #   'quarto-pre-render-common.R' . Transform code into function and then add
 #   it in the {rutils} package.
@@ -83,3 +80,5 @@
 # * Add <https://fair-software.eu/>.
 # * Add <https://www.bestpractices.dev/en/projects/6244 badge>.
 # * Fix code background on dark theme.
+# * Refactor format using Quarto filters.
+# * Use `etoolbox` and pre, app or patch to edit `abntex2` commands.

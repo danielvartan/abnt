@@ -1,87 +1,80 @@
-% Set LoF -----
+% Set sections skips (`\cftchapterpresnum`)
 
-\renewcommand{\printloftitle}[1]{
-  % Do not use `\pretextualchapter` here. It'll make a duplicated bookmark.
-  \setlength{\afterchapskip}{
-    \hugeskipamount - 18pt % It is what it is...
-  }
+\setlength{\cftbeforebookskip}{0\baselineskip}
+\setlength{\cftbeforepartskip}{\bigskipamount}
+\setlength{\cftbeforechapterskip}{\microskipamount}
+\setlength{\cftbeforesectionskip}{0\baselineskip}
+\setlength{\cftbeforesubsectionskip}{0\baselineskip}
+\setlength{\cftbeforesubsubsectionskip}{0\baselineskip}
+\setlength{\cftbeforeparagraphskip}{0\baselineskip}
 
-  \chapter*[#1]{#1}
-}
-
-% Set LoT -----
-
-\renewcommand{\printlottitle}[1]{
-  % Do not use `\pretextualchapter` here. It'll make a duplicated bookmark.
-  \setlength{\afterchapskip}{
-    \hugeskipamount - 18pt % It is what it is...
-  }
-
-  \chapter*[#1]{#1}
-}
-
-% Set ToC -----
-
-\renewcommand{\aftertoctitle}{
-  \center
-  \vspace{\hugeskipamount - 16pt} % It is what it is...
-}
-
-\setlength{\cftpartindent}{6em}
-\setlength{\cftsectionnumwidth}{6em}
-\setlength{\cftsubsectionnumwidth}{6em}
-\setlength{\cftsubsubsectionnumwidth}{6em}
-\setlength{\cftparagraphnumwidth}{6em}
-
-\setlength{\cftbeforebookskip}{0pt}
-\setlength{\cftbeforepartskip}{2em}
-\setlength{\cftbeforechapterskip}{0.5em}
-\setlength{\cftbeforesectionskip}{0pt}
-\setlength{\cftbeforesubsectionskip}{0pt}
-\setlength{\cftbeforesubsubsectionskip}{0pt}
-\setlength{\cftbeforeparagraphskip}{0pt}
+% Set section numbers fonts (`\cftchapterpresnum`)
 
 \renewcommand{\cftchapterpresnum}{\normalfont}
-\renewcommand{\cftchapteraftersnum}{\normalfont}
-\renewcommand{\cftchapteraftersnumb}{\normalfont\normalsize\bfseries\hspace{0.87em}}
+\renewcommand{\cftsectionpresnum}{\normalfont}
 \renewcommand{\cftsubsectionpresnum}{\normalfont}
+\renewcommand{\cftsubsubsectionpresnum}{\normalfont}
 \renewcommand{\cftparagraphpresnum}{\normalfont}
 
-\renewcommand{\cftpartfont}{\normalfont\normalsize\bfseries\MakeUppercase}
-\renewcommand{\cftchapterfont}{\normalfont\normalsize\bfseries\MakeUppercase}
-\renewcommand{\cftsectionfont}{\normalfont\normalsize\MakeUppercase}
-\renewcommand{\cftsubsectionfont}{\normalfont\normalsize\bfseries}
-\renewcommand{\cftsubsubsectionfont}{\normalfont\normalsize}
-\renewcommand{\cftparagraphfont}{\normalfont\normalsize\itshape}
+% Set section names fonts (`\cftpartfont`)
 
-\renewcommand{\cftpartpagefont}{\normalfont\normalsize}
-\renewcommand{\cftchapterpagefont}{\normalfont\normalsize}
-\renewcommand{\cftsectionpagefont}{\normalfont\normalsize}
-\renewcommand{\cftsubsectionpagefont}{\normalfont\normalsize}
-\renewcommand{\cftsubsubsectionpagefont}{\normalfont\normalsize}
-\renewcommand{\cftparagraphpagefont}{\normalfont\normalsize}
-\renewcommand{\cftfigurepagefont}{\normalfont\normalsize}
-\renewcommand{\cfttablepagefont}{\normalfont\normalsize}
-
-\cftinsertcode{bibhook}{
-  \setlength{\cftchapterindent}{5.675em}
-  \setlength{\cftchapternumwidth}{0em}
-  \renewcommand{\cftchapteraftersnumb}{\hspace{0em}}
-  \renewcommand{\cftchapterpresnum}{\normalfont\bfseries}
+\renewcommand{\cftpartfont}[1]{
+  \ABNTEXchapterupperifneeded{\normalfont\bfseries #1}
 }
 
-\cftinsertcode{appendixhook}{
-    \setlength{\cftchapterindent}{6em}
-    \renewcommand{\cftchaptername}{\appendixname\space}
-    \setlength{\cftchapternumwidth}{2.3em} % check
-    \renewcommand{\cftchapteraftersnumb}{
-        \hspace{-1.5em} -- \space % check \hspace{-1.5em}
-    }
+\renewcommand{\cftchapterfont}[1]{
+  \ABNTEXchapterupperifneeded{\normalfont\bfseries #1}
 }
 
-\cftinsertcode{indexhook}{
-  \setlength{\cftchapterindent}{6em}
-  \setlength{\cftchapternumwidth}{0em}
-  \renewcommand{\cftchapteraftersnumb}{\hspace{0em}}
-  \renewcommand{\cftchapterpresnum}{\normalfont\bfseries}
+\renewcommand{\cftsectionfont}[1]{
+  \ABNTEXsectionupperifneeded{\normalfont #1}
+}
+
+\renewcommand{\cftsubsectionfont}[1]{
+  \ABNTEXsubsectionupperifneeded{\normalfont\bfseries #1}
+}
+
+\renewcommand{\cftsubsubsectionfont}[1]{
+  \ABNTEXsubsubsectionupperifneeded{\normalfont #1}
+}
+
+\renewcommand{\cftparagraphfont}[1]{
+  \ABNTEXsubsubsubsectionupperifneeded{\normalfont\itshape #1}
+}
+
+% Set section page numbers fonts (`\cftpartpagefont`)
+
+\renewcommand{\cftpartpagefont}{\normalfont}
+\renewcommand{\cftchapterpagefont}{\normalfont}
+\renewcommand{\cftsectionpagefont}{\normalfont}
+\renewcommand{\cftsubsectionpagefont}{\normalfont}
+\renewcommand{\cftsubsubsectionpagefont}{\normalfont}
+\renewcommand{\cftparagraphpagefont}{\normalfont}
+\renewcommand{\cftfigurepagefont}{\normalfont}
+\renewcommand{\cfttablepagefont}{\normalfont}
+
+% Renew abntex2 ToC commands -----
+
+\cftinsertcode{A}{} % [Changed]
+
+% This is not right. Create an issue about it.
+\renewcommand{\tocprintchapternonum}{
+  \addtocontents{toc}{\setlength{\cftchapterindent}{5.65em}}
+  \addtocontents{toc}{\setlength{\cftchapternumwidth}{0em}}
+}
+
+\renewcommand{\tocpartapendices}{
+  \addtocontents{toc}{\setlength{\cftpartindent}{5.65em}}
+  \addtocontents{toc}{\setlength{\cftpartnumwidth}{0em}}
+}
+
+% Set ToC skip
+
+\newcommand{\tocskipone}{
+  \addtocontents{toc}{\protect\vspace{\smallskipamount}}
+}
+
+% \setlength{\cftbeforepartskip}{\bigskipamount}
+\newcommand{\tocskiptwo}{
+  % \addtocontents{toc}{\protect\vspace{\tinyskipamount}}
 }

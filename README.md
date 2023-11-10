@@ -139,14 +139,14 @@ and the [PDF
 Options](https://quarto.org/docs/reference/formats/pdf.html) section in
 the [Quarto guide](https://quarto.org/docs/reference/formats/pdf.html).
 
-For additional formatting information, see the `abnt` [print
-output](https://danielvartan.github.io/abnt/index.pdf) and the [web
-output](https://danielvartan.github.io/abnt/).
+For additional formatting information, see Appendix \_Settings\_\_ of
+`abnt` [print output](https://danielvartan.github.io/abnt/index.pdf) and
+the [web output](https://danielvartan.github.io/abnt/).
 
 Please note that some documentation may still be missing. We are
 actively working to provide complete documentation. If you have
 questions, ideas to share, or need assistance, feel free to use the
-[GitHub discussion repository
+[GitHub discussion
 tab](https://github.com/danielvartan/abnt/discussions). We and the
 community will do our best to assist you.
 
