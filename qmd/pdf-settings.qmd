@@ -4,10 +4,7 @@
 
 ```{r}
 #| label: setup
-#| echo: false
-#| output: false
-
-# library(here)
+#| include: false
 
 source(here::here("R/quarto-setup.R"))
 ```
@@ -277,6 +274,16 @@ For more information about cross-reference elements, see Quarto's guide[Book Cro
 ## Freezing and cache
 
 See [Freeze](https://quarto.org/docs/projects/code-execution.html#freeze).
+
+## Spelling check
+
+See `rutils:::spell_check_quarto()`
+
+## URL check
+
+Soon.
+
+(Based on `urlchecker::url_check()`).
 
 ## How to customize this Quarto format
 

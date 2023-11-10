@@ -5,21 +5,6 @@
 # lybrary(stringr)
 # lybrary(yaml)
 
-# Unfreeze documents -----
-
-quarto_yml_path <- here::here("_quarto.yml")
-quarto_yml_vars <- yaml::read_yaml(quarto_yml_path)
-
-unfreeze_files <- c(
-  here::here("index.qmd")
-)
-
-if (!is.null(quarto_yml_vars$execute$freeze)) {
-  if (as.character(quarto_yml_vars$execute$freeze) %in% c("TRUE", "auto")) {
-    for (i in unfreeze_files) rutils:::unfreeze_quarto_file(i)
-  }
-}
-
 # Create environment variables -----
 
 quarto_yml_path <- here::here("_quarto.yml")

@@ -37,9 +37,9 @@ h2 {
 }
 
 h3 {
-  margin-top: 1.5em; 
-  font-size: 1.2rem; 
-  font-weight: 500; 
+  margin-top: 1.5em;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 h4 {
@@ -70,4 +70,11 @@ code a:any-link {
 
 pre {
   background-image: linear-gradient(160deg,#f8f8f8 0,#f1f1f1 100%);
+}
+
+/* Captions ---------- */
+
+legend {
+    font-size: .9rem;
+    color: #747a7f;
 }

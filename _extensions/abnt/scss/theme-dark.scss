@@ -14,8 +14,7 @@ $font-size-root: 18px !default;
 
 // Code
 
-$code-block-bg: #373A3C;
-$code-block-bg-alpha: 1;
+$code-block-bg-alpha: -.8;
 
 /*-- scss:rules --*/
 
@@ -49,9 +48,9 @@ h2 {
 }
 
 h3 {
-  margin-top: 1.5em; 
-  font-size: 1.2rem; 
-  font-weight: 500; 
+  margin-top: 1.5em;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 h4 {
@@ -80,6 +79,9 @@ code a:any-link {
   text-decoration-color: #ccc;
 }
 
-pre {
-  background-image: linear-gradient(160deg,#f8f8f8 0,#f1f1f1 100%);
+/* Captions ---------- */
+
+legend {
+    font-size: .9rem;
+    color: #bfbfbf;
 }

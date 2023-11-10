@@ -4,10 +4,7 @@
 
 ```{r}
 #| label: setup
-#| echo: false
-#| output: false
-
-# library(here)
+#| include: false
 
 source(here::here("R/quarto-setup.R"))
 ```

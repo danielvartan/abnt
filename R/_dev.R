@@ -85,3 +85,4 @@
 # * Fix the dark theme SCSS.
 # * Finish translating `english-abnt-author-date.csl`.
 # * Add DOI field into ABNT CSL files.
+# * Create `check_quarto_urls()` based on `urlchecker::url_check()`.
