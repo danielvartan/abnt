@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.487">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>{tesesusp}: a Quarto format for USP theses and dissertations - Epigraph</title>
+<title>{abnt}: Quarto format for ABNT theses and dissertations - Epigraph</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,26 +17,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
@@ -63,7 +44,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -77,32 +64,32 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
-<meta property="og:title" content="{tesesusp}: a Quarto format for USP theses and dissertations - Epigraph">
+<meta property="og:title" content="{abnt}: Quarto format for ABNT theses and dissertations - Epigraph">
 <meta property="og:description" content="">
-<meta property="og:site-name" content="{tesesusp}: a Quarto format for USP theses and dissertations">
+<meta property="og:site_name" content="{abnt}: Quarto format for ABNT theses and dissertations">
 </head>
 <body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../qmd/errata.html">Preliminary Pages</a></li><li class="breadcrumb-item"><a href="../qmd/epigraph.html">Epigraph</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../qmd/errata.html">Preliminary Pages</a></li><li class="breadcrumb-item"><a href="../qmd/epigraph.html">Epigraph</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">{tesesusp}: a Quarto format for USP theses and dissertations</a> 
+      <a href="../">{abnt}: Quarto format for ABNT theses and dissertations</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="../index.pdf" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-file-earmark-pdf-fill"></i></a>
-    <a href="https://github.com/danielvartan/tesesusp/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="../index.pdf" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-file-earmark-pdf-fill"></i></a>
+    <a href="https://github.com/danielvartan/abnt/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -117,7 +104,7 @@ div.csl-indent {
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Welcome</span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Welcome</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -177,18 +164,6 @@ div.csl-indent {
  <span class="menu-text">List of symbols</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../qmd/list-of-terms.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">List of terms and definitions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../qmd/thesis-outline.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Thesis outline</span></a>
-  </div>
-</li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -203,19 +178,19 @@ div.csl-indent {
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../qmd/introduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">[Showcase] Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../qmd/development.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Development</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">[Showcase] Development</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../qmd/conclusion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Conclusion</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">[Showcase] Conclusion</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -237,21 +212,39 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../qmd/appendice-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Appendix 1</span></span></a>
+  <a href="../qmd/glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Glossary</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../qmd/appendix-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">[Showcase]</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../qmd/settings.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Settings</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../qmd/annex-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">[Showcase]</span></span></a>
   </div>
 </li>
       </ul>
 </li>
     </ul>
 </div>
-</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../qmd/errata.html">Preliminary Pages</a></li><li class="breadcrumb-item"><a href="../qmd/epigraph.html">Epigraph</a></li></ol></nav><div class="quarto-title">
 <h1 class="title">Epigraph</h1>
 </div>
 
@@ -265,59 +258,14 @@ div.csl-indent {
   </div>
   
 
-</header><!-- %:::% .common h1 begin %:::% --><!-- %:::% .common h1 end %:::% --><blockquote class="blockquote">
-<p><em>Nullius in verba</em></p>
-</blockquote>
-<p><span class="citation" data-cites="theroyalsociety">(<a href="references.html#ref-theroyalsociety" role="doc-biblioref">The Royal Society n.d.</a>)</span></p>
-<!-- @theroyalsociety -->
+
+</header><!-- %:::% .common h1 begin %:::% --><!-- %:::% .common h1 end %:::% --><p>::: {.content-visible when-format=“html”} <em>Nullius in verba</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
-<div id="ref-aschoff1965" class="csl-entry" role="listitem">
-Aschoff, Jürgen, K. Klotter, and R. Wever. 1965. <span>“Circadian Vocabulary: A Recommended Terminology with Definitions.”</span> In <em>Circadian Clocks</em>. North-Holland.
-</div>
-<div id="ref-assis2014" class="csl-entry" role="listitem">
-Assis, Machado de. 2014. <em>Memórias póstumas de Brás Cubas</em>. São Paulo: Companhia das Letras.
-</div>
-<div id="ref-ehret1974" class="csl-entry" role="listitem">
-Ehret, Charles F. 1974. <span>“The Sense of Time: Evidence for Its Molecular Basis in the Eukaryotic Gene-Action System.”</span> In <em>Advances in Biological and Medical Physics</em>, 15:47–77. Elsevier. <a href="https://doi.org/10.1016/B978-0-12-005215-8.50009-7">https://doi.org/10.1016/B978-0-12-005215-8.50009-7</a>.
-</div>
-<div id="ref-horne1976" class="csl-entry" role="listitem">
-Horne, J. A., and O. Ostberg. 1976. <span>“<a href="https://www.ncbi.nlm.nih.gov/pubmed/1027738">A self-assessment questionnaire to determine morningness-eveningness in human circadian rhythms</a>.”</span> <em>International Journal of Chronobiology</em> 4 (2): 97–110.
-</div>
-<div id="ref-kuhlman2018" class="csl-entry" role="listitem">
-Kuhlman, Sandra J., L. Michon Craig, and Jeanne F. Duffy. 2018. <span>“Introduction to Chronobiology.”</span> <em>Cold Spring Harbor Perspectives in Biology</em> 10 (9): a033613. <a href="https://doi.org/10.1101/cshperspect.a033613">https://doi.org/10.1101/cshperspect.a033613</a>.
-</div>
-<div id="ref-latinitium" class="csl-entry" role="listitem">
-Latinitium. n.d. <span>“Latin Dictionaries.”</span> Latinitium. Accessed September 21, 2023. <a href="https://latinitium.com/latin-dictionaries/">https://latinitium.com/latin-dictionaries/</a>.
-</div>
-<div id="ref-marques2012" class="csl-entry" role="listitem">
-Marques, Mirian David, and Gisele Oda. 2012. <span>“Glossário.”</span> <em>Revista da Biologia</em> 9 (3). <a href="https://www.revistas.usp.br/revbiologia/article/view/114816">https://www.revistas.usp.br/revbiologia/article/view/114816</a>.
-</div>
-<div id="ref-mitchell2013" class="csl-entry" role="listitem">
-Mitchell, Melanie. 2013. <span>“Introduction to Complexity.”</span> Online course. 2013. <a href="https://www.complexityexplorer.org/courses/1-https://www.complexityexplorer.org/courses/1">https://www.complexityexplorer.org/courses/1-https://www.complexityexplorer.org/courses/1</a>.
-</div>
-<div id="ref-pittendrigh1960" class="csl-entry" role="listitem">
-Pittendrigh, C. S. 1960. <span>“Circadian Rhythms and the Circadian Organization of Living Systems.”</span> <em>Cold Spring Harbor Symposia on Quantitative Biology</em> 25: 159–84. <a href="https://doi.org/10.1101/SQB.1960.025.01.015">https://doi.org/10.1101/SQB.1960.025.01.015</a>.
-</div>
-<div id="ref-pittendrigh1993" class="csl-entry" role="listitem">
-———. 1993. <span>“Temporal Organization: Reflections of a Darwinian Clock-Watcher.”</span> <em>Annual Review of Physiology</em> 55 (1): 17–54. <a href="https://doi.org/10.1146/annurev.ph.55.030193.000313">https://doi.org/10.1146/annurev.ph.55.030193.000313</a>.
-</div>
-<div id="ref-popper1979" class="csl-entry" role="listitem">
-Popper, Karl R. 1979. <em>Objective Knowledge: An Evolutionary Approach</em>. Rev. ed. Oxford University Press.
-</div>
-<div id="ref-roenneberg2012a" class="csl-entry" role="listitem">
-Roenneberg, Till, Karla&nbsp;V. Allebrandt, Martha Merrow, and Céline Vetter. 2012. <span>“Social Jetlag and Obesity.”</span> <em>Current Biology</em> 22 (10): 939–43. <a href="https://doi.org/10.1016/j.cub.2012.03.038">https://doi.org/10.1016/j.cub.2012.03.038</a>.
-</div>
-<div id="ref-roenneberg2003" class="csl-entry" role="listitem">
-Roenneberg, Till, Anna Wirz-Justice, and Martha Merrow. 2003. <span>“Life Between Clocks: Daily Temporal Patterns of Human Chronotypes.”</span> <em>Journal of Biological Rhythms</em> 18 (1): 80–90. <a href="https://doi.org/10.1177/0748730402239679">https://doi.org/10.1177/0748730402239679</a>.
-</div>
-<div id="ref-theroyalsociety" class="csl-entry" role="listitem">
-The Royal Society. n.d. <span>“History of the Royal Society.”</span> Accessed September 9, 2023. <a href="https://royalsociety.org/about-us/history/">https://royalsociety.org/about-us/history/</a>.
-</div>
-</div>
-
-</main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+<aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
+<ol>
+<li id="fn1"><p>THE ROYAL SOCIETY. <strong>History of the Royal Society</strong>. Available from: &lt;https://royalsociety.org/about-us/history/&gt;. Visited on: 9 Sept.&nbsp;2023. :::<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></aside></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -358,6 +306,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -426,13 +401,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -511,10 +488,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -524,8 +500,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -538,6 +523,128 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        typesetMath(container);
+        return container.innerHTML
+      } else {
+        typesetMath(note);
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      typesetMath(note);
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -581,6 +688,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -606,6 +714,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -665,12 +799,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="../qmd/acknowledgments.html" class="pagination-link">
+      <a href="../qmd/acknowledgments.html" class="pagination-link  aria-label=" acknowledgments="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Acknowledgments</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../qmd/vernacular-abstract.html" class="pagination-link">
+      <a href="../qmd/vernacular-abstract.html" class="pagination-link" aria-label="Abstract">
         <span class="nav-page-text">Abstract</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

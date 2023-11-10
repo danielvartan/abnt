@@ -4,7 +4,7 @@ The text below is for demonstrative purposes only.
 See the next chapters to learn more about this template.
 :::
 
-You are seeing the web version of this thesis.
+You are seeing the web version of this thesis. Click [here](index.pdf) or on the the pdf icon in the menu to see the PDF version.
 
 The analyses contained in this document are 100% reproducible. They were performed using the [R programming language](https://www.r-project.org/) and the [Quarto](https://quarto.org/) publishing system (an evolution of [R Markdown](https://rmarkdown.rstudio.com/)). Click on the GitHub icon in the menu to access the thesis research compendium.
 

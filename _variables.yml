@@ -7,7 +7,7 @@ url: https://danielvartan.github.io/abnt/
 keyword: ABNT. Quarto. Quarto format. Thesis template. Reproducibility. Open science
 language: en
 title: '{abnt}: Quarto format for ABNT theses and dissertations'
-date: '2023-11-09'
+date: '2023-11-10'
 year: '2023'
 academic-title: '[Master/PhD]'
 academic-degree: '[Master of Science/Doctor of Science]'
@@ -23,4 +23,4 @@ version-note: '[Original/Revised version]'
 mainfont: Arial
 monofont: FragmentMono-Regular.otf
 sansfont: Arial
-format: pdf
+format: html

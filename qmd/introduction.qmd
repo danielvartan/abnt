@@ -38,9 +38,7 @@ Here $\text{P}_{1}$ is the _problem_ from which we start, $\text{TT}$ (the ‘te
 It leads up to our second attempt (_and so on_). A satisfactory understanding will be reached if the interpretation, the conjectural theory, finds support in the fact that it can throw new light on new problems --- on more problems than we expected; or if it finds support in the fact that it explains many sub-problems, some of which were not seen to start with. Thus we may say that we can gauge the progress we have made by comparing $\text{P}_{1}$ with some of our later problems ($\text{P}_{n}$, say)."
 
 ::: {.content-visible when-format="html"}
-```{css}
-#| echo: false
-
+```{css, echo = FALSE}
 .align-to-right {
   text-align: right !important
 }

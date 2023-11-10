@@ -82,3 +82,4 @@
 # * Fix code background on dark theme.
 # * Refactor format using Quarto filters.
 # * Use `etoolbox` and pre, app or patch to edit `abntex2` commands.
+# * Find a proper solution for the title streching issue.

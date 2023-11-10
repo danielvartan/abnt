@@ -32,6 +32,7 @@ book:
   appendices:
     - qmd/glossary.qmd
     - qmd/appendix-1.qmd
+    - qmd/settings.qmd
     - qmd/annex-1.qmd
 
 citation:

@@ -1,4 +1,4 @@
-% See `babel.tex` for changes related to language.
+% See `babel.tex` for language changes.
 % See `toc.text` for changes related to the ToC.
 
 % Set page numbering -----
@@ -22,14 +22,12 @@
 \renewcommand{\ABNTEXsubsubsubsectionfont}{\normalfont}
 \renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalsize\itshape}
 \renewcommand{\ABNTEXfontereduzida}{\footnotesize}
-
-\renewcommand{\chapnumfont}{\normalfont\normalsize}
-\renewcommand{\captiontitlefont}{\ABNTEXfontereduzida}
-
 \renewcommand{\ABNTEXcaptiondelim}{~\textendash~}
 \renewcommand{\ABNTEXcaptionfontedelim}{:~}
 
-% Set new commands
+\renewcommand{\captiontitlefont}{\ABNTEXfontereduzida}
+
+% Set new commands -----
 
 \providecommand{\imprimiruniversidade}{}
 \newcommand{\universidade}[1]{\renewcommand{\imprimiruniversidade}{#1}}
@@ -54,107 +52,63 @@
 \providecommand{\imprimirnotadeversao}{}
 \newcommand{\notadeversao}[1]{\renewcommand{\imprimirnotadeversao}{#1}}
 
-% Set `pretextultitle` macro -----
-
-\renewcommand{\pretextualchapter}[1]{
-  \addtocounter{abntex@bookmarkcounter}{1}
-  \PRIVATEbookmarkthis{#1}
-  \chapter*[#1]{#1}
-}
-
 % Set chapter style -----
+
+\renewcommand{\chapnamefont}{\normalfont\normalsize}
+\renewcommand{\chapnumfont}{\normalfont\normalsize}
 
 \setsecnumformat{\chapnumfont\csname the#1\endcsname\quad}
 
-\makechapterstyle{abnt}{
-  \renewcommand{\chapterheadstart}{\vspace{\beforechapskip}}
+\renewcommand{\printchaptername}{
+  \ifthenelse{\boolean{abntex@apendiceousecao}}{
+    \chapnamefont \ABNTEXchapterupperifneeded{\appendixname} % [Changed]
+  }{}
+}
 
-  \ifthenelse{\equal{\ABNTEXisarticle}{true}}{
-    \setlength\beforechapskip{\baselineskip}
-    \renewcommand{\chaptitlefont}{\ABNTEXsectionfont\ABNTEXsectionfontsize}
+% Open an issue about it (`\hspace{-1em}`) - Title streching.
+\renewcommand{\chapternamenum}{
+  \ifthenelse{\boolean{abntex@apendiceousecao}}{
+    \hspace{-2em} \space
+  }{}
+}
+
+\renewcommand{\printchapternum}{
+  \tocprintchapter
+  \setboolean{abntex@innonumchapter}{false}
+  \chapnumfont
+  \thechapter % [Changed]
+  % \ifthenelse{\boolean{abntex@apendiceousecao}}{ % [Removed]
+  %   \tocinnonumchapter
+  %   \ABNTEXcaptiondelim
+  % }{}
+}
+
+\renewcommand{\afterchapternum}{
+  \ifthenelse{\boolean{abntex@apendiceousecao}}{ % [Added]
+    \normalfont \hspace{-1em} \space\ABNTEXcaptiondelim\space \hspace{-1.5em}
   }{
-    \setlength{\beforechapskip}{0\baselineskip}
-    \renewcommand{\chaptitlefont}{\ABNTEXchapterfont\ABNTEXchapterfontsize}
-  }
-
-  \renewcommand{\partnamefont}{\ABNTEXpartfont\ABNTEXpartfontsize}
-  \renewcommand{\partnumfont}{\ABNTEXpartfont\ABNTEXpartfontsize}
-  \renewcommand{\parttitlefont}{\ABNTEXpartfont\ABNTEXpartfontsize}
-
-  \renewcommand{\chapnamefont}{\normalfont\normalsize}
-  \renewcommand{\chapnumfont}{\normalfont\normalsize}
-  \renewcommand{\chaptitlefont}{\ABNTEXchapterfont\ABNTEXchapterfontsize}
-
-  \setsecheadstyle{
-    \ABNTEXsectionfont\ABNTEXsectionfontsize\ABNTEXsectionupperifneeded
-  }
-
-  \setsubsecheadstyle{
-    \ABNTEXsubsectionfont\ABNTEXsubsectionfontsize
-    \ABNTEXsubsectionupperifneeded
-  }
-
-  \setsubsubsecheadstyle{
-    \ABNTEXsubsubsectionfont\ABNTEXsubsubsectionfontsize
-    \ABNTEXsubsubsectionupperifneeded
-  }
-
-  \setsubsubsubsecheadstyle{
-    \ABNTEXsubsubsubsectionfont\ABNTEXsubsubsubsectionfontsize
-    \ABNTEXsubsubsubsectionupperifneeded
-  }
-
-  \renewcommand{\printchaptername}{
-    \ifthenelse{\boolean{abntex@apendiceousecao}}{
-      \chapnamefont \ABNTEXchapterupperifneeded{\appendixname}
-    }{}
-  }
-
-  \renewcommand{\chapternamenum}{
-    \ifthenelse{\boolean{abntex@apendiceousecao}}{
-      \space
-    }{}
-  }
-
-  \renewcommand{\printchapternum}{
-    \tocprintchapter
-    \setboolean{abntex@innonumchapter}{false}
-    \chapnumfont
-    \ifthenelse{\boolean{abntex@apendiceousecao}}{
-      \thechapter
-    }{
-      \thechapter\space
-    }
-  }
-
-  \renewcommand{\afterchapternum}{
-    \ifthenelse{\boolean{abntex@apendiceousecao}}{
-      \normalfont \space\ABNTEXcaptiondelim\space
-    }{}
-  }
-
-  \renewcommand{\printchapternonum}{
-    \tocprintchapternonum
-    \setlength{\afterchapskip}{\hugeskipamount}
-    \setboolean{abntex@innonumchapter}{true}
-  }
-
-  \renewcommand{\printchaptertitle}[1]{
-    \chaptitlefont
-    \ifthenelse{\boolean{abntex@innonumchapter}}{
-      \centering \ABNTEXchapterupperifneeded{##1}
-    }{
-      \setlength{\afterchapskip}{\smallskipamount}
-      \ifthenelse{\boolean{abntex@apendiceousecao}}{
-        \normalfont\ABNTEXchapterupperifneeded{##1}
-      }{
-        \ABNTEXchapterupperifneeded{##1}
-      }
-    }
+    \hspace{-0.875em}
   }
 }
 
-\chapterstyle{abnt}
+\renewcommand{\printchapternonum}{
+  \tocprintchapternonum
+  \setlength{\afterchapskip}{\hugeskipamount} % [Added]
+  \setboolean{abntex@innonumchapter}{true}
+}
+
+\renewcommand{\printchaptertitle}[1]{
+  \chaptitlefont
+  \ifthenelse{\boolean{abntex@innonumchapter}}{
+    \centering \ABNTEXchapterupperifneeded{#1}
+  }{
+    \ifthenelse{\boolean{abntex@apendiceousecao}}{
+      \normalfont \ABNTEXchapterupperifneeded{#1}
+    }{
+      \ABNTEXchapterupperifneeded{#1}
+    }
+  }
+}
 
 % Set `\textual` -----
 

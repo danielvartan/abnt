@@ -1,4 +1,4 @@
 user-agent: *
 allow: /
 
-Sitemap: https://danielvartan.github.io/tesesusp/sitemap.xml
+Sitemap: https://danielvartan.github.io/abnt/sitemap.xml

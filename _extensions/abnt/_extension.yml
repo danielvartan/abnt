@@ -68,7 +68,6 @@ contributes:
       documentclass: abntex2
       mainfont: Arial
       sansfont: Arial
-      # See <https://github.com/weiweihuanghuang/fragment-mono>.
       monofont: FragmentMono-Regular.otf
       monofontoptions:
         - ItalicFont=FragmentMono-Italic.otf
@@ -104,7 +103,6 @@ contributes:
         - useprefix=false,
         - giveninits=true,
         - extrayear=true
-        # - isbn=false
       bibhang: 0cm # Use 0.5cm if `biblio-style: apa`.
       bibparsep: 0ex
       zotero: false

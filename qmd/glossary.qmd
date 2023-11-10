@@ -12,9 +12,6 @@
 source(here::here("R/quarto-setup.R"))
 ```
 
-<!-- TODO -->
-<!-- * Insert definition from other areas of science. -->
-
 For an extensive list of chronobiology related terms and definitions, please refer to @aschoff1965 and @marques2012.
 
 Chronotype

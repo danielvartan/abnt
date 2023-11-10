@@ -29,8 +29,8 @@ for (i in swap_list) {
   )
 }
 
-# Copy images folder to `./qmd` (solve issues related to relative paths)
-# -----
+# Copy images folder to `./qmd` -----
+# (solve issues related to relative paths)
 
 dir_path <- here::here("qmd", "images")
 
@@ -42,13 +42,12 @@ for (i in rutils:::list_files(here::here("images"), full.names = TRUE)) {
   rutils:::copy_file(
     from = i,
     to = file.path(dir_path, basename(i))
-    )
+  )
 }
 
 # Add/update environment variables -----
 
 var_list <- list(
-  # variable = value
   format = "html"
 )
 

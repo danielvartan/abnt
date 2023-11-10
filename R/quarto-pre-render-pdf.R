@@ -168,7 +168,6 @@ for (i in swap_list) {
 # Add/update environment variables -----
 
 var_list <- list(
-  # variable = value
   format = "pdf"
 )
 
