@@ -12,7 +12,7 @@
 source(here::here("R/quarto-setup.R"))
 ```
 
-[Sobrenome do autor], [Nome(s) do autor]. __{abnt}: formato Quarto para teses e dissertações ABNT__. {{< var year >}}. {{< var type-of-work >}} ({{< var academic-degree >}}) -- {{< var school >}}, {{< var university >}}, {{< var location >}}, {{< var year >}}.
+[Sobrenome do autor], [Nome(s) do autor]. __[Título]__. {{< var year >}}. {{< var type-of-work >}} ({{< var academic-degree >}}) -- {{< var school >}}, {{< var university >}}, {{< var location >}}, {{< var year >}}.
 
 ::: {.content-visible when-format="pdf"}
 <!-- %:::% foreign-abstract reference begin %:::% -->
@@ -27,7 +27,7 @@ the [`abntex2`](https://www.abntex.net.br/) LaTeX class and on [USP guidelines f
 documents](https://teses.usp.br/index.php?option=com_content&view=article&id=52&Itemid=67&lang=en).
 <!-- %:::% foreign-abstract body end %:::% -->
 
-Palavras-chaves: [Palavra-chave 1]. [Palavra-chave 2]. [Palavra-chave 3].
+__Palavras-chaves__: [Palavra-chave 1]. [Palavra-chave 2]. [Palavra-chave 3].
 
 ::: {.content-visible when-format="pdf"}
 <!-- %:::% foreign-abstract keywords begin %:::% -->

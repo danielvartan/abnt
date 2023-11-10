@@ -29,10 +29,10 @@ book:
         - qmd/development.qmd
         - qmd/conclusion.qmd
         - qmd/references.qmd
+        - qmd/glossary.qmd
   appendices:
-    - qmd/glossary.qmd
     - qmd/appendix-1.qmd
-    - qmd/settings.qmd
+    - qmd/pdf-settings.qmd
     - qmd/annex-1.qmd
 
 citation:

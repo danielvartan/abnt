@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://danielvartan.github.io/abnt/index.html</loc>
-    <lastmod>2023-11-10T04:43:08.734Z</lastmod>
+    <lastmod>2023-11-10T07:09:17.077Z</lastmod>
   </url>
   <url>
     <loc>https://danielvartan.github.io/abnt/qmd/errata.html</loc>
@@ -10,7 +10,7 @@
   </url>
   <url>
     <loc>https://danielvartan.github.io/abnt/qmd/inscription.html</loc>
-    <lastmod>2023-11-04T01:32:54.212Z</lastmod>
+    <lastmod>2023-11-10T05:03:26.822Z</lastmod>
   </url>
   <url>
     <loc>https://danielvartan.github.io/abnt/qmd/acknowledgments.html</loc>
@@ -18,15 +18,15 @@
   </url>
   <url>
     <loc>https://danielvartan.github.io/abnt/qmd/epigraph.html</loc>
-    <lastmod>2023-11-04T01:33:11.084Z</lastmod>
+    <lastmod>2023-11-10T05:03:06.459Z</lastmod>
   </url>
   <url>
     <loc>https://danielvartan.github.io/abnt/qmd/vernacular-abstract.html</loc>
-    <lastmod>2023-11-06T07:06:35.689Z</lastmod>
+    <lastmod>2023-11-10T05:04:36.728Z</lastmod>
   </url>
   <url>
     <loc>https://danielvartan.github.io/abnt/qmd/foreign-abstract.html</loc>
-    <lastmod>2023-11-06T07:06:28.286Z</lastmod>
+    <lastmod>2023-11-10T05:06:18.720Z</lastmod>
   </url>
   <url>
     <loc>https://danielvartan.github.io/abnt/qmd/list-of-abbreviations.html</loc>
@@ -38,7 +38,7 @@
   </url>
   <url>
     <loc>https://danielvartan.github.io/abnt/qmd/introduction.html</loc>
-    <lastmod>2023-11-10T04:39:40.858Z</lastmod>
+    <lastmod>2023-11-10T05:12:10.957Z</lastmod>
   </url>
   <url>
     <loc>https://danielvartan.github.io/abnt/qmd/development.html</loc>
@@ -61,11 +61,11 @@
     <lastmod>2023-11-07T02:57:47.773Z</lastmod>
   </url>
   <url>
-    <loc>https://danielvartan.github.io/abnt/qmd/settings.html</loc>
-    <lastmod>2023-11-09T06:22:32.551Z</lastmod>
+    <loc>https://danielvartan.github.io/abnt/qmd/pdf-settings.html</loc>
+    <lastmod>2023-11-10T05:39:04.675Z</lastmod>
   </url>
   <url>
     <loc>https://danielvartan.github.io/abnt/qmd/annex-1.html</loc>
-    <lastmod>2023-11-10T04:41:04.648Z</lastmod>
+    <lastmod>2023-11-10T07:09:04.836Z</lastmod>
   </url>
 </urlset>

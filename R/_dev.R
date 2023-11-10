@@ -52,9 +52,7 @@
 
 # TODO:
 #
-# * Fix spacing (\baselineskip).
 # * Fix SCSS. Mobile menu is appearing with white or transparent color.
-
 # * Fix spacing in `figure` environment.
 # * Fix quinary section after skip.
 # * Add command tag sub function.
@@ -83,3 +81,7 @@
 # * Refactor format using Quarto filters.
 # * Use `etoolbox` and pre, app or patch to edit `abntex2` commands.
 # * Find a proper solution for the title streching issue.
+# * Fix the source caption formatting for HTML output.
+# * Fix the dark theme SCSS.
+# * Finish translating `english-abnt-author-date.csl`.
+# * Add DOI field into ABNT CSL files.

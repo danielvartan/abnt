@@ -12,7 +12,7 @@
 source(here::here("R/quarto-setup.R"))
 ```
 
-{{< var author-surname >}}, {{< var author-initials >}}. __{{< var title >}}__. {{< var year >}}. {{< var type-of-work >}} ({{< var academic-degree >}}) -- {{< var school >}}, {{< var university >}}, {{< var location >}}, {{< var year >}}.
+{{< var author-surname >}}, {{< var author-initials >}} __{{< var title >}}__. {{< var year >}}. {{< var type-of-work >}} ({{< var academic-degree >}}) -- {{< var school >}}, {{< var university >}}, {{< var location >}}, {{< var year >}}.
 
 ::: {.content-visible when-format="pdf"}
 <!-- %:::% vernacular-abstract reference begin %:::% -->
@@ -27,7 +27,7 @@ the [`abntex2`](https://www.abntex.net.br/) LaTeX class and on [USP guidelines f
 documents](https://teses.usp.br/index.php?option=com_content&view=article&id=52&Itemid=67&lang=en).
 <!-- %:::% vernacular-abstract body end %:::% -->
 
-Keywords: {{< var keyword >}}
+__Keywords__: {{< var keyword >}}
 
 ::: {.content-visible when-format="pdf"}
 <!-- %:::% vernacular-abstract keywords begin %:::% -->

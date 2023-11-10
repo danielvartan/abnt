@@ -15,7 +15,7 @@ book:
     - qmd/glossary.qmd # The glossary goes with the chapters.
   appendices:
     - qmd/appendix-1.qmd
-    - qmd/settings.qmd
+    - qmd/pdf-settings.qmd
     - qmd/annex-1.qmd
 
 filters:

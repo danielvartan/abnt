@@ -1,5 +1,5 @@
 <!-- %:::% .common h1 begin %:::% -->
-# Settings {#sec-settings}
+# PDF Settings {#sec-settings}
 <!-- %:::% .common h1 end %:::% -->
 
 ```{r}
@@ -88,11 +88,11 @@ Please note that some settings regarding the pre-textual sections must be change
 
 To add LaTeX commands in your writing, without worrying that it will contaminate the `html` format, use a `{=latex}` chunk.
 
-```latex
-\```{=latex}
+````latex
+```{=latex}
 % Some LaTeX code.
-\```
 ```
+````
 
 ### How to add or remove sections
 
@@ -220,6 +220,12 @@ This is a caption.
 Please note that, like all cross-reference elements, these `divs` must follow a naming pattern. Always use the prefixes `#fig-` for figures and `#tbl-` for tables.
 
 Visit the showcase chapter "Introduction" (`qmd/introduction.qmd`) of this Quarto format to see this feature in action. For more detailed information, please refer to Quarto's [Crossreferenceable elements](https://quarto.org/docs/prerelease/1.4/crossref.html) article.
+
+## Redenring PDF after rendering HTML (and vice-versa)
+
+The index file title (`index.qmd`) and content must be altered for each format to render properly. This cause some issues that `abnt` can't resolve for now. If you've rendered the HTML format and them wish to render the PDF format, you must run `R/quarto-pre-render-pdf.R` one time before starting the render. If is the inverse situation, you must run one time `R/quarto-pre-render-html.R`.
+
+We're working to fix this.
 
 ## Crossreferenceable elements
 

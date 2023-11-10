@@ -61,7 +61,7 @@ It leads up to our second attempt (_and so on_). A satisfactory understanding wi
 ::: {#fig-karl-popper}
 ![](images/karl-popper.png){width=50%}
 
-[Source: \href{https://www.npg.org.uk/collections/search/portrait/mw08238/Sir-Karl-Raimund-Popper?}{Steve Pyke}.]{.legend}
+[Source: [Steve Pyke](https://www.npg.org.uk/collections/search/portrait/mw08238/Sir-Karl-Raimund-Popper?).]{.legend}
 
 Karl Popper (July 25, 1902 – September 17, 1994).\
 One of the 20th century's most influential philosophers of science.

@@ -17,6 +17,7 @@ _Nullius in verba_[^1]
 
 [^1]: THE ROYAL SOCIETY. __History of the Royal Society__. Available from:
 \<https://royalsociety.org/about-us/history/\>. Visited on: 9 Sept. 2023.
+
 :::
 
 ::: {.content-visible when-format="pdf"}

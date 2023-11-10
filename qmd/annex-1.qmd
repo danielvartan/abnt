@@ -31,8 +31,8 @@ cat(cli:::lorem_ipsum(1), sep = "\n\n")
 
 ```{css, echo = FALSE}
 iframe {
-  height: 300px;
-  width: 300px;
+  height: 800px;
+  width: 1132x;
   resize: both;
   overflow: auto;
 }

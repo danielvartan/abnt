@@ -39,7 +39,7 @@ writeLines(
 
 rutils:::clean_quarto_mess(
   file = NULL,
-  dir = c(".temp", "index_cache", "index_files"),
+  dir = c(".temp", "index_cache", "index_files", "qmd/images"),
   ext = c("aux", "bbx", "cbx", "cls", "dbx", "fdb_latexmk", "lbx", "loa",
           "log", "pdf", "scss", "tex", "xdv"),
   ignore = NULL,

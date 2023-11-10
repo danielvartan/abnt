@@ -4,9 +4,9 @@
     "href": "index.html",
     "title": "{abnt}: Quarto format for ABNT theses and dissertations",
     "section": "",
-    "text": "Welcome\nYou are seeing the web version of this thesis. Click here or on the the pdf icon in the menu to see the PDF version.\nThe analyses contained in this document are 100% reproducible. They were performed using the R programming language and the Quarto publishing system (an evolution of R Markdown). Click on the GitHub icon in the menu to access the thesis research compendium.",
+    "text": "Welcome\nYou are viewing the web version of this thesis. Click here or on the PDF icon in the menu to see the PDF version.\nThe analyses contained in this document are 100% reproducible. They were performed using the R programming language and the Quarto publishing system. Click here or on the GitHub icon in the menu to access the research compendium for the thesis.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Welcome</span>"
+      "Welcome"
     ]
   },
   {
@@ -14,9 +14,9 @@
     "href": "index.html#citation",
     "title": "{abnt}: Quarto format for ABNT theses and dissertations",
     "section": "Citation",
-    "text": "Citation\nFor attribution, please cite this work as:\nVartanian, D. V.. {abnt}: Quarto format for ABNT theses and dissertations. 2023. [Dissertation/Thesis] ([Master of Science/Doctor of Science]) – [School/Department], [University], top, 2023. Available from: &lt;https://danielvartan.github.io/abnt/&gt;.\nBibTeX citation:\n@mastersthesis{[author's surname][year],\n  title = {{&lt; var title &gt;}},\n  author = {{&lt; var author &gt;}},\n  year = {{&lt; var date &gt;}},\n  address = {{&lt; var location &gt;}},\n  school  = {{&lt; var university &gt;}},\n  langid = {{&lt; var language &gt;}},\n  url = {{&lt; var url &gt;}}\n  note = {{&lt; var version-note &gt;}}\n}",
+    "text": "Citation\nFor attribution, please cite this work as:\nVartanian, D. V. {abnt}: Quarto format for ABNT theses and dissertations. 2023. [Dissertation/Thesis] ([Master of Science/Doctor of Science]) – [School/Department], [University], [City], 2023. Available from: &lt;https://danielvartan.github.io/abnt/&gt;.\nBibTeX citation:\n@mastersthesis{[author's surname][year],\n  title = {{abnt}: Quarto format for ABNT theses and dissertations},\n  author = {Daniel Vartanian},\n  year = {2023-11-10},\n  address = {[City]},\n  school  = {[University]},\n  langid = {en},\n  url = {https://danielvartan.github.io/abnt/},\n  note = {[Original/Revised version]}\n}",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Welcome</span>"
+      "Welcome"
     ]
   },
   {
@@ -35,7 +35,7 @@
     "href": "qmd/inscription.html",
     "title": "Inscription",
     "section": "",
-    "text": "::: {.content-visible when-format=“html”}\nTo the worm that first gnawed on the cold flesh of my corpse, I dedicate, as a fond remembrance, these posthumous memories.1\n\n\n\n\nASSIS, M. Memórias póstumas de Brás Cubas [The Posthumous Memoirs of Brás Cubas]. São Paulo: Companhia das Letras, 2014. ISBN 978-85-438-0163-6. :::↩︎",
+    "text": "To the worm that first gnawed on the cold flesh of my corpse, I dedicate, as a fond remembrance, these posthumous memories.1\n\n\n\n\nASSIS, M. Memórias póstumas de Brás Cubas [The Posthumous Memoirs of Brás Cubas]. São Paulo: Companhia das Letras, 2014. ISBN 978-85-438-0163-6.↩︎",
     "crumbs": [
       "Preliminary Pages",
       "Inscription"
@@ -57,7 +57,7 @@
     "href": "qmd/epigraph.html",
     "title": "Epigraph",
     "section": "",
-    "text": "::: {.content-visible when-format=“html”} Nullius in verba1\n\n\n\n\nTHE ROYAL SOCIETY. History of the Royal Society. Available from: &lt;https://royalsociety.org/about-us/history/&gt;. Visited on: 9 Sept. 2023. :::↩︎",
+    "text": "Nullius in verba1\n\n\n\n\nTHE ROYAL SOCIETY. History of the Royal Society. Available from: &lt;https://royalsociety.org/about-us/history/&gt;. Visited on: 9 Sept. 2023.↩︎",
     "crumbs": [
       "Preliminary Pages",
       "Epigraph"
@@ -68,7 +68,7 @@
     "href": "qmd/vernacular-abstract.html",
     "title": "Abstract",
     "section": "",
-    "text": "Vartanian, D. V.. {abnt}: Quarto format for ABNT theses and dissertations. 2023. [Dissertation/Thesis] ([Master of Science/Doctor of Science]) – [School/Department], [University], top, 2023.\n\n{abnt} is a Quarto format designed for theses and dissertations that adhere to the standards of the Brazilian Association of Technical Standards (ABNT). It is based on the abntex2 LaTeX class and on USP guidelines for creating thesis and dissertation documents. \nKeywords: ABNT. Quarto. Quarto format. Thesis template. Reproducibility. Open science",
+    "text": "Vartanian, D. V. {abnt}: Quarto format for ABNT theses and dissertations. 2023. [Dissertation/Thesis] ([Master of Science/Doctor of Science]) – [School/Department], [University], [City], 2023.\n\n{abnt} is a Quarto format designed for theses and dissertations that adhere to the standards of the Brazilian Association of Technical Standards (ABNT). It is based on the abntex2 LaTeX class and on USP guidelines for creating thesis and dissertation documents. \nKeywords: ABNT. Quarto. Quarto format. Thesis template. Reproducibility. Open science.",
     "crumbs": [
       "Preliminary Pages",
       "Abstract"
@@ -79,7 +79,7 @@
     "href": "qmd/foreign-abstract.html",
     "title": "Resumo",
     "section": "",
-    "text": "[Sobrenome do autor], [Nome(s) do autor]. {abnt}: formato Quarto para teses e dissertações ABNT. 2023. [Dissertation/Thesis] ([Master of Science/Doctor of Science]) – [School/Department], [University], top, 2023.\n\n{abnt} is a Quarto format designed for theses and dissertations that adhere to the standards of the Brazilian Association of Technical Standards (ABNT). It is based on the abntex2 LaTeX class and on USP guidelines for creating thesis and dissertation documents. \nPalavras-chaves: [Palavra-chave 1]. [Palavra-chave 2]. [Palavra-chave 3].",
+    "text": "[Sobrenome do autor], [Nome(s) do autor]. [Título]. 2023. [Dissertation/Thesis] ([Master of Science/Doctor of Science]) – [School/Department], [University], [City], 2023.\n\n{abnt} is a Quarto format designed for theses and dissertations that adhere to the standards of the Brazilian Association of Technical Standards (ABNT). It is based on the abntex2 LaTeX class and on USP guidelines for creating thesis and dissertation documents. \nPalavras-chaves: [Palavra-chave 1]. [Palavra-chave 2]. [Palavra-chave 3].",
     "crumbs": [
       "Preliminary Pages",
       "Resumo"
@@ -101,7 +101,7 @@
     "href": "qmd/list-of-symbols.html",
     "title": "List of symbols",
     "section": "",
-    "text": "The text below is for demonstrative purposes only.\nSee https://github.com/danielvartan/abnt to learn more about this template.\n\n\n\n\nFor an extensive list of chronobiology related symbols, please refer to Aschoff, Klotter, and Wever (1965) and Marques and Oda (2012).\n\n\\(\\tau\\)\n\nPeriod of a rhythm in free flow; only revealed under constant environmental conditions.\n\n\\(T\\)\n\nZeitgeber period.\n\n\\(\\phi\\)\n\nPhase\n\n\\(\\Delta\\phi\\)\n\nPhase shift\n\n\\(+\\Delta\\phi\\)\n\nPhase advance\n\n\\(-\\Delta\\phi\\)\n\nPhase delay\n\n\\(\\Psi\\)\n\nPhase relation \n\n\n\n\n\n\nAschoff, Jürgen, K. Klotter, and R. Wever. 1965. “Circadian Vocabulary: A Recommended Terminology with Definitions.” In Circadian Clocks. North-Holland.\n\n\nMarques, Mirian David, and Gisele Oda. 2012. “Glossário.” Revista da Biologia 9 (3, 3). https://www.revistas.usp.br/revbiologia/article/view/114816.",
+    "text": "The text below is for demonstrative purposes only.\nSee https://github.com/danielvartan/abnt to learn more about this template.\n\n\n\n\nFor an extensive list of chronobiology related symbols, please refer to ASCHOFF; KLOTTER; WEVER (1965) and MARQUES; ODA (2012).\n\n\\(\\tau\\)\n\nPeriod of a rhythm in free flow; only revealed under constant environmental conditions.\n\n\\(T\\)\n\nZeitgeber period.\n\n\\(\\phi\\)\n\nPhase\n\n\\(\\Delta\\phi\\)\n\nPhase shift\n\n\\(+\\Delta\\phi\\)\n\nPhase advance\n\n\\(-\\Delta\\phi\\)\n\nPhase delay\n\n\\(\\Psi\\)\n\nPhase relation \n\n\n\n\n\n\nASCHOFF, J.; KLOTTER, K.; WEVER, R. Circadian vocabulary: A recommended terminology with definitions. In: Circadian clocks. [s.l.] North-Holland, 1965.\n\n\nMARQUES, M. D.; ODA, G. Glossário. Revista da Biologia, v. 9, n. 3, 3, 2012.",
     "crumbs": [
       "Preliminary Pages",
       "List of symbols"
@@ -110,45 +110,45 @@
   {
     "objectID": "qmd/introduction.html#secondary-section",
     "href": "qmd/introduction.html#secondary-section",
-    "title": "2  [Showcase] Introduction",
-    "section": "\n2.1 Secondary section",
-    "text": "2.1 Secondary section\nSee Table 2.1.\nCodedatasets::iris |&gt;\n  dplyr::as_tibble() |&gt;\n  dplyr::slice_sample(n = 5) |&gt;\n  gt::gt()\n\n\nTable 2.1: A sample of the famous (Fisher’s or Anderson’s) iris data set\n\n\n\n\n\n\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n6.5\n3.0\n5.5\n1.8\nvirginica\n\n\n6.5\n3.0\n5.8\n2.2\nvirginica\n\n\n5.0\n3.0\n1.6\n0.2\nsetosa\n\n\n5.0\n3.5\n1.6\n0.6\nsetosa\n\n\n6.2\n2.9\n4.3\n1.3\nversicolor\n\n\n\n\n\n\n\nSource: Based on Fisher (1936).\n\n\n\n\n2.1.1 Tertiary section\n\n\n\nCodeggplot2::ggplot(\n  data = datasets::faithful, \n  mapping = ggplot2::aes(x = eruptions, y = waiting)\n  ) +\n  ggplot2::geom_point() +\n  ggplot2::xlim(0.5, 6) +\n  ggplot2::ylim(40, 110) +\n  ggplot2::geom_density_2d_filled(alpha = 0.5) +\n  ggplot2::geom_density_2d(linewidth = 0.25, colour = \"black\") +\n  ggplot2::theme(legend.position = \"none\")\n\n\n\n\n\n\n\nSource: Retrieved from the ggplot2 R package documentation (Wickham 2016).\n\n\nFigure 2.2: Relationship between waiting time to next eruption (minutes) and eruption time (minutes) at Old Faithful Geyser, Yellowstone National Park, Wyoming, USA\n\n\n\n2.1.1.1 Quaternary section\n\nBullet point\n\nBullet point\n\nBullet point\n\n\n\n\n\n\n2.1.1.1.1 Quinary section\n\nList\nList\nList",
+    "title": "1  [Showcase] Introduction",
+    "section": "\n1.1 Secondary section",
+    "text": "1.1 Secondary section\nSee Table 1.1.\nCodedatasets::iris |&gt;\n  dplyr::as_tibble() |&gt;\n  dplyr::slice_sample(n = 5) |&gt;\n  gt::gt()\n\n\n\n\n\n\n\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n6.5\n3.0\n5.5\n1.8\nvirginica\n\n\n6.5\n3.0\n5.8\n2.2\nvirginica\n\n\n5.0\n3.0\n1.6\n0.2\nsetosa\n\n\n5.0\n3.5\n1.6\n0.6\nsetosa\n\n\n6.2\n2.9\n4.3\n1.3\nversicolor\n\n\n\n\n\n\n\nSource: Based on FISHER (1936).\n\n\nTable 1.1: A sample of the famous (Fisher’s or Anderson’s) iris data set\n\n\n\n1.1.1 Tertiary section\n\n\n\nCodeggplot2::ggplot(\n  data = datasets::faithful, \n  mapping = ggplot2::aes(x = eruptions, y = waiting)\n  ) +\n  ggplot2::geom_point() +\n  ggplot2::xlim(0.5, 6) +\n  ggplot2::ylim(40, 110) +\n  ggplot2::geom_density_2d_filled(alpha = 0.5) +\n  ggplot2::geom_density_2d(linewidth = 0.25, colour = \"black\") +\n  ggplot2::theme(legend.position = \"none\")\n\n\n\n\n\n\n\nSource: Retrieved from the ggplot2 R package documentation (WICKHAM, 2016).\n\n\nFigure 1.2: Relationship between waiting time to next eruption (minutes) and eruption time (minutes) at Old Faithful Geyser, Yellowstone National Park, Wyoming, USA\n\n\n\n1.1.1.1 Quaternary section\n\nBullet point\n\nBullet point\n\nBullet point\n\n\n\n\n\n\n1.1.1.1.1 Quinary section\n\nList\nList\nList",
     "crumbs": [
       "Chapters",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>[Showcase] Introduction</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>[Showcase] Introduction</span>"
     ]
   },
   {
     "objectID": "qmd/introduction.html#another-secondary-section",
     "href": "qmd/introduction.html#another-secondary-section",
-    "title": "2  [Showcase] Introduction",
-    "section": "\n2.2 Another secondary section",
-    "text": "2.2 Another secondary section\nSee Figure 2.3.\nCodep &lt;- ggplot2::ggplot(\n  data = datasets::mtcars, \n  mapping = ggplot2::aes(x=wt, y=mpg, color=cyl, size=cyl)\n  ) +\n  ggplot2::geom_point() +\n  ggplot2::theme(legend.position=\"none\")\n\nggExtra::ggMarginal(\n  p = p, \n  type = \"histogram\", \n  fill = \"slateblue\", \n  xparams = list(bins=10)\n)\n\n\n\n\n\n\n\n\n\nSource: Data extracted from the 1974 Motor Trend magazine and published by Henderson and Velleman (1981). Visualization by Holtz (n.d.), available at The R Graph Gallery.\n\n\nFigure 2.3: Relation between weight (1000lbs) (\\(\\text{wt}\\)) and miles per galon (\\(\\text{mpg}\\)) for combustion engine vehicles\n\n\n\n\n\n\n\nFisher, R. A. 1936. “The Use of Multiple Measurements in Taxonomic Problems.” Annals of Eugenics 7 (2): 179–88. https://doi.org/10.1111/j.1469-1809.1936.tb02137.x.\n\n\nHenderson, Harold V., and Paul F. Velleman. 1981. “Building Multiple Regression Models Interactively.” Biometrics 37 (2): 391–411. https://doi.org/10.2307/2530428.\n\n\nHoltz, Yan. n.d. “Marginal Distribution with Ggplot2 and ggExtra.” Accessed November 6, 2023. https://www.r-graph-gallery.com/277-marginal-histogram-for-ggplot2.html.\n\n\nPopper, Karl R. 1979. Objective Knowledge: An Evolutionary Approach. Oxford University Press.\n\n\nWickham, Hadley. 2016. Ggplot2: Elegant Graphics for Data Analysis. 2nd ed. Use R! Cham: Springer International Publishing. https://doi.org/10.1007/978-3-319-24277-4.",
+    "title": "1  [Showcase] Introduction",
+    "section": "\n1.2 Another secondary section",
+    "text": "1.2 Another secondary section\nSee Figure 1.3.\nCodep &lt;- ggplot2::ggplot(\n  data = datasets::mtcars, \n  mapping = ggplot2::aes(x=wt, y=mpg, color=cyl, size=cyl)\n  ) +\n  ggplot2::geom_point() +\n  ggplot2::theme(legend.position=\"none\")\n\nggExtra::ggMarginal(\n  p = p, \n  type = \"histogram\", \n  fill = \"slateblue\", \n  xparams = list(bins=10)\n)\n\n\n\n\n\n\n\n\n\nSource: Data extracted from the 1974 Motor Trend magazine and published by HENDERSON; VELLEMAN (1981). Visualization by HOLTZ ([s.d.]), available at The R Graph Gallery.\n\n\nFigure 1.3: Relation between weight (1000lbs) (\\(\\text{wt}\\)) and miles per galon (\\(\\text{mpg}\\)) for combustion engine vehicles\n\n\n\n\n\n\n\nFISHER, R. A. The use of multiple measurements in taxonomic problems. Annals of Eugenics, v. 7, n. 2, p. 179–188, 1936.\n\n\nHENDERSON, H. V.; VELLEMAN, P. F. Building multiple regression models interactively. Biometrics, v. 37, n. 2, p. 391–411, 1981.\n\n\nHOLTZ, Y. Marginal distribution with ggplot2 and ggExtra. Disponível em: &lt;https://www.r-graph-gallery.com/277-marginal-histogram-for-ggplot2.html&gt;. Acesso em: 6 nov. 2023.\n\n\nPOPPER, K. R. Objective knowledge: An evolutionary approach. [s.l.] Oxford University Press, 1979.\n\n\nWICKHAM, H. ggplot2: Elegant graphics for data analysis. 2. ed. Cham: Springer International Publishing, 2016.",
     "crumbs": [
       "Chapters",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>[Showcase] Introduction</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>[Showcase] Introduction</span>"
     ]
   },
   {
     "objectID": "qmd/development.html#secondary-section",
     "href": "qmd/development.html#secondary-section",
-    "title": "3  [Showcase] Development",
-    "section": "\n3.1 Secondary section",
-    "text": "3.1 Secondary section\nMinim consectetur eu aliqua in elit incididunt labore amet consequat cillum minim. Id sit duis duis ex velit proident mollit minim consequat nulla. Aliqua elit do excepteur nulla nostrud exercitation nisi tempor incididunt. Veniam dolore in non nisi veniam aliquip. Minim labore excepteur ea est dolore laboris cillum. Laboris sit pariatur pariatur veniam mollit nisi cupidatat qui qui quis laborum veniam dolor. Proident aliquip do adipisicing dolor elit aute elit. Officia anim quis id voluptate eu. Quis labore consectetur est magna. Laborum nulla ea non Lorem officia aute.",
+    "title": "2  [Showcase] Development",
+    "section": "\n2.1 Secondary section",
+    "text": "2.1 Secondary section\nMinim consectetur eu aliqua in elit incididunt labore amet consequat cillum minim. Id sit duis duis ex velit proident mollit minim consequat nulla. Aliqua elit do excepteur nulla nostrud exercitation nisi tempor incididunt. Veniam dolore in non nisi veniam aliquip. Minim labore excepteur ea est dolore laboris cillum. Laboris sit pariatur pariatur veniam mollit nisi cupidatat qui qui quis laborum veniam dolor. Proident aliquip do adipisicing dolor elit aute elit. Officia anim quis id voluptate eu. Quis labore consectetur est magna. Laborum nulla ea non Lorem officia aute.",
     "crumbs": [
       "Chapters",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>[Showcase] Development</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>[Showcase] Development</span>"
     ]
   },
   {
     "objectID": "qmd/conclusion.html#secondary-section",
     "href": "qmd/conclusion.html#secondary-section",
-    "title": "4  [Showcase] Conclusion",
-    "section": "\n4.1 Secondary section",
-    "text": "4.1 Secondary section\nMinim consectetur eu aliqua in elit incididunt labore amet consequat cillum minim. Id sit duis duis ex velit proident mollit minim consequat nulla. Aliqua elit do excepteur nulla nostrud exercitation nisi tempor incididunt. Veniam dolore in non nisi veniam aliquip. Minim labore excepteur ea est dolore laboris cillum. Laboris sit pariatur pariatur veniam mollit nisi cupidatat qui qui quis laborum veniam dolor. Proident aliquip do adipisicing dolor elit aute elit. Officia anim quis id voluptate eu. Quis labore consectetur est magna. Laborum nulla ea non Lorem officia aute.",
+    "title": "3  [Showcase] Conclusion",
+    "section": "\n3.1 Secondary section",
+    "text": "3.1 Secondary section\nMinim consectetur eu aliqua in elit incididunt labore amet consequat cillum minim. Id sit duis duis ex velit proident mollit minim consequat nulla. Aliqua elit do excepteur nulla nostrud exercitation nisi tempor incididunt. Veniam dolore in non nisi veniam aliquip. Minim labore excepteur ea est dolore laboris cillum. Laboris sit pariatur pariatur veniam mollit nisi cupidatat qui qui quis laborum veniam dolor. Proident aliquip do adipisicing dolor elit aute elit. Officia anim quis id voluptate eu. Quis labore consectetur est magna. Laborum nulla ea non Lorem officia aute.",
     "crumbs": [
       "Chapters",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>[Showcase] Conclusion</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>[Showcase] Conclusion</span>"
     ]
   },
   {
@@ -156,7 +156,7 @@
     "href": "qmd/references.html",
     "title": "References",
     "section": "",
-    "text": "Aschoff, Jürgen, K. Klotter, and R. Wever. 1965. “Circadian\nVocabulary: A Recommended Terminology with Definitions.” In\nCircadian Clocks. North-Holland.\n\n\nEhret, Charles F. 1974. “The Sense of Time: Evidence for Its\nMolecular Basis in the Eukaryotic Gene-Action System.” In\nAdvances in Biological and Medical\nPhysics, 15:47–77. Elsevier. https://doi.org/10.1016/B978-0-12-005215-8.50009-7.\n\n\nFisher, R. A. 1936. “The Use of Multiple Measurements in Taxonomic\nProblems.” Annals of Eugenics 7 (2): 179–88. https://doi.org/10.1111/j.1469-1809.1936.tb02137.x.\n\n\nHenderson, Harold V., and Paul F. Velleman. 1981. “Building\nMultiple Regression Models Interactively.” Biometrics 37\n(2): 391–411. https://doi.org/10.2307/2530428.\n\n\nHoltz, Yan. n.d. “Marginal Distribution with Ggplot2 and ggExtra.” Accessed November 6, 2023. https://www.r-graph-gallery.com/277-marginal-histogram-for-ggplot2.html.\n\n\nKnuth, Donald Ervin. 1986. The TeXbook. Computers\n& Typesetting, A. Upper Saddle River, N.J:\nAddison-Wesley.\n\n\nKuhlman, Sandra J., L. Michon Craig, and Jeanne F. Duffy. 2018.\n“Introduction to Chronobiology.” Cold Spring Harbor\nPerspectives in Biology 10 (9): a033613. https://doi.org/10.1101/cshperspect.a033613.\n\n\nLamport, Leslie. 1994. LaTeX: A Document Preparation\nSystem: User’s Guide and Reference Manual. 2nd ed. Reading,\nMass: Addison-Wesley Pub. Co.\n\n\nLatinitium. n.d. “Latin Dictionaries.”\nLatinitium. Accessed September 21, 2023. https://latinitium.com/latin-dictionaries/.\n\n\nMarques, Mirian David, and Gisele Oda. 2012. “Glossário.”\nRevista da Biologia 9 (3, 3). https://www.revistas.usp.br/revbiologia/article/view/114816.\n\n\nMitchell, Melanie. 2013. “Introduction to Complexity.”\nOnline course. 2013. https://www.complexityexplorer.org/courses/1-https://www.complexityexplorer.org/courses/1.\n\n\nOetiker, Tobias, Marcin Serwin, Hubert Partl, Irene Hyna, and Elisabeth\nSchlegl. 2023. The Not so Short Introduction to LaTeX:\nOr LaTeX in 280 Minutes. 7th ed. https://tobi.oetiker.ch/lshort.\n\n\nPittendrigh, C. S. 1960. “Circadian Rhythms and the Circadian\nOrganization of Living Systems.” Cold Spring Harbor Symposia\non Quantitative Biology 25: 159–84. https://doi.org/10.1101/SQB.1960.025.01.015.\n\n\n———. 1993. “Temporal Organization: Reflections of a Darwinian\nClock-Watcher.” Annual Review of Physiology 55 (1):\n17–54. https://doi.org/10.1146/annurev.ph.55.030193.000313.\n\n\nPopper, Karl R. 1979. Objective Knowledge: An Evolutionary\nApproach. Oxford University Press.\n\n\nRoenneberg, Till, Karla V. Allebrandt, Martha Merrow, and Céline Vetter.\n2012. “Social Jetlag and Obesity.” Current Biology\n22 (10): 939–43. https://doi.org/10.1016/j.cub.2012.03.038.\n\n\nRoenneberg, Till, Anna Wirz-Justice, and Martha Merrow. 2003.\n“Life Between Clocks: Daily Temporal Patterns of Human\nChronotypes.” Journal of Biological Rhythms 18 (1):\n80–90. https://doi.org/10.1177/0748730402239679.\n\n\nWickham, Hadley. 2016. Ggplot2: Elegant Graphics for Data\nAnalysis. 2nd ed. Use R! Cham:\nSpringer International Publishing. https://doi.org/10.1007/978-3-319-24277-4.",
+    "text": "ASCHOFF, J.; KLOTTER, K.; WEVER, R. Circadian vocabulary: a recommended\nterminology with definitions. Em: Circadian clocks.\n[s.l.] North-Holland, 1965.\n\n\nEHRET, C. F. The sense of\ntime: evidence for its molecular basis in the eukaryotic gene-action\nsystem. Em: Advances in Biological and\nMedical Physics. [s.l.] Elsevier,\n1974. v. 15p. 47–77.\n\n\nFISHER, R. A. The use of\nmultiple measurements in taxonomic problems. Annals of\nEugenics, v. 7, n. 2, p. 179–188, 1936.\n\n\nHENDERSON, H. V.; VELLEMAN, P. F. Building multiple regression\nmodels interactively. Biometrics, v. 37, n. 2, p.\n391–411, 1981.\n\n\nHOLTZ, Y. Marginal distribution with ggplot2 and\nggExtra. Disponível em: &lt;https://www.r-graph-gallery.com/277-marginal-histogram-for-ggplot2.html&gt;.\nAcesso em: 6 nov. 2023.\n\n\nKNUTH, D. E. The TeXbook. Upper\nSaddle River, N.J: Addison-Wesley, 1986.\n\n\nKUHLMAN, S. J.; CRAIG, L. M.; DUFFY, J. F. Introduction to\nchronobiology. Cold Spring Harbor Perspectives in\nBiology, v. 10, n. 9, p. a033613, set. 2018.\n\n\nLAMPORT, L. LaTeX: a document preparation system:\nuser’s guide and reference manual. 2. ed. Reading,\nMass: Addison-Wesley Pub. Co, 1994.\n\n\nLATINITIUM. Latin dictionaries. Disponível em: &lt;https://latinitium.com/latin-dictionaries/&gt;.\nAcesso em: 21 set. 2023.\n\n\nMARQUES, M. D.; ODA, G. Glossário.\nRevista da Biologia, v. 9, n. 3, 3, 2012.\n\n\nMITCHELL, M. Introduction to complexity. Online course.\nDisponível em: &lt;https://www.complexityexplorer.org/courses/1-https://www.complexityexplorer.org/courses/1&gt;.\nAcesso em: 21 set. 2023.\n\n\nOETIKER, T. et al. The\nnot so short introduction to LaTeX: or LaTeX\nin 280 minutes. 7. ed. [s.l: s.n.].\n\n\nPITTENDRIGH, C. S. Circadian rhythms and\nthe circadian organization of living systems. Cold Spring\nHarbor Symposia on Quantitative Biology, v. 25, p. 159–184,\n1960.\n\n\nPITTENDRIGH, C. S. Temporal\norganization: reflections of a darwinian clock-watcher.\nAnnual Review of Physiology, v. 55, n. 1, p. 17–54,\nout. 1993.\n\n\nPOPPER, K. R. Objective knowledge: an evolutionary\napproach. [s.l.] Oxford University Press, 1979.\n\n\nROENNEBERG, T. et al. Social jetlag and\nobesity. Current Biology, v. 22, n. 10, p. 939–943,\nmaio 2012.\n\n\nROENNEBERG, T.; WIRZ-JUSTICE, A.; MERROW, M. Life between clocks:\ndaily temporal patterns of human chronotypes. Journal of\nBiological Rhythms, v. 18, n. 1, p. 80–90, fev. 2003.\n\n\nWICKHAM, H. ggplot2: elegant\ngraphics for data analysis. 2. ed. Cham:\nSpringer International Publishing, 2016.",
     "crumbs": [
       "Chapters",
       "References"
@@ -167,9 +167,9 @@
     "href": "qmd/glossary.html",
     "title": "Glossary",
     "section": "",
-    "text": "For an extensive list of chronobiology related terms and definitions, please refer to Aschoff, Klotter, and Wever (1965) and Marques and Oda (2012).\n\nChronotype\n\nAny kind of temporal phenotype (Ehret 1974; Pittendrigh 1993). Usually, it refers to circadian phenotypes in a spectrum that goes from morningness to eveningness (Roenneberg, Wirz-Justice, and Merrow 2003). It can also be seen as an organism’s phase of entrainment (Roenneberg et al. 2012).\n\nCircadian rhythm\n\nA rhythm with a period close to a day/24h, an approximation to the period of the earth’s rotation (Pittendrigh 1960). From the Latin circā, around, and dĭes, day (Latinitium n.d.). Example: the sleep-wake cycle.\n\nComplex system\n\nThere are several definitions. Here are some that I found to be of use:\n\n\n\n“Systems that don’t yield to compact forms of representation or description” (David Krakauer apud Mitchell (2013))\n“A system of many interacting parts where the system is more than just the sum of its parts” (Mark Newman apud Mitchell (2013))\nSystems with many connected agents that interact and exhibit self-organization and emergence behavior, all without the need for a central controller (adapted from Camilo Rodrigues Neto’s definition, supervisor of this thesis).\nDialectics at its finest (my working definition).\n\n\nEntrainment\n\nA shift and alignment of biological rhythms induced by a zeitgeber input (Kuhlman, Craig, and Duffy 2018). For example: a shift/alignment of an organism’s circadian rhythm when exposed to light.\n\n\n\n\n\n\nAschoff, Jürgen, K. Klotter, and R. Wever. 1965. “Circadian Vocabulary: A Recommended Terminology with Definitions.” In Circadian Clocks. North-Holland.\n\n\nEhret, Charles F. 1974. “The Sense of Time: Evidence for Its Molecular Basis in the Eukaryotic Gene-Action System.” In Advances in Biological and Medical Physics, 15:47–77. Elsevier. https://doi.org/10.1016/B978-0-12-005215-8.50009-7.\n\n\nKuhlman, Sandra J., L. Michon Craig, and Jeanne F. Duffy. 2018. “Introduction to Chronobiology.” Cold Spring Harbor Perspectives in Biology 10 (9): a033613. https://doi.org/10.1101/cshperspect.a033613.\n\n\nLatinitium. n.d. “Latin Dictionaries.” Latinitium. Accessed September 21, 2023. https://latinitium.com/latin-dictionaries/.\n\n\nMarques, Mirian David, and Gisele Oda. 2012. “Glossário.” Revista da Biologia 9 (3, 3). https://www.revistas.usp.br/revbiologia/article/view/114816.\n\n\nMitchell, Melanie. 2013. “Introduction to Complexity.” Online course. 2013. https://www.complexityexplorer.org/courses/1-https://www.complexityexplorer.org/courses/1.\n\n\nPittendrigh, C. S. 1960. “Circadian Rhythms and the Circadian Organization of Living Systems.” Cold Spring Harbor Symposia on Quantitative Biology 25: 159–84. https://doi.org/10.1101/SQB.1960.025.01.015.\n\n\n———. 1993. “Temporal Organization: Reflections of a Darwinian Clock-Watcher.” Annual Review of Physiology 55 (1): 17–54. https://doi.org/10.1146/annurev.ph.55.030193.000313.\n\n\nRoenneberg, Till, Karla V. Allebrandt, Martha Merrow, and Céline Vetter. 2012. “Social Jetlag and Obesity.” Current Biology 22 (10): 939–43. https://doi.org/10.1016/j.cub.2012.03.038.\n\n\nRoenneberg, Till, Anna Wirz-Justice, and Martha Merrow. 2003. “Life Between Clocks: Daily Temporal Patterns of Human Chronotypes.” Journal of Biological Rhythms 18 (1): 80–90. https://doi.org/10.1177/0748730402239679.",
+    "text": "For an extensive list of chronobiology related terms and definitions, please refer to ASCHOFF; KLOTTER; WEVER (1965) and MARQUES; ODA (2012).\n\nChronotype\n\nAny kind of temporal phenotype (EHRET, 1974; PITTENDRIGH, 1993). Usually, it refers to circadian phenotypes in a spectrum that goes from morningness to eveningness (ROENNEBERG; WIRZ-JUSTICE; MERROW, 2003). It can also be seen as an organism’s phase of entrainment (ROENNEBERG et al., 2012).\n\nCircadian rhythm\n\nA rhythm with a period close to a day/24h, an approximation to the period of the earth’s rotation (PITTENDRIGH, 1960). From the Latin circā, around, and dĭes, day (LATINITIUM, [s.d.]). Example: the sleep-wake cycle.\n\nComplex system\n\nThere are several definitions. Here are some that I found to be of use:\n\n\n\n“Systems that don’t yield to compact forms of representation or description” (David Krakauer apud MITCHELL (2013))\n“A system of many interacting parts where the system is more than just the sum of its parts” (Mark Newman apud MITCHELL (2013))\nSystems with many connected agents that interact and exhibit self-organization and emergence behavior, all without the need for a central controller (adapted from Camilo Rodrigues Neto’s definition, supervisor of this thesis).\nDialectics at its finest (my working definition).\n\n\nEntrainment\n\nA shift and alignment of biological rhythms induced by a zeitgeber input (KUHLMAN; CRAIG; DUFFY, 2018). For example: a shift/alignment of an organism’s circadian rhythm when exposed to light.\n\n\n\n\n\n\nASCHOFF, J.; KLOTTER, K.; WEVER, R. Circadian vocabulary: A recommended terminology with definitions. In: Circadian clocks. [s.l.] North-Holland, 1965.\n\n\nEHRET, C. F. The sense of time: Evidence for its molecular basis in the eukaryotic gene-action system. In: Advances in Biological and Medical Physics. [s.l.] Elsevier, 1974. v. 15p. 47–77.\n\n\nKUHLMAN, S. J.; CRAIG, L. M.; DUFFY, J. F. Introduction to chronobiology. Cold Spring Harbor Perspectives in Biology, v. 10, n. 9, p. a033613, Sep. 2018.\n\n\nLATINITIUM. Latin dictionaries. Disponível em: &lt;https://latinitium.com/latin-dictionaries/&gt;. Acesso em: 21 sep. 2023.\n\n\nMARQUES, M. D.; ODA, G. Glossário. Revista da Biologia, v. 9, n. 3, 3, 2012.\n\n\nMITCHELL, M. Introduction to complexity. Online course. Disponível em: &lt;https://www.complexityexplorer.org/courses/1-https://www.complexityexplorer.org/courses/1&gt;. Acesso em: 21 sep. 2023.\n\n\nPITTENDRIGH, C. S. Circadian rhythms and the circadian organization of living systems. Cold Spring Harbor Symposia on Quantitative Biology, v. 25, p. 159–184, 1960.\n\n\nPITTENDRIGH, C. S. Temporal organization: Reflections of a darwinian clock-watcher. Annual Review of Physiology, v. 55, n. 1, p. 17–54, Oct. 1993.\n\n\nROENNEBERG, T. et al. Social jetlag and obesity. Current Biology, v. 22, n. 10, p. 939–943, May 2012.\n\n\nROENNEBERG, T.; WIRZ-JUSTICE, A.; MERROW, M. Life between clocks: Daily temporal patterns of human chronotypes. Journal of Biological Rhythms, v. 18, n. 1, p. 80–90, Feb. 2003.",
     "crumbs": [
-      "Appendices",
+      "Chapters",
       "Glossary"
     ]
   },
@@ -185,91 +185,102 @@
     ]
   },
   {
-    "objectID": "qmd/settings.html#typography",
-    "href": "qmd/settings.html#typography",
-    "title": "Appendix B — Settings",
+    "objectID": "qmd/pdf-settings.html#typography",
+    "href": "qmd/pdf-settings.html#typography",
+    "title": "Appendix B — PDF Settings",
     "section": "\nB.1 Typography",
     "text": "B.1 Typography\n\nB.1.1 Typeface\nTo change typefaces, simply use the Quarto options, such as mainfont, monofont and sansfont in your quarto-[format].yml file.\nformat:\n  abnt-pdf:\n    mainfont: Arial\nThe ABNT NBR 14724:2011 norm does not specify the use of any specific font. You have the freedom to choose any font you prefer, but it’s important to note that the selected font must be installed on your computer.\n\nB.1.2 Font size\nTo adjust the font size, utilize the fontsize option in in the quarto-[format].yml file.\nformat:\n  abnt-pdf:\n    fontsize: 12pt\nIt’s important to note that the third paragraph of Section 5.1 of ABNT NBR 14724:2011 norm establishes that the font size should be 12pt for the entire document, including the cover, except for quotations longer than three lines, footnotes, pagination, cataloging data, captions, and sources of illustrations and tables, which should be in a smaller and uniform size.\nThe smaller font is set to \\footnotesize, which corresponds to a 10pt font size with the default settings. You can modify this setting by inserting the following LaTeX command into tex/include-in-header.tex:\n\\renewcommand{\\ABNTEXfontereduzida}{[NEW SIZE (e.g., \\small)]}",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Settings</span>"
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>PDF Settings</span>"
     ]
   },
   {
-    "objectID": "qmd/settings.html#language-and-hyphenation",
-    "href": "qmd/settings.html#language-and-hyphenation",
-    "title": "Appendix B — Settings",
+    "objectID": "qmd/pdf-settings.html#language-and-hyphenation",
+    "href": "qmd/pdf-settings.html#language-and-hyphenation",
+    "title": "Appendix B — PDF Settings",
     "section": "\nB.2 Language and hyphenation",
     "text": "B.2 Language and hyphenation",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Settings</span>"
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>PDF Settings</span>"
     ]
   },
   {
-    "objectID": "qmd/settings.html#document-sections",
-    "href": "qmd/settings.html#document-sections",
-    "title": "Appendix B — Settings",
+    "objectID": "qmd/pdf-settings.html#document-sections",
+    "href": "qmd/pdf-settings.html#document-sections",
+    "title": "Appendix B — PDF Settings",
     "section": "\nB.3 Document sections",
-    "text": "B.3 Document sections\n\nB.3.1 Editing pre-textual sections\nabnt uses a system of tags to transfer and render the content of Quarto files (.qmd) to LaTeX. These tags look like this:\n%:::% class attribute begin/end %:::%\n&lt;!-- %:::% class attribute begin/end %:::% --&gt;\nUnless you want to customize the template, you don’t need to modify the .tex files. You can write directly in the .qmd files. Just ensure that you preserve all the tags.\nPlease note that some settings regarding the pre-textual sections must be changed in the qmd/_congfig.qmd file.\n\nB.3.2 How to include LaTeX commands in Quarto files (.qmd)\nTo add LaTeX commands in your writing, without worrying that it will contaminate the html format, use a {=latex} chunk.\n\\```{=latex}\n% Some LaTeX code.\n\\```\n\nB.3.3 How to add or remove sections\nFor pre-textual sections (e.g., list of symbols, abstract), remove them from tex/include-before-body.tex and from R/quarto-pre-render.R.\nFor textual sections (e.g., chapters), remove them from .quarto-[format].yml file.\nFor post-textual sections (e.g., appendices, annexes):\n\nIf it’s the Glossary, remove it from .quarto-[format].yml and copy the the LaTeX code after &lt;!-- glossary end --&gt; in glossary.qmd to the bottom of the last chapter;\nIf it’s not the last appendix chapter, simply remove it from .quarto-[format].yml; else remove it from .quarto-[format].yml, remove \\begin{apendicesenv} from the bottom of glossary.qmd and add the code the code after &lt;!-- appendices end --&gt; of the appendice file to the bottom of glossary.qmd;\n[Annexes];\n[Index].\n\nIt’s important to note that, at this moment, the transition between sections of the document are made inserting LaTeX code at the end of specific sections. These are:\n\nBetween the last chapter and the Glossary section.\nBetween the Glossary section and the Appendices section.\nBetween the Appendices and Annexes section.\nAfter the Annexes section.",
+    "text": "B.3 Document sections\n\nB.3.1 Editing pre-textual sections\nabnt uses a system of tags to transfer and render the content of Quarto files (.qmd) to LaTeX. These tags look like this:\n%:::% class attribute begin/end %:::%\n&lt;!-- %:::% class attribute begin/end %:::% --&gt;\nUnless you want to customize the template, you don’t need to modify the .tex files. You can write directly in the .qmd files. Just ensure that you preserve all the tags.\nPlease note that some settings regarding the pre-textual sections must be changed in the qmd/_congfig.qmd file.\n\nB.3.2 How to include LaTeX commands in Quarto files (.qmd)\nTo add LaTeX commands in your writing, without worrying that it will contaminate the html format, use a {=latex} chunk.\n```{=latex}\n% Some LaTeX code.\n```\n\nB.3.3 How to add or remove sections\nFor pre-textual sections (e.g., list of symbols, abstract), remove them from tex/include-before-body.tex and from R/quarto-pre-render.R.\nFor textual sections (e.g., chapters), remove them from .quarto-[format].yml file.\nFor post-textual sections (e.g., appendices, annexes):\n\nIf it’s the Glossary, remove it from .quarto-[format].yml and copy the the LaTeX code after &lt;!-- glossary end --&gt; in glossary.qmd to the bottom of the last chapter;\nIf it’s not the last appendix chapter, simply remove it from .quarto-[format].yml; else remove it from .quarto-[format].yml, remove \\begin{apendicesenv} from the bottom of glossary.qmd and add the code the code after &lt;!-- appendices end --&gt; of the appendice file to the bottom of glossary.qmd;\n[Annexes];\n[Index].\n\nIt’s important to note that, at this moment, the transition between sections of the document are made inserting LaTeX code at the end of specific sections. These are:\n\nBetween the last chapter and the Glossary section.\nBetween the Glossary section and the Appendices section.\nBetween the Appendices and Annexes section.\nAfter the Annexes section.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Settings</span>"
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>PDF Settings</span>"
     ]
   },
   {
-    "objectID": "qmd/settings.html#citation-management",
-    "href": "qmd/settings.html#citation-management",
-    "title": "Appendix B — Settings",
+    "objectID": "qmd/pdf-settings.html#citation-management",
+    "href": "qmd/pdf-settings.html#citation-management",
+    "title": "Appendix B — PDF Settings",
     "section": "\nB.4 Citation management",
     "text": "B.4 Citation management\n\nB.4.1 Citation method\nThis Quarto format was specifically designed to be compatible with BibLaTeX, which is a comprehensive reimplementation of BiBTeX. At first glance, these two systems may appear very similar.\nTo get started, simply insert your references into the references.bibfile. However, this task can be somewhat tedious and demanding. To simplify the process, we recommend exploring the integration of Zotero along with Better BiBTeX, as demonstrated in a section below.\nFor detailed guidance on handling citations in Quarto, please refer to Quarto’s Citation & Footnotes documentation.\n\nB.4.2 Citation style\nThere are two built-in citation styles:\n\n\nABNT (Brazilian Association of Technical Standards);\n\nAPA (American Psychological Association).\n\nTo use one of them, simply change the biblio-style option in your yml file with the style of you preference.\nformat:\n  abnt-pdf:\n    biblio-style: abnt # options: [abnt, abnt-ibid, abnt-numeric, apa]\nThere are other options related to the citation style; some are shown below. Please refer to biblatex, biblatex-abnt and biblatex-apa manuals to learn more about them.\nformat:\n  abnt-pdf:\n    biblio-footnote: &gt;\n      According to the Brazilian Association of Technical Standards\n      (ABNT NBR 6023).\n    biblatexoptions:\n      - backend=biber,\n      - language=english, # [options: english, brazil, spanish, french]\n      - url=true,\n      - useprefix=false,\n      - giveninits=true,\n      - extrayear=true\n    bibhang: 0cm # Use 0.5cm if `biblio-style: apa`.\n    bibparsep: 0ex\n\nB.4.3 Zotero integration\nThis template can work with Zotero and the Better BiBTeX plugin. The advantage of using this integration is that you don’t need to manually input your references into references.bib; they are automatically imported when you render the format.\nFor this to work, you must activate the zotero option in your yml file and have Zotero, with Better BibTeX installed, open while rendering your thesis (activated by default). A pre-render script (see R/quarto-pre-render.R), created using the rbbt R package, will scan all .qmd and .tex files searching for BibTeX citations (e.g., @watson1953). If they match with your Zotero database, the citations will then be written into the references.bib file.\nformat:\n  abnt-pdf:\n    zotero: true\n\nB.4.3.1 Title case change\nBy using Zotero, you may experience a title casing change when exporting your references. This is the default behavior of Better BibTex while exporting to BibLaTeX.\nYou can disable this by going to Zotero’s configuration editor (go to Edit &gt; Preferences &gt; Advanced &gt; Config Editor) and changing the variable\\ extensions.zotero.translators.better-bibtex.exportTitleCase to false. Beware that this can produce some issues. You can find more information about this behavior here.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Settings</span>"
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>PDF Settings</span>"
     ]
   },
   {
-    "objectID": "qmd/settings.html#abnt-figures-and-tables",
-    "href": "qmd/settings.html#abnt-figures-and-tables",
-    "title": "Appendix B — Settings",
+    "objectID": "qmd/pdf-settings.html#abnt-figures-and-tables",
+    "href": "qmd/pdf-settings.html#abnt-figures-and-tables",
+    "title": "Appendix B — PDF Settings",
     "section": "\nB.5 ABNT figures and tables",
     "text": "B.5 ABNT figures and tables\nThanks for the incredible work of Carlos Scheidegger and other Quarto developers we now have a built-in solution for figures and tables that require two captions (one at the top and the other at the bottom, or a caption and a legend), as required by the ABNT norms. Please note that this feature is only available for Quarto versions &gt;=v1.4.\nThe procedure for adding these captions is the same for figures and tables. Enclose your figure/table/code in figure divs, as shown in the example below. The first paragraph after the figure content will be rendered as the source (bottom caption), and the last one will be the top caption.\nThe formatting options for this bottom caption/legend is still matter of debate (see here). That’s why is important to add Quarto’s LaTeX Environment filter in your _quarto-pdf.yml\" with the commandlegendand use[SOURCE TEXT GOES HERE].legend}` when defining legends for figures/tables, like the example below.\n::: {#fig-1}\n\n::: {.figure-content}\nThis is the figure content.\n:::\n\n[Source: My source.]{.legend}\n\nThis is a caption.\n\n:::\nPlease note that, like all cross-reference elements, these divs must follow a naming pattern. Always use the prefixes #fig- for figures and #tbl- for tables.\nVisit the showcase chapter “Introduction” (qmd/introduction.qmd) of this Quarto format to see this feature in action. For more detailed information, please refer to Quarto’s Crossreferenceable elements article.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Settings</span>"
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>PDF Settings</span>"
     ]
   },
   {
-    "objectID": "qmd/settings.html#crossreferenceable-elements",
-    "href": "qmd/settings.html#crossreferenceable-elements",
-    "title": "Appendix B — Settings",
-    "section": "\nB.6 Crossreferenceable elements",
-    "text": "B.6 Crossreferenceable elements\nQuarto allow you to create and reference almost anything by using div enclosures.\nExample: See Theorem B.1.\n\nTheorem B.1 (Line) The equation of any straight line, called a linear equation, can be written as:\n\\[\ny = mx + b\n\\]\n\nAlthough, it’s important to note that for this to work, each type of div must use pre-defined prefixes. If you don’t follow these rules your document will not be rendered.\nHere are most of the the label prefixes.\n\n\n\n\n\n\n\n\ncnj-: Conjecture\n\ncor-: Corollary\n\ndef-: Definition\n\neq-: Equation\n\nexm-: Example\n\n\n\n\n\nexr-: Exercise\n\nfig-: Figure\n\nlem-: Lemma\n\nlst-: Listings\n\n\n\n\n\nprp-: Proposition\n\nsec-: Section\n\ntbl-: Table\n\nthm-: Theorem\n\n\n\n\nFor more information about cross-reference elements, see Quarto’s guideBook Crossrefs, Cross References and Crossreferenceable elements articles.",
+    "objectID": "qmd/pdf-settings.html#redenring-pdf-after-rendering-html-and-vice-versa",
+    "href": "qmd/pdf-settings.html#redenring-pdf-after-rendering-html-and-vice-versa",
+    "title": "Appendix B — PDF Settings",
+    "section": "\nB.6 Redenring PDF after rendering HTML (and vice-versa)",
+    "text": "B.6 Redenring PDF after rendering HTML (and vice-versa)\nThe index file title (index.qmd) and content must be altered for each format to render properly. This cause some issues that abnt can’t resolve for now. If you’ve rendered the HTML format and them wish to render the PDF format, you must run R/quarto-pre-render-pdf.R one time before starting the render. If is the inverse situation, you must run one time R/quarto-pre-render-html.R.\nWe’re working to fix this.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Settings</span>"
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>PDF Settings</span>"
     ]
   },
   {
-    "objectID": "qmd/settings.html#freezing-and-cache",
-    "href": "qmd/settings.html#freezing-and-cache",
-    "title": "Appendix B — Settings",
-    "section": "\nB.7 Freezing and cache",
-    "text": "B.7 Freezing and cache\nSee Freeze.",
+    "objectID": "qmd/pdf-settings.html#crossreferenceable-elements",
+    "href": "qmd/pdf-settings.html#crossreferenceable-elements",
+    "title": "Appendix B — PDF Settings",
+    "section": "\nB.7 Crossreferenceable elements",
+    "text": "B.7 Crossreferenceable elements\nQuarto allow you to create and reference almost anything by using div enclosures.\nExample: See Theorem B.1.\n\nTheorem B.1 (Line) The equation of any straight line, called a linear equation, can be written as:\n\\[\ny = mx + b\n\\]\n\nAlthough, it’s important to note that for this to work, each type of div must use pre-defined prefixes. If you don’t follow these rules your document will not be rendered.\nHere are most of the the label prefixes.\n\n\n\n\n\n\n\n\ncnj-: Conjecture\n\ncor-: Corollary\n\ndef-: Definition\n\neq-: Equation\n\nexm-: Example\n\n\n\n\n\nexr-: Exercise\n\nfig-: Figure\n\nlem-: Lemma\n\nlst-: Listings\n\n\n\n\n\nprp-: Proposition\n\nsec-: Section\n\ntbl-: Table\n\nthm-: Theorem\n\n\n\n\nFor more information about cross-reference elements, see Quarto’s guideBook Crossrefs, Cross References and Crossreferenceable elements articles.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Settings</span>"
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>PDF Settings</span>"
     ]
   },
   {
-    "objectID": "qmd/settings.html#how-to-customize-this-quarto-format",
-    "href": "qmd/settings.html#how-to-customize-this-quarto-format",
-    "title": "Appendix B — Settings",
-    "section": "\nB.8 How to customize this Quarto format",
-    "text": "B.8 How to customize this Quarto format\n\nB.8.1 Quarto system\nSee Quarto’s guide.\n\nB.8.2 Template and template partials\nSee Tempalte partials.\n\nB.8.3 Spacing rules\n\nSet fixed dimensions (e.g., page dimensions) in cm or pt. cm is the prefer unit for margins.\nSet line spacing as a proportion of \\baselineskip (e.g., 1.5\\baselineskip).\nUse the settings \\tinyskipamount, \\smallskipamount, \\midskipamount, \\bigskipamount, \\hugeskipamount and their counterparts \\tinyskip, \\smallskip, \\midskip, \\bigskip, \\hugeskip. You can find them in the lengths.tex template partial.\nFor other kinds of relative vertical spacing, use the ex unit.\nFor relative horizontal spacing, use the em unit.\n\nSee Oetiker et al. (2023, sec. 7.5) to learn more about LaTeX spacing features. The articles on Overleaf are also a great source of information. Check Lengths in LaTeX and How to change paragraph spacing in LaTeX to get a sense of the subject.\n\nB.8.3.1 Unit equivalences\n\n1em \\(==\\) 12pt or \\(\\approx\\) 0.423333cm.\n1ex \\(==\\) \\(\\approx\\) 6.22266pt or \\(\\approx\\) 0.219521cm.\n\n\nB.8.3.1.1 \\baselineskip\n\nThese are the equivalences for a Arial typeface with size 12pt:\nUse \\the\\baselineskip and \\gevalue{} to figure out the exact value. Note that \\gevalue{} will return the value in pt.\nExample of using \\getvalue{}:\n\\begingroup\n\\setlength{\\parskip}{1em}\n\\getlength{\\parskip}\n\\endgroup\n\n\n\\linestretch=1\n\n\n1\\baselineskip \\(==\\) 14.5pt. That’s about 1.2x (or ($$1.208333x) the font size (standard procedure).\n\n\n\n\\linestretch=1.5\n\n\n0.25\\baselineskip \\(==\\) 5.4375pt or \\(\\approx\\) 0.191822917cm;\n\n0.5\\baselineskip \\(==\\) 10.875pt or \\(\\approx\\) 0.383645833cm;\n\n0.75\\baselineskip \\(==\\) 16.3125pt or \\(\\approx\\) 0.57546875cm;\n\n1\\baselineskip \\(==\\) 21.75pt or \\(\\approx\\) 0.76729167cm;\n\n1.5\\baselineskip \\(==\\) 32.625pt or \\(\\approx\\) 1.1509375cm;\n\n2\\baselineskip \\(==\\) 43.5pt or \\(\\approx\\) 1.534583cm;\n\n2.5\\baselineskip \\(==\\) 54.375pt or \\(\\approx\\) 1.91822917cm;\n\n3\\baselineskip \\(==\\) 65.25pt or \\(\\approx\\) 2.301875cm.\n\n\n\nB.8.4 How to add new citation styles\n\nB.8.5 Must see references\nTo learn the basics about LaTeX, see Oetiker et al. (2023). To delve deeper into the LaTeX system, see Lamport (1994) and Knuth (1986).\n\nB.8.5.1 Manuals\n\n\n\n\n\n\n\nQuarto\nabntex2\nmemoir\nbiblatex\nbiblatex-abnt\n\n\n\n\nbiblatex-apa\nbabel\nfontspec\nmakeidx\n\n\n\n\n\nB.8.5.2 R packages\n\n\n\n\n\n\n\ngt\n\n\n\n\nrutils\n\n\n\n\n\n\n\n\n\nKnuth, Donald Ervin. 1986. The TeXbook. Computers & Typesetting, A. Upper Saddle River, N.J: Addison-Wesley.\n\n\nLamport, Leslie. 1994. LaTeX: A Document Preparation System: User’s Guide and Reference Manual. 2nd ed. Reading, Mass: Addison-Wesley Pub. Co.\n\n\nOetiker, Tobias, Marcin Serwin, Hubert Partl, Irene Hyna, and Elisabeth Schlegl. 2023. The Not so Short Introduction to LaTeX: Or LaTeX in 280 Minutes. 7th ed. https://tobi.oetiker.ch/lshort.",
+    "objectID": "qmd/pdf-settings.html#freezing-and-cache",
+    "href": "qmd/pdf-settings.html#freezing-and-cache",
+    "title": "Appendix B — PDF Settings",
+    "section": "\nB.8 Freezing and cache",
+    "text": "B.8 Freezing and cache\nSee Freeze.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Settings</span>"
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>PDF Settings</span>"
+    ]
+  },
+  {
+    "objectID": "qmd/pdf-settings.html#how-to-customize-this-quarto-format",
+    "href": "qmd/pdf-settings.html#how-to-customize-this-quarto-format",
+    "title": "Appendix B — PDF Settings",
+    "section": "\nB.9 How to customize this Quarto format",
+    "text": "B.9 How to customize this Quarto format\n\nB.9.1 Quarto system\nSee Quarto’s guide.\n\nB.9.2 Template and template partials\nSee Tempalte partials.\n\nB.9.3 Spacing rules\n\nSet fixed dimensions (e.g., page dimensions) in cm or pt. cm is the prefer unit for margins.\nSet line spacing as a proportion of \\baselineskip (e.g., 1.5\\baselineskip).\nUse the settings \\tinyskipamount, \\smallskipamount, \\midskipamount, \\bigskipamount, \\hugeskipamount and their counterparts \\tinyskip, \\smallskip, \\midskip, \\bigskip, \\hugeskip. You can find them in the lengths.tex template partial.\nFor other kinds of relative vertical spacing, use the ex unit.\nFor relative horizontal spacing, use the em unit.\n\nSee OETIKER et al. (2023, sec. 7.5) to learn more about LaTeX spacing features. The articles on Overleaf are also a great source of information. Check Lengths in LaTeX and How to change paragraph spacing in LaTeX to get a sense of the subject.\n\nB.9.3.1 Unit equivalences\n\n1em \\(==\\) 12pt or \\(\\approx\\) 0.423333cm.\n1ex \\(==\\) \\(\\approx\\) 6.22266pt or \\(\\approx\\) 0.219521cm.\n\n\nB.9.3.1.1 \\baselineskip\n\nThese are the equivalences for a Arial typeface with size 12pt:\nUse \\the\\baselineskip and \\gevalue{} to figure out the exact value. Note that \\gevalue{} will return the value in pt.\nExample of using \\getvalue{}:\n\\begingroup\n\\setlength{\\parskip}{1em}\n\\getlength{\\parskip}\n\\endgroup\n\n\n\\linestretch=1\n\n\n1\\baselineskip \\(==\\) 14.5pt. That’s about 1.2x (or ($$1.208333x) the font size (standard procedure).\n\n\n\n\\linestretch=1.5\n\n\n0.25\\baselineskip \\(==\\) 5.4375pt or \\(\\approx\\) 0.191822917cm;\n\n0.5\\baselineskip \\(==\\) 10.875pt or \\(\\approx\\) 0.383645833cm;\n\n0.75\\baselineskip \\(==\\) 16.3125pt or \\(\\approx\\) 0.57546875cm;\n\n1\\baselineskip \\(==\\) 21.75pt or \\(\\approx\\) 0.76729167cm;\n\n1.5\\baselineskip \\(==\\) 32.625pt or \\(\\approx\\) 1.1509375cm;\n\n2\\baselineskip \\(==\\) 43.5pt or \\(\\approx\\) 1.534583cm;\n\n2.5\\baselineskip \\(==\\) 54.375pt or \\(\\approx\\) 1.91822917cm;\n\n3\\baselineskip \\(==\\) 65.25pt or \\(\\approx\\) 2.301875cm.\n\n\n\nB.9.4 How to add new citation styles\n\nB.9.5 Must see references\nTo learn the basics about LaTeX, see OETIKER et al. (2023). To delve deeper into the LaTeX system, see LAMPORT (1994) and KNUTH (1986).\n\nB.9.5.1 Manuals\n\n\n\n\n\n\n\nQuarto\nabntex2\nmemoir\nbiblatex\nbiblatex-abnt\n\n\n\n\nbiblatex-apa\nbabel\nfontspec\nmakeidx\n\n\n\n\n\nB.9.5.2 R packages\n\n\n\n\n\n\n\ngt\n\n\n\n\nrutils\n\n\n\n\n\n\n\n\n\nKNUTH, D. E. The TeXbook. Upper Saddle River, N.J: Addison-Wesley, 1986.\n\n\nLAMPORT, L. LaTeX: A document preparation system: User’s guide and reference manual. 2. ed. Reading, Mass: Addison-Wesley Pub. Co, 1994.\n\n\nOETIKER, T. et al. The not so short introduction to LaTeX: Or LaTeX in 280 minutes. 7. ed. [s.l: s.n.].",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>PDF Settings</span>"
     ]
   },
   {

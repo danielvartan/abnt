@@ -47,7 +47,7 @@ var_files <- c(
 
 var_patterns <- c(
   "academic-title", "academic-degree", "area-of-concentration", "author",
-  "^book.url$", "cosupervisor", "date", "keyword", "language", "location",
+  "^book.url$", "cosupervisor", "date", "keyword", "language", "pdf.location$",
   "mainfont", "monofont", "program", "sansfont", "school", "supervisor",
   "title","type-of-work", "university", "version-note"
 )
