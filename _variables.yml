@@ -1,26 +1,25 @@
+academic-title: '[Master/PhD]'
+academic-degree: '[Master of Science/Doctor of Science]'
+area-of-concentration: '[Area of concentration]'
 author-surname: Vartanian
 author-given-name: Daniel
 author-minus-surname: Daniel
 author-initials: D. V.
 author: Daniel Vartanian
-url: https://danielvartan.github.io/abnt/
-keyword: ABNT. Quarto. Quarto format. Thesis template. Reproducibility. Open science.
-language: en
-title: '{abnt}: Quarto format for ABNT theses and dissertations'
-date: '2023-11-10'
-year: '2023'
-academic-title: '[Master/PhD]'
-academic-degree: '[Master of Science/Doctor of Science]'
-area-of-concentration: '[Area of concentration]'
 cosupervisor: '[Co-supervisor''s full name]'
+keyword: ABNT. Quarto. Quarto format. Thesis template. Reproducibility. Open science.
 location: '[City]'
+mainfont: Arial
+monofont: FragmentMono-Regular.otf
 program: '[Graduate program]'
+sansfont: Arial
 school: '[School/Department]'
 supervisor: '[Supervisor''s full name]'
 type-of-work: '[Dissertation/Thesis]'
 university: '[University]'
 version-note: '[Original/Revised version]'
-mainfont: Arial
-monofont: FragmentMono-Regular.otf
-sansfont: Arial
-format: html
+url: https://danielvartan.github.io/abnt/
+language: en
+title: '{abnt}: Quarto format for ABNT theses and dissertations'
+date: '2023-11-14'
+year: '2023'

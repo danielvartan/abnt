@@ -26,15 +26,15 @@ if (!checkmate::test_file_exists(env_vars_file_path)) {
 env_vars <- list()
 
 var_files <- c(
-  "quarto_yml_vars", "quarto_yml_html_vars", "quarto_yml_pdf_vars",
-  "quarto_yml_extension_vars"
+  "quarto_yml_extension_vars", "quarto_yml_vars", "quarto_yml_html_vars",
+  "quarto_yml_pdf_vars"
 )
 
 var_patterns <- c(
   "academic-title", "academic-degree", "area-of-concentration", "author",
   "^book.url$", "cosupervisor", "date", "keyword", "language", "pdf.location$",
   "mainfont", "monofont", "program", "sansfont", "school", "supervisor",
-  "title","type-of-work", "university", "version-note"
+  "^book.title$","type-of-work", "university", "version-note"
 )
 
 for (i in var_files){
@@ -44,11 +44,12 @@ for (i in var_files){
     test <- grepl(j, names(values))
 
     if (any(test, na.rm = TRUE)) {
-      if (grepl("\\.", j)) {
-        j <- sub("^.+\\.", "", j)
-
-        if (grepl("\\$$", j)) j <- sub("\\$$", "", j)
+      if (grepl("^\\^", j) || grepl("\\$$", j)) {
+        j <- sub("^\\^", "", j)
+        j <- sub("\\$$", "", j)
       }
+
+      if (grepl("\\.", j)) j <- sub("^.+\\.", "", j)
 
       if (j == "date") {
         if (!grepl("\\d{4}", values[test][1]) &&
@@ -56,11 +57,11 @@ for (i in var_files){
           next()
         } else if (any(values[test][1] == "today", na.rm = TRUE)) {
           env_vars[[j]] <- as.character(Sys.Date())
+
           env_vars[["year"]] <- as.character(lubridate::year(Sys.Date()))
           next()
         } else {
-          env_vars[["year"]] <-
-            as.character(stringr::str_extract(values[test][1], "\\d{4}"))
+          env_vars[["year"]] <- stringr::str_extract(values[test][1], "\\d{4}")
         }
       }
 
@@ -99,6 +100,10 @@ env_vars |> yaml::write_yaml(env_vars_file_path)
 
 quarto_yml_pdf_path <- here::here("_quarto-pdf.yml")
 quarto_yml_pdf_vars <- yaml::read_yaml(quarto_yml_pdf_path)
+
+# (2024-06-05)
+# This function only works with BetterBibTeX (BBT) for Zotero version v6.7.140
+# or lower.
 
 if (isTRUE(quarto_yml_pdf_vars$format$`abnt-pdf`$zotero)) {
   rutils:::bbt_write_quarto_bib(

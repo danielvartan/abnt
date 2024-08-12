@@ -6,14 +6,14 @@
 #| label: setup
 #| include: false
 
-source(here::here("R/quarto-setup.R"))
+source(here::here("R/_setup.R"))
 ```
 
 <!-- %:::% index pdf begin %:::% -->
 ::: {.callout-note}
 The text below is for demonstrative purposes only.
 
-\vspace{0.25\baselineskip}
+\microskip
 
 See <https://github.com/danielvartan/abnt> to learn more about this template.
 :::
@@ -73,14 +73,12 @@ See @tbl-iris.
 ```
 
 ::: {#tbl-iris}
-::: {.figure-content}
 ```{r}
 datasets::iris |>
   dplyr::as_tibble() |>
   dplyr::slice_sample(n = 5) |>
   gt::gt()
 ```
-:::
 
 [Source: Based on @fisher1936.]{.legend}
 
@@ -168,6 +166,6 @@ ggExtra::ggMarginal(
 
 [Source: Data extracted from the 1974 Motor Trend magazine and published by @henderson1981. Visualization by @holtz, available at [The R Graph Gallery](https://r-graph-gallery.com/277-marginal-histogram-for-ggplot2.html).]{.legend}
 
-Relation between _weight (1000lbs)_ ($\text{wt}$) and _miles per galon_ ($\text{mpg}$) for combustion engine vehicles
+Relation between _weight (1000lbs)_ ($\text{wt}$) and _miles per gallon_ ($\text{mpg}$) for combustion engine vehicles
 :::
 <!-- %:::% index pdf end %:::% -->

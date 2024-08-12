@@ -6,12 +6,12 @@ __Do not remove the text tags__! (they look like this: `<!-- %:::% tag %:::% -->
 
 Some general instructions:
 
-* If you won't use a section of this document, remove it! Empty sections will produce an error. At the moment, you also need to remove them in the `tex/include-before-body.tex` file and `R/quarto-pre-render-pdf.R`.
+* If you won't use a section of this document, remove it! Empty sections will produce an error. At the moment, you also need to remove them in the `tex/include-before-body.tex` file and `R/_pre-render-pdf.R`.
 
 ## Title page
 
 <!-- %:::% title-page body begin %:::% -->
-{\imprimirtipotrabalho} presented to the {\imprimirescola} at {\imprimiruniversidade}, as part of the requirements for the degree of {\imprimirtituloacademico} by the {\imprimirprograma}.
+{\imprimirtipotrabalho} presented to the {\imprimirescola} at the {\imprimiruniversidade}, as a requirement for the degree of {\imprimirtituloacademico} by the {\imprimirprograma}.
 
 \smallskip
 Area of concentration: {\imprimirareadeconcentracao}.
@@ -38,7 +38,7 @@ Cataloging in publication
 
 Library
 
-[Library name]
+{\imprimirescola}
 
 \medskip
 \setlength{\fboxsep}{1cm}
@@ -46,19 +46,22 @@ Library
 [Author's surname], [Author's forename(s)]
 
 \smallskip
-\hspace{0.5cm} {\imprimirtitulo}  / {\imprimirautor}; supervisor, {\imprimirorientador}; co-supervisor {\imprimircoorientador}. {\imprimirlocal}, {\imprimirdata}
+\hspace{0.5cm} {\imprimirtitulo}  / {\imprimirautor}; supervisor, {\imprimirorientador}; co-supervisor {\imprimircoorientador}. {\imprimirlocal}, {\imprimirdata}.
 
 \smallskip
 {\thelastpage}p. : il
 
 \smallskip
-\hspace{0.5cm} {\imprimirtipotrabalho} (\imprimirtituloacademico) -- {\imprimirprograma}, {\imprimirescola}, {\imprimiruniversidade}, {\imprimirdata}.
+\hspace{0.5cm} {\imprimirtipotrabalho} (\imprimirtituloacademico) -- {\imprimirprograma}, {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
 
 \smallskip
 \hspace{0.5cm} {\imprimirnotadeversao}
 
 \smallskip
 \hspace{0.5cm} 1. [Subject A]. 2. [Subject B]. 3. [Subject C]. I. [Supervisor's surname], [Supervisor's forename(s)], super. II. [Co-supervisor's surname], [Co-supervisor's forename(s)] co-super. III. Title.
+
+\smallskip
+\hfill CDD ? .ed. ???.???
 \end{minipage}}
 \end{center}
 <!-- %:::% cataloging-record body end %:::% -->
@@ -66,7 +69,7 @@ Library
 ## Approval sheet header
 
 <!-- %:::% approval-sheet body begin %:::% -->
-{\imprimirtipotrabalho} by {\imprimirautor}, under the title \textbf{\imprimirtitulo}, presented to the {\imprimirescola} at the {\imprimiruniversidade}, as part of the requirements for the degree of {\imprimirtituloacademico} by the {\imprimirprograma}, in the concentration area of {\imprimirareadeconcentracao}.
+{\imprimirtipotrabalho} by {\imprimirautor}, under the title \textbf{\imprimirtitulo}, presented to the {\imprimirescola} at the {\imprimiruniversidade}, as a requirement for the degree of {\imprimirtituloacademico} by the {\imprimirprograma}, in the concentration area of {\imprimirareadeconcentracao}.
 
 \vspace{\hugeskipamount}
 Approved on \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ , \_\_\_\_\_\_\_\_\_\_ .

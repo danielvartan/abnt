@@ -1,6 +1,9 @@
 # See <https://git-scm.com/docs/gitignore>.
 
 _freeze/
+_print/
+_slides/
+_web/
 .quarto/
 .temp/
 .Rapp.history
@@ -9,5 +12,3 @@ _freeze/
 .Rhistory
 .Rproj.user
 .Ruserdata
-
-/.quarto/

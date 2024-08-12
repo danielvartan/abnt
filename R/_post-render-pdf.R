@@ -1,7 +1,7 @@
 # library(here, quietly = TRUE)
 # library(rutils, quietly = TRUE)
 
-source(here::here("R", "quarto-post-render-common.R"))
+source(here::here("R", "_post-render-common.R"))
 
 # Copy and rename the PDF file (if exists) to `output_dir_pdf` folder -----
 
@@ -23,11 +23,4 @@ if (length(tex_file) == 1) {
 
 # Delete unnecessary files and folders -----
 
-rutils:::clean_quarto_mess(
-  file = NULL,
-  dir = c(".temp", "index_cache", "index_files"),
-  ext = c("aux", "bbx", "cbx", "dbx", "fdb_latexmk", "lbx", "loa", "log",
-          "otf", "pdf", "tex", "xdv"),
-  ignore = NULL,
-  wd = here::here()
-)
+source(here::here("R", "_post-render-clean.R"))

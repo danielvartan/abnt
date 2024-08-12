@@ -2,7 +2,7 @@
 ::: {.callout-note}
 The text below is for demonstrative purposes only.
 
-\vspace{0.25\baselineskip}
+\microskip
 
 See <https://github.com/danielvartan/abnt> to learn more about this template.
 :::

@@ -95,17 +95,16 @@ contributes:
       biblio-style: abnt # options: [abnt, abnt-ibid, abnt-numeric, apa]
       biblio-title: REFERENCES
       biblio-footnote: >
-        According to the Brazilian Association of Technical Standards
-        (ABNT NBR 6023).
+        In accordance with the Brazilian Association of Technical Standards
+        (ABNT) NBR 6023 norm.
       biblatexoptions:
         - backend=biber,
         - language=english, # [options: english, brazil, spanish, french]
         - url=true,
         - useprefix=false,
-        - giveninits=true,
-        - extrayear=true
+        - giveninits=true
       bibhang: 0cm # Use 0.5cm if `biblio-style: apa`.
-      bibparsep: 0ex
+      bibparsep: 1ex
       zotero: false
       index-page: false
       number-sections: true

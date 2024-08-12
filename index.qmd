@@ -11,7 +11,7 @@ execute:
 #| label: setup
 #| include: false
 
-source(here::here("R/quarto-setup.R"))
+source(here::here("R/_setup.R"))
 ```
 
 ::: {.content-visible when-format="html"}

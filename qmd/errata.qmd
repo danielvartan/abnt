@@ -6,15 +6,17 @@
 #| label: setup
 #| include: false
 
-source(here::here("R/quarto-setup.R"))
+source(here::here("R/_setup.R"))
 ```
+
+`r toupper(env_vars[["author-surname"]])`, `r sub("\\. .\\.$", "", env_vars[["author-initials"]])`. __{{< var title >}}__. {{< var year >}}. {{< var type-of-work >}} ({{< var academic-degree >}}) -- {{< var school >}}, {{< var university >}}, {{< var location >}}, {{< var year >}}.
 
 ::: {.content-visible when-format="pdf"}
 <!-- %:::% errata reference begin %:::% -->
-\noindent [Author's surname], [Author's forename(s) initial(s)]. \textbf{\imprimirtitulo}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  (\imprimirtituloacademico) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
+\noindent [AUTHOR'S SURNAME], [Author's forename(s) initial(s)]. \textbf{\imprimirtitulo}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  ({\imprimirtituloacademico}) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
 <!-- %:::% errata reference end %:::% -->
 :::
 
 <!-- %:::% errata body begin %:::% -->
-This is the development version of the thesis (version <1.0.0). Any necessary corrections will be listed here after its approval.
+This is the preliminary version of this thesis (version <1.0.0). Any required corrections will be listed here upon approval.
 <!-- %:::% errata body end %:::% -->

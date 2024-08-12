@@ -2,7 +2,7 @@
 # library(rutils, quietly = TRUE)
 # lybrary(yaml)
 
-source(here::here("R", "quarto-pre-render-common.R"))
+source(here::here("R", "_pre-render-common.R"))
 
 # Update Quarto files -----
 

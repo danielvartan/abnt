@@ -6,14 +6,14 @@
 #| label: setup
 #| include: false
 
-source(here::here("R/quarto-setup.R"))
+source(here::here("R/_setup.R"))
 ```
 
-[Sobrenome do autor], [Nome(s) do autor]. __[Título]__. {{< var year >}}. {{< var type-of-work >}} ({{< var academic-degree >}}) -- {{< var school >}}, {{< var university >}}, {{< var location >}}, {{< var year >}}.
+`r toupper(env_vars[["author-surname"]])`, `r sub("\\. .\\.$", "", env_vars[["author-initials"]])`. __[Título]__. {{< var year >}}. [Dissertação/Tese] ([Mestrado/Doutorado] em [área]) -- [Escola/Faculdade], [Universidade], [Cidade/Local], {{< var year >}}.
 
 ::: {.content-visible when-format="pdf"}
 <!-- %:::% foreign-abstract reference begin %:::% -->
-[Sobrenome do autor], [Inicial(is) do(s) prenome(s) do autor].  \textbf{[Título]}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  (\imprimirtituloacademico) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
+[SOBRENOME DO AUTOR], [Inicial(is) do(s) prenome(s) do autor].  \textbf{[Título]}. {\imprimirdata}. {\thelastpage}p. [Dissertação/Tese]  ([Título acadêmico]) -- [Escola/Faculdade], [Universidade], [Cidade/Local], {\imprimirdata}.
 <!-- %:::% foreign-abstract reference end %:::% -->
 :::
 
@@ -29,7 +29,7 @@ __Palavras-chaves__: [Palavra-chave 1]. [Palavra-chave 2]. [Palavra-chave 3].
 ::: {.content-visible when-format="pdf"}
 <!-- %:::% foreign-abstract keywords begin %:::% -->
 \begin{tabular}{p{3.6cm} p{12.3cm}}
-  \textbf{Palavras-chaves}: &  [Palavra-chave 1]. [Palavra-chave 2]. [Palavra-chave 3].
+  \textbf{Palavras-chaves}: & [Palavra-chave 1]. [Palavra-chave 2]. [Palavra-chave 3].
 \end{tabular}
 <!-- %:::% foreign-abstract keywords end %:::% -->
 :::

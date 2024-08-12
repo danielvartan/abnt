@@ -1,7 +1,7 @@
 project:
   output-dir: pdf
-  pre-render: "R/quarto-pre-render-pdf.R"
-  post-render: "R/quarto-post-render-pdf.R"
+  pre-render: "R/_pre-render-pdf.R"
+  post-render: "R/_post-render-pdf.R"
 
 # See  <https://quarto.org/docs/books/>.
 # See <https://quarto.org/docs/reference/projects/books.html>.
@@ -12,7 +12,7 @@ book:
     - index.qmd
     - qmd/development.qmd
     - qmd/conclusion.qmd
-    - qmd/glossary.qmd # The glossary goes with the chapters.
+    - qmd/glossary.qmd
   appendices:
     - qmd/appendix-1.qmd
     - qmd/pdf-settings.qmd

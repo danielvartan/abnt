@@ -6,14 +6,14 @@
 #| label: setup
 #| include: false
 
-source(here::here("R/quarto-setup.R"))
+source(here::here("R/_setup.R"))
 ```
 
-{{< var author-surname >}}, {{< var author-initials >}} __{{< var title >}}__. {{< var year >}}. {{< var type-of-work >}} ({{< var academic-degree >}}) -- {{< var school >}}, {{< var university >}}, {{< var location >}}, {{< var year >}}.
+`r toupper(env_vars[["author-surname"]])`, `r sub("\\. .\\.$", "", env_vars[["author-initials"]])`. __{{< var title >}}__. {{< var year >}}. {{< var type-of-work >}} ({{< var academic-degree >}}) -- {{< var school >}}, {{< var university >}}, {{< var location >}}, {{< var year >}}.
 
 ::: {.content-visible when-format="pdf"}
 <!-- %:::% vernacular-abstract reference begin %:::% -->
-[Author's surname], [Author's forename(s) initial(s)]. \textbf{\imprimirtitulo}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  (\imprimirtituloacademico) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
+[AUTHOR'S SURNAME], [Author's forename(s) initial(s)]. \textbf{\imprimirtitulo}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  (\imprimirtituloacademico) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
 <!-- %:::% vernacular-abstract reference end %:::% -->
 :::
 
@@ -29,7 +29,7 @@ __Keywords__: {{< var keyword >}}
 ::: {.content-visible when-format="pdf"}
 <!-- %:::% vernacular-abstract keywords begin %:::% -->
 \begin{tabular}{p{2.3cm} p{13.6cm}}
-  \textbf{Keywords}: &  [Keyword 1]. [Keyword 2]. [Keyword 3].
+  \textbf{Keywords}: & [Keyword 1]. [Keyword 2]. [Keyword 3].
 \end{tabular}
 <!-- %:::% vernacular-abstract keywords end %:::% -->
 :::

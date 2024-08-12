@@ -6,13 +6,13 @@
 #| label: setup
 #| include: false
 
-source(here::here("R/quarto-setup.R"))
+source(here::here("R/_setup.R"))
 ```
 
 ::: {.callout-note}
 The text below is for demonstrative purposes only.
 
-\vspace{0.25\baselineskip}
+\microskip
 
 See <https://quarto.org/docs/authoring/markdown-basics.html> to learn about the basics of Markdown's syntax.
 :::

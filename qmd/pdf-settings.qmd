@@ -6,7 +6,7 @@
 #| label: setup
 #| include: false
 
-source(here::here("R/quarto-setup.R"))
+source(here::here("R/_setup.R"))
 ```
 
 <!-- See <https://github.com/quarto-journals/elsevier>. -->
@@ -16,12 +16,10 @@ source(here::here("R/quarto-setup.R"))
 #| echo: false
 #| output: asis
 
-# library(rutils)
-
 rutils:::quarto_status(
   type = "restructuring",
   of_what = "of this manual",
-  latex_parskip = "\\vspace{0.25\\baselineskip}"
+  latex_parskip = "\\microskip"
   )
 ```
 
@@ -220,7 +218,7 @@ Visit the showcase chapter "Introduction" (`qmd/introduction.qmd`) of this Quart
 
 ## Redenring PDF after rendering HTML (and vice-versa)
 
-The index file title (`index.qmd`) and content must be altered for each format to render properly. This cause some issues that `abnt` can't resolve for now. If you've rendered the HTML format and them wish to render the PDF format, you must run `R/quarto-pre-render-pdf.R` one time before starting the render. If is the inverse situation, you must run one time `R/quarto-pre-render-html.R`.
+The index file title (`index.qmd`) and content must be altered for each format to render properly. This cause some issues that `abnt` can't resolve for now. If you've rendered the HTML format and them wish to render the PDF format, you must run `R/_pre-render-pdf.R` one time before starting the render. If is the inverse situation, you must run one time `R/_pre-render-html.R`.
 
 We're working to fix this.
 
@@ -305,14 +303,14 @@ See [Tempalte partials](https://quarto.org/docs/journals/templates.html#template
 
 See @oetiker2023 [section 7.5] to learn more about LaTeX spacing features. The articles on [Overleaf](https://www.overleaf.com) are also a great source of information. Check [Lengths in LaTeX](https://www.overleaf.com/learn/latex/Lengths_in_LaTeX) and [How to change paragraph spacing in LaTeX](https://www.overleaf.com/learn/latex/Articles/How_to_change_paragraph_spacing_in_LaTeX) to get a sense of the subject.
 
+The following are the equivalences for a Arial typeface with size 12`pt`.
+
 #### Unit equivalences
 
 * 1`em` $==$ 12`pt` or $\approx$ 0.423333`cm`.
 * 1`ex` $==$ $\approx$ 6.22266`pt` or $\approx$ 0.219521`cm`.
 
 ##### `\baselineskip`
-
-These are the equivalences for a Arial typeface with size 12`pt`:
 
 Use `\the\baselineskip` and `\gevalue{}` to figure out the exact value. Note that `\gevalue{}` will return the value in `pt`.
 
@@ -326,7 +324,7 @@ Example of using `\getvalue{}`:
 ```
 
 * `\linestretch=1`
-  * `1\baselineskip` $==$ 14.5`pt`. That's about 1.2x (or ($\approx$1.208333x) the font size (standard procedure).
+  * `1\baselineskip` $==$ 14.5`pt`. That's about 1.2x (or ($\approx$ 1.208333x) the font size (standard procedure).
 
 * `\linestretch=1.5`
   * `0.25\baselineskip` $==$ 5.4375`pt` or $\approx$ 0.191822917`cm`;

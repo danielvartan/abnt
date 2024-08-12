@@ -6,11 +6,11 @@
 #| label: setup
 #| include: false
 
-source(here::here("R/quarto-setup.R"))
+source(here::here("R/_setup.R"))
 ```
 
 ::: {.content-visible when-format="html"}
-To the worm that first gnawed on the cold flesh of my corpse, I dedicate, as a fond remembrance, these posthumous memories.[^1]
+_To the worm that first gnawed on the cold flesh of my corpse, I dedicate, as a fond remembrance, these posthumous memories._[^1]
 
 [^1]: ASSIS, M. __Memórias póstumas de Brás Cubas__ [The Posthumous Memoirs of Brás Cubas]. São Paulo: Companhia das Letras, 2014. ISBN 978-85-438-0163-6.
 
@@ -22,6 +22,8 @@ To the worm that first gnawed on the cold flesh of my corpse, I dedicate, as a f
 
 \textit{I dedicate, as a fond remembrance, these posthumous memories.}\footnotemark{}
 
-\footnotetext{ASSIS, M. \textbf{Memórias póstumas de Brás Cubas} [The Posthumous Memoirs of Brás Cubas]. São Paulo: Companhia das Letras, 2014. ISBN 978-85-438-0163-6.}
+\footnotetext{
+	ASSIS, M. \textbf{Memórias póstumas de Brás Cubas} [The Posthumous Memoirs of Brás Cubas]. São Paulo: Companhia das Letras, 2014. ISBN 978-85-438-0163-6.
+}
 <!-- %:::% inscription body end %:::% -->
 :::

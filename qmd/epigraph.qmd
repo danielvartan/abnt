@@ -6,7 +6,7 @@
 #| label: setup
 #| include: false
 
-source(here::here("R/quarto-setup.R"))
+source(here::here("R/_setup.R"))
 ```
 
 ::: {.content-visible when-format="html"}
@@ -21,7 +21,8 @@ _Nullius in verba_[^1]
 <!-- %:::% epigraph body begin %:::% -->
 \textit{Nullius in verba}\footnotemark{}
 
-\footnotetext{THE ROYAL SOCIETY. \textbf{History of the Royal Society}. Available from:
-<\href{https://royalsociety.org/about-us/history/}{https://royalsociety.org/about-us/history/}>. Visited on: 9 Sept. 2023.}
+\footnotetext{
+	THE ROYAL SOCIETY. \textbf{History of the Royal Society}. Available from: <\href{https://royalsociety.org/about-us/history/}{https://royalsociety.org/about-us/history/}>. Visited on: 9 Sept. 2023.
+}
 <!-- %:::% epigraph body end %:::% -->
 :::

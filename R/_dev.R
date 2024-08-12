@@ -16,7 +16,7 @@
 # renv::activate()
 # renv::deactivate()
 # renv::status()
-# renv::dependencies("R/quarto-setup.R")
+# renv::dependencies("R/_setup.R")
 # renv::install()
 # renv::update()
 # renv::restore()
@@ -35,8 +35,8 @@
 
 # # Quarto (see <https://quarto.org/docs/projects/quarto-projects.html>)
 #
-# source(here::here("R", "quarto-pre-render-pdf.R"))
-# source(here::here("R", "quarto-pre-render-html.R"))
+# source(here::here("R", "_pre-render-pdf.R"))
+# source(here::here("R", "_pre-render-html.R"))
 #
 # quarto render
 # quarto render --profile pdf
@@ -68,7 +68,7 @@
 # * Set indentation of unordered and ordered list (see ABNT norms).
 # * Add post- and pre-chapters code automatically.
 # * Refactor code for creating ambient variables in
-#   'quarto-pre-render-common.R' . Transform code into function and then add
+#   '_pre-render-common.R' . Transform code into function and then add
 #   it in the {rutils} package.
 # * Add function to auto generate the visit date in the thesis reference
 #   located in '_index-html.qmd'.
@@ -86,3 +86,4 @@
 # * Finish translating `english-abnt-author-date.csl`.
 # * Add DOI field into ABNT CSL files.
 # * Create `check_quarto_urls()` based on `urlchecker::url_check()`.
+# * Create `write_cff()` based on `cffr::cff_write().

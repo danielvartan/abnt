@@ -3,7 +3,7 @@
 # library(rutils, quietly = TRUE)
 # library(yaml, quietly = TRUE)
 
-source(here::here("R", "quarto-post-render-common.R"))
+source(here::here("R", "_post-render-common.R"))
 
 # Copy PDF (if exists) to `output_dir_html` folder ----------
 
@@ -37,11 +37,4 @@ writeLines(
 
 # Delete unnecessary files and folders -----
 
-rutils:::clean_quarto_mess(
-  file = NULL,
-  dir = c(".temp", "index_cache", "index_files", "qmd/images"),
-  ext = c("aux", "bbx", "cbx", "cls", "dbx", "fdb_latexmk", "lbx", "loa",
-          "log", "pdf", "scss", "tex", "xdv"),
-  ignore = NULL,
-  wd = here::here()
-)
+source(here::here("R", "_post-render-clean.R"))

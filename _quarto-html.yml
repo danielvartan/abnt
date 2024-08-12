@@ -1,12 +1,12 @@
 project:
   output-dir: docs
-  pre-render: "R/quarto-pre-render-html.R"
-  post-render: "R/quarto-post-render-html.R"
+  pre-render: "R/_pre-render-html.R"
+  post-render: "R/_post-render-html.R"
 
 book:
   date: today
-  # cover-image: cover.png
-  # favicon: cover.png
+  date-format: "YYYY-MM-DD"
+  repo-actions: [edit, issue]
   sidebar:
     tools:
       - icon: file-earmark-pdf-fill
@@ -28,8 +28,8 @@ book:
         - qmd/introduction.qmd
         - qmd/development.qmd
         - qmd/conclusion.qmd
-        - qmd/references.qmd
-        - qmd/glossary.qmd
+    - qmd/references.qmd
+    - qmd/glossary.qmd
   appendices:
     - qmd/appendix-1.qmd
     - qmd/pdf-settings.qmd

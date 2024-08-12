@@ -6,23 +6,18 @@ See <https://github.com/danielvartan/abnt> to learn more about this template.
 
 You are viewing the web version of this thesis. Click [here](index.pdf) or on the PDF icon in the menu to see the PDF version.
 
-The analyses contained in this document are 100% reproducible. They were performed using the [R programming language](https://www.r-project.org/) and the [Quarto](https://quarto.org/) publishing system. Click [here](https://github.com/danielvartan/abnt) or on the GitHub icon in the menu to access the research compendium for the thesis.
+All analyses in this document are reproducible and were conducted using the [R programming language](https://www.r-project.org/) along with the [Quarto](https://quarto.org/) publishing system. Click [here](https://github.com/danielvartan/abnt) or on the GitHub icon in the menu to access the research compendium for the thesis.
 
 ## Citation
 
 For attribution, please cite this work as:
 
-{{< var author-surname >}}, {{< var author-initials >}} __{{< var title >}}__. {{< var year >}}. {{< var type-of-work >}} ({{< var academic-degree >}}) -- {{< var school >}}, {{< var university >}}, {{< var location >}}, {{< var year >}}. Available from: <{{< var url >}}>.
+`r toupper(env_vars[["author-surname"]])`, `r sub("\\. .\\.$", "", env_vars[["author-initials"]])`. __{{< var title >}}__. {{< var year >}}. {{< var type-of-work >}} ({{< var academic-degree >}}) -- {{< var school >}}, {{< var university >}}, {{< var location >}}, {{< var year >}}. Available from: <{{< var url >}}>.
 
 BibTeX citation:
 
 ```{r}
-#| echo: false
-#| output: false
-
-# library(here)
-
-env_vars <- yaml::read_yaml(here::here("_variables.yml"))
+#| include: false
 
 bib_tag <- ifelse(
   grepl(env_vars$`academic-title`, "Master", ignore.case = TRUE), 
@@ -32,10 +27,10 @@ bib_tag <- ifelse(
 ```
 
 ```
-`r bib_tag`{[author's surname][year],
+`r bib_tag`{`r tolower(env_vars[["author-surname"]])``r env_vars[["year"]]`,
   title = {`r env_vars[["title"]]`},
   author = {`r env_vars[["author"]]`},
-  year = {`r env_vars[["date"]]`},
+  year = {`r env_vars[["year"]]`},
   address = {`r env_vars[["location"]]`},
   school  = {`r env_vars[["university"]]`},
   langid = {`r env_vars[["language"]]`},

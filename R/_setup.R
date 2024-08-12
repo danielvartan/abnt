@@ -8,7 +8,7 @@
 
 # Load libraries
 
-library(dplyr, quietly = FALSE, verbose = FALSE)
+library(magrittr, quietly = FALSE, verbose = FALSE)
 library(ggplot2, quietly = FALSE, verbose = FALSE)
 
 # Set variables -----
@@ -21,17 +21,21 @@ env_vars$base_size <- base_size
 
 # Load fonts -----
 
-extrafont::font_import(
-  paths = NULL,
-  recursive = TRUE,
-  prompt = FALSE,
-  pattern = paste0(
-    "^(?i)", stringr::str_extract(env_vars$sansfont, "(?i)^.[a-zÀ-ÿ]+"), "*"
-  )
+if (is.null(env_vars$sansfont)) {
+  cli::cli_abort("Error while importing the environment variables.")
+} else {
+  extrafont::font_import(
+    paths = NULL,
+    recursive = TRUE,
+    prompt = FALSE,
+    pattern = paste0(
+      "^(?i)", stringr::str_extract(env_vars$sansfont, "(?i)^.[a-zÀ-ÿ]+"), "*"
+    )
   ) |>
-  rutils:::shush()
+    rutils:::shush()
 
-extrafont::loadfonts(quiet = TRUE)
+  extrafont::loadfonts(quiet = TRUE)
+}
 
 # Set knitr -----
 
@@ -46,8 +50,6 @@ knitr::opts_chunk$set(
 # Set general options -----
 
 options(
-  scipen = 10,
-  digits = 3,
   dplyr.print_min = 6,
   dplyr.print_max = 6,
   pillar.max_footer_lines = 2,

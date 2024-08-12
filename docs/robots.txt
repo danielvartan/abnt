@@ -1,4 +1,0 @@
-user-agent: *
-allow: /
-
-Sitemap: https://danielvartan.github.io/abnt/sitemap.xml
