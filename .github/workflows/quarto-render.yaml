@@ -23,6 +23,30 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Install fonts (Ubuntu)
+        if: runner.os == 'Linux'
+        run: |
+          mkdir -p ~/.fonts
+          cp ttf/*.ttf ~/.fonts/
+          fc-cache -f -v
+
+      - name: Install fonts (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          cp ttf/*.ttf ~/Library/Fonts/
+
+      - name: Install fonts (Windows)
+        if: runner.os == 'Windows'
+        shell: powershell
+        run: |
+          $fonts = Get-ChildItem -Path ttf -Filter *.ttf
+          foreach ($font in $fonts) {
+            $fontPath = $font.FullName
+            $fontName = $font.Name
+            Copy-Item -Path $fontPath -Destination "C:\Windows\Fonts\$fontName" -Force
+            New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" -Name $fontName -Value $fontName -PropertyType String -Force | Out-Null
+          }
+
       - name: Install system dependencies
         if: runner.os == 'Linux'
         run: |
@@ -32,6 +56,9 @@ jobs:
 
           sudo apt-get install -y -qq \
             libfontconfig1-dev \
+            libcurl4-openssl-dev \
+            libnode-dev \
+            libx11-dev
             pandoc
         shell: bash
 
