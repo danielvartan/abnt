@@ -1,23 +1,237 @@
----
-execute:
-  freeze: false
----
-
-<!-- %:::% .common h1 begin %:::% -->
-# Welcome {.unnumbered}
-<!-- %:::% .common h1 end %:::% -->
+# [Showcase] Introduction {#sec-introduction}
 
 ```{r}
-#| label: setup
+#| label: Setup
 #| include: false
 
-source(here::here("R/_setup.R"))
+library(dplyr)
+library(ggExtra)
+library(ggplot2)
+library(gt)
+library(here)
+library(palmerpenguins)
+
+here("R", ".setup.R") |> source()
 ```
 
-::: {.content-visible when-format="html"}
-{{< include qmd/_index-html.qmd >}}
+See @fig-karl-popper.
+
+"The activity can be represented by a _general schema of problem-solving by the method of imaginative conjectures and criticism_, or, as I have often called it, by _the method of conjecture and refutation_. The schema (in its simplest form) is this
+
+$$
+\text{P}_{1} \to \text{TT} \to \text{EE} \to \text{P}_{2}
+$$
+
+```{=latex}
+\vspace{1em}
+\index{KarlPopper}
+```
+
+Here $\text{P}_{1}$ is the _problem_ from which we start, $\text{TT}$ (the ‘tentative theory’) is the imaginative conjectural solution which we first reach, for example our first _tentative interpretation_. $\text{EE}$ (_‘error- elimination’_) consists of a severe critical examination of our conjecture, our tentative interpretation: it consists, for example, of the critical use of documentary evidence and, if we have at this early stage more than one conjecture at our disposal, it will also consist of a critical discussion and comparative evaluation of the competing conjectures. $\text{P}_{2}$ is the problem situation as it emerges from our first critical attempt to solve our problems.
+
+It leads up to our second attempt (*and so on*). A satisfactory understanding will be reached if the interpretation, the conjectural theory, finds support in the fact that it can throw new light on new problems --- on more problems than we expected; or if it finds support in the fact that it explains many sub-problems, some of which were not seen to start with. Thus we may say that we can gauge the progress we have made by comparing $\text{P}_{1}$ with some of our later problems ($\text{P}_{n}$, say)."
+
+```{=latex}
+\vspace{15pt}
+\noindent \hspace*{\fill} \autocite[164]{popper1979a}
+\vspace{15pt}
+```
+
+```{r}
+#| echo: false
+#| output: asis
+
+library(cli)
+library(withr)
+
+with_seed(
+  seed = 15,
+  code = {
+    cli:::lorem_ipsum(1) |> cat(sep = "\n\n")
+  }
+)
+```
+
+```{=latex}
+\index{figures}
+```
+
+::: {#fig-karl-popper}
+![](images/karl-popper.png){width=50%}
+
+[Source: [Steve Pyke](https://www.npg.org.uk/collections/search/portrait/mw08238/Sir-Karl-Raimund-Popper?).]{.legend}
+
+Karl Popper (July 25, 1902 – September 17, 1994).\
+One of the 20th century's most influential philosophers of science.
 :::
 
-::: {.content-visible when-format="pdf"}
-{{< include qmd/_index-pdf.qmd >}}
+## Secondary Section
+
+See @tbl-penguins.
+
+```{r}
+#| echo: false
+#| output: asis
+
+library(cli)
+library(withr)
+
+with_seed(
+  seed = 87984,
+  code = {
+    cli:::lorem_ipsum(1) |> cat(sep = "\n\n")
+  }
+)
+```
+
+```{=latex}
+\index{tables}
+```
+
+::: {#tbl-penguins}
+```{r}
+library(dplyr)
+library(gt)
+library(palmerpenguins)
+
+penguins |>
+  as_tibble() |>
+  slice_sample(n = 5) |>
+  select(1:5) |>
+  rename(
+    Species = species,
+    Island = island,
+    "Bill length (mm)" = bill_length_mm,
+    "Bill depth (mm)" = bill_depth_mm,
+    "Flipper length (mm)" = flipper_length_mm
+  ) |>
+  gt()
+```
+
+[Source: Based on @horst2020 penguin dataset.]{.legend}
+
+A sample of the penguins dataset
+:::
+
+### Tertiary Section
+
+```{r}
+#| echo: false
+#| output: asis
+
+library(cli)
+library(withr)
+
+with_seed(
+  seed = 4578,
+  code = {
+    cli:::lorem_ipsum(2) |> cat(sep = "\n\n")
+  }
+)
+```
+
+```{=latex}
+\index{figures!chart}
+```
+
+::: {#fig-eruption}
+```{r}
+#| fig-height: 4
+#| fig-width: 6
+
+library(ggplot2)
+
+faithful |>
+  ggplot(aes(x = eruptions, y = waiting)) +
+  geom_point() +
+  xlim(0.5, 6) +
+  ylim(40, 110) +
+  geom_density_2d_filled(alpha = 0.5) +
+  geom_density_2d(linewidth = 0.25, color = "black") +
+  labs(
+    x = "Eruption time (minutes)",
+    y = "Waiting time (minutes)"
+  ) +
+  theme(legend.position = "none")
+```
+
+[Source: Reproduced from the [ggplot2 R package documentation](https://ggplot2.tidyverse.org/reference/geom_density_2d.html) [@wickham2016a].]{.legend}
+
+Relation between _waiting time to next eruption_ (minutes) and _eruption time_ (minutes) at Old Faithful Geyser, Yellowstone National Park, Wyoming, USA
+:::
+
+```{=latex}
+\clearpage
+```
+
+#### Quaternary Section
+
+- Bullet point
+  - Bullet point
+    - Bullet point
+
+##### Quinary Section
+
+1. List
+1. List
+1. List
+
+## Another Secondary Section
+
+See @fig-mpg.
+
+```{r}
+#| echo: false
+#| output: asis
+
+library(cli)
+library(withr)
+
+with_seed(
+  seed = 60,
+  code = {
+    cli:::lorem_ipsum(4) |> cat(sep = "\n\n")
+  }
+)
+```
+
+```{=latex}
+\index{figures!chart}
+```
+
+::: {#fig-mpg}
+```{r}
+#| fig-height: 4
+#| fig-width: 6
+
+library(ggExtra)
+library(ggplot2)
+
+plot <- mtcars |>
+  ggplot(
+    aes(
+      x = wt,
+      y = mpg,
+      color = cyl,
+      size = cyl
+    )
+  ) +
+  geom_point() +
+  labs(
+    x = "Weight (1000lbs)",
+    y = "Miles per gallon"
+  ) +
+  theme(legend.position = "none")
+
+plot |>
+  ggMarginal(
+    type = "histogram",
+    fill = "slateblue",
+    xparams = list(bins = 10)
+  )
+```
+
+[Source: Data extracted from the 1974 Motor Trend magazine, published by @henderson1981. Visualization by @holtz, available at [The R Graph Gallery](https://r-graph-gallery.com/277-marginal-histogram-for-ggplot2.html).]{.legend}
+
+Relation between _weight (1000lbs)_ and _miles per gallon_ for combustion engine vehicles
 :::

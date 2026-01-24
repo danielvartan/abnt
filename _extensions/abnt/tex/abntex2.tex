@@ -1,25 +1,25 @@
 % See `babel.tex` for language changes.
 % See `toc.text` for changes related to the ToC.
 
-% Set page numbering -----
+% Set Page Numbering -----
 
 \makepagestyle{abntheadings}
 \makeevenhead{abntheadings}{\ABNTEXfontereduzida\thepage}{}{}
 \makeoddhead{abntheadings}{}{}{\ABNTEXfontereduzida\thepage}
 
-% Set text variables -----
+% Set Text Variables -----
 
-\renewcommand{\ABNTEXpartfont}{\normalfont\bfseries}
+\renewcommand{\ABNTEXpartfont}{\sffamily\bfseries}
 \renewcommand{\ABNTEXpartfontsize}{\normalsize}
-\renewcommand{\ABNTEXchapterfont}{\normalfont\bfseries}
+\renewcommand{\ABNTEXchapterfont}{\sffamily\bfseries}
 \renewcommand{\ABNTEXchapterfontsize}{\normalsize}
-\renewcommand{\ABNTEXsectionfont}{\normalfont}
+\renewcommand{\ABNTEXsectionfont}{\sffamily}
 \renewcommand{\ABNTEXsectionfontsize}{\normalsize}
-\renewcommand{\ABNTEXsubsectionfont}{\normalfont\bfseries}
+\renewcommand{\ABNTEXsubsectionfont}{\sffamily}
 \renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
-\renewcommand{\ABNTEXsubsubsectionfont}{\normalfont}
+\renewcommand{\ABNTEXsubsubsectionfont}{\sffamily}
 \renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize}
-\renewcommand{\ABNTEXsubsubsubsectionfont}{\normalfont}
+\renewcommand{\ABNTEXsubsubsubsectionfont}{\sffamily}
 \renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalsize\itshape}
 \renewcommand{\ABNTEXfontereduzida}{\footnotesize}
 \renewcommand{\ABNTEXcaptiondelim}{~\textendash~}
@@ -27,7 +27,7 @@
 
 \renewcommand{\captiontitlefont}{\ABNTEXfontereduzida}
 
-% Set new commands -----
+% Set New Commands -----
 
 \providecommand{\imprimiruniversidade}{}
 \newcommand{\universidade}[1]{\renewcommand{\imprimiruniversidade}{#1}}
@@ -52,20 +52,21 @@
 \providecommand{\imprimirnotadeversao}{}
 \newcommand{\notadeversao}[1]{\renewcommand{\imprimirnotadeversao}{#1}}
 
-% Set chapter style -----
+% Set Chapter Style -----
 
-\renewcommand{\chapnamefont}{\normalfont\normalsize}
-\renewcommand{\chapnumfont}{\normalfont\normalsize}
+\renewcommand{\chapnamefont}{\ABNTEXchapterfont\ABNTEXchapterfontsize\mdseries}
+\renewcommand{\chapnumfont}{\ABNTEXchapterfont\ABNTEXchapterfontsize\mdseries}
 
 \setsecnumformat{\chapnumfont\csname the#1\endcsname\quad}
 
 \renewcommand{\printchaptername}{
   \ifthenelse{\boolean{abntex@apendiceousecao}}{
+    \vspace*{\medskipamount}
     \chapnamefont \ABNTEXchapterupperifneeded{\appendixname} % [Changed]
   }{}
 }
 
-% Open an issue about it (`\hspace{-1em}`) - Title streching.
+% Open an issue about it (`\hspace{-1em}`) - Title stretching.
 \renewcommand{\chapternamenum}{
   \ifthenelse{\boolean{abntex@apendiceousecao}}{
     \hspace{-2em} \space
@@ -85,7 +86,7 @@
 
 \renewcommand{\afterchapternum}{
   \ifthenelse{\boolean{abntex@apendiceousecao}}{ % [Added]
-    \normalfont \hspace{-1em} \space\ABNTEXcaptiondelim\space \hspace{-1.5em}
+    \ABNTEXchapterfont\mdseries \hspace{-1em} \space\ABNTEXcaptiondelim\space \hspace{-1.5em}
   }{
     \hspace{-0.875em}
   }
@@ -103,7 +104,7 @@
     \centering \ABNTEXchapterupperifneeded{#1}
   }{
     \ifthenelse{\boolean{abntex@apendiceousecao}}{
-      \normalfont \ABNTEXchapterupperifneeded{#1}
+      \ABNTEXchapterfont\mdseries\ABNTEXchapterupperifneeded{#1}
     }{
       \ABNTEXchapterupperifneeded{#1}
     }
@@ -117,7 +118,7 @@
   \aliaspagestyle{chapter}{abntheadings}
 }
 
-% Set cover -----
+% Set Cover -----
 
 \renewcommand{\imprimircapa}{
   \phantomsection\pdfbookmark[0]{\capaname}{}
@@ -130,7 +131,7 @@
   \imprimirautor
 
   \vfill
-  \textbf{\imprimirtitulo}
+  {\ABNTEXchapterfont\imprimirtitulo}
 
   \vfill
   \vspace{6.5cm}
@@ -142,7 +143,7 @@
   \end{capa}
 }
 
-% Set title page -----
+% Set Title Page -----
 
 \makeatletter
 \renewcommand{\folhaderostocontent}{
@@ -150,10 +151,10 @@
   \imprimirautor
 
   \vfill
-  \bfseries\imprimirtitulo
+  {\ABNTEXchapterfont\imprimirtitulo}
 
   \vfill
-  \bfseries\imprimirnotadeversao\normalfont
+  \textbf{\imprimirnotadeversao}
 
   \vfill
   \abntex@ifnotempty{
@@ -175,7 +176,7 @@
 }
 \makeatother
 
-% Set cataloging record -----
+% Set Cataloging Record -----
 
 \renewenvironment{fichacatalografica}{
   \PRIVATEbookmarkthis{\fichacatalograficaname}
@@ -185,7 +186,7 @@
   \end{SingleSpacing}
 }
 
-% Set errata -----
+% Set Errata -----
 
 \renewenvironment{errata}[1][\errataname]{
   \newpage
@@ -195,7 +196,7 @@
   \cleardoublepage
 }
 
-% Set approval sheet -----
+% Set Approval Sheet -----
 
 \renewenvironment{folhadeaprovacao}[1][\folhadeaprovacaoname]{
   \clearpage
@@ -208,7 +209,7 @@
   \cleardoublepage
 }
 
-% Set abstract -----
+% Set Abstract -----
 
 \newenvironment{resumoenv}[1][\resumoname]{
   \pretextualchapter{#1}
@@ -229,7 +230,7 @@
   \endgroup
 }
 
-% Set list of abbreviations and acronyms -----
+% Set List of Abbreviations and Acronyms -----
 
 \renewenvironment{siglas}{
   \pretextualchapter{\listadesiglasname}
@@ -237,7 +238,7 @@
   \cleardoublepage
 }
 
-% Set list of symbols -----
+% Set List of Symbols -----
 
 \renewenvironment{simbolos}{
   \pretextualchapter{\listadesimbolosname}
@@ -245,7 +246,7 @@
   \cleardoublepage
 }
 
-% Set glossary -----
+% Set Glossary -----
 
 \newenvironment{glossario}{
   \tocprintchapternonum
@@ -253,12 +254,12 @@
   \cleardoublepage
 }
 
-% Set appendices and annexes -----
+% Set Appendices and Annexes -----
 
 \renewcommand{\PRIVATEapendiceconfig}[2]{
   \setboolean{abntex@apendiceousecao}{true}
   \renewcommand{\appendixname}{#1}
-  \renewcommand{\apendicesname}{#1}
+  %\renewcommand{\apendicesname}{#1}
 
   \ifthenelse{\boolean{ABNTEXsumario-abnt-6027-2012}}{
     \renewcommand{\appendixtocname}{\uppercase{#2}}
@@ -282,14 +283,28 @@
   % is automatically add by the Quarto render.
 }
 
+\newcommand{\PRIVATEapendiceconfigafter}[1]{
+    \chapterstyle{apendice}
+    %\begingroup\centering\bfseries
+    %\ABNTEXchapterupperifneeded{#1}
+    %\par\endgroup
+    %\vspace{\medskipamount}
+    \pretextualchapter{#1}
+    \let\clearpage\relax
+}
+
 \renewcommand{\apendices}{
+  \clearpage
   \PRIVATEapendiceconfig{\apendicename}{\apendicesname}
   \appendix
+  \PRIVATEapendiceconfigafter{\apendicesname}
 }
 
 \renewenvironment{apendicesenv}{
+  \clearpage
   \PRIVATEapendiceconfig{\apendicename}{\apendicesname}
   \begin{appendix}
+  \PRIVATEapendiceconfigafter{\apendicesname}
 }{
   \end{appendix}
   \setboolean{abntex@apendiceousecao}{false}
@@ -297,6 +312,7 @@
 }
 
 \renewcommand{\anexos}{
+  \clearpage
   % \cftinserthook{toc}{AAA} [Removed]
   \PRIVATEapendiceconfig{\anexoname}{\anexosname}
 
@@ -306,9 +322,11 @@
 
   \appendix
   \renewcommand\theHchapter{anexochapback.\arabic{chapter}}
+  \PRIVATEapendiceconfigafter{\anexosname}
 }
 
 \renewenvironment{anexosenv}{
+  \clearpage
   \PRIVATEapendiceconfig{\anexoname}{\anexosname}
 
   \newpage % [Added]
@@ -317,6 +335,7 @@
 
   \begin{appendix}
   \renewcommand\theHchapter{anexochapback.\arabic{chapter}}
+  \PRIVATEapendiceconfigafter{\anexosname}
 }{
   \end{appendix}
   \setboolean{abntex@apendiceousecao}{false}

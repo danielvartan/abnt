@@ -1,5 +1,5 @@
 \usepackage[
-$if(biblio-style)$style=$biblio-style$,$endif$$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$
+$for(biblatexoptions)$,$biblatexoptions$$endfor$
 ]{biblatex}
 
 \usepackage{csquotes}
@@ -14,7 +14,6 @@ $if(biblio-title)$
 $else$
 \newcommand{\newbibname}{$biblio-title$}
 $endif$
-
 
 $if(biblio-footnote)$
 \newcommand{\bibnamewithfootnote}{

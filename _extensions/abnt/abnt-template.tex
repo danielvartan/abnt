@@ -1,28 +1,26 @@
 % Author: Daniel Vartanian.
-% Licence: MIT. See <https://opensource.org/license/mit/> to learn more.
-% Based on: template.tex, developed by the Quarto team and
-%   abtex2-modelo-trabalho-academico.tex, v-1.9.7, developed by
-%   Lauro César Araujo and the team behind abnt2tex, with additional guidance
-%   from the theses and dissertations regulations of the University of São Paulo
-%   (USP). For more information, please visit <http://www.abntex.net.br/>.
+% Licence: GNU General Public License v3 or later
+%
+% Based on template.tex, developed by the Quarto team and
+% abtex2-modelo-trabalho-academico.tex, v-1.9.7, developed by
+% Lauro César Araujo and the team behind abnt2tex, with additional guidance
+% from the theses and dissertations regulations of the University of São Paulo
+% (USP). For more information, please visit <http://www.abntex.net.br/>.
 
 % For help, see:
-% * <https://quarto.org/docs/reference/formats/pdf.html>
-% * <https://github.com/abntex/abntex2/wiki/ComoCustomizar>
-% * <https://www.ctan.org/pkg/abntex2>
-% * <https://www.ctan.org/pkg/memoir>
-% * <https://www.ctan.org/pkg/hyperref>
-
-% TODO:
-% * Slightly move the toc to the left, in a way that the spacing between titles
-%   and numbers become the same as the textual chapters.
-% * Remove the hyperlink in the section numbering within TOC.
-% * Remove hiperlink spans by page breaks. See: <https://tex.stackexchange.com/questions/54136/hyperref-link-spans-a-pagebreak-looks-ugly>.
+%
+% - <https://quarto.org/docs/reference/formats/pdf.html>
+% - <https://github.com/abntex/abntex2/wiki/ComoCustomizar>
+% - <https://www.ctan.org/pkg/abntex2>
+% - <https://www.ctan.org/pkg/memoir>
+% - <https://www.ctan.org/pkg/hyperref>
 
 % -----
 % Preamble
 % -----
 
+% Don´t move the `\PassOptionsToPackage` macros.
+% See why: <https://tex.stackexchange.com/a/433605/234832>.
 \PassOptionsToPackage{
 unicode$for(hyperrefoptions)$,$hyperrefoptions$$endfor$
 }{hyperref}
@@ -38,22 +36,42 @@ $if(CJKmainfont)$
 $endif$
 
 $doc-class.tex()$
+
+% \usepackage{showframe}
+
 $packages.tex()$
+
 $lengths.tex()$
+
 $layout.tex()$
+
 $babel.tex()$
+
 $abntex2.tex()$
+
 $colors.tex()$
+
 $graphics.tex()$
+
 $tables.tex()$
+
 $tightlist.tex()$
+
 $def.tex()$
+
 $title.tex()$
+
 $hypersetup.tex()$
+
 $toc.tex()$
+
 $biblio.tex()$
+
 $index.tex()$
-$other.tex()$
+
+$lua.tex()$
+
+$others.tex()$
 
 $for(header-includes)$
 $header-includes$

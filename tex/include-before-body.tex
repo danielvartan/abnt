@@ -1,7 +1,7 @@
 %:::% class attribute begin/end %:::%
 
 % -----
-% Cover (mandatory)
+% Cover (Mandatory)
 % -----
 
 %:::% cover begin %:::%
@@ -9,7 +9,7 @@
 %:::% cover end %:::%
 
 % -----
-% Title page (mandatory)
+% Title Page (Mandatory)
 % -----
 
 %:::% approval-sheet begin %:::%
@@ -17,124 +17,134 @@
 %:::% approval-sheet end %:::%
 
 % -----
-% Cataloging record (mandatory)
+% Cataloging Record (Mandatory)
 % -----
 
 %:::% cataloging-record begin %:::%
 \begin{fichacatalografica}
+\hyphenpenalty=100000
 %:::% cataloging-record body begin %:::%
 I authorize the full or partial reproduction of this work by any conventional or electronic means for the purposes of study and research, provided that the source is cited.
-\ABNTEXfontereduzida
 
 \vfill
+
 \begin{center}
 Cataloging in publication
 
-Library
+[University. School. Library]
 
-[Library name]
+[CRB-8]
 
 \medskip
+\ABNTEXfontereduzida
+
 \setlength{\fboxsep}{1cm}
-\fbox{\begin{minipage}[c][7.5cm]{12.5cm}
+\fbox{\begin{minipage}[c][6.5cm]{12.5cm}
 [Author's surname], [Author's forename(s)]
 
 \smallskip
+
 \hspace{0.5cm} {\imprimirtitulo}  / {\imprimirautor}; supervisor, {\imprimirorientador}; co-supervisor {\imprimircoorientador}. {\imprimirlocal}, {\imprimirdata}
 
 \smallskip
+
 {\thelastpage}p. : il
 
 \smallskip
+
 \hspace{0.5cm} {\imprimirtipotrabalho} (\imprimirtituloacademico) -- {\imprimirprograma}, {\imprimirescola}, {\imprimiruniversidade}, {\imprimirdata}.
 
 \smallskip
+
 \hspace{0.5cm} {\imprimirnotadeversao}
 
 \smallskip
+
 \hspace{0.5cm} 1. [Subject A]. 2. [Subject B]. 3. [Subject C]. I. [Supervisor's surname], [Supervisor's forename(s)], super. II. [Co-supervisor's surname], [Co-supervisor's forename(s)] co-super. III. Title.
 \end{minipage}}
 \end{center}
+\vspace{\hugeskipamount}
 %:::% cataloging-record body end %:::%
 \end{fichacatalografica}
 %:::% cataloging-record end %:::%
 
 % -----
-% Errata (optional)
+% Errata (Optional)
 % -----
 
 %:::% errata begin %:::%
 \begin{errata}[\errataname]
 %:::% errata reference begin %:::%
-\noindent [Author's surname], [Author's forename(s) initial(s)]. \textbf{\imprimirtitulo}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  (\imprimirtituloacademico) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
+\noindent [SURNAME], [Forename(s) initial(s)]. \textbf{\imprimirtitulo}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  ({\imprimirtituloacademico}) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
 %:::% errata reference end %:::%
 \smallskip
 %:::% errata body begin %:::%
 
-This is the development version of the thesis (version \textless1.0.0).
-Any necessary corrections will be listed here after its approval.
+This is the preliminary version of this thesis (version \textless1.0.0).
+Any required corrections will be listed here upon approval.
 
 %:::% errata body end %:::%
 \end{errata}
 %:::% errata end %:::%
 
 % -----
-% Approval sheet (mandatory)
+% Approval Sheet (Mandatory)
 % -----
 
 %:::% approval-sheet begin %:::%
 \begin{folhadeaprovacao}[\folhadeaprovacaoname]
+\hyphenpenalty=100000
 %:::% approval-sheet body begin %:::%
-{\imprimirtipotrabalho} by {\imprimirautor}, under the title \textbf{\imprimirtitulo}, presented to the {\imprimirescola} at the {\imprimiruniversidade}, as part of the requirements for the degree of {\imprimirtituloacademico} by the {\imprimirprograma}, in the concentration area of {\imprimirareadeconcentracao}.
+{\imprimirtipotrabalho} by {\imprimirautor}, under the title \textbf{\imprimirtitulo}, presented to the {\imprimirescola} at the {\imprimiruniversidade}, as a requirement for the degree of {\imprimirtituloacademico} by the {\imprimirprograma}, in the concentration area of {\imprimirareadeconcentracao}.
 
 \vspace{\hugeskipamount}
-Approved on \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ , \_\_\_\_\_\_\_\_\_\_ .
+Approved on [Month] [Day], [Year].
 
 \vspace{\hugeskipamount}
 \begin{center}
-  Examination committee
+  Examination Committee
 \end{center}
 
 \vspace{\smallskipamount}
-Committee chair:
+Committee Chair:
 
 \vspace{\tinyskipamount}
 \begingroup
 
 \AtBeginEnvironment{tabular}{
-  \normalsize
+  \normalsize\raggedright
   \renewcommand{\arraystretch}{2}
 }
 
 \setlength{\arrayrulewidth}{0pt}
 \setlength{\tabcolsep}{0cm}
-\begin{tabular}{m{2cm} P{14cm}}
-  Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
-  Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+\begin{tabular}{m{2.5cm} m{13.5cm}}
+  Prof. Dr. & [Full name] \\
+  Institution & [School], [University] \\
 \end{tabular}
 
 \vspace{\bigskipamount}
 Examiners:
 
 \vspace{\tinyskipamount}
-\begin{tabular}{m{2cm} P{14cm}}
-  Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
-  Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
-  Evaluation & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+\begin{tabular}{m{2.5cm} m{13.5cm}}
+  Prof. Dr. & [Full name] \\
+  Institution & [School], [University] \\
+  Evaluation & [Approved/Rejected] \\
 \end{tabular}
 
 \vspace{\smallskipamount}
-\begin{tabular}{m{2cm} P{14cm}}
-  Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
-  Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
-  Evaluation & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+\begin{tabular}{m{2.5cm} m{13.5cm}}
+  Prof. Dr. & [Full name] \\
+  Institution & [School], [University] \\
+  Evaluation & [Approved/Rejected] \\
 \end{tabular}
 
 \vspace{\smallskipamount}
-\begin{tabular}{m{2cm} P{14cm}}
-  Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
-  Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
-  Evaluation & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+\begin{tabular}{m{2.5cm} m{13.5cm}}
+  Prof. Dr. & [Full name] \\
+  Institution & [School], [University] \\
+  Evaluation & [Approved/Rejected] \\
 \end{tabular}
 \endgroup
 %:::% approval-sheet body end %:::%
@@ -142,7 +152,7 @@ Examiners:
 %:::% approval-sheet end %:::%
 
 % -----
-% Inscription (optional)
+% Inscription (Optional)
 % -----
 
 %:::% inscription begin %:::%
@@ -154,7 +164,9 @@ Examiners:
 
 \textit{I dedicate, as a fond remembrance, these posthumous memories.}\footnotemark{}
 
-\footnotetext{ASSIS, M. \textbf{Memórias póstumas de Brás Cubas} [The Posthumous Memoirs of Brás Cubas]. São Paulo: Companhia das Letras, 2014. ISBN 978-85-438-0163-6.}
+\footnotetext{
+	ASSIS, M. \textbf{Memórias póstumas de Brás Cubas} [The Posthumous Memoirs of Brás Cubas]. São Paulo: Companhia das Letras, 2014.
+}
 %:::% inscription body end %:::%
 \vspace*{\fill} % Don't change it.
 \vspace{4.5cm}
@@ -163,7 +175,7 @@ Examiners:
 %:::% inscription end %:::%
 
 % -----
-% Acknowledgments (optional)
+% Acknowledgments (Optional)
 % -----
 
 %:::% acknowledgments begin %:::%
@@ -178,7 +190,7 @@ I would like to acknowledge this awesome
 %:::% acknowledgments end %:::%
 
 % -----
-% Epigraph (optional)
+% Epigraph (Optional)
 % -----
 
 %:::% epigraph begin %:::%
@@ -188,67 +200,70 @@ I would like to acknowledge this awesome
 %:::% epigraph body begin %:::%
 \textit{Nullius in verba}\footnotemark{}
 
-\footnotetext{THE ROYAL SOCIETY. \textbf{History of the Royal Society}. Available from:
-<\href{https://royalsociety.org/about-us/history/}{https://royalsociety.org/about-us/history/}>. Visited on: 9 Sept. 2023.}
+\footnotetext{
+	THE ROYAL SOCIETY. \textbf{History of the Royal Society}. Available from: <\href{https://royalsociety.org/about-us/history/}{https://royalsociety.org/about-us/history/}>. Visited on: 9 Sept. 2023.
+}
 %:::% epigraph body end %:::%
 \end{flushright}
 \end{epigrafe}
 %:::% epigraph end %:::%
 
 % -----
-% Abstract in the vernacular language (mandatory)
+% Abstract in Vernacular Language (Mandatory)
 % -----
 
 %:::% vernacular-abstract begin %:::%
 \begin{resumoenv}[\resumoname]
  %:::% vernacular-abstract reference begin %:::%
-[Author's surname], [Author's forename(s) initial(s)]. \textbf{\imprimirtitulo}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  (\imprimirtituloacademico) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
+[SURNAME], [Forename(s) initial(s)]. \textbf{\imprimirtitulo}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  (\imprimirtituloacademico) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
 %:::% vernacular-abstract reference end %:::%
 
 %:::% vernacular-abstract body begin %:::%
 
-\{abnt\} is a \href{https://quarto.org}{Quarto} format designed for
-theses and dissertations that adhere to the standards of the Brazilian
-Association of Technical Standards (ABNT). It is based on the
-\href{https://www.abntex.net.br/}{\texttt{abntex2}} LaTeX class and on
-\href{https://teses.usp.br/index.php?option=com_content&view=article&id=52&Itemid=67&lang=en}{USP
-guidelines for creating thesis and dissertation documents}.
+\href{https://github.com/danielvartan/abnt}{abnt} is a
+\href{https://quarto.org}{Quarto} format designed for creating theses
+and dissertations that comply with guidelines established by the
+Brazilian Association of Technical Standards
+(\href{https://www.abnt.org.br/}{ABNT}). It's based on the
+\href{https://www.abntex.net.br/}{abntex2} LaTeX class, which belongs to
+the \href{https://www.ctan.org/pkg/memoir}{memoir} class family.
 
 %:::% vernacular-abstract body end %:::%
 
 %:::% vernacular-abstract keywords begin %:::%
 \begin{tabular}{p{2.3cm} p{13.6cm}}
-  \textbf{Keywords}: &  [Keyword 1]. [Keyword 2]. [Keyword 3].
+  \textbf{Keywords}: & [Keyword 1]. [Keyword 2]. [Keyword 3].
 \end{tabular}
 %:::% vernacular-abstract keywords end %:::%
 \end{resumoenv}
 %:::% vernacular-abstract end %:::%
 
 % -----
-% Abstract in the foreign language (mandatory)
+% Abstract in Foreign Language (Mandatory)
 % -----
 
 %:::% foreign-abstract begin %:::%
 \begin{resumoenv}[\resumoestrangeironame]
 \begin{otherlanguage*}{brazil}
 %:::% foreign-abstract reference begin %:::%
-[Sobrenome do autor], [Inicial(is) do(s) prenome(s) do autor].  \textbf{[Título]}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  (\imprimirtituloacademico) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
+[SOBRENOME], [Inicial(is) do(s) prenome(s)].  \textbf{[Título]}. {\imprimirdata}. {\thelastpage}p. [Dissertação/Tese]  ([Título acadêmico]) -- [Escola/Faculdade], [Universidade], [Cidade/Local], {\imprimirdata}.
 %:::% foreign-abstract reference end %:::%
 
 %:::% foreign-abstract body begin %:::%
 
-\{abnt\} is a \href{https://quarto.org}{Quarto} format designed for
-theses and dissertations that adhere to the standards of the Brazilian
-Association of Technical Standards (ABNT). It is based on the
-\href{https://www.abntex.net.br/}{\texttt{abntex2}} LaTeX class and on
-\href{https://teses.usp.br/index.php?option=com_content&view=article&id=52&Itemid=67&lang=en}{USP
-guidelines for creating thesis and dissertation documents}.
+\href{https://github.com/danielvartan/abnt}{abnt} é um formato
+\href{https://quarto.org}{Quarto} projetado para criar teses e
+dissertações que atendem às diretrizes estabelecidas pela Associação
+Brasileira de Normas Técnicas (\href{https://www.abnt.org.br/}{ABNT}).
+Ele é baseado na classe LaTeX
+\href{https://www.abntex.net.br/}{abntex2}, que pertence à família de
+classes \href{https://www.ctan.org/pkg/memoir}{memoir}.
 
 %:::% foreign-abstract body end %:::%
 
 %:::% foreign-abstract keywords begin %:::%
 \begin{tabular}{p{3.6cm} p{12.3cm}}
-  \textbf{Palavras-chaves}: &  [Palavra-chave 1]. [Palavra-chave 2]. [Palavra-chave 3].
+  \textbf{Palavras-chaves}: & [Palavra-chave 1]. [Palavra-chave 2]. [Palavra-chave 3].
 \end{tabular}
 %:::% foreign-abstract keywords end %:::%
 \end{otherlanguage*}
@@ -256,7 +271,7 @@ guidelines for creating thesis and dissertation documents}.
 %:::% foreign-abstract end %:::%
 
 % -----
-% List of figures (optional)
+% List of Figures (Optional)
 % -----
 
 %:::% list-of-figures begin %:::%
@@ -266,7 +281,7 @@ guidelines for creating thesis and dissertation documents}.
 %:::% list-of-figures end %:::%
 
 % -----
-% List of tables (optional)
+% List of Tables (Optional)
 % -----
 
 %:::% list-of-tables begin %:::%
@@ -276,7 +291,7 @@ guidelines for creating thesis and dissertation documents}.
 %:::% list-of-tables end %:::%
 
 % -----
-% List of abbreviations and acronyms (optional)
+% List of Abbreviations and Acronyms (Optional)
 % -----
 
 %:::% list-of-abbreviations begin %:::%
@@ -287,27 +302,27 @@ guidelines for creating thesis and dissertation documents}.
 \item[\textsubscript{F}]
 \hspace{20cm}
 
-Subscript indicating a relation with work-free days
+Subscript indicating a relation with work-free days.
 \item[\textsubscript{W}]
 \hspace{20cm}
 
-Subscript indicating a relation with workdays
+Subscript indicating a relation with workdays.
 \item[MCTQ]
 \hspace{20cm}
 
-Munich ChronoType Questionnaire
+Munich ChronoType Questionnaire.
 \item[MCTQ\textsuperscript{PT}]
 \hspace{20cm}
 
-Portuguese version of the MCTQ
+Portuguese version of the MCTQ.
 \item[MEQ]
 \hspace{20cm}
 
-Morningness-Eveningness Questionnaire
+Morningness-Eveningness Questionnaire.
 \item[MSF]
 \hspace{20cm}
 
-Local time of mid-sleep on work-free days
+Local time of mid-sleep on work-free days.
 \item[MSF\textsubscript{sc}]
 \hspace{20cm}
 
@@ -318,7 +333,7 @@ identified.
 \item[MSW]
 \hspace{20cm}
 
-Local time of mid-sleep on workdays
+Local time of mid-sleep on workdays.
 \end{description}
 
 %:::% list-of-abbreviations body end %:::%
@@ -326,7 +341,7 @@ Local time of mid-sleep on workdays
 %:::% list-of-abbreviations end %:::%
 
 % -----
-% List of symbols (optional)
+% List of Symbols (Optional)
 % -----
 
 %:::% list-of-symbols begin %:::%
@@ -334,7 +349,7 @@ Local time of mid-sleep on workdays
 %:::% list-of-symbols body begin %:::%
 
 For an extensive list of chronobiology related symbols, please refer to
-\textcite{aschoff1965} and \textcite{marques2012}.
+\textcite{aschoff1965} and \textcite{marques2012a}.
 
 \begin{description}
 \item[\(\tau\)]
@@ -349,23 +364,23 @@ Zeitgeber period.
 \item[\(\phi\)]
 \hspace{20cm}
 
-Phase
+Phase.
 \item[\(\Delta\phi\)]
 \hspace{20cm}
 
-Phase shift
+Phase shift.
 \item[\(+\Delta\phi\)]
 \hspace{20cm}
 
-Phase advance
+Phase advance.
 \item[\(-\Delta\phi\)]
 \hspace{20cm}
 
-Phase delay
+Phase delay.
 \item[\(\Psi\)]
 \hspace{20cm}
 
-Phase relation
+Phase relation.
 \end{description}
 
 %:::% list-of-symbols body end %:::%
@@ -373,7 +388,7 @@ Phase relation
 %:::% list-of-symbols end %:::%
 
 % -----
-% Table of contents (mandatory)
+% Table of Contents (Mandatory)
 % -----
 
 %:::% table-of-contents begin %:::%
@@ -381,3 +396,8 @@ Phase relation
 \tableofcontents*
 \cleardoublepage
 %:::% table-of-contents end %:::%
+
+% -----
+% Other Additions
+% -----
+

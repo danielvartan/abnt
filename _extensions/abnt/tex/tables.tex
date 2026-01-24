@@ -1,4 +1,4 @@
-\renewcommand{\arraystretch}{1.5}
+\renewcommand{\arraystretch}{$if(linestretch)$$linestretch$$else$1.5$endif$}
 \setlength{\aboverulesep}{0ex}
 \setlength{\belowrulesep}{0ex}
 
@@ -8,11 +8,11 @@
 % \patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
 % \makeatother
 
-% Allow footnotes in longtable head/foot
+% Allow footnotes in `longtable` head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
 
-% Set tabular environment -----
+% Set Tabular Environment -----
 
 \AtBeginEnvironment{table}{\ABNTEXfontereduzida}
 \AtBeginEnvironment{tabular}{\ABNTEXfontereduzida}
@@ -22,6 +22,6 @@
 
 \floatplacement{table}{H}
 
-% Set theorem environment -----
+% Set Theorem Environment -----
 
 \AtEndEnvironment{theorem}{\vspace{\bigskipamount}}

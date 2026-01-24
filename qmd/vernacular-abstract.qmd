@@ -1,35 +1,21 @@
-<!-- %:::% .common h1 begin %:::% -->
 # Abstract {.unnumbered}
-<!-- %:::% .common h1 end %:::% -->
 
-```{r}
-#| label: setup
-#| include: false
+**Do not remove the tags**! (they look like this: `%:::% tag %:::%`)
 
-source(here::here("R/_setup.R"))
+```latex
+%:::% vernacular-abstract reference begin %:::%
+[SURNAME], [Forename(s) initial(s)]. \textbf{\imprimirtitulo}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  (\imprimirtituloacademico) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
+%:::% vernacular-abstract reference end %:::%
 ```
 
-`r toupper(env_vars[["author-surname"]])`, `r sub("\\. .\\.$", "", env_vars[["author-initials"]])`. __{{< var title >}}__. {{< var year >}}. {{< var type-of-work >}} ({{< var academic-degree >}}) -- {{< var school >}}, {{< var university >}}, {{< var location >}}, {{< var year >}}.
-
-::: {.content-visible when-format="pdf"}
-<!-- %:::% vernacular-abstract reference begin %:::% -->
-[AUTHOR'S SURNAME], [Author's forename(s) initial(s)]. \textbf{\imprimirtitulo}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  (\imprimirtituloacademico) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
-<!-- %:::% vernacular-abstract reference end %:::% -->
-:::
-
 <!-- %:::% vernacular-abstract body begin %:::% -->
-{abnt} is a [Quarto](https://quarto.org) format designed for theses
-and dissertations that adhere to the standards of the Brazilian Association of Technical Standards (ABNT). It is based on
-the [`abntex2`](https://www.abntex.net.br/) LaTeX class and on [USP guidelines for creating thesis and dissertation
-documents](https://teses.usp.br/index.php?option=com_content&view=article&id=52&Itemid=67&lang=en).
+[abnt](https://github.com/danielvartan/abnt) is a [Quarto](https://quarto.org) format designed for creating theses and dissertations that comply with guidelines established by the Brazilian Association of Technical Standards ([ABNT](https://www.abnt.org.br/)). It's based on the [abntex2](https://www.abntex.net.br/) LaTeX class, which belongs to the [memoir](https://www.ctan.org/pkg/memoir) class family.
 <!-- %:::% vernacular-abstract body end %:::% -->
 
-__Keywords__: {{< var keyword >}}
-
-::: {.content-visible when-format="pdf"}
-<!-- %:::% vernacular-abstract keywords begin %:::% -->
+```latex
+%:::% vernacular-abstract keywords begin %:::%
 \begin{tabular}{p{2.3cm} p{13.6cm}}
   \textbf{Keywords}: & [Keyword 1]. [Keyword 2]. [Keyword 3].
 \end{tabular}
-<!-- %:::% vernacular-abstract keywords end %:::% -->
-:::
+%:::% vernacular-abstract keywords end %:::%
+```

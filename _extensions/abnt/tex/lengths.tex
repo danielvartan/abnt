@@ -1,3 +1,5 @@
+% Set Lengths -----
+
 \newlength{\microskipamount}
 \newlength{\tinyskipamount}
 \newlength{\hugeskipamount}
@@ -7,20 +9,24 @@
 \setlength{\smallskipamount}{0.75\baselineskip} % Arial/12pt/1.5 == 16.3125pt
 \setlength{\medskipamount}{1\baselineskip} % Arial/12pt/1.5 == 21.75pt
 \setlength{\bigskipamount}{1.5\baselineskip} % Arial/12pt/1.5 == 32.625pt
-\setlength{\hugeskipamount}{2\baselineskip }% Arial/12pt/1.5 == 43.5pt
+\setlength{\hugeskipamount}{2\baselineskip}% Arial/12pt/1.5 == 43.5pt
 
 \newcommand{\microskip}{\vspace{\microskipamount}}
 \newcommand{\tinyskip}{\vspace{\tinyskipamount}}
 \newcommand{\hugeskip}{\vspace{\hugeskipamount}}
 
+% Set Skips -----
+
 \setlength{\beforechapskip}{\bigskipamount}
 \setlength{\afterchapskip}{\smallskipamount}
-\setbeforesecskip{\medskipamount}
-\setaftersecskip{\smallskipamount}
-\setbeforesubsecskip{\medskipamount}
-\setaftersubsecskip{\smallskipamount}
-\setbeforesubsubsecskip{\medskipamount}
-\setaftersubsubsecskip{\smallskipamount}
-\setbeforeparaskip{\medskipamount}
-\setafterparaskip{0\smallskipamount}
-% \setparahook{\addvspace{\smallskipamount}}
+
+\titlespacing*{\chapter}{0pt}{\beforechapskip}{\afterchapskip}
+\titlespacing*{\section}{0pt}{\medskipamount}{\smallskipamount}
+\titlespacing*{\subsection}{0pt}{\medskipamount}{\smallskipamount}
+\titlespacing*{\subsubsection}{0pt}{\medskipamount}{\smallskipamount}
+\titlespacing*{\paragraph}{0pt}{\medskipamount}{\smallskipamount}
+
+% Set Epigraph -----
+
+\setlength\epigraphwidth{0.6\textwidth}
+\setlength\epigraphrule{0pt}

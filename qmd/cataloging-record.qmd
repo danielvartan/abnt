@@ -1,0 +1,48 @@
+# Cataloging Record {.unnumbered}
+
+**Do not remove the tags**! (they look like this: `%:::% tag %:::%`)
+
+```latex
+%:::% cataloging-record body begin %:::%
+I authorize the full or partial reproduction of this work by any conventional or electronic means for the purposes of study and research, provided that the source is cited.
+
+\vfill
+
+\begin{center}
+Cataloging in publication
+
+[University. School. Library]
+
+[CRB-8]
+
+\medskip
+\ABNTEXfontereduzida
+
+\setlength{\fboxsep}{1cm}
+\fbox{\begin{minipage}[c][6.5cm]{12.5cm}
+[Author's surname], [Author's forename(s)]
+
+\smallskip
+
+\hspace{0.5cm} {\imprimirtitulo}  / {\imprimirautor}; supervisor, {\imprimirorientador}; co-supervisor {\imprimircoorientador}. {\imprimirlocal}, {\imprimirdata}
+
+\smallskip
+
+{\thelastpage}p. : il
+
+\smallskip
+
+\hspace{0.5cm} {\imprimirtipotrabalho} (\imprimirtituloacademico) -- {\imprimirprograma}, {\imprimirescola}, {\imprimiruniversidade}, {\imprimirdata}.
+
+\smallskip
+
+\hspace{0.5cm} {\imprimirnotadeversao}
+
+\smallskip
+
+\hspace{0.5cm} 1. [Subject A]. 2. [Subject B]. 3. [Subject C]. I. [Supervisor's surname], [Supervisor's forename(s)], super. II. [Co-supervisor's surname], [Co-supervisor's forename(s)] co-super. III. Title.
+\end{minipage}}
+\end{center}
+\vspace{\hugeskipamount}
+%:::% cataloging-record body end %:::%
+```

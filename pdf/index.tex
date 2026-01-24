@@ -1,30 +1,28 @@
 % Author: Daniel Vartanian.
-% Licence: MIT. See <https://opensource.org/license/mit/> to learn more.
-% Based on: template.tex, developed by the Quarto team and
-%   abtex2-modelo-trabalho-academico.tex, v-1.9.7, developed by
-%   Lauro César Araujo and the team behind abnt2tex, with additional guidance
-%   from the theses and dissertations regulations of the University of São Paulo
-%   (USP). For more information, please visit <http://www.abntex.net.br/>.
+% Licence: GNU General Public License v3 or later
+%
+% Based on template.tex, developed by the Quarto team and
+% abtex2-modelo-trabalho-academico.tex, v-1.9.7, developed by
+% Lauro César Araujo and the team behind abnt2tex, with additional guidance
+% from the theses and dissertations regulations of the University of São Paulo
+% (USP). For more information, please visit <http://www.abntex.net.br/>.
 
 % For help, see:
-% * <https://quarto.org/docs/reference/formats/pdf.html>
-% * <https://github.com/abntex/abntex2/wiki/ComoCustomizar>
-% * <https://www.ctan.org/pkg/abntex2>
-% * <https://www.ctan.org/pkg/memoir>
-% * <https://www.ctan.org/pkg/hyperref>
-
-% TODO:
-% * Slightly move the toc to the left, in a way that the spacing between titles
-%   and numbers become the same as the textual chapters.
-% * Remove the hyperlink in the section numbering within TOC.
-% * Remove hiperlink spans by page breaks. See: <https://tex.stackexchange.com/questions/54136/hyperref-link-spans-a-pagebreak-looks-ugly>.
+%
+% - <https://quarto.org/docs/reference/formats/pdf.html>
+% - <https://github.com/abntex/abntex2/wiki/ComoCustomizar>
+% - <https://www.ctan.org/pkg/abntex2>
+% - <https://www.ctan.org/pkg/memoir>
+% - <https://www.ctan.org/pkg/hyperref>
 
 % -----
 % Preamble
 % -----
 
+% Don´t move the `\PassOptionsToPackage` macros.
+% See why: <https://tex.stackexchange.com/a/433605/234832>.
 \PassOptionsToPackage{
-unicode
+unicode,bookmarksnumbered
 }{hyperref}
 
 \PassOptionsToPackage{hyphens}{url}
@@ -43,8 +41,12 @@ french,
 spanish,
 brazil,
 english
-]{abntex2}\usepackage{array}
-\usepackage{booktabs}
+]{abntex2}
+% \usepackage{showframe}
+
+% The order in which the packages are loaded is important!
+
+\usepackage{array}
 \usepackage{calc}
 \usepackage{caption}
 \usepackage{color}
@@ -54,29 +56,39 @@ english
 \usepackage{booktabs}
 \usepackage{enumitem}
 \usepackage{etoolbox}
+\usepackage{epigraph}
 \usepackage{float}
 \usepackage[T1]{fontenc}
-\usepackage[hang]{footmisc}
+\usepackage[hang,multiple]{footmisc}
 \usepackage{graphicx}
 \usepackage{iftex}
 \usepackage{indentfirst}
+\usepackage[hyphenation,lastparline,nosingleletter]{impnattypo}
 \usepackage[utf8]{inputenc}
 \usepackage{lastpage}
 \usepackage{lipsum}
 \usepackage{longtable}
+\usepackage{luacode}
+\usepackage{luatexbase}
 \usepackage{microtype}
 \usepackage{multirow}
 \usepackage{parskip}
 \usepackage{pdfpages}
+\usepackage{titlesec}
 \usepackage[table]{xcolor}
-
+\usepackage{xparse}
+\usepackage{xstring}
 \usepackage{hyperref}
+\usepackage{url}
 
 \ifPDFTeX
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
-\fi\newlength{\microskipamount}
+\usepackage{unicode-math}
+\fi
+% Set Lengths -----
+
+\newlength{\microskipamount}
 \newlength{\tinyskipamount}
 \newlength{\hugeskipamount}
 
@@ -85,31 +97,36 @@ english
 \setlength{\smallskipamount}{0.75\baselineskip} % Arial/12pt/1.5 == 16.3125pt
 \setlength{\medskipamount}{1\baselineskip} % Arial/12pt/1.5 == 21.75pt
 \setlength{\bigskipamount}{1.5\baselineskip} % Arial/12pt/1.5 == 32.625pt
-\setlength{\hugeskipamount}{2\baselineskip }% Arial/12pt/1.5 == 43.5pt
+\setlength{\hugeskipamount}{2\baselineskip}% Arial/12pt/1.5 == 43.5pt
 
 \newcommand{\microskip}{\vspace{\microskipamount}}
 \newcommand{\tinyskip}{\vspace{\tinyskipamount}}
 \newcommand{\hugeskip}{\vspace{\hugeskipamount}}
 
+% Set Skips -----
+
 \setlength{\beforechapskip}{\bigskipamount}
 \setlength{\afterchapskip}{\smallskipamount}
-\setbeforesecskip{\medskipamount}
-\setaftersecskip{\smallskipamount}
-\setbeforesubsecskip{\medskipamount}
-\setaftersubsecskip{\smallskipamount}
-\setbeforesubsubsecskip{\medskipamount}
-\setaftersubsubsecskip{\smallskipamount}
-\setbeforeparaskip{\medskipamount}
-\setafterparaskip{0\smallskipamount}
-% \setparahook{\addvspace{\smallskipamount}}% Set page -----
+
+\titlespacing*{\chapter}{0pt}{\beforechapskip}{\afterchapskip}
+\titlespacing*{\section}{0pt}{\medskipamount}{\smallskipamount}
+\titlespacing*{\subsection}{0pt}{\medskipamount}{\smallskipamount}
+\titlespacing*{\subsubsection}{0pt}{\medskipamount}{\smallskipamount}
+\titlespacing*{\paragraph}{0pt}{\medskipamount}{\smallskipamount}
+
+% Set Epigraph -----
+
+\setlength\epigraphwidth{0.6\textwidth}
+\setlength\epigraphrule{0pt}
+% Set Page -----
 
 \setlength{\headsep}{1cm}
 \setlength{\footskip}{1cm}
-\checkandfixthelayout
+\checkandfixthelayout[fixed]
 
-% Set text spacing -----
+% Set Text Spacing -----
 
-\renewcommand{\familydefault}{\sfdefault}
+\renewcommand{\familydefault}{\rmdefault}
 
 \renewcommand{\baselinestretch}{1.5}
 
@@ -117,14 +134,14 @@ english
 
 \setlength{\parskip}{0ex}
 
-% Set text font -----
+% Set Text Font -----
 
 
 \ifPDFTeX\else
     % xetex/luatex font selection
-  \setmainfont[]{Arial}
-  \setsansfont[]{Arial}
-  \setmonofont[ItalicFont=FragmentMono-Italic.otf,Scale=0.75]{FragmentMono-Regular.otf}
+  \setmainfont[]{Noto-Sans}
+  \setsansfont[]{Noto-Sans}
+  \setmonofont[Scale=0.75]{Noto-Sans-Mono}
 
 
 
@@ -132,30 +149,31 @@ english
 \fi
 
 
-% Set footnote -----
+% Set Footnote -----
 
 \setlength{\footnotemargin}{0.5em} % Equal to `\footmarkwidth`
 \let\svfootnoterule\footnoterule % Equal to `\footmarksep`
-\renewcommand\footnoterule{\svfootnoterule\vspace{1ex}}\newcommand{\capaname}{Capa}
+\renewcommand\footnoterule{\vspace{1ex}\svfootnoterule\vspace{1ex}}
+\newcommand{\capaname}{Capa}
 \newcommand{\fichacatalograficaname}{Ficha catalográfica}
 \newcommand{\resumoestrangeironame}{Resumo}
 \newcommand{\glossarioname}{Glossário}
 
 \addto\captionsenglish{
   \renewcommand{\capaname}{Cover}
-  \renewcommand{\folhaderostoname}{Title page}
-  \renewcommand{\fichacatalograficaname}{Cataloging record}
+  \renewcommand{\folhaderostoname}{Title Page}
+  \renewcommand{\fichacatalograficaname}{Cataloging Record}
   \renewcommand{\errataname}{Errata}
-  \renewcommand{\folhadeaprovacaoname}{Approval sheet}
+  \renewcommand{\folhadeaprovacaoname}{Approval Sheet}
   \renewcommand{\dedicatorianame}{Inscription}
   \renewcommand{\agradecimentosname}{Acknowledgements}
   \renewcommand{\epigraphname}{Epigraph}
   \renewcommand{\resumoname}{Abstract}
   \renewcommand{\resumoestrangeironame}{Resumo}
-  \renewcommand{\listfigurename}{List of figures}
-  \renewcommand{\listtablename}{List of tables}
-  \renewcommand{\listadesiglasname}{List of abbreviations and acronyms}
-  \renewcommand{\listadesimbolosname}{List of symbols}
+  \renewcommand{\listfigurename}{List of Figures}
+  \renewcommand{\listtablename}{List of Tables}
+  \renewcommand{\listadesiglasname}{List of Abbreviations and Acronyms}
+  \renewcommand{\listadesimbolosname}{List of Symbols}
   \renewcommand{\contentsname}{Contents}
   \renewcommand{\bibname}{References}
   \renewcommand{\glossarioname}{Glossary}
@@ -177,19 +195,19 @@ english
 
 \addto\captionsbrazil{
   \renewcommand{\capaname}{Capa}
-  \renewcommand{\folhaderostoname}{Folha de rosto}
-  \renewcommand{\fichacatalograficaname}{Ficha catalográfica}
+  \renewcommand{\folhaderostoname}{Folha de Rosto}
+  \renewcommand{\fichacatalograficaname}{Ficha Catalográfica}
   \renewcommand{\errataname}{Errata}
-  \renewcommand{\folhadeaprovacaoname}{Folha de aprovação}
+  \renewcommand{\folhadeaprovacaoname}{Folha de Aprovação}
   \renewcommand{\dedicatorianame}{Dedicatória}
   \renewcommand{\agradecimentosname}{Agradecimentos}
   \renewcommand{\epigraphname}{Epígrafe}
   \renewcommand{\resumoname}{Resumo}
   \renewcommand{\resumoestrangeironame}{Abstract}
-  \renewcommand{\listfigurename}{Lista de figuras}
-  \renewcommand{\listtablename}{Lista de tabelas}
-  \renewcommand{\listadesiglasname}{Lista de abreviaturas e siglas}
-  \renewcommand{\listadesimbolosname}{Lista de símbolos}
+  \renewcommand{\listfigurename}{Lista de Figuras}
+  \renewcommand{\listtablename}{Lista de Tabelas}
+  \renewcommand{\listadesiglasname}{Lista de Abreviaturas e Siglas}
+  \renewcommand{\listadesimbolosname}{Lista de Símbolos}
   \renewcommand{\contentsname}{Sumário}
   \renewcommand{\bibname}{Referências}
   \renewcommand{\glossarioname}{Glossário}
@@ -198,21 +216,21 @@ english
   \renewcommand{\anexoname}{ANEXO}
   \renewcommand{\anexosname}{Anexos}
   \renewcommand{\indexname}{Índice}
-  \renewcommand{\orientadorname}{Asesor:}
-  \renewcommand{\coorientadorname}{Coasesor:}
-  \renewcommand{\sourcename}{Fuente}
+  \renewcommand{\orientadorname}{Orientador:}
+  \renewcommand{\coorientadorname}{Coorientador:}
+  \renewcommand{\fontename}{Fonte}
   \renewcommand{\notaname}{Nota}
   \renewcommand{\pageautorefname}{página}
-  \renewcommand{\sectionautorefname}{sección}
-  \renewcommand{\subsectionautorefname}{subsección}
-  \renewcommand{\subsubsectionautorefname}{subsubsección}
-  \renewcommand{\paragraphautorefname}{subsubsubsección}
+  \renewcommand{\sectionautorefname}{seção}
+  \renewcommand{\subsectionautorefname}{subseção}
+  \renewcommand{\subsubsectionautorefname}{subsubseção}
+  \renewcommand{\paragraphautorefname}{subsubsubseção}
 }
 
 \addto\captionsspanish{
   \renewcommand{\capaname}{Portada}
   \renewcommand{\folhaderostoname}{Página de título}
-  \renewcommand{\fichacatalograficaname}{Ficha catalográfica}
+  \renewcommand{\fichacatalograficaname}{Ficha Catalográfica}
   \renewcommand{\errataname}{Errata}
   \renewcommand{\folhadeaprovacaoname}{Hoja de aprobación}
   \renewcommand{\dedicatorianame}{Dedicatoria}
@@ -220,10 +238,10 @@ english
   \renewcommand{\epigraphname}{Epígrafe}
   \renewcommand{\resumoname}{Resumen}
   \renewcommand{\resumoestrangeironame}{Resumo}
-  \renewcommand{\listfigurename}{Lista de figuras}
-  \renewcommand{\listtablename}{Lista de tablas}
-  \renewcommand{\listadesiglasname}{Lista de abreviaturas y siglas}
-  \renewcommand{\listadesimbolosname}{Lista de símbolos}
+  \renewcommand{\listfigurename}{Lista de Figuras}
+  \renewcommand{\listtablename}{Lista de Tablas}
+  \renewcommand{\listadesiglasname}{Lista de Abreviaturas y Siglas}
+  \renewcommand{\listadesimbolosname}{Lista de Símbolos}
   \renewcommand{\contentsname}{Sumario}
   \renewcommand{\bibname}{Referencias}
   \renewcommand{\glossarioname}{Glosario}
@@ -234,7 +252,7 @@ english
   \renewcommand{\indexname}{Índice}
   \renewcommand{\orientadorname}{Asesor:}
   \renewcommand{\coorientadorname}{Coasesor:}
-  \renewcommand{\sourcename}{Fuente}
+  \renewcommand{\fontename}{Fuente}
   \renewcommand{\notaname}{Nota}
   \renewcommand{\pageautorefname}{página}
   \renewcommand{\sectionautorefname}{sección}
@@ -245,19 +263,19 @@ english
 
 \addto\captionsfrench{
   \renewcommand{\capaname}{Couverture}
-  \renewcommand{\folhaderostoname}{Page de titre}
-  \renewcommand{\fichacatalograficaname}{Fiche cataloguée}
+  \renewcommand{\folhaderostoname}{Page de Titre}
+  \renewcommand{\fichacatalograficaname}{Fiche Cataloguée}
   \renewcommand{\errataname}{Errata}
-  \renewcommand{\folhadeaprovacaoname}{Feuille d'approbation}
+  \renewcommand{\folhadeaprovacaoname}{Feuille d'Approbation}
   \renewcommand{\dedicatorianame}{Dédiace
   \renewcommand{\agradecimentosname}{Remerciements}}
   \renewcommand{\epigraphname}{Épigraphe}
   \renewcommand{\resumoname}{Résumé}
   \renewcommand{\resumoestrangeironame}{Resumo}
-  \renewcommand{\listfigurename}{Liste des figures}
-  \renewcommand{\listtablename}{Liste des tableaux}
-  \renewcommand{\listadesiglasname}{Liste des abréviations et sigles}
-  \renewcommand{\listadesimbolosname}{Liste des symboles}
+  \renewcommand{\listfigurename}{Liste des Figures}
+  \renewcommand{\listtablename}{Liste des Tableaux}
+  \renewcommand{\listadesiglasname}{Liste des Abréviations et Sigles}
+  \renewcommand{\listadesimbolosname}{Liste des Symboles}
   \renewcommand{\contentsname}{Sommaire}
   \renewcommand{\bibname}{Références}
   \renewcommand{\glossarioname}{Glossaire}
@@ -268,35 +286,36 @@ english
   \renewcommand{\indexname}{Index}
   \renewcommand{\orientadorname}{Conseiller:}
   \renewcommand{\coorientadorname}{Co-conseiller:}
-  \renewcommand{\sourcename}{Source}
+  \renewcommand{\fontename}{Source}
   \renewcommand{\notaname}{Note}
   \renewcommand{\pageautorefname}{page}
   \renewcommand{\sectionautorefname}{section}
   \renewcommand{\subsectionautorefname}{sous-section}
   \renewcommand{\subsubsectionautorefname}{sous-sous-section}
   \renewcommand{\paragraphautorefname}{sous-sous-sous-section}
-}% See `babel.tex` for language changes.
+}
+% See `babel.tex` for language changes.
 % See `toc.text` for changes related to the ToC.
 
-% Set page numbering -----
+% Set Page Numbering -----
 
 \makepagestyle{abntheadings}
 \makeevenhead{abntheadings}{\ABNTEXfontereduzida\thepage}{}{}
 \makeoddhead{abntheadings}{}{}{\ABNTEXfontereduzida\thepage}
 
-% Set text variables -----
+% Set Text Variables -----
 
-\renewcommand{\ABNTEXpartfont}{\normalfont\bfseries}
+\renewcommand{\ABNTEXpartfont}{\sffamily\bfseries}
 \renewcommand{\ABNTEXpartfontsize}{\normalsize}
-\renewcommand{\ABNTEXchapterfont}{\normalfont\bfseries}
+\renewcommand{\ABNTEXchapterfont}{\sffamily\bfseries}
 \renewcommand{\ABNTEXchapterfontsize}{\normalsize}
-\renewcommand{\ABNTEXsectionfont}{\normalfont}
+\renewcommand{\ABNTEXsectionfont}{\sffamily}
 \renewcommand{\ABNTEXsectionfontsize}{\normalsize}
-\renewcommand{\ABNTEXsubsectionfont}{\normalfont\bfseries}
+\renewcommand{\ABNTEXsubsectionfont}{\sffamily}
 \renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
-\renewcommand{\ABNTEXsubsubsectionfont}{\normalfont}
+\renewcommand{\ABNTEXsubsubsectionfont}{\sffamily}
 \renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize}
-\renewcommand{\ABNTEXsubsubsubsectionfont}{\normalfont}
+\renewcommand{\ABNTEXsubsubsubsectionfont}{\sffamily}
 \renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalsize\itshape}
 \renewcommand{\ABNTEXfontereduzida}{\footnotesize}
 \renewcommand{\ABNTEXcaptiondelim}{~\textendash~}
@@ -304,7 +323,7 @@ english
 
 \renewcommand{\captiontitlefont}{\ABNTEXfontereduzida}
 
-% Set new commands -----
+% Set New Commands -----
 
 \providecommand{\imprimiruniversidade}{}
 \newcommand{\universidade}[1]{\renewcommand{\imprimiruniversidade}{#1}}
@@ -329,20 +348,21 @@ english
 \providecommand{\imprimirnotadeversao}{}
 \newcommand{\notadeversao}[1]{\renewcommand{\imprimirnotadeversao}{#1}}
 
-% Set chapter style -----
+% Set Chapter Style -----
 
-\renewcommand{\chapnamefont}{\normalfont\normalsize}
-\renewcommand{\chapnumfont}{\normalfont\normalsize}
+\renewcommand{\chapnamefont}{\ABNTEXchapterfont\ABNTEXchapterfontsize\mdseries}
+\renewcommand{\chapnumfont}{\ABNTEXchapterfont\ABNTEXchapterfontsize\mdseries}
 
 \setsecnumformat{\chapnumfont\csname the#1\endcsname\quad}
 
 \renewcommand{\printchaptername}{
   \ifthenelse{\boolean{abntex@apendiceousecao}}{
+    \vspace*{\medskipamount}
     \chapnamefont \ABNTEXchapterupperifneeded{\appendixname} % [Changed]
   }{}
 }
 
-% Open an issue about it (`\hspace{-1em}`) - Title streching.
+% Open an issue about it (`\hspace{-1em}`) - Title stretching.
 \renewcommand{\chapternamenum}{
   \ifthenelse{\boolean{abntex@apendiceousecao}}{
     \hspace{-2em} \space
@@ -362,7 +382,7 @@ english
 
 \renewcommand{\afterchapternum}{
   \ifthenelse{\boolean{abntex@apendiceousecao}}{ % [Added]
-    \normalfont \hspace{-1em} \space\ABNTEXcaptiondelim\space \hspace{-1.5em}
+    \ABNTEXchapterfont\mdseries \hspace{-1em} \space\ABNTEXcaptiondelim\space \hspace{-1.5em}
   }{
     \hspace{-0.875em}
   }
@@ -380,7 +400,7 @@ english
     \centering \ABNTEXchapterupperifneeded{#1}
   }{
     \ifthenelse{\boolean{abntex@apendiceousecao}}{
-      \normalfont \ABNTEXchapterupperifneeded{#1}
+      \ABNTEXchapterfont\mdseries\ABNTEXchapterupperifneeded{#1}
     }{
       \ABNTEXchapterupperifneeded{#1}
     }
@@ -394,7 +414,7 @@ english
   \aliaspagestyle{chapter}{abntheadings}
 }
 
-% Set cover -----
+% Set Cover -----
 
 \renewcommand{\imprimircapa}{
   \phantomsection\pdfbookmark[0]{\capaname}{}
@@ -407,7 +427,7 @@ english
   \imprimirautor
 
   \vfill
-  \textbf{\imprimirtitulo}
+  {\ABNTEXchapterfont\imprimirtitulo}
 
   \vfill
   \vspace{6.5cm}
@@ -419,7 +439,7 @@ english
   \end{capa}
 }
 
-% Set title page -----
+% Set Title Page -----
 
 \makeatletter
 \renewcommand{\folhaderostocontent}{
@@ -427,10 +447,10 @@ english
   \imprimirautor
 
   \vfill
-  \bfseries\imprimirtitulo
+  {\ABNTEXchapterfont\imprimirtitulo}
 
   \vfill
-  \bfseries\imprimirnotadeversao\normalfont
+  \textbf{\imprimirnotadeversao}
 
   \vfill
   \abntex@ifnotempty{
@@ -452,7 +472,7 @@ english
 }
 \makeatother
 
-% Set cataloging record -----
+% Set Cataloging Record -----
 
 \renewenvironment{fichacatalografica}{
   \PRIVATEbookmarkthis{\fichacatalograficaname}
@@ -462,7 +482,7 @@ english
   \end{SingleSpacing}
 }
 
-% Set errata -----
+% Set Errata -----
 
 \renewenvironment{errata}[1][\errataname]{
   \newpage
@@ -472,7 +492,7 @@ english
   \cleardoublepage
 }
 
-% Set approval sheet -----
+% Set Approval Sheet -----
 
 \renewenvironment{folhadeaprovacao}[1][\folhadeaprovacaoname]{
   \clearpage
@@ -485,7 +505,7 @@ english
   \cleardoublepage
 }
 
-% Set abstract -----
+% Set Abstract -----
 
 \newenvironment{resumoenv}[1][\resumoname]{
   \pretextualchapter{#1}
@@ -506,7 +526,7 @@ english
   \endgroup
 }
 
-% Set list of abbreviations and acronyms -----
+% Set List of Abbreviations and Acronyms -----
 
 \renewenvironment{siglas}{
   \pretextualchapter{\listadesiglasname}
@@ -514,7 +534,7 @@ english
   \cleardoublepage
 }
 
-% Set list of symbols -----
+% Set List of Symbols -----
 
 \renewenvironment{simbolos}{
   \pretextualchapter{\listadesimbolosname}
@@ -522,7 +542,7 @@ english
   \cleardoublepage
 }
 
-% Set glossary -----
+% Set Glossary -----
 
 \newenvironment{glossario}{
   \tocprintchapternonum
@@ -530,12 +550,12 @@ english
   \cleardoublepage
 }
 
-% Set appendices and annexes -----
+% Set Appendices and Annexes -----
 
 \renewcommand{\PRIVATEapendiceconfig}[2]{
   \setboolean{abntex@apendiceousecao}{true}
   \renewcommand{\appendixname}{#1}
-  \renewcommand{\apendicesname}{#1}
+  %\renewcommand{\apendicesname}{#1}
 
   \ifthenelse{\boolean{ABNTEXsumario-abnt-6027-2012}}{
     \renewcommand{\appendixtocname}{\uppercase{#2}}
@@ -559,14 +579,28 @@ english
   % is automatically add by the Quarto render.
 }
 
+\newcommand{\PRIVATEapendiceconfigafter}[1]{
+    \chapterstyle{apendice}
+    %\begingroup\centering\bfseries
+    %\ABNTEXchapterupperifneeded{#1}
+    %\par\endgroup
+    %\vspace{\medskipamount}
+    \pretextualchapter{#1}
+    \let\clearpage\relax
+}
+
 \renewcommand{\apendices}{
+  \clearpage
   \PRIVATEapendiceconfig{\apendicename}{\apendicesname}
   \appendix
+  \PRIVATEapendiceconfigafter{\apendicesname}
 }
 
 \renewenvironment{apendicesenv}{
+  \clearpage
   \PRIVATEapendiceconfig{\apendicename}{\apendicesname}
   \begin{appendix}
+  \PRIVATEapendiceconfigafter{\apendicesname}
 }{
   \end{appendix}
   \setboolean{abntex@apendiceousecao}{false}
@@ -574,6 +608,7 @@ english
 }
 
 \renewcommand{\anexos}{
+  \clearpage
   % \cftinserthook{toc}{AAA} [Removed]
   \PRIVATEapendiceconfig{\anexoname}{\anexosname}
 
@@ -583,9 +618,11 @@ english
 
   \appendix
   \renewcommand\theHchapter{anexochapback.\arabic{chapter}}
+  \PRIVATEapendiceconfigafter{\anexosname}
 }
 
 \renewenvironment{anexosenv}{
+  \clearpage
   \PRIVATEapendiceconfig{\anexoname}{\anexosname}
 
   \newpage % [Added]
@@ -594,13 +631,19 @@ english
 
   \begin{appendix}
   \renewcommand\theHchapter{anexochapback.\arabic{chapter}}
+  \PRIVATEapendiceconfigafter{\anexosname}
 }{
   \end{appendix}
   \setboolean{abntex@apendiceousecao}{false}
   \bookmarksetup{startatroot}
-}\definecolor{blue}{HTML}{2905C3}
+}
+% -----
+% New Colors
+% -----
 
-% See <https://getbootstrap.com/docs/4.0/utilities/colors/>.
+\definecolor{blue}{HTML}{2905C3}
+
+% See <https://getbootstrap.com/docs/5.0/utilities/colors/>.
 \definecolor{quarto-blue}{HTML}{2780E3}
 \definecolor{quarto-lighter-blue}{HTML}{ECF4FC}
 \definecolor{quarto-orange}{HTML}{FF7518}
@@ -614,43 +657,59 @@ english
 \definecolor{quarto-medium-gray}{HTML}{CFD0D1}
 \definecolor{quarto-ligther-gray}{HTML}{F1F3F5}
 
-\definecolor{bs-link-color}{HTML}{39729E}% \usepackage{graphicx}
-\makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\makeatother
+\definecolor{bs-link-color}{HTML}{39729E}
 
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% -----
+% Body Color
+% -----
 
-% Set default figure placement to htbp
+
+% Quarto's Default Settings -----
+
+% \usepackage{graphicx} % Already loaded in `packages.tex`.
 \makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to `htbp`
 \def\fps@figure{htbp}
 \makeatother
 
+% Set Distance from Top of the Page to First Float -----
+
 \makeatletter
-\setlength{\@fptop}{5pt} % Set distance from top of page to first float
+\setlength{\@fptop}{5pt}
 \makeatother
 
-% Set captions and legends -----
+% Set Captions and Legends -----
 
 \DeclareCaptionFont{ABNTEXfontereduzida}{\ABNTEXfontereduzida}
 
+% For customization, see `\DeclareCaptionFormat` in the `caption` package.
 \captionsetup{
-  font=ABNTEXfontereduzida,
-  justification=centering
+  font=ABNTEXfontereduzida
+  ,justification=justified
 }
 
-\renewcommand{\abovecaptionskip}{\tinyskipamount}
-\renewcommand{\belowcaptionskip}{\tinyskipamount}
+\renewcommand{\abovecaptionskip}{\smallskipamount}
+\renewcommand{\belowcaptionskip}{\smallskipamount}
 
 \renewcommand{\legend}[1]{
+  \hyphenpenalty=100000
   \ABNTEXfontereduzida
-  \addvspace{\tinyskipamount}
+  \addvspace{\smallskipamount}
   #1
 }
+
+% Credits: <https://tex.stackexchange.com/a/611556/234832>.
+\AddToHook{cmd/caption/before}{\hyphenpenalty=100000}
 
 % Set figure environment -----
 
@@ -661,7 +720,8 @@ english
 
 \AtEndEnvironment{figure}{
   \addvspace{\smallskipamount}
-}\renewcommand{\arraystretch}{1.5}
+}
+\renewcommand{\arraystretch}{1.5}
 \setlength{\aboverulesep}{0ex}
 \setlength{\belowrulesep}{0ex}
 
@@ -671,11 +731,11 @@ english
 % \patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
 % \makeatother
 
-% Allow footnotes in longtable head/foot
+% Allow footnotes in `longtable` head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
 
-% Set tabular environment -----
+% Set Tabular Environment -----
 
 \AtBeginEnvironment{table}{\ABNTEXfontereduzida}
 \AtBeginEnvironment{tabular}{\ABNTEXfontereduzida}
@@ -685,17 +745,25 @@ english
 
 \floatplacement{table}{H}
 
-% Set theorem environment -----
+% Set Theorem Environment -----
 
-\AtEndEnvironment{theorem}{\vspace{\bigskipamount}}\providecommand{\tightlist}{
+\AtEndEnvironment{theorem}{\vspace{\bigskipamount}}
+\providecommand{\tightlist}{
 \setlength{\itemsep}{0ex}\setlength{\parskip}{0\baselineskip}}
 
 % \setlist[enumerate]{leftmargin=1cm)}
-% \setlist[itemize]{leftmargin=2cm}\makeatletter
+% \setlist[itemize]{leftmargin=2cm}
+\makeatletter
 \newcommand*{\getlength}[1]{\strip@pt#1}
-\makeatother\title{\{abnt\}: Quarto format for ABNT theses and
-dissertations}
-\titulo{\{abnt\}: Quarto format for ABNT theses and dissertations}
+\makeatother
+\title{
+abnt: Quarto Format for ABNT Theses and Dissertations
+
+}
+
+\titulo{
+abnt: Quarto Format for ABNT Theses and Dissertations
+}
 
 
 \author{Daniel Vartanian}
@@ -703,8 +771,8 @@ dissertations}
 
 \local{{[}City{]}}
 
-\date{2023}
-\data{2023}
+\date{2026}
+\data{2026}
 
 \orientador{{[}Supervisor's full name{]}}
 
@@ -740,8 +808,9 @@ dissertations}
 \programa{{[}Graduate program{]}}
 
 \notadeversao{{[}Original/Revised version{]}}
+
 \hypersetup{
-pdftitle={\{abnt\}: Quarto format for ABNT theses and dissertations},
+pdftitle={abnt: Quarto Format for ABNT Theses and Dissertations},
 pdfauthor={Daniel Vartanian},
 pdflang={en},
 pdfsubject={{[}Dissertation/Thesis{]}},
@@ -753,7 +822,8 @@ citecolor={blue},
 urlcolor={blue},
 pdfcreator={LaTeX via pandoc},
 bookmarksdepth=5
-}% Set sections skips (`\cftchapterpresnum`)
+}
+% Set Sections Skips (`\cftchapterpresnum`)
 
 \setlength{\cftbeforebookskip}{0\baselineskip}
 \setlength{\cftbeforepartskip}{\bigskipamount}
@@ -763,7 +833,7 @@ bookmarksdepth=5
 \setlength{\cftbeforesubsubsectionskip}{0\baselineskip}
 \setlength{\cftbeforeparagraphskip}{0\baselineskip}
 
-% Set section numbers fonts (`\cftchapterpresnum`)
+% Set Section Numbers Fonts (`\cftchapterpresnum`)
 
 \renewcommand{\cftchapterpresnum}{\normalfont}
 \renewcommand{\cftsectionpresnum}{\normalfont}
@@ -771,7 +841,7 @@ bookmarksdepth=5
 \renewcommand{\cftsubsubsectionpresnum}{\normalfont}
 \renewcommand{\cftparagraphpresnum}{\normalfont}
 
-% Set section names fonts (`\cftpartfont`)
+% Set Section Names Fonts (`\cftpartfont`)
 
 \renewcommand{\cftpartfont}[1]{
   \ABNTEXchapterupperifneeded{\normalfont\bfseries #1}
@@ -797,7 +867,7 @@ bookmarksdepth=5
   \ABNTEXsubsubsubsectionupperifneeded{\normalfont\itshape #1}
 }
 
-% Set section page numbers fonts (`\cftpartpagefont`)
+% Set Section Page Numbers Fonts (`\cftpartpagefont`)
 
 \renewcommand{\cftpartpagefont}{\normalfont}
 \renewcommand{\cftchapterpagefont}{\normalfont}
@@ -808,7 +878,7 @@ bookmarksdepth=5
 \renewcommand{\cftfigurepagefont}{\normalfont}
 \renewcommand{\cfttablepagefont}{\normalfont}
 
-% Renew abntex2 ToC commands -----
+% Renew `abntex2` ToC Commands -----
 
 \cftinsertcode{A}{} % [Changed]
 
@@ -823,7 +893,7 @@ bookmarksdepth=5
   \addtocontents{toc}{\setlength{\cftpartnumwidth}{0em}}
 }
 
-% Set ToC skip
+% Set ToC Skip
 
 \newcommand{\tocskipone}{
   \addtocontents{toc}{\protect\vspace{\smallskipamount}}
@@ -832,8 +902,9 @@ bookmarksdepth=5
 % \setlength{\cftbeforepartskip}{\bigskipamount}
 \newcommand{\tocskiptwo}{
   % \addtocontents{toc}{\protect\vspace{\tinyskipamount}}
-}\usepackage[
-style=abnt,backend=biber,,language=english,,url=true,,useprefix=false,,giveninits=true,,extrayear=true
+}
+\usepackage[
+,backend=biber,url=true,useprefix=false,giveninits=true,style=abnt
 ]{biblatex}
 
 \usepackage{csquotes}
@@ -843,7 +914,6 @@ style=abnt,backend=biber,,language=english,,url=true,,useprefix=false,,giveninit
 \renewcommand{\bibname}{REFERENCES}
 \newcommand{\newbibname}{REFERENCES}
 
-
 \newcommand{\bibnamewithfootnote}{
   \newbibname\protect\footnote{According to the Brazilian Association of
 Technical Standards (ABNT NBR 6023).}
@@ -851,7 +921,7 @@ Technical Standards (ABNT NBR 6023).}
 
 \setlength{\bibhang}{0cm}
 
-\setlength{\bibparsep}{0ex}
+\setlength{\bibparsep}{-2ex}
 
 
 \defbibheading{bibheading}[\bibnamewithfootnote]{
@@ -868,8 +938,36 @@ Technical Standards (ABNT NBR 6023).}
 
 \AtBeginBibliography{\vspace{0.5\baselineskip}}
 \AtEveryBibitem{\clearfield{annotation}}
-\renewcommand{\bibfont}{\ABNTEXfontereduzida}\usepackage{makeidx}
+\renewcommand{\bibfont}{\ABNTEXfontereduzida}
+\usepackage{makeidx}
 \makeindex
+
+% Set sections skips (`\cftchapterpresnum`)
+
+% Credits: https://tex.stackexchange.com/a/28361/234832
+% \begin{luacode}
+% local PENALTY=node.id("penalty")
+% last_line_twice_parindent = function (head)
+%   while head do
+%     local _w,_h,_d = node.dimensions(head)
+%     if head.id == PENALTY and head.subtype ~= 15 and (_w < 2 * tex.parindent) then
+%
+%         -- we are at a glue and have less than 2*\parindent to go
+%         local p = node.new("penalty")
+%         p.penalty = 10000
+%         p.next = head
+%         head.prev.next = p
+%         p.prev = head.prev
+%         head.prev = p
+%     end
+%
+%     head = head.next
+%   end
+%   return true
+% end
+%
+% luatexbase.add_to_callback("pre_linebreak_filter",last_line_twice_parindent,"Raphink")
+% \end{luacode}
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
@@ -913,7 +1011,7 @@ Technical Standards (ABNT NBR 6023).}
 \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
 \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
 \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
 \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
@@ -923,7 +1021,7 @@ Technical Standards (ABNT NBR 6023).}
 \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
 \newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
 \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
 \newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
 \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
 \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
@@ -951,31 +1049,53 @@ Technical Standards (ABNT NBR 6023).}
 \urlstyle{same} % disable monospaced font for URLs
 
 
-%:::% class attribute begin/end %:::%
-
 % -----
-% Title page
+% Custom Functions
 % -----
 
-%:::% title-page begin %:::%
+% Credits: <https://tex.stackexchange.com/a/300215/234832>.
+
+\usepackage{xparse}
+
+\ExplSyntaxOn
+\NewExpandableDocumentCommand{\repeatntimes}{O{}mm}
+ {
+  \int_compare:nT { #2 > 0 }
+   {
+    #3 \prg_replicate:nn { #2 - 1 } { #1#3 }
+   }
+ }
+\ExplSyntaxOff
+% -----
+% Title Page
+% -----
+
 \preambulo{
+\hyphenpenalty=100000
+
 %:::% title-page body begin %:::%
-{\imprimirtipotrabalho} presented to the {\imprimirescola} at {\imprimiruniversidade}, as part of the requirements for the degree of {\imprimirtituloacademico} by the {\imprimirprograma}.
+{\imprimirtipotrabalho} presented to the {\imprimirescola} at the {\imprimiruniversidade}, as a requirement for the degree of {\imprimirtituloacademico} by the {\imprimirprograma}.
 
 \smallskip
-Area of concentration: {\imprimirareadeconcentracao}.
+
+Area of concentration: {\imprimirareadeconcentracao}
 
 \smallskip
-Revised version incorporating the changes requested by the examining committee on [Date]. The original version is held in the reserved collection at the {\imprimirescola} Library and in the Digital Library of Theses and Dissertations of the {\imprimiruniversidade}.
 
-\smallskip
 Supervisor: Prof. Dr. {\imprimirorientador}
 
 \vspace{\tinyskipamount}
+
 Co-Supervisor: Prof. Dr. {\imprimircoorientador}
 %:::% title-page body end %:::%
 }
-%:::% title-page end %:::%
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{longtable}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{anyfontsize}
+\usepackage{multirow}
 \makeatletter
 \@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
 \@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
@@ -999,9 +1119,9 @@ Co-Supervisor: Prof. Dr. {\imprimircoorientador}
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
 \ifdefined\contentsname
-  \renewcommand*\contentsname{Table of contents}
+  \renewcommand*\contentsname{Table of Contents}
 \else
-  \newcommand\contentsname{Table of contents}
+  \newcommand\contentsname{Table of Contents}
 \fi
 \ifdefined\listfigurename
   \renewcommand*\listfigurename{List of Figures}
@@ -1036,6 +1156,8 @@ Co-Supervisor: Prof. Dr. {\imprimircoorientador}
 \AtBeginDocument{\renewcommand*{\proofname}{Proof}}
 \newtheorem*{remark}{Remark}
 \newtheorem*{solution}{Solution}
+\newtheorem{refremark}{Remark}[chapter]
+\newtheorem{refsolution}{Solution}[chapter]
 \makeatother
 \makeatletter
 \makeatother
@@ -1053,7 +1175,7 @@ Co-Supervisor: Prof. Dr. {\imprimircoorientador}
 \@ifundefined{codebgcolor}{\definecolor{codebgcolor}{HTML}{F1F3F5}}{}
 \makeatother
 \makeatletter
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, frame hidden, breakable, colback={codebgcolor}, borderline west={3pt}{0pt}{shadecolor}, sharp corners, enhanced]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[enhanced, borderline west={3pt}{0pt}{shadecolor}, sharp corners, colback={codebgcolor}, frame hidden, breakable, boxrule=0pt]}{\end{tcolorbox}}\fi
 \makeatother
 
 % -----
@@ -1073,7 +1195,7 @@ Co-Supervisor: Prof. Dr. {\imprimircoorientador}
 %:::% class attribute begin/end %:::%
 
 % -----
-% Cover (mandatory)
+% Cover (Mandatory)
 % -----
 
 %:::% cover begin %:::%
@@ -1081,7 +1203,7 @@ Co-Supervisor: Prof. Dr. {\imprimircoorientador}
 %:::% cover end %:::%
 
 % -----
-% Title page (mandatory)
+% Title Page (Mandatory)
 % -----
 
 %:::% approval-sheet begin %:::%
@@ -1089,124 +1211,134 @@ Co-Supervisor: Prof. Dr. {\imprimircoorientador}
 %:::% approval-sheet end %:::%
 
 % -----
-% Cataloging record (mandatory)
+% Cataloging Record (Mandatory)
 % -----
 
 %:::% cataloging-record begin %:::%
 \begin{fichacatalografica}
+\hyphenpenalty=100000
 %:::% cataloging-record body begin %:::%
 I authorize the full or partial reproduction of this work by any conventional or electronic means for the purposes of study and research, provided that the source is cited.
-\ABNTEXfontereduzida
 
 \vfill
+
 \begin{center}
 Cataloging in publication
 
-Library
+[University. School. Library]
 
-[Library name]
+[CRB-8]
 
 \medskip
+\ABNTEXfontereduzida
+
 \setlength{\fboxsep}{1cm}
-\fbox{\begin{minipage}[c][7.5cm]{12.5cm}
+\fbox{\begin{minipage}[c][6.5cm]{12.5cm}
 [Author's surname], [Author's forename(s)]
 
 \smallskip
+
 \hspace{0.5cm} {\imprimirtitulo}  / {\imprimirautor}; supervisor, {\imprimirorientador}; co-supervisor {\imprimircoorientador}. {\imprimirlocal}, {\imprimirdata}
 
 \smallskip
+
 {\thelastpage}p. : il
 
 \smallskip
+
 \hspace{0.5cm} {\imprimirtipotrabalho} (\imprimirtituloacademico) -- {\imprimirprograma}, {\imprimirescola}, {\imprimiruniversidade}, {\imprimirdata}.
 
 \smallskip
+
 \hspace{0.5cm} {\imprimirnotadeversao}
 
 \smallskip
+
 \hspace{0.5cm} 1. [Subject A]. 2. [Subject B]. 3. [Subject C]. I. [Supervisor's surname], [Supervisor's forename(s)], super. II. [Co-supervisor's surname], [Co-supervisor's forename(s)] co-super. III. Title.
 \end{minipage}}
 \end{center}
+\vspace{\hugeskipamount}
 %:::% cataloging-record body end %:::%
 \end{fichacatalografica}
 %:::% cataloging-record end %:::%
 
 % -----
-% Errata (optional)
+% Errata (Optional)
 % -----
 
 %:::% errata begin %:::%
 \begin{errata}[\errataname]
 %:::% errata reference begin %:::%
-\noindent [Author's surname], [Author's forename(s) initial(s)]. \textbf{\imprimirtitulo}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  (\imprimirtituloacademico) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
+\noindent [SURNAME], [Forename(s) initial(s)]. \textbf{\imprimirtitulo}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  ({\imprimirtituloacademico}) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
 %:::% errata reference end %:::%
 \smallskip
 %:::% errata body begin %:::%
 
-This is the development version of the thesis (version \textless1.0.0).
-Any necessary corrections will be listed here after its approval.
+This is the preliminary version of this thesis (version \textless1.0.0).
+Any required corrections will be listed here upon approval.
 
 %:::% errata body end %:::%
 \end{errata}
 %:::% errata end %:::%
 
 % -----
-% Approval sheet (mandatory)
+% Approval Sheet (Mandatory)
 % -----
 
 %:::% approval-sheet begin %:::%
 \begin{folhadeaprovacao}[\folhadeaprovacaoname]
+\hyphenpenalty=100000
 %:::% approval-sheet body begin %:::%
-{\imprimirtipotrabalho} by {\imprimirautor}, under the title \textbf{\imprimirtitulo}, presented to the {\imprimirescola} at the {\imprimiruniversidade}, as part of the requirements for the degree of {\imprimirtituloacademico} by the {\imprimirprograma}, in the concentration area of {\imprimirareadeconcentracao}.
+{\imprimirtipotrabalho} by {\imprimirautor}, under the title \textbf{\imprimirtitulo}, presented to the {\imprimirescola} at the {\imprimiruniversidade}, as a requirement for the degree of {\imprimirtituloacademico} by the {\imprimirprograma}, in the concentration area of {\imprimirareadeconcentracao}.
 
 \vspace{\hugeskipamount}
-Approved on \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ , \_\_\_\_\_\_\_\_\_\_ .
+Approved on [Month] [Day], [Year].
 
 \vspace{\hugeskipamount}
 \begin{center}
-  Examination committee
+  Examination Committee
 \end{center}
 
 \vspace{\smallskipamount}
-Committee chair:
+Committee Chair:
 
 \vspace{\tinyskipamount}
 \begingroup
 
 \AtBeginEnvironment{tabular}{
-  \normalsize
+  \normalsize\raggedright
   \renewcommand{\arraystretch}{2}
 }
 
 \setlength{\arrayrulewidth}{0pt}
 \setlength{\tabcolsep}{0cm}
-\begin{tabular}{m{2cm} P{14cm}}
-  Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
-  Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+\begin{tabular}{m{2.5cm} m{13.5cm}}
+  Prof. Dr. & [Full name] \\
+  Institution & [School], [University] \\
 \end{tabular}
 
 \vspace{\bigskipamount}
 Examiners:
 
 \vspace{\tinyskipamount}
-\begin{tabular}{m{2cm} P{14cm}}
-  Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
-  Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
-  Evaluation & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+\begin{tabular}{m{2.5cm} m{13.5cm}}
+  Prof. Dr. & [Full name] \\
+  Institution & [School], [University] \\
+  Evaluation & [Approved/Rejected] \\
 \end{tabular}
 
 \vspace{\smallskipamount}
-\begin{tabular}{m{2cm} P{14cm}}
-  Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
-  Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
-  Evaluation & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+\begin{tabular}{m{2.5cm} m{13.5cm}}
+  Prof. Dr. & [Full name] \\
+  Institution & [School], [University] \\
+  Evaluation & [Approved/Rejected] \\
 \end{tabular}
 
 \vspace{\smallskipamount}
-\begin{tabular}{m{2cm} P{14cm}}
-  Prof. Dr. & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
-  Institution & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
-  Evaluation & \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+\begin{tabular}{m{2.5cm} m{13.5cm}}
+  Prof. Dr. & [Full name] \\
+  Institution & [School], [University] \\
+  Evaluation & [Approved/Rejected] \\
 \end{tabular}
 \endgroup
 %:::% approval-sheet body end %:::%
@@ -1214,7 +1346,7 @@ Examiners:
 %:::% approval-sheet end %:::%
 
 % -----
-% Inscription (optional)
+% Inscription (Optional)
 % -----
 
 %:::% inscription begin %:::%
@@ -1226,7 +1358,9 @@ Examiners:
 
 \textit{I dedicate, as a fond remembrance, these posthumous memories.}\footnotemark{}
 
-\footnotetext{ASSIS, M. \textbf{Memórias póstumas de Brás Cubas} [The Posthumous Memoirs of Brás Cubas]. São Paulo: Companhia das Letras, 2014. ISBN 978-85-438-0163-6.}
+\footnotetext{
+	ASSIS, M. \textbf{Memórias póstumas de Brás Cubas} [The Posthumous Memoirs of Brás Cubas]. São Paulo: Companhia das Letras, 2014.
+}
 %:::% inscription body end %:::%
 \vspace*{\fill} % Don't change it.
 \vspace{4.5cm}
@@ -1235,7 +1369,7 @@ Examiners:
 %:::% inscription end %:::%
 
 % -----
-% Acknowledgments (optional)
+% Acknowledgments (Optional)
 % -----
 
 %:::% acknowledgments begin %:::%
@@ -1250,7 +1384,7 @@ I would like to acknowledge this awesome
 %:::% acknowledgments end %:::%
 
 % -----
-% Epigraph (optional)
+% Epigraph (Optional)
 % -----
 
 %:::% epigraph begin %:::%
@@ -1260,67 +1394,70 @@ I would like to acknowledge this awesome
 %:::% epigraph body begin %:::%
 \textit{Nullius in verba}\footnotemark{}
 
-\footnotetext{THE ROYAL SOCIETY. \textbf{History of the Royal Society}. Available from:
-<\href{https://royalsociety.org/about-us/history/}{https://royalsociety.org/about-us/history/}>. Visited on: 9 Sept. 2023.}
+\footnotetext{
+	THE ROYAL SOCIETY. \textbf{History of the Royal Society}. Available from: <\href{https://royalsociety.org/about-us/history/}{https://royalsociety.org/about-us/history/}>. Visited on: 9 Sept. 2023.
+}
 %:::% epigraph body end %:::%
 \end{flushright}
 \end{epigrafe}
 %:::% epigraph end %:::%
 
 % -----
-% Abstract in the vernacular language (mandatory)
+% Abstract in Vernacular Language (Mandatory)
 % -----
 
 %:::% vernacular-abstract begin %:::%
 \begin{resumoenv}[\resumoname]
  %:::% vernacular-abstract reference begin %:::%
-[Author's surname], [Author's forename(s) initial(s)]. \textbf{\imprimirtitulo}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  (\imprimirtituloacademico) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
+[SURNAME], [Forename(s) initial(s)]. \textbf{\imprimirtitulo}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  (\imprimirtituloacademico) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
 %:::% vernacular-abstract reference end %:::%
 
 %:::% vernacular-abstract body begin %:::%
 
-\{abnt\} is a \href{https://quarto.org}{Quarto} format designed for
-theses and dissertations that adhere to the standards of the Brazilian
-Association of Technical Standards (ABNT). It is based on the
-\href{https://www.abntex.net.br/}{\texttt{abntex2}} LaTeX class and on
-\href{https://teses.usp.br/index.php?option=com_content&view=article&id=52&Itemid=67&lang=en}{USP
-guidelines for creating thesis and dissertation documents}.
+\href{https://github.com/danielvartan/abnt}{abnt} is a
+\href{https://quarto.org}{Quarto} format designed for creating theses
+and dissertations that comply with guidelines established by the
+Brazilian Association of Technical Standards
+(\href{https://www.abnt.org.br/}{ABNT}). It's based on the
+\href{https://www.abntex.net.br/}{abntex2} LaTeX class, which belongs to
+the \href{https://www.ctan.org/pkg/memoir}{memoir} class family.
 
 %:::% vernacular-abstract body end %:::%
 
 %:::% vernacular-abstract keywords begin %:::%
 \begin{tabular}{p{2.3cm} p{13.6cm}}
-  \textbf{Keywords}: &  [Keyword 1]. [Keyword 2]. [Keyword 3].
+  \textbf{Keywords}: & [Keyword 1]. [Keyword 2]. [Keyword 3].
 \end{tabular}
 %:::% vernacular-abstract keywords end %:::%
 \end{resumoenv}
 %:::% vernacular-abstract end %:::%
 
 % -----
-% Abstract in the foreign language (mandatory)
+% Abstract in Foreign Language (Mandatory)
 % -----
 
 %:::% foreign-abstract begin %:::%
 \begin{resumoenv}[\resumoestrangeironame]
 \begin{otherlanguage*}{brazil}
 %:::% foreign-abstract reference begin %:::%
-[Sobrenome do autor], [Inicial(is) do(s) prenome(s) do autor].  \textbf{[Título]}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  (\imprimirtituloacademico) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
+[SOBRENOME], [Inicial(is) do(s) prenome(s)].  \textbf{[Título]}. {\imprimirdata}. {\thelastpage}p. [Dissertação/Tese]  ([Título acadêmico]) -- [Escola/Faculdade], [Universidade], [Cidade/Local], {\imprimirdata}.
 %:::% foreign-abstract reference end %:::%
 
 %:::% foreign-abstract body begin %:::%
 
-\{abnt\} is a \href{https://quarto.org}{Quarto} format designed for
-theses and dissertations that adhere to the standards of the Brazilian
-Association of Technical Standards (ABNT). It is based on the
-\href{https://www.abntex.net.br/}{\texttt{abntex2}} LaTeX class and on
-\href{https://teses.usp.br/index.php?option=com_content&view=article&id=52&Itemid=67&lang=en}{USP
-guidelines for creating thesis and dissertation documents}.
+\href{https://github.com/danielvartan/abnt}{abnt} é um formato
+\href{https://quarto.org}{Quarto} projetado para criar teses e
+dissertações que atendem às diretrizes estabelecidas pela Associação
+Brasileira de Normas Técnicas (\href{https://www.abnt.org.br/}{ABNT}).
+Ele é baseado na classe LaTeX
+\href{https://www.abntex.net.br/}{abntex2}, que pertence à família de
+classes \href{https://www.ctan.org/pkg/memoir}{memoir}.
 
 %:::% foreign-abstract body end %:::%
 
 %:::% foreign-abstract keywords begin %:::%
 \begin{tabular}{p{3.6cm} p{12.3cm}}
-  \textbf{Palavras-chaves}: &  [Palavra-chave 1]. [Palavra-chave 2]. [Palavra-chave 3].
+  \textbf{Palavras-chaves}: & [Palavra-chave 1]. [Palavra-chave 2]. [Palavra-chave 3].
 \end{tabular}
 %:::% foreign-abstract keywords end %:::%
 \end{otherlanguage*}
@@ -1328,7 +1465,7 @@ guidelines for creating thesis and dissertation documents}.
 %:::% foreign-abstract end %:::%
 
 % -----
-% List of figures (optional)
+% List of Figures (Optional)
 % -----
 
 %:::% list-of-figures begin %:::%
@@ -1338,7 +1475,7 @@ guidelines for creating thesis and dissertation documents}.
 %:::% list-of-figures end %:::%
 
 % -----
-% List of tables (optional)
+% List of Tables (Optional)
 % -----
 
 %:::% list-of-tables begin %:::%
@@ -1348,7 +1485,7 @@ guidelines for creating thesis and dissertation documents}.
 %:::% list-of-tables end %:::%
 
 % -----
-% List of abbreviations and acronyms (optional)
+% List of Abbreviations and Acronyms (Optional)
 % -----
 
 %:::% list-of-abbreviations begin %:::%
@@ -1359,27 +1496,27 @@ guidelines for creating thesis and dissertation documents}.
 \item[\textsubscript{F}]
 \hspace{20cm}
 
-Subscript indicating a relation with work-free days
+Subscript indicating a relation with work-free days.
 \item[\textsubscript{W}]
 \hspace{20cm}
 
-Subscript indicating a relation with workdays
+Subscript indicating a relation with workdays.
 \item[MCTQ]
 \hspace{20cm}
 
-Munich ChronoType Questionnaire
+Munich ChronoType Questionnaire.
 \item[MCTQ\textsuperscript{PT}]
 \hspace{20cm}
 
-Portuguese version of the MCTQ
+Portuguese version of the MCTQ.
 \item[MEQ]
 \hspace{20cm}
 
-Morningness-Eveningness Questionnaire
+Morningness-Eveningness Questionnaire.
 \item[MSF]
 \hspace{20cm}
 
-Local time of mid-sleep on work-free days
+Local time of mid-sleep on work-free days.
 \item[MSF\textsubscript{sc}]
 \hspace{20cm}
 
@@ -1390,7 +1527,7 @@ identified.
 \item[MSW]
 \hspace{20cm}
 
-Local time of mid-sleep on workdays
+Local time of mid-sleep on workdays.
 \end{description}
 
 %:::% list-of-abbreviations body end %:::%
@@ -1398,7 +1535,7 @@ Local time of mid-sleep on workdays
 %:::% list-of-abbreviations end %:::%
 
 % -----
-% List of symbols (optional)
+% List of Symbols (Optional)
 % -----
 
 %:::% list-of-symbols begin %:::%
@@ -1406,7 +1543,7 @@ Local time of mid-sleep on workdays
 %:::% list-of-symbols body begin %:::%
 
 For an extensive list of chronobiology related symbols, please refer to
-\textcite{aschoff1965} and \textcite{marques2012}.
+\textcite{aschoff1965} and \textcite{marques2012a}.
 
 \begin{description}
 \item[\(\tau\)]
@@ -1421,23 +1558,23 @@ Zeitgeber period.
 \item[\(\phi\)]
 \hspace{20cm}
 
-Phase
+Phase.
 \item[\(\Delta\phi\)]
 \hspace{20cm}
 
-Phase shift
+Phase shift.
 \item[\(+\Delta\phi\)]
 \hspace{20cm}
 
-Phase advance
+Phase advance.
 \item[\(-\Delta\phi\)]
 \hspace{20cm}
 
-Phase delay
+Phase delay.
 \item[\(\Psi\)]
 \hspace{20cm}
 
-Phase relation
+Phase relation.
 \end{description}
 
 %:::% list-of-symbols body end %:::%
@@ -1445,7 +1582,7 @@ Phase relation
 %:::% list-of-symbols end %:::%
 
 % -----
-% Table of contents (mandatory)
+% Table of Contents (Mandatory)
 % -----
 
 %:::% table-of-contents begin %:::%
@@ -1454,23 +1591,17 @@ Phase relation
 \cleardoublepage
 %:::% table-of-contents end %:::%
 
+% -----
+% Other Additions
+% -----
+
+
 % Main and back matter -----
 
 \textual
 \bookmarksetup{startatroot}
 
 \chapter{{[}Showcase{]} Introduction}\label{sec-introduction}
-
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, rightrule=.15mm, colframe=quarto-callout-note-color-frame, leftrule=.75mm, opacityback=0, breakable, bottomtitle=1mm, arc=.35mm, coltitle=black, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, opacitybacktitle=0.6, titlerule=0mm, bottomrule=.15mm, left=2mm, toprule=.15mm]
-
-The text below is for demonstrative purposes only.
-
-\vspace{0.25\baselineskip}
-
-See \url{https://github.com/danielvartan/abnt} to learn more about this
-template.
-
-\end{tcolorbox}
 
 See Figure~\ref{fig-karl-popper}.
 
@@ -1508,8 +1639,18 @@ have made by comparing \(\text{P}_{1}\) with some of our later problems
 (\(\text{P}_{n}\), say).''
 
 \vspace{15pt}
+\noindent \hspace*{\fill} \autocite[164]{popper1979a}
+\vspace{15pt}
 
-\noindent \hspace*{\fill} \autocite[p.~164]{popper1979}
+Ipsum tempor laborum pariatur amet occaecat et culpa nisi eiusmod
+laborum ad culpa reprehenderit. Esse adipisicing et consectetur eu elit
+reprehenderit irure veniam. Quis ipsum ullamco id ea cillum. Fugiat elit
+ut laboris do ex culpa enim adipisicing id deserunt ullamco consectetur
+commodo nostrud. Veniam incididunt Lorem velit pariatur. Ipsum esse ut
+irure pariatur consequat pariatur sunt ad quis. Est ipsum dolore id
+pariatur ea commodo eiusmod non minim veniam. Est officia cupidatat
+ullamco elit cillum magna excepteur nostrud. Commodo anim qui elit
+occaecat anim veniam ipsum dolor consequat nostrud velit consequat.
 
 \index{figures}
 
@@ -1521,7 +1662,7 @@ One of the 20th century's most influential philosophers of science.}
 
 \centering{
 
-\includegraphics[width=0.5\textwidth,height=\textheight]{images/karl-popper.png}
+\includegraphics[width=0.5\linewidth,height=\textheight,keepaspectratio]{images/karl-popper.png}
 
 \legend{Source:
 \href{https://www.npg.org.uk/collections/search/portrait/mw08238/Sir-Karl-Raimund-Popper?}{Steve
@@ -1531,77 +1672,73 @@ Pyke}.}
 
 \end{figure}%
 
-\section{Secondary section}\label{secondary-section}
+\section{Secondary Section}\label{secondary-section}
 
-See Table~\ref{tbl-iris}.
+See Table~\ref{tbl-penguins}.
+
+Irure cillum ut nisi dolore voluptate esse ullamco deserunt. Mollit
+nulla ad eu amet fugiat velit mollit. Ea irure quis veniam sint ut
+cillum aliqua ipsum mollit dolore. Labore fugiat ullamco reprehenderit
+cupidatat adipisicing in pariatur dolor consectetur adipisicing proident
+culpa. Minim non deserunt sit occaecat.
 
 \index{tables}
 
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\NormalTok{datasets}\SpecialCharTok{::}\NormalTok{iris }\SpecialCharTok{|\textgreater{}}
-\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{as\_tibble}\NormalTok{() }\SpecialCharTok{|\textgreater{}}
-\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{slice\_sample}\NormalTok{(}\AttributeTok{n =} \DecValTok{5}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
-\NormalTok{  gt}\SpecialCharTok{::}\FunctionTok{gt}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-
 \begin{table}
 
-\caption{\label{tbl-iris}A sample of the famous (Fisher's or Anderson's)
-iris data set}
+\caption{\label{tbl-penguins}A sample of the penguins dataset}
 
 \centering{
 
-\begin{longtable*}{rrrrc}
+\fontsize{12.0pt}{14.0pt}\selectfont
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}ccrrr}
 \toprule
-Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species \\
+Species & Island & Bill length (mm) & Bill depth (mm) & Flipper length (mm) \\ 
 \midrule\addlinespace[2.5pt]
-6.5 & 3.0 & 5.5 & 1.8 & virginica \\
-6.5 & 3.0 & 5.8 & 2.2 & virginica \\
-5.0 & 3.0 & 1.6 & 0.2 & setosa \\
-5.0 & 3.5 & 1.6 & 0.6 & setosa \\
-6.2 & 2.9 & 4.3 & 1.3 & versicolor \\
+Gentoo & Biscoe & 43.5 & 14.2 & 220 \\ 
+Adelie & Torgersen & 36.2 & 17.2 & 187 \\ 
+Chinstrap & Dream & 58.0 & 17.8 & 181 \\ 
+Adelie & Dream & 37.0 & 16.9 & 185 \\ 
+Adelie & Biscoe & 38.1 & 16.5 & 198 \\ 
 \bottomrule
-\end{longtable*}
+\end{tabular*}
 
-\legend{Source: Based on \textcite{fisher1936}.}
+\legend{Source: Based on \textcite{horst2020} penguin dataset.}
 
 }
 
 \end{table}%
 
-\subsection{Tertiary section}\label{tertiary-section}
+\subsection{Tertiary Section}\label{tertiary-section}
+
+Ullamco duis irure ipsum duis minim incididunt. Elit duis non qui sit
+sit. Labore consectetur laboris magna reprehenderit sint magna eiusmod
+occaecat. Sit aute ipsum laborum exercitation mollit cillum nulla Lorem.
+Quis adipisicing aliquip labore aute excepteur ut voluptate in proident
+culpa. Laborum minim quis tempor mollit excepteur excepteur.
+
+Culpa ex ut excepteur velit sunt et quis eu magna duis laboris ullamco
+id. Laboris officia exercitation elit incididunt amet exercitation.
+Consectetur eiusmod excepteur do Lorem et velit id. Aute dolore ipsum
+eiusmod ipsum veniam pariatur cillum ex adipisicing quis exercitation
+deserunt esse ea. Ut reprehenderit deserunt consectetur occaecat aute
+Lorem et voluptate ullamco. Ipsum aliquip qui elit id proident
+adipisicing nostrud in anim.
 
 \index{figures!chart}
 
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\NormalTok{ggplot2}\SpecialCharTok{::}\FunctionTok{ggplot}\NormalTok{(}
-  \AttributeTok{data =}\NormalTok{ datasets}\SpecialCharTok{::}\NormalTok{faithful, }
-  \AttributeTok{mapping =}\NormalTok{ ggplot2}\SpecialCharTok{::}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ eruptions, }\AttributeTok{y =}\NormalTok{ waiting)}
-\NormalTok{  ) }\SpecialCharTok{+}
-\NormalTok{  ggplot2}\SpecialCharTok{::}\FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
-\NormalTok{  ggplot2}\SpecialCharTok{::}\FunctionTok{xlim}\NormalTok{(}\FloatTok{0.5}\NormalTok{, }\DecValTok{6}\NormalTok{) }\SpecialCharTok{+}
-\NormalTok{  ggplot2}\SpecialCharTok{::}\FunctionTok{ylim}\NormalTok{(}\DecValTok{40}\NormalTok{, }\DecValTok{110}\NormalTok{) }\SpecialCharTok{+}
-\NormalTok{  ggplot2}\SpecialCharTok{::}\FunctionTok{geom\_density\_2d\_filled}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
-\NormalTok{  ggplot2}\SpecialCharTok{::}\FunctionTok{geom\_density\_2d}\NormalTok{(}\AttributeTok{linewidth =} \FloatTok{0.25}\NormalTok{, }\AttributeTok{colour =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
-\NormalTok{  ggplot2}\SpecialCharTok{::}\FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"none"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 \begin{figure}[H]
 
-\caption{\label{fig-eruption}Relationship between \emph{waiting time to
-next eruption} (minutes) and \emph{eruption time} (minutes) at Old
-Faithful Geyser, Yellowstone National Park, Wyoming, USA}
+\caption{\label{fig-eruption}Relation between \emph{waiting time to next
+eruption} (minutes) and \emph{eruption time} (minutes) at Old Faithful
+Geyser, Yellowstone National Park, Wyoming, USA}
 
 \centering{
 
-\includegraphics{index_files/figure-pdf/unnamed-chunk-5-1.png}
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/unnamed-chunk-5-1.png}}
 
-\legend{Source: Retrieved from the
-\href{https://ggplot2.tidyverse.org/reference/geom_density_2d.html}{\texttt{ggplot2}
+\legend{Source: Reproduced from the
+\href{https://ggplot2.tidyverse.org/reference/geom_density_2d.html}{ggplot2
 R package documentation} \autocite{wickham2016a}.}
 
 }
@@ -1610,7 +1747,7 @@ R package documentation} \autocite{wickham2016a}.}
 
 \clearpage
 
-\subsubsection{Quaternary section}\label{quaternary-section}
+\subsubsection{Quaternary Section}\label{quaternary-section}
 
 \begin{itemize}
 \tightlist
@@ -1630,7 +1767,7 @@ R package documentation} \autocite{wickham2016a}.}
   \end{itemize}
 \end{itemize}
 
-\paragraph{Quinary section}\label{quinary-section}
+\paragraph{Quinary Section}\label{quinary-section}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1643,41 +1780,58 @@ R package documentation} \autocite{wickham2016a}.}
   List
 \end{enumerate}
 
-\section{Another secondary section}\label{another-secondary-section}
+\section{Another Secondary Section}\label{another-secondary-section}
 
 See Figure~\ref{fig-mpg}.
 
+Laboris eu quis in ut ipsum. Laborum qui tempor laboris ad cillum velit
+ea minim adipisicing magna labore mollit officia. Mollit cillum id do
+sint irure ut velit amet aliqua ipsum mollit adipisicing. Reprehenderit
+deserunt mollit consequat qui laborum occaecat laboris. Deserunt
+pariatur Lorem est reprehenderit excepteur aliqua esse in nostrud aute
+velit. Veniam cupidatat aute id adipisicing aute proident ut
+reprehenderit. Cillum non et est deserunt quis commodo.
+
+Tempor sint dolore ea adipisicing id voluptate est duis est consectetur
+Lorem. Dolore tempor dolor esse sit nulla fugiat aute labore aute
+laboris. Aliquip duis duis voluptate do et consectetur ad culpa sint
+proident. Id in elit deserunt dolore est est ullamco laboris commodo
+labore consectetur qui. Officia ut do nisi excepteur ex. Proident
+aliquip laboris culpa esse excepteur nisi. Adipisicing ex qui cillum ad
+commodo dolor quis ipsum ea anim. Deserunt culpa adipisicing ea ex
+adipisicing ad id. Ullamco tempor voluptate fugiat qui Lorem est eu
+reprehenderit tempor irure aute consequat eiusmod aliqua. Ex Lorem
+exercitation anim elit in ut consectetur ad.
+
+Consectetur consequat mollit esse laborum aliquip laborum veniam in
+duis. Deserunt nostrud duis ipsum adipisicing pariatur nulla et
+consectetur qui laborum deserunt irure duis. Duis nulla ad quis sint do
+esse reprehenderit. Enim nulla exercitation sunt excepteur Lorem labore
+adipisicing anim elit nisi officia velit ut ut. Sit reprehenderit
+officia quis sit ut elit duis enim. Sit irure anim deserunt laboris
+proident ea labore in sit culpa labore. Aliqua ea sit magna dolore.
+
+Sint do ad minim officia. Magna proident commodo ipsum nostrud pariatur
+exercitation eiusmod. Laboris et ut eiusmod quis ex. Laborum non magna
+ex cupidatat voluptate ullamco. Enim cillum ipsum minim sint velit
+veniam magna nostrud sit. Dolor eiusmod ut et incididunt commodo
+proident sint laborum laborum eiusmod amet. Laboris in incididunt non
+sit dolore amet laborum do ad esse enim. Laboris laboris cupidatat ad
+aliqua dolore nostrud nostrud consectetur proident. Ut fugiat qui velit
+quis cillum enim mollit anim quis. Lorem et do excepteur aliqua ad.
+
 \index{figures!chart}
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\NormalTok{p }\OtherTok{\textless{}{-}}\NormalTok{ ggplot2}\SpecialCharTok{::}\FunctionTok{ggplot}\NormalTok{(}
-  \AttributeTok{data =}\NormalTok{ datasets}\SpecialCharTok{::}\NormalTok{mtcars, }
-  \AttributeTok{mapping =}\NormalTok{ ggplot2}\SpecialCharTok{::}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{wt, }\AttributeTok{y=}\NormalTok{mpg, }\AttributeTok{color=}\NormalTok{cyl, }\AttributeTok{size=}\NormalTok{cyl)}
-\NormalTok{  ) }\SpecialCharTok{+}
-\NormalTok{  ggplot2}\SpecialCharTok{::}\FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
-\NormalTok{  ggplot2}\SpecialCharTok{::}\FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position=}\StringTok{"none"}\NormalTok{)}
-
-\NormalTok{ggExtra}\SpecialCharTok{::}\FunctionTok{ggMarginal}\NormalTok{(}
-  \AttributeTok{p =}\NormalTok{ p, }
-  \AttributeTok{type =} \StringTok{"histogram"}\NormalTok{, }
-  \AttributeTok{fill =} \StringTok{"slateblue"}\NormalTok{, }
-  \AttributeTok{xparams =} \FunctionTok{list}\NormalTok{(}\AttributeTok{bins=}\DecValTok{10}\NormalTok{)}
-\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{figure}[H]
 
-\caption{\label{fig-mpg}Relation between \emph{weight (1000lbs)}
-(\(\text{wt}\)) and \emph{miles per galon} (\(\text{mpg}\)) for
-combustion engine vehicles}
+\caption{\label{fig-mpg}Relation between \emph{weight (1000lbs)} and
+\emph{miles per gallon} for combustion engine vehicles}
 
 \centering{
 
-\includegraphics{index_files/figure-pdf/unnamed-chunk-6-1.png}
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/unnamed-chunk-7-1.png}}
 
-\legend{Source: Data extracted from the 1974 Motor Trend magazine and
+\legend{Source: Data extracted from the 1974 Motor Trend magazine,
 published by \textcite{henderson1981}. Visualization by
 \textcite{holtz}, available at
 \href{https://r-graph-gallery.com/277-marginal-histogram-for-ggplot2.html}{The
@@ -1691,93 +1845,80 @@ R Graph Gallery}.}
 
 \chapter{{[}Showcase{]} Development}\label{sec-development}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, colbacktitle=quarto-callout-warning-color!10!white, rightrule=.15mm, colframe=quarto-callout-warning-color-frame, leftrule=.75mm, opacityback=0, breakable, bottomtitle=1mm, arc=.35mm, coltitle=black, colback=white, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Warning}, opacitybacktitle=0.6, titlerule=0mm, bottomrule=.15mm, left=2mm, toprule=.15mm]
+Aliqua aute non qui sint reprehenderit ullamco. Sunt fugiat voluptate
+laborum adipisicing est ad. Nisi irure ex nostrud officia officia
+laboris veniam. In occaecat non amet do veniam. Amet officia pariatur
+sint consequat dolor deserunt elit quis ad. Velit sint ut in cupidatat
+eiusmod velit voluptate voluptate culpa exercitation veniam. Minim
+proident mollit quis deserunt officia cillum consectetur ipsum.
 
-The text below is for demonstrative purposes only.
+Fugiat enim ut consequat eu enim cupidatat pariatur labore adipisicing
+quis irure pariatur esse voluptate. Elit sunt amet cillum quis
+consectetur ad cillum incididunt officia quis. Culpa in deserunt aliquip
+quis. Reprehenderit veniam voluptate nisi ullamco culpa. Amet incididunt
+Lorem ut nulla ad. Ipsum pariatur cupidatat irure sit amet minim qui
+excepteur aliquip est cillum labore quis commodo.
 
-\vspace{0.25\baselineskip}
+\section{Secondary Section}\label{secondary-section-1}
 
-See \url{https://github.com/danielvartan/abnt} to learn more about this
-template.
+Tempor do consequat tempor minim elit fugiat aute sit ea aliqua laborum
+ullamco occaecat reprehenderit. Laboris ex commodo enim excepteur ut
+consectetur elit ullamco eu qui pariatur ullamco sint. Excepteur
+cupidatat do esse nisi sint nulla duis dolor et consectetur mollit. Sunt
+cillum eiusmod excepteur eiusmod nostrud nisi magna. Do anim elit ex
+irure cillum qui proident dolor labore cillum incididunt duis culpa
+voluptate. Incididunt do sint labore dolore eiusmod veniam proident
+consequat commodo aliquip aliqua excepteur ex.
 
-\end{tcolorbox}
-
-Cillum qui eu non ipsum pariatur ad exercitation pariatur dolore veniam
-amet cillum. Aliqua do nostrud aliquip in amet. Commodo sit tempor nulla
-ipsum officia voluptate laborum elit minim proident Lorem. Id pariatur
-reprehenderit non officia fugiat incididunt anim aliquip anim anim.
-Ipsum irure magna quis est aute. Nostrud nulla mollit non labore. In
-laboris mollit ea in. Excepteur eu do elit proident. Commodo tempor nisi
-enim ex velit voluptate dolor mollit eiusmod in ullamco aliqua nostrud
-id.
-
-Eiusmod dolore sint proident consectetur reprehenderit exercitation
-sunt. Nisi qui sit commodo anim consectetur in laborum dolore in labore
-veniam labore commodo tempor. Sunt sit officia commodo quis magna.
-Aliqua esse est adipisicing ea est ex esse esse officia sit culpa minim
-amet dolore. Culpa dolore laborum sunt do commodo duis in velit. Mollit
-duis voluptate aliquip magna labore aute sit dolore amet culpa labore.
-Id tempor consectetur est anim ullamco ex nostrud voluptate excepteur.
-Aliqua laboris aute laborum amet eu. Minim quis veniam et dolor quis
-fugiat. Adipisicing amet est do aliqua nostrud amet excepteur ut.
-
-\section{Secondary section}\label{secondary-section-1}
-
-Minim consectetur eu aliqua in elit incididunt labore amet consequat
-cillum minim. Id sit duis duis ex velit proident mollit minim consequat
-nulla. Aliqua elit do excepteur nulla nostrud exercitation nisi tempor
-incididunt. Veniam dolore in non nisi veniam aliquip. Minim labore
-excepteur ea est dolore laboris cillum. Laboris sit pariatur pariatur
-veniam mollit nisi cupidatat qui qui quis laborum veniam dolor. Proident
-aliquip do adipisicing dolor elit aute elit. Officia anim quis id
-voluptate eu. Quis labore consectetur est magna. Laborum nulla ea non
-Lorem officia aute.
+Ex officia minim laborum adipisicing dolor elit velit. Minim dolore anim
+pariatur sint veniam adipisicing aute est sint magna exercitation magna.
+Dolore deserunt officia dolore quis cupidatat minim cupidatat excepteur
+Lorem nisi aliquip elit do cupidatat. Lorem voluptate deserunt do culpa
+dolor id qui et tempor eu esse reprehenderit fugiat. Ullamco in aliquip
+nulla ex eu fugiat consequat aliqua et adipisicing in laborum. Est
+laborum occaecat amet exercitation cillum proident irure. Id irure elit
+id occaecat qui aliqua nisi veniam irure cupidatat Lorem sint fugiat
+qui.
 
 \bookmarksetup{startatroot}
 
 \chapter{{[}Showcase{]} Conclusion}\label{sec-conclusion}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, colbacktitle=quarto-callout-important-color!10!white, rightrule=.15mm, colframe=quarto-callout-important-color-frame, leftrule=.75mm, opacityback=0, breakable, bottomtitle=1mm, arc=.35mm, coltitle=black, colback=white, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, opacitybacktitle=0.6, titlerule=0mm, bottomrule=.15mm, left=2mm, toprule=.15mm]
+In anim magna nostrud incididunt proident esse esse. Consequat velit
+consequat ex consequat veniam occaecat. Duis nisi Lorem adipisicing
+dolore dolore cupidatat esse eiusmod culpa cupidatat deserunt ex.
+Pariatur aliquip ea enim aliquip. Labore ut esse incididunt veniam
+voluptate pariatur laborum ea nostrud dolor labore labore deserunt
+deserunt. Culpa dolore in cillum elit veniam irure officia irure magna.
+Ipsum minim culpa ipsum ea ut dolore ex est.
 
-The text below is for demonstrative purposes only.
+In ex Lorem voluptate fugiat. Aliquip qui ex fugiat quis non quis ut. Id
+nostrud proident ex aliqua Lorem aliqua laboris. Et ea eu ullamco aute
+cillum ullamco eiusmod excepteur culpa tempor adipisicing veniam
+adipisicing. Deserunt quis cillum dolore proident minim. Quis
+exercitation in minim irure. Enim anim esse et mollit. Commodo ipsum sit
+nulla Lorem eiusmod aliqua commodo elit magna incididunt. Ea cupidatat
+excepteur exercitation eiusmod esse mollit officia.
 
-\vspace{0.25\baselineskip}
+\section{Secondary Section}\label{secondary-section-2}
 
-See \url{https://github.com/danielvartan/abnt} to learn more about this
-template.
+Aute laboris eiusmod ea sunt excepteur in nisi ipsum. Nostrud ea quis ex
+ullamco aliqua enim. Laborum excepteur fugiat anim voluptate nulla
+fugiat sint sint minim laborum elit excepteur. Exercitation eiusmod
+irure cillum elit nulla ad sint ad enim non enim do consectetur anim.
+Dolore nostrud esse proident magna dolore elit duis commodo laboris
+excepteur esse.
 
-\end{tcolorbox}
-
-Cillum qui eu non ipsum pariatur ad exercitation pariatur dolore veniam
-amet cillum. Aliqua do nostrud aliquip in amet. Commodo sit tempor nulla
-ipsum officia voluptate laborum elit minim proident Lorem. Id pariatur
-reprehenderit non officia fugiat incididunt anim aliquip anim anim.
-Ipsum irure magna quis est aute. Nostrud nulla mollit non labore. In
-laboris mollit ea in. Excepteur eu do elit proident. Commodo tempor nisi
-enim ex velit voluptate dolor mollit eiusmod in ullamco aliqua nostrud
-id.
-
-Eiusmod dolore sint proident consectetur reprehenderit exercitation
-sunt. Nisi qui sit commodo anim consectetur in laborum dolore in labore
-veniam labore commodo tempor. Sunt sit officia commodo quis magna.
-Aliqua esse est adipisicing ea est ex esse esse officia sit culpa minim
-amet dolore. Culpa dolore laborum sunt do commodo duis in velit. Mollit
-duis voluptate aliquip magna labore aute sit dolore amet culpa labore.
-Id tempor consectetur est anim ullamco ex nostrud voluptate excepteur.
-Aliqua laboris aute laborum amet eu. Minim quis veniam et dolor quis
-fugiat. Adipisicing amet est do aliqua nostrud amet excepteur ut.
-
-\section{Secondary section}\label{secondary-section-2}
-
-Minim consectetur eu aliqua in elit incididunt labore amet consequat
-cillum minim. Id sit duis duis ex velit proident mollit minim consequat
-nulla. Aliqua elit do excepteur nulla nostrud exercitation nisi tempor
-incididunt. Veniam dolore in non nisi veniam aliquip. Minim labore
-excepteur ea est dolore laboris cillum. Laboris sit pariatur pariatur
-veniam mollit nisi cupidatat qui qui quis laborum veniam dolor. Proident
-aliquip do adipisicing dolor elit aute elit. Officia anim quis id
-voluptate eu. Quis labore consectetur est magna. Laborum nulla ea non
-Lorem officia aute.
+Excepteur ipsum ex qui occaecat minim dolore elit sunt tempor. Nulla
+occaecat est nisi irure voluptate id mollit sunt nisi. In qui qui
+adipisicing et. Ex ipsum dolore aute minim. Ad aliquip fugiat amet
+exercitation ea aliquip aliqua pariatur. Labore minim dolor ex eu veniam
+amet laboris proident esse. Id et elit ex enim eu ullamco est
+adipisicing nostrud. Elit adipisicing consequat ullamco minim mollit sit
+quis minim sit esse quis. Cillum cupidatat cillum reprehenderit
+voluptate ex deserunt ut est quis aute irure esse velit. Aliquip ad elit
+labore ea amet amet et excepteur voluptate veniam tempor id nostrud
+sint.
 
 \postextual
 
@@ -1802,7 +1943,7 @@ Lorem officia aute.
 \markboth{Glossary}{Glossary}
 
 For an extensive list of chronobiology related terms and definitions,
-please refer to \textcite{aschoff1965} and \textcite{marques2012}.
+please refer to \textcite{aschoff1965} and \textcite{marques2012a}.
 
 \begin{description}
 \item[Chronotype]
@@ -1810,7 +1951,7 @@ please refer to \textcite{aschoff1965} and \textcite{marques2012}.
 
 Any kind of temporal phenotype \autocite{ehret1974,pittendrigh1993}.
 Usually, it refers to circadian phenotypes in a spectrum that goes from
-morningness to eveningness \autocite{roenneberg2003}. It can also be
+morningness to eveningness \autocite{roenneberg2003b}. It can also be
 seen as an organism's phase of entrainment \autocite{roenneberg2012a}.
 \item[Circadian rhythm]
 \hspace{20cm}
@@ -1833,13 +1974,6 @@ There are several definitions. Here are some that I found to be of use:
 \item
   ``A system of many interacting parts where the system is more than
   just the sum of its parts'' (Mark Newman apud \textcite{mitchell2013})
-\item
-  Systems with many connected agents that interact and exhibit
-  self-organization and emergence behavior, all without the need for a
-  central controller (adapted from Camilo Rodrigues Neto's definition,
-  supervisor of this thesis).
-\item
-  Dialectics at its finest (my working definition).
 \end{itemize}
 
 \begin{description}
@@ -1862,60 +1996,67 @@ circadian rhythm when exposed to light.
 
 \chapter{{[}Showcase{]}}\label{sec-appendix-a}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, colbacktitle=quarto-callout-tip-color!10!white, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, leftrule=.75mm, opacityback=0, breakable, bottomtitle=1mm, arc=.35mm, coltitle=black, colback=white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Tip}, opacitybacktitle=0.6, titlerule=0mm, bottomrule=.15mm, left=2mm, toprule=.15mm]
+Ipsum do culpa sit mollit Lorem voluptate ad exercitation proident
+aliqua. Anim enim quis consequat magna aliquip nulla. Commodo culpa
+voluptate aute magna ea anim aute adipisicing elit eu do consectetur.
+Tempor mollit cillum voluptate reprehenderit ullamco officia enim
+voluptate elit. Laboris anim consectetur culpa ex id irure et cillum
+labore qui sint. Reprehenderit officia reprehenderit incididunt aliquip
+aute aliqua proident ipsum dolore ipsum. Do tempor culpa occaecat ipsum
+consequat quis. Officia et laborum dolor eu minim id quis elit non
+labore amet anim.
 
-The text below is for demonstrative purposes only.
+Non quis proident et reprehenderit proident. Proident sint labore tempor
+incididunt quis deserunt ex incididunt nostrud qui elit pariatur.
+Proident cupidatat quis commodo magna cupidatat cupidatat. Ut quis eu ea
+Lorem velit laborum dolor laborum esse. Consequat velit in laboris
+ullamco aliqua cupidatat duis consequat. Eu amet tempor enim
+exercitation aliquip esse fugiat nostrud culpa. Voluptate quis officia
+Lorem deserunt elit fugiat ullamco amet duis proident. Sint eu eiusmod
+proident magna.
 
-\vspace{0.25\baselineskip}
+\section{Secondary Section}\label{secondary-section-3}
 
-See \url{https://quarto.org/docs/authoring/markdown-basics.html} to
-learn about the basics of Markdown's syntax.
+Anim ut est ea aliqua culpa officia ut fugiat. Duis laboris mollit non
+irure velit fugiat tempor enim. Ad reprehenderit laborum adipisicing
+occaecat adipisicing excepteur deserunt eu ea irure enim deserunt. Et
+commodo laborum nisi aliqua consequat dolore occaecat minim. Ea dolore
+culpa consequat incididunt mollit aute magna ipsum Lorem veniam pariatur
+occaecat nisi sit. Occaecat esse do sint minim ut elit minim consectetur
+dolor Lorem labore anim exercitation. Dolor qui labore exercitation non
+magna dolore duis Lorem aute esse culpa ad ad nisi.
 
-\end{tcolorbox}
+\end{apendicesenv}
 
-Cillum qui eu non ipsum pariatur ad exercitation pariatur dolore veniam
-amet cillum. Aliqua do nostrud aliquip in amet. Commodo sit tempor nulla
-ipsum officia voluptate laborum elit minim proident Lorem. Id pariatur
-reprehenderit non officia fugiat incididunt anim aliquip anim anim.
-Ipsum irure magna quis est aute. Nostrud nulla mollit non labore. In
-laboris mollit ea in. Excepteur eu do elit proident. Commodo tempor nisi
-enim ex velit voluptate dolor mollit eiusmod in ullamco aliqua nostrud
-id.
+\begin{anexosenv}
 
-Eiusmod dolore sint proident consectetur reprehenderit exercitation
-sunt. Nisi qui sit commodo anim consectetur in laborum dolore in labore
-veniam labore commodo tempor. Sunt sit officia commodo quis magna.
-Aliqua esse est adipisicing ea est ex esse esse officia sit culpa minim
-amet dolore. Culpa dolore laborum sunt do commodo duis in velit. Mollit
-duis voluptate aliquip magna labore aute sit dolore amet culpa labore.
-Id tempor consectetur est anim ullamco ex nostrud voluptate excepteur.
-Aliqua laboris aute laborum amet eu. Minim quis veniam et dolor quis
-fugiat. Adipisicing amet est do aliqua nostrud amet excepteur ut.
+\chapter{{[}Showcase{]}}\label{sec-annex-a}
 
-\section{Secondary section}\label{secondary-section-3}
+\clearpage
+\includepdf{images/annex.pdf}
 
-Minim consectetur eu aliqua in elit incididunt labore amet consequat
-cillum minim. Id sit duis duis ex velit proident mollit minim consequat
-nulla. Aliqua elit do excepteur nulla nostrud exercitation nisi tempor
-incididunt. Veniam dolore in non nisi veniam aliquip. Minim labore
-excepteur ea est dolore laboris cillum. Laboris sit pariatur pariatur
-veniam mollit nisi cupidatat qui qui quis laborum veniam dolor. Proident
-aliquip do adipisicing dolor elit aute elit. Officia anim quis id
-voluptate eu. Quis labore consectetur est magna. Laborum nulla ea non
-Lorem officia aute.
+\end{anexosenv}
 
-\chapter{PDF Settings}\label{sec-settings}
+\chapter{Settings}\label{sec-settings}
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, colbacktitle=quarto-callout-important-color!10!white, rightrule=.15mm, colframe=quarto-callout-important-color-frame, leftrule=.75mm, opacityback=0, breakable, bottomtitle=1mm, arc=.35mm, coltitle=black, colback=white, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, opacitybacktitle=0.6, titlerule=0mm, bottomrule=.15mm, left=2mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, colbacktitle=quarto-callout-important-color!10!white, toprule=.15mm, left=2mm, colframe=quarto-callout-important-color-frame, leftrule=.75mm, bottomrule=.15mm, coltitle=black, titlerule=0mm, breakable, colback=white, bottomtitle=1mm, arc=.35mm, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, opacityback=0]
 
 You are reading the work-in-progress of this manual.
 
-\vspace{0.25\baselineskip}
+\microskip
 
 This chapter is undergoing heavy restructuring and may be confusing or
 incomplete.
 
 \end{tcolorbox}
+
+\section{Sections}\label{sections}
+
+If you won't use a section of this document, you must remove it from
+\texttt{\_quarto.yml}. Empty sections will produce an error.
+
+At the moment, you also need to remove them in
+\texttt{tex/include-before-body.tex} and \texttt{R/.pre-render.R}.
 
 \section{Typography}\label{typography}
 
@@ -1941,7 +2082,7 @@ font. You have the freedom to choose any font you prefer, but it's
 important to note that the selected font must be installed on your
 computer.
 
-\subsection{Font size}\label{font-size}
+\subsection{Font Size}\label{font-size}
 
 To adjust the font size, utilize the \texttt{fontsize} option in in the
 \texttt{quarto-{[}format{]}.yml} file.
@@ -1972,25 +2113,21 @@ modify this setting by inserting the following LaTeX command into
 \end{Highlighting}
 \end{Shaded}
 
-\section{Language and hyphenation}\label{language-and-hyphenation}
+\section{Language and Hyphenation}\label{language-and-hyphenation}
 
-\section{Document sections}\label{document-sections}
+\section{Document Sections}\label{document-sections}
 
-\subsection{Editing pre-textual
-sections}\label{editing-pre-textual-sections}
+\subsection{Editing Pre-Textual
+Sections}\label{editing-pre-textual-sections}
 
 \texttt{abnt} uses a system of tags to transfer and render the content
 of Quarto files (\texttt{.qmd}) to LaTeX. These tags look like this:
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
+\NormalTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{=latex\}}
 \CommentTok{\%:::\% class attribute begin/end \%:::\%}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\CommentTok{\textless{}!{-}{-} \%:::\% class attribute begin/end \%:::\% {-}{-}\textgreater{}}
+\NormalTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1998,15 +2135,11 @@ Unless you want to customize the template, you don't need to modify the
 \texttt{.tex} files. You can write directly in the \texttt{.qmd} files.
 Just ensure that you preserve all the tags.
 
-Please note that some settings regarding the pre-textual sections must
-be changed in the \texttt{qmd/\_congfig.qmd} file.
-
-\subsection{\texorpdfstring{How to include LaTeX commands in Quarto
+\subsection{\texorpdfstring{How to Include LaTeX Commands in Quarto
 files
-(\texttt{.qmd})}{How to include LaTeX commands in Quarto files (.qmd)}}\label{how-to-include-latex-commands-in-quarto-files-.qmd}
+(\texttt{.qmd})}{How to Include LaTeX Commands in Quarto files (.qmd)}}\label{how-to-include-latex-commands-in-quarto-files-.qmd}
 
-To add LaTeX commands in your writing, without worrying that it will
-contaminate the \texttt{html} format, use a \texttt{\{=latex\}} chunk.
+To add LaTeX commands in your writing use a \texttt{\{=latex\}} chunk.
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -2016,8 +2149,8 @@ contaminate the \texttt{html} format, use a \texttt{\{=latex\}} chunk.
 \end{Highlighting}
 \end{Shaded}
 
-\subsection{How to add or remove
-sections}\label{how-to-add-or-remove-sections}
+\subsection{How to Add or Remove
+Sections}\label{how-to-add-or-remove-sections}
 
 For pre-textual sections (e.g., list of symbols, abstract), remove them
 from \texttt{tex/include-before-body.tex} and from
@@ -2065,15 +2198,15 @@ specific sections. These are:
   After the Annexes section.
 \end{itemize}
 
-\section{Citation management}\label{citation-management}
+\section{Citation Management}\label{citation-management}
 
-\subsection{Citation method}\label{citation-method}
+\subsection{Citation Method}\label{citation-method}
 
 \index{BibLaTeX}
 
 This Quarto format was specifically designed to be compatible with
 \href{https://www.ctan.org/pkg/biblatex}{BibLaTeX}, which is a
-comprehensive reimplementation of
+comprehensive re-implementation of
 \href{https://www.bibtex.org/}{BiBTeX}. At first glance, these two
 systems may appear very similar.
 
@@ -2089,7 +2222,7 @@ Quarto's
 \href{https://quarto.org/docs/authoring/footnotes-and-citations.html}{Citation
 \& Footnotes} documentation.
 
-\subsection{Citation style}\label{citation-style}
+\subsection{Citation Style}\label{citation-style}
 
 \index{ABNT}
 \index{APA}
@@ -2143,54 +2276,7 @@ manuals to learn more about them.
 \end{Highlighting}
 \end{Shaded}
 
-\subsection{Zotero integration}\label{zotero-integration}
-
-\index{Zotero}
-\index{Better BiBTeX}
-
-This template can work with \href{https://www.zotero.org/}{Zotero} and
-the \href{https://github.com/retorquere/zotero-better-bibtex}{Better
-BiBTeX} plugin. The advantage of using this integration is that you
-don't need to manually input your references into
-\texttt{references.bib}; they are automatically imported when you render
-the format.
-
-For this to work, you must activate the \texttt{zotero} option in your
-\texttt{yml} file and have Zotero, with Better BibTeX installed, open
-while rendering your thesis (activated by default). A pre-render script
-(see \texttt{R/quarto-pre-render.R}), created using the
-\href{https://github.com/paleolimbot/rbbt}{\texttt{rbbt}} R package,
-will scan all \texttt{.qmd} and \texttt{.tex} files searching for BibTeX
-citations (e.g., \texttt{@watson1953}). If they match with your Zotero
-database, the citations will then be written into the
-\texttt{references.bib} file.
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\FunctionTok{format}\KeywordTok{:}
-\AttributeTok{  }\FunctionTok{abnt{-}pdf}\KeywordTok{:}
-\AttributeTok{    }\FunctionTok{zotero}\KeywordTok{:}\AttributeTok{ }\CharTok{true}
-\end{Highlighting}
-\end{Shaded}
-
-\subsubsection{Title case change}\label{title-case-change}
-
-\index{BibLaTeX}
-
-By using \href{https://www.zotero.org/}{Zotero}, you may experience a
-title casing change when exporting your references. This is the default
-behavior of \href{https://retorque.re/zotero-better-bibtex/}{Better
-BibTex} while exporting to BibLaTeX.
-
-You can disable this by going to Zotero's configuration editor (go to
-Edit \textgreater{} Preferences \textgreater{} Advanced \textgreater{}
-Config Editor) and changing the variable\textbackslash{}
-\texttt{extensions.zotero.translators.better-bibtex.exportTitleCase} to
-\texttt{false}. Beware that this can produce some issues. You can find
-more information about this behavior
-\href{https://retorque.re/zotero-better-bibtex/support/faq/\#bbt-is-changing-the-capitalization-of-my-titles----why}{here}.
-
-\section{ABNT figures and tables}\label{abnt-figures-and-tables}
+\section{ABNT Figures and Tables}\label{abnt-figures-and-tables}
 
 Thanks for the incredible work of
 \href{https://github.com/cscheid}{Carlos Scheidegger} and other Quarto
@@ -2218,7 +2304,6 @@ like the example below.
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
 \NormalTok{::: \{\#fig{-}1\}}
-
 \NormalTok{::: \{.figure{-}content\}}
 \NormalTok{This is the figure content.}
 \NormalTok{:::}
@@ -2226,7 +2311,6 @@ like the example below.
 \CommentTok{[}\OtherTok{Source: My source.}\CommentTok{]}\NormalTok{\{.legend\}}
 
 \NormalTok{This is a caption.}
-
 \NormalTok{:::}
 \end{Highlighting}
 \end{Shaded}
@@ -2239,23 +2323,11 @@ Visit the showcase chapter ``Introduction''
 (\texttt{qmd/introduction.qmd}) of this Quarto format to see this
 feature in action. For more detailed information, please refer to
 Quarto's
-\href{https://quarto.org/docs/prerelease/1.4/crossref.html}{Crossreferenceable
+\href{https://quarto.org/docs/prerelease/1.4/crossref.html}{Cross-referenceable
 elements} article.
 
-\section{Redenring PDF after rendering HTML (and
-vice-versa)}\label{redenring-pdf-after-rendering-html-and-vice-versa}
-
-The index file title (\texttt{index.qmd}) and content must be altered
-for each format to render properly. This cause some issues that
-\texttt{abnt} can't resolve for now. If you've rendered the HTML format
-and them wish to render the PDF format, you must run
-\texttt{R/_pre-render-pdf.R} one time before starting the render.
-If is the inverse situation, you must run one time
-\texttt{R/_pre-render-html.R}.
-
-We're working to fix this.
-
-\section{Crossreferenceable elements}\label{crossreferenceable-elements}
+\section{Cross-Referenceable
+Elements}\label{cross-referenceable-elements}
 
 Quarto allow you to create and reference almost anything by using div
 enclosures.
@@ -2281,7 +2353,7 @@ Here are most of the the label prefixes.
 
 \begin{figure}
 
-\begin{minipage}[t]{0.33\linewidth}
+\begin{minipage}{0.33\linewidth}
 
 \begin{itemize}
 \tightlist
@@ -2299,7 +2371,7 @@ Here are most of the the label prefixes.
 
 \end{minipage}%
 %
-\begin{minipage}[t]{0.33\linewidth}
+\begin{minipage}{0.33\linewidth}
 
 \begin{itemize}
 \tightlist
@@ -2315,7 +2387,7 @@ Here are most of the the label prefixes.
 
 \end{minipage}%
 %
-\begin{minipage}[t]{0.33\linewidth}
+\begin{minipage}{0.33\linewidth}
 
 \begin{itemize}
 \tightlist
@@ -2333,12 +2405,12 @@ Here are most of the the label prefixes.
 
 \end{figure}%
 
-For more information about cross-reference elements, see Quarto's
-guide\href{https://quarto.org/docs/books/book-crossrefs.html}{Book
+For more information about cross-reference elements, see Quarto's guide
+\href{https://quarto.org/docs/books/book-crossrefs.html}{Book
 Crossrefs},
 \href{https://quarto.org/docs/authoring/cross-references.html}{Cross
 References} and
-\href{https://quarto.org/docs/prerelease/1.4/crossref.html}{Crossreferenceable
+\href{https://quarto.org/docs/prerelease/1.4/crossref.html}{Cross-referenceable
 elements} articles.
 
 \section{Freezing and cache}\label{freezing-and-cache}
@@ -2346,21 +2418,18 @@ elements} articles.
 See
 \href{https://quarto.org/docs/projects/code-execution.html\#freeze}{Freeze}.
 
-\section{How to customize this Quarto
+\section{How to Customize this Quarto
 format}\label{how-to-customize-this-quarto-format}
 
-\subsection{Quarto system}\label{quarto-system}
+\subsection{Quarto System}\label{quarto-system}
 
 See \href{https://quarto.org/docs/guide/}{Quarto's guide}.
 
-\subsection{Template and template
-partials}\label{template-and-template-partials}
+\subsection{Template Partials}\label{template-partials}
 
 See
-\href{https://quarto.org/docs/journals/templates.html\#template-partials}{Tempalte
+\href{https://quarto.org/docs/journals/templates.html\#template-partials}{Template
 partials}.
-
-\subsection{Spacing rules}\label{spacing-rules}
 
 \begin{itemize}
 \tightlist
@@ -2397,6 +2466,9 @@ LaTeX} and
 \href{https://www.overleaf.com/learn/latex/Articles/How_to_change_paragraph_spacing_in_LaTeX}{How
 to change paragraph spacing in LaTeX} to get a sense of the subject.
 
+The following are the equivalences for a Arial typeface with size
+12\texttt{pt}.
+
 \subsubsection{Unit equivalences}\label{unit-equivalences}
 
 \begin{itemize}
@@ -2410,11 +2482,9 @@ to change paragraph spacing in LaTeX} to get a sense of the subject.
 
 \paragraph{\texorpdfstring{\texttt{\textbackslash{}baselineskip}}{\textbackslash baselineskip}}\label{baselineskip}
 
-These are the equivalences for a Arial typeface with size 12\texttt{pt}:
-
 Use \texttt{\textbackslash{}the\textbackslash{}baselineskip} and
-\texttt{\textbackslash{}gevalue\{\}} to figure out the exact value. Note
-that \texttt{\textbackslash{}gevalue\{\}} will return the value in
+\texttt{\textbackslash{}getvalue\{\}} to figure out the exact value.
+Note that \texttt{\textbackslash{}getvalue\{\}} will return the value in
 \texttt{pt}.
 
 Example of using \texttt{\textbackslash{}getvalue\{\}}:
@@ -2437,8 +2507,8 @@ Example of using \texttt{\textbackslash{}getvalue\{\}}:
   \tightlist
   \item
     \texttt{1\textbackslash{}baselineskip} \(==\) 14.5\texttt{pt}.
-    That's about 1.2x (or (\$\approx\$1.208333x) the font size (standard
-    procedure).
+    That's about 1.2x (or (\(\approx\) 1.208333x) the font size
+    (standard procedure).
   \end{itemize}
 \item
   \texttt{\textbackslash{}linestretch=1.5}
@@ -2472,10 +2542,10 @@ Example of using \texttt{\textbackslash{}getvalue\{\}}:
   \end{itemize}
 \end{itemize}
 
-\subsection{How to add new citation
-styles}\label{how-to-add-new-citation-styles}
+\subsection{How to Add New Citation
+Styles}\label{how-to-add-new-citation-styles}
 
-\subsection{Must see references}\label{must-see-references}
+\subsection{Must See References}\label{must-see-references}
 
 To learn the basics about LaTeX, see \textcite{oetiker2023}. To delve
 deeper into the LaTeX system, see \textcite{lamport1994} and
@@ -2483,11 +2553,9 @@ deeper into the LaTeX system, see \textcite{lamport1994} and
 
 \subsubsection{Manuals}\label{manuals}
 
-\vspace{-1\baselineskip}
-
 \begin{figure}
 
-\begin{minipage}[t]{0.50\linewidth}
+\begin{minipage}{0.50\linewidth}
 
 \begin{itemize}
 \tightlist
@@ -2505,7 +2573,7 @@ deeper into the LaTeX system, see \textcite{lamport1994} and
 
 \end{minipage}%
 %
-\begin{minipage}[t]{0.50\linewidth}
+\begin{minipage}{0.50\linewidth}
 
 \begin{itemize}
 \tightlist
@@ -2523,68 +2591,15 @@ deeper into the LaTeX system, see \textcite{lamport1994} and
 
 \end{figure}%
 
-\vspace{-1\baselineskip}
-
 \subsubsection{R packages}\label{r-packages}
 
-\vspace{-1\baselineskip}
-
 \index{R packages}
-
-\begin{figure}
-
-\begin{minipage}[t]{0.50\linewidth}
 
 \begin{itemize}
 \tightlist
 \item
   \href{https://gt.rstudio.com}{\texttt{gt}}
 \end{itemize}
-
-\end{minipage}%
-%
-\begin{minipage}[t]{0.50\linewidth}
-
-\begin{itemize}
-\tightlist
-\item
-  \href{https://github.com/danielvartan/rutils/blob/main/R/quarto.R}{\texttt{rutils}}
-\end{itemize}
-
-\end{minipage}%
-
-\end{figure}%
-
-\end{apendicesenv}
-
-\begin{anexosenv}
-
-\chapter{{[}Showcase{]}}\label{sec-annex-a}
-
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, rightrule=.15mm, colframe=quarto-callout-note-color-frame, leftrule=.75mm, opacityback=0, breakable, bottomtitle=1mm, arc=.35mm, coltitle=black, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, opacitybacktitle=0.6, titlerule=0mm, bottomrule=.15mm, left=2mm, toprule=.15mm]
-
-The text below is for demonstrative purposes only.
-
-\vspace{0.25\baselineskip}
-
-See \url{https://quarto.org/docs/authoring/markdown-basics.html} to
-learn about the basics of Markdown's syntax.
-
-\end{tcolorbox}
-
-Cillum qui eu non ipsum pariatur ad exercitation pariatur dolore veniam
-amet cillum. Aliqua do nostrud aliquip in amet. Commodo sit tempor nulla
-ipsum officia voluptate laborum elit minim proident Lorem. Id pariatur
-reprehenderit non officia fugiat incididunt anim aliquip anim anim.
-Ipsum irure magna quis est aute. Nostrud nulla mollit non labore. In
-laboris mollit ea in. Excepteur eu do elit proident. Commodo tempor nisi
-enim ex velit voluptate dolor mollit eiusmod in ullamco aliqua nostrud
-id.
-
-\clearpage
-\includepdf{images/anx_1.pdf}
-
-\end{anexosenv}
 
 
 

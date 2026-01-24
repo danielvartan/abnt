@@ -1,12 +1,12 @@
-% Set page -----
+% Set Page -----
 
 \setlength{\headsep}{1cm}
 \setlength{\footskip}{1cm}
-\checkandfixthelayout
+\checkandfixthelayout[fixed]
 
-% Set text spacing -----
+% Set Text Spacing -----
 
-\renewcommand{\familydefault}{\sfdefault}
+\renewcommand{\familydefault}{\rmdefault}
 
 $if(linestretch)$
 \renewcommand{\baselinestretch}{$linestretch$}
@@ -20,7 +20,7 @@ $if(parskip)$
 \setlength{\parskip}{$parskip$}
 $endif$
 
-% Set text font -----
+% Set Text Font -----
 
 $if(fontfamily)$
 \usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}
@@ -101,8 +101,8 @@ $if(zero-width-non-joiner)$
 %% End of ZWNJ support
 $endif$
 
-% Set footnote -----
+% Set Footnote -----
 
 \setlength{\footnotemargin}{0.5em} % Equal to `\footmarkwidth`
 \let\svfootnoterule\footnoterule % Equal to `\footmarksep`
-\renewcommand\footnoterule{\svfootnoterule\vspace{1ex}}
+\renewcommand\footnoterule{\vspace{1ex}\svfootnoterule\vspace{1ex}}

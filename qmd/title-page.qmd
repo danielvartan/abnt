@@ -1,0 +1,21 @@
+# Title Page {.unnumbered}
+
+**Do not remove the tags**! (they look like this: `%:::% tag %:::%`)
+
+```latex
+%:::% title-page body begin %:::%
+{\imprimirtipotrabalho} presented to the {\imprimirescola} at the {\imprimiruniversidade}, as a requirement for the degree of {\imprimirtituloacademico} by the {\imprimirprograma}.
+
+\smallskip
+
+Area of concentration: {\imprimirareadeconcentracao}
+
+\smallskip
+
+Supervisor: Prof. Dr. {\imprimirorientador}
+
+\vspace{\tinyskipamount}
+
+Co-Supervisor: Prof. Dr. {\imprimircoorientador}
+%:::% title-page body end %:::%
+```

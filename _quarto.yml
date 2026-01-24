@@ -1,38 +1,78 @@
 editor: source
 
 execute:
-  cache: false
-  freeze: auto
+  cache: false # "Danger, Will Robinson!"
+  freeze: false # If you plan to use it, remember to disable it afterward!
+  echo: false
 
 project:
   type: book
+  output-dir: pdf
+  render: [index.qmd]
+  pre-render: "R/.pre-render.R"
+  post-render: "R/.post-render.R"
 
-profile:
-  group:
-    - [html, pdf]
-  default: pdf
+filters:
+  - latex-environment
+
+commands:
+  - legend
 
 book:
-  title: "{abnt}: Quarto format for ABNT theses and dissertations"
+  title: "abnt: Quarto Format for ABNT Theses and Dissertations"
   author: "Daniel Vartanian"
-  # abstract: >
-  #   Quarto format designed for theses and dissertations that adhere to the
-  #   standards of the Brazilian Association of Technical Standards (ABNT).
-  # description: >
-  #   Quarto format designed for theses and dissertations that adhere to the
-  #   standards of the Brazilian Association of Technical Standards (ABNT).
+  date: today
+  date-format: "YYYY"
+  submitted: 2026
   keyword: >-
-    ABNT. Quarto. Quarto format. Thesis template. Reproducibility.
-    Open science.
+    ABNT, abntex2, Academic Writing, Brazilian Association of Technical Standards,
+    Dissertations, LaTeX, Open Science, Quarto, Quarto Format,
+    Reproducible Research, Scientific Writing, Templates, Theses
   language: en
-  license: "Creative Commons Attribution 4.0 International (CC BY 4.0)"
+  license: "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International"
   publisher: "[University]"
   publisher-place: "[City of university]"
-  submitted: 2023
+  favicon: images/logo.png
   url: https://danielvartan.github.io/abnt/
   site-url: https://danielvartan.github.io/abnt/
   repo-url: https://github.com/danielvartan/abnt/
   issue-url: https://github.com/danielvartan/abnt/issues/
   repo-branch: main
+  chapters:
+    - index.qmd
+    - qmd/development.qmd
+    - qmd/conclusion.qmd
+    - qmd/glossary.qmd
+  appendices:
+    - qmd/appendix-1.qmd
+    - qmd/annex-1.qmd
+    - qmd/settings.qmd
 
+format:
+  abnt-pdf:
+    index-page: true
+    mainfont: Noto-Sans
+    sansfont: Noto-Sans
+    monofont: Noto-Sans-Mono
+    location: "[City]"
+    supervisor: "[Supervisor's full name]"
+    cosupervisor: "[Co-supervisor's full name]"
+    academic-title: "[Master/PhD]"
+    academic-degree: "[Master of Science/Doctor of Science]"
+    type-of-work: "[Dissertation/Thesis]"
+    area-of-concentration: "[Area of concentration]"
+    university: "[University]"
+    school: "[School/Department]"
+    program: "[Graduate program]"
+    version-note: "[Original/Revised version]"
+    include-in-header: "tex/include-in-header.tex"
+    include-before-body: "tex/include-before-body.tex"
+    include-after-body: "tex/include-after-body.tex"
+
+citation:
+  type: software
+  doi: "10.5281/zenodo.18357083"
+  url: https://danielvartan.github.io/abnt/
+
+google-scholar: true
 bibliography: references.bib

@@ -1,28 +1,13 @@
-<!-- %:::% .common h1 begin %:::% -->
 # Epigraph {.unnumbered}
-<!-- %:::% .common h1 end %:::% -->
 
-```{r}
-#| label: setup
-#| include: false
+**Do not remove the tags**! (they look like this: `%:::% tag %:::%`)
 
-source(here::here("R/_setup.R"))
-```
-
-::: {.content-visible when-format="html"}
-_Nullius in verba_[^1]
-
-[^1]: THE ROYAL SOCIETY. __History of the Royal Society__. Available from:
-\<https://royalsociety.org/about-us/history/\>. Visited on: 9 Sept. 2023.
-
-:::
-
-::: {.content-visible when-format="pdf"}
-<!-- %:::% epigraph body begin %:::% -->
+```latex
+%:::% epigraph body begin %:::%
 \textit{Nullius in verba}\footnotemark{}
 
 \footnotetext{
 	THE ROYAL SOCIETY. \textbf{History of the Royal Society}. Available from: <\href{https://royalsociety.org/about-us/history/}{https://royalsociety.org/about-us/history/}>. Visited on: 9 Sept. 2023.
 }
-<!-- %:::% epigraph body end %:::% -->
-:::
+%:::% epigraph body end %:::%
+```

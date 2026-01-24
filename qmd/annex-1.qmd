@@ -1,47 +1,17 @@
-<!-- %:::% .common h1 begin %:::% -->
 # [Showcase] {#sec-annex-a}
-<!-- %:::% .common h1 end %:::% -->
 
 ```{r}
-#| label: setup
+#| label: Setup
 #| include: false
 
-source(here::here("R/_setup.R"))
-```
+library(here)
 
-::: {.callout-note}
-The text below is for demonstrative purposes only.
-
-\microskip
-
-See <https://quarto.org/docs/authoring/markdown-basics.html> to learn about the basics of Markdown's syntax.
-:::
-
-```{r}
-#| echo: false
-#| output: asis
-
-# library(cli)
-
-cat(cli:::lorem_ipsum(1), sep = "\n\n")
-```
-
-```{css, echo = FALSE}
-iframe {
-  height: 800px;
-  width: 1132x;
-  resize: both;
-  overflow: auto;
-}
-```
-
-```{=html}
-<iframe width="780" height="500" src="images/anx_1.pdf" title="Annex example"></iframe>
+here("R", ".setup.R") |> source()
 ```
 
 ```{=latex}
 \clearpage
-\includepdf{images/anx_1.pdf}
+\includepdf{images/annex.pdf}
 ```
 
 ```{=latex}

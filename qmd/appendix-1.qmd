@@ -1,38 +1,52 @@
-<!-- %:::% .common h1 begin %:::% -->
 # [Showcase] {#sec-appendix-a}
-<!-- %:::% .common h1 end %:::% -->
 
 ```{r}
-#| label: setup
+#| label: Setup
 #| include: false
 
-source(here::here("R/_setup.R"))
+library(here)
+
+here("R", ".setup.R") |> source()
 ```
-
-::: {.callout-tip}
-The text below is for demonstrative purposes only.
-
-\microskip
-
-See <https://quarto.org/docs/authoring/markdown-basics.html> to learn about the basics of Markdown's syntax.
-:::
 
 ```{r}
 #| echo: false
 #| output: asis
 
-# library(cli)
+library(cli)
+library(withr)
 
-cat(cli:::lorem_ipsum(2), sep = "\n\n")
+with_seed(
+  seed = 8,
+  code = {
+    cli:::lorem_ipsum(2) |> cat(sep = "\n\n")
+  }
+)
 ```
 
-## Secondary section
+## Secondary Section
 
 ```{r}
 #| echo: false
 #| output: asis
 
-# library(cli)
+library(cli)
+library(withr)
 
-cat(cli:::lorem_ipsum(1), sep = "\n\n")
+with_seed(
+  seed = 9,
+  code = {
+    cli:::lorem_ipsum(1) |> cat(sep = "\n\n")
+  }
+)
+```
+
+```{=latex}
+\end{apendicesenv}
+```
+
+<!-- appendices end -->
+
+```{=latex}
+\begin{anexosenv}
 ```

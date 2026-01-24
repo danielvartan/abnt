@@ -1,0 +1,26 @@
+% Set sections skips (`\cftchapterpresnum`)
+
+% Credits: https://tex.stackexchange.com/a/28361/234832
+% \begin{luacode}
+% local PENALTY=node.id("penalty")
+% last_line_twice_parindent = function (head)
+%   while head do
+%     local _w,_h,_d = node.dimensions(head)
+%     if head.id == PENALTY and head.subtype ~= 15 and (_w < 2 * tex.parindent) then
+%
+%         -- we are at a glue and have less than 2*\parindent to go
+%         local p = node.new("penalty")
+%         p.penalty = 10000
+%         p.next = head
+%         head.prev.next = p
+%         p.prev = head.prev
+%         head.prev = p
+%     end
+%
+%     head = head.next
+%   end
+%   return true
+% end
+%
+% luatexbase.add_to_callback("pre_linebreak_filter",last_line_twice_parindent,"Raphink")
+% \end{luacode}

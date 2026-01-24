@@ -1,38 +1,42 @@
-<!-- %:::% .common h1 begin %:::% -->
 # [Showcase] Development {#sec-development}
-<!-- %:::% .common h1 end %:::% -->
 
 ```{r}
-#| label: setup
+#| label: Setup
 #| include: false
 
-source(here::here("R/_setup.R"))
+library(here)
+
+here("R", ".setup.R") |> source()
 ```
-
-::: {.callout-warning}
-The text below is for demonstrative purposes only.
-
-\microskip
-
-See <https://github.com/danielvartan/abnt> to learn more about this template.
-:::
 
 ```{r}
 #| echo: false
 #| output: asis
 
-# library(cli)
+library(cli)
+library(withr)
 
-cat(cli:::lorem_ipsum(2), sep = "\n\n")
+with_seed(
+  seed = 4,
+  code = {
+    cli:::lorem_ipsum(2) |> cat(sep = "\n\n")
+  }
+)
 ```
 
-## Secondary section
+## Secondary Section
 
 ```{r}
 #| echo: false
 #| output: asis
 
-# library(cli)
+library(cli)
+library(withr)
 
-cat(cli:::lorem_ipsum(1), sep = "\n\n")
+with_seed(
+  seed = 5,
+  code = {
+    cli:::lorem_ipsum(2) |> cat(sep = "\n\n")
+  }
+)
 ```

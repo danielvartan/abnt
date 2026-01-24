@@ -1,6 +1,10 @@
+% -----
+% New Colors
+% -----
+
 \definecolor{blue}{HTML}{2905C3}
 
-% See <https://getbootstrap.com/docs/4.0/utilities/colors/>.
+% See <https://getbootstrap.com/docs/5.0/utilities/colors/>.
 \definecolor{quarto-blue}{HTML}{2780E3}
 \definecolor{quarto-lighter-blue}{HTML}{ECF4FC}
 \definecolor{quarto-orange}{HTML}{FF7518}
@@ -15,3 +19,12 @@
 \definecolor{quarto-ligther-gray}{HTML}{F1F3F5}
 
 \definecolor{bs-link-color}{HTML}{39729E}
+
+% -----
+% Body Color
+% -----
+
+$if(body-color)$
+\definecolor{body-color}{HTML}{$body-color/uppercase$}
+\color{body-color}
+$endif$

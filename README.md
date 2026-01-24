@@ -1,199 +1,153 @@
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
-# abnt
+# abnt <a href = "https://github.com/danielvartan/abnt"><img src = "images/logo.svg" align="right" width="120" /></a>
 
 <!-- badges: start -->
-
-[![Project Status: Active – The project has reached a stable, usable
-state and is being actively
-developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
-[![License:
-MIT](https://img.shields.io/badge/license-MIT-green)](https://choosealicense.com/licenses/mit/)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![DOI Badge](https://img.shields.io/badge/doi-10.5281/zenodo.18357083-1284C5.svg)](https://doi.org/10.5281/zenodo.18357083)
+[![quarto-render.yaml badge](https://github.com/danielvartan/abnt/workflows/quarto-render.yaml/badge.svg)](https://github.com/danielvartan/abnt/actions)
+[![FAIR checklist badge](https://img.shields.io/badge/fairsoftwarechecklist.net--00a7d9.png)](https://fairsoftwarechecklist.net/v0.2?f=21&a=32113&i=02300&r=123)
+[![fair-software.eu](https://img.shields.io/badge/fair--software.eu-%E2%97%8F%20%E2%97%8F%20%E2%97%8F%20%E2%97%8F%20%E2%97%8B-yellow)](https://fair-software.eu)
+[![GPLv3 License Badge](https://img.shields.io/badge/license-GPLv3-bd0000.png)](https://www.gnu.org/licenses/gpl-3.0)
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/license-CC_BY--NC--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+[![Contributor Covenant 3.0 Code of Conduct](https://img.shields.io/badge/Contributor%20Covenant-3.0-4baaaa.svg)](https://www.contributor-covenant.org/version/3/0/code_of_conduct/)
 <!-- badges: end -->
 
 ## Overview
 
-`abnt` is a format in the [Quarto](https://quarto.org) system
-specifically tailored for the creation of theses and dissertations that
-align with the guidelines established by the Brazilian Association of
-Technical Standards ([ABNT](https://www.abnt.org.br/)). It’s based on
-the [`abntex2`](https://www.abntex.net.br/) class in the
-[LaTeX](https://www.latex-project.org/) framework, which belongs to the
-[`memoir`](https://www.ctan.org/pkg/memoir) class type.
+`abnt` is a [Quarto](https://quarto.org) format designed for creating theses and dissertations that comply with guidelines established by the Brazilian Association of Technical Standards ([ABNT](https://www.abnt.org.br/)). It's based on the [`abntex2`](https://www.abntex.net.br/) LaTeX class, which belongs to the [`memoir`](https://www.ctan.org/pkg/memoir) class family.
 
-This format also includes a dedicated [Quarto
-book](https://quarto.org/docs/books/) template designed for use with the
-[R programming language](https://www.r-project.org/). Although it is
-possible to employ [other programming languages supported by
-Quarto](https://quarto.org/docs/computations/python.html) with this
-format, some adjustments may be required.
+Click [here](https://danielvartan.github.io/abnt/) to view a sample of the format output.
 
-It’s worth noting that ABNT standards are not publicly accessible. They
-can be acquired [here](https://www.abntcatalogo.com.br). If you are
-affiliated with a federal or state university in Brazil, you may have
-access to [Target GEDWeb](https://www.gedweb.com.br), a service for
-managing standards and other regulatory documents. Members of the
-University of São Paulo ([USP](https://www5.usp.br/)) can access ABNT
-standards on GEDWeb
-[here](https://uspdigital.usp.br/wsusuario/gedweb.jsp).
+For a real-world application of this template, see [this example](https://github.com/danielvartan/mastersthesis).
 
-You can view a sample of the [printed
-output](https://danielvartan.github.io/abnt/index.pdf) in the `pdf`
-folder or by visiting the [repository
-website](https://danielvartan.github.io/abnt).
+> If you find this project useful, please consider giving it a star! &nbsp; [![GitHub Repository Stars](https://img.shields.io/github/stars/danielvartan/abnt)](https://github.com/danielvartan/abnt)
 
-For a practical demonstration of this Quarto format in use, you can
-refer to the [example
-repository](https://github.com/danielvartan/mastersthesis).
+> The continuous development of `abnt` depends on community support. If you can afford to do so, please consider becoming a sponsor. &nbsp; [![](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/danielvartan)
 
 ## Prerequisites
 
-To effectively use \`abnt, it’s important to have some familiarity with
-the tools and languages involved. This includes the [R programming
-language](https://www.r-project.org) and the
-[LaTeX](https://www.latex-project.org) framework, as well as being
-acquainted with the [Quarto](https://quarto.org) system and
-[abntex2](https://www.abntex.net.br),
-[memoir](https://www.ctan.org/pkg/memoir), and
-[biblatex](https://www.ctan.org/pkg/biblatex) LaTeX packages.
+To effectively use `abnt`, you must have some familiarity with the tools and languages involved. This includes the [R programming language](https://www.r-project.org), the [LaTeX](https://www.latex-project.org) framework, the [Quarto](https://quarto.org) system, and the [abntex2](https://www.abntex.net.br), [memoir](https://www.ctan.org/pkg/memoir), and [biblatex](https://www.ctan.org/pkg/biblatex) LaTeX packages.
 
-It’s crucial to understand that, while this Quarto format allows for the
-integration of other programming languages, its core structure is based
-on [R](https://www.r-project.org) and
-[LaTeX](https://www.latex-project.org). Therefore, if you wish to make
-any customizations, you’ll need to work within these languages.
-Additionally, although not mandatory, we recommend using the free and
-open-source reference manager [Zotero](https://www.zotero.org).
+While this format allows integration of other programming languages, its core structure is based on [R](https://www.r-project.org) and [LaTeX](https://www.latex-project.org). Any customizations will require working within these languages. I also recommend using the free and open-source reference manager [Zotero](https://www.zotero.org).
 
-For those less familiar with R, we strongly encourage you to explore
-resources such as Hadley Wickham and Garrett Grolemund’s free and online
-book, [R for Data Science](https://r4ds.had.co.nz), and consider the
-Coursera course from John Hopkins University, [Data Science: Foundations
-using
-R](https://www.coursera.org/specializations/data-science-foundations-r)
-(free for audit students).
+If you're less familiar with R, I suggest exploring resources such as Hadley Wickham and Garrett Grolemund's online book [R for Data Science](https://r4ds.had.co.nz) or the Coursera course from Johns Hopkins University, [Data Science: Foundations using R](https://www.coursera.org/specializations/data-science-foundations-r) (free for audit students).
 
-To become well-versed in LaTeX, we suggest reading Tobias Oetiker’s et
-al. free and online book, [The Not So Short Introduction to
-LaTeX](https://tobi.oetiker.ch/lshort/lshort.pdf). You can also explore
-other excellent and free resources for learning LaTeX, such as [Learn
-LaTeX.org](https://www.learnlatex.org/en) and Winston Chang’s [LaTeX
-Cheat Sheet](http://wch.github.io/latexsheet/).
+To learn [LaTeX](https://www.latex-project.org), I suggest Tobias Oetiker et al.'s online book [The Not So Short Introduction to LaTeX](https://tobi.oetiker.ch/lshort/lshort.pdf). Other excellent free resources include [Learn LaTeX.org](https://www.learnlatex.org/en) and Winston Chang's [LaTeX Cheat Sheet](http://wch.github.io/latexsheet/).
 
-Lastly, if you’ve opted for a Quarto format, you likely values open
-science and reproducibility. In this case, we recommend implementing
-this format in a research compendium online repository. For guidance on
-this, please refer to the article by Ben Marwick, Carl Boettiger &
-Lincoln Mullen, [Packaging Data Analytical Work Reproducibly Using R
-(and Friends)](https://doi.org/10.1080/00031305.2017.1375986).
+Access to the ABNT standards could also help. It's important to note that the standards are not publicly accessible. If you are affiliated with a federal or state university in Brazil, you may have access to [Target GEDWeb](https://www.gedweb.com.br), a service for managing standards and other regulatory documents. Members of the University of São Paulo ([USP](https://www5.usp.br/)) can access ABNT standards on GEDWeb [here](https://uspdigital.usp.br/wsusuario/gedweb.jsp).
 
 ## Installation
 
-While Quarto provides various features for customization, they still do
-not suffice to seamlessly adapt to ABNT standards. Some formatting
-adjustments required the use of unconventional methods and multiple
-layers of processing.
+While [Quarto](https://quarto.org) provides various customization features, they don't fully address ABNT standards. Some formatting adjustments required unconventional methods and multiple processing layers.
 
-A convenient way to begin using `abnt` is by cloning this repository and
-building upon its [Quarto book](https://quarto.org/docs/books/). By
-doing so, make sure to install the
-[`renv`](https://rstudio.github.io/renv/index.html) R package and run
-`renv::restore()` afterward. This will ensure that you have all the
-necessary package dependencies ready for use.
+The easiest way to start using `abnt` is to clone this repository and build upon its [Quarto book](https://quarto.org/docs/books/). After cloning, install the [`renv`](https://rstudio.github.io/renv/index.html) R package and run [`renv::restore()`](https://rstudio.github.io/renv/reference/restore.html) to ensure all necessary package dependencies are installed.
+
+I plan to implement this template more straightforwardly using [Lua filters](https://quarto.org/docs/extensions/filters.html) to directly manipulate the LaTeX code generated by [Pandoc](https://pandoc.org/lua-filters.html). This approach should simplify the structure and reduce the number of processing layers required, but there is currently no fixed timeline for this implementation.
+
+If you are interested in contributing to this effort, please refer to the [*Contributing*](#contributing) section.
 
 ## Usage
 
-To render your thesis, you can use the format name followed by a dash
-and the desired output type:
+To render your thesis, simply run the following command in your terminal within the project directory:
 
-``` bash
-quarto render --to abnt-pdf
+```bash
+quarto render
 ```
 
-Alternatively, you can utilize the
-[`quarto`](https://quarto-dev.github.io/quarto-r/) R package’s
-[`quarto_render()`](https://quarto-dev.github.io/quarto-r/reference/quarto_render.html)
-function as an interface.
+Alternatively, you can utilize the [`quarto`](https://quarto-dev.github.io/quarto-r/) R package's [`quarto_render()`](https://quarto-dev.github.io/quarto-r/reference/quarto_render.html) function as an interface.
 
-Currently, `abnt` offers two output formats: `pdf` (the default format)
-and an `html` template for publishing a web-based thesis book in
-addition to the print version.
+## Formatting
 
-You can also specify the format in your document’s `yml` configuration
-as follows:
+Most customization options available in the Quarto system are compatible with this format. For more details, refer to the [extension YAML file](_extensions/abnt/_extension.yml) and the [PDF Options](https://quarto.org/docs/reference/formats/pdf.html) section in the Quarto guide.
 
-``` yaml
-format:
-  abnt-pdf
-```
+This format uses [Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans) as the default main font and [Noto Sans Mono](https://fonts.google.com/noto/specimen/Noto+Sans+Mono) as the monospace font. Both fonts are developed by Google and are freely available under the [SIL Open Font License](https://openfontlicense.org/).
 
-## Formating options
-
-Most customization options available in the Quarto system are compatible
-with this format. For more details, refer to the [extension YAML
-file](https://github.com/danielvartan/abnt/blob/main/_extensions/abnt/_extension.yml)
-and the [PDF
-Options](https://quarto.org/docs/reference/formats/pdf.html) section in
-the [Quarto guide](https://quarto.org/docs/reference/formats/pdf.html).
-
-For additional formatting information, see Appendix \_Settings\_\_ of
-`abnt` [print output](https://danielvartan.github.io/abnt/index.pdf) and
-the [web output](https://danielvartan.github.io/abnt/).
-
-Please note that some documentation may still be missing. We are
-actively working to provide complete documentation. If you have
-questions, ideas to share, or need assistance, feel free to use the
-[GitHub discussion
-tab](https://github.com/danielvartan/abnt/discussions). We and the
-community will do our best to assist you.
+For additional formatting information, see `abnt` [pdf output](https://danielvartan.github.io/abnt/) *Settings* annex. Note that some documentation may still be missing. If you have questions, ideas, or need assistance, use the [GitHub discussion tab](https://github.com/danielvartan/abnt/discussions).
 
 ## Citation
 
-If you choose to utilize the `abnt` format in your research, we kindly
-request that you consider citing it. Building and maintaining this free
-and open-source Quarto format has required substantial effort, and your
-citation is appreciated. The citation details are provided below.
+[![DOI Badge](https://img.shields.io/badge/doi-10.5281/zenodo.18357083-1284C5.svg)](https://doi.org/10.5281/zenodo.18357083)
 
-[APA](https://apastyle.apa.org/) style:
+If you use `abnt` in your work, please cite it to acknowledge the effort invested in its development and maintenance. Your citation helps support the ongoing improvement of the project.
 
-    Vartanian, D. (2023). {abnt}: Quarto format for ABNT theses and dissertations.
-    https://github.com/danielvartan/abnt/
+To cite `abnt` in publications please use the following format:
 
-[BibTeX](https://www.bibtex.org/) entry:
+Vartanian, D. (n.d.). *abnt: Quarto format for ABNT theses and dissertations* [Computer software]. <https://doi.org/10.5281/zenodo.18357083>
 
-    @unpublished{vartanian2023,
-      author = {Daniel Vartanian},
-      title = {{abnt}: Quarto format for ABNT theses and dissertations},
-      url = {https://github.com/danielvartan/abnt/},
-      year = {2023}
-    }
+A BibLaTeX entry for LaTeX users is:
+
+```latex
+@software{vartanian,
+  title = {abnt: Quarto format for ABNT theses and dissertations},
+  author = {Daniel Vartanian},
+  url = {https://github.com/danielvartan/abnt},
+  doi = {10.5281/zenodo.18357083}
+}
+```
 
 ## Contributing
 
-We warmly welcome contributions from the community, which includes bug
-reports and other enhancements to improve the `abnt` format.
+[![Contributor Covenant 3.0 Code of Conduct](https://img.shields.io/badge/Contributor%20Covenant-3.0-4baaaa.svg)](https://www.contributor-covenant.org/version/3/0/code_of_conduct/)
 
-Please take a moment to familiarize yourself with our [Guidelines for
-Contributing](https://github.com/danielvartan/abnt/blob/main/.github/CONTRIBUTING.md).
+Contributions are always welcome! Whether you want to report bugs, suggest new features, or help improve the code or documentation, your input makes a difference.
+
+Before opening a new issue, please check the [issues tab](https://github.com/danielvartan/abnt/issues) to see if your topic has already been reported.
+
+[![GitHub Sponsor](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/danielvartan)
+
+You can also support the development of `abnt` by becoming a
+sponsor.
+
+Click [here](https://github.com/sponsors/danielvartan) to make a
+donation. Please mention `abnt` in your donation message.
+
+## License
+
+[![License: GPLv3](https://img.shields.io/badge/license-GPLv3-bd0000.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/license-CC_BY--NC--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+The code in this repository is licensed under the [GNU General Public License Version 3](https://www.gnu.org/licenses/gpl-3.0), while the documents are available under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+```text
+Copyright (C) 2026 Daniel Vartanian
+
+abnt is free software: you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+this program. If not, see <https://www.gnu.org/licenses/>.
+```
 
 ## Acknowledgments
 
-This Quarto project owes its existence to the contributions of dedicated
-developers from the [`abntTeX`](https://www.abntex.net.br/) community.
+This Quarto project owes its existence to the contributions of dedicated developers from the [`abntTeX`](https://www.abntex.net.br/) community.
 
-The initial development of `abnt` was made possible through a
-scholarship generously provided by the [Coordination for the Improvement
-of Higher Education Personnel (CAPES)](https://www.gov.br/capes/) and
-the [University of São Paulo (USP)](http://usp.br/) (Grant number:
-88887.703720/2022-00) (❤️).
+`abnt` brand identity is based on the [ABNT](https://www.abnt.org.br/) brand identity.
 
-<br>
+<table>
+  <tr>
+    <td width="30%" align="center" valign="center">
+      <a href="https://www.fsp.usp.br/sustentarea/"><img src="images/usp-logo.svg" width="125em" alt="USP Logo"/></a>
+    </td>
+    <td width="70%" valign="center">
+      This work was developed with support from the Graduate Program in Modeling
+      Complex Systems (<a href="https://www.prpg.usp.br/pt-br/faca-pos-na-usp/programas-de-pos-graduacao/621-modelagem-de-sistemas-complexos">PPGSCX</a>) at the University of São Paulo (<a href="https://usp.br/">USP</a>).
+    </td>
+  </tr>
+</table>
 
-You can become a supporter of `abnt` too!
-
-Click [here](https://github.com/sponsors/danielvartan) to make a
-donation. When making your donation, please specify your support for the
-`abnt` format in the donation message.
+<table>
+  <tr>
+    <td width="30%" align="center" valign="center">
+      <a href="https://fapesp.br/"><img src="images/capes-logo.svg" width="100em" alt="CAPES Logo"/></a>
+    </td>
+    <td width="70%" valign="center">
+      This work was financed, in part, by the Coordination for the Improvement of Higher Education Personnel (<a href="https://www.gov.br/capes/">CAPES</a>), Brazil. Process Number 88887.703720/2022-00.
+    </td>
+  </tr>
+</table>

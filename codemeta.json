@@ -1,0 +1,75 @@
+{
+  "@context": "https://w3id.org/codemeta/3.0",
+  "@type": "SoftwareSourceCode",
+  "identifier": "abnt",
+  "dateCreated": "2023-09-24",
+  "applicationCategory": "Template",
+  "applicationSubCategory": "Quarto Format",
+  "name": "abnt: Quarto format for ABNT theses and dissertations",
+  "author": [
+    {
+      "@type": "Person",
+      "familyName": "Vartanian",
+      "givenName": "Daniel",
+      "email": "danielvartan@proton.me",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "University of São Paulo",
+        "url": "https://www.usp.br"
+      },
+      "@id": "https://orcid.org/0000-0001-7782-759X"
+    }
+  ],
+  "copyrightHolder": {
+    "@type": "Person",
+    "familyName": "Vartanian",
+    "givenName": "Daniel",
+    "email": "danielvartan@proton.me",
+    "@id": "https://orcid.org/0000-0001-7782-759X"
+  },
+  "maintainer": {
+    "@type": "Person",
+    "familyName": "Vartanian",
+    "givenName": "Daniel",
+    "email": "danielvartan@proton.me",
+    "@id": "https://orcid.org/0000-0001-7782-759X"
+  },
+  "description": "Quarto format designed for creating theses and dissertations that comply with guidelines established by the Brazilian Association of Technical Standards (ABNT).",
+  "keywords": [
+    "ABNT",
+    "abntex2",
+    "Academic Writing",
+    "Brazilian Association of Technical Standards",
+    "Dissertations",
+    "LaTeX",
+    "Open Science",
+    "Quarto",
+    "Quarto Format",
+    "Reproducible Research",
+    "Scientific Writing",
+    "Templates",
+    "Theses"
+  ],
+  "license": "https://www.gnu.org/licenses/gpl-3.0",
+  "codeRepository": "https://github.com/danielvartan/abnt",
+  "issueTracker": "https://github.com/danielvartan/abnt/issues",
+  "relatedLink": [
+    "https://doi.org/10.5281/zenodo.18357083",
+    "https://github.com/sponsors/danielvartan"
+  ],
+  "programmingLanguage": {
+    "@type": "ComputerLanguage",
+    "name": "R",
+    "version": "4.5.2",
+    "url": "https://www.r-project.org/"
+  },
+  "operatingSystem": [
+    "Linux",
+    "macOS",
+    "Windows"
+  ],
+  "developmentStatus": "active",
+  "readme": "https://github.com/danielvartan/abnt/blob/main/README.md",
+  "releaseNotes": "https://github.com/danielvartan/abnt/blob/main/NEWS.md",
+  "version": "1.0.0.9000"
+}

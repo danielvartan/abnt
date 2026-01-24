@@ -1,40 +1,48 @@
-# See https://citation-file-format.github.io/ to learn more.
-
-cff-version: 0.3.0
-message: "To cite this Quarto format in publications use:"
-title: "{abnt}: Quarto format for ABNT theses and dissertations"
+cff-version: 1.2.0
+title: "abnt: Quarto format for ABNT theses and dissertations"
+message: >-
+  If you use this software, please cite it using the metadata from this file.
+type: software
+authors:
+  - given-names: Daniel
+    family-names: Vartanian
+    email: danielvartan@proton.me
+    affiliation: University of São Paulo
+    orcid: "https://orcid.org/0000-0001-7782-759X"
+abstract: >-
+  Quarto format designed for creating theses and dissertations that comply with
+  guidelines established by the Brazilian Association of Technical Standards
+  (ABNT).
 keywords:
   - ABNT
+  - abntex2
+  - Academic Writing
+  - Brazilian Association of Technical Standards
+  - Dissertations
+  - LaTeX
+  - Open Science
   - Quarto
-  - Quarto format
-  - Thesis template
-  - Reproducibility.
-    Open science
-authors:
-- family-names: Vartanian
-  given-names: Daniel
-  email: danvartan@gmail.com
-  orcid: https://orcid.org/0000-0001-7782-759X
-repository-code: https://github.com/danielvartan/abnt/
-url: https://github.com/danielvartan/abnt/
-contact:
-- family-names: Vartanian
-  given-names: Daniel
-  email: danvartan@gmail.com
-  orcid: https://orcid.org/0000-0001-7782-759X
-type: software
-version: 0.3.0
-license: MIT
-identifiers:
-- type: url
-  value: https://github.com/danielvartan/abnt/
+  - Quarto Format
+  - Reproducible Research
+  - Scientific Writing
+  - Templates
+  - Theses
 preferred-citation:
-  type: unpublished
-  title: "{abnt}: Quarto format for ABNT theses and dissertations"
+  type: software
+  title: "abnt: Quarto format for ABNT theses and dissertations"
   authors:
-  - family-names: Vartanian
-    given-names: Daniel
-    email: danvartan@gmail.com
-    orcid: https://orcid.org/0000-0001-7782-759X
-  year: "2023"
-  url: https://github.com/danielvartan/abnt/
+    - family-names: Vartanian
+      given-names: Daniel
+      email: danielvartan@proton.me
+      orcid: https://orcid.org/0000-0001-7782-759X
+  doi: 10.5281/zenodo.18357083
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.18357083
+    description: Zenodo Record
+  - type: url
+    value: https://github.com/danielvartan/abnt
+    description: GitHub Code Repository
+repository-code: https://github.com/danielvartan/abnt
+license: GPL-3.0-or-later
+version: 1.0.0.9000

@@ -1,0 +1,60 @@
+# Approval Sheet {.unnumbered}
+
+**Do not remove the tags**! (they look like this: `%:::% tag %:::%`)
+
+```latex
+%:::% approval-sheet body begin %:::%
+{\imprimirtipotrabalho} by {\imprimirautor}, under the title \textbf{\imprimirtitulo}, presented to the {\imprimirescola} at the {\imprimiruniversidade}, as a requirement for the degree of {\imprimirtituloacademico} by the {\imprimirprograma}, in the concentration area of {\imprimirareadeconcentracao}.
+
+\vspace{\hugeskipamount}
+Approved on [Month] [Day], [Year].
+
+\vspace{\hugeskipamount}
+\begin{center}
+  Examination Committee
+\end{center}
+
+\vspace{\smallskipamount}
+Committee Chair:
+
+\vspace{\tinyskipamount}
+\begingroup
+
+\AtBeginEnvironment{tabular}{
+  \normalsize\raggedright
+  \renewcommand{\arraystretch}{2}
+}
+
+\setlength{\arrayrulewidth}{0pt}
+\setlength{\tabcolsep}{0cm}
+\begin{tabular}{m{2.5cm} m{13.5cm}}
+  Prof. Dr. & [Full name] \\
+  Institution & [School], [University] \\
+\end{tabular}
+
+\vspace{\bigskipamount}
+Examiners:
+
+\vspace{\tinyskipamount}
+\begin{tabular}{m{2.5cm} m{13.5cm}}
+  Prof. Dr. & [Full name] \\
+  Institution & [School], [University] \\
+  Evaluation & [Approved/Rejected] \\
+\end{tabular}
+
+\vspace{\smallskipamount}
+\begin{tabular}{m{2.5cm} m{13.5cm}}
+  Prof. Dr. & [Full name] \\
+  Institution & [School], [University] \\
+  Evaluation & [Approved/Rejected] \\
+\end{tabular}
+
+\vspace{\smallskipamount}
+\begin{tabular}{m{2.5cm} m{13.5cm}}
+  Prof. Dr. & [Full name] \\
+  Institution & [School], [University] \\
+  Evaluation & [Approved/Rejected] \\
+\end{tabular}
+\endgroup
+%:::% approval-sheet body end %:::%
+```

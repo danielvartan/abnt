@@ -1,5 +1,6 @@
+% The order in which the packages are loaded is important!
+
 \usepackage{array}
-\usepackage{booktabs}
 \usepackage{calc}
 \usepackage{caption}
 \usepackage{color}
@@ -9,34 +10,41 @@
 \usepackage{booktabs}
 \usepackage{enumitem}
 \usepackage{etoolbox}
+\usepackage{epigraph}
 \usepackage{float}
 \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
-\usepackage[hang]{footmisc}
+\usepackage[hang,multiple]{footmisc}
 \usepackage{graphicx}
 \usepackage{iftex}
 \usepackage{indentfirst}
+\usepackage[hyphenation,lastparline,nosingleletter]{impnattypo}
 \usepackage[utf8]{inputenc}
 \usepackage{lastpage}
 \usepackage{lipsum}
 \usepackage{longtable}
+\usepackage{luacode}
+\usepackage{luatexbase}
 \usepackage{microtype}
 \usepackage{multirow}
 \usepackage{parskip}
 \usepackage{pdfpages}
+\usepackage{titlesec}
 \usepackage[table]{xcolor}
-
+\usepackage{xparse}
+\usepackage{xstring}
 \usepackage{hyperref}
+\usepackage{url}
 
 \ifPDFTeX
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
 $if(mathspec)$
-  \ifXeTeX
-    \usepackage{mathspec} % this also loads fontspec
-  \else
-    \usepackage{unicode-math} % this also loads fontspec
-  \fi
+\ifXeTeX
+  \usepackage{mathspec} % this also loads fontspec
+\else
+  \usepackage{unicode-math} % this also loads fontspec
+\fi
 $else$
-  \usepackage{unicode-math}
+\usepackage{unicode-math}
 $endif$
 \fi

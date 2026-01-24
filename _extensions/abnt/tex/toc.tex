@@ -1,4 +1,4 @@
-% Set sections skips (`\cftchapterpresnum`)
+% Set Sections Skips (`\cftchapterpresnum`)
 
 \setlength{\cftbeforebookskip}{0\baselineskip}
 \setlength{\cftbeforepartskip}{\bigskipamount}
@@ -8,7 +8,7 @@
 \setlength{\cftbeforesubsubsectionskip}{0\baselineskip}
 \setlength{\cftbeforeparagraphskip}{0\baselineskip}
 
-% Set section numbers fonts (`\cftchapterpresnum`)
+% Set Section Numbers Fonts (`\cftchapterpresnum`)
 
 \renewcommand{\cftchapterpresnum}{\normalfont}
 \renewcommand{\cftsectionpresnum}{\normalfont}
@@ -16,7 +16,7 @@
 \renewcommand{\cftsubsubsectionpresnum}{\normalfont}
 \renewcommand{\cftparagraphpresnum}{\normalfont}
 
-% Set section names fonts (`\cftpartfont`)
+% Set Section Names Fonts (`\cftpartfont`)
 
 \renewcommand{\cftpartfont}[1]{
   \ABNTEXchapterupperifneeded{\normalfont\bfseries #1}
@@ -42,7 +42,7 @@
   \ABNTEXsubsubsubsectionupperifneeded{\normalfont\itshape #1}
 }
 
-% Set section page numbers fonts (`\cftpartpagefont`)
+% Set Section Page Numbers Fonts (`\cftpartpagefont`)
 
 \renewcommand{\cftpartpagefont}{\normalfont}
 \renewcommand{\cftchapterpagefont}{\normalfont}
@@ -53,7 +53,7 @@
 \renewcommand{\cftfigurepagefont}{\normalfont}
 \renewcommand{\cfttablepagefont}{\normalfont}
 
-% Renew abntex2 ToC commands -----
+% Renew `abntex2` ToC Commands -----
 
 \cftinsertcode{A}{} % [Changed]
 
@@ -68,7 +68,7 @@
   \addtocontents{toc}{\setlength{\cftpartnumwidth}{0em}}
 }
 
-% Set ToC skip
+% Set ToC Skip
 
 \newcommand{\tocskipone}{
   \addtocontents{toc}{\protect\vspace{\smallskipamount}}

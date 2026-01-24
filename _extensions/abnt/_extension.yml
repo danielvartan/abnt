@@ -1,77 +1,57 @@
-title: "{abnt}: Quarto format for ABNT theses and dissertations"
+title: "abnt: Quarto format for ABNT theses and dissertations"
 author: "Daniel Vartanian"
-  # name: "Daniel Vartanian"
-  # orcid: 0000-0001-7782-759X
-  # url: https://linktr.ee/danielvartan
-  # email: danvartan@gmail.com
-  # corresponding: true
-  # affiliation:
-  #   - name: University of São Paulo
-  #   - Country: Brazil
-  #   - url: https://www.usp.br
 abstract: >
-  Quarto format designed for theses and dissertations that adhere to the
-  standards of the Brazilian Association of Technical Standards (ABNT).
+  Quarto format designed for creating theses and dissertations that comply with
+  guidelines established by the Brazilian Association of Technical Standards
+  (ABNT).
 description: >
-  Quarto format designed for theses and dissertations that adhere to the
-  standards of the Brazilian Association of Technical Standards (ABNT).
+  Quarto format designed for creating theses and dissertations that comply with
+  guidelines established by the Brazilian Association of Technical Standards
+  (ABNT).
 keyword: >-
-    ABNT. Quarto. Quarto format. Thesis template. Reproducibility.
-    Open science.
-version: 0.3.0
-quarto-required: ">=1.3.0"
+  ABNT, abntex2, Academic Writing, Brazilian Association of Technical Standards,
+  Dissertations, LaTeX, Open Science, Quarto, Quarto Format,
+  Reproducible Research, Scientific Writing, Templates, Theses
+version: 0.4.0
+quarto-required: ">=1.8.27"
 license:
   text: >
-    MIT
+    abnt is free software: you can redistribute it and/or modify it
+    under the terms of the GNU General Public License as published by the Free
+    Software Foundation, either version 3 of the License, or (at your option)
+    any later version.
 
-    Permission is hereby granted, free of charge, to any person obtaining a
-    copy of this software and associated documentation files (the "Software"),
-    to deal in the Software without restriction, including without limitation
-    the rights to use, copy, modify, merge, publish, distribute, sublicense,
-    and/or sell copies of the Software, and to permit persons to whom the
-    Software is furnished to do so, subject to the following conditions:
+    This program is distributed in the hope that it will be useful, but WITHOUT
+    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+    FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+    more details.
 
-    The above copyright notice and this permission notice shall be included in
-    all copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-    DEALINGS IN THE SOFTWARE.
+    You should have received a copy of the GNU General Public License along with
+    this program. If not, see <https://www.gnu.org/licenses/>.
   type: open-access
-  url: https://opensource.org/license/mit/
-copyright: "Copyright (c) 2023 Daniel Vartanian"
+  url: 'https://www.gnu.org/licenses/gpl-3.0'
+copyright: "Copyright (c) 2026 Daniel Vartanian"
 contributes:
   formats:
     common:
       df-print: kable
-    html:
-      date-format: "YYYY-MM-DD"
-      open-graph: true
-      locale: en
-      number-depth: 5
-      code-link: true
-      code-fold: true
-      cap-location: bottom
-      reader-mode: false
-      callout-appearance: simple
-      csl: csl/english-abnt-author-date.csl
-      theme:
-        light: [cosmo, scss/theme-light.scss]
-        dark: [cosmo, scss/theme-dark.scss]
     pdf:
-      pdf-engine: latexmk
-      pdf-engine-opt: -xelatex
-      latex-auto-install: true
+      pdf-engine: lualatex
       documentclass: abntex2
-      mainfont: Arial
-      sansfont: Arial
-      monofont: FragmentMono-Regular.otf
+      date-format: YYYY
+      lang: en # options: [en, pt-br, es, fr]
+      language: "../_extensions/abnt/_language.yml"
+      babel-lang: english # options: [english, brazil, spanish, french]
+      other-babel-lang: # Don not repeat 'babel-lang' here
+        - french
+        - spanish
+        - brazil
+      # Install the fonts before rendering.
+      # To get font family names see `systemfonts::system_fonts()` in R.
+      mainfont: Noto-Sans # Base font {\rmdefault\rmfamily}
+      sansfont: Noto-Sans # Heading font {\sfdefault\sffamily}
+      monofont: Noto-Sans-Mono # Code font {\ttdefault\ttfamily}
       monofontoptions:
-        - ItalicFont=FragmentMono-Italic.otf
         - Scale=0.75
       fontsize: 12pt
       linestretch: 1.5
@@ -83,28 +63,23 @@ contributes:
       section-options:
         - chapter=TITLE
         - section=TITLE
-      date-format: YYYY
-      lang: en # options: [en, pt-br, es, fr]
-      language: ../_extensions/abnt/_language.yml
-      babel-lang: english # options: [english, brazil, spanish, french]
-      other-babel-lang: # Don not repeat 'babel-lang' here.
-        - french
-        - spanish
-        - brazil
-      cite-method: biblatex # Do not remove it.
-      biblio-style: abnt # options: [abnt, abnt-ibid, abnt-numeric, apa]
+      hyperrefoptions:
+        - bookmarksnumbered
+      captionsetup:
+        - justification=justified
       biblio-title: REFERENCES
       biblio-footnote: >
-        In accordance with the Brazilian Association of Technical Standards
-        (ABNT) NBR 6023 norm.
+        According to the Brazilian Association of Technical Standards
+        (ABNT NBR 6023).
+      cite-method: biblatex
       biblatexoptions:
-        - backend=biber,
-        - language=english, # [options: english, brazil, spanish, french]
-        - url=true,
-        - useprefix=false,
+        - backend=biber
+        - url=true
+        - useprefix=false
         - giveninits=true
-      bibhang: 0cm # Use 0.5cm if `biblio-style: apa`.
-      bibparsep: 1ex
+        - style=abnt
+      bibhang: 0cm # Use 0.5cm if `style=apa`
+      bibparsep: -2ex # Use 1ex `style=apa`
       zotero: false
       index-page: false
       number-sections: true
@@ -120,11 +95,16 @@ contributes:
       code-block-bg: "#F1F3F5"
       fig-format: png
       fig-dpi: 150
-      fig-pos: H # `abntex2` default: htb (doesn't work)
-      tbl-pos: H # `abntex2` default: htb (doesn't work)
+      fig-width: 5.5 # Quarto default: 5.5
+      fig-height: 4 # Quarto default: 3.5
+      out-width: 80%
+      fig-pos: H
+      tbl-pos: H
       cap-location: top
+      cap-hyphenpenalty: true
+      legend-hyphenpenalty: true
       prefer-html: false
-      location: "[City]"
+      location: "[Municipality]"
       supervisor: "[Supervisor's full name]"
       cosupervisor: "[Co-supervisor's full name]"
       academic-title: "[Master/PhD]"
@@ -150,29 +130,12 @@ contributes:
         - tex/index.tex
         - tex/layout.tex
         - tex/lengths.tex
-        - tex/other.tex
+        - tex/lua.tex
+        - tex/others.tex
         - tex/packages.tex
         - tex/tables.tex
         - tex/tightlist.tex
         - tex/title.tex
         - tex/toc.tex
-      format-resources:
-        - otf/FragmentMono-Regular.otf
-        - otf/FragmentMono-Italic.otf
-        - bbx/abnt.bbx
-        - bbx/abnt-ibid.bbx
-        - bbx/abnt-numeric.bbx
-        - cbx/abnt.cbx
-        - cbx/abnt-ibid.cbx
-        - cbx/abnt-numeric.cbx
-        - lbx/english-abnt.lbx
-        - lbx/brazil-abnt.lbx
-        - lbx/spanish-abnt.lbx
-        - bbx/apa.bbx
-        - cbx/apa.cbx
-        - dbx/apa.dbx
-        - lbx/english-apa.lbx
-        - lbx/brazil-apa.lbx
-        - lbx/spanish-apa.lbx
-        - lbx/french-apa.lbx
+      latex-auto-install: true
       keep-tex: true

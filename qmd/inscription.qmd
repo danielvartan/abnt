@@ -1,29 +1,15 @@
-<!-- %:::% .common h1 begin %:::% -->
 # Inscription {.unnumbered}
-<!-- %:::% .common h1 end %:::% -->
 
-```{r}
-#| label: setup
-#| include: false
+**Do not remove the tags**! (they look like this: `%:::% tag %:::%`)
 
-source(here::here("R/_setup.R"))
-```
-
-::: {.content-visible when-format="html"}
-_To the worm that first gnawed on the cold flesh of my corpse, I dedicate, as a fond remembrance, these posthumous memories._[^1]
-
-[^1]: ASSIS, M. __Memórias póstumas de Brás Cubas__ [The Posthumous Memoirs of Brás Cubas]. São Paulo: Companhia das Letras, 2014. ISBN 978-85-438-0163-6.
-
-:::
-
-::: {.content-visible when-format="pdf"}
-<!-- %:::% inscription body begin %:::% -->
+```latex
+%:::% inscription body begin %:::%
 \textit{To the worm that first gnawed on the cold flesh of my corpse,}
 
 \textit{I dedicate, as a fond remembrance, these posthumous memories.}\footnotemark{}
 
 \footnotetext{
-	ASSIS, M. \textbf{Memórias póstumas de Brás Cubas} [The Posthumous Memoirs of Brás Cubas]. São Paulo: Companhia das Letras, 2014. ISBN 978-85-438-0163-6.
+	ASSIS, M. \textbf{Memórias póstumas de Brás Cubas} [The Posthumous Memoirs of Brás Cubas]. São Paulo: Companhia das Letras, 2014.
 }
-<!-- %:::% inscription body end %:::% -->
-:::
+%:::% inscription body end %:::%
+```
