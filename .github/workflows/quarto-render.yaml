@@ -58,7 +58,7 @@ jobs:
             libfontconfig1-dev \
             libcurl4-openssl-dev \
             libnode-dev \
-            libx11-dev
+            libx11-dev \
             pandoc
         shell: bash
 
@@ -125,6 +125,6 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: experiments-output-${{ matrix.config.os }}-${{ matrix.config.version }}
+          name: quarto-render-${{ matrix.config.os }}-${{ matrix.config.version }}
           path: "${{ runner.temp }}/abnt"
           retention-days: 90
