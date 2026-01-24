@@ -1,6 +1,4 @@
-# v0.4.1.9000 (development version)
-
-# v0.4.0 (2026-01-24)
+# v1.0.0.9000 (development version)
 
 - Added a `NEWS.md` file to track changes.
 
