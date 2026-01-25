@@ -1,28 +1,36 @@
 # abnt
 
-Snapshot settings.
+Animation settings.
 
-## General Settings
+## System Dependencies
 
-- Theme: Light
-- Screen resolution: 1920x1080
-
-- **Turn off Night Light mode**!
-- Resize the window (see *Window Size* settings)
-- Full screen
-- Double page view
-
-## GIF Settings
-
-1. Clear all files from the *Screenshots* folder
-2. Capture screenshots starting from the last page
-3. Ensure no notification pop-ups are visible when taking screenshots
+1. `ImageMagick`
+2. `pdfnup`
+  - On Arch Linux, use `yay -S pdfjam-extras`
 
 ### Render
 
-1. Install `ImageMagick` (if not already installed).
-2. Run:
+1. Open a terminal in the directory containing the PDF file
+2. Merge the pages by running:
 
 ```bash
-magick -delay 60 -loop 0 *.png output.gif
+pdfnup --landscape --frame true --outfile output.pdf index.pdf
+```
+
+3. Extract the pages as PNG files by running:
+
+````bash
+magick convert -density 300 -trim -background white -alpha remove output.pdf page-%03d.png
+````
+
+4. Create the animated GIF by running:
+
+```bash
+magick -delay 120 -loop 0 *.png animation.gif
+```
+
+5. Clean up the intermediate files by running:
+
+```bash
+rm output.pdf *.png
 ```
