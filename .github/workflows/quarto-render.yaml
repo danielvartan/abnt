@@ -52,7 +52,7 @@ jobs:
         run: |
           # Install system dependencies
 
-          brew install --cask \
+          brew install \
             pkg-config \
             gdal \
             xquartz

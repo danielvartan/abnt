@@ -6,7 +6,7 @@ Animation settings.
 
 1. `ImageMagick`
 2. `pdfnup`
-  - On Arch Linux, use `yay -S pdfjam-extras`
+  - On Arch Linux, use `yay -S pdfjam-extras` to install it.
 
 ### Render
 
