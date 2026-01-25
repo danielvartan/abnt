@@ -56,11 +56,16 @@ jobs:
 
           sudo apt-get install -y -qq \
             libcurl4-openssl-dev \
+            libfreetype6-dev \
             libfontconfig1-dev \
             libfribidi-dev \
             libfreetype6-dev \
             libharfbuzz-dev \
+            libjpeg-dev \
             libnode-dev \
+            libpng-dev \
+            libtiff5-dev \
+            libwebp-dev \
             libx11-dev \
             pandoc
         shell: bash
