@@ -4,13 +4,32 @@
 
 ```latex
 %:::% vernacular-abstract reference begin %:::%
-[SURNAME], [Forename(s) initial(s)]. \textbf{\imprimirtitulo}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  (\imprimirtituloacademico) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
+[AUTHOR’S SURNAME], [Author’s forename(s) initial(s)]. \textbf{\imprimirtitulo}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  (\imprimirtituloacademico) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
 %:::% vernacular-abstract reference end %:::%
 ```
 
 <!-- %:::% vernacular-abstract body begin %:::% -->
-[abnt](https://github.com/danielvartan/abnt) is a [Quarto](https://quarto.org) format designed for creating theses and dissertations that comply with guidelines established by the Brazilian Association of Technical Standards ([ABNT](https://www.abnt.org.br/)). It's based on the [abntex2](https://www.abntex.net.br/) LaTeX class, which belongs to the [memoir](https://www.ctan.org/pkg/memoir) class family.
+[abnt](https://github.com/danielvartan/abnt) is a [Quarto](https://quarto.org) format designed for creating theses and dissertations that comply with guidelines established by the Brazilian Association of Technical Standards ([ABNT](https://www.abnt.org.br/)). Learn more at <https://github.com/danielvartan/abnt>.
 <!-- %:::% vernacular-abstract body end %:::% -->
+
+```{r}
+#| eval: false
+#| echo: false
+
+library(clipr)
+library(lorem)
+library(withr)
+
+with_seed(
+  seed = 5245468,
+  code = {
+    ipsum(3) |>
+      as.character() |>
+      paste(collapse = "\n\n")
+  }
+) |>
+  write_clip()
+```
 
 ```latex
 %:::% vernacular-abstract keywords begin %:::%

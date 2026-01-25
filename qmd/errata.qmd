@@ -4,10 +4,10 @@
 
 ```latex
 %:::% errata reference begin %:::%
-\noindent [SURNAME], [Forename(s) initial(s)]. \textbf{\imprimirtitulo}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  ({\imprimirtituloacademico}) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
+\noindent [AUTHOR’S SURNAME], [Author’s forename(s) initial(s)]. \textbf{\imprimirtitulo}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  ({\imprimirtituloacademico}) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
 %:::% errata reference end %:::%
 ```
 
 <!-- %:::% errata body begin %:::% -->
-This is the preliminary version of this thesis (version <1.0.0). Any required corrections will be listed here upon approval.
+This is the preliminary version of this thesis. Any required corrections will be listed here upon approval.
 <!-- %:::% errata body end %:::% -->

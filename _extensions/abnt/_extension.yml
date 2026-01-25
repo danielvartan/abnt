@@ -12,7 +12,7 @@ keyword: >-
   ABNT, abntex2, Academic Writing, Brazilian Association of Technical Standards,
   Dissertations, LaTeX, Open Science, Quarto, Quarto Format,
   Reproducible Research, Scientific Writing, Templates, Theses
-version: 0.4.0
+version: 1.0.0
 quarto-required: ">=1.8.27"
 license:
   text: >
@@ -39,18 +39,16 @@ contributes:
       pdf-engine: lualatex
       documentclass: abntex2
       date-format: YYYY
-      lang: en # options: [en, pt-br, es, fr]
+      lang: en # options: [en, pt-br, es, fr] (for hyphenation)
       language: "../_extensions/abnt/_language.yml"
       babel-lang: english # options: [english, brazil, spanish, french]
-      other-babel-lang: # Don not repeat 'babel-lang' here
+      other-babel-lang: # Don not repeat 'babel-lang' here.
         - french
         - spanish
         - brazil
-      # Install the fonts before rendering.
-      # To get font family names see `systemfonts::system_fonts()` in R.
-      mainfont: Noto-Sans # Base font {\rmdefault\rmfamily}
-      sansfont: Noto-Sans # Heading font {\sfdefault\sffamily}
-      monofont: Noto-Sans-Mono # Code font {\ttdefault\ttfamily}
+      mainfont: Noto-Sans
+      sansfont: Noto-Sans
+      monofont: Noto-Sans-Mono
       monofontoptions:
         - Scale=0.75
       fontsize: 12pt
@@ -68,9 +66,6 @@ contributes:
       captionsetup:
         - justification=justified
       biblio-title: REFERENCES
-      biblio-footnote: >
-        According to the Brazilian Association of Technical Standards
-        (ABNT NBR 6023).
       cite-method: biblatex
       biblatexoptions:
         - backend=biber
@@ -80,8 +75,10 @@ contributes:
         - style=abnt
       bibhang: 0cm # Use 0.5cm if `style=apa`
       bibparsep: -2ex # Use 1ex `style=apa`
-      zotero: false
-      index-page: false
+      biblio-footnote: >
+        According to the Brazilian Association of Technical Standards
+        (ABNT NBR 6023).
+      index-page: true
       number-sections: true
       linktoc: section
       colorlinks: true
@@ -89,7 +86,7 @@ contributes:
       filecolor: blue
       citecolor: blue
       urlcolor: blue
-      code-line-numbers: true
+      code-line-numbers: false
       code-annotations: true
       code-block-border-left: "#CFD0D1"
       code-block-bg: "#F1F3F5"

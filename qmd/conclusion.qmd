@@ -5,38 +5,67 @@
 #| include: false
 
 library(here)
+library(lorem)
+library(stringr)
+library(withr)
 
 here("R", ".setup.R") |> source()
 ```
 
+```{=latex}
+\epigraph{Every genuine test of a theory is an attempt to falsify it, or to refute it.}{--- \textcite{popper2002}}
+\vspace*{-1\baselineskip}
+\epigraph{I suggest that it is the aim of science to find satisfactory explanations, of whatever strikes us as being in need of explanation.}{--- \textcite[193]{popper1979a}}
+% \vspace*{1\baselineskip}
+```
+
+<!-- @popper2002 -->
+<!-- @popper1979a -->
+
 ```{r}
 #| echo: false
 #| output: asis
 
-library(cli)
+library(lorem)
+library(stringr)
 library(withr)
 
 with_seed(
-  seed = 9894,
+  seed = 86521,
   code = {
-    cli:::lorem_ipsum(2) |> cat(sep = "\n\n")
+    ipsum(1, avg_words_per_sentence = 30) |>
+      as.character() |>
+      str_remove(".$") |>
+      paste0(" [@gell-mann2023].") |>
+      cat(sep = "\n\n")
   }
 )
 ```
 
-## Secondary Section
+## Heading 2
 
 ```{r}
 #| echo: false
 #| output: asis
 
-library(cli)
+library(lorem)
+library(stringr)
 library(withr)
 
 with_seed(
-  seed = 900,
+  seed = 1252543,
   code = {
-    cli:::lorem_ipsum(2) |> cat(sep = "\n\n")
+    c(
+      ipsum(1, avg_words_per_sentence = 12) |>
+        as.character() |>
+        str_remove(".$") |>
+        paste0(" [@lecun2015]."),
+      ipsum(1, avg_words_per_sentence = 14) |>
+        as.character() |>
+        str_remove(".$") |>
+        paste0(" [@foster1972].")
+    ) |>
+      cat(sep = "\n\n")
   }
 )
 ```

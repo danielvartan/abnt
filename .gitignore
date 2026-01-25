@@ -2,6 +2,7 @@ _freeze/
 _print/
 _slides/
 _web/
+.data
 .quarto/
 .Rapp.history
 .RData
@@ -10,8 +11,13 @@ _web/
 .Rproj.user
 .Ruserdata
 .temp/
-
-/.quarto/
 **/*.quarto_ipynb
-
 /.luarc.json
+/.quarto/
+index.aux
+index.bcf
+index.idx
+index.lof
+index.log
+index.lot
+index.tex

@@ -4,7 +4,19 @@
 #| label: Setup
 #| include: false
 
+library(censobr)
+library(checkmate)
+library(deSolve)
+library(dplyr)
+library(geobr)
+library(gg3D) # github.com/AckerDWM/gg3D
+library(ggplot2)
 library(here)
+library(janitor)
+library(lorem)
+library(sf)
+library(stringr)
+library(withr)
 
 here("R", ".setup.R") |> source()
 ```
@@ -13,30 +25,453 @@ here("R", ".setup.R") |> source()
 #| echo: false
 #| output: asis
 
-library(cli)
+library(lorem)
+library(stringr)
 library(withr)
 
 with_seed(
-  seed = 4,
+  seed = 54657889,
   code = {
-    cli:::lorem_ipsum(2) |> cat(sep = "\n\n")
+    ipsum(1, avg_words_per_sentence = 14) |>
+      as.character() |>
+      str_remove(".$") |>
+      paste0(" [@watson1953].") |>
+      cat(sep = "\n\n")
   }
 )
 ```
 
-## Secondary Section
+## Heading 2
+
+the [Lorenz system](https://en.wikipedia.org/wiki/Lorenz_system), originally introduced by Edward N. Lorenz [-@lorenz1963] in his seminal paper, comprises three coupled, nonlinear ordinary differential equations that model atmospheric convection, effectively illustrating the chaotic nature of weather patterns.
+
+The dynamics of the model are represented by the following set of first-order, nonlinear differential equations:
+
+$$
+\begin{aligned}
+\frac{dx}{dt} &= \sigma(y - x), \\
+\frac{dy}{dt} &= x(\rho - z) - y \\
+\frac{dz}{dt} &= xy - \beta z
+\end{aligned}
+$$ {#eq-lorenz-system}
+
+In these [equations](#eq-lorenz-system):
+
+- $x$ represents the rate of convection;
+- $y$ denotes the horizontal temperature variation;
+- $z$ indicates the vertical temperature variation;
+- $\sigma$, $\rho$, and $\beta$ are system parameters corresponding to the [Prandtl number](https://en.wikipedia.org/wiki/Prandtl_number), [Rayleigh number](https://en.wikipedia.org/wiki/Rayleigh_number), and specific physical dimensions of the fluid layer.
+
+The phase space visualization of this system (@fig-lorenz-system) reveals intricate patterns and behaviors, including the presence of strange attractors, which are indicative of chaotic dynamics. To learn more about the Lorenz system, see @lorenz2008.
+
+```{=latex}
+\index{figures!chart}
+```
+
+```{r}
+#| include: false
+
+library(checkmate)
+library(deSolve)
+library(dplyr)
+library(ggplot2)
+library(gg3D) # github.com/AckerDWM/gg3D
+```
+
+```{r}
+lorenz_system <- function(
+  x = 1,
+  y = 1,
+  z = 1,
+  sigma = 10,
+  rho = 28,
+  beta = 8 / 3,
+  from = 0,
+  to = 100,
+  by = 0.01
+) {
+  assert_number(x)
+  assert_number(y)
+  assert_number(z)
+  assert_number(sigma)
+  assert_number(rho)
+  assert_number(beta)
+  assert_number(from, lower = 0)
+  assert_number(to, lower = from)
+  assert_number(by, lower = 0)
+
+  fun <- function(t, y, parms) {
+    list2env(as.list(y), envir = environment())
+    list2env(as.list(parms), envir = environment())
+
+    list(
+      c(
+        dx = sigma * (y - x),
+        dy = x * (rho - z) - y,
+        dz = (x * y) - (beta * z)
+      )
+    )
+  }
+
+  initial_values <- c(x = x, y = y, z = z)
+  parameters <- list(sigma = sigma, rho = rho, beta = beta)
+  time <- seq(from = from, to = to, by = by)
+
+  data <-
+    ode(
+      y = initial_values,
+      times = time,
+      func = fun,
+      parms = parameters
+    ) |>
+    as_tibble() |>
+    mutate(
+      across(
+        .cols = everything(),
+        .fns = as.numeric
+      )
+    )
+
+  list(
+    data = data,
+    initial_values = as.list(initial_values),
+    parameters = as.list(parameters)
+  )
+}
+```
+
+```{r}
+plot_phase_space <- function(
+  x = 1,
+  y = 1,
+  z = 1,
+  sigma = 10,
+  rho = 28,
+  beta = 8 / 3,
+  from = 0,
+  to = 100,
+  by = 0.001,
+  theta = 180,
+  phi = 0
+) {
+  assert_number(x)
+  assert_number(y)
+  assert_number(z)
+  assert_number(sigma)
+  assert_number(rho)
+  assert_number(beta)
+  assert_number(from, lower = 0)
+  assert_number(to, lower = from)
+  assert_number(by, lower = 0)
+
+  lorenz_system(x, y, z, sigma, rho, beta, from, to, by) |>
+    list2env(envir = environment())
+
+  data |>
+    ggplot(aes(x = x, y = y, z = z, color = time)) +
+    stat_3D(theta = theta, phi = phi, geom = "path") +
+    theme_void() +
+    theme(legend.position = "none")
+}
+```
+
+```{=latex}
+\index{Lorenz system}
+\index{figures!chart}
+```
+
+::: {#fig-lorenz-system}
+```{r}
+plot_phase_space()
+```
+
+[Reproduced from @vartanian2024d. Based on @lorenz1963.]{.legend}
+
+Phase space visualization of the Lorenz system
+:::
+
+### Heading 3
 
 ```{r}
 #| echo: false
 #| output: asis
 
-library(cli)
+library(lorem)
+library(stringr)
 library(withr)
 
 with_seed(
-  seed = 5,
+  seed = 53687,
   code = {
-    cli:::lorem_ipsum(2) |> cat(sep = "\n\n")
+    c(
+      ipsum(1, avg_words_per_sentence = 40) |>
+        as.character() |>
+        str_remove(".$") |>
+        paste0(" [@freire2013a]."),
+      ipsum(1, avg_words_per_sentence = 19) |>
+        as.character() |>
+        str_remove(".$") |>
+        paste0(" [@walker2024a].") |>
+        paste0(" See @fig-sao-paulo-tracts.")
+    ) |>
+      cat(sep = "\n\n")
+  }
+)
+```
+
+```{=latex}
+\index{figures!chart}
+```
+
+```{r}
+#| include: false
+
+municipality_code <- 3550308 # São Paulo (1.521,202 km²)
+```
+
+```{r}
+#| include: false
+
+library(geobr)
+
+municipality_shape <-
+  municipality_code |>
+  read_municipality(
+    year = 2022,
+    simplified = TRUE,
+    showProgress = FALSE,
+    cache = TRUE
+  )
+```
+
+```{r}
+#| include: false
+
+library(censobr)
+
+census_tract_population_data <-
+  read_tracts(
+    year = 2022, # Last available year
+    dataset = "Basico",
+    as_data_frame = FALSE,
+    showProgress = FALSE,
+    cache = TRUE,
+    verbose = FALSE
+  )
+```
+
+```{r}
+#| include: false
+
+library(censobr)
+
+census_tract_shape_data <-
+  read_census_tract(
+    code_tract = municipality_code,
+    year = 2022, # Last available year
+    simplified = TRUE,
+    showProgress = FALSE,
+    cache = TRUE
+  )
+```
+
+```{r}
+#| include: false
+
+library(sf)
+
+census_tract_shape_data <-
+  census_tract_shape_data |>
+  st_transform(st_crs("WGS84"))
+```
+
+```{r}
+#| include: false
+
+library(dplyr)
+library(janitor)
+library(sf)
+
+census_data <-
+  census_tract_population_data |>
+  filter(code_muni == .env$municipality_code) |>
+  dplyr::select(code_tract, V0001) |>
+  mutate(code_tract = as.numeric(code_tract)) |>
+  collect() |>
+  rename(population = V0001) |>
+  clean_names() |>
+  left_join(census_tract_shape_data, by = "code_tract") |>
+  dplyr::select(code_tract, population, geom) |>
+  st_as_sf()
+```
+
+::: {#fig-sao-paulo-tracts}
+```{r}
+library(ggplot2)
+library(ggspatial)
+library(sf)
+
+ggplot() +
+  geom_sf(
+    data = municipality_shape,
+    fill = "gray90",
+    color = "black"
+  ) +
+  geom_sf(
+    data = census_data,
+    mapping = aes(fill = population),
+    color = NA
+  ) +
+  scale_fill_viridis_c(option = "plasma") +
+  coord_sf(crs = "WGS84") +
+  annotation_scale(
+    location = "br",
+    style = "tick",
+    height = unit(0.5, "lines")
+  ) +
+  annotation_north_arrow(
+    location = "br",
+    height = unit(2, "lines"),
+    width = unit(2, "lines"),
+    pad_x = unit(0.25, "lines"),
+    pad_y = unit(1.25, "lines"),
+    style = north_arrow_fancy_orienteering
+  ) +
+  scale_x_continuous(labels = NULL, breaks = NULL) +
+  scale_y_continuous(labels = NULL, breaks = NULL) +
+  theme(
+    legend.position = "right",
+    axis.text = element_blank(),
+    axis.ticks = element_blank()
+  ) +
+  labs(
+    x = NULL,
+    y = NULL,
+    fill = NULL
+  )
+```
+
+[Tract boundary data from the [Brazilian 2022 Census](https://www.ibge.gov.br/en/statistics/social/labor/22836-2022-census-3.html) and municipal boundary data imported via the [censobr](https://ipeagit.github.io/censobr/) [@pereirab] and [geobr](https://ipeagit.github.io/geobr/) [@pereirab] R packages.]{.legendleft}
+
+Population by census tract in 2022 in the city of São Paulo, Brazil
+:::
+
+## Heading 2
+
+```{r}
+#| echo: false
+#| output: asis
+
+library(lorem)
+library(stringr)
+library(withr)
+
+with_seed(
+  seed = 89794514,
+  code = {
+    ipsum(1, avg_words_per_sentence = 25) |>
+      as.character() |>
+      str_remove(".$") |>
+      paste0(" [@hopfield1984].") |>
+      paste0(" See @fig-eruption.") |>
+      cat(sep = "\n\n")
+  }
+)
+```
+
+```{=latex}
+\index{figures!chart}
+```
+
+::: {#fig-eruption}
+```{r}
+#| fig-height: 4
+#| fig-width: 6
+
+library(ggplot2)
+
+faithful |>
+  ggplot(aes(x = eruptions, y = waiting)) +
+  geom_point() +
+  xlim(0.5, 6) +
+  ylim(40, 110) +
+  geom_density_2d_filled(alpha = 0.5) +
+  geom_density_2d(linewidth = 0.25, color = "black") +
+  labs(
+    x = "Eruption time (minutes)",
+    y = "Waiting time (minutes)"
+  ) +
+  theme(legend.position = "none")
+```
+
+[Reproduced from the [ggplot2](https://ggplot2.tidyverse.org/reference/geom_density_2d.html) R package documentation [@wickham2016a].]{.legend}
+
+Relation between _waiting time to next eruption_ (minutes) and _eruption time_ (minutes) at Old Faithful Geyser, Yellowstone National Park, Wyoming, USA
+:::
+
+```{r}
+#| echo: false
+#| output: asis
+
+library(lorem)
+library(stringr)
+library(withr)
+
+with_seed(
+  seed = 6354,
+  code = {
+    ipsum(1, avg_words_per_sentence = 40) |>
+      as.character() |>
+      str_remove(".$") |>
+      paste0(" [@holland2012].") |>
+      cat(sep = "\n\n")
+  }
+)
+```
+
+The hypothesis can be outlined as follows:
+
+**Null Hypothesis** ($\text{H}_{0}$)
+: Including *latitude* as a predictor does not result in a meaningful improvement in the model’s fit, as evidenced by a change in the adjusted $\text{R}^{2}$ that is less than the Minimum Effect Size (MES).
+
+**Alternative Hypothesis** ($\text{H}_{a}$)
+: Including *latitude* as a predictor results in a meaningful improvement in the model’s fit, as evidenced by a change in the adjusted $\text{R}^{2}$ that meets or exceeds the Minimum Effect Size (MES).
+
+Formally:
+
+::: {#cnj-hypothesis-test}
+### Data Test
+
+$$
+\begin{cases}
+  \text{H}_{0}: \Delta \ \text{Adjusted} \ \text{R}^{2} < \text{MES} \\
+  \text{H}_{a}: \Delta \ \text{Adjusted} \ \text{R}^{2} \geq \text{MES}
+\end{cases}
+$$
+:::
+
+Where:
+
+$$
+\Delta \ \text{Adjusted} \ \text{R}^{2} = \text{Adjusted} \ \text{R}^{2}_{f} - \text{Adjusted} \ \text{R}^{2}_{r}
+$$ {#eq-adjusted-r-squared-delta}
+
+```{r}
+#| echo: false
+#| output: asis
+
+library(lorem)
+library(stringr)
+library(withr)
+
+with_seed(
+  seed = 25741,
+  code = {
+    ipsum(1, avg_words_per_sentence = 55) |>
+      as.character() |>
+      str_remove(".$") |>
+      paste0(" [@thoreau2017].") |>
+      cat(sep = "\n\n")
   }
 )
 ```

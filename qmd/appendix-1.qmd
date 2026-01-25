@@ -5,6 +5,9 @@
 #| include: false
 
 library(here)
+library(lorem)
+library(stringr)
+library(withr)
 
 here("R", ".setup.R") |> source()
 ```
@@ -13,30 +16,62 @@ here("R", ".setup.R") |> source()
 #| echo: false
 #| output: asis
 
-library(cli)
+library(lorem)
+library(stringr)
 library(withr)
 
 with_seed(
-  seed = 8,
+  seed = 454545,
   code = {
-    cli:::lorem_ipsum(2) |> cat(sep = "\n\n")
+    ipsum(1, avg_words_per_sentence = 28) |>
+      as.character() |>
+      str_remove(".$") |>
+      paste0(" [@vonneumann1993a].") |>
+      cat(sep = "\n\n")
   }
 )
 ```
 
-## Secondary Section
+## Heading 2
 
 ```{r}
 #| echo: false
 #| output: asis
 
-library(cli)
+library(lorem)
+library(stringr)
 library(withr)
 
 with_seed(
-  seed = 9,
+  seed = 254895,
   code = {
-    cli:::lorem_ipsum(1) |> cat(sep = "\n\n")
+    ipsum(1, avg_words_per_sentence = 14) |>
+      as.character() |>
+      str_remove(".$") |>
+      paste0(" [@lorenz1963].") |>
+      cat(sep = "\n\n")
+  }
+)
+```
+
+### Heading 3
+
+```{r}
+#| echo: false
+#| output: asis
+
+library(lorem)
+library(stringr)
+library(withr)
+
+with_seed(
+  seed = 89794514,
+  code = {
+    ipsum(1, avg_words_per_sentence = 18) |>
+      as.character() |>
+      str_remove(".$") |>
+      paste0(" [@hinton1986].") |>
+      cat(sep = "\n\n")
   }
 )
 ```

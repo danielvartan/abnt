@@ -9,7 +9,7 @@ library(here)
 here("R", ".setup.R") |> source()
 ```
 
-For an extensive list of chronobiology related terms and definitions, please refer to @aschoff1965 and @marques2012a.
+For an extensive list of chronobiology related terms and definitions, please refer to @aschoff1965 and @marques2012.
 
 Chronotype
 : \hspace{20cm} Any kind of temporal phenotype [@ehret1974; @pittendrigh1993]. Usually, it refers to circadian phenotypes in a spectrum that goes from morningness to eveningness [@roenneberg2003b]. It can also be seen as an organism's phase of entrainment [@roenneberg2012a].
@@ -18,7 +18,7 @@ Circadian rhythm
 : \hspace{20cm} A rhythm with a period close to a day/24h, an approximation to the period of the earth's rotation [@pittendrigh1960]. From the Latin *circā*, around, and *dĭes*, day [@latinitium]. Example: the sleep-wake cycle.
 
 Complex system
-: \hspace{20cm} There are several definitions. Here are some that I found to be of use:
+: \hspace{20cm} Several definitions exist. The following are particularly useful:
 
 - "Systems that don't yield to compact forms of representation or description" (David Krakauer apud @mitchell2013)
 - "A system of many interacting parts where the system is more than just the sum of its parts" (Mark Newman apud @mitchell2013)

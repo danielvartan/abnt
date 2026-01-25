@@ -61,7 +61,6 @@
 
 \renewcommand{\printchaptername}{
   \ifthenelse{\boolean{abntex@apendiceousecao}}{
-    \vspace*{\medskipamount}
     \chapnamefont \ABNTEXchapterupperifneeded{\appendixname} % [Changed]
   }{}
 }
@@ -110,6 +109,20 @@
     }
   }
 }
+
+% Set `citation' environment -----
+
+\renewenvironment{citacao}[1][default]{
+   \list{}
+   \ABNTEXfontereduzida
+   \addtolength{\leftskip}{\ABNTEXcitacaorecuo}
+   \item[]
+   \begin{SingleSpace}
+   \ifthenelse{\not\equal{#1}{default}}{\selectlanguage{#1}}{} % [Changed]
+ }{
+   \end{SingleSpace}
+   \endlist
+  }
 
 % Set `\textual` -----
 

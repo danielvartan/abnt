@@ -3,7 +3,7 @@
 **Do not remove the tags**! (they look like this: `%:::% tag %:::%`)
 
 <!-- %:::% list-of-symbols body begin %:::% -->
-For an extensive list of chronobiology related symbols, please refer to  @aschoff1965 and @marques2012a.
+For an extensive list of chronobiology related symbols, please refer to  @aschoff1965 and @marques2012.
 
 $\tau$
 : \hspace{20cm} Period of a rhythm in free flow; only revealed under constant environmental conditions.

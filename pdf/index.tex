@@ -73,6 +73,7 @@ english
 \usepackage{microtype}
 \usepackage{multirow}
 \usepackage{parskip}
+\usepackage{pdflscape}
 \usepackage{pdfpages}
 \usepackage{titlesec}
 \usepackage[table]{xcolor}
@@ -92,12 +93,12 @@ english
 \newlength{\tinyskipamount}
 \newlength{\hugeskipamount}
 
-\setlength{\microskipamount}{0.25\baselineskip} % Arial/12pt/1.5 == 5.4375pt
-\setlength{\tinyskipamount}{0.5\baselineskip} % Arial/12pt/1.5 == 10.875pt
-\setlength{\smallskipamount}{0.75\baselineskip} % Arial/12pt/1.5 == 16.3125pt
-\setlength{\medskipamount}{1\baselineskip} % Arial/12pt/1.5 == 21.75pt
-\setlength{\bigskipamount}{1.5\baselineskip} % Arial/12pt/1.5 == 32.625pt
-\setlength{\hugeskipamount}{2\baselineskip}% Arial/12pt/1.5 == 43.5pt
+\setlength{\microskipamount}{0.25\baselineskip}
+\setlength{\tinyskipamount}{0.5\baselineskip}
+\setlength{\smallskipamount}{0.75\baselineskip}
+\setlength{\medskipamount}{1\baselineskip}
+\setlength{\bigskipamount}{1.5\baselineskip}
+\setlength{\hugeskipamount}{2\baselineskip}
 
 \newcommand{\microskip}{\vspace{\microskipamount}}
 \newcommand{\tinyskip}{\vspace{\tinyskipamount}}
@@ -357,7 +358,6 @@ english
 
 \renewcommand{\printchaptername}{
   \ifthenelse{\boolean{abntex@apendiceousecao}}{
-    \vspace*{\medskipamount}
     \chapnamefont \ABNTEXchapterupperifneeded{\appendixname} % [Changed]
   }{}
 }
@@ -406,6 +406,20 @@ english
     }
   }
 }
+
+% Set `citation' environment -----
+
+\renewenvironment{citacao}[1][default]{
+   \list{}
+   \ABNTEXfontereduzida
+   \addtolength{\leftskip}{\ABNTEXcitacaorecuo}
+   \item[]
+   \begin{SingleSpace}
+   \ifthenelse{\not\equal{#1}{default}}{\selectlanguage{#1}}{} % [Changed]
+ }{
+   \end{SingleSpace}
+   \endlist
+  }
 
 % Set `\textual` -----
 
@@ -705,7 +719,16 @@ english
   \hyphenpenalty=100000
   \ABNTEXfontereduzida
   \addvspace{\smallskipamount}
-  #1
+  Source: #1
+}
+
+\newcommand{\legendleft}[1]{
+  \addvspace{\smallskipamount}
+  \begin{tabular}{@{}l@{ } p{14cm}}
+    \hyphenpenalty=100000
+    \ABNTEXfontereduzida Source: &
+    \ABNTEXfontereduzida #1
+  \end{tabular}
 }
 
 % Credits: <https://tex.stackexchange.com/a/611556/234832>.
@@ -826,7 +849,7 @@ bookmarksdepth=5
 % Set Sections Skips (`\cftchapterpresnum`)
 
 \setlength{\cftbeforebookskip}{0\baselineskip}
-\setlength{\cftbeforepartskip}{\bigskipamount}
+\setlength{\cftbeforepartskip}{\medskipamount}
 \setlength{\cftbeforechapterskip}{\microskipamount}
 \setlength{\cftbeforesectionskip}{0\baselineskip}
 \setlength{\cftbeforesubsectionskip}{0\baselineskip}
@@ -986,11 +1009,11 @@ Technical Standards (ABNT NBR 6023).}
 % Make \paragraph and \subparagraph free-standing
 \ifx\paragraph\undefined\else
   \let\oldparagraph\paragraph
-  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}}
 \fi
 \ifx\subparagraph\undefined\else
   \let\oldsubparagraph\subparagraph
-  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}}
 \fi
 
 \usepackage{color}
@@ -1151,7 +1174,11 @@ Co-Supervisor: Prof. Dr. {\imprimircoorientador}
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \usepackage{amsthm}
 \theoremstyle{plain}
+\newtheorem{conjecture}{Conjecture}[chapter]
+\theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[chapter]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
 \theoremstyle{remark}
 \AtBeginDocument{\renewcommand*{\proofname}{Proof}}
 \newtheorem*{remark}{Remark}
@@ -1175,7 +1202,7 @@ Co-Supervisor: Prof. Dr. {\imprimircoorientador}
 \@ifundefined{codebgcolor}{\definecolor{codebgcolor}{HTML}{F1F3F5}}{}
 \makeatother
 \makeatletter
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[enhanced, borderline west={3pt}{0pt}{shadecolor}, sharp corners, colback={codebgcolor}, frame hidden, breakable, boxrule=0pt]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[enhanced, colback={codebgcolor}, borderline west={3pt}{0pt}{shadecolor}, breakable, sharp corners, boxrule=0pt, frame hidden]}{\end{tcolorbox}}\fi
 \makeatother
 
 % -----
@@ -1218,7 +1245,7 @@ Co-Supervisor: Prof. Dr. {\imprimircoorientador}
 \begin{fichacatalografica}
 \hyphenpenalty=100000
 %:::% cataloging-record body begin %:::%
-I authorize the full or partial reproduction of this work by any conventional or electronic means for the purposes of study and research, provided that the source is cited.
+I authorize and grant permission for the full or partial reproduction and distribution of this work by any conventional or electronic means for the  purposes of study and research, provided that the source is properly cited, the integrity of the original work is maintained, and such reproduction is not intended for commercial gain.
 
 \vfill
 
@@ -1269,13 +1296,13 @@ Cataloging in publication
 %:::% errata begin %:::%
 \begin{errata}[\errataname]
 %:::% errata reference begin %:::%
-\noindent [SURNAME], [Forename(s) initial(s)]. \textbf{\imprimirtitulo}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  ({\imprimirtituloacademico}) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
+\noindent [AUTHOR’S SURNAME], [Author’s forename(s) initial(s)]. \textbf{\imprimirtitulo}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  ({\imprimirtituloacademico}) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
 %:::% errata reference end %:::%
 \smallskip
 %:::% errata body begin %:::%
 
-This is the preliminary version of this thesis (version \textless1.0.0).
-Any required corrections will be listed here upon approval.
+This is the preliminary version of this thesis. Any required corrections
+will be listed here upon approval.
 
 %:::% errata body end %:::%
 \end{errata}
@@ -1359,7 +1386,7 @@ Examiners:
 \textit{I dedicate, as a fond remembrance, these posthumous memories.}\footnotemark{}
 
 \footnotetext{
-	ASSIS, M. \textbf{Memórias póstumas de Brás Cubas} [The Posthumous Memoirs of Brás Cubas]. São Paulo: Companhia das Letras, 2014.
+	ASSIS, M. \textbf{Memórias póstumas de Brás Cubas} [The Posthumous Memoirs of Brás Cubas]. São Paulo: Companhia das Letras, 2014. ISBN 978-85-438-0163-6.
 }
 %:::% inscription body end %:::%
 \vspace*{\fill} % Don't change it.
@@ -1409,7 +1436,7 @@ I would like to acknowledge this awesome
 %:::% vernacular-abstract begin %:::%
 \begin{resumoenv}[\resumoname]
  %:::% vernacular-abstract reference begin %:::%
-[SURNAME], [Forename(s) initial(s)]. \textbf{\imprimirtitulo}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  (\imprimirtituloacademico) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
+[AUTHOR’S SURNAME], [Author’s forename(s) initial(s)]. \textbf{\imprimirtitulo}. {\imprimirdata}. {\thelastpage}p. {\imprimirtipotrabalho}  (\imprimirtituloacademico) -- {\imprimirescola}, {\imprimiruniversidade}, {\imprimirlocal}, {\imprimirdata}.
 %:::% vernacular-abstract reference end %:::%
 
 %:::% vernacular-abstract body begin %:::%
@@ -1418,9 +1445,8 @@ I would like to acknowledge this awesome
 \href{https://quarto.org}{Quarto} format designed for creating theses
 and dissertations that comply with guidelines established by the
 Brazilian Association of Technical Standards
-(\href{https://www.abnt.org.br/}{ABNT}). It's based on the
-\href{https://www.abntex.net.br/}{abntex2} LaTeX class, which belongs to
-the \href{https://www.ctan.org/pkg/memoir}{memoir} class family.
+(\href{https://www.abnt.org.br/}{ABNT}). Learn more at
+\url{https://github.com/danielvartan/abnt}.
 
 %:::% vernacular-abstract body end %:::%
 
@@ -1440,7 +1466,7 @@ the \href{https://www.ctan.org/pkg/memoir}{memoir} class family.
 \begin{resumoenv}[\resumoestrangeironame]
 \begin{otherlanguage*}{brazil}
 %:::% foreign-abstract reference begin %:::%
-[SOBRENOME], [Inicial(is) do(s) prenome(s)].  \textbf{[Título]}. {\imprimirdata}. {\thelastpage}p. [Dissertação/Tese]  ([Título acadêmico]) -- [Escola/Faculdade], [Universidade], [Cidade/Local], {\imprimirdata}.
+[SOBRENOME DO AUTOR], [Inicial(is) do(s) prenome(s) do autor].  \textbf{[Título]}. {\imprimirdata}. {\thelastpage}p. [Dissertação/Tese]  ([Título acadêmico]) -- [Escola/Faculdade], [Universidade], [Cidade/Local], {\imprimirdata}.
 %:::% foreign-abstract reference end %:::%
 
 %:::% foreign-abstract body begin %:::%
@@ -1449,9 +1475,7 @@ the \href{https://www.ctan.org/pkg/memoir}{memoir} class family.
 \href{https://quarto.org}{Quarto} projetado para criar teses e
 dissertações que atendem às diretrizes estabelecidas pela Associação
 Brasileira de Normas Técnicas (\href{https://www.abnt.org.br/}{ABNT}).
-Ele é baseado na classe LaTeX
-\href{https://www.abntex.net.br/}{abntex2}, que pertence à família de
-classes \href{https://www.ctan.org/pkg/memoir}{memoir}.
+Saiba mais em \url{https://github.com/danielvartan/abnt}.
 
 %:::% foreign-abstract body end %:::%
 
@@ -1543,7 +1567,7 @@ Local time of mid-sleep on workdays.
 %:::% list-of-symbols body begin %:::%
 
 For an extensive list of chronobiology related symbols, please refer to
-\textcite{aschoff1965} and \textcite{marques2012a}.
+\textcite{aschoff1965} and \textcite{marques2012}.
 
 \begin{description}
 \item[\(\tau\)]
@@ -1603,54 +1627,43 @@ Phase relation.
 
 \chapter{{[}Showcase{]} Introduction}\label{sec-introduction}
 
-See Figure~\ref{fig-karl-popper}.
+Consectetur maecenas aliquet facilisis, porta volutpat, porta nulla
+cursus montes? Blandit gravida interdum turpis, dignissim maecenas
+metus, aptent sem vehicula quis inceptos. Accumsan nascetur cubilia,
+laoreet sed quis magna tempor dui cras. Hendrerit tortor sapien mauris
+aptent imperdiet rutrum in primis augue tristique felis. Lacinia
+suspendisse purus tortor natoque sollicitudin euismod -- nulla tempus
+dui posuere. Cras rhoncus vel, aliquam vivamus nec semper torquent
+praesent \autocite{einstein1905}. See Figure~\ref{fig-karl-popper}.
 
-``The activity can be represented by a \emph{general schema of
-problem-solving by the method of imaginative conjectures and criticism},
-or, as I have often called it, by \emph{the method of conjecture and
-refutation}. The schema (in its simplest form) is this
+\index{Karl Popper}
 
-\[
-\text{P}_{1} \to \text{TT} \to \text{EE} \to \text{P}_{2}
-\]
+\begingroup
+\setlength{\ABNTEXcitacaorecuo}{4.25cm} % Default: 4cm
 
-\vspace{1em}
-\index{KarlPopper}
+\begin{citacao}[english]
+The activity can be represented by a \textit{general schema of problem-solving by the method of imaginative conjectures and criticism}, or, as I have often called it, by \textit{the method of conjecture and refutation}. The schema (in its simplest form) is this:
 
-Here \(\text{P}_{1}\) is the \emph{problem} from which we start,
-\(\text{TT}\) (the `tentative theory') is the imaginative conjectural
-solution which we first reach, for example our first \emph{tentative
-interpretation}. \(\text{EE}\) (\emph{`error- elimination'}) consists of
-a severe critical examination of our conjecture, our tentative
-interpretation: it consists, for example, of the critical use of
-documentary evidence and, if we have at this early stage more than one
-conjecture at our disposal, it will also consist of a critical
-discussion and comparative evaluation of the competing conjectures.
-\(\text{P}_{2}\) is the problem situation as it emerges from our first
-critical attempt to solve our problems.
+\hspace{3.65cm} $\text{P}_{1} \to \text{TT} \to \text{EE} \to \text{P}_{2}$
 
-It leads up to our second attempt (\emph{and so on}). A satisfactory
-understanding will be reached if the interpretation, the conjectural
-theory, finds support in the fact that it can throw new light on new
-problems --- on more problems than we expected; or if it finds support
-in the fact that it explains many sub-problems, some of which were not
-seen to start with. Thus we may say that we can gauge the progress we
-have made by comparing \(\text{P}_{1}\) with some of our later problems
-(\(\text{P}_{n}\), say).''
+Here $\text{P}_{1}$ is the \textit{problem} from which we start,  $\text{TT}$ (the ‘tentative theory’) is the imaginative conjectural solution which we first reach, for example our first \textit{tentative interpretation}. $\text{EE}$ (\textit{‘error- elimination’}) consists of a severe critical examination of our conjecture, our tentative interpretation: it consists, for example, of the critical use of documentary evidence and, if we have at this early stage more than one conjecture at our disposal, it will also consist of a critical discussion and comparative evaluation of the competing conjectures. $\text{P}_{2}$ is the problem situation as it emerges from our first critical attempt to solve our problems.
 
-\vspace{15pt}
+It leads up to our second attempt (\textit{and so on}). A satisfactory understanding will be reached if the interpretation, the conjectural theory, finds support in the fact that it can throw new light on new problems --- on more problems than we expected; or if it finds support in the fact that it explains many sub-problems, some of which were not seen to start with. Thus we may say that we can gauge the progress we have made by comparing $\text{P}_{1}$ with some of our later problems ($\text{P}_{n}$, say).
+
 \noindent \hspace*{\fill} \autocite[164]{popper1979a}
-\vspace{15pt}
+\end{citacao}
+\endgroup
 
-Ipsum tempor laborum pariatur amet occaecat et culpa nisi eiusmod
-laborum ad culpa reprehenderit. Esse adipisicing et consectetur eu elit
-reprehenderit irure veniam. Quis ipsum ullamco id ea cillum. Fugiat elit
-ut laboris do ex culpa enim adipisicing id deserunt ullamco consectetur
-commodo nostrud. Veniam incididunt Lorem velit pariatur. Ipsum esse ut
-irure pariatur consequat pariatur sunt ad quis. Est ipsum dolore id
-pariatur ea commodo eiusmod non minim veniam. Est officia cupidatat
-ullamco elit cillum magna excepteur nostrud. Commodo anim qui elit
-occaecat anim veniam ipsum dolor consequat nostrud velit consequat.
+Adipiscing nostra aenean vivamus varius donec eleifend a ac feugiat
+mauris. Fermentum nunc suscipit dictumst aenean posuere ad massa fusce?
+Egestas dignissim, suscipit scelerisque blandit facilisi bibendum odio
+habitant? Commodo tincidunt aptent velit lobortis ut penatibus
+parturient sollicitudin gravida odio facilisis, imperdiet nibh vulputate
+faucibus cras gravida ad urna lobortis in tempor fusce scelerisque;
+magnis hendrerit -- tempus auctor aenean, venenatis malesuada torquent,
+dictum, diam nullam ad sagittis facilisi gravida metus cursus pulvinar
+rutrum torquent curae aliquam dui, id torquent duis tincidunt ornare
+torquent nam magna sapien suscipit \autocite{krakauer2019}.
 
 \index{figures}
 
@@ -1664,23 +1677,22 @@ One of the 20th century's most influential philosophers of science.}
 
 \includegraphics[width=0.5\linewidth,height=\textheight,keepaspectratio]{images/karl-popper.png}
 
-\legend{Source:
-\href{https://www.npg.org.uk/collections/search/portrait/mw08238/Sir-Karl-Raimund-Popper?}{Steve
+\legend{\href{https://www.npg.org.uk/collections/search/portrait/mw08238/Sir-Karl-Raimund-Popper?}{Steve
 Pyke}.}
 
 }
 
 \end{figure}%
 
-\section{Secondary Section}\label{secondary-section}
+\section{Heading 2}\label{heading-2}
 
-See Table~\ref{tbl-penguins}.
-
-Irure cillum ut nisi dolore voluptate esse ullamco deserunt. Mollit
-nulla ad eu amet fugiat velit mollit. Ea irure quis veniam sint ut
-cillum aliqua ipsum mollit dolore. Labore fugiat ullamco reprehenderit
-cupidatat adipisicing in pariatur dolor consectetur adipisicing proident
-culpa. Minim non deserunt sit occaecat.
+Adipiscing aliquet luctus dapibus hac mattis urna metus eleifend felis?
+Penatibus suspendisse lacinia tristique -- porttitor quisque est.
+Integer consequat donec dui faucibus netus fames eget porta fames.
+Montes aliquam vivamus magnis nascetur ad non dui magnis magnis
+condimentum! Tortor hendrerit orci feugiat mi, tristique; ante accumsan
+venenatis. Nisi posuere et ut nulla dictumst metus dui etiam vel
+ultricies velit \autocite{pearson1900}. See Table~\ref{tbl-penguins}.
 
 \index{tables}
 
@@ -1690,64 +1702,232 @@ culpa. Minim non deserunt sit occaecat.
 
 \centering{
 
-\fontsize{12.0pt}{14.0pt}\selectfont
+\fontsize{9.0pt}{11.0pt}\selectfont
 \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}ccrrr}
 \toprule
-Species & Island & Bill length (mm) & Bill depth (mm) & Flipper length (mm) \\ 
+\multicolumn{1}{l}{{\bfseries Species}} & \multicolumn{1}{l}{{\bfseries Island}} & {\bfseries Bill length (mm)} & {\bfseries Bill depth (mm)} & {\bfseries Flipper length (mm)} \\ 
 \midrule\addlinespace[2.5pt]
-Gentoo & Biscoe & 43.5 & 14.2 & 220 \\ 
-Adelie & Torgersen & 36.2 & 17.2 & 187 \\ 
-Chinstrap & Dream & 58.0 & 17.8 & 181 \\ 
-Adelie & Dream & 37.0 & 16.9 & 185 \\ 
-Adelie & Biscoe & 38.1 & 16.5 & 198 \\ 
+\multicolumn{1}{l}{{Gentoo}} & \multicolumn{1}{l}{{Biscoe}} & 43.5 & 14.2 & 220 \\ 
+\multicolumn{1}{l}{{Adelie}} & \multicolumn{1}{l}{{Torgersen}} & 36.2 & 17.2 & 187 \\ 
+\multicolumn{1}{l}{{Chinstrap}} & \multicolumn{1}{l}{{Dream}} & 58.0 & 17.8 & 181 \\ 
+\multicolumn{1}{l}{{Adelie}} & \multicolumn{1}{l}{{Dream}} & 37.0 & 16.9 & 185 \\ 
+\multicolumn{1}{l}{{Adelie}} & \multicolumn{1}{l}{{Biscoe}} & 38.1 & 16.5 & 198 \\ 
 \bottomrule
 \end{tabular*}
 
-\legend{Source: Based on \textcite{horst2020} penguin dataset.}
+\legend{Based on \textcite{horst2020} penguin dataset.}
 
 }
 
 \end{table}%
 
-\subsection{Tertiary Section}\label{tertiary-section}
+\subsection{Heading 3}\label{heading-3}
 
-Ullamco duis irure ipsum duis minim incididunt. Elit duis non qui sit
-sit. Labore consectetur laboris magna reprehenderit sint magna eiusmod
-occaecat. Sit aute ipsum laborum exercitation mollit cillum nulla Lorem.
-Quis adipisicing aliquip labore aute excepteur ut voluptate in proident
-culpa. Laborum minim quis tempor mollit excepteur excepteur.
+Consectetur facilisis montes, conubia eu justo luctus ante pulvinar ut
+vehicula. Tempor nam in non, ridiculus proin et molestie fames. Praesent
+curabitur est eu massa senectus proin; consequat malesuada nascetur.
+Vestibulum ut vel fermentum commodo ac suscipit sagittis; mi cubilia
+cursus inceptos in, dignissim penatibus inceptos mauris
+\autocite{neyman1928}. See Table~\ref{tbl-cohens-benchmark}.
 
-Culpa ex ut excepteur velit sunt et quis eu magna duis laboris ullamco
-id. Laboris officia exercitation elit incididunt amet exercitation.
-Consectetur eiusmod excepteur do Lorem et velit id. Aute dolore ipsum
-eiusmod ipsum veniam pariatur cillum ex adipisicing quis exercitation
-deserunt esse ea. Ut reprehenderit deserunt consectetur occaecat aute
-Lorem et voluptate ullamco. Ipsum aliquip qui elit id proident
-adipisicing nostrud in anim.
+Amet mollis -- egestas risus cubilia enim duis? Ultricies id mus nec
+integer; mollis libero. Facilisis maecenas tellus euismod, inceptos
+consequat morbi. Leo viverra ultricies condimentum venenatis consequat
+taciti viverra? At suspendisse volutpat phasellus quisque vitae
+porttitor enim. Placerat quisque rutrum nisl praesent; aliquam pharetra
+fringilla. Na fringilla \autocite{neyman1928a}. See
+Figure~\ref{fig-gini-index}.
 
 \index{figures!chart}
 
 \begin{figure}[H]
 
-\caption{\label{fig-eruption}Relation between \emph{waiting time to next
-eruption} (minutes) and \emph{eruption time} (minutes) at Old Faithful
-Geyser, Yellowstone National Park, Wyoming, USA}
+\caption{\label{fig-gini-index}Gini index by Brazilian municipality in
+2010. Values range from 0 (perfect equality) to 1 (total inequality).}
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/unnamed-chunk-5-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/unnamed-chunk-9-1.png}}
 
-\legend{Source: Reproduced from the
-\href{https://ggplot2.tidyverse.org/reference/geom_density_2d.html}{ggplot2
-R package documentation} \autocite{wickham2016a}.}
+\legendleft{Data extracted from \textcite{ibge}, processed by
+\textcite{vartanian2025r}.}
 
 }
 
 \end{figure}%
 
+\index{tables}
+
+\clearpage
+\begingroup
+\begin{landscape}
+\renewcommand{\arraystretch}{2.5}
+
+\begin{table}
+
+\caption{\label{tbl-cohens-benchmark}Cohen's benchmark for effect sizes}
+
+\centering{
+
+\fontsize{9.0pt}{11.0pt}\selectfont
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}llccc}
+\toprule
+ &  & \multicolumn{3}{c}{{\bfseries Effect Size Classes}} \\ 
+\cmidrule(lr){3-5}
+{\bfseries Test} & {\bfseries Relevant Effect Size} & {\bfseries Small} & {\bfseries Medium} & {\bfseries Large} \\ 
+\midrule\addlinespace[2.5pt]
+Comparison of independent means & \(d\), \(\Delta\), Hedges' \(g\) & 0.20 & 0.50 & 0.80 \\ 
+Comparison of two correlations & \(q\) & 0.10 & 0.30 & 0.50 \\ 
+Difference between proportions & Cohen's \(g\) & 0.05 & 0.15 & 0.25 \\ 
+Correlation & \(r\) & 0.10 & 0.30 & 0.50 \\ 
+ & \(r^{2}\) & 0.01 & 0.09 & 0.25 \\ 
+Crosstabulation & \(w\), \(\varphi\), \(V\), \(C\) & 0.10 & 0.30 & 0.50 \\ 
+ANOVA & \(f\) & 0.10 & 0.25 & 0.40 \\ 
+ & \(\eta^{2}\) & 0.01 & 0.06 & 0.14 \\ 
+Multiple regression & \(R^{2}\) & 0.02 & 0.13 & 0.26 \\ 
+ & \(f^{2}\) & 0.02 & 0.15 & 0.35 \\ 
+\bottomrule
+\end{tabular*}
+\begin{minipage}{\linewidth}
+\vspace{.05em}
+ \\
+ \\
+Notes: The rationale for most of these benchmarks can be found in Cohen (1988) at the following pages: Cohen's \(d\) (p. 40), \(q\) (p. 115), Cohen's \(g\) (pp. 147--149), \(r\) and \(r^{2}\) (pp. 79--80), Cohen's \(w\) (pp. 224--227), \(f\) and \(\eta^{2}\) (pp. 285--287), \(R^{2}\) and \(f^{2}\) (pp. 413--414).\\
+\end{minipage}
+
+\legend{Adapted from \textcite{ellis2010}. Based on
+\textcite{cohen1988a}.}
+
+}
+
+\end{table}%
+
+\end{landscape}
+\endgroup
 \clearpage
 
-\subsubsection{Quaternary Section}\label{quaternary-section}
+\section{Heading 2}\label{heading-2-1}
+
+Lorem volutpat hendrerit porta sem vehicula aliquam sed phasellus. Ante
+cursus primis taciti interdum augue elementum imperdiet eu. Placerat
+arcu nisi tristique sodales. Convallis enim lacus class suspendisse
+porttitor litora ante conubia risus turpis! Quis nisl
+\autocite{markov2006}. See Figure~\ref{fig-mpg}.
+
+\index{figures!chart}
+
+\begin{figure}[H]
+
+\caption{\label{fig-mpg}Marginal distributions of weight (\emph{1000
+lbs}) and fuel efficiency (\emph{miles per gallon}) for combustion
+engine vehicles}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/unnamed-chunk-12-1.png}}
+
+\legendleft{Data extracted from the 1974 Motor Trend magazine, published
+by \textcite{henderson1981}. Visualization by \textcite{holtz},
+available at
+\href{https://r-graph-gallery.com/277-marginal-histogram-for-ggplot2.html}{The
+R Graph Gallery}.}
+
+}
+
+\end{figure}%
+
+\subsection{Heading 3}\label{heading-3-1}
+
+Sit est tincidunt; augue quisque senectus natoque ullamcorper, convallis
+curabitur vitae nunc. Tristique nullam sed, scelerisque egestas commodo
+facilisis feugiat vitae natoque lobortis praesent? Ad pulvinar quisque
+hendrerit magnis dictumst? Scelerisque dictumst augue per non cras,
+aliquet aliquam posuere facilisi varius porta auctor. Laoreet erat
+class, parturient hendrerit integer nibh, curabitur pulvinar accumsan
+tortor, sociosqu sodales, mollis, viverra mi bibendum, nulla rutrum,
+condimentum quam malesuada torquent ultricies penatibus non viverra
+mattis, mollis morbi sagittis \autocite{perezgonzalez2015}. See
+Definition~\ref{def-multiple-linear-regression}.
+
+\begin{definition}[Multiple Linear
+Regression]\protect\hypertarget{def-multiple-linear-regression}{}\label{def-multiple-linear-regression}
+
+A linear regression of \(Y\) on \(k\) variables \(X_{1}, \dots, X_{k}\),
+rather than on just a single variable \(X\). In a problem of multiple
+linear regressions, we obtain \(n\) vectors of observations
+(\(x_{i1}. \dots, x_{ik}, Y_{i}\)), for \(i = 1, \dots, n\). Here
+\(x_{ij}\) is the observed value of the variable \(X_{j}\) for the
+\(i\)th observation. The \(E(Y_{i})\) is given by the relation:
+\autocite[738]{degroot2012a}
+
+\begin{equation}\phantomsection\label{eq-multiple-linear-regression-function}{
+E(Y_{i}) = \beta_{0} + \beta_{1} x_{i1} + \dots + \beta_{k} x_{ik}
+}\end{equation}
+
+\end{definition}
+
+Adipiscing auctor sagittis, netus, mollis pulvinar interdum inceptos.
+Primis nascetur congue nam class, leo nunc -- faucibus fermentum
+tincidunt fames vestibulum curabitur? Auctor justo arcu, posuere id
+dignissim risus sapien. Tristique inceptos mi arcu viverra gravida
+malesuada arcu nam dictum nisl. Fermentum pretium lobortis dignissim
+sociosqu, vulputate nisi cubilia vehicula laoreet. Eros libero dui
+ligula diam cubilia pharetra vivamus commodo sociosqu pellentesque, ut
+nulla nibh -- tincidunt quisque semper cum, eros bibendum gravida libero
+aliquet netus, montes, turpis: rutrum, eu mollis, gravida diam fames
+fames, himenaeos viverra pharetra, sed congue, sapien integer
+ullamcorper euismod auctor cras nec aliquam sociis lectus dui porta
+fames aptent \autocite{epstein2013a}. See Table~\ref{tbl-error-types}.
+
+\index{tables}
+
+\begingroup
+\setlength{\tabcolsep}{0pt}
+
+\begin{table}
+
+\caption{\label{tbl-error-types}Type I and type II errors}
+
+\centering{
+
+\fontsize{9.0pt}{11.0pt}\selectfont
+\begin{tabular*}{0.7\linewidth}{@{\extracolsep{\fill}}ccc}
+\toprule
+{\bfseries Decision about \(\text{H}_{0}\)} & {\bfseries \(\text{H}_{0}\) True} & {\bfseries \(\text{H}_{0}\) False} \\ 
+\midrule\addlinespace[2.5pt]
+ & {\cellcolor[HTML]{F1FFF1}{\textcolor[HTML]{000000}{Correct inference}}} & {\cellcolor[HTML]{FFEEEE}{\textcolor[HTML]{000000}{Type II error}}} \\ 
+Accept & {\cellcolor[HTML]{F1FFF1}{\textcolor[HTML]{000000}{(True negative)}}} & {\cellcolor[HTML]{FFEEEE}{\textcolor[HTML]{000000}{(False negative)}}} \\ 
+ & {\cellcolor[HTML]{F1FFF1}{\textcolor[HTML]{000000}{(\(1 - \alpha\))}}} & {\cellcolor[HTML]{FFEEEE}{\textcolor[HTML]{000000}{(\(\beta\))}}} \\ 
+ & {\cellcolor[HTML]{FFEEEE}{\textcolor[HTML]{000000}{Type I error}}} & {\cellcolor[HTML]{F1FFF1}{\textcolor[HTML]{000000}{Correct inference}}} \\ 
+Reject & {\cellcolor[HTML]{FFEEEE}{\textcolor[HTML]{000000}{(False positive)}}} & {\cellcolor[HTML]{F1FFF1}{\textcolor[HTML]{000000}{(True positive)}}} \\ 
+ & {\cellcolor[HTML]{FFEEEE}{\textcolor[HTML]{000000}{(\(\alpha\))}}} & {\cellcolor[HTML]{F1FFF1}{\textcolor[HTML]{000000}{(\(1 - \beta\))}}} \\ 
+\bottomrule
+\end{tabular*}
+
+\legend{Based on \textcite[383]{casella2002}}
+
+}
+
+\end{table}%
+
+\endgroup
+
+\subsubsection{Heading 4}\label{heading-4}
+
+Lorem sollicitudin pellentesque leo, luctus habitant proin sodales morbi
+-- sed -- convallis turpis netus. Fusce sodales ut cubilia arcu,
+pulvinar diam semper, nostra rhoncus odio. Non potenti tortor integer
+molestie, eros nisl dictumst nostra? Proin venenatis faucibus ac commodo
+turpis himenaeos mi netus vivamus? Congue semper cum curabitur nam
+quisque neque euismod vitae congue potenti, quam fames accumsan fusce
+dapibus sodales phasellus, parturient; scelerisque, odio, fames ante
+vulputate torquent diam blandit, at suscipit lacus augue lacus mi
+ultricies pulvinar non eget consequat \autocite{marcusaurelius2011}.
+
+Adipiscing molestie egestas sapien aliquet scelerisque justo
+sollicitudin tempus arcu porta viverra varius maecenas volutpat enim hac
+neque pharetra non non potenti tellus ligula iaculis porta diam
+phasellus torquent vivamus \autocite{more2014}.
 
 \begin{itemize}
 \tightlist
@@ -1767,7 +1947,18 @@ R package documentation} \autocite{wickham2016a}.}
   \end{itemize}
 \end{itemize}
 
-\paragraph{Quinary Section}\label{quinary-section}
+\paragraph{Heading 5}\label{heading-5}
+
+Amet erat id ultricies, lacus malesuada platea varius cras! Himenaeos et
+eu sociosqu natoque laoreet vel egestas. Laoreet donec convallis
+scelerisque feugiat, duis, auctor potenti etiam, dictumst imperdiet cras
+blandit. Vehicula sed tortor ridiculus, sodales dignissim parturient,
+commodo aliquet pellentesque. Ac velit nec augue faucibus, scelerisque
+semper suspendisse aliquam lacinia viverra nec molestie eleifend
+suscipit, ultricies taciti: ullamcorper, lacinia ornare scelerisque dis,
+ultricies est justo turpis ad magnis, senectus risus duis augue
+phasellus euismod parturient posuere fusce \autocite{papert2020}. See
+Table~\ref{tbl-error-types}.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1780,145 +1971,265 @@ R package documentation} \autocite{wickham2016a}.}
   List
 \end{enumerate}
 
-\section{Another Secondary Section}\label{another-secondary-section}
+\bookmarksetup{startatroot}
 
-See Figure~\ref{fig-mpg}.
+\chapter{{[}Showcase{]} Development}\label{sec-development}
 
-Laboris eu quis in ut ipsum. Laborum qui tempor laboris ad cillum velit
-ea minim adipisicing magna labore mollit officia. Mollit cillum id do
-sint irure ut velit amet aliqua ipsum mollit adipisicing. Reprehenderit
-deserunt mollit consequat qui laborum occaecat laboris. Deserunt
-pariatur Lorem est reprehenderit excepteur aliqua esse in nostrud aute
-velit. Veniam cupidatat aute id adipisicing aute proident ut
-reprehenderit. Cillum non et est deserunt quis commodo.
+Ipsum mauris nec turpis ultricies dapibus montes, habitasse proin nostra
+posuere nulla! Facilisis magnis iaculis nunc dis facilisi tristique
+fusce phasellus inceptos senectus! Sem imperdiet pharetra rutrum
+interdum metus primis tempus posuere est libero. Fermentum purus viverra
+porttitor, bibendum, placerat pulvinar nostra volutpat nulla neque,
+venenatis parturient: convallis mi, ultricies nam viverra quisque neque
+natoque duis suscipit turpis \autocite{watson1953}.
 
-Tempor sint dolore ea adipisicing id voluptate est duis est consectetur
-Lorem. Dolore tempor dolor esse sit nulla fugiat aute labore aute
-laboris. Aliquip duis duis voluptate do et consectetur ad culpa sint
-proident. Id in elit deserunt dolore est est ullamco laboris commodo
-labore consectetur qui. Officia ut do nisi excepteur ex. Proident
-aliquip laboris culpa esse excepteur nisi. Adipisicing ex qui cillum ad
-commodo dolor quis ipsum ea anim. Deserunt culpa adipisicing ea ex
-adipisicing ad id. Ullamco tempor voluptate fugiat qui Lorem est eu
-reprehenderit tempor irure aute consequat eiusmod aliqua. Ex Lorem
-exercitation anim elit in ut consectetur ad.
+\section{Heading 2}\label{heading-2-2}
 
-Consectetur consequat mollit esse laborum aliquip laborum veniam in
-duis. Deserunt nostrud duis ipsum adipisicing pariatur nulla et
-consectetur qui laborum deserunt irure duis. Duis nulla ad quis sint do
-esse reprehenderit. Enim nulla exercitation sunt excepteur Lorem labore
-adipisicing anim elit nisi officia velit ut ut. Sit reprehenderit
-officia quis sit ut elit duis enim. Sit irure anim deserunt laboris
-proident ea labore in sit culpa labore. Aliqua ea sit magna dolore.
+the \href{https://en.wikipedia.org/wiki/Lorenz_system}{Lorenz system},
+originally introduced by Edward N. Lorenz \autocite*{lorenz1963} in his
+seminal paper, comprises three coupled, nonlinear ordinary differential
+equations that model atmospheric convection, effectively illustrating
+the chaotic nature of weather patterns.
 
-Sint do ad minim officia. Magna proident commodo ipsum nostrud pariatur
-exercitation eiusmod. Laboris et ut eiusmod quis ex. Laborum non magna
-ex cupidatat voluptate ullamco. Enim cillum ipsum minim sint velit
-veniam magna nostrud sit. Dolor eiusmod ut et incididunt commodo
-proident sint laborum laborum eiusmod amet. Laboris in incididunt non
-sit dolore amet laborum do ad esse enim. Laboris laboris cupidatat ad
-aliqua dolore nostrud nostrud consectetur proident. Ut fugiat qui velit
-quis cillum enim mollit anim quis. Lorem et do excepteur aliqua ad.
+The dynamics of the model are represented by the following set of
+first-order, nonlinear differential equations:
 
+\begin{equation}\phantomsection\label{eq-lorenz-system}{
+\begin{aligned}
+\frac{dx}{dt} &= \sigma(y - x), \\
+\frac{dy}{dt} &= x(\rho - z) - y \\
+\frac{dz}{dt} &= xy - \beta z
+\end{aligned}
+}\end{equation}
+
+In these \hyperref[eq-lorenz-system]{equations}:
+
+\begin{itemize}
+\tightlist
+\item
+  \(x\) represents the rate of convection;
+\item
+  \(y\) denotes the horizontal temperature variation;
+\item
+  \(z\) indicates the vertical temperature variation;
+\item
+  \(\sigma\), \(\rho\), and \(\beta\) are system parameters
+  corresponding to the
+  \href{https://en.wikipedia.org/wiki/Prandtl_number}{Prandtl number},
+  \href{https://en.wikipedia.org/wiki/Rayleigh_number}{Rayleigh number},
+  and specific physical dimensions of the fluid layer.
+\end{itemize}
+
+The phase space visualization of this system
+(Figure~\ref{fig-lorenz-system}) reveals intricate patterns and
+behaviors, including the presence of strange attractors, which are
+indicative of chaotic dynamics. To learn more about the Lorenz system,
+see \textcite{lorenz2008}.
+
+\index{figures!chart}
+
+\index{Lorenz system}
 \index{figures!chart}
 
 \begin{figure}[H]
 
-\caption{\label{fig-mpg}Relation between \emph{weight (1000lbs)} and
-\emph{miles per gallon} for combustion engine vehicles}
+\caption{\label{fig-lorenz-system}Phase space visualization of the
+Lorenz system}
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/unnamed-chunk-7-1.png}}
+\pandocbounded{\includegraphics[keepaspectratio]{qmd/development_files/figure-pdf/unnamed-chunk-5-1.png}}
 
-\legend{Source: Data extracted from the 1974 Motor Trend magazine,
-published by \textcite{henderson1981}. Visualization by
-\textcite{holtz}, available at
-\href{https://r-graph-gallery.com/277-marginal-histogram-for-ggplot2.html}{The
-R Graph Gallery}.}
+\legend{Reproduced from \textcite{vartanian2024d}. Based on
+\textcite{lorenz1963}.}
 
 }
 
 \end{figure}%
 
-\bookmarksetup{startatroot}
+\subsection{Heading 3}\label{heading-3-2}
 
-\chapter{{[}Showcase{]} Development}\label{sec-development}
+Sit dui aliquet eu felis ut morbi sociis cubilia tincidunt vehicula nibh
+pretium nec ac cubilia vulputate risus pretium cursus risus dictumst
+placerat volutpat quisque nisl massa ac elementum curae malesuada
+blandit sollicitudin curabitur congue cum scelerisque congue neque orci
+\autocite{freire2013a}.
 
-Aliqua aute non qui sint reprehenderit ullamco. Sunt fugiat voluptate
-laborum adipisicing est ad. Nisi irure ex nostrud officia officia
-laboris veniam. In occaecat non amet do veniam. Amet officia pariatur
-sint consequat dolor deserunt elit quis ad. Velit sint ut in cupidatat
-eiusmod velit voluptate voluptate culpa exercitation veniam. Minim
-proident mollit quis deserunt officia cillum consectetur ipsum.
+Adipiscing rhoncus vel class magna viverra imperdiet nullam, penatibus
+erat torquent ullamcorper? Sollicitudin nam sociosqu neque eget non
+aptent ut consequat facilisi hendrerit montes. Tincidunt morbi quisque
+venenatis molestie neque ligula pulvinar senectus. Pharetra convallis
+nisi dui justo in vulputate non est habitant inceptos maecenas taciti
+inceptos metus, ultricies lacus montes vehicula morbi velit condimentum;
+platea, litora sollicitudin volutpat cras ultrices eleifend dapibus orci
+penatibus tristique cubilia, velit imperdiet vivamus tellus dignissim
+purus himenaeos bibendum \autocite{walker2024a}. See
+Figure~\ref{fig-sao-paulo-tracts}.
 
-Fugiat enim ut consequat eu enim cupidatat pariatur labore adipisicing
-quis irure pariatur esse voluptate. Elit sunt amet cillum quis
-consectetur ad cillum incididunt officia quis. Culpa in deserunt aliquip
-quis. Reprehenderit veniam voluptate nisi ullamco culpa. Amet incididunt
-Lorem ut nulla ad. Ipsum pariatur cupidatat irure sit amet minim qui
-excepteur aliquip est cillum labore quis commodo.
+\index{figures!chart}
 
-\section{Secondary Section}\label{secondary-section-1}
+\begin{figure}[H]
 
-Tempor do consequat tempor minim elit fugiat aute sit ea aliqua laborum
-ullamco occaecat reprehenderit. Laboris ex commodo enim excepteur ut
-consectetur elit ullamco eu qui pariatur ullamco sint. Excepteur
-cupidatat do esse nisi sint nulla duis dolor et consectetur mollit. Sunt
-cillum eiusmod excepteur eiusmod nostrud nisi magna. Do anim elit ex
-irure cillum qui proident dolor labore cillum incididunt duis culpa
-voluptate. Incididunt do sint labore dolore eiusmod veniam proident
-consequat commodo aliquip aliqua excepteur ex.
+\caption{\label{fig-sao-paulo-tracts}Population by census tract in 2022
+in the city of São Paulo, Brazil}
 
-Ex officia minim laborum adipisicing dolor elit velit. Minim dolore anim
-pariatur sint veniam adipisicing aute est sint magna exercitation magna.
-Dolore deserunt officia dolore quis cupidatat minim cupidatat excepteur
-Lorem nisi aliquip elit do cupidatat. Lorem voluptate deserunt do culpa
-dolor id qui et tempor eu esse reprehenderit fugiat. Ullamco in aliquip
-nulla ex eu fugiat consequat aliqua et adipisicing in laborum. Est
-laborum occaecat amet exercitation cillum proident irure. Id irure elit
-id occaecat qui aliqua nisi veniam irure cupidatat Lorem sint fugiat
-qui.
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{qmd/development_files/figure-pdf/unnamed-chunk-13-1.png}}
+
+\legendleft{Tract boundary data from the
+\href{https://www.ibge.gov.br/en/statistics/social/labor/22836-2022-census-3.html}{Brazilian
+2022 Census} and municipal boundary data imported via the
+\href{https://ipeagit.github.io/censobr/}{censobr} \autocite{pereirab}
+and \href{https://ipeagit.github.io/geobr/}{geobr} \autocite{pereirab} R
+packages.}
+
+}
+
+\end{figure}%
+
+\section{Heading 2}\label{heading-2-3}
+
+Lorem gravida elementum augue ante auctor venenatis felis ante enim
+augue? Maecenas et vel ut nisi -- consequat quisque pellentesque
+ridiculus: molestie mollis! Ridiculus magna accumsan ut cum, sapien
+tempus. Cras sociis phasellus metus lobortis neque pretium quisque fusce
+posuere velit conubia vestibulum tellus platea lacinia class est quis a
+placerat est ultrices enim sociis facilisis nisi dis laoreet, torquent,
+duis himenaeos viverra ad, tortor -- et mi, duis, velit, erat gravida
+imperdiet cursus vitae justo, rhoncus; dis taciti erat ut quisque
+facilisi risus fusce taciti, molestie faucibus phasellus, auctor porta
+platea enim malesuada venenatis nullam nibh sollicitudin dictumst
+condimentum habitant quis arcu malesuada etiam \autocite{hopfield1984}.
+See Figure~\ref{fig-eruption}.
+
+\index{figures!chart}
+
+\begin{figure}[H]
+
+\caption{\label{fig-eruption}Relation between \emph{waiting time to next
+eruption} (minutes) and \emph{eruption time} (minutes) at Old Faithful
+Geyser, Yellowstone National Park, Wyoming, USA}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{qmd/development_files/figure-pdf/unnamed-chunk-15-1.png}}
+
+\legend{Reproduced from the
+\href{https://ggplot2.tidyverse.org/reference/geom_density_2d.html}{ggplot2}
+R package documentation \autocite{wickham2016a}.}
+
+}
+
+\end{figure}%
+
+Elit ad ligula enim sodales, elementum risus erat metus eget mollis.
+Ridiculus iaculis nam dictum eros eros -- at rutrum nostra ornare? Nisl
+pellentesque consequat, praesent id aenean, elementum ante. Luctus porta
+ornare at commodo penatibus lectus congue leo lacus aliquam a egestas
+erat ligula aliquam himenaeos penatibus ante phasellus vestibulum erat
+ac curae consequat natoque tempor vivamus potenti nunc neque cum
+dictumst ornare proin ornare faucibus pretium netus maecenas consequat
+nibh diam aliquet tristique, velit platea dictum hendrerit volutpat,
+tellus blandit morbi varius massa ad fames -- vitae, lectus neque diam
+eget, aptent tempor elementum sodales, nunc nostra; dictumst molestie
+hendrerit imperdiet, erat, pellentesque conubia felis montes per dui
+mattis donec proin curae conubia enim sagittis ullamcorper molestie
+mattis eleifend purus per bibendum a ridiculus odio nec vitae morbi
+gravida ridiculus tincidunt per posuere lectus ornare bibendum tempor
+risus pharetra platea aptent lectus congue viverra libero tempus
+maecenas per \autocite{holland2012}.
+
+The hypothesis can be outlined as follows:
+
+\begin{description}
+\tightlist
+\item[\textbf{Null Hypothesis} (\(\text{H}_{0}\))]
+Including \emph{latitude} as a predictor does not result in a meaningful
+improvement in the model's fit, as evidenced by a change in the adjusted
+\(\text{R}^{2}\) that is less than the Minimum Effect Size (MES).
+\item[\textbf{Alternative Hypothesis} (\(\text{H}_{a}\))]
+Including \emph{latitude} as a predictor results in a meaningful
+improvement in the model's fit, as evidenced by a change in the adjusted
+\(\text{R}^{2}\) that meets or exceeds the Minimum Effect Size (MES).
+\end{description}
+
+Formally:
+
+\begin{conjecture}[Data
+Test]\protect\hypertarget{cnj-hypothesis-test}{}\label{cnj-hypothesis-test}
+
+\[
+\begin{cases}
+  \text{H}_{0}: \Delta \ \text{Adjusted} \ \text{R}^{2} < \text{MES} \\
+  \text{H}_{a}: \Delta \ \text{Adjusted} \ \text{R}^{2} \geq \text{MES}
+\end{cases}
+\]
+
+\end{conjecture}
+
+Where:
+
+\begin{equation}\phantomsection\label{eq-adjusted-r-squared-delta}{
+\Delta \ \text{Adjusted} \ \text{R}^{2} = \text{Adjusted} \ \text{R}^{2}_{f} - \text{Adjusted} \ \text{R}^{2}_{r}
+}\end{equation}
+
+Lorem arcu egestas cum facilisi pharetra sapien litora. Egestas faucibus
+libero ullamcorper nisi ac pellentesque, rutrum sed rutrum at --
+elementum mi? Phasellus sapien ornare vulputate molestie lacinia sodales
+mollis tristique placerat lectus iaculis molestie eu porta suscipit
+phasellus phasellus eu nibh fames mus molestie eros cum suspendisse cum
+faucibus nunc ultrices facilisi id a porttitor aliquet leo vivamus
+pellentesque enim interdum diam ornare placerat porta malesuada quisque
+fermentum arcu, eros dictum mattis, dui, fringilla ante hendrerit
+ultricies, sociosqu dictumst sollicitudin, pulvinar purus, penatibus
+cubilia, a, nullam turpis, placerat mauris, sociosqu dictum dis, magnis
+nibh lobortis potenti, non, phasellus, urna class, sed fusce dui, enim
+imperdiet duis nascetur bibendum curabitur class sem nullam diam, curae
+mus eleifend accumsan ut phasellus molestie habitasse commodo
+pellentesque mattis tempor magna pulvinar per turpis velit magna
+eleifend dignissim dictumst ante cum nullam dui dignissim massa
+himenaeos phasellus fusce sapien est platea congue gravida convallis
+praesent tempus cras porta justo nam diam fusce eros aliquet
+\autocite{thoreau2017}.
 
 \bookmarksetup{startatroot}
 
 \chapter{{[}Showcase{]} Conclusion}\label{sec-conclusion}
 
-In anim magna nostrud incididunt proident esse esse. Consequat velit
-consequat ex consequat veniam occaecat. Duis nisi Lorem adipisicing
-dolore dolore cupidatat esse eiusmod culpa cupidatat deserunt ex.
-Pariatur aliquip ea enim aliquip. Labore ut esse incididunt veniam
-voluptate pariatur laborum ea nostrud dolor labore labore deserunt
-deserunt. Culpa dolore in cillum elit veniam irure officia irure magna.
-Ipsum minim culpa ipsum ea ut dolore ex est.
+\epigraph{Every genuine test of a theory is an attempt to falsify it, or to refute it.}{--- \textcite{popper2002}}
+\vspace*{-1\baselineskip}
+\epigraph{I suggest that it is the aim of science to find satisfactory explanations, of whatever strikes us as being in need of explanation.}{--- \textcite[193]{popper1979a}}
+% \vspace*{1\baselineskip}
 
-In ex Lorem voluptate fugiat. Aliquip qui ex fugiat quis non quis ut. Id
-nostrud proident ex aliqua Lorem aliqua laboris. Et ea eu ullamco aute
-cillum ullamco eiusmod excepteur culpa tempor adipisicing veniam
-adipisicing. Deserunt quis cillum dolore proident minim. Quis
-exercitation in minim irure. Enim anim esse et mollit. Commodo ipsum sit
-nulla Lorem eiusmod aliqua commodo elit magna incididunt. Ea cupidatat
-excepteur exercitation eiusmod esse mollit officia.
+Ipsum ad curae dapibus -- nulla scelerisque magna condimentum dapibus
+commodo ac. Nisi mi lectus porttitor vestibulum enim proin sociosqu
+magna egestas imperdiet viverra conubia placerat faucibus id facilisi,
+ante neque magna tempus scelerisque vehicula, himenaeos lacinia, nibh eu
+mattis lacinia hendrerit, conubia integer donec vestibulum mollis at
+tortor semper dui rutrum facilisis orci scelerisque lacus nibh ut
+quisque vestibulum elementum \autocite{gell-mann2023}.
 
-\section{Secondary Section}\label{secondary-section-2}
+\section{Heading 2}\label{heading-2-4}
 
-Aute laboris eiusmod ea sunt excepteur in nisi ipsum. Nostrud ea quis ex
-ullamco aliqua enim. Laborum excepteur fugiat anim voluptate nulla
-fugiat sint sint minim laborum elit excepteur. Exercitation eiusmod
-irure cillum elit nulla ad sint ad enim non enim do consectetur anim.
-Dolore nostrud esse proident magna dolore elit duis commodo laboris
-excepteur esse.
+Consectetur tempor eros luctus tempor sagittis nam iaculis. Torquent
+torquent lacinia et gravida. Scelerisque condimentum nulla primis diam
+varius, mauris etiam viverra rutrum pharetra consequat arcu malesuada.
+Ut faucibus pulvinar habitasse per sem; convallis mauris tristique est
+semper nam mollis. Semper conubia justo commodo quis auctor; augue vel
+pellentesque sociis mattis. Massa blandit id tincidunt et, fringilla
+magna per cum ullamcorper -- nec morbi congue, id justo senectus aptent
+et rhoncus consequat, torquent interdum ante scelerisque aenean hac
+magna \autocite{lecun2015}.
 
-Excepteur ipsum ex qui occaecat minim dolore elit sunt tempor. Nulla
-occaecat est nisi irure voluptate id mollit sunt nisi. In qui qui
-adipisicing et. Ex ipsum dolore aute minim. Ad aliquip fugiat amet
-exercitation ea aliquip aliqua pariatur. Labore minim dolor ex eu veniam
-amet laboris proident esse. Id et elit ex enim eu ullamco est
-adipisicing nostrud. Elit adipisicing consequat ullamco minim mollit sit
-quis minim sit esse quis. Cillum cupidatat cillum reprehenderit
-voluptate ex deserunt ut est quis aute irure esse velit. Aliquip ad elit
-labore ea amet amet et excepteur voluptate veniam tempor id nostrud
-sint.
+Elit cursus maecenas nullam quisque, etiam -- maecenas aenean nulla
+tempus. Eu risus, vulputate turpis risus; nisl tincidunt integer
+faucibus viverra? Pretium turpis scelerisque mollis dictum cum? Nisi
+mollis per ac in vel rutrum. Himenaeos molestie primis non placerat
+morbi laoreet tincidunt enim, scelerisque justo venenatis montes nostra
+curae, sollicitudin ornare scelerisque quisque est rutrum ante tincidunt
+vehicula commodo viverra aenean rhoncus penatibus iaculis, faucibus dui
+mattis, sagittis dictum elementum \autocite{foster1972}.
 
 \postextual
 
@@ -1943,7 +2254,7 @@ sint.
 \markboth{Glossary}{Glossary}
 
 For an extensive list of chronobiology related terms and definitions,
-please refer to \textcite{aschoff1965} and \textcite{marques2012a}.
+please refer to \textcite{aschoff1965} and \textcite{marques2012}.
 
 \begin{description}
 \item[Chronotype]
@@ -1963,7 +2274,7 @@ Example: the sleep-wake cycle.
 \item[Complex system]
 \hspace{20cm}
 
-There are several definitions. Here are some that I found to be of use:
+Several definitions exist. The following are particularly useful:
 \end{description}
 
 \begin{itemize}
@@ -1996,35 +2307,38 @@ circadian rhythm when exposed to light.
 
 \chapter{{[}Showcase{]}}\label{sec-appendix-a}
 
-Ipsum do culpa sit mollit Lorem voluptate ad exercitation proident
-aliqua. Anim enim quis consequat magna aliquip nulla. Commodo culpa
-voluptate aute magna ea anim aute adipisicing elit eu do consectetur.
-Tempor mollit cillum voluptate reprehenderit ullamco officia enim
-voluptate elit. Laboris anim consectetur culpa ex id irure et cillum
-labore qui sint. Reprehenderit officia reprehenderit incididunt aliquip
-aute aliqua proident ipsum dolore ipsum. Do tempor culpa occaecat ipsum
-consequat quis. Officia et laborum dolor eu minim id quis elit non
-labore amet anim.
+Ipsum molestie hendrerit potenti rhoncus sagittis. Et pulvinar massa
+montes urna cras rhoncus lectus quam felis risus magna quisque torquent
+luctus eros ultrices, tellus curae purus suscipit porttitor magnis
+donec, aliquet orci dictum scelerisque, ac, sociis, volutpat euismod
+bibendum, elementum, risus posuere non, quisque quisque: donec nisi nunc
+auctor convallis scelerisque iaculis sodales mus praesent class mollis
+ad ornare himenaeos nostra \autocite{vonneumann1993a}.
 
-Non quis proident et reprehenderit proident. Proident sint labore tempor
-incididunt quis deserunt ex incididunt nostrud qui elit pariatur.
-Proident cupidatat quis commodo magna cupidatat cupidatat. Ut quis eu ea
-Lorem velit laborum dolor laborum esse. Consequat velit in laboris
-ullamco aliqua cupidatat duis consequat. Eu amet tempor enim
-exercitation aliquip esse fugiat nostrud culpa. Voluptate quis officia
-Lorem deserunt elit fugiat ullamco amet duis proident. Sint eu eiusmod
-proident magna.
+\section{Heading 2}\label{heading-2-5}
 
-\section{Secondary Section}\label{secondary-section-3}
+Ipsum condimentum sem ultricies class augue vestibulum congue nostra
+cubilia ridiculus. Ullamcorper nostra dapibus sapien porta; inceptos
+urna ultrices; nam facilisi conubia. Nibh per viverra, praesent morbi,
+sapien aenean condimentum, penatibus in mollis, himenaeos ultricies
+iaculis! Nec varius at placerat habitasse pellentesque penatibus:
+eleifend sollicitudin curae magna. Neque rhoncus vulputate, dis,
+convallis accumsan venenatis pretium cras. Quam sapien iaculis felis
+scelerisque suspendisse dapibus, cum rhoncus dapibus quis sem, integer
+rhoncus diam est gravida etiam facilisi, ultricies viverra luctus sed
+arcu non scelerisque urna bibendum sed laoreet mi leo a quam tincidunt
+\autocite{lorenz1963}.
 
-Anim ut est ea aliqua culpa officia ut fugiat. Duis laboris mollit non
-irure velit fugiat tempor enim. Ad reprehenderit laborum adipisicing
-occaecat adipisicing excepteur deserunt eu ea irure enim deserunt. Et
-commodo laborum nisi aliqua consequat dolore occaecat minim. Ea dolore
-culpa consequat incididunt mollit aute magna ipsum Lorem veniam pariatur
-occaecat nisi sit. Occaecat esse do sint minim ut elit minim consectetur
-dolor Lorem labore anim exercitation. Dolor qui labore exercitation non
-magna dolore duis Lorem aute esse culpa ad ad nisi.
+\subsection{Heading 3}\label{heading-3-3}
+
+Ipsum gravida elementum augue ante auctor venenatis! Felis ante enim,
+augue maecenas et vel, ut nisi consequat quisque pellentesque ridiculus.
+Molestie mollis ridiculus magna accumsan, ut cum sapien tempus. Cras
+sociis phasellus metus lobortis neque pretium quisque fusce posuere
+velit conubia vestibulum tellus platea lacinia class, est quis a
+placerat est ultrices; enim sociis facilisis, nisi dis laoreet torquent
+duis himenaeos, viverra ad tortor et mi duis velit erat gravida
+imperdiet cursus vitae justo rhoncus \autocite{hinton1986}.
 
 \end{apendicesenv}
 
@@ -2035,28 +2349,29 @@ magna dolore duis Lorem aute esse culpa ad ad nisi.
 \clearpage
 \includepdf{images/annex.pdf}
 
-\end{anexosenv}
-
 \chapter{Settings}\label{sec-settings}
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important}, colbacktitle=quarto-callout-important-color!10!white, toprule=.15mm, left=2mm, colframe=quarto-callout-important-color-frame, leftrule=.75mm, bottomrule=.15mm, coltitle=black, titlerule=0mm, breakable, colback=white, bottomtitle=1mm, arc=.35mm, toptitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, opacityback=0]
+\begin{tcolorbox}[enhanced jigsaw, left=2mm, toptitle=1mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, breakable, colframe=quarto-callout-note-color-frame, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, arc=.35mm, leftrule=.75mm, rightrule=.15mm, toprule=.15mm, bottomtitle=1mm, titlerule=0mm, bottomrule=.15mm, colback=white]
 
-You are reading the work-in-progress of this manual.
+Please note that not all settings are documented. For issues or
+discussions, use the
+\href{https://github.com/danielvartan/abnt/issues}{\emph{Issues}} and
+\href{https://github.com/danielvartan/abnt/discussions}{\emph{Discussions}}
+tabs in the project 's GitHub repository.
 
-\microskip
-
-This chapter is undergoing heavy restructuring and may be confusing or
-incomplete.
+For more information, check the format
+\href{https://github.com/danielvartan/abnt/blob/main/_extensions/abnt/_extension.yml}{extension
+YAML file} and the
+\href{https://quarto.org/docs/reference/formats/pdf.html}{PDF Options}
+section in the Quarto guide.
 
 \end{tcolorbox}
 
-\section{Sections}\label{sections}
+\section{PDF Engine}\label{pdf-engine}
 
-If you won't use a section of this document, you must remove it from
-\texttt{\_quarto.yml}. Empty sections will produce an error.
-
-At the moment, you also need to remove them in
-\texttt{tex/include-before-body.tex} and \texttt{R/.pre-render.R}.
+This format use \href{https://www.luatex.org/}{\texttt{lualatex}}. I
+recommended always using this engine for better font handling and
+support.
 
 \section{Typography}\label{typography}
 
@@ -2064,34 +2379,43 @@ At the moment, you also need to remove them in
 
 \subsection{Typeface}\label{typeface}
 
-To change typefaces, simply use the
-\href{https://quarto.org/docs/reference/formats/pdf.html}{Quarto
-options}, such as \texttt{mainfont}, \texttt{monofont} and
-\texttt{sansfont} in your \texttt{quarto-{[}format{]}.yml} file.
+To change typefaces, use Quarto
+\href{https://quarto.org/docs/reference/formats/pdf.html}{PDF options}
+such as \texttt{mainfont}, \texttt{monofont}, and \texttt{sansfont}.
 
 \begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
+\begin{Highlighting}[]
 \FunctionTok{format}\KeywordTok{:}
 \AttributeTok{  }\FunctionTok{abnt{-}pdf}\KeywordTok{:}
 \AttributeTok{    }\FunctionTok{mainfont}\KeywordTok{:}\AttributeTok{ Arial}
 \end{Highlighting}
 \end{Shaded}
 
-The ABNT NBR 14724:2011 norm does not specify the use of any specific
-font. You have the freedom to choose any font you prefer, but it's
-important to note that the selected font must be installed on your
-computer.
+The ABNT NBR 14724:2011 norm does not specify a required font. You can
+choose any font, provided it is installed on your computer.
+
+To see all the fonts installed in your system, run using R:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# install.packages("systemfonts")}
+\FunctionTok{library}\NormalTok{(systemfonts)}
+
+\FunctionTok{system\_fonts}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
 
 \subsection{Font Size}\label{font-size}
 
-To adjust the font size, utilize the \texttt{fontsize} option in in the
-\texttt{quarto-{[}format{]}.yml} file.
+To adjust the font size you can use the \texttt{fontsize} option in
+\texttt{quarto.yml}.
 
 \begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
+\begin{Highlighting}[]
 \FunctionTok{format}\KeywordTok{:}
 \AttributeTok{  }\FunctionTok{abnt{-}pdf}\KeywordTok{:}
 \AttributeTok{    }\FunctionTok{fontsize}\KeywordTok{:}\AttributeTok{ 12pt}
+\AttributeTok{    }\FunctionTok{linestretch}\KeywordTok{:}\AttributeTok{ }\FloatTok{1.5}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2102,242 +2426,225 @@ than three lines, footnotes, pagination, cataloging data, captions, and
 sources of illustrations and tables, which should be in a smaller and
 uniform size.
 
-The smaller font is set to \texttt{\textbackslash{}footnotesize}, which
-corresponds to a 10pt font size with the default settings. You can
-modify this setting by inserting the following LaTeX command into
-\texttt{tex/include-in-header.tex}:
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\FunctionTok{\textbackslash{}renewcommand}\NormalTok{\{}\ExtensionTok{\textbackslash{}ABNTEXfontereduzida}\NormalTok{\}\{[NEW SIZE (e.g., }\FunctionTok{\textbackslash{}small}\NormalTok{)]\}}
-\end{Highlighting}
-\end{Shaded}
-
 \section{Language and Hyphenation}\label{language-and-hyphenation}
+
+This format already includes support for multiple languages and
+hyphenation patterns. These patterns will be automatically loaded based
+on the selected language.
 
 \section{Document Sections}\label{document-sections}
 
-\subsection{Editing Pre-Textual
-Sections}\label{editing-pre-textual-sections}
+\subsection{Pre-Textual Sections}\label{pre-textual-sections}
 
 \texttt{abnt} uses a system of tags to transfer and render the content
-of Quarto files (\texttt{.qmd}) to LaTeX. These tags look like this:
+of Quarto files to LaTeX. These tags look like this:
 
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\NormalTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{=latex\}}
-\CommentTok{\%:::\% class attribute begin/end \%:::\%}
-\NormalTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
-\end{Highlighting}
-\end{Shaded}
+\begin{verbatim}
+%:::% class attribute begin/end %:::%
+\end{verbatim}
 
 Unless you want to customize the template, you don't need to modify the
 \texttt{.tex} files. You can write directly in the \texttt{.qmd} files.
 Just ensure that you preserve all the tags.
 
-\subsection{\texorpdfstring{How to Include LaTeX Commands in Quarto
-files
-(\texttt{.qmd})}{How to Include LaTeX Commands in Quarto files (.qmd)}}\label{how-to-include-latex-commands-in-quarto-files-.qmd}
+\subsection{Including LaTeX Commands in Quarto
+Files}\label{including-latex-commands-in-quarto-files}
 
-To add LaTeX commands in your writing use a \texttt{\{=latex\}} chunk.
+To add LaTeX commands always use a code block with \texttt{\{=latex\}}:
 
 \begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
+\begin{Highlighting}[]
 \NormalTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{=latex\}}
 \CommentTok{\% Some LaTeX code.}
 \NormalTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
 \end{Highlighting}
 \end{Shaded}
 
-\subsection{How to Add or Remove
-Sections}\label{how-to-add-or-remove-sections}
+\subsection{Customizing the Sections}\label{customizing-the-sections}
 
-For pre-textual sections (e.g., list of symbols, abstract), remove them
-from \texttt{tex/include-before-body.tex} and from
-\texttt{R/quarto-pre-render.R}.
+I plan to implement this format more straightforwardly using
+\href{https://quarto.org/docs/extensions/filters.html}{Lua filters} to
+directly manipulate the LaTeX code generated by
+\href{https://pandoc.org/lua-filters.html}{Pandoc}. Until then, you can
+customize the sections using the following instructions.
 
-For textual sections (e.g., chapters), remove them from
-\texttt{.quarto-{[}format{]}.yml} file.
+\subsubsection{Removing Pre-Textual
+Sections}\label{removing-pre-textual-sections}
 
-For post-textual sections (e.g., appendices, annexes):
+All sections specified in the \href{https://teses.usp.br}{Teses USP}
+guidelines are included in this format.
+
+If you don't need a pre-textual section (e.g., Errata, Acknowledgments),
+remove it from \texttt{tex/include-before-body.tex}, and
+\texttt{R/.pre-render.R}.
+
+\subsubsection{Removing Textual
+Sections}\label{removing-textual-sections}
+
+For textual sections (e.g., chapters), remove them from the
+\texttt{\_quarto.yml} file, but be careful when removing the last
+chapter. See the next section for more details.
+
+\subsubsection{Removing Post-Textual
+Sections}\label{removing-post-textual-sections}
+
+You must be careful when removing post-textual sections (e.g.,
+Appendices, Annexes). Each post-textual section starts and ends with a
+specific LaTeX command (e.g.,
+\texttt{\textbackslash{}begin\{anexosenv\}}).
+
+For example, to remove the Glossary, remove it from
+\texttt{\_quarto.yml} and copy the LaTeX code after
+\texttt{\textless{}!-\/-\ glossary\ end\ -\/-\textgreater{}} in
+\texttt{glossary.qmd} to the bottom of the last chapter.
+
+The same applies when removing appendices. The last appendix must
+include LaTeX code at the end to end the section and initialize the
+Annexes section.
+
+The Index section is the exception. To remove this section, add the
+following to your \texttt{\_quarto.yml} file:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{format}\KeywordTok{:}
+\AttributeTok{  }\FunctionTok{abnt{-}pdf}\KeywordTok{:}
+\AttributeTok{    }\FunctionTok{index{-}page}\KeywordTok{:}\AttributeTok{ }\CharTok{false}
+\end{Highlighting}
+\end{Shaded}
+
+In summary, transitions between document sections are created by
+inserting LaTeX code at the end of specific sections:
 
 \begin{itemize}
 \tightlist
 \item
-  If it's the Glossary, remove it from \texttt{.quarto-{[}format{]}.yml}
-  and copy the the LaTeX code after
-  \texttt{\textless{}!-\/-\ glossary\ end\ -\/-\textgreater{}} in
-  \texttt{glossary.qmd} to the bottom of the last chapter;
+  Between the last chapter and the Glossary section
 \item
-  If it's not the last appendix chapter, simply remove it from
-  \texttt{.quarto-{[}format{]}.yml}; else remove it from
-  \texttt{.quarto-{[}format{]}.yml}, remove
-  \texttt{\textbackslash{}begin\{apendicesenv\}} from the bottom of
-  \texttt{glossary.qmd} and add the code the code after
-  \texttt{\textless{}!-\/-\ appendices\ end\ -\/-\textgreater{}} of the
-  appendice file to the bottom of \texttt{glossary.qmd};
+  Between the Glossary section and the Appendices section
 \item
-  {[}Annexes{]};
+  Between the Appendices and Annexes sections
 \item
-  {[}Index{]}.
-\end{itemize}
-
-It's important to note that, at this moment, the transition between
-sections of the document are made inserting LaTeX code at the end of
-specific sections. These are:
-
-\begin{itemize}
-\tightlist
-\item
-  Between the last chapter and the Glossary section.
-\item
-  Between the Glossary section and the Appendices section.
-\item
-  Between the Appendices and Annexes section.
-\item
-  After the Annexes section.
+  After the Annexes section
 \end{itemize}
 
 \section{Citation Management}\label{citation-management}
 
-\subsection{Citation Method}\label{citation-method}
+\subsection{Methods}\label{methods}
 
 \index{BibLaTeX}
 
-This Quarto format was specifically designed to be compatible with
-\href{https://www.ctan.org/pkg/biblatex}{BibLaTeX}, which is a
-comprehensive re-implementation of
-\href{https://www.bibtex.org/}{BiBTeX}. At first glance, these two
-systems may appear very similar.
-
-To get started, simply insert your references into the
-\texttt{references.bib}file. However, this task can be somewhat tedious
-and demanding. To simplify the process, we recommend exploring the
-integration of \href{https://www.zotero.org/}{Zotero} along with
-\href{https://github.com/retorquere/zotero-better-bibtex}{Better
-BiBTeX}, as demonstrated in a section below.
-
-For detailed guidance on handling citations in Quarto, please refer to
-Quarto's
+This Quarto format is specifically designed along with
+\href{https://www.ctan.org/pkg/biblatex}{BibLaTeX}. For detailed
+guidance on handling citations, refer to Quarto's
 \href{https://quarto.org/docs/authoring/footnotes-and-citations.html}{Citation
 \& Footnotes} documentation.
 
-\subsection{Citation Style}\label{citation-style}
+\subsection{Styles}\label{styles}
 
 \index{ABNT}
 \index{APA}
 
-There are two built-in citation styles:
+This format works with all
+\href{https://www.ctan.org/pkg/biblatex}{BibLaTeX} built-in styles,
+including \href{https://www.abnt.org.br/}{ABNT} (Brazilian Association
+of Technical Standards) and \href{https://apastyle.apa.org/}{APA}
+(American Psychological Association).
 
-\begin{itemize}
-\tightlist
-\item
-  \href{https://www.abnt.org.br/}{ABNT} (Brazilian Association of
-  Technical Standards);
-\item
-  \href{https://apastyle.apa.org/}{APA} (American Psychological
-  Association).
-\end{itemize}
-
-To use one of them, simply change the \texttt{biblio-style} option in
-your \texttt{yml} file with the style of you preference.
+To use a specific style, change the \texttt{biblatexoptions} option in
+the \texttt{\_quarto.yml} file. Several citation-related options are
+available. Refer to the
+\href{https://www.ctan.org/pkg/biblatex}{\texttt{biblatex}} manual for
+complete documentation.
 
 \begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
+\begin{Highlighting}[]
 \FunctionTok{format}\KeywordTok{:}
 \AttributeTok{  }\FunctionTok{abnt{-}pdf}\KeywordTok{:}
-\AttributeTok{    }\FunctionTok{biblio{-}style}\KeywordTok{:}\AttributeTok{ abnt}\CommentTok{ \# options: [abnt, abnt{-}ibid, abnt{-}numeric, apa]}
-\end{Highlighting}
-\end{Shaded}
-
-There are other options related to the citation style; some are shown
-below. Please refer to
-\href{https://www.ctan.org/pkg/biblatex}{\texttt{biblatex}},
-\href{https://www.ctan.org/pkg/biblatex-abnt}{\texttt{biblatex-abnt}}
-and \href{https://www.ctan.org/pkg/biblatex-apa}{\texttt{biblatex-apa}}
-manuals to learn more about them.
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\FunctionTok{format}\KeywordTok{:}
-\AttributeTok{  }\FunctionTok{abnt{-}pdf}\KeywordTok{:}
+\AttributeTok{    }\FunctionTok{biblatexoptions}\KeywordTok{:}
+\AttributeTok{      }\KeywordTok{{-}}\AttributeTok{ backend=biber}
+\AttributeTok{      }\KeywordTok{{-}}\AttributeTok{ url=true}
+\AttributeTok{      }\KeywordTok{{-}}\AttributeTok{ useprefix=false}
+\AttributeTok{      }\KeywordTok{{-}}\AttributeTok{ giveninits=true}
+\AttributeTok{      }\KeywordTok{{-}}\AttributeTok{ style=abnt}
+\AttributeTok{    }\FunctionTok{bibhang}\KeywordTok{:}\AttributeTok{ 0cm}\CommentTok{ \# Use 0.5cm if \textasciigrave{}style=apa\textasciigrave{}}
+\AttributeTok{    }\FunctionTok{bibparsep}\KeywordTok{:}\AttributeTok{ {-}2ex}\CommentTok{ \# Use 1ex \textasciigrave{}style=apa\textasciigrave{}}
 \FunctionTok{    biblio{-}footnote}\KeywordTok{: }\CharTok{\textgreater{}}
 \NormalTok{      According to the Brazilian Association of Technical Standards}
 \NormalTok{      (ABNT NBR 6023).}
-\AttributeTok{    }\FunctionTok{biblatexoptions}\KeywordTok{:}
-\AttributeTok{      }\KeywordTok{{-}}\AttributeTok{ backend=biber,}
-\AttributeTok{      }\KeywordTok{{-}}\AttributeTok{ language=english,}\CommentTok{ \# [options: english, brazil, spanish, french]}
-\AttributeTok{      }\KeywordTok{{-}}\AttributeTok{ url=true,}
-\AttributeTok{      }\KeywordTok{{-}}\AttributeTok{ useprefix=false,}
-\AttributeTok{      }\KeywordTok{{-}}\AttributeTok{ giveninits=true,}
-\AttributeTok{      }\KeywordTok{{-}}\AttributeTok{ extrayear=true}
-\AttributeTok{    }\FunctionTok{bibhang}\KeywordTok{:}\AttributeTok{ 0cm}\CommentTok{ \# Use 0.5cm if \textasciigrave{}biblio{-}style: apa\textasciigrave{}.}
-\AttributeTok{    }\FunctionTok{bibparsep}\KeywordTok{:}\AttributeTok{ 0ex}
 \end{Highlighting}
 \end{Shaded}
 
-\section{ABNT Figures and Tables}\label{abnt-figures-and-tables}
+\subsection{Zotero \& Better BibTex}\label{zotero-better-bibtex}
 
-Thanks for the incredible work of
-\href{https://github.com/cscheid}{Carlos Scheidegger} and other Quarto
-developers we now have a built-in solution for figures and tables that
-require two captions (one at the top and the other at the bottom, or a
-caption and a legend), as required by the ABNT norms. Please note that
-this feature is only available for Quarto versions \textgreater=v1.4.
+If you use \href{https://www.zotero.org/}{Zotero} with
+\href{https://retorque.re/zotero-better-bibtex/}{Better BibTex},
+configure it to export URLs only when no DOI is available. This helps
+declutter the References section. See
+\url{https://tex.stackexchange.com/a/603358/234832} for instructions.
 
-The procedure for adding these captions is the same for figures and
-tables. Enclose your figure/table/code in figure \texttt{divs}, as shown
-in the example below. The first paragraph after the figure content will
-be rendered as the source (bottom caption), and the last one will be the
-top caption.
+\section{Figures and Tables}\label{figures-and-tables}
 
-The formatting options for this bottom caption/legend is still matter of
-debate (see
-\href{https://github.com/quarto-dev/quarto-cli/discussions/6103\#discussioncomment-7494661}{here}).
-That's why is important to add Quarto's
-\href{https://github.com/quarto-ext/latex-environment}{LaTeX
-Environment} filter in your
-\texttt{\_quarto-pdf.yml"\ with\ the\ command}legend\texttt{and\ use}{[}SOURCE
-TEXT GOES HERE{]}.legend\}` when defining legends for figures/tables,
-like the example below.
+To add top and bottom captions to figures and tables, enclose your
+content in \texttt{divs} as shown below. The first paragraph after the
+content will be rendered as the source (bottom caption), and the last
+paragraph will be the top caption.
 
 \begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
+\begin{Highlighting}[]
 \NormalTok{::: \{\#fig{-}1\}}
 \NormalTok{::: \{.figure{-}content\}}
 \NormalTok{This is the figure content.}
 \NormalTok{:::}
 
-\CommentTok{[}\OtherTok{Source: My source.}\CommentTok{]}\NormalTok{\{.legend\}}
+\CommentTok{[}\OtherTok{This is the source.}\CommentTok{]}\NormalTok{\{.legend\}}
 
-\NormalTok{This is a caption.}
+\NormalTok{This is the caption}
 \NormalTok{:::}
 \end{Highlighting}
 \end{Shaded}
 
-Please note that, like all cross-reference elements, these \texttt{divs}
-must follow a naming pattern. Always use the prefixes \texttt{\#fig-}
-for figures and \texttt{\#tbl-} for tables.
+For figures/tables rendered in code chunks, use the following format:
 
-Visit the showcase chapter ``Introduction''
-(\texttt{qmd/introduction.qmd}) of this Quarto format to see this
-feature in action. For more detailed information, please refer to
-Quarto's
-\href{https://quarto.org/docs/prerelease/1.4/crossref.html}{Cross-referenceable
-elements} article.
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{::: \{\#fig{-}2\}}
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{r\}}
+\FunctionTok{library}\NormalTok{(dplyr)}
+
+\NormalTok{penguins }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{pull}\NormalTok{(bill\_length\_mm) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{hist}\NormalTok{()}
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
+
+\CommentTok{[}\OtherTok{This is the source.}\CommentTok{]}\NormalTok{\{.legend\}}
+
+\NormalTok{This is the caption}
+\NormalTok{:::}
+\end{Highlighting}
+\end{Shaded}
+
+Note that when using \texttt{{[}{]}\{.legend\}} or
+\texttt{{[}{]}\{.legendleft\}} the caption will always start with
+\texttt{Source:}.
+
+Like all cross-reference elements, these \texttt{divs} must follow a
+naming pattern. Use the prefix \texttt{\#fig-} for figures and
+\texttt{\#tbl-} for tables. For more information, see the
+\hyperref[cross-referenceable-elements]{\emph{Cross-Referenceable
+Elements}} section and refer to Quarto's
+\href{https://quarto.org/docs/prerelease/1.4/crossref.html}{Cross-Referenceable
+Elements} article.
 
 \section{Cross-Referenceable
 Elements}\label{cross-referenceable-elements}
 
-Quarto allow you to create and reference almost anything by using div
-enclosures.
-
-Example: See Theorem~\ref{thm-line}.
+Quarto allow you to create and reference almost anything by using
+\texttt{div} enclosures. For example: See Theorem~\ref{thm-line}.
 
 \begin{theorem}[Line]\protect\hypertarget{thm-line}{}\label{thm-line}
 
-The equation of any straight line, called a linear equation, can be
-written as:
+The equation of any straight line can be written as:
 
 \[
 y = mx + b
@@ -2345,261 +2652,30 @@ y = mx + b
 
 \end{theorem}
 
-Although, it's important to note that for this to work, each type of
+\vspace{-1\baselineskip}
+
+However, it's important to note that for this to work, each type of
 \texttt{div} must use pre-defined prefixes. If you don't follow these
-rules your document will not be rendered.
-
-Here are most of the the label prefixes.
-
-\begin{figure}
-
-\begin{minipage}{0.33\linewidth}
-
-\begin{itemize}
-\tightlist
-\item
-  \texttt{cnj-}: Conjecture
-\item
-  \texttt{cor-}: Corollary
-\item
-  \texttt{def-}: Definition
-\item
-  \texttt{eq-}: Equation
-\item
-  \texttt{exm-}: Example
-\end{itemize}
-
-\end{minipage}%
-%
-\begin{minipage}{0.33\linewidth}
-
-\begin{itemize}
-\tightlist
-\item
-  \texttt{exr-}: Exercise
-\item
-  \texttt{fig-}: Figure
-\item
-  \texttt{lem-}: Lemma
-\item
-  \texttt{lst-}: Listings
-\end{itemize}
-
-\end{minipage}%
-%
-\begin{minipage}{0.33\linewidth}
-
-\begin{itemize}
-\tightlist
-\item
-  \texttt{prp-}: Proposition
-\item
-  \texttt{sec-}: Section
-\item
-  \texttt{tbl-}: Table
-\item
-  \texttt{thm-}: Theorem
-\end{itemize}
-
-\end{minipage}%
-
-\end{figure}%
+rules your document can behave unexpectedly.
 
 For more information about cross-reference elements, see Quarto's guide
 \href{https://quarto.org/docs/books/book-crossrefs.html}{Book
 Crossrefs},
 \href{https://quarto.org/docs/authoring/cross-references.html}{Cross
 References} and
-\href{https://quarto.org/docs/prerelease/1.4/crossref.html}{Cross-referenceable
-elements} articles.
+\href{https://quarto.org/docs/prerelease/1.4/crossref.html}{Cross-Referenceable
+Elements} articles.
 
-\section{Freezing and cache}\label{freezing-and-cache}
+\section{Freezing and Cache}\label{freezing-and-cache}
 
-See
-\href{https://quarto.org/docs/projects/code-execution.html\#freeze}{Freeze}.
+Avoid using the
+\href{https://quarto.org/docs/projects/code-execution.html\#freeze}{\texttt{freeze}}
+and
+\href{https://quarto.org/docs/projects/code-execution.html\#cache}{\texttt{cache}}
+execution options. If you're having issue in updating your document,
+check if these options are enabled.
 
-\section{How to Customize this Quarto
-format}\label{how-to-customize-this-quarto-format}
-
-\subsection{Quarto System}\label{quarto-system}
-
-See \href{https://quarto.org/docs/guide/}{Quarto's guide}.
-
-\subsection{Template Partials}\label{template-partials}
-
-See
-\href{https://quarto.org/docs/journals/templates.html\#template-partials}{Template
-partials}.
-
-\begin{itemize}
-\tightlist
-\item
-  Set fixed dimensions (e.g., page dimensions) in \texttt{cm} or
-  \texttt{pt}. \texttt{cm} is the prefer unit for margins.
-\item
-  Set line spacing as a proportion of
-  \texttt{\textbackslash{}baselineskip} (e.g.,
-  \texttt{1.5\textbackslash{}baselineskip}).
-\item
-  Use the settings \texttt{\textbackslash{}tinyskipamount},
-  \texttt{\textbackslash{}smallskipamount},
-  \texttt{\textbackslash{}midskipamount},
-  \texttt{\textbackslash{}bigskipamount},
-  \texttt{\textbackslash{}hugeskipamount} and their counterparts
-  \texttt{\textbackslash{}tinyskip}, \texttt{\textbackslash{}smallskip},
-  \texttt{\textbackslash{}midskip}, \texttt{\textbackslash{}bigskip},
-  \texttt{\textbackslash{}hugeskip}. You can find them in the
-  \texttt{lengths.tex} template partial.
-\item
-  For other kinds of relative vertical spacing, use the \texttt{ex}
-  unit.
-\item
-  For relative horizontal spacing, use the \texttt{em} unit.
-\end{itemize}
-
-See \textcite[section 7.5]{oetiker2023} to learn more about LaTeX
-spacing features. The articles on
-\href{https://www.overleaf.com}{Overleaf} are also a great source of
-information. Check
-\href{https://www.overleaf.com/learn/latex/Lengths_in_LaTeX}{Lengths in
-LaTeX} and
-\href{https://www.overleaf.com/learn/latex/Articles/How_to_change_paragraph_spacing_in_LaTeX}{How
-to change paragraph spacing in LaTeX} to get a sense of the subject.
-
-The following are the equivalences for a Arial typeface with size
-12\texttt{pt}.
-
-\subsubsection{Unit equivalences}\label{unit-equivalences}
-
-\begin{itemize}
-\tightlist
-\item
-  1\texttt{em} \(==\) 12\texttt{pt} or \(\approx\) 0.423333\texttt{cm}.
-\item
-  1\texttt{ex} \(==\) \(\approx\) 6.22266\texttt{pt} or \(\approx\)
-  0.219521\texttt{cm}.
-\end{itemize}
-
-\paragraph{\texorpdfstring{\texttt{\textbackslash{}baselineskip}}{\textbackslash baselineskip}}\label{baselineskip}
-
-Use \texttt{\textbackslash{}the\textbackslash{}baselineskip} and
-\texttt{\textbackslash{}getvalue\{\}} to figure out the exact value.
-Note that \texttt{\textbackslash{}getvalue\{\}} will return the value in
-\texttt{pt}.
-
-Example of using \texttt{\textbackslash{}getvalue\{\}}:
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\FunctionTok{\textbackslash{}begingroup}
-\FunctionTok{\textbackslash{}setlength}\NormalTok{\{}\FunctionTok{\textbackslash{}parskip}\NormalTok{\}\{1em\}}
-\FunctionTok{\textbackslash{}getlength}\NormalTok{\{}\FunctionTok{\textbackslash{}parskip}\NormalTok{\}}
-\FunctionTok{\textbackslash{}endgroup}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{itemize}
-\tightlist
-\item
-  \texttt{\textbackslash{}linestretch=1}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    \texttt{1\textbackslash{}baselineskip} \(==\) 14.5\texttt{pt}.
-    That's about 1.2x (or (\(\approx\) 1.208333x) the font size
-    (standard procedure).
-  \end{itemize}
-\item
-  \texttt{\textbackslash{}linestretch=1.5}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    \texttt{0.25\textbackslash{}baselineskip} \(==\) 5.4375\texttt{pt}
-    or \(\approx\) 0.191822917\texttt{cm};
-  \item
-    \texttt{0.5\textbackslash{}baselineskip} \(==\) 10.875\texttt{pt} or
-    \(\approx\) 0.383645833\texttt{cm};
-  \item
-    \texttt{0.75\textbackslash{}baselineskip} \(==\) 16.3125\texttt{pt}
-    or \(\approx\) 0.57546875\texttt{cm};
-  \item
-    \texttt{1\textbackslash{}baselineskip} \(==\) 21.75\texttt{pt} or
-    \(\approx\) 0.76729167\texttt{cm};
-  \item
-    \texttt{1.5\textbackslash{}baselineskip} \(==\) 32.625\texttt{pt} or
-    \(\approx\) 1.1509375\texttt{cm};
-  \item
-    \texttt{2\textbackslash{}baselineskip} \(==\) 43.5\texttt{pt} or
-    \(\approx\) 1.534583\texttt{cm};
-  \item
-    \texttt{2.5\textbackslash{}baselineskip} \(==\) 54.375\texttt{pt} or
-    \(\approx\) 1.91822917\texttt{cm};
-  \item
-    \texttt{3\textbackslash{}baselineskip} \(==\) 65.25\texttt{pt} or
-    \(\approx\) 2.301875\texttt{cm}.
-  \end{itemize}
-\end{itemize}
-
-\subsection{How to Add New Citation
-Styles}\label{how-to-add-new-citation-styles}
-
-\subsection{Must See References}\label{must-see-references}
-
-To learn the basics about LaTeX, see \textcite{oetiker2023}. To delve
-deeper into the LaTeX system, see \textcite{lamport1994} and
-\textcite{knuth1986}.
-
-\subsubsection{Manuals}\label{manuals}
-
-\begin{figure}
-
-\begin{minipage}{0.50\linewidth}
-
-\begin{itemize}
-\tightlist
-\item
-  \href{https://quarto.org/docs/guide/}{Quarto}
-\item
-  \href{https://www.ctan.org/pkg/abntex2}{\texttt{abntex2}}
-\item
-  \href{https://www.ctan.org/pkg/memoir}{\texttt{memoir}}
-\item
-  \href{https://www.ctan.org/pkg/biblatex}{\texttt{biblatex}}
-\item
-  \href{https://www.ctan.org/pkg/biblatex-abnt}{\texttt{biblatex-abnt}}
-\end{itemize}
-
-\end{minipage}%
-%
-\begin{minipage}{0.50\linewidth}
-
-\begin{itemize}
-\tightlist
-\item
-  \href{https://www.ctan.org/pkg/biblatex-apa}{\texttt{biblatex-apa}}
-\item
-  \href{https://ctan.org/pkg/babel}{\texttt{babel}}
-\item
-  \href{https://ctan.org/pkg/fontspec}{\texttt{fontspec}}
-\item
-  \href{https://www.ctan.org/pkg/makeidx}{\texttt{makeidx}}
-\end{itemize}
-
-\end{minipage}%
-
-\end{figure}%
-
-\subsubsection{R packages}\label{r-packages}
-
-\index{R packages}
-
-\begin{itemize}
-\tightlist
-\item
-  \href{https://gt.rstudio.com}{\texttt{gt}}
-\end{itemize}
+\end{anexosenv}
 
 
 

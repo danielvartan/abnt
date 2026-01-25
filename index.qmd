@@ -4,50 +4,83 @@
 #| label: Setup
 #| include: false
 
+library(colorspace)
 library(dplyr)
+library(geobr)
 library(ggExtra)
 library(ggplot2)
 library(gt)
 library(here)
+library(katex)
+library(lorem)
+library(osfr)
 library(palmerpenguins)
+library(sf)
+library(stringr)
+library(withr)
 
 here("R", ".setup.R") |> source()
-```
-
-See @fig-karl-popper.
-
-"The activity can be represented by a _general schema of problem-solving by the method of imaginative conjectures and criticism_, or, as I have often called it, by _the method of conjecture and refutation_. The schema (in its simplest form) is this
-
-$$
-\text{P}_{1} \to \text{TT} \to \text{EE} \to \text{P}_{2}
-$$
-
-```{=latex}
-\vspace{1em}
-\index{KarlPopper}
-```
-
-Here $\text{P}_{1}$ is the _problem_ from which we start, $\text{TT}$ (the ‘tentative theory’) is the imaginative conjectural solution which we first reach, for example our first _tentative interpretation_. $\text{EE}$ (_‘error- elimination’_) consists of a severe critical examination of our conjecture, our tentative interpretation: it consists, for example, of the critical use of documentary evidence and, if we have at this early stage more than one conjecture at our disposal, it will also consist of a critical discussion and comparative evaluation of the competing conjectures. $\text{P}_{2}$ is the problem situation as it emerges from our first critical attempt to solve our problems.
-
-It leads up to our second attempt (*and so on*). A satisfactory understanding will be reached if the interpretation, the conjectural theory, finds support in the fact that it can throw new light on new problems --- on more problems than we expected; or if it finds support in the fact that it explains many sub-problems, some of which were not seen to start with. Thus we may say that we can gauge the progress we have made by comparing $\text{P}_{1}$ with some of our later problems ($\text{P}_{n}$, say)."
-
-```{=latex}
-\vspace{15pt}
-\noindent \hspace*{\fill} \autocite[164]{popper1979a}
-\vspace{15pt}
 ```
 
 ```{r}
 #| echo: false
 #| output: asis
 
-library(cli)
+library(lorem)
+library(stringr)
 library(withr)
 
 with_seed(
-  seed = 15,
+  seed = 155754,
   code = {
-    cli:::lorem_ipsum(1) |> cat(sep = "\n\n")
+    ipsum(1) |>
+      as.character() |>
+      str_remove(".$") |>
+      paste0(" [@einstein1905].") |>
+      paste0(" See @fig-karl-popper.") |>
+      cat(sep = "\n\n")
+  }
+)
+```
+
+```{=latex}
+\index{Karl Popper}
+
+\begingroup
+\setlength{\ABNTEXcitacaorecuo}{4.25cm} % Default: 4cm
+
+\begin{citacao}[english]
+The activity can be represented by a \textit{general schema of problem-solving by the method of imaginative conjectures and criticism}, or, as I have often called it, by \textit{the method of conjecture and refutation}. The schema (in its simplest form) is this:
+
+\hspace{3.65cm} $\text{P}_{1} \to \text{TT} \to \text{EE} \to \text{P}_{2}$
+
+Here $\text{P}_{1}$ is the \textit{problem} from which we start,  $\text{TT}$ (the ‘tentative theory’) is the imaginative conjectural solution which we first reach, for example our first \textit{tentative interpretation}. $\text{EE}$ (\textit{‘error- elimination’}) consists of a severe critical examination of our conjecture, our tentative interpretation: it consists, for example, of the critical use of documentary evidence and, if we have at this early stage more than one conjecture at our disposal, it will also consist of a critical discussion and comparative evaluation of the competing conjectures. $\text{P}_{2}$ is the problem situation as it emerges from our first critical attempt to solve our problems.
+
+It leads up to our second attempt (\textit{and so on}). A satisfactory understanding will be reached if the interpretation, the conjectural theory, finds support in the fact that it can throw new light on new problems --- on more problems than we expected; or if it finds support in the fact that it explains many sub-problems, some of which were not seen to start with. Thus we may say that we can gauge the progress we have made by comparing $\text{P}_{1}$ with some of our later problems ($\text{P}_{n}$, say).
+
+\noindent \hspace*{\fill} \autocite[164]{popper1979a}
+\end{citacao}
+\endgroup
+```
+
+<!-- @popper1979a -->
+
+```{r}
+#| echo: false
+#| output: asis
+
+library(lorem)
+library(stringr)
+library(withr)
+
+with_seed(
+  seed = 546465,
+  code = {
+    ipsum(1, avg_words_per_sentence = 22) |>
+      as.character() |>
+      str_remove(".$") |>
+      paste0(" [@krakauer2019].") |>
+      cat(sep = "\n\n")
   }
 )
 ```
@@ -59,27 +92,31 @@ with_seed(
 ::: {#fig-karl-popper}
 ![](images/karl-popper.png){width=50%}
 
-[Source: [Steve Pyke](https://www.npg.org.uk/collections/search/portrait/mw08238/Sir-Karl-Raimund-Popper?).]{.legend}
+[[Steve Pyke](https://www.npg.org.uk/collections/search/portrait/mw08238/Sir-Karl-Raimund-Popper?).]{.legend}
 
 Karl Popper (July 25, 1902 – September 17, 1994).\
 One of the 20th century's most influential philosophers of science.
 :::
 
-## Secondary Section
-
-See @tbl-penguins.
+## Heading 2
 
 ```{r}
 #| echo: false
 #| output: asis
 
-library(cli)
+library(lorem)
+library(stringr)
 library(withr)
 
 with_seed(
-  seed = 87984,
+  seed = 987512,
   code = {
-    cli:::lorem_ipsum(1) |> cat(sep = "\n\n")
+    ipsum(1, avg_words_per_sentence = 10) |>
+      as.character() |>
+      str_remove(".$") |>
+      paste0(" [@pearson1900].") |>
+      paste0(" See @tbl-penguins.") |>
+      cat(sep = "\n\n")
   }
 )
 ```
@@ -105,27 +142,55 @@ penguins |>
     "Bill depth (mm)" = bill_depth_mm,
     "Flipper length (mm)" = flipper_length_mm
   ) |>
-  gt()
+  gt() |>
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels(everything())
+  ) |>
+  tab_style(
+    style = cell_text(align = "left"),
+    locations = list(
+      cells_column_labels(c("Species", "Island")),
+      cells_body(c("Species", "Island"))
+    )
+  ) |>
+  opt_table_font(
+    font = list("Noto Sans", "Helvetica", "Arial"),
+    size = 12
+  )
 ```
 
-[Source: Based on @horst2020 penguin dataset.]{.legend}
+[Based on @horst2020 penguin dataset.]{.legend}
 
 A sample of the penguins dataset
 :::
 
-### Tertiary Section
+### Heading 3
 
 ```{r}
 #| echo: false
 #| output: asis
 
-library(cli)
+library(lorem)
+library(stringr)
 library(withr)
 
 with_seed(
-  seed = 4578,
+  seed = 45648,
   code = {
-    cli:::lorem_ipsum(2) |> cat(sep = "\n\n")
+    c(
+      ipsum(1, avg_words_per_sentence = 10) |>
+        as.character() |>
+        str_remove(".$") |>
+        paste0(" [@neyman1928].") |>
+        paste0(" See @tbl-cohens-benchmark."),
+      ipsum(1, avg_words_per_sentence = 8) |>
+        as.character() |>
+        str_remove(".$") |>
+        paste0(" [@neyman1928a].") |>
+        paste0(" See @fig-gini-index.")
+    ) |>
+      cat(sep = "\n\n")
   }
 )
 ```
@@ -134,63 +199,234 @@ with_seed(
 \index{figures!chart}
 ```
 
-::: {#fig-eruption}
 ```{r}
-#| fig-height: 4
-#| fig-width: 6
+#| include: false
 
-library(ggplot2)
+library(here)
+library(readr)
 
-faithful |>
-  ggplot(aes(x = eruptions, y = waiting)) +
-  geom_point() +
-  xlim(0.5, 6) +
-  ylim(40, 110) +
-  geom_density_2d_filled(alpha = 0.5) +
-  geom_density_2d(linewidth = 0.25, color = "black") +
-  labs(
-    x = "Eruption time (minutes)",
-    y = "Waiting time (minutes)"
-  ) +
-  theme(legend.position = "none")
+data <-
+  here("data", "datasus-gini-index.rds") |>
+  read_rds()
 ```
 
-[Source: Reproduced from the [ggplot2 R package documentation](https://ggplot2.tidyverse.org/reference/geom_density_2d.html) [@wickham2016a].]{.legend}
+```{r}
+#| include: false
 
-Relation between _waiting time to next eruption_ (minutes) and _eruption time_ (minutes) at Old Faithful Geyser, Yellowstone National Park, Wyoming, USA
+library(geobr)
+
+brazil_shape <- read_country(
+  year = 2010,
+  showProgress = FALSE,
+  cache = TRUE
+)
+
+municipalities_shape <- read_municipality(
+  year = 2010,
+  showProgress = FALSE,
+  cache = TRUE
+)
+```
+
+```{r}
+#| include: false
+
+library(dplyr)
+library(stringr)
+
+data <-
+  data |>
+  left_join(
+    municipalities_shape |>
+      mutate(
+        code_muni = code_muni |>
+          str_sub(1, 6) |>
+          as.integer()
+      ),
+    by = join_by(municipality_code == code_muni)
+  ) |>
+  rename(geometry = geom) |>
+  filter(year == 2010) |>
+  dplyr::select(
+    year,
+    municipality_code,
+    gini_index,
+    geometry
+  )
+```
+
+::: {#fig-gini-index}
+```{r}
+#| message: false
+#| warning: false
+
+library(ggplot2)
+library(ggspatial)
+library(sf)
+
+data |>
+  st_as_sf() |>
+  ggplot() +
+  geom_sf(
+    aes(fill = gini_index),
+    color = "gray",
+    linewidth = 0.01,
+  ) +
+  geom_sf(
+    data = brazil_shape,
+    color = "gray",
+    linewidth = 0.1,
+    fill = NA
+  ) +
+  scale_fill_fermenter(
+    n.breaks = 5,
+    type = "div",
+    palette = "RdBu"
+  ) +
+  annotation_scale(
+    location = "br",
+    style = "tick",
+    height = unit(0.5, "lines")
+  ) +
+  annotation_north_arrow(
+    location = "br",
+    height = unit(2, "lines"),
+    width = unit(2, "lines"),
+    pad_x = unit(0.25, "lines"),
+    pad_y = unit(1.25, "lines"),
+    style = north_arrow_fancy_orienteering
+  ) +
+  labs(fill = NULL)
+```
+
+[Data extracted from @ibge, processed by @vartanian2025r.]{.legendleft}
+
+Gini index by Brazilian municipality in 2010. Values range from 0 (perfect equality) to 1 (total inequality).
 :::
 
 ```{=latex}
+\index{tables}
+
+\clearpage
+\begingroup
+\begin{landscape}
+\renewcommand{\arraystretch}{2.5}
+```
+::: {#tbl-cohens-benchmark}
+```{r}
+#| echo: false
+
+library(dplyr)
+library(gt)
+
+tibble(
+  test = c(
+    "Comparison of independent means",
+    "Comparison of two correlations",
+    "Difference between proportions",
+    "Correlation",
+    "",
+    "Crosstabulation",
+    "ANOVA",
+    "",
+    "Multiple regression",
+    ""
+  ),
+  relevant_effect_size = c(
+    "$d$, $\\Delta$, Hedges’ $g$",
+    "$q$",
+    "Cohen’s $g$",
+    "$r$",
+    "$r^{2}$",
+    "$w$, $\\varphi$, $V$, $C$",
+    "$f$",
+    "$\\eta^{2}$",
+    "$R^{2}$",
+    "$f^{2}$"
+  ),
+  small = c(.20, .10, .05, .10, .01, .10, .10, .01, .02, .02),
+  medium = c(.50, .30, .15, .30, .09, .30, .25, .06, .13, .15),
+  large = c(.80, .50, .25, .50, .25, .50, .40, .14, .26, .35)
+) |>
+  gt() |>
+  cols_label(
+    test = "Test",
+    relevant_effect_size = "Relevant Effect Size",
+    small = "Small",
+    medium = "Medium",
+    large = "Large"
+  ) |>
+  fmt_markdown(columns = relevant_effect_size) |>
+  tab_spanner(
+    label = "Effect Size Classes",
+    columns = c(small, medium, large)
+  ) |>
+  # Credits:
+  # <https://github.com/rstudio/gt/issues/1508#issuecomment-2440068995>
+  tab_source_note(source_note = md(" ")) |>
+  tab_source_note(source_note = md(" ")) |>
+  tab_source_note(
+    source_note = md(
+      paste0(
+        "Notes: The rationale for most of these benchmarks can be found ",
+        "in Cohen (1988) at the following pages: Cohen’s $d$ (p. 40), ",
+        "$q$ (p. 115), Cohen’s $g$ (pp. 147–149), $r$ and $r^{2}$ ",
+        "(pp. 79–80), Cohen’s $w$ (pp. 224–227), $f$ and $\\eta^{2}$ ",
+        "(pp. 285–287), $R^{2}$ and $f^{2}$ (pp. 413–414)."
+      )
+    )
+  ) |>
+  cols_align(
+    align = "center",
+    columns = c(small, medium, large)
+  ) |>
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_spanners()
+  ) |>
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels(everything())
+  ) |>
+  tab_options(
+    source_notes.border.bottom.color = "black"
+  ) |>
+  opt_table_font(
+    font = list("Noto Sans", "Helvetica", "Arial"),
+    size = 12
+  )
+```
+
+[Adapted from @ellis2010. Based on @cohen1988a.]{.legend}
+
+Cohen’s benchmark for effect sizes
+:::
+
+```{=latex}
+\end{landscape}
+\endgroup
 \clearpage
 ```
 
-#### Quaternary Section
-
-- Bullet point
-  - Bullet point
-    - Bullet point
-
-##### Quinary Section
-
-1. List
-1. List
-1. List
-
-## Another Secondary Section
-
-See @fig-mpg.
+## Heading 2
 
 ```{r}
 #| echo: false
 #| output: asis
 
-library(cli)
+library(lorem)
+library(stringr)
 library(withr)
 
 with_seed(
-  seed = 60,
+  seed = 45646897,
   code = {
-    cli:::lorem_ipsum(4) |> cat(sep = "\n\n")
+    ipsum(1, avg_words_per_sentence = 8) |>
+      as.character() |>
+      str_remove(".$") |>
+      paste0(" [@markov2006].") |>
+      paste0(" See @fig-mpg.") |>
+      cat(sep = "\n\n")
   }
 )
 ```
@@ -198,7 +434,6 @@ with_seed(
 ```{=latex}
 \index{figures!chart}
 ```
-
 ::: {#fig-mpg}
 ```{r}
 #| fig-height: 4
@@ -231,7 +466,211 @@ plot |>
   )
 ```
 
-[Source: Data extracted from the 1974 Motor Trend magazine, published by @henderson1981. Visualization by @holtz, available at [The R Graph Gallery](https://r-graph-gallery.com/277-marginal-histogram-for-ggplot2.html).]{.legend}
+[Data extracted from the 1974 Motor Trend magazine, published by @henderson1981. Visualization by @holtz, available at [The R Graph Gallery](https://r-graph-gallery.com/277-marginal-histogram-for-ggplot2.html).]{.legendleft}
 
-Relation between _weight (1000lbs)_ and _miles per gallon_ for combustion engine vehicles
+Marginal distributions of weight (*1000 lbs*) and fuel efficiency (*miles per gallon*) for combustion engine vehicles
 :::
+
+### Heading 3
+
+```{r}
+#| echo: false
+#| output: asis
+
+library(lorem)
+library(stringr)
+library(withr)
+
+with_seed(
+  seed = 412154,
+  code = {
+    ipsum(1, avg_words_per_sentence = 16) |>
+      as.character() |>
+      str_remove(".$") |>
+      paste0(" [@perezgonzalez2015].") |>
+      paste0(" See @def-multiple-linear-regression.") |>
+      cat(sep = "\n\n")
+  }
+)
+```
+
+::: {#def-multiple-linear-regression}
+## Multiple Linear Regression
+
+A linear regression of $Y$ on $k$ variables $X_{1}, \dots, X_{k}$, rather than on just a single variable $X$. In a problem of multiple linear regressions, we obtain $n$ vectors of observations ($x_{i1}. \dots, x_{ik}, Y_{i}$), for $i = 1, \dots, n$. Here $x_{ij}$ is the observed value of the variable $X_{j}$ for the $i$th observation. The $E(Y_{i})$ is given by the relation: [@degroot2012a, p. 738]
+
+$$
+E(Y_{i}) = \beta_{0} + \beta_{1} x_{i1} + \dots + \beta_{k} x_{ik}
+$$  {#eq-multiple-linear-regression-function}
+:::
+
+```{r}
+#| echo: false
+#| output: asis
+
+library(lorem)
+library(stringr)
+library(withr)
+
+with_seed(
+  seed = 8524,
+  code = {
+    ipsum(1, avg_words_per_sentence = 15) |>
+      as.character() |>
+      str_remove(".$") |>
+      paste0(" [@epstein2013a].") |>
+      paste0(" See @tbl-error-types.") |>
+      cat(sep = "\n\n")
+  }
+)
+```
+
+```{=latex}
+\index{tables}
+
+\begingroup
+\setlength{\tabcolsep}{0pt}
+```
+::: {#tbl-error-types}
+```{r}
+#| echo: false
+
+library(colorspace)
+library(dplyr)
+library(gt)
+library(katex)
+
+tibble(
+  decision = c(
+    "",
+    "Accept",
+    "",
+    "",
+    "Reject",
+    ""
+  ),
+  h0_true = c(
+    "Correct inference",
+    "(True negative)",
+    "($1 - \\alpha$)",
+    "Type I error",
+    "(False positive)",
+    "($\\alpha$)"
+  ),
+  h0_false = c(
+    "Type II error",
+    "(False negative)",
+    "($\\beta$)",
+    "Correct inference",
+    "(True positive)",
+    "($1 - \\beta$)"
+  )
+) |>
+  gt() |>
+  tab_options(
+    table.width = pct(70)
+  ) |>
+  cols_label(
+    decision = md("Decision about $\\text{H}_{0}$"),
+    h0_true = md("$\\text{H}_{0}$ True"),
+    h0_false = md("$\\text{H}_{0}$ False")
+  ) |>
+  cols_align(align = "center") |>
+  fmt_markdown(columns = everything()) |>
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  ) |>
+  data_color(
+    columns = "h0_true",
+    rows = 1:3,
+    palette = lighten("green", 0.9)
+  ) |>
+  data_color(
+    columns = "h0_true",
+    rows = 4:6,
+    palette = lighten("red", 0.9)
+  ) |>
+  data_color(
+    columns = "h0_false",
+    rows = 1:3,
+    palette = lighten("red", 0.9)
+  ) |>
+  data_color(
+    columns = "h0_false",
+    rows = 4:6,
+    palette = lighten("green", 0.9)
+  ) |>
+  opt_table_font(
+    font = list("Noto Sans", "Helvetica", "Arial"),
+    size = 12
+  )
+```
+
+[Based on @casella2002[p. 383]]{.legend}
+
+Type I and type II errors
+:::
+
+```{=latex}
+\endgroup
+```
+
+#### Heading 4
+
+```{r}
+#| echo: false
+#| output: asis
+
+library(lorem)
+library(stringr)
+library(withr)
+
+with_seed(
+  seed = 548791,
+  code = {
+    c(
+      ipsum(1, avg_words_per_sentence = 16) |>
+        as.character() |>
+        str_remove(".$") |>
+        paste0(" [@marcusaurelius2011]."),
+      ipsum(1, avg_words_per_sentence = 30) |>
+        as.character() |>
+        str_remove(".$") |>
+        paste0(" [@more2014].")
+    ) |>
+      cat(sep = "\n\n")
+  }
+)
+```
+
+- Bullet point
+  - Bullet point
+    - Bullet point
+
+##### Heading 5
+
+```{r}
+#| echo: false
+#| output: asis
+
+library(lorem)
+library(stringr)
+library(withr)
+
+with_seed(
+  seed = 13548,
+  code = {
+    ipsum(1, avg_words_per_sentence = 15) |>
+      as.character() |>
+      str_remove(".$") |>
+      paste0(" [@papert2020].") |>
+      paste0(" See @tbl-error-types.") |>
+      cat(sep = "\n\n")
+  }
+)
+```
+
+1. List
+1. List
+1. List

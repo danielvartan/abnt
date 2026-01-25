@@ -41,7 +41,16 @@ $endif$
   $if(legend-hyphenpenalty)$\hyphenpenalty=100000$endif$
   \ABNTEXfontereduzida
   \addvspace{\smallskipamount}
-  #1
+  Source: #1
+}
+
+\newcommand{\legendleft}[1]{
+  \addvspace{\smallskipamount}
+  \begin{tabular}{@{}l@{ } p{14cm}}
+    $if(legend-hyphenpenalty)$\hyphenpenalty=100000$endif$
+    \ABNTEXfontereduzida Source: &
+    \ABNTEXfontereduzida #1
+  \end{tabular}
 }
 
 % Credits: <https://tex.stackexchange.com/a/611556/234832>.

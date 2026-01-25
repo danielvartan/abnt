@@ -13,9 +13,3 @@ here("R", ".setup.R") |> source()
 \clearpage
 \includepdf{images/annex.pdf}
 ```
-
-```{=latex}
-\end{anexosenv}
-```
-
-<!-- annexes end -->

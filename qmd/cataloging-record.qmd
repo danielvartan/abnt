@@ -4,7 +4,7 @@
 
 ```latex
 %:::% cataloging-record body begin %:::%
-I authorize the full or partial reproduction of this work by any conventional or electronic means for the purposes of study and research, provided that the source is cited.
+I authorize and grant permission for the full or partial reproduction and distribution of this work by any conventional or electronic means for the  purposes of study and research, provided that the source is properly cited, the integrity of the original work is maintained, and such reproduction is not intended for commercial gain.
 
 \vfill
 

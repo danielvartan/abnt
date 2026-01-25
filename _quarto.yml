@@ -17,6 +17,7 @@ filters:
 
 commands:
   - legend
+  - legendleft
 
 book:
   title: "abnt: Quarto Format for ABNT Theses and Dissertations"
@@ -50,7 +51,6 @@ book:
 
 format:
   abnt-pdf:
-    index-page: true
     mainfont: Noto-Sans
     sansfont: Noto-Sans
     monofont: Noto-Sans-Mono

@@ -4,13 +4,32 @@
 
 ```latex
 %:::% foreign-abstract reference begin %:::%
-[SOBRENOME], [Inicial(is) do(s) prenome(s)].  \textbf{[Título]}. {\imprimirdata}. {\thelastpage}p. [Dissertação/Tese]  ([Título acadêmico]) -- [Escola/Faculdade], [Universidade], [Cidade/Local], {\imprimirdata}.
+[SOBRENOME DO AUTOR], [Inicial(is) do(s) prenome(s) do autor].  \textbf{[Título]}. {\imprimirdata}. {\thelastpage}p. [Dissertação/Tese]  ([Título acadêmico]) -- [Escola/Faculdade], [Universidade], [Cidade/Local], {\imprimirdata}.
 %:::% foreign-abstract reference end %:::%
 ```
 
 <!-- %:::% foreign-abstract body begin %:::% -->
-[abnt](https://github.com/danielvartan/abnt) é um formato [Quarto](https://quarto.org) projetado para criar teses e dissertações que atendem às diretrizes estabelecidas pela Associação Brasileira de Normas Técnicas ([ABNT](https://www.abnt.org.br/)). Ele é baseado na classe LaTeX [abntex2](https://www.abntex.net.br/), que pertence à família de classes [memoir](https://www.ctan.org/pkg/memoir).
+[abnt](https://github.com/danielvartan/abnt) é um formato [Quarto](https://quarto.org) projetado para criar teses e dissertações que atendem às diretrizes estabelecidas pela Associação Brasileira de Normas Técnicas ([ABNT](https://www.abnt.org.br/)). Saiba mais em <https://github.com/danielvartan/abnt>.
 <!-- %:::% foreign-abstract body end %:::% -->
+
+```{r}
+#| eval: false
+#| echo: false
+
+library(clipr)
+library(lorem)
+library(withr)
+
+with_seed(
+  seed = 45447848,
+  code = {
+    ipsum(3) |>
+      as.character() |>
+      paste(collapse = "\n\n")
+  }
+) |>
+  write_clip()
+```
 
 ```latex
 %:::% foreign-abstract keywords begin %:::%
