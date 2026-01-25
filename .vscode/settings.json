@@ -224,6 +224,7 @@
     "readr",
     "renewcommand",
     "renv",
+    "renvignore",
     "Renviron",
     "restoregeometry",
     "reynolds",

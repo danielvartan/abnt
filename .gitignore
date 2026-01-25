@@ -2,7 +2,6 @@ _freeze/
 _print/
 _slides/
 _web/
-.data
 .quarto/
 .Rapp.history
 .RData

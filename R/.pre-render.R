@@ -4,10 +4,6 @@ library(fs)
 library(here)
 library(quartor) # github.com/danielvartan/quartor
 
-# Add `censobr` to `renv` -----
-
-library(censobr)
-
 # Copy Images Folder to `qmd` -----
 
 # Solve issues with relative paths.

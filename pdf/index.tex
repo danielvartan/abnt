@@ -1174,11 +1174,11 @@ Co-Supervisor: Prof. Dr. {\imprimircoorientador}
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \usepackage{amsthm}
 \theoremstyle{plain}
-\newtheorem{conjecture}{Conjecture}[chapter]
-\theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[chapter]
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[chapter]
+\theoremstyle{plain}
+\newtheorem{conjecture}{Conjecture}[chapter]
 \theoremstyle{remark}
 \AtBeginDocument{\renewcommand*{\proofname}{Proof}}
 \newtheorem*{remark}{Remark}
@@ -1202,7 +1202,7 @@ Co-Supervisor: Prof. Dr. {\imprimircoorientador}
 \@ifundefined{codebgcolor}{\definecolor{codebgcolor}{HTML}{F1F3F5}}{}
 \makeatother
 \makeatletter
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[enhanced, colback={codebgcolor}, borderline west={3pt}{0pt}{shadecolor}, breakable, sharp corners, boxrule=0pt, frame hidden]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, enhanced, colback={codebgcolor}, boxrule=0pt, sharp corners, borderline west={3pt}{0pt}{shadecolor}, frame hidden]}{\end{tcolorbox}}\fi
 \makeatother
 
 % -----
@@ -1761,7 +1761,7 @@ Figure~\ref{fig-gini-index}.
 \clearpage
 \begingroup
 \begin{landscape}
-\renewcommand{\arraystretch}{2.5}
+\renewcommand{\arraystretch}{2.25}
 
 \begin{table}
 
@@ -1881,9 +1881,6 @@ fames aptent \autocite{epstein2013a}. See Table~\ref{tbl-error-types}.
 
 \index{tables}
 
-\begingroup
-\setlength{\tabcolsep}{0pt}
-
 \begin{table}
 
 \caption{\label{tbl-error-types}Type I and type II errors}
@@ -1909,8 +1906,6 @@ Reject & {\cellcolor[HTML]{FFEEEE}{\textcolor[HTML]{000000}{(False positive)}}} 
 }
 
 \end{table}%
-
-\endgroup
 
 \subsubsection{Heading 4}\label{heading-4}
 
@@ -2351,7 +2346,7 @@ imperdiet cursus vitae justo rhoncus \autocite{hinton1986}.
 
 \chapter{Settings}\label{sec-settings}
 
-\begin{tcolorbox}[enhanced jigsaw, left=2mm, toptitle=1mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, breakable, colframe=quarto-callout-note-color-frame, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, arc=.35mm, leftrule=.75mm, rightrule=.15mm, toprule=.15mm, bottomtitle=1mm, titlerule=0mm, bottomrule=.15mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, coltitle=black, opacityback=0, leftrule=.75mm, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, breakable, bottomrule=.15mm, colback=white, titlerule=0mm, rightrule=.15mm, toptitle=1mm, toprule=.15mm, left=2mm]
 
 Please note that not all settings are documented. For issues or
 discussions, use the

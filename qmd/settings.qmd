@@ -17,7 +17,7 @@ For more information, check the format [extension YAML file](https://github.com/
 
 ## PDF Engine
 
-This format use [`lualatex`](https://www.luatex.org/). I recommended always using this engine for better font handling and support.
+This format use [`lualatex`](https://www.luatex.org/). I recommended always using this engine for better font handling and feature support.
 
 ## Typography
 

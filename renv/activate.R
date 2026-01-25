@@ -2,9 +2,9 @@
 local({
 
   # the requested version of renv
-  version <- "1.1.6"
-  attr(version, "md5") <- "3036c4b273d882c56e8cdd660ebaf6f0"
-  attr(version, "sha") <- NULL
+  version <- "1.1.6.9000"
+  attr(version, "md5") <- "fecf56436d17d79fddb8fd1db912b273"
+  attr(version, "sha") <- "12823bacdccb5d83ee443e04299337db32453c92"
 
   # the project directory
   project <- Sys.getenv("RENV_PROJECT")
@@ -266,22 +266,22 @@ local({
     # check for repos override
     repos <- Sys.getenv("RENV_CONFIG_REPOS_OVERRIDE", unset = NA)
     if (!is.na(repos)) {
-
+  
       # split on ';' if present
       parts <- strsplit(repos, ";", fixed = TRUE)[[1L]]
-
+  
       # split into named repositories if present
       idx <- regexpr("=", parts, fixed = TRUE)
       keys <- substring(parts, 1L, idx - 1L)
       vals <- substring(parts, idx + 1L)
       names(vals) <- keys
-
+  
       # if we have a single unnamed repository, call it CRAN
       if (length(vals) == 1L && identical(keys, ""))
         names(vals) <- "CRAN"
-
+  
       return(vals)
-
+  
     }
   
     # check for lockfile repositories
@@ -547,6 +547,12 @@ local({
   
     # infer path to renv cache
     cache <- Sys.getenv("RENV_PATHS_CACHE", unset = "")
+    if (!nzchar(cache)) {
+      root <- Sys.getenv("RENV_PATHS_ROOT", unset = NA)
+      if (!is.na(root))
+        cache <- file.path(root, "cache")
+    }
+  
     if (!nzchar(cache)) {
       tools <- asNamespace("tools")
       if (is.function(tools$R_user_dir)) {
@@ -1036,7 +1042,7 @@ local({
   
   renv_bootstrap_validate_version_release <- function(version, description) {
     expected <- description[["Version"]]
-    is.character(expected) && identical(expected, version)
+    is.character(expected) && identical(c(expected), c(version))
   }
   
   renv_bootstrap_hash_text <- function(text) {
