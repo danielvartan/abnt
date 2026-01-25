@@ -14,6 +14,7 @@ library(ggplot2)
 library(here)
 library(janitor)
 library(lorem)
+library(nanoparquet)
 library(sf)
 library(stringr)
 library(withr)
@@ -248,16 +249,23 @@ municipality_shape <-
 #| include: false
 
 library(censobr)
+library(nanoparquet)
 
-census_tract_population_data <-
-  read_tracts(
-    year = 2022, # Last available year
-    dataset = "Basico",
-    as_data_frame = FALSE,
-    showProgress = FALSE,
-    cache = ifelse(interactive(), TRUE, FALSE),
-    verbose = FALSE
-  )
+if (interactive()) {
+  census_tract_population_data <-
+    read_tracts(
+      year = 2022,
+      dataset = "Basico",
+      as_data_frame = FALSE,
+      showProgress = FALSE,
+      cache = TRUE,
+      verbose = FALSE
+    )
+} else {
+  census_tract_population_data <-
+    here("data", "2022_tracts_Basico_v0.5.0.parquet") |>
+    read_parquet()
+}
 ```
 
 ```{r}
@@ -268,7 +276,7 @@ library(censobr)
 census_tract_shape_data <-
   read_census_tract(
     code_tract = municipality_code,
-    year = 2022, # Last available year
+    year = 2022,
     simplified = TRUE,
     showProgress = FALSE,
     cache = ifelse(interactive(), TRUE, FALSE)
@@ -298,6 +306,7 @@ census_data <-
   dplyr::select(code_tract, V0001) |>
   mutate(code_tract = as.numeric(code_tract)) |>
   collect() |>
+  as_tibble() |>
   rename(population = V0001) |>
   clean_names() |>
   left_join(census_tract_shape_data, by = "code_tract") |>
