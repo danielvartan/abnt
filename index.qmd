@@ -310,7 +310,7 @@ Gini index by Brazilian municipality in 2010. Values range from 0 (perfect equal
 \clearpage
 \begingroup
 \begin{landscape}
-\renewcommand{\arraystretch}{2.5}
+\renewcommand{\arraystretch}{2.25}
 ```
 ::: {#tbl-cohens-benchmark}
 ```{r}
@@ -527,10 +527,8 @@ with_seed(
 
 ```{=latex}
 \index{tables}
-
-\begingroup
-\setlength{\tabcolsep}{0pt}
 ```
+
 ::: {#tbl-error-types}
 ```{r}
 #| echo: false
@@ -611,10 +609,6 @@ tibble(
 
 Type I and type II errors
 :::
-
-```{=latex}
-\endgroup
-```
 
 #### Heading 4
 
