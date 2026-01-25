@@ -240,7 +240,7 @@ municipality_shape <-
     year = 2022,
     simplified = TRUE,
     showProgress = FALSE,
-    cache = TRUE
+    cache = ifelse(interactive(), TRUE, FALSE)
   )
 ```
 
@@ -255,7 +255,7 @@ census_tract_population_data <-
     dataset = "Basico",
     as_data_frame = FALSE,
     showProgress = FALSE,
-    cache = TRUE,
+    cache = ifelse(interactive(), TRUE, FALSE),
     verbose = FALSE
   )
 ```
@@ -271,7 +271,7 @@ census_tract_shape_data <-
     year = 2022, # Last available year
     simplified = TRUE,
     showProgress = FALSE,
-    cache = TRUE
+    cache = ifelse(interactive(), TRUE, FALSE)
   )
 ```
 

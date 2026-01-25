@@ -218,13 +218,13 @@ library(geobr)
 brazil_shape <- read_country(
   year = 2010,
   showProgress = FALSE,
-  cache = TRUE
+  cache = ifelse(interactive(), TRUE, FALSE)
 )
 
 municipalities_shape <- read_municipality(
   year = 2010,
   showProgress = FALSE,
-  cache = TRUE
+  cache = ifelse(interactive(), TRUE, FALSE)
 )
 ```
 
