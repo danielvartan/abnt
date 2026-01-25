@@ -65,6 +65,7 @@ jobs:
             libnode-dev \
             libpng-dev \
             libtiff5-dev \
+            libudunits2-dev \
             libwebp-dev \
             libx11-dev \
             pandoc
