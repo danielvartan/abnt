@@ -17,15 +17,19 @@ keywords:
   - ABNT
   - abntex2
   - Academic Writing
+  - Brazil
   - Brazilian Association of Technical Standards
   - Dissertations
   - LaTeX
   - Open Science
   - Quarto
   - Quarto Format
+  - R
   - Reproducible Research
   - Scientific Writing
   - Templates
+  - Technical Standards
+  - Technical Writing
   - Theses
 preferred-citation:
   type: software

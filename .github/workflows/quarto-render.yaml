@@ -48,10 +48,23 @@ jobs:
           }
 
       - name: Install system dependencies
+        if: runner.os == 'macOS'
+        run: |
+          # Install system dependencies
+
+          brew install --cask \
+            pkg-config \
+            gdal \
+            xquartz
+        shell: bash
+
+      - name: Install system dependencies
         if: runner.os == 'Linux'
         run: |
           # Install system dependencies
 
+          sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
+          sudo apt update
           sudo apt-get update -qq
 
           sudo apt-get install -y -qq \
@@ -60,10 +73,14 @@ jobs:
             libfontconfig1-dev \
             libfribidi-dev \
             libfreetype6-dev \
+            libgdal-dev \
+            libgeos-dev \
             libharfbuzz-dev \
             libjpeg-dev \
             libnode-dev \
             libpng-dev \
+            libproj-dev \
+            libsqlite3-dev \
             libtiff5-dev \
             libudunits2-dev \
             libwebp-dev \

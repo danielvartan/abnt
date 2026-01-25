@@ -1,17 +1,15 @@
 title: "abnt: Quarto format for ABNT theses and dissertations"
 author: "Daniel Vartanian"
 abstract: >
-  Quarto format designed for creating theses and dissertations that comply with
-  guidelines established by the Brazilian Association of Technical Standards
-  (ABNT).
-description: >
-  Quarto format designed for creating theses and dissertations that comply with
-  guidelines established by the Brazilian Association of Technical Standards
-  (ABNT).
+  Quarto format format designed for creating theses and dissertations that
+  comply with guidelines established by the Brazilian Association of Technical
+  Standards (ABNT).
 keyword: >-
-  ABNT, abntex2, Academic Writing, Brazilian Association of Technical Standards,
-  Dissertations, LaTeX, Open Science, Quarto, Quarto Format,
-  Reproducible Research, Scientific Writing, Templates, Theses
+  ABNT, abntex2, Academic Writing, Brazil,
+  Brazilian Association of Technical Standards,
+  Dissertations, LaTeX, Open Science, Quarto, Quarto Format, R,
+  Reproducible Research, Scientific Writing, Templates, Technical Standards,
+  Technical Writing, Theses
 version: 1.0.0
 quarto-required: ">=1.8.27"
 license:
