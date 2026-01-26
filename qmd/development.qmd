@@ -65,10 +65,6 @@ In these [equations](#eq-lorenz-system):
 
 The phase space visualization of this system (@fig-lorenz-system) reveals intricate patterns and behaviors, including the presence of strange attractors, which are indicative of chaotic dynamics. To learn more about the Lorenz system, see @lorenz2008.
 
-```{=latex}
-\index{figures!chart}
-```
-
 ```{r}
 #| include: false
 
@@ -183,6 +179,8 @@ plot_phase_space <- function(
 
 ::: {#fig-lorenz-system}
 ```{r}
+#| label: fig-lorenz-system
+
 plot_phase_space()
 ```
 
@@ -218,10 +216,6 @@ with_seed(
       cat(sep = "\n\n")
   }
 )
-```
-
-```{=latex}
-\index{figures!chart}
 ```
 
 ```{r}
@@ -316,6 +310,8 @@ census_data <-
 
 ::: {#fig-sao-paulo-tracts}
 ```{r}
+#| label: fig-sao-paulo-tracts
+
 library(ggplot2)
 library(ggspatial)
 library(sf)
@@ -360,10 +356,14 @@ ggplot() +
   )
 ```
 
-[Tract boundary data from the [Brazilian 2022 Census](https://www.ibge.gov.br/en/statistics/social/labor/22836-2022-census-3.html) and municipal boundary data imported via the [censobr](https://ipeagit.github.io/censobr/) [@pereirab] and [geobr](https://ipeagit.github.io/geobr/) [@pereirab] R packages.]{.legendleft}
+[Tract data from the [Brazilian 2022 Census](https://www.ibge.gov.br/en/statistics/social/labor/22836-2022-census-3.html) and municipal boundary data imported via the [censobr](https://ipeagit.github.io/censobr/) [@pereirab] and [geobr](https://ipeagit.github.io/geobr/) [@pereirab] R packages.]{.legendleft}
 
 Population by census tract in 2022 in the city of São Paulo, Brazil
 :::
+
+```{=latex}
+\index{figures!chart}
+```
 
 #### Heading 4
 
@@ -388,12 +388,9 @@ with_seed(
 )
 ```
 
-```{=latex}
-\index{figures!chart}
-```
-
 ::: {#fig-eruption}
 ```{r}
+#| label: fig-eruption
 #| fig-height: 4
 #| fig-width: 6
 
@@ -417,6 +414,10 @@ faithful |>
 
 Relation between _waiting time to next eruption_ (minutes) and _eruption time_ (minutes) at Old Faithful Geyser, Yellowstone National Park, Wyoming, USA
 :::
+
+```{=latex}
+\index{figures!chart}
+```
 
 ```{r}
 #| echo: false
@@ -453,6 +454,10 @@ Formally:
 ::: {#cnj-hypothesis-test}
 ### Data Test
 
+<!--
+There is nothing wrong with `\begin{cases}`; the *Conjecture* environment makes the text italic.
+-->
+
 $$
 \begin{cases}
   \text{H}_{0}: \Delta \ \text{Adjusted} \ \text{R}^{2} < \text{MES} \\
@@ -478,7 +483,7 @@ library(withr)
 with_seed(
   seed = 25741,
   code = {
-    ipsum(1, avg_words_per_sentence = 55) |>
+    ipsum(1, avg_words_per_sentence = 45) |>
       as.character() |>
       str_remove(".$") |>
       paste0(" [@thoreau2017].") |>

@@ -43,10 +43,10 @@ preferred-citation:
 identifiers:
   - type: doi
     value: 10.5281/zenodo.18357083
-    description: Zenodo Record
+    description: Zenodo record
   - type: url
     value: https://github.com/danielvartan/abnt
-    description: GitHub Code Repository
+    description: GitHub code repository
 repository-code: https://github.com/danielvartan/abnt
 license: GPL-3.0-or-later
-version: 1.0.0.9000
+version: 1.0.0

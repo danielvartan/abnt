@@ -111,7 +111,7 @@ for (i in files) {
 
 # Delete Unnecessary Files and Folders -----
 
-quartor:::clean_quarto_mess(
+clean_quarto_render(
   file = c(".luarc.json"),
   dir = c(
     ".temp",

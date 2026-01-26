@@ -26,7 +26,8 @@ book:
   date-format: "YYYY"
   submitted: 2026
   keyword: >-
-    ABNT, abntex2, Academic Writing, Brazilian Association of Technical Standards,
+    ABNT, abntex2, Academic Writing,
+    Brazilian Association of Technical Standards,
     Dissertations, LaTeX, Open Science, Quarto, Quarto Format,
     Reproducible Research, Scientific Writing, Templates, Theses
   language: en
@@ -51,15 +52,39 @@ book:
 
 format:
   abnt-pdf:
-    lang: en
-    babel-lang: english
+    lang: en # [en, pt-br, es, fr] (for hyphenation)
+    babel-lang: english # [english, brazil, spanish, french]
     other-babel-lang: # Do not repeat 'babel-lang' here.
       - french
       - spanish
       - brazil
+    papersize: a4 # [a4, a5]
+    sides: oneside # [oneside, twoside]
     mainfont: Noto-Sans
     sansfont: Noto-Sans
     monofont: Noto-Sans-Mono
+    fontsize: 12pt
+    linestretch: 1.5
+    parindent: 1cm
+    parskip: 0ex
+    frenchspacing: true
+    biblatexoptions:
+      - backend=biber
+      - url=true
+      - useprefix=false
+      - giveninits=true
+      - style=abnt
+    bibhang: 0cm # Use 0.5cm if `style=apa`
+    bibparsep: -2ex # Use 1ex `style=apa`
+    biblio-footnote: >
+      According to the Brazilian Association of Technical Standards
+      (ABNT NBR 6023).
+    index-page: true
+    colorlinks: true
+    linkcolor: blue
+    filecolor: blue
+    citecolor: blue
+    urlcolor: blue
     location: "[City]"
     supervisor: "[Supervisor's full name]"
     cosupervisor: "[Co-supervisor's full name]"

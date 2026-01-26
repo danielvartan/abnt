@@ -3877,7 +3877,7 @@
     },
     "quartor": {
       "Package": "quartor",
-      "Version": "0.0.0.9000",
+      "Version": "0.1.0.9000",
       "Source": "GitHub",
       "Title": "Quarto Tools",
       "Authors@R": "c( person( given = \"Daniel\", family = \"Vartanian\", role = c(\"aut\", \"cre\", \"ccp\", \"cph\"), email = \"danvartan@gmail.com\", comment = c(ORCID = \"0000-0001-7782-759X\") ) )",
@@ -3896,9 +3896,9 @@
         "glue (>= 1.8.0)",
         "here (>= 1.0.2)",
         "fs (>= 1.6.6)",
-        "lifecycle (>= 1.0.4)",
+        "lifecycle (>= 1.0.5)",
         "magrittr (>= 2.0.4)",
-        "parsnip (>= 1.3.3)",
+        "parsnip (>= 1.4.1)",
         "prettycheck",
         "quarto (>= 1.5.1)",
         "rbbt",
@@ -3907,30 +3907,30 @@
         "spelling (>= 2.3.2)",
         "stats (>= 4.4)",
         "stringr (>= 1.6.0)",
-        "yaml (>= 2.3.10)"
+        "yaml (>= 2.3.12)"
       ],
       "Suggests": [
         "bslib (>= 0.9.0)",
         "covr (>= 3.6.5)",
-        "knitr (>= 1.50)",
+        "knitr (>= 1.51)",
         "plotr",
-        "testthat (>= 3.3.0)"
+        "testthat (>= 3.3.2)"
       ],
-      "Remotes": "github::danielvartan/plotr, github::danielvartan/prettycheck, github::wmoldham/rbbt",
       "Config/testthat/edition": "3",
       "Encoding": "UTF-8",
       "Language": "en-US",
       "Roxygen": "list(markdown = TRUE)",
       "RoxygenNote": "7.3.3",
+      "LazyData": "true",
+      "Author": "Daniel Vartanian [aut, cre, ccp, cph] (ORCID: <https://orcid.org/0000-0001-7782-759X>)",
+      "Maintainer": "Daniel Vartanian <danvartan@gmail.com>",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
-      "RemoteRepo": "quartor",
       "RemoteUsername": "danielvartan",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "621854c4dce537f52a1562654d78aa9ca8e185e8",
-      "NeedsCompilation": "no",
-      "Author": "Daniel Vartanian [aut, cre, ccp, cph] (ORCID: <https://orcid.org/0000-0001-7782-759X>)",
-      "Maintainer": "Daniel Vartanian <danvartan@gmail.com>"
+      "RemoteRepo": "quartor",
+      "RemoteRef": "main",
+      "RemoteSha": "3e3dc488e3656a1b95a0a7c4fc32d47f0de87f1a",
+      "Remotes": "github::danielvartan/plotr, github::danielvartan/prettycheck, github::wmoldham/rbbt"
     },
     "ragg": {
       "Package": "ragg",
@@ -4012,6 +4012,7 @@
       ],
       "License": "GPL-3",
       "Encoding": "UTF-8",
+      "LazyData": "true",
       "RoxygenNote": "7.2.3",
       "Imports": [
         "httr",
@@ -4029,15 +4030,14 @@
       "Suggests": [
         "testthat"
       ],
+      "Author": "Dewey Dunnington [aut, cre], Brenton M. Wiernik [aut]",
+      "Maintainer": "Dewey Dunnington <dewey@fishandwhistle.net>",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
-      "RemoteRepo": "rbbt",
       "RemoteUsername": "wmoldham",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "8d64efcf46468c9388580d037530b58434592196",
-      "NeedsCompilation": "no",
-      "Author": "Dewey Dunnington [aut, cre], Brenton M. Wiernik [aut]",
-      "Maintainer": "Dewey Dunnington <dewey@fishandwhistle.net>"
+      "RemoteRepo": "rbbt",
+      "RemoteRef": "master",
+      "RemoteSha": "8d64efcf46468c9388580d037530b58434592196"
     },
     "reactR": {
       "Package": "reactR",

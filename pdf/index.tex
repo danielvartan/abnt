@@ -1,19 +1,11 @@
-% Author: Daniel Vartanian.
+% Author: Daniel Vartanian
 % License: GNU General Public License v3 or later
+% Code repository: <https://github.com/danielvartan/abnt>
 %
-% Based on template.tex, developed by the Quarto team and
-% abtex2-modelo-trabalho-academico.tex, v-1.9.7, developed by
-% Lauro César Araujo and the team behind `abnt2tex`, with additional guidance
-% from the theses and dissertations regulations of the University of São Paulo
-% (USP). For more information, please visit <http://www.abntex.net.br/>.
-
-% For help, see:
-%
-% - <https://quarto.org/docs/reference/formats/pdf.html>
-% - <https://github.com/abntex/abntex2/wiki/ComoCustomizar>
-% - <https://www.ctan.org/pkg/abntex2>
-% - <https://www.ctan.org/pkg/memoir>
-% - <https://www.ctan.org/pkg/hyperref>
+% Based on `template.tex` developed by the Quarto team and
+% `abtex2-modelo-trabalho-academico.tex` developed by Lauro César Araújo
+% and the abnTeX2 team, with additional guidance from the theses and
+% dissertations regulations of the University of São Paulo (USP).
 
 % -----
 % Preamble
@@ -618,6 +610,7 @@ english
 
     % Quarto adds \appendix automatically,
     % so we just need to add the chapter title.
+    \phantomsection
     \chapter*{#1}
     \markboth{#1}{#1}
 
@@ -1186,10 +1179,10 @@ Co-Supervisor: Prof. Dr. {\imprimircoorientador}
 \usepackage{amsthm}
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[chapter]
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}[chapter]
 \theoremstyle{plain}
 \newtheorem{conjecture}{Conjecture}[chapter]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
 \theoremstyle{remark}
 \AtBeginDocument{\renewcommand*{\proofname}{Proof}}
 \newtheorem*{remark}{Remark}
@@ -1213,7 +1206,7 @@ Co-Supervisor: Prof. Dr. {\imprimircoorientador}
 \@ifundefined{codebgcolor}{\definecolor{codebgcolor}{HTML}{F1F3F5}}{}
 \makeatother
 \makeatletter
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, breakable, enhanced, sharp corners, frame hidden, colback={codebgcolor}]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, frame hidden, boxrule=0pt, breakable, sharp corners, enhanced, colback={codebgcolor}]}{\end{tcolorbox}}\fi
 \makeatother
 
 % -----
@@ -1222,15 +1215,13 @@ Co-Supervisor: Prof. Dr. {\imprimircoorientador}
 
 \begin{document}
 
-% Top matter -----
+% Top Matter -----
 
 \pretextual
 
 \frenchspacing
 
 \selectlanguage{english}
-
-%:::% class attribute begin/end %:::%
 
 % -----
 % Cover (Mandatory)
@@ -1630,10 +1621,10 @@ Phase relation.
 % Other Additions
 % -----
 
-
-% Main and back matter -----
+% Main and Back Matter -----
 
 \textual
+
 \bookmarksetup{startatroot}
 
 \chapter{{[}Showcase{]} Introduction}\label{sec-introduction}
@@ -1646,8 +1637,6 @@ aptent imperdiet rutrum in primis augue tristique felis. Lacinia
 suspendisse purus tortor natoque sollicitudin euismod -- nulla tempus
 dui posuere. Cras rhoncus vel, aliquam vivamus nec semper torquent
 praesent \autocite{einstein1905}. See Figure~\ref{fig-karl-popper}.
-
-\index{Karl Popper}
 
 \begingroup
 \setlength{\ABNTEXcitacaorecuo}{4.25cm} % Default: 4cm
@@ -1677,8 +1666,6 @@ rutrum torquent curae aliquam dui, id torquent duis tincidunt ornare
 torquent nam magna sapien suscipit
 \autocite{krakauer2019,mitchell2009a}.
 
-\index{figures}
-
 \begin{figure}[H]
 
 \caption{\label{fig-karl-popper}Karl Popper (July 25, 1902 -- September
@@ -1696,6 +1683,9 @@ Pyke}.}
 
 \end{figure}%
 
+\index{Karl Popper}
+\index{figures}
+
 \section{Heading 2}\label{heading-2}
 
 Adipiscing aliquet luctus dapibus hac mattis urna metus eleifend felis?
@@ -1705,8 +1695,6 @@ Montes aliquam vivamus magnis nascetur ad non dui magnis magnis
 condimentum! Tortor hendrerit orci feugiat mi, tristique; ante accumsan
 venenatis. Nisi posuere et ut nulla dictumst metus dui etiam vel
 ultricies velit \autocite{pearson1900}. See Table~\ref{tbl-penguins}.
-
-\index{tables}
 
 \begin{table}
 
@@ -1733,6 +1721,8 @@ ultricies velit \autocite{pearson1900}. See Table~\ref{tbl-penguins}.
 
 \end{table}%
 
+\index{tables}
+
 \subsection{Heading 3}\label{heading-3}
 
 Consectetur facilisis montes, conubia eu justo luctus ante pulvinar ut
@@ -1750,8 +1740,6 @@ porttitor enim. Placerat quisque rutrum nisl praesent; aliquam pharetra
 fringilla. Na fringilla \autocite{neyman1928a}. See
 Figure~\ref{fig-gini-index}.
 
-\index{figures!chart}
-
 \begin{figure}[H]
 
 \caption{\label{fig-gini-index}Gini index by Brazilian municipality in
@@ -1759,7 +1747,13 @@ Figure~\ref{fig-gini-index}.
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/unnamed-chunk-9-1.png}}
+\subcaption{\label{fig-gini-index}}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/fig-gini-index-1.png}}
+
+}
 
 \legendleft{Data extracted from \textcite{ibge}, processed by
 \textcite{vartanian2025r}.}
@@ -1768,7 +1762,7 @@ Figure~\ref{fig-gini-index}.
 
 \end{figure}%
 
-\index{tables}
+\index{figures!chart}
 
 \clearpage
 \begingroup
@@ -1814,6 +1808,7 @@ Notes: The rationale for most of these benchmarks can be found in Cohen (1988) a
 
 \end{table}%
 
+\index{tables}
 \end{landscape}
 \endgroup
 \clearpage
@@ -1826,17 +1821,21 @@ arcu nisi tristique sodales. Convallis enim lacus class suspendisse
 porttitor litora ante conubia risus turpis! Quis nisl
 \autocite{markov2006}. See Figure~\ref{fig-mpg}.
 
-\index{figures!chart}
-
 \begin{figure}[H]
 
-\caption{\label{fig-mpg}Marginal distributions of weight (\emph{1000
-lbs}) and fuel efficiency (\emph{miles per gallon}) for combustion
-engine vehicles}
+\caption{\label{fig-mpg}Scatter plot with marginal distributions of
+weight (\emph{1000 lbs}) and fuel efficiency (\emph{miles per gallon})
+for combustion engine vehicles}
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/unnamed-chunk-12-1.png}}
+\subcaption{\label{fig-mpg}}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/fig-mpg-1.png}}
+
+}
 
 \legendleft{Data extracted from the 1974 Motor Trend magazine, published
 by \textcite{henderson1981}. Visualization by \textcite{holtz},
@@ -1847,6 +1846,8 @@ R Graph Gallery}.}
 }
 
 \end{figure}%
+
+\index{figures!chart}
 
 \paragraph{Heading 5}\label{heading-5}
 
@@ -1891,8 +1892,6 @@ fames, himenaeos viverra pharetra, sed congue, sapien integer
 ullamcorper euismod auctor cras nec aliquam sociis lectus dui porta
 fames aptent \autocite{epstein2013a}. See Table~\ref{tbl-error-types}.
 
-\index{tables}
-
 \begin{table}
 
 \caption{\label{tbl-error-types}Type I and type II errors}
@@ -1918,6 +1917,8 @@ Reject & {\cellcolor[HTML]{FFEEEE}{\textcolor[HTML]{000000}{(False positive)}}} 
 }
 
 \end{table}%
+
+\index{tables}
 
 \bookmarksetup{startatroot}
 
@@ -1974,8 +1975,6 @@ behaviors, including the presence of strange attractors, which are
 indicative of chaotic dynamics. To learn more about the Lorenz system,
 see \textcite{lorenz2008}.
 
-\index{figures!chart}
-
 \index{Lorenz system}
 \index{figures!chart}
 
@@ -1986,7 +1985,13 @@ Lorenz system}
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{qmd/development_files/figure-pdf/unnamed-chunk-5-1.png}}
+\subcaption{\label{fig-lorenz-system}}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{qmd/development_files/figure-pdf/fig-lorenz-system-1.png}}
+
+}
 
 \legend{Reproduced from \textcite{vartanian2024d}. Based on
 \textcite{lorenz1963}.}
@@ -2014,8 +2019,6 @@ penatibus tristique cubilia, velit imperdiet vivamus tellus dignissim
 purus himenaeos bibendum \autocite{walker2024a,peirce2011}. See
 Figure~\ref{fig-sao-paulo-tracts}.
 
-\index{figures!chart}
-
 \begin{figure}[H]
 
 \caption{\label{fig-sao-paulo-tracts}Population by census tract in 2022
@@ -2023,9 +2026,15 @@ in the city of São Paulo, Brazil}
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{qmd/development_files/figure-pdf/unnamed-chunk-13-1.png}}
+\subcaption{\label{fig-sao-paulo-tracts}}
 
-\legendleft{Tract boundary data from the
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{qmd/development_files/figure-pdf/fig-sao-paulo-tracts-1.png}}
+
+}
+
+\legendleft{Tract data from the
 \href{https://www.ibge.gov.br/en/statistics/social/labor/22836-2022-census-3.html}{Brazilian
 2022 Census} and municipal boundary data imported via the
 \href{https://ipeagit.github.io/censobr/}{censobr} \autocite{pereirab}
@@ -2035,6 +2044,8 @@ packages.}
 }
 
 \end{figure}%
+
+\index{figures!chart}
 
 \subsubsection{Heading 4}\label{heading-4-1}
 
@@ -2051,8 +2062,6 @@ platea enim malesuada venenatis nullam nibh sollicitudin dictumst
 condimentum habitant quis arcu malesuada etiam
 \autocite{hopfield1984,darwin2017}. See Figure~\ref{fig-eruption}.
 
-\index{figures!chart}
-
 \begin{figure}[H]
 
 \caption{\label{fig-eruption}Relation between \emph{waiting time to next
@@ -2061,7 +2070,13 @@ Geyser, Yellowstone National Park, Wyoming, USA}
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{qmd/development_files/figure-pdf/unnamed-chunk-15-1.png}}
+\subcaption{\label{fig-eruption}}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{qmd/development_files/figure-pdf/fig-eruption-1.png}}
+
+}
 
 \legend{Reproduced from the
 \href{https://ggplot2.tidyverse.org/reference/geom_density_2d.html}{ggplot2}
@@ -2070,6 +2085,8 @@ R package documentation \autocite{wickham2016a}.}
 }
 
 \end{figure}%
+
+\index{figures!chart}
 
 Elit ad ligula enim sodales, elementum risus erat metus eget mollis.
 Ridiculus iaculis nam dictum eros eros -- at rutrum nostra ornare? Nisl
@@ -2109,6 +2126,8 @@ Formally:
 \begin{conjecture}[Data
 Test]\protect\hypertarget{cnj-hypothesis-test}{}\label{cnj-hypothesis-test}
 
+~
+
 \[
 \begin{cases}
   \text{H}_{0}: \Delta \ \text{Adjusted} \ \text{R}^{2} < \text{MES} \\
@@ -2124,23 +2143,20 @@ Where:
 \Delta \ \text{Adjusted} \ \text{R}^{2} = \text{Adjusted} \ \text{R}^{2}_{f} - \text{Adjusted} \ \text{R}^{2}_{r}
 }\end{equation}
 
-Lorem arcu egestas cum facilisi pharetra sapien litora. Egestas faucibus
-libero ullamcorper nisi ac pellentesque, rutrum sed rutrum at --
-elementum mi? Phasellus sapien ornare vulputate molestie lacinia sodales
-mollis tristique placerat lectus iaculis molestie eu porta suscipit
-phasellus phasellus eu nibh fames mus molestie eros cum suspendisse cum
-faucibus nunc ultrices facilisi id a porttitor aliquet leo vivamus
-pellentesque enim interdum diam ornare placerat porta malesuada quisque
-fermentum arcu, eros dictum mattis, dui, fringilla ante hendrerit
-ultricies, sociosqu dictumst sollicitudin, pulvinar purus, penatibus
-cubilia, a, nullam turpis, placerat mauris, sociosqu dictum dis, magnis
-nibh lobortis potenti, non, phasellus, urna class, sed fusce dui, enim
-imperdiet duis nascetur bibendum curabitur class sem nullam diam, curae
+Sit arcu egestas cum facilisi pharetra sapien litora egestas. Faucibus
+libero ullamcorper nisi ac pellentesque rutrum sed rutrum at elementum
+mi. Phasellus sapien ornare vulputate molestie lacinia sodales mollis
+tristique placerat lectus iaculis molestie eu porta suscipit phasellus
+phasellus eu nibh fames mus molestie eros cum suspendisse cum faucibus
+nunc ultrices facilisi id a porttitor aliquet leo -- vivamus
+pellentesque enim interdum, diam ornare placerat porta -- malesuada,
+quisque fermentum arcu eros dictum: mattis dui fringilla, ante hendrerit
+ultricies sociosqu, dictumst sollicitudin pulvinar purus, penatibus
+cubilia a nullam, turpis placerat mauris sociosqu dictum, dis magnis
+nibh lobortis potenti non phasellus urna class sed fusce dui enim
+imperdiet duis nascetur bibendum curabitur class sem nullam diam curae
 mus eleifend accumsan ut phasellus molestie habitasse commodo
-pellentesque mattis tempor magna pulvinar per turpis velit magna
-eleifend dignissim dictumst ante cum nullam dui dignissim massa
-himenaeos phasellus fusce sapien est platea congue gravida convallis
-praesent tempus cras porta justo nam diam fusce eros aliquet
+pellentesque mattis tempor magna pulvinar per turpis velit
 \autocite{thoreau2017}.
 
 \bookmarksetup{startatroot}
@@ -2283,7 +2299,6 @@ seen as an organism's phase of entrainment \autocite{roenneberg2012a}.
 A rhythm with a period close to a day/24h, an approximation to the
 period of the earth's rotation \autocite{pittendrigh1960}. From the
 Latin \emph{circā}, around, and \emph{dĭes}, day \autocite{latinitium}.
-Example: the sleep-wake cycle.
 \item[Complex system]
 \hspace{20cm}
 
@@ -2364,7 +2379,7 @@ imperdiet cursus vitae justo rhoncus \autocite{hinton1986}.
 
 \chapter{Settings}\label{sec-settings}
 
-\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, breakable, left=2mm, toprule=.15mm, colback=white, opacitybacktitle=0.6, colframe=quarto-callout-note-color-frame, toptitle=1mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, coltitle=black, rightrule=.15mm, bottomrule=.15mm, bottomtitle=1mm, titlerule=0mm]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, colframe=quarto-callout-note-color-frame, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, colback=white, titlerule=0mm, bottomrule=.15mm, rightrule=.15mm, toptitle=1mm, coltitle=black, leftrule=.75mm, breakable, left=2mm, toprule=.15mm, arc=.35mm]
 
 Please note that not all settings are documented. For issues or
 discussions, use the
@@ -2382,19 +2397,19 @@ section in the Quarto guide.
 
 \section{PDF Engine}\label{pdf-engine}
 
-This format use \href{https://www.luatex.org/}{\texttt{lualatex}}. I
-recommended always using this engine for better font handling and
-feature support.
+This format uses \href{https://www.luatex.org/}{\texttt{lualatex}}. I
+recommend always using this engine for better font handling and feature
+support.
 
 \section{Typography}\label{typography}
 
-\index{tipography}
+\index{typography}
 
 \subsection{Typefaces}\label{typefaces}
 
 To change typefaces, use Quarto
 \href{https://quarto.org/docs/reference/formats/pdf.html}{PDF options}
-such as \texttt{mainfont}, \texttt{monofont}, and \texttt{sansfont}.
+like \texttt{mainfont}, \texttt{monofont}, and \texttt{sansfont}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2405,9 +2420,9 @@ such as \texttt{mainfont}, \texttt{monofont}, and \texttt{sansfont}.
 \end{Shaded}
 
 The ABNT NBR 14724:2011 norm does not specify a required font. You can
-choose any font, provided it is installed on your computer.
+use any font installed on your computer.
 
-To see all the fonts installed in your system, run using R:
+To list all fonts installed on your system, run the following in R:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2418,10 +2433,10 @@ To see all the fonts installed in your system, run using R:
 \end{Highlighting}
 \end{Shaded}
 
-\subsection{Line-Height and Font Size}\label{line-height-and-font-size}
+\subsection{Font Size and Line-Height}\label{font-size-and-line-height}
 
-Use \texttt{fontsize} and \texttt{linestretch} in \texttt{quarto.yml} to
-adjust these options.
+Use \texttt{fontsize} and \texttt{linestretch} in \texttt{\_quarto.yml}
+to adjust these options.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2432,18 +2447,32 @@ adjust these options.
 \end{Highlighting}
 \end{Shaded}
 
-It's important to note that the third paragraph of Section 5.1 of ABNT
-NBR 14724:2011 norm establishes that the font size should be 12pt for
-the entire document, including the cover, except for quotations longer
-than three lines, footnotes, pagination, cataloging data, captions, and
-sources of illustrations and tables, which should be in a smaller and
-uniform size.
+Note that Section 5.1 of the ABNT NBR 14724:2011 norm specifies that the
+font size should be \textbf{12pt} for the entire document, including the
+cover, except for quotations longer than three lines, footnotes,
+pagination, cataloging data, captions, and sources of illustrations and
+tables, which should be in a smaller and uniform size.
 
 \section{Language and Hyphenation}\label{language-and-hyphenation}
 
-This format already includes support for multiple languages and
-hyphenation patterns. These patterns will be automatically loaded based
-on the selected language.
+\index{language}
+
+This format includes built-in support for multiple languages and
+hyphenation patterns, which are automatically loaded based on the
+document's language setting.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{format}\KeywordTok{:}
+\AttributeTok{  }\FunctionTok{abnt{-}pdf}\KeywordTok{:}
+\AttributeTok{    }\FunctionTok{lang}\KeywordTok{:}\AttributeTok{ en}
+\AttributeTok{    }\FunctionTok{babel{-}lang}\KeywordTok{:}\AttributeTok{ english}
+\AttributeTok{    }\FunctionTok{other{-}babel{-}lang}\KeywordTok{:}\CommentTok{ \# Do not repeat \textquotesingle{}babel{-}lang\textquotesingle{} here.}
+\AttributeTok{      }\KeywordTok{{-}}\AttributeTok{ french}
+\AttributeTok{      }\KeywordTok{{-}}\AttributeTok{ spanish}
+\AttributeTok{      }\KeywordTok{{-}}\AttributeTok{ brazil}
+\end{Highlighting}
+\end{Shaded}
 
 \section{Document Sections}\label{document-sections}
 
@@ -2460,19 +2489,6 @@ Unless you want to customize the template, you don't need to modify the
 \texttt{.tex} files. You can write directly in the \texttt{.qmd} files.
 Just ensure that you preserve all the tags.
 
-\subsection{Including LaTeX Commands in Quarto
-Files}\label{including-latex-commands-in-quarto-files}
-
-To add LaTeX commands always use a code block with \texttt{\{=latex\}}:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{=latex\}}
-\CommentTok{\% Some LaTeX code.}
-\NormalTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
-\end{Highlighting}
-\end{Shaded}
-
 \subsection{Customizing the Sections}\label{customizing-the-sections}
 
 I plan to implement this format more straightforwardly using
@@ -2483,9 +2499,6 @@ customize the sections using the following instructions.
 
 \subsubsection{Removing Pre-Textual
 Sections}\label{removing-pre-textual-sections}
-
-All sections specified in the \href{https://teses.usp.br}{Teses USP}
-guidelines are included in this format.
 
 If you don't need a pre-textual section (e.g., Errata, Acknowledgments),
 remove it from \texttt{tex/include-before-body.tex}, and
@@ -2501,22 +2514,33 @@ chapter. See the next section for more details.
 \subsubsection{Removing Post-Textual
 Sections}\label{removing-post-textual-sections}
 
-You must be careful when removing post-textual sections (e.g.,
-Appendices, Annexes). Each post-textual section starts and ends with a
-specific LaTeX command (e.g.,
-\texttt{\textbackslash{}begin\{anexosenv\}}).
+Exercise caution when removing post-textual sections (e.g., Glossary,
+Appendices, Annexes). Each section begins and ends with specific LaTeX
+commands (e.g., \texttt{\textbackslash{}begin\{anexosenv\}}).
 
-For example, to remove the Glossary, remove it from
-\texttt{\_quarto.yml} and copy the LaTeX code after
-\texttt{\textless{}!-\/-\ glossary\ end\ -\/-\textgreater{}} in
-\texttt{glossary.qmd} to the bottom of the last chapter.
+To remove the Glossary:
 
-The same applies when removing appendices. The last appendix must
-include LaTeX code at the end to end the section and initialize the
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Delete it from \texttt{\_quarto.yml}
+\item
+  Remove the \texttt{\textbackslash{}begin\{glossario\}} LaTeX code at
+  the end of the \emph{Conclusion} or last chapter
+\item
+  Copy the LaTeX code following
+  \texttt{\textbackslash{}begin\{apendicesenv\}} in
+  \texttt{glossary.qmd} to the bottom of the \emph{Conclusion} or last
+  chapter
+\end{enumerate}
+
+The same process applies when removing Appendices and Annexes. The last
+appendix must include LaTeX code to close the section and initialize the
 Annexes section.
 
-The Index section is the exception. To remove this section, add the
-following to your \texttt{\_quarto.yml} file:
+The Index section is an exception. To remove it, add the following to
+your \texttt{\_quarto.yml} file:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2532,26 +2556,26 @@ inserting LaTeX code at the end of specific sections:
 \begin{itemize}
 \tightlist
 \item
-  Between the last chapter and the Glossary section
+  Between the last chapter and the Glossary
 \item
-  Between the Glossary section and the Appendices section
+  Between the Glossary and Appendices
 \item
-  Between the Appendices and Annexes sections
+  Between Appendices and Annexes
 \item
-  After the Annexes section
+  At the end of the Annexes
 \end{itemize}
 
 \section{Citation Management}\label{citation-management}
 
 \subsection{Methods}\label{methods}
 
-\index{BibLaTeX}
-
 This Quarto format is specifically designed along with
 \href{https://www.ctan.org/pkg/biblatex}{BibLaTeX}. For detailed
 guidance on handling citations, refer to Quarto's
 \href{https://quarto.org/docs/authoring/footnotes-and-citations.html}{Citation
 \& Footnotes} documentation.
+
+\index{BibLaTeX}
 
 \subsection{Styles}\label{styles}
 
@@ -2577,6 +2601,7 @@ complete documentation.
 \AttributeTok{    }\FunctionTok{biblatexoptions}\KeywordTok{:}
 \AttributeTok{      }\KeywordTok{{-}}\AttributeTok{ backend=biber}
 \AttributeTok{      }\KeywordTok{{-}}\AttributeTok{ url=true}
+\AttributeTok{      }\KeywordTok{{-}}\AttributeTok{ isbn=true}
 \AttributeTok{      }\KeywordTok{{-}}\AttributeTok{ useprefix=false}
 \AttributeTok{      }\KeywordTok{{-}}\AttributeTok{ giveninits=true}
 \AttributeTok{      }\KeywordTok{{-}}\AttributeTok{ style=abnt}
@@ -2649,11 +2674,29 @@ Elements}} section and refer to Quarto's
 \href{https://quarto.org/docs/prerelease/1.4/crossref.html}{Cross-Referenceable
 Elements} article.
 
+\section{LaTeX Commands in Quarto
+Files}\label{latex-commands-in-quarto-files}
+
+When adding LaTeX commands in Quarto always use a code block with
+\texttt{\{=latex\}}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{=latex\}}
+\CommentTok{\% Some LaTeX code.}
+\NormalTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
+\end{Highlighting}
+\end{Shaded}
+
+This avoids rendering issues.
+
 \section{Cross-Referenceable
 Elements}\label{cross-referenceable-elements}
 
 Quarto allow you to create and reference almost anything by using
-\texttt{div} enclosures. For example: See Theorem~\ref{thm-line}.
+\texttt{div} enclosures. For example:
+
+See Theorem~\ref{thm-line}.
 
 \begin{theorem}[Line]\protect\hypertarget{thm-line}{}\label{thm-line}
 
@@ -2665,15 +2708,14 @@ y = mx + b
 
 \end{theorem}
 
-However, it's important to note that for this to work, each type of
-\texttt{div} must use pre-defined prefixes. If you don't follow these
-rules your document can behave unexpectedly.
+Each type of \texttt{div} must use pre-defined prefixes. If you don't
+follow these rules, your document may behave unexpectedly.
 
-For more information about cross-reference elements, see Quarto's guide
+For more information about cross-reference elements, see Quarto's
 \href{https://quarto.org/docs/books/book-crossrefs.html}{Book
 Crossrefs},
 \href{https://quarto.org/docs/authoring/cross-references.html}{Cross
-References} and
+References}, and
 \href{https://quarto.org/docs/prerelease/1.4/crossref.html}{Cross-Referenceable
 Elements} articles.
 
@@ -2683,10 +2725,19 @@ Avoid using the
 \href{https://quarto.org/docs/projects/code-execution.html\#freeze}{\texttt{freeze}}
 and
 \href{https://quarto.org/docs/projects/code-execution.html\#cache}{\texttt{cache}}
-execution options. If you're having issue in updating your document,
-check if these options are enabled.
+execution options. If you're having issues updating your document, check
+whether these options are enabled in your \texttt{\_quarto.yml} file.
 
 \end{anexosenv}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{execute}\KeywordTok{:}
+\AttributeTok{  }\FunctionTok{cache}\KeywordTok{:}\AttributeTok{ }\CharTok{false}\CommentTok{ \# "Danger, Will Robinson!"}
+\AttributeTok{  }\FunctionTok{freeze}\KeywordTok{:}\AttributeTok{ }\CharTok{false}\CommentTok{ \# If you plan to use it, remember to disable it afterward!}
+\end{Highlighting}
+\end{Shaded}
+
 
 
 
@@ -2702,4 +2753,5 @@ check if these options are enabled.
 \phantompart
 \printindex
 \endgroup
+
 \end{document}

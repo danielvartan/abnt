@@ -31,8 +31,6 @@ license:
 copyright: "Copyright (c) 2026 Daniel Vartanian"
 contributes:
   formats:
-    common:
-      df-print: kable
     pdf:
       pdf-engine: lualatex
       documentclass: abntex2
@@ -44,6 +42,8 @@ contributes:
         - french
         - spanish
         - brazil
+      papersize: a4 # [a4, a5]
+      sides: oneside # [oneside, twoside]
       mainfont: Noto-Sans
       sansfont: Noto-Sans
       monofont: Noto-Sans-Mono
@@ -54,8 +54,6 @@ contributes:
       parindent: 1cm
       parskip: 0ex
       frenchspacing: true
-      sides: oneside # [oneside, twoside]
-      papersize: a4 # [a4, a5]
       section-options:
         - chapter=TITLE
         - section=TITLE
@@ -77,6 +75,7 @@ contributes:
         According to the Brazilian Association of Technical Standards
         (ABNT NBR 6023).
       index-page: true
+      df-print: kable
       number-sections: true
       linktoc: section
       colorlinks: true

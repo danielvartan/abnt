@@ -44,8 +44,6 @@ with_seed(
 ```
 
 ```{=latex}
-\index{Karl Popper}
-
 \begingroup
 \setlength{\ABNTEXcitacaorecuo}{4.25cm} % Default: 4cm
 
@@ -85,10 +83,6 @@ with_seed(
 )
 ```
 
-```{=latex}
-\index{figures}
-```
-
 ::: {#fig-karl-popper}
 ![](images/karl-popper.png){width=50%}
 
@@ -97,6 +91,11 @@ with_seed(
 Karl Popper (July 25, 1902 – September 17, 1994).\
 One of the 20th century's most influential philosophers of science.
 :::
+
+```{=latex}
+\index{Karl Popper}
+\index{figures}
+```
 
 ## Heading 2
 
@@ -119,10 +118,6 @@ with_seed(
       cat(sep = "\n\n")
   }
 )
-```
-
-```{=latex}
-\index{tables}
 ```
 
 ::: {#tbl-penguins}
@@ -165,6 +160,10 @@ penguins |>
 A sample of the penguins dataset
 :::
 
+```{=latex}
+\index{tables}
+```
+
 ### Heading 3
 
 ```{r}
@@ -193,10 +192,6 @@ with_seed(
       cat(sep = "\n\n")
   }
 )
-```
-
-```{=latex}
-\index{figures!chart}
 ```
 
 ```{r}
@@ -257,6 +252,7 @@ data <-
 
 ::: {#fig-gini-index}
 ```{r}
+#| label: fig-gini-index
 #| message: false
 #| warning: false
 
@@ -305,8 +301,10 @@ Gini index by Brazilian municipality in 2010. Values range from 0 (perfect equal
 :::
 
 ```{=latex}
-\index{tables}
+\index{figures!chart}
+```
 
+```{=latex}
 \clearpage
 \begingroup
 \begin{landscape}
@@ -403,6 +401,7 @@ Cohen’s benchmark for effect sizes
 :::
 
 ```{=latex}
+\index{tables}
 \end{landscape}
 \endgroup
 \clearpage
@@ -431,11 +430,9 @@ with_seed(
 )
 ```
 
-```{=latex}
-\index{figures!chart}
-```
 ::: {#fig-mpg}
 ```{r}
+#| label: fig-mpg
 #| fig-height: 4
 #| fig-width: 6
 
@@ -468,8 +465,12 @@ plot |>
 
 [Data extracted from the 1974 Motor Trend magazine, published by @henderson1981. Visualization by @holtz, available at [The R Graph Gallery](https://r-graph-gallery.com/277-marginal-histogram-for-ggplot2.html).]{.legendleft}
 
-Marginal distributions of weight (*1000 lbs*) and fuel efficiency (*miles per gallon*) for combustion engine vehicles
+Scatter plot with marginal distributions of weight (*1000 lbs*) and fuel efficiency (*miles per gallon*) for combustion engine vehicles
 :::
+
+```{=latex}
+\index{figures!chart}
+```
 
 ##### Heading 5
 
@@ -523,10 +524,6 @@ with_seed(
       cat(sep = "\n\n")
   }
 )
-```
-
-```{=latex}
-\index{tables}
 ```
 
 ::: {#tbl-error-types}
@@ -614,3 +611,7 @@ tibble(
 
 Type I and type II errors
 :::
+
+```{=latex}
+\index{tables}
+```

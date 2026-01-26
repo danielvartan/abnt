@@ -1,19 +1,11 @@
-% Author: Daniel Vartanian.
+% Author: Daniel Vartanian
 % License: GNU General Public License v3 or later
+% Code repository: <https://github.com/danielvartan/abnt>
 %
-% Based on template.tex, developed by the Quarto team and
-% abtex2-modelo-trabalho-academico.tex, v-1.9.7, developed by
-% Lauro César Araujo and the team behind `abnt2tex`, with additional guidance
-% from the theses and dissertations regulations of the University of São Paulo
-% (USP). For more information, please visit <http://www.abntex.net.br/>.
-
-% For help, see:
-%
-% - <https://quarto.org/docs/reference/formats/pdf.html>
-% - <https://github.com/abntex/abntex2/wiki/ComoCustomizar>
-% - <https://www.ctan.org/pkg/abntex2>
-% - <https://www.ctan.org/pkg/memoir>
-% - <https://www.ctan.org/pkg/hyperref>
+% Based on `template.tex` developed by the Quarto team and
+% `abtex2-modelo-trabalho-academico.tex` developed by Lauro César Araújo
+% and the abnTeX2 team, with additional guidance from the theses and
+% dissertations regulations of the University of São Paulo (USP).
 
 % -----
 % Preamble
@@ -83,7 +75,7 @@ $endfor$
 
 \begin{document}
 
-% Top matter -----
+% Top Matter -----
 
 \pretextual
 
@@ -93,9 +85,10 @@ $for(include-before)$
 $include-before$
 $endfor$
 
-% Main and back matter -----
+% Main and Back Matter -----
 
 \textual
+
 $body$
 
 $for(include-after)$
@@ -103,4 +96,5 @@ $include-after$
 $endfor$
 
 $after-body.tex()$
+
 \end{document}

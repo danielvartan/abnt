@@ -23,55 +23,66 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Install fonts (Ubuntu)
-        if: runner.os == 'Linux'
-        run: |
-          mkdir -p ~/.fonts
-          cp ttf/*.ttf ~/.fonts/
-          fc-cache -f -v
-
-      - name: Install fonts (macOS)
-        if: runner.os == 'macOS'
-        run: |
-          cp ttf/*.ttf ~/Library/Fonts/
-
       - name: Install fonts (Windows)
         if: runner.os == 'Windows'
-        shell: powershell
         run: |
+          # Install fonts (Windows)
+
           $fonts = Get-ChildItem -Path ttf -Filter *.ttf
+
           foreach ($font in $fonts) {
             $fontPath = $font.FullName
             $fontName = $font.Name
             Copy-Item -Path $fontPath -Destination "C:\Windows\Fonts\$fontName" -Force
             New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" -Name $fontName -Value $fontName -PropertyType String -Force | Out-Null
           }
+        shell: powershell
 
-      - name: Install system dependencies
+      - name: Install fonts (macOS)
         if: runner.os == 'macOS'
         run: |
-          # Install system dependencies
+          # Install fonts (macOS)
+
+          cp ttf/*.ttf ~/Library/Fonts/
+        shell: bash
+
+      - name: Install fonts (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          # Install fonts (Linux)
+
+          mkdir -p ~/.fonts
+          cp ttf/*.ttf ~/.fonts/
+
+          fc-cache -f -v
+        shell: bash
+
+      - name: Install system dependencies (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          # Install system dependencies (macOS)
 
           brew install \
             gdal \
             xquartz
         shell: bash
 
-      - name: Install system dependencies
+      - name: Install system dependencies (Linux)
         if: runner.os == 'Linux'
         run: |
-          # Install system dependencies
+          # Install system dependencies (Linux)
 
           sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
-          sudo apt update
           sudo apt-get update -qq
 
           sudo apt-get install -y -qq \
+            cmake \
+            gdal-bin \
             libcurl4-openssl-dev \
-            libfreetype6-dev \
             libfontconfig1-dev \
-            libfribidi-dev \
             libfreetype6-dev \
+            libfreetype6-dev \
+            libfribidi-dev \
             libgdal-dev \
             libgeos-dev \
             libharfbuzz-dev \

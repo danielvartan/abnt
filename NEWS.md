@@ -1,4 +1,6 @@
-# v1.0.0.9000 (development version)
+# v1.0.1.9000 (development version)
+
+# v1.0.0 (2026-01-26)
 
 - Added GitHub Action workflow to validate format builds across operating systems (Linux, Windows, macOS) with latest Quarto version.
 - Improved and expanded documentation.

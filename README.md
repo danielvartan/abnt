@@ -15,9 +15,7 @@
 
 `abnt` is a [Quarto](https://quarto.org) format designed for creating theses and dissertations that comply with guidelines established by the Brazilian Association of Technical Standards ([ABNT](https://www.abnt.org.br/)). It's based on the [`abntex2`](https://www.abntex.net.br/) LaTeX class, which belongs to the [`memoir`](https://www.ctan.org/pkg/memoir) class family.
 
-Click [here](https://danielvartan.github.io/abnt/) to view a sample of the format output.
-
-For a real-world application of this template, see [this example](https://github.com/danielvartan/mastersthesis).
+Click [here](https://danielvartan.github.io/abnt/) to view the format output. For a real-world application, see [this example](https://github.com/danielvartan/mastersthesis).
 
 > If you find this project useful, please consider giving it a star! &nbsp; [![GitHub Repository Stars](https://img.shields.io/github/stars/danielvartan/abnt)](https://github.com/danielvartan/abnt)
 
@@ -43,7 +41,7 @@ This format requires [Quarto](https://quarto.org) 1.8.27 or later versions, alon
 
 The typefaces [Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans) and [Noto Sans Mono](https://fonts.google.com/noto/specimen/Noto+Sans+Mono) are used as the main and monospace default fonts, respectively. If you plan to maintain the default settings, install both fonts on your system. These are developed by Google and are freely available under the [SIL Open Font License](https://openfontlicense.org/).
 
-While [Quarto](https://quarto.org) provides various customization features, they don't fully address ABNT standards. Some formatting adjustments required unconventional methods and multiple processing layers. The easiest way to start using `abnt` is to copy or [clone](https://github.com/git-guides/git-clone) this repository and build upon its [Quarto book](https://quarto.org/docs/books/).
+While [Quarto](https://quarto.org) provides various customization features, they don't fully address [ABNT](https://www.abnt.org.br/) standards. Some formatting adjustments required unconventional methods and multiple processing layers. The easiest way to start using `abnt` is to copy or [clone](https://github.com/git-guides/git-clone) this repository and build upon its [Quarto book](https://quarto.org/docs/books/).
 
 After copying/cloning the repository, install the [`renv`](https://rstudio.github.io/renv/index.html) R package and run [`renv::restore()`](https://rstudio.github.io/renv/reference/restore.html) to ensure all necessary dependencies are installed. This process is usually done automatically when opening the project in [Positron](https://positron.posit.co/) or [RStudio](https://posit.co/download/rstudio-desktop/).
 
@@ -61,9 +59,9 @@ Alternatively, you can utilize the [`quarto`](https://quarto-dev.github.io/quart
 
 ## Customization
 
-Most customization options available in the Quarto system are compatible with this format. For more details, refer to the [PDF Options](https://quarto.org/docs/reference/formats/pdf.html) section in the Quarto guide and the [extension YAML file](_extensions/abnt/_extension.yml).
+Most customization options available in the Quarto system are compatible with this format. See the `abnt` [PDF output](https://danielvartan.github.io/abnt/) *Settings* annex for details. If you have questions or need assistance, use the project's GitHub [discussion tab](https://github.com/danielvartan/abnt/discussions).
 
-For additional formatting information, see `abnt` [pdf output](https://danielvartan.github.io/abnt/) *Settings* annex. Note that some documentation may still be missing. If you have questions, ideas, or need assistance, use the project's GitHub [discussion tab](https://github.com/danielvartan/abnt/discussions).
+For additional customization details, refer to the [PDF Options](https://quarto.org/docs/reference/formats/pdf.html) section in the Quarto guide and the [extension YAML file](_extensions/abnt/_extension.yml).
 
 ## Citation
 
@@ -125,7 +123,7 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 
 ## Acknowledgments
 
-This Quarto project owes its existence to the contributions of dedicated developers from the [`abntTeX`](https://www.abntex.net.br/) community.
+This project owes its existence to the contributions of dedicated developers from the [`abntTeX`](https://www.abntex.net.br/) community.
 
 `abnt` brand identity is based on the [ABNT](https://www.abnt.org.br/) brand identity.
 

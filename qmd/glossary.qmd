@@ -15,7 +15,7 @@ Chronotype
 : \hspace{20cm} Any kind of temporal phenotype [@ehret1974; @pittendrigh1993]. Usually, it refers to circadian phenotypes in a spectrum that goes from morningness to eveningness [@roenneberg2003b]. It can also be seen as an organism's phase of entrainment [@roenneberg2012a].
 
 Circadian rhythm
-: \hspace{20cm} A rhythm with a period close to a day/24h, an approximation to the period of the earth's rotation [@pittendrigh1960]. From the Latin *circā*, around, and *dĭes*, day [@latinitium]. Example: the sleep-wake cycle.
+: \hspace{20cm} A rhythm with a period close to a day/24h, an approximation to the period of the earth's rotation [@pittendrigh1960]. From the Latin *circā*, around, and *dĭes*, day [@latinitium].
 
 Complex system
 : \hspace{20cm} Several definitions exist. The following are particularly useful:
