@@ -53,7 +53,6 @@ jobs:
           # Install system dependencies
 
           brew install \
-            pkg-config \
             gdal \
             xquartz
         shell: bash

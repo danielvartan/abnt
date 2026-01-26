@@ -1,7 +1,39 @@
+% Change `abntex2` Default Names -----
+
 \newcommand{\capaname}{Capa}
 \newcommand{\fichacatalograficaname}{Ficha catalográfica}
 \newcommand{\resumoestrangeironame}{Resumo}
 \newcommand{\glossarioname}{Glossário}
+
+% Force Bibliography Title Based on `lang' or User Input -----
+
+$if(biblio-title)$
+\newcommand{\newbibname}{$biblio-title$}
+$else$
+$if(lang)$
+\ifstrequal{$lang$}{en}{
+  \newcommand{\newbibname}{References}
+}{
+  \ifstrequal{$lang$}{pt-BR}{
+    \newcommand{\newbibname}{Referências}
+  }{
+    \ifstrequal{$lang$}{es}{
+      \newcommand{\newbibname}{Referencias}
+    }{
+      \ifstrequal{$lang$}{fr}{
+        \newcommand{\newbibname}{Références}
+      }{
+        \newcommand{\newbibname}{\bibname}
+      }
+    }
+  }
+}
+$else$
+\newcommand{\newbibname}{\bibname}
+$endif$
+$endif$
+
+% Add Parameters for Language-Specific Names to `babel` -----
 
 \addto\captionsenglish{
   \renewcommand{\capaname}{Cover}

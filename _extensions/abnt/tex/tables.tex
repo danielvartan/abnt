@@ -2,13 +2,8 @@
 \setlength{\aboverulesep}{0ex}
 \setlength{\belowrulesep}{0ex}
 
-% Correct order of tables after \paragraph or \subparagraph
-% \usepackage{etoolbox}
-% \makeatletter
-% \patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
-% \makeatother
+% Allow Footnotes in `longtable` Head/Footer ----
 
-% Allow footnotes in `longtable` head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
 
@@ -21,7 +16,3 @@
 \AtBeginEnvironment{longtable*}{\ABNTEXfontereduzida \addvspace{\tinyskipamount}}
 
 \floatplacement{table}{H}
-
-% Set Theorem Environment -----
-
-\AtEndEnvironment{theorem}{\vspace{\bigskipamount}}

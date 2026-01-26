@@ -86,9 +86,11 @@ $if(links-as-notes)$
 \DeclareRobustCommand{\href}[2]{#2\footnote{\url{#1}}}
 $endif$
 
-% -----
-% Custom Functions
-% -----
+% Set Theorem Environment -----
+
+\AtEndEnvironment{theorem}{\vspace{\tinyskipamount}}
+
+% Set Custom Functions -----
 
 % Credits: <https://tex.stackexchange.com/a/300215/234832>.
 

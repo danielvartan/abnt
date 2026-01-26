@@ -1,25 +1,22 @@
+% Set `biblatex` Options -----
+
 \usepackage[
 $for(biblatexoptions)$,$biblatexoptions$$endfor$
 ]{biblatex}
 
 \usepackage{csquotes}
 
+% Set Bibliography Resource -----
+
 $for(bibliography)$
 \addbibresource{$bibliography$}
 $endfor$
 
-$if(biblio-title)$
-\renewcommand{\bibname}{$biblio-title$}
-\newcommand{\newbibname}{$biblio-title$}
-$else$
-\newcommand{\newbibname}{$biblio-title$}
-$endif$
+% Set Reference Formatting -----
 
-$if(biblio-footnote)$
-\newcommand{\bibnamewithfootnote}{
-  \newbibname\protect\footnote{$biblio-footnote$}
-}
-$endif$
+\AtBeginBibliography{\vspace{0.5\baselineskip}}
+\AtEveryBibitem{\clearfield{annotation}}
+\renewcommand{\bibfont}{\ABNTEXfontereduzida}
 
 $if(bibhang)$
 \setlength{\bibhang}{$bibhang$}
@@ -29,11 +26,19 @@ $if(bibparsep)$
 \setlength{\bibparsep}{$bibparsep$}
 $endif$
 
+% Set Footnote -----
+
+$if(biblio-footnote)$
+\newcommand{\bibnamewithfootnote}{
+  \MakeUppercase{\newbibname}\protect\footnote{$biblio-footnote$}
+}
+$endif$
+
 $if(nocite-ids)$
 \nocite{$for(nocite-ids)$$it$$sep$, $endfor$}
 $endif$
 
-\defbibheading{bibheading}[$if(biblio-footnote)$\bibnamewithfootnote$else$\newbibname$endif$]{
+\defbibheading{bibheading}[$if(biblio-footnote)$\bibnamewithfootnote$else$\MakeUppercase{\newbibname}$endif$]{
   \ifthenelse{\boolean{ABNTEXupperchapter}}{
     \setboolean{ABNTEXupperchapter}{false}
     \chapter*{#1}
@@ -44,7 +49,3 @@ $endif$
     \markboth{#1}{#1}
   }
 }
-
-\AtBeginBibliography{\vspace{0.5\baselineskip}}
-\AtEveryBibitem{\clearfield{annotation}}
-\renewcommand{\bibfont}{\ABNTEXfontereduzida}

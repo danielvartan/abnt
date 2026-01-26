@@ -9,7 +9,11 @@ library(showtext)
 library(stringr)
 library(yaml)
 
-# Delete Images Folder to `qmd` -----
+# Stop `showtext` -----
+
+showtext_auto(enable = FALSE)
+
+# Delete Images Folder from `qmd` -----
 
 dir_path <- here("qmd", "images")
 
@@ -17,7 +21,7 @@ if (dir.exists(dir_path)) {
   dir_path |> dir_delete()
 }
 
-# Create Output Folder If It Doesn't Exist -----
+# Get Output Folder from `_quarto.yml` -----
 
 output_dir <-
   here("_quarto.yml") |>
@@ -30,43 +34,38 @@ if (!dir.exists(output_dir)) {
   dir.create(output_dir)
 }
 
-# Stop `showtext` -----
-
-showtext_auto(enable = FALSE)
-
-# Copy and Rename the PDF file (If Exists) to `output_dir` Folder -----
+# Copy and Rename the PDF file (If Exists) -----
 
 pdf_file <-
   output_dir |>
-  list.files(
-    full.names = TRUE,
-    pattern = "\\.pdf$"
-  )
+  dir_ls(
+    type = "file",
+    regexp = "\\.pdf$"
+  ) |>
+  magrittr::extract(1)
 
 if (length(pdf_file) == 1) {
-  pdf_file |>
-    file_copy(
-      new_path = output_dir |> file.path("index.pdf"),
-      overwrite = TRUE
-    )
-
   pdf_file |>
     file_copy(
       new_path = here("docs", "abnt.pdf"),
       overwrite = TRUE
     )
 
-  file_delete(pdf_file)
+  pdf_file |>
+    file_move(
+      new_path = output_dir |> file.path("index.pdf")
+    )
 }
 
 # Copy and Rename the TeX file (If Exists) to `output_dir` Folder -----
 
 tex_file <-
   here() |>
-  list.files(
-    full.names = TRUE,
-    pattern = "\\.tex$"
-  )
+  dir_ls(
+    type = "file",
+    regexp = "\\.tex$"
+  ) |>
+  magrittr::extract(1)
 
 if (length(tex_file) == 1) {
   tex_file |>
@@ -79,27 +78,33 @@ if (length(tex_file) == 1) {
 # Copy Other Files (If They Exist) to `output_dir` Folder -----
 
 files <- c(
-  "index.log",
+  "index.aux",
   "index.bbl",
-  "index.blg"
+  "index.bcf",
+  "index.blg",
+  "index.idx",
+  "index.ilg",
+  "index.ind",
+  "index.lof",
+  "index.log",
+  "index.lot",
+  "index.pdf",
+  "index.run.xml",
+  "index.tex"
 )
 
 for (i in files) {
   i_file <-
     here() |>
-    list.files(
-      full.names = TRUE,
-      pattern = str_escape(i)
+    dir_ls(
+      type = "file",
+      regexp = paste0(str_escape(i), "$")
     )
 
   if (length(i_file) == 1) {
     i_file |>
-      file_copy(
-        new_path = output_dir |>
-          file.path(
-            str_replace(i, "index", "abnt")
-          ),
-        overwrite = TRUE
+      file_move(
+        new_path = output_dir |> file.path(i)
       )
   }
 }
@@ -113,26 +118,32 @@ quartor:::clean_quarto_mess(
     "index_cache",
     "index_files",
     "site_libs"
-  ) |>
-    append(
-      x = _,
-      list.dirs("qmd")[-1]
-    ),
+  ),
   ext = c(
     "aux",
+    "bbl",
     "bbx",
     "bcf-SAVE-ERROR",
+    "bcf",
+    "blg",
     "cbx",
     "dbx",
     "fdb_latexmk",
+    "idx",
+    "ilg",
+    "ind",
     "lbx",
     "loa",
+    "lof",
     "log",
+    "lot",
     "otf",
     "pdf",
     "scss",
     "tex",
-    "xdv"
+    "toc",
+    "xdv",
+    "xml"
   ),
   ignore = NULL,
   wd = here()

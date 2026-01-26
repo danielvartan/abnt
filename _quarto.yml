@@ -51,6 +51,12 @@ book:
 
 format:
   abnt-pdf:
+    lang: en
+    babel-lang: english
+    other-babel-lang: # Do not repeat 'babel-lang' here.
+      - french
+      - spanish
+      - brazil
     mainfont: Noto-Sans
     sansfont: Noto-Sans
     monofont: Noto-Sans-Mono

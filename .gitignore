@@ -14,9 +14,16 @@ _web/
 /.luarc.json
 /.quarto/
 index.aux
+index.bbl
 index.bcf
+index.blg
 index.idx
+index.ilg
+index.ind
 index.lof
 index.log
 index.lot
+index.pdf
+index.run.xml
 index.tex
+index.toc

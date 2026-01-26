@@ -1,9 +1,9 @@
 % Author: Daniel Vartanian.
-% Licence: GNU General Public License v3 or later
+% License: GNU General Public License v3 or later
 %
 % Based on template.tex, developed by the Quarto team and
 % abtex2-modelo-trabalho-academico.tex, v-1.9.7, developed by
-% Lauro César Araujo and the team behind abnt2tex, with additional guidance
+% Lauro César Araujo and the team behind `abnt2tex`, with additional guidance
 % from the theses and dissertations regulations of the University of São Paulo
 % (USP). For more information, please visit <http://www.abntex.net.br/>.
 
@@ -155,10 +155,34 @@ english
 \setlength{\footnotemargin}{0.5em} % Equal to `\footmarkwidth`
 \let\svfootnoterule\footnoterule % Equal to `\footmarksep`
 \renewcommand\footnoterule{\vspace{1ex}\svfootnoterule\vspace{1ex}}
+% Change `abntex2` Default Names -----
+
 \newcommand{\capaname}{Capa}
 \newcommand{\fichacatalograficaname}{Ficha catalográfica}
 \newcommand{\resumoestrangeironame}{Resumo}
 \newcommand{\glossarioname}{Glossário}
+
+% Force Bibliography Title Based on `lang' or User Input -----
+
+\ifstrequal{en}{en}{
+  \newcommand{\newbibname}{References}
+}{
+  \ifstrequal{en}{pt-BR}{
+    \newcommand{\newbibname}{Referências}
+  }{
+    \ifstrequal{en}{es}{
+      \newcommand{\newbibname}{Referencias}
+    }{
+      \ifstrequal{en}{fr}{
+        \newcommand{\newbibname}{Références}
+      }{
+        \newcommand{\newbibname}{\bibname}
+      }
+    }
+  }
+}
+
+% Add Parameters for Language-Specific Names to `babel` -----
 
 \addto\captionsenglish{
   \renewcommand{\capaname}{Cover}
@@ -362,7 +386,6 @@ english
   }{}
 }
 
-% Open an issue about it (`\hspace{-1em}`) - Title stretching.
 \renewcommand{\chapternamenum}{
   \ifthenelse{\boolean{abntex@apendiceousecao}}{
     \hspace{-2em} \space
@@ -569,7 +592,6 @@ english
 \renewcommand{\PRIVATEapendiceconfig}[2]{
   \setboolean{abntex@apendiceousecao}{true}
   \renewcommand{\appendixname}{#1}
-  %\renewcommand{\apendicesname}{#1}
 
   \ifthenelse{\boolean{ABNTEXsumario-abnt-6027-2012}}{
     \renewcommand{\appendixtocname}{\uppercase{#2}}
@@ -579,9 +601,7 @@ english
 
   \renewcommand{\appendixpagename}{#2}
   \renewcommand{\appendixtocname}{#2}
-  % \switchchapname{#1} % [Altered]
   \renewcommand{\cftappendixname}{} % [Altered]
-  \tocpartapendices % [Added]
 
   % Note:
   %
@@ -595,11 +615,12 @@ english
 
 \newcommand{\PRIVATEapendiceconfigafter}[1]{
     \chapterstyle{apendice}
-    %\begingroup\centering\bfseries
-    %\ABNTEXchapterupperifneeded{#1}
-    %\par\endgroup
-    %\vspace{\medskipamount}
-    \pretextualchapter{#1}
+
+    % Quarto adds \appendix automatically,
+    % so we just need to add the chapter title.
+    \chapter*{#1}
+    \markboth{#1}{#1}
+
     \let\clearpage\relax
 }
 
@@ -623,13 +644,9 @@ english
 
 \renewcommand{\anexos}{
   \clearpage
-  % \cftinserthook{toc}{AAA} [Removed]
   \PRIVATEapendiceconfig{\anexoname}{\anexosname}
 
-  \newpage % [Added]
-  \phantomsection % [Added]
-  \addcontentsline{toc}{part}{\appendixtocname} % [Added]
-
+  \newpage
   \appendix
   \renewcommand\theHchapter{anexochapback.\arabic{chapter}}
   \PRIVATEapendiceconfigafter{\anexosname}
@@ -639,9 +656,9 @@ english
   \clearpage
   \PRIVATEapendiceconfig{\anexoname}{\anexosname}
 
-  \newpage % [Added]
-  \phantomsection % [Added]
-  \addcontentsline{toc}{part}{\appendixtocname} % [Added]
+  \newpage
+  \phantomsection
+  \addcontentsline{toc}{part}{\appendixtocname}
 
   \begin{appendix}
   \renewcommand\theHchapter{anexochapback.\arabic{chapter}}
@@ -651,9 +668,7 @@ english
   \setboolean{abntex@apendiceousecao}{false}
   \bookmarksetup{startatroot}
 }
-% -----
-% New Colors
-% -----
+% Set New Colors -----
 
 \definecolor{blue}{HTML}{2905C3}
 
@@ -673,9 +688,7 @@ english
 
 \definecolor{bs-link-color}{HTML}{39729E}
 
-% -----
-% Body Color
-% -----
+% Set Body Color -----
 
 
 % Quarto's Default Settings -----
@@ -734,7 +747,7 @@ english
 % Credits: <https://tex.stackexchange.com/a/611556/234832>.
 \AddToHook{cmd/caption/before}{\hyphenpenalty=100000}
 
-% Set figure environment -----
+% Set Figure Environment -----
 
 \AtBeginEnvironment{figure}{
   \ABNTEXfontereduzida
@@ -748,13 +761,8 @@ english
 \setlength{\aboverulesep}{0ex}
 \setlength{\belowrulesep}{0ex}
 
-% Correct order of tables after \paragraph or \subparagraph
-% \usepackage{etoolbox}
-% \makeatletter
-% \patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
-% \makeatother
+% Allow Footnotes in `longtable` Head/Footer ----
 
-% Allow footnotes in `longtable` head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
 
@@ -767,10 +775,6 @@ english
 \AtBeginEnvironment{longtable*}{\ABNTEXfontereduzida \addvspace{\tinyskipamount}}
 
 \floatplacement{table}{H}
-
-% Set Theorem Environment -----
-
-\AtEndEnvironment{theorem}{\vspace{\bigskipamount}}
 \providecommand{\tightlist}{
 \setlength{\itemsep}{0ex}\setlength{\parskip}{0\baselineskip}}
 
@@ -846,7 +850,7 @@ urlcolor={blue},
 pdfcreator={LaTeX via pandoc},
 bookmarksdepth=5
 }
-% Set Sections Skips (`\cftchapterpresnum`)
+% Set Sections Skips (`\cftchapterpresnum`) -----
 
 \setlength{\cftbeforebookskip}{0\baselineskip}
 \setlength{\cftbeforepartskip}{\medskipamount}
@@ -856,7 +860,7 @@ bookmarksdepth=5
 \setlength{\cftbeforesubsubsectionskip}{0\baselineskip}
 \setlength{\cftbeforeparagraphskip}{0\baselineskip}
 
-% Set Section Numbers Fonts (`\cftchapterpresnum`)
+% Set Section Numbers Fonts (`\cftchapterpresnum`) -----
 
 \renewcommand{\cftchapterpresnum}{\normalfont}
 \renewcommand{\cftsectionpresnum}{\normalfont}
@@ -864,7 +868,7 @@ bookmarksdepth=5
 \renewcommand{\cftsubsubsectionpresnum}{\normalfont}
 \renewcommand{\cftparagraphpresnum}{\normalfont}
 
-% Set Section Names Fonts (`\cftpartfont`)
+% Set Section Names Fonts (`\cftpartfont`) -----
 
 \renewcommand{\cftpartfont}[1]{
   \ABNTEXchapterupperifneeded{\normalfont\bfseries #1}
@@ -890,7 +894,7 @@ bookmarksdepth=5
   \ABNTEXsubsubsubsectionupperifneeded{\normalfont\itshape #1}
 }
 
-% Set Section Page Numbers Fonts (`\cftpartpagefont`)
+% Set Section Page Numbers Fonts (`\cftpartpagefont`) -----
 
 \renewcommand{\cftpartpagefont}{\normalfont}
 \renewcommand{\cftchapterpagefont}{\normalfont}
@@ -916,7 +920,7 @@ bookmarksdepth=5
   \addtocontents{toc}{\setlength{\cftpartnumwidth}{0em}}
 }
 
-% Set ToC Skip
+% Set ToC Skip -----
 
 \newcommand{\tocskipone}{
   \addtocontents{toc}{\protect\vspace{\smallskipamount}}
@@ -926,25 +930,34 @@ bookmarksdepth=5
 \newcommand{\tocskiptwo}{
   % \addtocontents{toc}{\protect\vspace{\tinyskipamount}}
 }
+% Set `biblatex` Options -----
+
 \usepackage[
 ,backend=biber,url=true,useprefix=false,giveninits=true,style=abnt
 ]{biblatex}
 
 \usepackage{csquotes}
 
+% Set Bibliography Resource -----
+
 \addbibresource{references.bib}
 
-\renewcommand{\bibname}{REFERENCES}
-\newcommand{\newbibname}{REFERENCES}
+% Set Reference Formatting -----
 
-\newcommand{\bibnamewithfootnote}{
-  \newbibname\protect\footnote{According to the Brazilian Association of
-Technical Standards (ABNT NBR 6023).}
-}
+\AtBeginBibliography{\vspace{0.5\baselineskip}}
+\AtEveryBibitem{\clearfield{annotation}}
+\renewcommand{\bibfont}{\ABNTEXfontereduzida}
 
 \setlength{\bibhang}{0cm}
 
 \setlength{\bibparsep}{-2ex}
+
+% Set Footnote -----
+
+\newcommand{\bibnamewithfootnote}{
+  \MakeUppercase{\newbibname}\protect\footnote{According to the
+Brazilian Association of Technical Standards (ABNT NBR 6023).}
+}
 
 
 \defbibheading{bibheading}[\bibnamewithfootnote]{
@@ -958,14 +971,10 @@ Technical Standards (ABNT NBR 6023).}
     \markboth{#1}{#1}
   }
 }
-
-\AtBeginBibliography{\vspace{0.5\baselineskip}}
-\AtEveryBibitem{\clearfield{annotation}}
-\renewcommand{\bibfont}{\ABNTEXfontereduzida}
 \usepackage{makeidx}
 \makeindex
 
-% Set sections skips (`\cftchapterpresnum`)
+% Set Sections Skips (`\cftchapterpresnum`) -----
 
 % Credits: https://tex.stackexchange.com/a/28361/234832
 % \begin{luacode}
@@ -1072,9 +1081,11 @@ Technical Standards (ABNT NBR 6023).}
 \urlstyle{same} % disable monospaced font for URLs
 
 
-% -----
-% Custom Functions
-% -----
+% Set Theorem Environment -----
+
+\AtEndEnvironment{theorem}{\vspace{\tinyskipamount}}
+
+% Set Custom Functions -----
 
 % Credits: <https://tex.stackexchange.com/a/300215/234832>.
 
@@ -1202,7 +1213,7 @@ Co-Supervisor: Prof. Dr. {\imprimircoorientador}
 \@ifundefined{codebgcolor}{\definecolor{codebgcolor}{HTML}{F1F3F5}}{}
 \makeatother
 \makeatletter
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, enhanced, colback={codebgcolor}, boxrule=0pt, sharp corners, borderline west={3pt}{0pt}{shadecolor}, frame hidden]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, breakable, enhanced, sharp corners, frame hidden, colback={codebgcolor}]}{\end{tcolorbox}}\fi
 \makeatother
 
 % -----
@@ -1663,7 +1674,8 @@ faucibus cras gravida ad urna lobortis in tempor fusce scelerisque;
 magnis hendrerit -- tempus auctor aenean, venenatis malesuada torquent,
 dictum, diam nullam ad sagittis facilisi gravida metus cursus pulvinar
 rutrum torquent curae aliquam dui, id torquent duis tincidunt ornare
-torquent nam magna sapien suscipit \autocite{krakauer2019}.
+torquent nam magna sapien suscipit
+\autocite{krakauer2019,mitchell2009a}.
 
 \index{figures}
 
@@ -1806,7 +1818,7 @@ Notes: The rationale for most of these benchmarks can be found in Cohen (1988) a
 \endgroup
 \clearpage
 
-\section{Heading 2}\label{heading-2-1}
+\subsubsection{Heading 4}\label{heading-4}
 
 Lorem volutpat hendrerit porta sem vehicula aliquam sed phasellus. Ante
 cursus primis taciti interdum augue elementum imperdiet eu. Placerat
@@ -1836,7 +1848,7 @@ R Graph Gallery}.}
 
 \end{figure}%
 
-\subsection{Heading 3}\label{heading-3-1}
+\paragraph{Heading 5}\label{heading-5}
 
 Sit est tincidunt; augue quisque senectus natoque ullamcorper, convallis
 curabitur vitae nunc. Tristique nullam sed, scelerisque egestas commodo
@@ -1888,7 +1900,7 @@ fames aptent \autocite{epstein2013a}. See Table~\ref{tbl-error-types}.
 \centering{
 
 \fontsize{9.0pt}{11.0pt}\selectfont
-\begin{tabular*}{0.7\linewidth}{@{\extracolsep{\fill}}ccc}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}>{\centering\arraybackslash}p{\dimexpr 0.33\linewidth -2\tabcolsep-1.5\arrayrulewidth}>{\centering\arraybackslash}p{\dimexpr 0.33\linewidth -2\tabcolsep-1.5\arrayrulewidth}>{\centering\arraybackslash}p{\dimexpr 0.33\linewidth -2\tabcolsep-1.5\arrayrulewidth}}
 \toprule
 {\bfseries Decision about \(\text{H}_{0}\)} & {\bfseries \(\text{H}_{0}\) True} & {\bfseries \(\text{H}_{0}\) False} \\ 
 \midrule\addlinespace[2.5pt]
@@ -1907,65 +1919,6 @@ Reject & {\cellcolor[HTML]{FFEEEE}{\textcolor[HTML]{000000}{(False positive)}}} 
 
 \end{table}%
 
-\subsubsection{Heading 4}\label{heading-4}
-
-Lorem sollicitudin pellentesque leo, luctus habitant proin sodales morbi
--- sed -- convallis turpis netus. Fusce sodales ut cubilia arcu,
-pulvinar diam semper, nostra rhoncus odio. Non potenti tortor integer
-molestie, eros nisl dictumst nostra? Proin venenatis faucibus ac commodo
-turpis himenaeos mi netus vivamus? Congue semper cum curabitur nam
-quisque neque euismod vitae congue potenti, quam fames accumsan fusce
-dapibus sodales phasellus, parturient; scelerisque, odio, fames ante
-vulputate torquent diam blandit, at suscipit lacus augue lacus mi
-ultricies pulvinar non eget consequat \autocite{marcusaurelius2011}.
-
-Adipiscing molestie egestas sapien aliquet scelerisque justo
-sollicitudin tempus arcu porta viverra varius maecenas volutpat enim hac
-neque pharetra non non potenti tellus ligula iaculis porta diam
-phasellus torquent vivamus \autocite{more2014}.
-
-\begin{itemize}
-\tightlist
-\item
-  Bullet point
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Bullet point
-
-    \begin{itemize}
-    \tightlist
-    \item
-      Bullet point
-    \end{itemize}
-  \end{itemize}
-\end{itemize}
-
-\paragraph{Heading 5}\label{heading-5}
-
-Amet erat id ultricies, lacus malesuada platea varius cras! Himenaeos et
-eu sociosqu natoque laoreet vel egestas. Laoreet donec convallis
-scelerisque feugiat, duis, auctor potenti etiam, dictumst imperdiet cras
-blandit. Vehicula sed tortor ridiculus, sodales dignissim parturient,
-commodo aliquet pellentesque. Ac velit nec augue faucibus, scelerisque
-semper suspendisse aliquam lacinia viverra nec molestie eleifend
-suscipit, ultricies taciti: ullamcorper, lacinia ornare scelerisque dis,
-ultricies est justo turpis ad magnis, senectus risus duis augue
-phasellus euismod parturient posuere fusce \autocite{papert2020}. See
-Table~\ref{tbl-error-types}.
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  List
-\item
-  List
-\item
-  List
-\end{enumerate}
-
 \bookmarksetup{startatroot}
 
 \chapter{{[}Showcase{]} Development}\label{sec-development}
@@ -1978,7 +1931,7 @@ porttitor, bibendum, placerat pulvinar nostra volutpat nulla neque,
 venenatis parturient: convallis mi, ultricies nam viverra quisque neque
 natoque duis suscipit turpis \autocite{watson1953}.
 
-\section{Heading 2}\label{heading-2-2}
+\section{Heading 2}\label{heading-2-1}
 
 the \href{https://en.wikipedia.org/wiki/Lorenz_system}{Lorenz system},
 originally introduced by Edward N. Lorenz \autocite*{lorenz1963} in his
@@ -2042,7 +1995,7 @@ Lorenz system}
 
 \end{figure}%
 
-\subsection{Heading 3}\label{heading-3-2}
+\subsection{Heading 3}\label{heading-3-1}
 
 Sit dui aliquet eu felis ut morbi sociis cubilia tincidunt vehicula nibh
 pretium nec ac cubilia vulputate risus pretium cursus risus dictumst
@@ -2058,7 +2011,7 @@ nisi dui justo in vulputate non est habitant inceptos maecenas taciti
 inceptos metus, ultricies lacus montes vehicula morbi velit condimentum;
 platea, litora sollicitudin volutpat cras ultrices eleifend dapibus orci
 penatibus tristique cubilia, velit imperdiet vivamus tellus dignissim
-purus himenaeos bibendum \autocite{walker2024a}. See
+purus himenaeos bibendum \autocite{walker2024a,peirce2011}. See
 Figure~\ref{fig-sao-paulo-tracts}.
 
 \index{figures!chart}
@@ -2083,7 +2036,7 @@ packages.}
 
 \end{figure}%
 
-\section{Heading 2}\label{heading-2-3}
+\subsubsection{Heading 4}\label{heading-4-1}
 
 Lorem gravida elementum augue ante auctor venenatis felis ante enim
 augue? Maecenas et vel ut nisi -- consequat quisque pellentesque
@@ -2095,8 +2048,8 @@ duis himenaeos viverra ad, tortor -- et mi, duis, velit, erat gravida
 imperdiet cursus vitae justo, rhoncus; dis taciti erat ut quisque
 facilisi risus fusce taciti, molestie faucibus phasellus, auctor porta
 platea enim malesuada venenatis nullam nibh sollicitudin dictumst
-condimentum habitant quis arcu malesuada etiam \autocite{hopfield1984}.
-See Figure~\ref{fig-eruption}.
+condimentum habitant quis arcu malesuada etiam
+\autocite{hopfield1984,darwin2017}. See Figure~\ref{fig-eruption}.
 
 \index{figures!chart}
 
@@ -2134,6 +2087,8 @@ mattis eleifend purus per bibendum a ridiculus odio nec vitae morbi
 gravida ridiculus tincidunt per posuere lectus ornare bibendum tempor
 risus pharetra platea aptent lectus congue viverra libero tempus
 maecenas per \autocite{holland2012}.
+
+\paragraph{Heading 5}\label{heading-5-1}
 
 The hypothesis can be outlined as follows:
 
@@ -2193,9 +2148,10 @@ praesent tempus cras porta justo nam diam fusce eros aliquet
 \chapter{{[}Showcase{]} Conclusion}\label{sec-conclusion}
 
 \epigraph{Every genuine test of a theory is an attempt to falsify it, or to refute it.}{--- \textcite{popper2002}}
+
 \vspace*{-1\baselineskip}
+
 \epigraph{I suggest that it is the aim of science to find satisfactory explanations, of whatever strikes us as being in need of explanation.}{--- \textcite[193]{popper1979a}}
-% \vspace*{1\baselineskip}
 
 Ipsum ad curae dapibus -- nulla scelerisque magna condimentum dapibus
 commodo ac. Nisi mi lectus porttitor vestibulum enim proin sociosqu
@@ -2205,7 +2161,7 @@ mattis lacinia hendrerit, conubia integer donec vestibulum mollis at
 tortor semper dui rutrum facilisis orci scelerisque lacus nibh ut
 quisque vestibulum elementum \autocite{gell-mann2023}.
 
-\section{Heading 2}\label{heading-2-4}
+\section{Heading 2}\label{heading-2-2}
 
 Consectetur tempor eros luctus tempor sagittis nam iaculis. Torquent
 torquent lacinia et gravida. Scelerisque condimentum nulla primis diam
@@ -2226,13 +2182,75 @@ curae, sollicitudin ornare scelerisque quisque est rutrum ante tincidunt
 vehicula commodo viverra aenean rhoncus penatibus iaculis, faucibus dui
 mattis, sagittis dictum elementum \autocite{foster1972}.
 
+\subsection{Heading 3}\label{heading-3-2}
+
+Amet sollicitudin pellentesque leo -- luctus, habitant proin sodales
+morbi. Sed convallis turpis, netus fusce sodales ut cubilia arcu
+pulvinar diam, semper nostra rhoncus! Odio non potenti tortor integer
+molestie eros nisl. Dictumst nostra proin venenatis faucibus ac commodo
+turpis, himenaeos mi netus. Vivamus congue semper cum curabitur, nam --
+quisque neque euismod \autocite{more2014}.
+
+\begin{itemize}
+\tightlist
+\item
+  Bullet point
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Bullet point
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Bullet point
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Heading 4}\label{heading-4-2}
+
+Amet erat id ultricies, lacus malesuada platea varius cras! Himenaeos et
+eu sociosqu natoque laoreet vel egestas. Laoreet donec convallis
+scelerisque feugiat, duis, auctor potenti etiam, dictumst imperdiet cras
+blandit. Vehicula sed tortor ridiculus, sodales dignissim parturient,
+commodo aliquet pellentesque. Ac velit nec augue faucibus, scelerisque
+semper suspendisse aliquam lacinia viverra nec molestie eleifend
+suscipit, ultricies taciti: ullamcorper, lacinia ornare scelerisque dis,
+ultricies est justo turpis ad magnis, senectus risus duis augue
+phasellus euismod parturient posuere fusce \autocite{papert2020}. See
+Table~\ref{tbl-error-types}.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  List
+\item
+  List
+\item
+  List
+\end{enumerate}
+
+\paragraph{Heading 5}\label{heading-5-2}
+
+Elit convallis arcu -- nam dui penatibus. Blandit convallis natoque ut
+donec nascetur. Phasellus sollicitudin fermentum interdum ornare velit.
+Praesent nibh quisque odio senectus tristique. Accumsan taciti ridiculus
+rutrum accumsan morbi? Na morbi \autocite{tisue2004,tisue2004a}.
+
 \postextual
 
 \begingroup
 \renewcommand{\baselinestretch}{1}
 \setcounter{footnote}{0}
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
-\printbibliography[heading=bibheading]
+
+\printbibliography[
+  heading=bibheading
+]
+
 \endgroup
 
 \tocskipone
@@ -2310,7 +2328,7 @@ bibendum, elementum, risus posuere non, quisque quisque: donec nisi nunc
 auctor convallis scelerisque iaculis sodales mus praesent class mollis
 ad ornare himenaeos nostra \autocite{vonneumann1993a}.
 
-\section{Heading 2}\label{heading-2-5}
+\section{Heading 2}\label{heading-2-3}
 
 Ipsum condimentum sem ultricies class augue vestibulum congue nostra
 cubilia ridiculus. Ullamcorper nostra dapibus sapien porta; inceptos
@@ -2346,7 +2364,7 @@ imperdiet cursus vitae justo rhoncus \autocite{hinton1986}.
 
 \chapter{Settings}\label{sec-settings}
 
-\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, coltitle=black, opacityback=0, leftrule=.75mm, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, breakable, bottomrule=.15mm, colback=white, titlerule=0mm, rightrule=.15mm, toptitle=1mm, toprule=.15mm, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, breakable, left=2mm, toprule=.15mm, colback=white, opacitybacktitle=0.6, colframe=quarto-callout-note-color-frame, toptitle=1mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, coltitle=black, rightrule=.15mm, bottomrule=.15mm, bottomtitle=1mm, titlerule=0mm]
 
 Please note that not all settings are documented. For issues or
 discussions, use the
@@ -2366,13 +2384,13 @@ section in the Quarto guide.
 
 This format use \href{https://www.luatex.org/}{\texttt{lualatex}}. I
 recommended always using this engine for better font handling and
-support.
+feature support.
 
 \section{Typography}\label{typography}
 
 \index{tipography}
 
-\subsection{Typeface}\label{typeface}
+\subsection{Typefaces}\label{typefaces}
 
 To change typefaces, use Quarto
 \href{https://quarto.org/docs/reference/formats/pdf.html}{PDF options}
@@ -2400,10 +2418,10 @@ To see all the fonts installed in your system, run using R:
 \end{Highlighting}
 \end{Shaded}
 
-\subsection{Font Size}\label{font-size}
+\subsection{Line-Height and Font Size}\label{line-height-and-font-size}
 
-To adjust the font size you can use the \texttt{fontsize} option in
-\texttt{quarto.yml}.
+Use \texttt{fontsize} and \texttt{linestretch} in \texttt{quarto.yml} to
+adjust these options.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2647,8 +2665,6 @@ y = mx + b
 
 \end{theorem}
 
-\vspace{-1\baselineskip}
-
 However, it's important to note that for this to work, each type of
 \texttt{div} must use pre-defined prefixes. If you don't follow these
 rules your document can behave unexpectedly.
@@ -2661,7 +2677,7 @@ References} and
 \href{https://quarto.org/docs/prerelease/1.4/crossref.html}{Cross-Referenceable
 Elements} articles.
 
-\section{Freezing and Cache}\label{freezing-and-cache}
+\section{Freeze and Cache}\label{freeze-and-cache}
 
 Avoid using the
 \href{https://quarto.org/docs/projects/code-execution.html\#freeze}{\texttt{freeze}}

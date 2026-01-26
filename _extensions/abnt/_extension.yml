@@ -37,10 +37,10 @@ contributes:
       pdf-engine: lualatex
       documentclass: abntex2
       date-format: YYYY
-      lang: en # options: [en, pt-br, es, fr] (for hyphenation)
-      language: "../_extensions/abnt/_language.yml"
-      babel-lang: english # options: [english, brazil, spanish, french]
-      other-babel-lang: # Don not repeat 'babel-lang' here.
+      lang: en # [en, pt-br, es, fr] (for hyphenation)
+      language: "abnt/_language.yml"
+      babel-lang: english # [english, brazil, spanish, french]
+      other-babel-lang: # Do not repeat 'babel-lang' here.
         - french
         - spanish
         - brazil
@@ -54,8 +54,8 @@ contributes:
       parindent: 1cm
       parskip: 0ex
       frenchspacing: true
-      sides: oneside # options: [oneside, twoside]
-      papersize: a4 # options: [a4, a5]
+      sides: oneside # [oneside, twoside]
+      papersize: a4 # [a4, a5]
       section-options:
         - chapter=TITLE
         - section=TITLE
@@ -63,7 +63,7 @@ contributes:
         - bookmarksnumbered
       captionsetup:
         - justification=justified
-      biblio-title: REFERENCES
+      # biblio-title: References
       cite-method: biblatex
       biblatexoptions:
         - backend=biber
@@ -90,8 +90,8 @@ contributes:
       code-block-bg: "#F1F3F5"
       fig-format: png
       fig-dpi: 150
-      fig-width: 5.5 # Quarto default: 5.5
-      fig-height: 4 # Quarto default: 3.5
+      fig-width: 5.5 # Quarto's default: 5.5
+      fig-height: 4 # Quarto's default: 3.5
       out-width: 80%
       fig-pos: H
       tbl-pos: H

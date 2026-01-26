@@ -1,4 +1,4 @@
-% Set Sections Skips (`\cftchapterpresnum`)
+% Set Sections Skips (`\cftchapterpresnum`) -----
 
 \setlength{\cftbeforebookskip}{0\baselineskip}
 \setlength{\cftbeforepartskip}{\medskipamount}
@@ -8,7 +8,7 @@
 \setlength{\cftbeforesubsubsectionskip}{0\baselineskip}
 \setlength{\cftbeforeparagraphskip}{0\baselineskip}
 
-% Set Section Numbers Fonts (`\cftchapterpresnum`)
+% Set Section Numbers Fonts (`\cftchapterpresnum`) -----
 
 \renewcommand{\cftchapterpresnum}{\normalfont}
 \renewcommand{\cftsectionpresnum}{\normalfont}
@@ -16,7 +16,7 @@
 \renewcommand{\cftsubsubsectionpresnum}{\normalfont}
 \renewcommand{\cftparagraphpresnum}{\normalfont}
 
-% Set Section Names Fonts (`\cftpartfont`)
+% Set Section Names Fonts (`\cftpartfont`) -----
 
 \renewcommand{\cftpartfont}[1]{
   \ABNTEXchapterupperifneeded{\normalfont\bfseries #1}
@@ -42,7 +42,7 @@
   \ABNTEXsubsubsubsectionupperifneeded{\normalfont\itshape #1}
 }
 
-% Set Section Page Numbers Fonts (`\cftpartpagefont`)
+% Set Section Page Numbers Fonts (`\cftpartpagefont`) -----
 
 \renewcommand{\cftpartpagefont}{\normalfont}
 \renewcommand{\cftchapterpagefont}{\normalfont}
@@ -68,7 +68,7 @@
   \addtocontents{toc}{\setlength{\cftpartnumwidth}{0em}}
 }
 
-% Set ToC Skip
+% Set ToC Skip -----
 
 \newcommand{\tocskipone}{
   \addtocontents{toc}{\protect\vspace{\smallskipamount}}

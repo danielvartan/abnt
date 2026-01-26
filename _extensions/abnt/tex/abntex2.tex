@@ -65,7 +65,6 @@
   }{}
 }
 
-% Open an issue about it (`\hspace{-1em}`) - Title stretching.
 \renewcommand{\chapternamenum}{
   \ifthenelse{\boolean{abntex@apendiceousecao}}{
     \hspace{-2em} \space
@@ -272,7 +271,6 @@
 \renewcommand{\PRIVATEapendiceconfig}[2]{
   \setboolean{abntex@apendiceousecao}{true}
   \renewcommand{\appendixname}{#1}
-  %\renewcommand{\apendicesname}{#1}
 
   \ifthenelse{\boolean{ABNTEXsumario-abnt-6027-2012}}{
     \renewcommand{\appendixtocname}{\uppercase{#2}}
@@ -282,9 +280,7 @@
 
   \renewcommand{\appendixpagename}{#2}
   \renewcommand{\appendixtocname}{#2}
-  % \switchchapname{#1} % [Altered]
   \renewcommand{\cftappendixname}{} % [Altered]
-  \tocpartapendices % [Added]
 
   % Note:
   %
@@ -298,11 +294,12 @@
 
 \newcommand{\PRIVATEapendiceconfigafter}[1]{
     \chapterstyle{apendice}
-    %\begingroup\centering\bfseries
-    %\ABNTEXchapterupperifneeded{#1}
-    %\par\endgroup
-    %\vspace{\medskipamount}
-    \pretextualchapter{#1}
+
+    % Quarto adds \appendix automatically,
+    % so we just need to add the chapter title.
+    \chapter*{#1}
+    \markboth{#1}{#1}
+
     \let\clearpage\relax
 }
 
@@ -326,13 +323,9 @@
 
 \renewcommand{\anexos}{
   \clearpage
-  % \cftinserthook{toc}{AAA} [Removed]
   \PRIVATEapendiceconfig{\anexoname}{\anexosname}
 
-  \newpage % [Added]
-  \phantomsection % [Added]
-  \addcontentsline{toc}{part}{\appendixtocname} % [Added]
-
+  \newpage
   \appendix
   \renewcommand\theHchapter{anexochapback.\arabic{chapter}}
   \PRIVATEapendiceconfigafter{\anexosname}
@@ -342,9 +335,9 @@
   \clearpage
   \PRIVATEapendiceconfig{\anexoname}{\anexosname}
 
-  \newpage % [Added]
-  \phantomsection % [Added]
-  \addcontentsline{toc}{part}{\appendixtocname} % [Added]
+  \newpage
+  \phantomsection
+  \addcontentsline{toc}{part}{\appendixtocname}
 
   \begin{appendix}
   \renewcommand\theHchapter{anexochapback.\arabic{chapter}}
