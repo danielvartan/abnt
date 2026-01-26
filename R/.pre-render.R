@@ -22,7 +22,7 @@ for (i in dir_ls(here("images"), type = "file")) {
   )
 }
 
-# Update Quarto Files -----
+# Update TeX Files -----
 
 swap_list <- list(
   title_page = list(

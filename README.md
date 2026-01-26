@@ -37,7 +37,7 @@ Access to the ABNT standards could also help. It's important to note that the st
 
 ## Installation
 
-This format requires [Quarto](https://quarto.org) 1.8.27 or later versions, along with a LaTeX distribution that includes the [`lualatex`](https://www.luatex.org/) engine and the `abntex2`, `memoir`, and `biblatex` packages. For a quick and easy installation of a LaTeX distribution, I recommend using [TinyTeX](https://yihui.org/tinytex/), which can be installed directly from R using the [`tinytex`](https://yihui.org/tinytex/) package.
+This format requires [Quarto](https://quarto.org) 1.8.27 or later, [R](https://www.r-project.org/) 4.5.2 or later, and a [LaTeX](https://www.latex-project.org/) distribution with the [`lualatex`](https://www.luatex.org/) engine. For quick LaTeX installation, use [TinyTeX](https://yihui.org/tinytex/), which can be installed from R via the [`tinytex`](https://yihui.org/tinytex/) package.
 
 The typefaces [Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans) and [Noto Sans Mono](https://fonts.google.com/noto/specimen/Noto+Sans+Mono) are used as the main and monospace default fonts, respectively. If you plan to maintain the default settings, install both fonts on your system. These are developed by Google and are freely available under the [SIL Open Font License](https://openfontlicense.org/).
 

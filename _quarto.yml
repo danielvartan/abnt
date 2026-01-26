@@ -34,7 +34,7 @@ book:
   license: "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International"
   publisher: "[University]"
   publisher-place: "[City of university]"
-  favicon: images/logo.png
+  favicon: images/logo.svg
   url: https://danielvartan.github.io/abnt/
   site-url: https://danielvartan.github.io/abnt/
   repo-url: https://github.com/danielvartan/abnt/
@@ -74,8 +74,8 @@ format:
       - useprefix=false
       - giveninits=true
       - style=abnt
-    bibhang: 0cm # Use 0.5cm if `style=apa`
-    bibparsep: -2ex # Use 1ex `style=apa`
+    bibhang: 0cm # Use 0.5cm if `style=apa`.
+    bibparsep: -2ex # Use 1ex `style=apa`.
     biblio-footnote: >
       According to the Brazilian Association of Technical Standards
       (ABNT NBR 6023).
