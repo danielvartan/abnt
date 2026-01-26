@@ -79,7 +79,7 @@ with_seed(
     ipsum(1, avg_words_per_sentence = 22) |>
       as.character() |>
       str_remove(".$") |>
-      paste0(" [@krakauer2019].") |>
+      paste0(" [@krakauer2019; @mitchell2009a].") |>
       cat(sep = "\n\n")
   }
 )
@@ -408,7 +408,7 @@ Cohen’s benchmark for effect sizes
 \clearpage
 ```
 
-## Heading 2
+#### Heading 4
 
 ```{r}
 #| echo: false
@@ -471,7 +471,7 @@ plot |>
 Marginal distributions of weight (*1000 lbs*) and fuel efficiency (*miles per gallon*) for combustion engine vehicles
 :::
 
-### Heading 3
+##### Heading 5
 
 ```{r}
 #| echo: false
@@ -565,16 +565,21 @@ tibble(
   )
 ) |>
   gt() |>
-  tab_options(
-    table.width = pct(70)
-  ) |>
+  # tab_options(
+  #   table.width = pct(75)
+  # ) |>
   cols_label(
     decision = md("Decision about $\\text{H}_{0}$"),
     h0_true = md("$\\text{H}_{0}$ True"),
     h0_false = md("$\\text{H}_{0}$ False")
   ) |>
   cols_align(align = "center") |>
-  fmt_markdown(columns = everything()) |>
+  cols_width(
+    decision ~ pct((1 / 3) * 100),
+    h0_true ~ pct((1 / 3) * 100),
+    h0_false ~ pct((1 / 3) * 100)
+  ) |>
+  fmt_markdown() |>
   tab_style(
     style = cell_text(weight = "bold"),
     locations = cells_column_labels()
@@ -609,62 +614,3 @@ tibble(
 
 Type I and type II errors
 :::
-
-#### Heading 4
-
-```{r}
-#| echo: false
-#| output: asis
-
-library(lorem)
-library(stringr)
-library(withr)
-
-with_seed(
-  seed = 548791,
-  code = {
-    c(
-      ipsum(1, avg_words_per_sentence = 16) |>
-        as.character() |>
-        str_remove(".$") |>
-        paste0(" [@marcusaurelius2011]."),
-      ipsum(1, avg_words_per_sentence = 30) |>
-        as.character() |>
-        str_remove(".$") |>
-        paste0(" [@more2014].")
-    ) |>
-      cat(sep = "\n\n")
-  }
-)
-```
-
-- Bullet point
-  - Bullet point
-    - Bullet point
-
-##### Heading 5
-
-```{r}
-#| echo: false
-#| output: asis
-
-library(lorem)
-library(stringr)
-library(withr)
-
-with_seed(
-  seed = 13548,
-  code = {
-    ipsum(1, avg_words_per_sentence = 15) |>
-      as.character() |>
-      str_remove(".$") |>
-      paste0(" [@papert2020].") |>
-      paste0(" See @tbl-error-types.") |>
-      cat(sep = "\n\n")
-  }
-)
-```
-
-1. List
-1. List
-1. List

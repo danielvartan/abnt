@@ -14,9 +14,10 @@ here("R", ".setup.R") |> source()
 
 ```{=latex}
 \epigraph{Every genuine test of a theory is an attempt to falsify it, or to refute it.}{--- \textcite{popper2002}}
+
 \vspace*{-1\baselineskip}
+
 \epigraph{I suggest that it is the aim of science to find satisfactory explanations, of whatever strikes us as being in need of explanation.}{--- \textcite[193]{popper1979a}}
-% \vspace*{1\baselineskip}
 ```
 
 <!-- @popper2002 -->
@@ -70,6 +71,81 @@ with_seed(
 )
 ```
 
+### Heading 3
+
+```{r}
+#| echo: false
+#| output: asis
+
+library(lorem)
+library(stringr)
+library(withr)
+
+with_seed(
+  seed = 548791,
+  code = {
+    ipsum(1, avg_words_per_sentence = 10) |>
+      as.character() |>
+      str_remove(".$") |>
+      paste0(" [@more2014].") |>
+      cat(sep = "\n\n")
+  }
+)
+```
+
+- Bullet point
+  - Bullet point
+    - Bullet point
+
+#### Heading 4
+
+```{r}
+#| echo: false
+#| output: asis
+
+library(lorem)
+library(stringr)
+library(withr)
+
+with_seed(
+  seed = 13548,
+  code = {
+    ipsum(1, avg_words_per_sentence = 15) |>
+      as.character() |>
+      str_remove(".$") |>
+      paste0(" [@papert2020].") |>
+      paste0(" See @tbl-error-types.") |>
+      cat(sep = "\n\n")
+  }
+)
+```
+
+1. List
+1. List
+1. List
+
+##### Heading 5
+
+```{r}
+#| echo: false
+#| output: asis
+
+library(lorem)
+library(stringr)
+library(withr)
+
+with_seed(
+  seed = 3758,
+  code = {
+    ipsum(1, avg_words_per_sentence = 5) |>
+      as.character() |>
+      str_remove(".$") |>
+      paste0(" [@tisue2004; @tisue2004a].") |>
+      cat(sep = "\n\n")
+  }
+)
+```
+
 <!-- textual end -->
 
 ```{=latex}
@@ -79,7 +155,11 @@ with_seed(
 \renewcommand{\baselinestretch}{1}
 \setcounter{footnote}{0}
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
-\printbibliography[heading=bibheading]
+
+\printbibliography[
+  heading=bibheading
+]
+
 \endgroup
 
 \tocskipone

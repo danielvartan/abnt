@@ -25,7 +25,7 @@ This format use [`lualatex`](https://www.luatex.org/). I recommended always usin
 \index{tipography}
 ```
 
-### Typeface
+### Typefaces
 
 To change typefaces, use Quarto [PDF options](https://quarto.org/docs/reference/formats/pdf.html) such as `mainfont`, `monofont`, and `sansfont`.
 
@@ -46,9 +46,9 @@ library(systemfonts)
 system_fonts()
 ```
 
-### Font Size
+### Line-Height and Font Size
 
-To adjust the font size you can use the `fontsize` option in `quarto.yml`.
+Use `fontsize` and `linestretch` in `quarto.yml` to adjust these options.
 
 ```yaml
 format:
@@ -215,15 +215,11 @@ y = mx + b
 $$
 :::
 
-```{=latex}
-\vspace{-1\baselineskip}
-```
-
 However, it's important to note that for this to work, each type of `div` must use pre-defined prefixes. If you don't follow these rules your document can behave unexpectedly.
 
 For more information about cross-reference elements, see Quarto's guide [Book Crossrefs](https://quarto.org/docs/books/book-crossrefs.html), [Cross References](https://quarto.org/docs/authoring/cross-references.html) and [Cross-Referenceable Elements](https://quarto.org/docs/prerelease/1.4/crossref.html) articles.
 
-## Freezing and Cache
+## Freeze and Cache
 
 Avoid using the [`freeze`](https://quarto.org/docs/projects/code-execution.html#freeze) and [`cache`](https://quarto.org/docs/projects/code-execution.html#cache) execution options. If you're having issue in updating your document, check if these options are enabled.
 

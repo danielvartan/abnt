@@ -212,7 +212,7 @@ with_seed(
       ipsum(1, avg_words_per_sentence = 19) |>
         as.character() |>
         str_remove(".$") |>
-        paste0(" [@walker2024a].") |>
+        paste0(" [@walker2024a; @peirce2011].") |>
         paste0(" See @fig-sao-paulo-tracts.")
     ) |>
       cat(sep = "\n\n")
@@ -365,7 +365,7 @@ ggplot() +
 Population by census tract in 2022 in the city of São Paulo, Brazil
 :::
 
-## Heading 2
+#### Heading 4
 
 ```{r}
 #| echo: false
@@ -381,7 +381,7 @@ with_seed(
     ipsum(1, avg_words_per_sentence = 25) |>
       as.character() |>
       str_remove(".$") |>
-      paste0(" [@hopfield1984].") |>
+      paste0(" [@hopfield1984; @darwin2017].") |>
       paste0(" See @fig-eruption.") |>
       cat(sep = "\n\n")
   }
@@ -437,6 +437,8 @@ with_seed(
   }
 )
 ```
+
+##### Heading 5
 
 The hypothesis can be outlined as follows:
 
