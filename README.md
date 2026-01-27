@@ -49,6 +49,12 @@ I plan to implement this format more straightforwardly using [Lua filters](https
 
 ## Usage
 
+Most customization options available in the Quarto system are compatible with this format. See the `abnt` [PDF output](https://danielvartan.github.io/abnt/) *Settings* annex for details. If you have questions or need assistance, use the project's GitHub [discussion tab](https://github.com/danielvartan/abnt/discussions).
+
+The *Showcase* sections contain numerous examples demonstrating potential applications. However, it's best to remove them when starting a new project, as they require several additional packages and configurations that may not be necessary for your specific use case. After removing the *Showcase* sections, run `renv::snapshot()` to update the project's dependency list accordingly.
+
+For additional customization details, refer to the [PDF Options](https://quarto.org/docs/reference/formats/pdf.html) section in the Quarto guide and the [extension YAML file](_extensions/abnt/_extension.yml).
+
 The rendering process is the same for any Quarto project. To render the document, run the following command in your terminal within the project directory:
 
 ```bash
@@ -56,12 +62,6 @@ quarto render
 ```
 
 Alternatively, you can utilize the [`quarto`](https://quarto-dev.github.io/quarto-r/) R package's [`quarto_render()`](https://quarto-dev.github.io/quarto-r/reference/quarto_render.html) function as an interface.
-
-## Customization
-
-Most customization options available in the Quarto system are compatible with this format. See the `abnt` [PDF output](https://danielvartan.github.io/abnt/) *Settings* annex for details. If you have questions or need assistance, use the project's GitHub [discussion tab](https://github.com/danielvartan/abnt/discussions).
-
-For additional customization details, refer to the [PDF Options](https://quarto.org/docs/reference/formats/pdf.html) section in the Quarto guide and the [extension YAML file](_extensions/abnt/_extension.yml).
 
 ## Citation
 
