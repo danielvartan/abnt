@@ -123,6 +123,8 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 
 ## Acknowledgments
 
+`abnt` is an independent project with no affiliation to the Brazilian Association of Technical Standards ([ABNT](https://www.abnt.org.br/)).
+
 This project owes its existence to the contributions of dedicated developers from the [`abntTeX`](https://www.abntex.net.br/) community.
 
 `abnt` brand identity is based on the [ABNT](https://www.abnt.org.br/) brand identity.
