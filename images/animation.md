@@ -17,7 +17,7 @@ Animation settings.
 pdfnup --landscape --frame true --outfile output.pdf index.pdf
 ```
 
-3. Extract the pages as PNG files by running:
+3. Extract the pages as PNG files with:
 
 ````bash
 magick convert -density 300 -trim -background white -alpha remove output.pdf page-%03d.png
@@ -29,7 +29,7 @@ magick convert -density 300 -trim -background white -alpha remove output.pdf pag
 magick -delay 120 -loop 0 *.png animation.gif
 ```
 
-5. Clean up the intermediate files by running:
+5. Clean up the intermediate files with:
 
 ```bash
 rm output.pdf *.png
