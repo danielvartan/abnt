@@ -269,6 +269,7 @@ census_tract_population_data <-
 ```{r}
 #| include: false
 
+library(here)
 library(nanoparquet)
 
 census_tract_population_data <-

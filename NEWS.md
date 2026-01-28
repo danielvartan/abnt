@@ -2,8 +2,8 @@
 
 # v1.0.1 (2026-01-28)
 
-- Resolved issues with IPEA servers affecting data retrieval in examples.
-- Improved documentation and examples.
+- Fixed data retrieval issues in examples caused by IPEA server problems.
+- Enhanced documentation and examples.
 
 # v1.0.0 (2026-01-26)
 

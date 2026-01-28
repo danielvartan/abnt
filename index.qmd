@@ -206,18 +206,12 @@ data <-
 ```
 
 ```{r}
-#| include: false
 #| eval: false
+#| include: false
 
 library(geobr)
 
 brazil_shape <- read_country(
-  year = 2010,
-  showProgress = FALSE,
-  cache = TRUE
-)
-
-municipalities_shape <- read_municipality(
   year = 2010,
   showProgress = FALSE,
   cache = TRUE
@@ -233,6 +227,26 @@ library(readr)
 brazil_shape <-
   here("data", "geobr-read_country-2010.rds") |>
   read_rds()
+```
+
+```{r}
+#| eval: false
+#| include: false
+
+library(geobr)
+
+municipalities_shape <- read_municipality(
+  year = 2010,
+  showProgress = FALSE,
+  cache = TRUE
+)
+```
+
+```{r}
+#| include: false
+
+library(here)
+library(readr)
 
 municipalities_shape <-
   here("data", "geobr-read_municipality-2010.rds") |>
