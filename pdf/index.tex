@@ -1179,10 +1179,10 @@ Co-Supervisor: Prof. Dr. {\imprimircoorientador}
 \usepackage{amsthm}
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[chapter]
-\theoremstyle{plain}
-\newtheorem{conjecture}{Conjecture}[chapter]
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[chapter]
+\theoremstyle{plain}
+\newtheorem{conjecture}{Conjecture}[chapter]
 \theoremstyle{remark}
 \AtBeginDocument{\renewcommand*{\proofname}{Proof}}
 \newtheorem*{remark}{Remark}
@@ -1206,7 +1206,7 @@ Co-Supervisor: Prof. Dr. {\imprimircoorientador}
 \@ifundefined{codebgcolor}{\definecolor{codebgcolor}{HTML}{F1F3F5}}{}
 \makeatother
 \makeatletter
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, frame hidden, boxrule=0pt, breakable, sharp corners, enhanced, colback={codebgcolor}]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, breakable, sharp corners, colback={codebgcolor}, borderline west={3pt}{0pt}{shadecolor}, enhanced, boxrule=0pt]}{\end{tcolorbox}}\fi
 \makeatother
 
 % -----
@@ -1747,13 +1747,7 @@ Figure~\ref{fig-gini-index}.
 
 \centering{
 
-\subcaption{\label{fig-gini-index}}
-
-\centering{
-
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/fig-gini-index-1.png}}
-
-}
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/unnamed-chunk-10-1.png}}
 
 \legendleft{Data extracted from \textcite{ibge}, processed by
 \textcite{vartanian2025r}.}
@@ -1829,13 +1823,7 @@ for combustion engine vehicles}
 
 \centering{
 
-\subcaption{\label{fig-mpg}}
-
-\centering{
-
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/fig-mpg-1.png}}
-
-}
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/unnamed-chunk-13-1.png}}
 
 \legendleft{Data extracted from the 1974 Motor Trend magazine, published
 by \textcite{henderson1981}. Visualization by \textcite{holtz},
@@ -1985,13 +1973,7 @@ Lorenz system}
 
 \centering{
 
-\subcaption{\label{fig-lorenz-system}}
-
-\centering{
-
-\pandocbounded{\includegraphics[keepaspectratio]{qmd/development_files/figure-pdf/fig-lorenz-system-1.png}}
-
-}
+\pandocbounded{\includegraphics[keepaspectratio]{qmd/development_files/figure-pdf/unnamed-chunk-5-1.png}}
 
 \legend{Reproduced from \textcite{vartanian2024d}. Based on
 \textcite{lorenz1963}.}
@@ -2026,13 +2008,7 @@ in the city of São Paulo, Brazil}
 
 \centering{
 
-\subcaption{\label{fig-sao-paulo-tracts}}
-
-\centering{
-
-\pandocbounded{\includegraphics[keepaspectratio]{qmd/development_files/figure-pdf/fig-sao-paulo-tracts-1.png}}
-
-}
+\pandocbounded{\includegraphics[keepaspectratio]{qmd/development_files/figure-pdf/unnamed-chunk-16-1.png}}
 
 \legendleft{Tract data from the
 \href{https://www.ibge.gov.br/en/statistics/social/labor/22836-2022-census-3.html}{Brazilian
@@ -2070,13 +2046,7 @@ Geyser, Yellowstone National Park, Wyoming, USA}
 
 \centering{
 
-\subcaption{\label{fig-eruption}}
-
-\centering{
-
-\pandocbounded{\includegraphics[keepaspectratio]{qmd/development_files/figure-pdf/fig-eruption-1.png}}
-
-}
+\pandocbounded{\includegraphics[keepaspectratio]{qmd/development_files/figure-pdf/unnamed-chunk-18-1.png}}
 
 \legend{Reproduced from the
 \href{https://ggplot2.tidyverse.org/reference/geom_density_2d.html}{ggplot2}
@@ -2379,7 +2349,7 @@ imperdiet cursus vitae justo rhoncus \autocite{hinton1986}.
 
 \chapter{Settings}\label{sec-settings}
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, colframe=quarto-callout-note-color-frame, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, colback=white, titlerule=0mm, bottomrule=.15mm, rightrule=.15mm, toptitle=1mm, coltitle=black, leftrule=.75mm, breakable, left=2mm, toprule=.15mm, arc=.35mm]
+\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, breakable, opacityback=0, bottomtitle=1mm, colback=white, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, leftrule=.75mm, arc=.35mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, left=2mm, coltitle=black, colframe=quarto-callout-note-color-frame, rightrule=.15mm, opacitybacktitle=0.6, bottomrule=.15mm]
 
 Please note that not all settings are documented. For issues or
 discussions, use the

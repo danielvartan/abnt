@@ -179,8 +179,6 @@ plot_phase_space <- function(
 
 ::: {#fig-lorenz-system}
 ```{r}
-#| label: fig-lorenz-system
-
 plot_phase_space()
 ```
 
@@ -225,6 +223,7 @@ municipality_code <- 3550308 # São Paulo (1.521,202 km²)
 ```
 
 ```{r}
+#| eval: false
 #| include: false
 
 library(geobr)
@@ -235,34 +234,50 @@ municipality_shape <-
     year = 2022,
     simplified = TRUE,
     showProgress = FALSE,
-    cache = ifelse(interactive(), TRUE, FALSE)
+    cache = TRUE
   )
 ```
 
 ```{r}
 #| include: false
 
-library(censobr)
-library(nanoparquet)
+library(here)
+library(readr)
 
-if (interactive()) {
-  census_tract_population_data <-
-    read_tracts(
-      year = 2022,
-      dataset = "Basico",
-      as_data_frame = FALSE,
-      showProgress = FALSE,
-      cache = TRUE,
-      verbose = FALSE
-    )
-} else {
-  census_tract_population_data <-
-    here("data", "2022_tracts_Basico_v0.5.0.parquet") |>
-    read_parquet()
-}
+municipality_shape <-
+  here("data", "geobr-read_municipality-3550308-2022.rds") |>
+  read_rds()
 ```
 
 ```{r}
+#| eval: false
+#| include: false
+
+library(censobr)
+
+census_tract_population_data <-
+  read_tracts(
+    year = 2022,
+    dataset = "Basico",
+    as_data_frame = FALSE,
+    showProgress = FALSE,
+    cache = TRUE,
+    verbose = FALSE
+  )
+```
+
+```{r}
+#| include: false
+
+library(nanoparquet)
+
+census_tract_population_data <-
+  here("data", "censobr-read_tracts-2022-basico.parquet") |>
+  read_parquet()
+```
+
+```{r}
+#| eval: false
 #| include: false
 
 library(censobr)
@@ -273,8 +288,18 @@ census_tract_shape_data <-
     year = 2022,
     simplified = TRUE,
     showProgress = FALSE,
-    cache = ifelse(interactive(), TRUE, FALSE)
+    cache = TRUE
   )
+```
+
+```{r}
+#| include: false
+
+library(readr)
+
+census_tract_shape_data <-
+  here("data", "censobr-read_census_tract-2022-3550308.rds") |>
+  read_rds()
 ```
 
 ```{r}
@@ -310,8 +335,6 @@ census_data <-
 
 ::: {#fig-sao-paulo-tracts}
 ```{r}
-#| label: fig-sao-paulo-tracts
-
 library(ggplot2)
 library(ggspatial)
 library(sf)
@@ -390,7 +413,6 @@ with_seed(
 
 ::: {#fig-eruption}
 ```{r}
-#| label: fig-eruption
 #| fig-height: 4
 #| fig-width: 6
 

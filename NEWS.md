@@ -1,4 +1,9 @@
-# v1.0.1.9000 (development version)
+# v1.0.2.9000 (development version)
+
+# v1.0.1 (2026-01-28)
+
+- Resolved issues with IPEA servers affecting data retrieval in examples.
+- Improved documentation and examples.
 
 # v1.0.0 (2026-01-26)
 

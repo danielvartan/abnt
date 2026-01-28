@@ -23,6 +23,12 @@ Click [here](https://danielvartan.github.io/abnt/) to view the format output. Fo
 
 ![Showcase of the abnt format output](images/animation.gif)
 
+## How It Works
+
+`abnt` works by rewriting part of [`abntex2`](https://www.abntex.net.br/) and other resources to [Pandoc](https://pandoc.org) standards. To handle the frontmatter and backmatter sections, it uses a [system of tags](R/.pre-render.R) and pre/post-processing layers to add and parse those sections into the final [TeX file](pdf/index.tex).
+
+I've tried to keep this processing to a minimum. This will be much easier when [Quarto](https://quarto.org) implements `frontmatter`/`appendices`/`annexes`/`backmatter` sections in the `_quarto.yml` file (see this [issue](https://github.com/quarto-dev/quarto-cli/issues/2908) to learn more—give it a thumbs up to help out). [Lua filters](https://pandoc.org/lua-filters.html) would still need to be implemented, but with these sections, `abnt` could become a pure Quarto format. At the moment, the easiest way to use it is to clone its repository and build on its Quarto book.
+
 ## Prerequisites
 
 To effectively use `abnt`, you must have some familiarity with the tools and languages involved. This includes the [R programming language](https://www.r-project.org), the [TeX](https://tug.org) and [LaTeX](https://www.latex-project.org) typesetting system, the [Quarto](https://quarto.org) publishing system, and the [abntex2](https://www.abntex.net.br), [memoir](https://www.ctan.org/pkg/memoir), and [biblatex](https://www.ctan.org/pkg/biblatex) TeX packages.
